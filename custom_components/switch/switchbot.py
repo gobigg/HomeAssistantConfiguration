@@ -1,5 +1,9 @@
 """
 Switchbot from by https://github.com/isabellaalstrom/HomeAssistantConfiguration/blob/master/custom_components/switch/switchbot.py
+
+Thanks to https://github.com/OpenWonderLabs/python-host/blob/master/switchbot.py
+and
+https://gist.github.com/aerialist/163a5794e95ccd28dc023161324009ed#file-switchbot_bluepy-py
 """
 import asyncio
 import logging
@@ -45,23 +49,29 @@ class SwitchBot(SwitchDevice):
 
     def turn_on(self, **kwargs):
         """Turn device on."""
-        _LOGGER.debug("Update Switch Bot SWITCH to on")
+        try:
+            _LOGGER.debug("Update Switch Bot SWITCH to on")
 
-        p = Peripheral(self._mac, "random")
-        hand_service = p.getServiceByUUID("cba20d00-224d-11e6-9fb8-0002a5d5c51b")
-        hand = hand_service.getCharacteristics("cba20002-224d-11e6-9fb8-0002a5d5c51b")[0]
-        hand.write(binascii.a2b_hex("570101"))
-        self._state = 'on'
+            p = Peripheral(self._mac, "random")
+            hand_service = p.getServiceByUUID("cba20d00-224d-11e6-9fb8-0002a5d5c51b")
+            hand = hand_service.getCharacteristics("cba20002-224d-11e6-9fb8-0002a5d5c51b")[0]
+            hand.write(binascii.a2b_hex("570101"))
+            self._state = 'on'
+        except:
+            _LOGGER.error("Cannot connect to switchbot.")
 
     def turn_off(self, **kwargs):
         """Turn device off."""
-        _LOGGER.debug("Update Switch Bot SWITCH to off")
+        try:
+            _LOGGER.debug("Update Switch Bot SWITCH to off")
 
-        p = Peripheral(self._mac, "random")
-        hand_service = p.getServiceByUUID("cba20d00-224d-11e6-9fb8-0002a5d5c51b")
-        hand = hand_service.getCharacteristics("cba20002-224d-11e6-9fb8-0002a5d5c51b")[0]
-        hand.write(binascii.a2b_hex("570102"))
-        self._state = 'off'
+            p = Peripheral(self._mac, "random")
+            hand_service = p.getServiceByUUID("cba20d00-224d-11e6-9fb8-0002a5d5c51b")
+            hand = hand_service.getCharacteristics("cba20002-224d-11e6-9fb8-0002a5d5c51b")[0]
+            hand.write(binascii.a2b_hex("570102"))
+            self._state = 'off'
+        except:
+            _LOGGER.error("Cannot connect to switchbot.")
 
     @property
     def is_on(self):
@@ -71,3 +81,7 @@ class SwitchBot(SwitchDevice):
     def name(self):
         """Return the name of the switch."""
         return self._name
+    # @property
+    # def available(self):
+    #     """Return the availability of the device."""
+    #     return False

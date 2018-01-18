@@ -1,6 +1,6 @@
 homeassistant:
   customize:
-    sensor.stefan_radiator:
+    switch.stefan_radiator:
       icon: mdi:radiator
       homebridge_visible: true
       homebridge_name: Stefan Radiator
