@@ -5,13 +5,15 @@
         - group.outside_lights_card
         - group.stairs_lights
         - group.walk_in_closet_lights
-        - group.christmas_lights
+        # - group.christmas_lights
         - script.goodnight
         - script.goodmorning
         - script.cleaning_music
         - script.cleaning_time
         - script.cleaning_time_over
         - script.movie_time
+        - script.turn_on_shield
+        - script.morning_news
       include_domains:
         - switch
         - light
@@ -26,14 +28,6 @@
         - light.stairs_bottom_spot
         - light.stairs_middle_spot
         - light.stairs_top_spot
-        - script.alarmclock_clock_snooze
-        - script.brighten_bedside_lamp
-        - script.brighten_light_hallway
-        - script.dim_bedside_lamp
-        - script.dim_light_hallway
-        - script.svtplay_play
-        - script.wakeuplight
-        - script.ifttt_litterbox_day_summary
       exclude_domains:
         - group
         - automation

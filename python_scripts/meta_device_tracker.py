@@ -36,7 +36,7 @@ currentState = hass.states.get(metatrackerName)
 #     'last_update_source': 'placeholder'
 # })
 
-# hass.services.call('notify', 'pushbullet_isa', {"message": currentState, "title": "Meta tracker script"})
+# hass.services.call('notify', 'pushbullet_isa', {"message": currentState, "title": "Meta tracker script ran"})
 
 # Get New data
 newSource = newState.attributes.get('source_type')
@@ -58,6 +58,13 @@ elif newState.state == 'off':
     newIcon = 'mdi:home'
     newSource = "homekit"
 
+
+# elif newState.state == 'not_home':
+#  -# only GPS platforms update 'not_home'
+#  -# elif newState.state == 'not_home' and newSource == 'gps':
+#     newStatus = 'not_home'
+#     newIcon = 'mdi:home'
+
 # every tracker for person must be not_home for it to report not home
 elif newState.state == 'not_home':
     if metatrackerName == 'device_tracker.isabella':
@@ -68,13 +75,15 @@ elif newState.state == 'not_home':
         if isa_bt_state == 'not_home' and isa_ios_state == 'not_home':
             newStatus = 'not_home'
             newIcon = 'mdi:home'
-    elif metatrackerName == 'device_tracker.stefan':
-        # stefan_wifi_state = hass.states.get('device_tracker.stefan_iphone_7_wifi')
+
+    else:
+        stefan_wifi_state = hass.states.get('device_tracker.stefan_iphone_7_wifi')
         stefan_ios_state = hass.states.get('device_tracker.stefan_iphone_7')
-        # if stefan_wifi_state == 'not_home' and stefan_ios_state == 'not_home':
-        if stefan_ios_state == 'not_home':
-            newStatus = 'not_home'
-            newIcon = 'mdi:home'
+        # # if stefan_wifi_state == 'not_home' and stefan_ios_state == 'not_home':
+        # if stefan_ios_state == 'not_home':
+        newStatus = 'not_home'
+        newIcon = 'mdi:home'
+        hass.services.call('notify', 'pushbullet_isa', {"message": "Stefan marked not home. Triggered by: " + triggeredEntity + ". States checked: " + str(stefan_wifi_state) + " " + str(stefan_ios_state) , "title": "Meta tracker script"})
 
 # Otherwise keep old status
 else: 
@@ -104,15 +113,15 @@ else:
 # Create device_tracker.meta entity
 hass.states.set(metatrackerName, newStatus, {
     'icon': newIcon,
-    'name': metatrackerName,
+    # 'name': data.get('meta_entity'),
     'source_type': newSource,
     'battery': newBattery,
     'gps_accuracy': newgpsAccuracy,
     'latitude': newLatitude,
     'longitude': newLongitude,
-    'last_update_source': newState.name 
+    'last_update_source': newState.name,
+    'friendly_name' : data.get('meta_entity')
 })
 
 
-# done = hass.states.get(metatrackerName)
-# hass.services.call('notify', 'pushbullet_isa', {"message": done, "title": "Meta tracker script done"})
+done = hass.states.get(metatrackerName)

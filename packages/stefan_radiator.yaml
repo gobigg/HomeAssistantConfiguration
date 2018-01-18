@@ -1,0 +1,46 @@
+# input_boolean:
+#   stefan_radiator:
+#     name: Stefans radiator
+#     initial: off
+#     icon: mdi:radiator
+
+# automation:
+#   - alias: Stefan Radiator On
+#     initial_state: 'on'
+#     trigger:
+#       - platform: state
+#         entity_id: input_boolean.stefan_radiator
+#         to: 'on'
+#     action:
+#       - service: python_script.switchbot
+#         data:
+#           entity_id: 'stefan_radiator'
+#           action: 'turn_on'
+
+#   - alias: Stefan Radiator Off
+#     initial_state: 'on'
+#     trigger:
+#       - platform: state
+#         entity_id: input_boolean.stefan_radiator
+#         to: 'on'
+#     action:
+#       - service: python_script.switchbot
+#         data:
+#           entity_id: 'stefan_radiator'
+#           action: 'turn_off'
+
+# switch:
+#   - platform: template
+#     switches:
+#       skylight:
+#         # value_template: "{{ is_state('sensor.skylight', 'on') }}"
+#         turn_on:
+#           service: python_script.switchbot
+#           data:
+#             entity_id: 'stefan_radiator'
+#             action: 'turn_off'
+#         turn_off:
+#           service: python_script.switchbot
+#           data:
+#             entity_id: 'stefan_radiator'
+#             action: 'turn_off'

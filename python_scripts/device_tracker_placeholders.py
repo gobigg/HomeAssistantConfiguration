@@ -1,10 +1,10 @@
 # Create placeholder device_tracker.meta entities at startup
 hass.states.set('device_tracker.isabella', 'unknown', {
-    'name': 'Isabella',
+    'friendly_name': 'Isabella',
     'last_update_source': 'placeholder'
 })
 
 hass.states.set('device_tracker.stefan', 'unknown', {
-    'name': 'Stefan',
+    'friendly_name': 'Stefan',
     'last_update_source': 'placeholder'
 })

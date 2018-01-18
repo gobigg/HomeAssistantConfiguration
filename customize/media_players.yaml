@@ -9,6 +9,7 @@
       homebridge_visible: true
     media_player.sonos:
       homebridge_visible: true
+      homebridge_name: Sonos
     media_player.htse6730_hte6730:
       friendly_name: Hemmabiosystem
       homebridge_visible: true

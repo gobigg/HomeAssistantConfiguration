@@ -3,6 +3,8 @@ homeassistant:
     binary_sensor.dining_area_window_sensor_sensor:
       homebridge_visible: true
       device_class: opening
+      homebridge_name: Dining area window
+      
 
 sensor:
   - platform: template  

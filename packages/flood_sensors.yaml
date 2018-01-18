@@ -2,10 +2,10 @@ homeassistant:
   customize:
     binary_sensor.water_heater_sensor:
       friendly_name: Water Leak Water Heater   
-      # homebridge_visible: true
+
     binary_sensor.water_leak_sensor_158d0001d531bb:
       friendly_name: Water Leak Kitchen Sink
-      # homebridge_visible: true
+
     sensor.water_heater:
       hidden: false
     

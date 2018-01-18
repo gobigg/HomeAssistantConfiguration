@@ -3,6 +3,8 @@ homeassistant:
     script.goodmorning:
       alexa_name: Good morning
       alexa_display_categories: SCENE_TRIGGER
+      homebridge_visible: true
+      homebridge_name: Good morning
 
 script:
   goodmorning:

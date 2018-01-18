@@ -22,7 +22,7 @@ My configuration is broken down into [packages](https://github.com/isabellaalstr
 * Sannce IP camera
 * Xiaomi MiFloras (plant sensors)
 * IRobot Roomba 880
-* Electrolux Air Cleaner
+* Electrolux Air Cleaner Z9124
 * Withings WS-50 Smart Scale (currently not included)
 * 3 Broadlink RM3 mini IR-blaster
 * Nvidia Shield TV (Android tv, media center)

@@ -3,34 +3,33 @@ homeassistant:
     binary_sensor.door_window_sensor_158d00019f5110:
       friendly_name: Yard Storage Door
       homebridge_visible: true
+      homebridge_name: Yard Storage Door
+      device_class: opening
 
     binary_sensor.door_window_sensor_158d00019e152b:
       friendly_name: Backyard Door
       homebridge_visible: true
+      homebridge_name: Backyard Door
+      device_class: opening
 
     binary_sensor.door_window_sensor_158d0001a3e45e:
       friendly_name: Balcony Door
       homebridge_visible: true
-
-    # binary_sensor.door_window_sensor_158d00016d6ef9:
-    #   friendly_name: Hallway Glass Door
-    #   homebridge_visible: true
+      homebridge_name: Balcony Door
+      device_class: opening
 
     binary_sensor.front_door_homebridge:
       homebridge_visible: true
+      homebridge_name: Front Door
       friendly_name: Front Door
       device_class: opening
 
     binary_sensor.back_door_sensor:
       friendly_name: Back Door
       homebridge_visible: true
+      homebridge_name: Back Door
       device_class: opening
       
-input_boolean:
-  backyard_door:
-    name: Backyard door
-    initial: off
-
 sensor:
   - platform: template
     sensors:

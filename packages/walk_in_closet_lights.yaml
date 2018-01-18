@@ -5,7 +5,14 @@ homeassistant:
       alexa_display_categories: LIGHT
       homebridge_visible: true
       homebridge_name: Walk in closet lights
-
+    light.walk_in_closet_1:
+      homebridge_visible: false
+    light.walk_in_closet_2:
+      homebridge_visible: false
+    light.walk_in_closet_3:
+      homebridge_visible: false
+    light.walk_in_closet_4:
+      homebridge_visible: false
       
 group:
   walk_in_closet_lights:

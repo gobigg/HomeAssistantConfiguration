@@ -110,7 +110,7 @@ zone: !include zone.yaml
 # ########################################
 notify: !include notify.yaml
 python_script:
-group: !include_dir_merge_named group/
+# group: !include_dir_merge_named group/
 mqtt:
   broker: !secret mqtt_broker
   port: 1883
@@ -133,3 +133,8 @@ ifttt:
 ###                IOS               ###
 ########################################
 ios: !include ios_config.yaml
+
+switch:
+  - platform: switchbot
+    mac: 'EA:E1:11:E2:B1:77'
+    name: 'Stefan radiator'

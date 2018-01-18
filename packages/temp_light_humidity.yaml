@@ -3,15 +3,22 @@ homeassistant:
     sensor.temperature_158d0001235510:
       friendly_name: Upstairs Hallway Temperature
       homebridge_visible: true
+      homebridge_name: Upstairs Hallway Temperature
     sensor.temperature_158d000123552c:
       friendly_name: Passage Temperature
       homebridge_visible: true
+      homebridge_name: Passage Temperature
+
     sensor.temperature_158d0001a2a899:
       friendly_name: Downstairs Bathroom Temperature
       homebridge_visible: true
+      homebridge_name: Downstairs BathroomTemperature
+
     sensor.temperature_158d0001fd83e7:
       friendly_name: Stefans Room Temperature
       homebridge_visible: true
+      homebridge_name: Stefans Room Temperature
+
 
     sensor.humidity_158d0001fd83e7:
       friendly_name: Stefans Room Humidity

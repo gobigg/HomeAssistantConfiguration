@@ -28,6 +28,7 @@ homeassistant:
             column: 3
             row: 1
             icon: mdi:television-classic
+            
     script.movie_time:
       alexa_hidden: false
       alexa_name: Movie Time

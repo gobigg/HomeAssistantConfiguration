@@ -7,13 +7,16 @@ homeassistant:
   customize:
     script.morning_news:
       homebridge_visible: true
+      homebridge_name: Morning News
       icon: mdi:television-classic
-      alexa_display_categories: TV        
+      alexa_display_categories: TV
+      alexa_name: Morning News
+
     script.turn_on_shield:
       alexa_name: Shield
-      alexa_display_categories: TV        
-    script.svtplay_play:
-      alexa_hidden: true
+      alexa_display_categories: TV
+
+
 svtplay_dl:
   accounts:
     tv4play:

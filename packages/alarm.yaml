@@ -1,7 +1,8 @@
 homeassistant:
   customize:
     alarm_control_panel.home_alarm:
-      homebridge_visible: true 
+      homebridge_visible: true
+      homebridge_name: House Alarm
 
 alarm_control_panel:
   - platform: manual

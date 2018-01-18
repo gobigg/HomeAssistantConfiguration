@@ -3,6 +3,7 @@ homeassistant:
     script.goodnight:
       alexa_hidden: false
       homebridge_visible: true
+      homebridge_name: Goodnight
     
 input_boolean:
   goodnight_stefan:
