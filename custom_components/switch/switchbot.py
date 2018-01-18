@@ -1,5 +1,5 @@
 """
-Switch bot
+Switchbot from by https://github.com/isabellaalstrom/HomeAssistantConfiguration/blob/master/custom_components/switch/switchbot.py
 """
 import asyncio
 import logging
@@ -28,7 +28,7 @@ CONFIG_SCHEMA = vol.Schema({
 _LOGGER = logging.getLogger(__name__)
 
 def setup_platform(hass, config, add_devices, discovery_info=None):
-    """Find and return Sensibo data"""
+    """Get Switchbot data"""
     my_name = config.get(CONF_NAME, 'switchbot')    
     my_mac = config.get(CONF_MAC)
     add_devices([SwitchBot(my_name, my_mac)])
@@ -52,7 +52,6 @@ class SwitchBot(SwitchDevice):
         hand = hand_service.getCharacteristics("cba20002-224d-11e6-9fb8-0002a5d5c51b")[0]
         hand.write(binascii.a2b_hex("570101"))
         self._state = 'on'
-        self.hass.states.set('sensor.' + self._name, 'on')
 
     def turn_off(self, **kwargs):
         """Turn device off."""
@@ -63,7 +62,6 @@ class SwitchBot(SwitchDevice):
         hand = hand_service.getCharacteristics("cba20002-224d-11e6-9fb8-0002a5d5c51b")[0]
         hand.write(binascii.a2b_hex("570102"))
         self._state = 'off'
-        self.hass.states.set('sensor.' + self._name, 'off')
 
     @property
     def is_on(self):
