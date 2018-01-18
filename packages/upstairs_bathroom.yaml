@@ -9,7 +9,11 @@ alert:
     done_message: Bathroom Cabinet Door closed
     entity_id: binary_sensor.door_window_sensor_158d0001a3e3a4
     state: 'on'
-    repeat: 2
+    repeat:
+      - 2
+      - 15
+      - 30
+      - 60
     skip_first: True
     notifiers:
       - ios_isabellas_iphone_6s

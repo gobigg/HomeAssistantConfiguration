@@ -136,5 +136,5 @@ ios: !include ios_config.yaml
 
 switch:
   - platform: switchbot
+    name: 'Stefan radiator'  
     mac: 'EA:E1:11:E2:B1:77'
-    name: 'Stefan radiator'
