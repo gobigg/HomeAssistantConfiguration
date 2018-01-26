@@ -91,6 +91,7 @@ group:
       # Stefans room
       - sensor.temperature_158d0001fd83e7
       - sensor.humidity_158d0001fd83e7
+      - switch.stefan_radiator
       # Miflora
       - sensor.palm_temperature
       - sensor.palm_light_intensity

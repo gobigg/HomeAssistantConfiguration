@@ -1,7 +1,6 @@
 homeassistant:
   customize:
     script.goodnight:
-      alexa_hidden: false
       homebridge_visible: true
       homebridge_name: Goodnight
     

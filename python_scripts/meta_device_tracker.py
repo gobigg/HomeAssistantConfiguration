@@ -46,44 +46,46 @@ newSource = newState.attributes.get('source_type')
 # Everything updates 'home'
 if newState.state == 'home':
     newStatus = 'home'
-    newIcon = 'mdi:home-map-marker'
+    # newIcon = 'mdi:home-map-marker'
 # For input_boolean set by homekit
 elif newState.state == 'on':
     newStatus = 'home'
-    newIcon = 'mdi:home-map-marker'
+    # newIcon = 'mdi:home-map-marker'
     newSource = "homekit"
 # See if this is holding up, otherwise remove
 elif newState.state == 'off':
     newStatus = 'not_home'
-    newIcon = 'mdi:home'
+    # newIcon = 'mdi:home'
     newSource = "homekit"
 
 
-# elif newState.state == 'not_home':
-#  -# only GPS platforms update 'not_home'
-#  -# elif newState.state == 'not_home' and newSource == 'gps':
-#     newStatus = 'not_home'
-#     newIcon = 'mdi:home'
+elif newState.state == 'not_home':
+ # only GPS platforms update 'not_home'
+ # elif newState.state == 'not_home' and newSource == 'gps':
+    newStatus = 'not_home'
+    newIcon = 'mdi:home'
 
 # every tracker for person must be not_home for it to report not home
-elif newState.state == 'not_home':
-    if metatrackerName == 'device_tracker.isabella':
-        # isa_wifi_state = hass.states.get('device_tracker.isabellas_iphone_6s_wifi')
-        isa_bt_state = hass.states.get('device_tracker.isabellas_iphone_6s_bt')
-        isa_ios_state = hass.states.get('device_tracker.isabellas_iphone_6s')
-        # if isa_wifi_state == 'not_home' and isa_bt_state == 'not_home' and isa_ios_state == 'not_home':
-        if isa_bt_state == 'not_home' and isa_ios_state == 'not_home':
-            newStatus = 'not_home'
-            newIcon = 'mdi:home'
+# elif newState.state == 'not_home':
 
-    else:
-        stefan_wifi_state = hass.states.get('device_tracker.stefan_iphone_7_wifi')
-        stefan_ios_state = hass.states.get('device_tracker.stefan_iphone_7')
-        # # if stefan_wifi_state == 'not_home' and stefan_ios_state == 'not_home':
-        # if stefan_ios_state == 'not_home':
-        newStatus = 'not_home'
-        newIcon = 'mdi:home'
-        hass.services.call('notify', 'pushbullet_isa', {"message": "Stefan marked not home. Triggered by: " + triggeredEntity + ". States checked: " + str(stefan_wifi_state) + " " + str(stefan_ios_state) , "title": "Meta tracker script"})
+#     # hass.services.call('notify', 'pushbullet_isa', {"message": "Someone is not home. Triggered by: " + triggeredEntity + "Meta tracker name: " + metatrackerName, "title": "Meta tracker script"})
+#     if metatrackerName == 'device_tracker.isabella':
+#         # isa_wifi_state = hass.states.get('device_tracker.isabellas_iphone_6s_wifi')
+#         isa_bt_state = hass.states.get('device_tracker.isabellas_iphone_6s_bt')
+#         isa_ios_state = hass.states.get('device_tracker.isabellas_iphone_6s')
+#         # if isa_wifi_state == 'not_home' and isa_bt_state == 'not_home' and isa_ios_state == 'not_home':
+#         if isa_bt_state == 'not_home' and isa_ios_state == 'not_home':
+#             newStatus = 'not_home'
+#             # newIcon = 'mdi:home'
+
+#     elif triggeredEntity == 'device_tracker.stefan_iphone_7_wifi' or triggeredEntity == 'device_tracker.stefan_iphone_7':
+#         stefan_wifi_state = hass.states.get('device_tracker.stefan_iphone_7_wifi')
+#         stefan_ios_state = hass.states.get('device_tracker.stefan_iphone_7')
+#         if stefan_wifi_state == 'not_home' and stefan_ios_state == 'not_home':
+#         # if stefan_ios_state == 'not_home':
+#             newStatus = 'not_home'
+#             # newIcon = 'mdi:home'
+#         # hass.services.call('notify', 'pushbullet_isa', {"message": "Stefan marked not home. Triggered by: " + triggeredEntity + ". States checked: " + str(stefan_wifi_state) + " " + str(stefan_ios_state) , "title": "Meta tracker script"})
 
 # Otherwise keep old status
 else: 
@@ -112,7 +114,7 @@ else:
 
 # Create device_tracker.meta entity
 hass.states.set(metatrackerName, newStatus, {
-    'icon': newIcon,
+    # 'icon': newIcon,
     # 'name': data.get('meta_entity'),
     'source_type': newSource,
     'battery': newBattery,

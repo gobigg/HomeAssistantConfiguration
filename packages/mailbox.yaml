@@ -4,8 +4,8 @@ homeassistant:
       friendly_name: Mailbox Package Door
     binary_sensor.door_window_sensor_158d00016d6ef9:
       friendly_name: Mailbox Letter Slot
-    # binary_sensor.switch_158d00016c0a49:
-    #   friendly_name: Mailbox Reset
+    binary_sensor.switch_158d00016c0a49:
+      friendly_name: Fd Mailbox Reset
 
 automation:
   - alias: Mailbox package

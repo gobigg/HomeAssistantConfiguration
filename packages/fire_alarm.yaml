@@ -1,0 +1,9 @@
+homeassistant:
+  customize:
+    binary_sensor.smoke_sensor_158d0001d37bdd:
+      friendly_name: Smoke sensor 1
+    binary_sensor.smoke_sensor_158d0001d37be5:
+      friendly_name: Smoke sensor 2
+    binary_sensor.smoke_sensor_158d0001d37c82:
+      friendly_name: Smoke sensor 3
+    

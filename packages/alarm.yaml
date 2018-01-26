@@ -37,6 +37,9 @@ group:
       - sensor.yard_storage_door
       - sensor.water_heater
       - sensor.kitchen_sink
+      - binary_sensor.smoke_sensor_158d0001d37bdd
+      - binary_sensor.smoke_sensor_158d0001d37be5
+      - binary_sensor.smoke_sensor_158d0001d37c82
 
 automation:
 - alias: 'Alarm Arm Away'

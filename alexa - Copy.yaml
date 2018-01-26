@@ -1,0 +1,74 @@
+  alexa:
+    filter:
+      include_entities:
+        - group.inside_lights_automations
+        - group.outside_lights_card
+        - group.stairs_lights
+        - group.walk_in_closet_lights
+        # - group.christmas_lights
+        - script.goodnight
+        - script.goodmorning
+        - script.cleaning_music
+        - script.cleaning_time
+        - script.cleaning_time_over
+        - script.movie_time
+        - script.turn_on_shield
+        - script.morning_news
+      include_domains:
+        - light
+      exclude_entities:
+        - light.stefan_ceiling_light
+        - light.stefan_lightstrip
+        - light.walk_in_closet_1
+        - light.walk_in_closet_2
+        - light.walk_in_closet_3
+        - light.walk_in_closet_4
+        - light.stairs_bottom_spot
+        - light.stairs_middle_spot
+        - light.stairs_top_spot
+      exclude_domains:
+        - group
+        - automation
+        - alert
+        - media_player
+        - script
+        - switch
+        - scene
+
+    entity_config:
+      group.inside_lights_automations:
+        name: 'All lights'
+        display_categories: 'LIGHT'
+      group.outside_lights_card:
+        name: 'Outside lights'
+        display_categories: 'LIGHT'
+      group.stairs_lights:
+        name: 'Stairs lights'
+        display_categories: 'LIGHT'
+      group.walk_in_closet_lights:
+        name: 'Walk in closet lights'
+        display_categories: 'LIGHT'
+      script.goodnight:
+        name: 'Goodnight'
+        display_categories: 'SCENE_TRIGGER'
+      script.goodmorning:
+        name: 'Good morning'
+        display_categories: 'SCENE_TRIGGER'
+      script.cleaning_music:
+        name: 'Cleaning music'
+        display_categories: 'SCENE_TRIGGER'
+      script.cleaning_time:
+        name: 'Cleaning time'
+        display_categories: 'SCENE_TRIGGER'
+      script.cleaning_time_over:
+        name: 'Cleaning time over'
+        display_categories: 'SCENE_TRIGGER'
+      script.movie_time:
+        name: 'Movie time'
+        display_categories: 'SCENE_TRIGGER'
+      script.turn_on_shield:
+        name: 'Living room tv'
+        display_categories: 'TV'
+      script.morning_news:
+        name: 'Morning news '
+        display_categories: 'TV'

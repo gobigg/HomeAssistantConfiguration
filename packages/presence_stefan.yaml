@@ -36,7 +36,7 @@ automation:
         to: 'on'
       - platform: state
         entity_id: device_tracker.stefan_iphone_7, device_tracker.stefan_iphone_7_wifi
-        to: 'home'
+        to: 'home'      
     action:
       - service: python_script.meta_device_tracker
         data_template:
@@ -50,8 +50,17 @@ automation:
         entity_id: input_boolean.stefan_home
         to: 'off'
       - platform: state
-        entity_id: device_tracker.stefan_iphone_7, device_tracker.stefan_iphone_7_wifi
+        entity_id: device_tracker.stefan_iphone_7
         to: 'not_home'
+      - platform: state
+        entity_id: device_tracker.stefan_iphone_7_wifi
+        to: 'not_home'
+        # for:
+        #   minutes: 10
+    condition:
+      condition: state
+      entity_id: device_tracker.stefan_iphone_7
+      state: not_home
     action:
       - service: python_script.meta_device_tracker
         data_template:

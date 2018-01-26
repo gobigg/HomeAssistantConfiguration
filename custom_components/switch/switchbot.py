@@ -1,5 +1,5 @@
 """
-Switchbot from by https://github.com/isabellaalstrom/HomeAssistantConfiguration/blob/master/custom_components/switch/switchbot.py
+Switchbot by https://github.com/isabellaalstrom/HomeAssistantConfiguration/blob/master/custom_components/switch/switchbot.py
 
 Thanks to https://github.com/OpenWonderLabs/python-host/blob/master/switchbot.py
 and
@@ -8,6 +8,7 @@ https://gist.github.com/aerialist/163a5794e95ccd28dc023161324009ed#file-switchbo
 import asyncio
 import logging
 import voluptuous as vol
+import time
 
 from homeassistant.util import convert
 from homeassistant.components.switch import (SwitchDevice)
@@ -49,27 +50,49 @@ class SwitchBot(SwitchDevice):
 
     def turn_on(self, **kwargs):
         """Turn device on."""
-        try:
-            _LOGGER.debug("Update Switch Bot SWITCH to on")
+        for connection in range(1,6):
+            try:
+                p = Peripheral(self._mac, "random")
+            except:
+                _LOGGER.error('Connection attempt failed after %s tries' % connection)
+                time.sleep(10)
+                continue
 
-            p = Peripheral(self._mac, "random")
+            break
+
+        else:
+            _LOGGER.error('Connection to Switchbot failed after max attempts')
+
+        try:
+            # p = Peripheral(self._mac, "random")
             hand_service = p.getServiceByUUID("cba20d00-224d-11e6-9fb8-0002a5d5c51b")
             hand = hand_service.getCharacteristics("cba20002-224d-11e6-9fb8-0002a5d5c51b")[0]
             hand.write(binascii.a2b_hex("570101"))
-            self._state = 'on'
+            self._state = True
         except:
             _LOGGER.error("Cannot connect to switchbot.")
 
     def turn_off(self, **kwargs):
         """Turn device off."""
-        try:
-            _LOGGER.debug("Update Switch Bot SWITCH to off")
+        for connection in range(1,6):
+            try:
+                p = Peripheral(self._mac, "random")
+            except:
+                _LOGGER.error('Connection attempt failed after %s tries' % connection)
+                time.sleep(10)
+                continue
 
-            p = Peripheral(self._mac, "random")
+            break
+
+        else:
+            _LOGGER.error('Connection to Switchbot failed after max attempts')
+
+        try:
+            # p = Peripheral(self._mac, "random")
             hand_service = p.getServiceByUUID("cba20d00-224d-11e6-9fb8-0002a5d5c51b")
             hand = hand_service.getCharacteristics("cba20002-224d-11e6-9fb8-0002a5d5c51b")[0]
             hand.write(binascii.a2b_hex("570102"))
-            self._state = 'off'
+            self._state = False
         except:
             _LOGGER.error("Cannot connect to switchbot.")
 
@@ -77,6 +100,7 @@ class SwitchBot(SwitchDevice):
     def is_on(self):
         """Return true if device is on."""
         return self._state
+
     @property
     def name(self):
         """Return the name of the switch."""

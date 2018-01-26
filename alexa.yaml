@@ -15,9 +15,7 @@
         - script.turn_on_shield
         - script.morning_news
       include_domains:
-        - switch
         - light
-        - scene
         # - script
       exclude_entities:
         - light.stefan_ceiling_light
@@ -29,6 +27,8 @@
         - light.stairs_middle_spot
         - light.stairs_top_spot
       exclude_domains:
+        - switch
+        - scene
         - group
         - automation
         - alert
