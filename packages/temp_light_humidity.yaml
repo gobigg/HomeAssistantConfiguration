@@ -46,7 +46,7 @@ homeassistant:
 
 history_graph:
   temperatures:
-    name: Temperatures
+    name: Temperatures 48h
     refresh: 1800
     hours_to_show: 48
     entities:
@@ -54,12 +54,18 @@ history_graph:
       - sensor.temperature_158d000123552c
       - sensor.temperature_158d0001a2a899
   stefans_room:
-    name: Stefans Room
+    name: Stefans Room 48h
     refresh: 1800
     hours_to_show: 48
     entities:
       - sensor.temperature_158d0001fd83e7
       - sensor.humidity_158d0001fd83e7
+  stefans_room_long_term:
+    name: Stefans Room Seven Days
+    refresh: 1800
+    hours_to_show: 168
+    entities:
+      - sensor.temperature_158d0001fd83e7
 
 group:
   temp_and_light:

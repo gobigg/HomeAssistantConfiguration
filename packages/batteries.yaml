@@ -46,7 +46,6 @@ sensor:
                         {% else %}
                            battery-outline
                         {% endif %}'
-
       ### Battery level for Square Switch ###    
       battery_square_switch:
         friendly_name: 'Square Switch Sensor Battery'

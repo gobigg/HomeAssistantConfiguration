@@ -9,3 +9,6 @@
   - platform: bluetooth_tracker
     track_new_devices: true
   - platform: owntracks
+  - platform: tile
+    username: !secret tile_username
+    password: !secret tile_password

@@ -25,6 +25,7 @@ group:
       - device_tracker.stefan
       - history_graph.temperatures
       - history_graph.stefans_room
+      - history_graph.stefans_room_long_term
 
   camera:
     name: Cameras

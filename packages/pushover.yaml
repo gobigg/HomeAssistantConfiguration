@@ -1,0 +1,4 @@
+shell_command:
+  # pushover_glance: !secret pushover_update_glances
+  pushover_glance: 'curl --data "token=au8zpekr4p4ywp45ygrgw373oz5tay&user=u9i4u11jcgib6uq8b1qz72xmq3tx6r&title=Alarm: {{ states.alarm_control_panel.home_alarm.state }}&text=Mail box:{{states.sensor.mailbox.state}}&subtext=P:{{states.sensor.temperature_158d000123552c.state}}°C U:{{states.sensor.temperature_158d0001235510.state}}°C" https://api.pushover.net/1/glances.json'
+  ## https://community.home-assistant.io/t/get-a-sensor-value-on-your-apple-watch/27943/9

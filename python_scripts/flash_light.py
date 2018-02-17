@@ -11,12 +11,12 @@ if original_state is 'off':
 
 time.sleep(1)
 hass.services.call('light', 'turn_off', {'entity_id': entity_id})
-time.sleep(1)
+time.sleep(2)
 hass.services.call('light', 'turn_on', {'entity_id': entity_id, 'brightness': '255'})
 time.sleep(1)
 
 hass.services.call('light', 'turn_off', {'entity_id': entity_id})
-time.sleep(1)
+time.sleep(2)
 
 if original_state is 'on':
     hass.services.call('light', 'turn_on', {'entity_id': entity_id, 'brightness': brightness})

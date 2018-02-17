@@ -30,6 +30,7 @@ group:
       - sensor.washer
       - sensor.dryer
       - switch.laundry_line_drying
+      - history_graph.dryer_graph
 
 ## ------------------------------------------------------------------- ##
 automation:

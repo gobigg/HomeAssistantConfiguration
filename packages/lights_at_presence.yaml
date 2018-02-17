@@ -2,7 +2,7 @@ homeassistant:
 
 automation:
   ## Turn on hallway window light and front outside light if we come home after 00 and turn them off after 10 min
-  - alias: Lights On Outside And Hallway At Coming Home At Night Delay Ten Then Off
+  - alias: Lights On At Coming Home At Night Delay Ten Then Off
     trigger:
       - platform: state
         entity_id: device_tracker.stefan
@@ -59,13 +59,10 @@ automation:
         entity_id: light.passage_ceiling_spotlights_level
 
 
-  - alias: Lights On Outside And Hallway At Presence While Dark
+  - alias: Lights On At Presence While Dark
     trigger:
       - platform: state
-        entity_id: device_tracker.stefan
-        to: home
-      - platform: state
-        entity_id: device_tracker.isabella
+        entity_id: group.persons
         to: home
     condition:
       condition: and
@@ -73,9 +70,6 @@ automation:
         - condition: sun
           after: sunset
           after_offset: "-00:45:00"
-        - condition: state
-          entity_id: group.persons
-          state: home
     action:
       - service: scene.turn_on
         entity_id: scene.ceiling_lights

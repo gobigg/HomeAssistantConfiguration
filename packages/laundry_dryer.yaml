@@ -4,7 +4,8 @@ homeassistant:
       icon: mdi:amplifier
     sensor.dryer:
       icon: mdi:amplifier
-
+    sensor.dryer_plug_power:
+      hidden: false
 input_select:  
   dryer_status:
     name: Dryer Status
@@ -21,7 +22,10 @@ sensor:
         friendly_name: Dryer Idle
         value_template: "{{ states('sensor.dryer_plug_power') | int < 3.4 }}"
 
-
+history_graph:
+  dryer_graph:
+    entities:
+      - sensor.dryer_plug_power
 ## ------------------------------------------------------------------- ##
 automation:
   - alias: Laundry Dryer Start

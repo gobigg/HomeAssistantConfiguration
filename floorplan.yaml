@@ -149,8 +149,8 @@
 
         - name: Fans
           entities:
-            # - switch.doorbell
-            - switch.air_cleaner_auto
+            - switch.air_cleaner_quiet
+            # - switch.air_cleaner_auto
           states:
             - state: 'on'
               class: 'rotation-fast'
