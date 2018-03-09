@@ -1,8 +1,8 @@
 homeassistant:
 
 automation:
-## Turn on outside lights and hallway window light at sunset
-  - alias: Lights On Outside And Hallway At Sunset
+## Turn on Outdoor lights and hallway window light at sunset
+  - alias: Lights On Outdoor And Hallway At Sunset
     trigger:
       platform: sun
       event: sunset
@@ -11,23 +11,23 @@ automation:
       - service: scene.turn_on
         entity_id: scene.lights_at_dark
 
-## Turn off outside lights and hallway window light at 22
-  - alias: Lights Off Outside And Hallway At 22
+## Turn off Outdoor lights and hallway window light at 22
+  - alias: Lights Off Outdoor And Hallway At 22
     trigger:
       platform: time
       at: '22:00:00'
     action:
       - service: light.turn_off
         data:
-          entity_id: light.outside_front_light
+          entity_id: light.outdoor_front_light
           transition: 30
       - service: light.turn_off
         data:
-          entity_id: light.outside_yard_light
+          entity_id: light.outdoor_yard_light
           transition: 30
       - service: light.turn_off
         data:
           entity_id: light.hallway_window_light
           transition: 30
       - service: light.turn_off
-        entity_id: light.outside_yard_hanging_lights
+        entity_id: light.outdoor_yard_hanging_lights

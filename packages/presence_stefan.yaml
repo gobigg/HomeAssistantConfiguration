@@ -11,15 +11,9 @@ input_boolean:
     initial: on
     icon: mdi:human-male
 
-group:
-  stefan:
-    name: Stefan
-    entities:
-      - device_tracker.stefan_iphone_7_wifi
-      - device_tracker.stefan_iphone_7
-      - device_tracker.stefans_apple_watch
-      - sensor.stefan_computer
-      - input_boolean.stefan_home
+      # - device_tracker.stefans_apple_watch
+      # - sensor.stefan_computer
+      # - input_boolean.stefan_home
   ## real persons group in presence_isa
   # persons:
   #   view: no
@@ -27,66 +21,66 @@ group:
   #     - device_tracker.stefan
   #     - device_tracker.isabella
 # Lots of automations to keep track of device tracking works or not        
-automation:
-  - alias: "Presence Stefan Home By Script"
-    initial_state: 'on'
-    trigger:
-      - platform: state
-        entity_id: input_boolean.stefan_home
-        to: 'on'
-      - platform: state
-        entity_id: device_tracker.stefan_iphone_7, device_tracker.stefan_iphone_7_wifi
-        to: 'home'      
-    action:
-      - service: python_script.meta_device_tracker
-        data_template:
-          entity_id: '{{trigger.entity_id}}'
-          meta_entity: 'Stefan'
+# automation:
+#   - alias: "Presence Stefan Home By Script"
+#     initial_state: 'on'
+#     trigger:
+#       - platform: state
+#         entity_id: input_boolean.stefan_home
+#         to: 'on'
+#       - platform: state
+#         entity_id: device_tracker.stefan_iphone_7, device_tracker.stefan_iphone_7_wifi
+#         to: 'home'      
+#     action:
+#       - service: python_script.meta_device_tracker
+#         data_template:
+#           entity_id: '{{trigger.entity_id}}'
+#           meta_entity: 'Stefan'
 
-  - alias: "Presence Stefan Away By Script"
-    initial_state: 'on'
-    trigger:
-      - platform: state
-        entity_id: input_boolean.stefan_home
-        to: 'off'
-      - platform: state
-        entity_id: device_tracker.stefan_iphone_7
-        to: 'not_home'
-      - platform: state
-        entity_id: device_tracker.stefan_iphone_7_wifi
-        to: 'not_home'
-        # for:
-        #   minutes: 10
-    condition:
-      condition: state
-      entity_id: device_tracker.stefan_iphone_7
-      state: not_home
-    action:
-      - service: python_script.meta_device_tracker
-        data_template:
-          entity_id: '{{trigger.entity_id}}'
-          meta_entity: 'Stefan'
+#   - alias: "Presence Stefan Away By Script"
+#     initial_state: 'on'
+#     trigger:
+#       - platform: state
+#         entity_id: input_boolean.stefan_home
+#         to: 'off'
+#       - platform: state
+#         entity_id: device_tracker.stefan_iphone_7
+#         to: 'not_home'
+#       - platform: state
+#         entity_id: device_tracker.stefan_iphone_7_wifi
+#         to: 'not_home'
+#         # for:
+#         #   minutes: 10
+#     condition:
+#       condition: state
+#       entity_id: device_tracker.stefan_iphone_7
+#       state: not_home
+#     action:
+#       - service: python_script.meta_device_tracker
+#         data_template:
+#           entity_id: '{{trigger.entity_id}}'
+#           meta_entity: 'Stefan'
           
-  - alias: "Presence Stefan Home Notification"
-    initial_state: 'on'
-    trigger:
-      - platform: state
-        entity_id: device_tracker.stefan
-        to: 'home'
-    action:
-      - service: notify.ios_isabellas_iphone_6s
-        data:
-          title: 'Stefan'
-          message: 'home'
+#   - alias: "Presence Stefan Home Notification"
+#     initial_state: 'on'
+#     trigger:
+#       - platform: state
+#         entity_id: device_tracker.stefan
+#         to: 'home'
+#     action:
+#       - service: notify.ios_isabellas_iphone_6s
+#         data:
+#           title: 'Stefan'
+#           message: 'home'
           
-  - alias: "Presence Stefan Away Notification"
-    initial_state: 'on'
-    trigger:
-      - platform: state
-        entity_id: device_tracker.stefan
-        to: 'not_home'
-    action:
-      - service: notify.ios_isabellas_iphone_6s
-        data:
-          title: 'Stefan'
-          message: 'not home'
+#   - alias: "Presence Stefan Away Notification"
+#     initial_state: 'on'
+#     trigger:
+#       - platform: state
+#         entity_id: device_tracker.stefan
+#         to: 'not_home'
+#     action:
+#       - service: notify.ios_isabellas_iphone_6s
+#         data:
+#           title: 'Stefan'
+#           message: 'not home'

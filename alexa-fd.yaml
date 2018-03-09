@@ -2,7 +2,7 @@
     filter:
       include_entities:
         - group.inside_lights_automations
-        - group.outside_lights_card
+        - group.outdoor_lights_card
         - group.stairs_lights
         - group.walk_in_closet_lights
         # - group.christmas_lights

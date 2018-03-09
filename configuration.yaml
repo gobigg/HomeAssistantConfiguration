@@ -10,7 +10,7 @@ homeassistant:
   packages: !include_dir_named packages
 config:
 cloud: !include alexa.yaml
-        
+hassio:
 http:
   api_password: !secret http_password
   base_url: !secret base_url
@@ -33,7 +33,16 @@ frontend:
     - /local/custom_ui/state-card-tiles.html
   # extra_html_url_es5:
   #   - /local/custom_ui/state-card-tiles.html
-# panel_iframe:
+panel_iframe:
+  ide:
+    title: IDE
+    icon: mdi:code-braces
+    url: !secret ide_address
+  terminal:
+    title: Terminal
+    icon: mdi:console
+    url: !secret terminal_address
+    
 #   # grafana:
 #   #   title: "Grafana"
 #   #   icon: mdi:chart-areaspline
@@ -79,9 +88,9 @@ sun:
 ########################################
 ###               HUBS               ###
 ########################################
-rfxtrx:
-  device: /dev/serial/by-id/usb-RFXCOM_RFXtrx433_A14SREW-if00-port0
-  debug:
+# rfxtrx:
+#   device: /dev/serial/by-id/usb-RFXCOM_RFXtrx433_A14SREW-if00-port0
+#   debug:
 zwave:
   usb_path: /dev/ttyACM0
   new_entity_ids: true
@@ -112,18 +121,29 @@ notify: !include notify.yaml
 python_script:
 # group: !include_dir_merge_named group/
 mqtt:
-  broker: !secret mqtt_broker
-  port: 1883
-  client_id: home-assistant
+  broker: core-mosquitto
   username: !secret mqtt_username
   password: !secret mqtt_password
-mqtt_statestream:
-  base_topic: /homeassistant
+
+# mqtt:
+#   broker: !secret mqtt_broker
+#   port: 1883
+#   client_id: home-assistant
+#   username: !secret mqtt_username
+#   password: !secret mqtt_password
+# mqtt_statestream:
+#   base_topic: /homeassistant
   # publish_attributes: true
   # publish_timestamps: true
-# google:
-#   client_id: !secret google_id
-#   client_secret: !secret google_secret
+mqtt_eventstream:
+  # publish_topic: master/topic
+  subscribe_topic: slave/rpi
+  # ignore_event:
+  #   - call_service
+  #   - state_changed
+google:
+  client_id: !secret google_id
+  client_secret: !secret google_secret
 # # ffmpeg:
 # #   ffmpeg_bin: /usr/bin/avconv
 ifttt:
@@ -134,7 +154,7 @@ ifttt:
 ########################################
 ios: !include ios_config.yaml
 
-switch:
-  - platform: switchbot
-    name: 'Stefan radiator'  
-    mac: 'EA:E1:11:E2:B1:77'
+# switch:
+#   - platform: switchbot
+#     name: 'Stefan radiator'  
+#     mac: 'EA:E1:11:E2:B1:77'

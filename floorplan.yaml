@@ -37,7 +37,7 @@
              - sensor.temperature_158d0001235510 # upstairs hallway
              - sensor.temperature_158d0001fd83e7 # Stefan
              - sensor.temperature_158d0001a2a899 # downstairs bathroom
-             - sensor.dark_sky_temperature # Outside
+             - sensor.dark_sky_temperature # Outdoor
           text_template: '${entity.state ? entity.state + "°" : "unknown"}'
           class_template: '
             var temp = parseFloat(entity.state.replace("°", ""));
@@ -135,9 +135,9 @@
             - light.floorlamp_reading_light
             - light.floorlamp_uplight
             - light.gateway_light_34ce008bfc4b
-            - light.outside_yard_light
-            - light.outside_yard_hanging_lights
-            - light.outside_front_light   
+            - light.outdoor_yard_light
+            - light.outdoor_yard_hanging_lights
+            - light.outdoor_front_light   
           # groups:
           states:
             - state: 'on'

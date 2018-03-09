@@ -53,8 +53,8 @@ Speedtests and router status.
 #### laundry_dryer
 Basically the same as laundry_washing_machine, see below.
 
-#### laundry_outside
-Keeping track of if there is laundry hanging to dry outside (on balcony) manually by pressing a switch. Notifications if there is aprobaility it's going to rain and laundry is hanging outside and if the laundry has hung outside for 12 hours (probably dry by then...).
+#### laundry_Outdoor
+Keeping track of if there is laundry hanging to dry Outdoor (on balcony) manually by pressing a switch. Notifications if there is aprobaility it's going to rain and laundry is hanging Outdoor and if the laundry has hung Outdoor for 12 hours (probably dry by then...).
 
 #### laundry_washing_machine
 Sensor and input_select for washing machine (with the help of Fibaro wall plug). Automations for checking what state the washing machine is in and sending notifications and turning a light red (red light temporarely turned off) when it's done, but only under certain circumstances (time and presence). Using actionable notifications for ios.
@@ -63,7 +63,7 @@ Sensor and input_select for washing machine (with the help of Fibaro wall plug).
 Automations for turning on certain lights based on sunset, and turn them off again at midnight.
 
 #### lights_at_presence
-Automations for turning on certain lights if we come home during the night and then turning the outside lights off again after ten minutes. Turn certain ceiling lights on if we come home based on sunset (it's nice to come home to a little bit of light during the winter especially).
+Automations for turning on certain lights if we come home during the night and then turning the Outdoor lights off again after ten minutes. Turn certain ceiling lights on if we come home based on sunset (it's nice to come home to a little bit of light during the winter especially).
 
 #### lights_in_morning
 Automations for turning certain lights on at 06.40 during the work week and turn them off again at sunrise.
@@ -93,7 +93,7 @@ Playing around with sending custom notification to hubby for example when dinner
 Trying to find a good way to determine presence... Now trying a python script to update a custom device_tracker from latest update.
 
 #### ring_doorbell
-Flash lights when someone rings the doorbell using a python script to flash the lights and then return to previous state and brightness. Also turn the outside front light and hallway window light to 100 % on ding or motion. Plus some other config for the Ring Doorbell.
+Flash lights when someone rings the doorbell using a python script to flash the lights and then return to previous state and brightness. Also turn the Outdoor front light and hallway window light to 100 % on ding or motion. Plus some other config for the Ring Doorbell.
 
 #### roomba
 Using a Broadlink RM3 to turn on, off and dock the Roomba robot vacuum. I use a Xiaomi door sensor to determine if the Roomba is docked. Using actionable notifications for ios to ask if the Roomba should vacuum when everyone is away.

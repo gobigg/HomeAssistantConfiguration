@@ -28,7 +28,7 @@ group:
       - sensor.backyard_door
       - sensor.balcony_door
       - sensor.dining_area_window
-      - sensor.front_door_outside_movement
+      - sensor.front_door_outdoor_movement
       - sensor.hallway_movement
       - sensor.passage_movement
       - sensor.upstairs_hallway_movement
@@ -45,9 +45,12 @@ automation:
 - alias: 'Alarm Arm Away'
   initial_state: 'on'
   trigger:
+      # - platform: state
+      #   entity_id: group.persons
+      #   to: 'not_home'
       - platform: state
-        entity_id: group.persons
-        to: 'not_home'
+        to: 'Away'
+        entity_id: input_select.stefan_status_dropdown, input_select.isa_status_dropdown
   action:
     - service: alarm_control_panel.alarm_arm_away
       entity_id: alarm_control_panel.home_alarm
@@ -60,9 +63,12 @@ automation:
 - alias: 'Alarm Arm Home'
   initial_state: 'on'
   trigger:
-    - platform: state
-      entity_id: group.persons
-      to: 'home'
+    # - platform: state
+    #   entity_id: group.persons
+    #   to: 'home'
+      - platform: state
+        to: 'Just Arrived'
+        entity_id: input_select.stefan_status_dropdown, input_select.isa_status_dropdown
   condition:
     condition: template
     value_template: '{{ states.alarm_control_panel.home_alarm.state != armed_home}}'
@@ -90,9 +96,12 @@ automation:
 - alias: 'Alarm Disarm'
   initial_state: 'on'
   trigger:
+    # - platform: state
+    #   entity_id: group.persons
+    #   to: 'home'
     - platform: state
-      entity_id: group.persons
-      to: 'home'
+      to: 'Just Arrived'
+      entity_id: input_select.stefan_status_dropdown, input_select.isa_status_dropdown
     - platform: time
       at: '06:40:00'
   action:

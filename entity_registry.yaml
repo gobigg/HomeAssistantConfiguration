@@ -1,0 +1,570 @@
+sensor.temperature_158d000123552c:
+  platform: xiaomi_aqara
+  unique_id: temperature158d000123552c
+sensor.temperature_158d0001fd83e7:
+  platform: xiaomi_aqara
+  unique_id: temperature158d0001fd83e7
+sensor.humidity_158d000123552c:
+  platform: xiaomi_aqara
+  unique_id: humidity158d000123552c
+sensor.humidity_158d0001fd83e7:
+  platform: xiaomi_aqara
+  unique_id: humidity158d0001fd83e7
+sensor.illumination_158d0001a24ef1:
+  platform: xiaomi_aqara
+  unique_id: lux158d0001a24ef1
+sensor.temperature_158d0001a2a899:
+  platform: xiaomi_aqara
+  unique_id: temperature158d0001a2a899
+sensor.illumination_34ce008bfc4b:
+  platform: xiaomi_aqara
+  unique_id: illumination34ce008bfc4b
+sensor.illumination_158d0001a66291:
+  platform: xiaomi_aqara
+  unique_id: lux158d0001a66291
+sensor.humidity_158d0001a2a899:
+  platform: xiaomi_aqara
+  unique_id: humidity158d0001a2a899
+sensor.temperature_158d0001235510:
+  platform: xiaomi_aqara
+  unique_id: temperature158d0001235510
+sensor.illumination_158d000165ff1f:
+  platform: xiaomi_aqara
+  unique_id: lux158d000165ff1f
+sensor.humidity_158d0001235510:
+  platform: xiaomi_aqara
+  unique_id: humidity158d0001235510
+sensor.illumination_158d0001a66256:
+  platform: xiaomi_aqara
+  unique_id: lux158d0001a66256
+binary_sensor.door_window_sensor_158d0001a3e3a4:
+  platform: xiaomi_aqara
+  unique_id: status158d0001a3e3a4
+binary_sensor.door_window_sensor_158d0001a3e45e:
+  platform: xiaomi_aqara
+  unique_id: status158d0001a3e45e
+binary_sensor.door_window_sensor_158d00016d6ef9:
+  platform: xiaomi_aqara
+  unique_id: status158d00016d6ef9
+binary_sensor.door_window_sensor_158d0001a3df50:
+  platform: xiaomi_aqara
+  unique_id: status158d0001a3df50
+binary_sensor.switch_158d00016c0a49:
+  platform: xiaomi_aqara
+  unique_id: status158d00016c0a49
+binary_sensor.switch_158d0001a5e3c4:
+  platform: xiaomi_aqara
+  unique_id: status158d0001a5e3c4
+binary_sensor.switch_158d00019d674a:
+  platform: xiaomi_aqara
+  unique_id: status158d00019d674a
+binary_sensor.motion_sensor_158d000165ff1f:
+  platform: xiaomi_aqara
+  unique_id: status158d000165ff1f
+binary_sensor.motion_sensor_158d0001a66256:
+  platform: xiaomi_aqara
+  unique_id: status158d0001a66256
+binary_sensor.switch_158d0001a6687f:
+  platform: xiaomi_aqara
+  unique_id: status158d0001a6687f
+binary_sensor.door_window_sensor_158d00016d7004:
+  platform: xiaomi_aqara
+  unique_id: status158d00016d7004
+binary_sensor.water_leak_sensor_158d0001d531bb:
+  platform: xiaomi_aqara
+  unique_id: status158d0001d531bb
+binary_sensor.switch_158d0001b8f876:
+  platform: xiaomi_aqara
+  unique_id: status158d0001b8f876
+binary_sensor.smoke_sensor_158d0001d37c82:
+  platform: xiaomi_aqara
+  unique_id: alarm158d0001d37c82
+binary_sensor.smoke_sensor_158d0001d37be5:
+  platform: xiaomi_aqara
+  unique_id: alarm158d0001d37be5
+binary_sensor.smoke_sensor_158d0001d37bdd:
+  platform: xiaomi_aqara
+  unique_id: alarm158d0001d37bdd
+binary_sensor.switch_158d0001b86ce1:
+  platform: xiaomi_aqara
+  unique_id: status158d0001b86ce1
+binary_sensor.switch_158d0001243520:
+  platform: xiaomi_aqara
+  unique_id: status158d0001243520
+binary_sensor.door_window_sensor_158d00019f5110:
+  platform: xiaomi_aqara
+  unique_id: status158d00019f5110
+binary_sensor.door_window_sensor_158d00019e152b:
+  platform: xiaomi_aqara
+  unique_id: status158d00019e152b
+binary_sensor.motion_sensor_158d0001a24ef1:
+  platform: xiaomi_aqara
+  unique_id: status158d0001a24ef1
+binary_sensor.motion_sensor_158d0001a66291:
+  platform: xiaomi_aqara
+  unique_id: status158d0001a66291
+media_player.shield:
+  platform: cast
+  unique_id: 60880921-9eaa-cc1a-945c-9fe6dbbd022f
+media_player.sovrum:
+  platform: cast
+  unique_id: b8b04a8d-c96f-4e8e-eff0-353ee5798c48
+media_player.sonos:
+  platform: sonos
+  unique_id: RINCON_B8E937D7030201400
+light.gateway_light_34ce008bfc4b:
+  platform: xiaomi_aqara
+  unique_id: rgb34ce008bfc4b
+light.hallway_window_light:
+  platform: lifx
+  unique_id: d0:73:d5:30:f0:01
+switch.washer_plug_switch:
+  platform: zwave
+  unique_id: 3-72057594093060096
+sensor.washer_plug_power:
+  platform: zwave
+  unique_id: 3-72057594093256770
+sensor.washer_plug_energy:
+  platform: zwave
+  unique_id: 3-72057594093273090
+sensor.washer_plug_power_2:
+  platform: zwave
+  unique_id: 3-72057594093273218
+sensor.washer_plug_exporting:
+  platform: zwave
+  unique_id: 3-72057594093273600
+sensor.washer_plug_alarm_type:
+  platform: zwave
+  unique_id: 3-72057594094305281
+sensor.washer_plug_alarm_level:
+  platform: zwave
+  unique_id: 3-72057594094305297
+sensor.washer_plug_sourcenodeid:
+  platform: zwave
+  unique_id: 3-72057594094305313
+sensor.washer_plug_power_management:
+  platform: zwave
+  unique_id: 3-72057594094305457
+binary_sensor.front_door_sensor:
+  platform: zwave
+  unique_id: 4-72057594110017536
+sensor.front_door_alarm_type:
+  platform: zwave
+  unique_id: 4-72057594111082497
+sensor.front_door_alarm_level:
+  platform: zwave
+  unique_id: 4-72057594111082513
+sensor.front_door_sourcenodeid:
+  platform: zwave
+  unique_id: 4-72057594111082529
+sensor.front_door_access_control:
+  platform: zwave
+  unique_id: 4-72057594111082641
+sensor.front_door_burglar:
+  platform: zwave
+  unique_id: 4-72057594111082657
+binary_sensor.dining_area_window_sensor_sensor:
+  platform: zwave
+  unique_id: 6-72057594143571968
+sensor.dining_area_window_sensor_alarm_type:
+  platform: zwave
+  unique_id: 6-72057594144636929
+sensor.dining_area_window_sensor_alarm_level:
+  platform: zwave
+  unique_id: 6-72057594144636945
+sensor.dining_area_window_sensor_sourcenodeid:
+  platform: zwave
+  unique_id: 6-72057594144636961
+sensor.dining_area_window_sensor_access_control:
+  platform: zwave
+  unique_id: 6-72057594144637073
+light.living_room_ceiling_light_level:
+  platform: zwave
+  unique_id: 9-72057594193739777
+light.living_room_ceiling_light_level_2:
+  platform: zwave
+  unique_id: 9-144115188231667713
+sensor.living_room_ceiling_light_power:
+  platform: zwave
+  unique_id: 9-72057594193920066
+sensor.living_room_ceiling_light_energy:
+  platform: zwave
+  unique_id: 9-72057594193936386
+sensor.living_room_ceiling_light_power_2:
+  platform: zwave
+  unique_id: 9-72057594193936514
+sensor.living_room_ceiling_light_exporting:
+  platform: zwave
+  unique_id: 9-72057594193936896
+sensor.living_room_ceiling_light_alarm_type:
+  platform: zwave
+  unique_id: 9-72057594194968577
+sensor.living_room_ceiling_light_alarm_level:
+  platform: zwave
+  unique_id: 9-72057594194968593
+sensor.living_room_ceiling_light_sourcenodeid:
+  platform: zwave
+  unique_id: 9-72057594194968609
+sensor.living_room_ceiling_light_heat:
+  platform: zwave
+  unique_id: 9-72057594194968689
+sensor.living_room_ceiling_light_power_management:
+  platform: zwave
+  unique_id: 9-72057594194968753
+sensor.living_room_ceiling_light_system:
+  platform: zwave
+  unique_id: 9-72057594194968769
+light.upstairs_hallway_ceiling_light_level:
+  platform: zwave
+  unique_id: 10-72057594210516993
+light.upstairs_hallway_ceiling_light_level_2:
+  platform: zwave
+  unique_id: 10-144115188248444929
+sensor.upstairs_hallway_ceiling_light_power:
+  platform: zwave
+  unique_id: 10-72057594210697282
+sensor.upstairs_hallway_ceiling_light_energy:
+  platform: zwave
+  unique_id: 10-72057594210713602
+sensor.upstairs_hallway_ceiling_light_power_2:
+  platform: zwave
+  unique_id: 10-72057594210713730
+sensor.upstairs_hallway_ceiling_light_exporting:
+  platform: zwave
+  unique_id: 10-72057594210714112
+sensor.upstairs_hallway_ceiling_light_alarm_type:
+  platform: zwave
+  unique_id: 10-72057594211745793
+sensor.upstairs_hallway_ceiling_light_alarm_level:
+  platform: zwave
+  unique_id: 10-72057594211745809
+sensor.upstairs_hallway_ceiling_light_sourcenodeid:
+  platform: zwave
+  unique_id: 10-72057594211745825
+sensor.upstairs_hallway_ceiling_light_heat:
+  platform: zwave
+  unique_id: 10-72057594211745905
+sensor.upstairs_hallway_ceiling_light_power_management:
+  platform: zwave
+  unique_id: 10-72057594211745969
+sensor.upstairs_hallway_ceiling_light_system:
+  platform: zwave
+  unique_id: 10-72057594211745985
+light.dining_area_ceiling_light_level:
+  platform: zwave
+  unique_id: 11-72057594227294209
+light.dining_area_ceiling_light_level_2:
+  platform: zwave
+  unique_id: 11-144115188265222145
+light.dining_area_ceiling_light_level_3:
+  platform: zwave
+  unique_id: 11-216172782303150081
+light.dining_area_ceiling_light_level_4:
+  platform: zwave
+  unique_id: 11-288230376341078017
+sensor.dining_area_ceiling_light_power:
+  platform: zwave
+  unique_id: 11-72057594227474498
+sensor.dining_area_ceiling_light_energy:
+  platform: zwave
+  unique_id: 11-72057594227490818
+sensor.dining_area_ceiling_light_unknown:
+  platform: zwave
+  unique_id: 11-144115188265418754
+sensor.dining_area_ceiling_light_power_2:
+  platform: zwave
+  unique_id: 11-72057594227490946
+sensor.dining_area_ceiling_light_exporting:
+  platform: zwave
+  unique_id: 11-72057594227491328
+sensor.dining_area_ceiling_light_alarm_type:
+  platform: zwave
+  unique_id: 11-72057594228523009
+sensor.dining_area_ceiling_light_alarm_level:
+  platform: zwave
+  unique_id: 11-72057594228523025
+sensor.dining_area_ceiling_light_alarm_type_2:
+  platform: zwave
+  unique_id: 11-144115188266450945
+sensor.dining_area_ceiling_light_alarm_level_2:
+  platform: zwave
+  unique_id: 11-144115188266450961
+sensor.dining_area_ceiling_light_sourcenodeid:
+  platform: zwave
+  unique_id: 11-72057594228523041
+sensor.dining_area_ceiling_light_heat:
+  platform: zwave
+  unique_id: 11-72057594228523121
+sensor.dining_area_ceiling_light_power_management:
+  platform: zwave
+  unique_id: 11-72057594228523185
+sensor.dining_area_ceiling_light_system:
+  platform: zwave
+  unique_id: 11-72057594228523201
+light.living_room_spotlights_level:
+  platform: zwave
+  unique_id: 12-72057594244071425
+light.living_room_spotlights_level_2:
+  platform: zwave
+  unique_id: 12-144115188281999361
+sensor.living_room_spotlights_power:
+  platform: zwave
+  unique_id: 12-72057594244251714
+sensor.living_room_spotlights_energy:
+  platform: zwave
+  unique_id: 12-72057594244268034
+sensor.living_room_spotlights_power_2:
+  platform: zwave
+  unique_id: 12-72057594244268162
+sensor.living_room_spotlights_exporting:
+  platform: zwave
+  unique_id: 12-72057594244268544
+sensor.living_room_spotlights_alarm_type:
+  platform: zwave
+  unique_id: 12-72057594245300225
+sensor.living_room_spotlights_alarm_level:
+  platform: zwave
+  unique_id: 12-72057594245300241
+sensor.living_room_spotlights_sourcenodeid:
+  platform: zwave
+  unique_id: 12-72057594245300257
+sensor.living_room_spotlights_heat:
+  platform: zwave
+  unique_id: 12-72057594245300337
+sensor.living_room_spotlights_power_management:
+  platform: zwave
+  unique_id: 12-72057594245300401
+sensor.living_room_spotlights_system:
+  platform: zwave
+  unique_id: 12-72057594245300417
+light.passage_ceiling_spotlights_level:
+  platform: zwave
+  unique_id: 13-72057594260848641
+light.passage_ceiling_spotlights_level_2:
+  platform: zwave
+  unique_id: 13-144115188298776577
+sensor.passage_ceiling_spotlights_power:
+  platform: zwave
+  unique_id: 13-72057594261028930
+sensor.passage_ceiling_spotlights_energy:
+  platform: zwave
+  unique_id: 13-72057594261045250
+sensor.passage_ceiling_spotlights_power_2:
+  platform: zwave
+  unique_id: 13-72057594261045378
+sensor.passage_ceiling_spotlights_exporting:
+  platform: zwave
+  unique_id: 13-72057594261045760
+sensor.passage_ceiling_spotlights_alarm_type:
+  platform: zwave
+  unique_id: 13-72057594262077441
+sensor.passage_ceiling_spotlights_alarm_level:
+  platform: zwave
+  unique_id: 13-72057594262077457
+sensor.passage_ceiling_spotlights_sourcenodeid:
+  platform: zwave
+  unique_id: 13-72057594262077473
+sensor.passage_ceiling_spotlights_heat:
+  platform: zwave
+  unique_id: 13-72057594262077553
+sensor.passage_ceiling_spotlights_power_management:
+  platform: zwave
+  unique_id: 13-72057594262077617
+sensor.passage_ceiling_spotlights_system:
+  platform: zwave
+  unique_id: 13-72057594262077633
+binary_sensor.passage_pir_sensor:
+  platform: zwave
+  unique_id: 18-72057594344898560
+sensor.passage_pir_luminance:
+  platform: zwave
+  unique_id: 18-72057594344914994
+sensor.passage_pir_alarm_type:
+  platform: zwave
+  unique_id: 18-72057594345963521
+sensor.passage_pir_alarm_level:
+  platform: zwave
+  unique_id: 18-72057594345963537
+sensor.passage_pir_sourcenodeid:
+  platform: zwave
+  unique_id: 18-72057594345963553
+sensor.passage_pir_burglar:
+  platform: zwave
+  unique_id: 18-72057594345963681
+binary_sensor.back_door_sensor:
+  platform: zwave
+  unique_id: 19-72057594361675776
+sensor.back_door_alarm_type:
+  platform: zwave
+  unique_id: 19-72057594362740737
+sensor.back_door_alarm_level:
+  platform: zwave
+  unique_id: 19-72057594362740753
+sensor.back_door_sourcenodeid:
+  platform: zwave
+  unique_id: 19-72057594362740769
+sensor.back_door_access_control:
+  platform: zwave
+  unique_id: 19-72057594362740881
+binary_sensor.water_heater_sensor:
+  platform: zwave
+  unique_id: 20-72057594378452992
+sensor.water_heater_alarm_type:
+  platform: zwave
+  unique_id: 20-72057594379517953
+sensor.water_heater_alarm_level:
+  platform: zwave
+  unique_id: 20-72057594379517969
+sensor.water_heater_sourcenodeid:
+  platform: zwave
+  unique_id: 20-72057594379517985
+sensor.water_heater_flood:
+  platform: zwave
+  unique_id: 20-72057594379518081
+binary_sensor.upstairs_hallway_pir_sensor:
+  platform: zwave
+  unique_id: 22-72057594412007424
+sensor.upstairs_hallway_pir_luminance:
+  platform: zwave
+  unique_id: 22-72057594412023858
+sensor.upstairs_hallway_pir_alarm_type:
+  platform: zwave
+  unique_id: 22-72057594413072385
+sensor.upstairs_hallway_pir_alarm_level:
+  platform: zwave
+  unique_id: 22-72057594413072401
+sensor.upstairs_hallway_pir_sourcenodeid:
+  platform: zwave
+  unique_id: 22-72057594413072417
+sensor.upstairs_hallway_pir_burglar:
+  platform: zwave
+  unique_id: 22-72057594413072545
+light.kitchen_ceiling_spotlights_level:
+  platform: zwave
+  unique_id: 23-72057594428620801
+light.kitchen_ceiling_spotlights_level_2:
+  platform: zwave
+  unique_id: 23-144115188466548737
+sensor.kitchen_ceiling_spotlights_power:
+  platform: zwave
+  unique_id: 23-72057594428801090
+sensor.kitchen_ceiling_spotlights_energy:
+  platform: zwave
+  unique_id: 23-72057594428817410
+sensor.kitchen_ceiling_spotlights_power_2:
+  platform: zwave
+  unique_id: 23-72057594428817538
+sensor.kitchen_ceiling_spotlights_exporting:
+  platform: zwave
+  unique_id: 23-72057594428817920
+sensor.kitchen_ceiling_spotlights_alarm_type:
+  platform: zwave
+  unique_id: 23-72057594429849601
+sensor.kitchen_ceiling_spotlights_alarm_level:
+  platform: zwave
+  unique_id: 23-72057594429849617
+sensor.kitchen_ceiling_spotlights_sourcenodeid:
+  platform: zwave
+  unique_id: 23-72057594429849633
+sensor.kitchen_ceiling_spotlights_heat:
+  platform: zwave
+  unique_id: 23-72057594429849713
+sensor.kitchen_ceiling_spotlights_power_management:
+  platform: zwave
+  unique_id: 23-72057594429849777
+sensor.kitchen_ceiling_spotlights_system:
+  platform: zwave
+  unique_id: 23-72057594429849793
+switch.dryer_plug_switch:
+  platform: zwave
+  unique_id: 24-72057594445381632
+sensor.dryer_plug_power:
+  platform: zwave
+  unique_id: 24-72057594445578306
+sensor.dryer_plug_energy:
+  platform: zwave
+  unique_id: 24-72057594445594626
+sensor.dryer_plug_power_2:
+  platform: zwave
+  unique_id: 24-72057594445594754
+sensor.dryer_plug_exporting:
+  platform: zwave
+  unique_id: 24-72057594445595136
+sensor.dryer_plug_alarm_type:
+  platform: zwave
+  unique_id: 24-72057594446626817
+sensor.dryer_plug_alarm_level:
+  platform: zwave
+  unique_id: 24-72057594446626833
+sensor.dryer_plug_sourcenodeid:
+  platform: zwave
+  unique_id: 24-72057594446626849
+sensor.dryer_plug_power_management:
+  platform: zwave
+  unique_id: 24-72057594446626993
+light.stefan_ceiling_light:
+  platform: hue
+  unique_id: 00:0b:57:ff:fe:12:59:b6-01
+light.outdoor_yard_light:
+  platform: hue
+  unique_id: 00:0b:57:ff:fe:32:de:a5-01
+light.stefan_lightstrip:
+  platform: hue
+  unique_id: 00:17:88:01:02:9c:d6:71-0b
+light.walk_in_closet_2:
+  platform: hue
+  unique_id: 00:0b:57:ff:fe:89:05:ae-01
+light.outdoor_front_light:
+  platform: hue
+  unique_id: 00:0b:57:ff:fe:26:97:16-01
+light.isa_ceiling_light:
+  platform: hue
+  unique_id: 00:0b:57:ff:fe:1f:7a:5c-01
+light.extra_light:
+  platform: hue
+  unique_id: 00:17:88:01:02:75:e1:23-0b
+light.walk_in_closet_1:
+  platform: hue
+  unique_id: 00:0b:57:ff:fe:8a:f7:93-01
+light.walk_in_closet_3:
+  platform: hue
+  unique_id: 00:0b:57:ff:fe:94:1b:41-01
+light.floorlamp_reading_light:
+  platform: hue
+  unique_id: 00:0b:57:ff:fe:90:42:4f-01
+light.floorlamp_uplight:
+  platform: hue
+  unique_id: 00:17:88:01:02:7d:55:62-0b
+light.extra_light_2:
+  platform: hue
+  unique_id: 00:0b:57:ff:fe:13:fe:b0-01
+light.bedside_lamp:
+  platform: hue
+  unique_id: 00:17:88:01:02:75:e6:9a-0b
+light.walk_in_closet_4:
+  platform: hue
+  unique_id: 00:0b:57:ff:fe:96:7d:61-01
+light.bedroom_ceiling_light:
+  platform: hue
+  unique_id: 00:0b:57:ff:fe:27:1f:38-01
+sensor.isabellas_iphone_6s_battery_state:
+  platform: ios
+  unique_id: state_isabellas_iphone_6s
+sensor.isabellas_iphone_6s_battery_level:
+  platform: ios
+  unique_id: level_isabellas_iphone_6s
+sensor.igrims_battery_level:
+  platform: ios
+  unique_id: level_stefan_iphone_7
+sensor.igrims_battery_state:
+  platform: ios
+  unique_id: state_stefan_iphone_7
+sensor.paddan_battery_level:
+  platform: ios
+  unique_id: level_iPad
+sensor.paddan_battery_state:
+  platform: ios
+  unique_id: state_iPad
+light.outdoor_plug:
+  platform: hue
+  unique_id: 7c:b0:3e:aa:00:ab:7b:a2-03

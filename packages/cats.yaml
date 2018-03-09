@@ -1,0 +1,7 @@
+group:
+  cats:
+    view: yes
+    icon: mdi:cat
+    entities:
+      - group.cat_card
+      - calendar.claws

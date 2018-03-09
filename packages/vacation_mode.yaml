@@ -29,9 +29,12 @@ automation:
   - alias: Vacation Mode Automations Off
     initial_state: 'on'
     trigger:
+      # - platform: state
+      #   entity_id: group.persons
+      #   to: 'home'
       - platform: state
-        entity_id: group.persons
-        to: 'home'
+        to: 'Just Arrived'
+        entity_id: input_select.stefan_status_dropdown, input_select.isa_status_dropdown
       - platform: state
         entity_id: input_boolean.vacation_mode
         to: 'off'

@@ -17,69 +17,20 @@ group:
   system_monitor_card:
     name: System Monitor Hass Rpi
     entities:
-      - alert.disk_use_critical
       - sensor.uptime
       - sensor.last_boot
-      - sensor.disk_used__2
-      - sensor.disk_used_
       - sensor.since_last_boot
-      - sensor.process_homebridge
-      - sensor.process_mosquitto
 
 sensor:
   - platform: systemmonitor
     resources:
-      - type: disk_use_percent
-        arg: /
-      - type: disk_use
-        arg: /
-      - type: disk_free
-        arg: /
-      - type: memory_free
       - type: last_boot
       - type: since_last_boot
-      - type: process
-        arg: mosquitto
-      - type: process
-        arg: homebridge
 
   - platform: uptime
     unit_of_measurement: hours
 
-binary_sensor:
-  - platform: template
-    sensors:
-      critical_disk_use:
-        value_template: '{{ states.sensor.disk_used_|float > 70 }}'
-        friendly_name: 'Critical Disk Use'
-
-alert:
-  disk_use_critical:
-    name: Rpi Disk Use Is Critical
-    entity_id: binary_sensor.critical_disk_use
-    repeat: 60
-    skip_first: False
-    notifiers:
-      - ios_isabellas_iphone_6s
-
 automation:
-  - alias: 'Process Status'
-    initial_state: 'on'
-    trigger:
-         - platform: state
-           entity_id:
-             - sensor.process_mosquitto
-             - sensor.process_homebridge
-           to: 'off'
-           for:
-             minutes: 1
-    action:
-      - service: notify.ios_isabellas_iphone_6s
-        data_template:
-          title: 'Process status'
-          message: >
-            '{{ trigger.to_state.attributes.friendly_name }} is {{ trigger.to_state.state }}'
-
   - alias: 'Hass Started'
     initial_state: 'on'
     trigger:
@@ -89,7 +40,7 @@ automation:
     action:
       - service: notify.pushbullet_isa
         data:
-          title: 'Home Assistant Online'
+          title: 'Hass.io Online'
           message: 'Online'
       - service: notify.ios_stefan_iphone_7
         data:
@@ -97,11 +48,14 @@ automation:
       - service: notify.ios_isabellas_iphone_6s
         data:
           message: "request_location_update"
-      - service: python_script.device_tracker_placeholders
+      # - service: python_script.device_tracker_placeholders
       - service: python_script.summary
       - service: python_script.mailbox
         data_template:
           state: 'reset'
+      - service: hassio.addon_restart
+        data:
+          addon: a0d7b954_homebridge
 
   - alias: 'Hass Ready'
     initial_state: 'on'
@@ -113,13 +67,13 @@ automation:
         data:
           title: 'Z-wave network now ready'
           message: 'Home Assistant'
-      - service: python_script.meta_device_tracker
+      - service: python_script.device_tracker
         data_template:
-          entity_id: 'device_tracker.stefan_iphone_7'
+          entity_id: 'input_select.stefan_status_dropdown'
           meta_entity: 'Stefan'
-      - service: python_script.meta_device_tracker
+      - service: python_script.device_tracker
         data_template:
-          entity_id: 'device_tracker.isabellas_iphone_6s'
+          entity_id: 'input_select.isa_status_dropdown'
           meta_entity: 'Isabella'
 
   - alias: 'Hass Stopped'
@@ -131,7 +85,7 @@ automation:
     action:
       - service: notify.pushbullet_isa
         data:
-          title: 'Home Assistant Offline'
+          title: 'Hass.io Offline'
           message: 'Offline'
 
   - alias: Hass New Device Tracked

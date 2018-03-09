@@ -4,50 +4,34 @@ homeassistant:
       icon: mdi:radiator
       homebridge_visible: true
       homebridge_name: Stefan Radiator
-
-# input_boolean:
-#   stefan_radiator:
-#     name: Stefans radiator
-#     initial: off
-#     icon: mdi:radiator
-
-# automation:
-#   - alias: Stefan Radiator On
-#     initial_state: 'on'
-#     trigger:
-#       - platform: state
-#         entity_id: input_boolean.stefan_radiator
-#         to: 'on'
-#     action:
-#       - service: python_script.switchbot
-#         data:
-#           entity_id: 'stefan_radiator'
-#           action: 'turn_on'
-
-#   - alias: Stefan Radiator Off
-#     initial_state: 'on'
-#     trigger:
-#       - platform: state
-#         entity_id: input_boolean.stefan_radiator
-#         to: 'on'
-#     action:
-#       - service: python_script.switchbot
-#         data:
-#           entity_id: 'stefan_radiator'
-#           action: 'turn_off'
-
 # switch:
-#   - platform: template
-#     switches:
-#       skylight:
-#         # value_template: "{{ is_state('sensor.skylight', 'on') }}"
-#         turn_on:
-#           service: python_script.switchbot
-#           data:
-#             entity_id: 'stefan_radiator'
-#             action: 'turn_off'
-#         turn_off:
-#           service: python_script.switchbot
-#           data:
-#             entity_id: 'stefan_radiator'
-#             action: 'turn_off'
+#   - platform: rest
+#     name: Stefan Radiator Api
+#     resource: !secret radiator_api
+#     body_on: '{"state": "on"}'
+#     body_off: '{"state": "off"}'
+    # is_on_template: '{{value_json.state}}'
+switch:
+  - platform: mqtt
+    name: "Stefan Radiator"
+    state_topic: "home/stefan/radiator/set"
+    command_topic: "home/stefan/radiator/set"
+    # availability_topic: "home/bedroom/switch1/available"
+    payload_on: "on"
+    payload_off: "off"
+    optimistic: false
+    qos: 0
+    retain: true
+
+automation:
+  - alias: 'Radiator failed to turn on'
+    initial_state: 'on'
+    trigger:
+      platform: mqtt
+      topic: "home/stefan/radiator/failed"
+      payload: 'Failed'
+    action:
+      - service: notify.pushbullet_isa
+        data:
+          title: 'Radiator'
+          message: 'Failed to turn on, try again'

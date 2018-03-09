@@ -16,8 +16,6 @@ homeassistant:
       friendly_name: Stairs Lights
       homebridge_visible: true
       homebridge_name: Stairs Lights
-      alexa_name: Stairs
-      alexa_display_categories: LIGHT
       
 group:
   stairs_lights:

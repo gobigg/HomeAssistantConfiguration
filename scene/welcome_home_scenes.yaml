@@ -15,6 +15,6 @@
       light.floorlamp_uplight:
         state: on
         brightness: 50
-      light.outside_yard_light:
+      light.outdoor_yard_light:
         state: on
         brightness: 255

@@ -126,7 +126,7 @@ group:
       - alert.yard_storage_door_open
 
 automation:
-  - alias: Light Outside On When Door Opens
+  - alias: Light Outdoor On When Door Opens
     initial_state: 'on'
     trigger:
       - platform: state
@@ -142,10 +142,10 @@ automation:
     action:
       - service: python_script.brighten_then_restore
         data_template:
-          entity_id: 'light.outside_front_light'
+          entity_id: 'light.outdoor_front_light'
       - service: python_script.brighten_then_restore
         data_template:
-          entity_id: 'light.outside_yard_light'
+          entity_id: 'light.outdoor_yard_light'
       - service: python_script.brighten_then_restore
         data_template:
-          entity_id: 'light.outside_yard_hanging_lights'
+          entity_id: 'light.outdoor_yard_hanging_lights'

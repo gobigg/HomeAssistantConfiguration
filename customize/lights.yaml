@@ -1,26 +1,26 @@
     light.living_room_ceiling_light_level:
       icon: mdi:ceiling-light
-      friendly_name: Living Room Ceiling Light
+      friendly_name: Living Room Light
       homebridge_visible: true     
-      homebridge_name: Living room Ceiling Light
+      homebridge_name: Living room Light
         
     light.upstairs_hallway_ceiling_light_level:
       icon: mdi:ceiling-light
-      friendly_name: Upstairs Hallway Ceiling Light
+      friendly_name: Upstairs Hallway Light
       homebridge_visible: true     
-      homebridge_name: Upstairs Hallway Ceiling Light
+      homebridge_name: Upstairs Hallway Light
         
     light.dining_area_ceiling_light_level:
-      friendly_name: Dining Room Ceiling Light
+      friendly_name: Dining Room Light
       icon: mdi:ceiling-light
       homebridge_visible: true     
-      homebridge_name: Dining Room Ceiling Light
+      homebridge_name: Dining Room Light
         
     light.passage_ceiling_spotlights_level:
-      friendly_name: Passage Spotlights
+      friendly_name: Passage Lights
       icon: mdi:spotlight-beam
       homebridge_visible: true     
-      homebridge_name: Passage Spotlights
+      homebridge_name: Passage Lights
         
     light.living_room_spotlights_level:
       friendly_name: Living room Spotlights
@@ -32,19 +32,19 @@
       friendly_name: Bedroom Ceiling Light
       icon: mdi:ceiling-light
       homebridge_visible: true     
-      homebridge_name: Bedroom Ceiling Light
+      homebridge_name: Bedroom Light
         
     light.floorlamp_uplight:
       icon: mdi:lamp
-      friendly_name: Floorlamp Uplight
+      friendly_name: Floorlamp
       homebridge_visible: true     
-      homebridge_name: Floorlamp Uplight
+      homebridge_name: Floorlamp
         
     light.floorlamp_reading_light:
       icon: mdi:lamp
       friendly_name: Floorlamp Reading Light
       homebridge_visible: true     
-      homebridge_name: Christmas Star
+      homebridge_name: Floorlamp Reading Light
         
     light.hallway_window_light:
       icon: mdi:lamp
@@ -64,7 +64,7 @@
       homebridge_name: Stefan Lightstrip
       icon: mdi:led-strip
       
-    light.outside_yard_hanging_lights:
+    light.outdoor_yard_hanging_lights:
       state_card_mode: no-slider
         
     # light.drink_cabinet_led:
@@ -77,9 +77,9 @@
     #   #   
     light.kitchen_ceiling_spotlights_level:
       icon: mdi:spotlight-beam
-      friendly_name: Kitchen Spotlights
+      friendly_name: Kitchen Lights
       homebridge_visible: true
-      homebridge_name: Kitchen Spotlights
+      homebridge_name: Kitchen Lights
       
         
     # light.all_hue_lights:

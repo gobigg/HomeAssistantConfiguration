@@ -1,0 +1,193 @@
+## From https://philhawthorne.com/making-home-assistants-presence-detection-not-so-binary/
+
+group:
+  persons:
+    view: no
+    entities:
+      - device_tracker.isabellas_iphone_6s
+      - device_tracker.isabellas_iphone_6s_wifi
+      - device_tracker.isabellas_iphone_6s_bt
+      - device_tracker.stefan_iphone_7_wifi
+      - device_tracker.stefan_iphone_7
+  isabella:
+    name: Isabella
+    entities:
+      - device_tracker.isabellas_iphone_6s
+      - device_tracker.isabellas_iphone_6s_wifi
+      - device_tracker.isabellas_iphone_6s_bt
+  stefan:
+    name: Stefan
+    entities:
+      - device_tracker.stefan_iphone_7_wifi
+      - device_tracker.stefan_iphone_7
+input_select:
+  stefan_status_dropdown:
+    name: Stefan
+    options:
+      - Home
+      - Just Arrived
+      - Just Left
+      - Away
+      - Extended Away
+    initial: Home
+  isa_status_dropdown:
+    name: Isa
+    options:
+      - Home
+      - Just Arrived
+      - Just Left
+      - Away
+      - Extended Away
+    initial: Home
+
+
+automation:
+  - alias: Presence just arrived
+    trigger:
+      - platform: state
+        entity_id: group.stefan
+        from: 'not_home'
+        to: 'home'
+      - platform: state
+        entity_id: group.isabella
+        from: 'not_home'
+        to: 'home'
+    action:
+      - service: input_select.select_option
+        data_template:
+          entity_id: >
+            {% if trigger.entity_id == 'group.stefan' %}
+              input_select.stefan_status_dropdown
+            {% else %}
+              input_select.isa_status_dropdown
+            {% endif %}
+          option: >
+            {% if trigger.entity_id == 'group.stefan' %}
+              {% if states.input_select.stefan_status_dropdown.state == 'Just Left' %}
+                Home
+              {% else %}
+                Just Arrived
+              {% endif %}
+            {% else %}
+              {% if states.input_select.isa_status_dropdown.state == 'Just Left' %}
+                Home
+              {% else %}
+                Just Arrived
+              {% endif %}
+            {% endif %}
+
+  - alias: Presence home
+    trigger:
+      - platform: state
+        entity_id: input_select.stefan_status_dropdown
+        to: 'Just Arrived'
+        for:
+          minutes: 10
+      - platform: state
+        entity_id: input_select.isa_status_dropdown
+        to: 'Just Arrived'
+        for:
+          minutes: 10
+      - platform: state
+        entity_id: input_select.stefan_status_dropdown
+        from: 'Just Left'
+        to: 'Just Arrived'
+      - platform: state
+        entity_id: input_select.isa_status_dropdown
+        from: 'Just Left'
+        to: 'Just Arrived'
+    action:
+      - service: input_select.select_option
+        data_template:
+          entity_id: >
+            {% if trigger.entity_id == 'input_select.stefan_status_dropdown' %}
+              input_select.stefan_status_dropdown
+            {% else %}
+              input_select.isa_status_dropdown
+            {% endif %}
+          option: Home
+
+  - alias: Presence just left
+    trigger:
+      - platform: state
+        entity_id: group.stefan
+        from: 'home'
+        to: 'not_home'
+      - platform: state
+        entity_id: group.isabella
+        from: 'home'
+        to: 'not_home'
+    action:
+      - service: input_select.select_option
+        data_template:
+          entity_id: >
+            {% if trigger.entity_id == 'group.stefan' %}
+              input_select.stefan_status_dropdown
+            {% else %}
+              input_select.isa_status_dropdown
+            {% endif %}
+          option: Just Left
+
+  - alias: Presence away
+    trigger:
+      - platform: state
+        entity_id: input_select.stefan_status_dropdown
+        to: 'Just Left'
+        for:
+          minutes: 10
+      - platform: state
+        entity_id: input_select.isa_status_dropdown
+        to: 'Just Left'
+        for:
+          minutes: 10
+    action:
+      - service: input_select.select_option
+        data_template:
+          entity_id: >
+            {% if trigger.entity_id == 'input_select.stefan_status_dropdown' %}
+              input_select.stefan_status_dropdown
+            {% else %}
+              input_select.isa_status_dropdown
+            {% endif %}
+          option: Away
+
+  - alias: Presence extended away
+    trigger:
+      - platform: state
+        entity_id: input_select.stefan_status_dropdown
+        to: 'Away'
+        for:
+          hours: 24
+      - platform: state
+        entity_id: input_select.isa_status_dropdown
+        to: 'Away'
+        for:
+          hours: 24
+    action:
+      - service: input_select.select_option
+        data_template:
+          entity_id: >
+            {% if trigger.entity_id == 'input_select.stefan_status_dropdown' %}
+              input_select.stefan_status_dropdown
+            {% else %}
+              input_select.isa_status_dropdown
+            {% endif %}
+          option: Extended Away
+
+
+  - alias: Presence update tracker
+    trigger:
+      - platform: state
+        entity_id: input_select.stefan_status_dropdown
+      - platform: state
+        entity_id: input_select.isa_status_dropdown
+    action:
+      - service: python_script.device_tracker
+        data_template:
+          entity_id: '{{trigger.entity_id}}'
+          meta_entity: >
+            {% if trigger.entity_id == 'input_select.stefan_status_dropdown' %}
+              Stefan
+            {% else %}
+              Isabella
+            {% endif %}

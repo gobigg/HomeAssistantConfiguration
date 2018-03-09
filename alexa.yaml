@@ -2,7 +2,7 @@
     filter:
       include_entities:
         - group.inside_lights_automations
-        - group.outside_lights_card
+        - group.outdoor_lights_card
         - group.stairs_lights
         - group.walk_in_closet_lights
         - script.goodnight
@@ -38,8 +38,8 @@
       group.inside_lights_automations:
         name: 'All lights'
         display_categories: 'LIGHT'
-      group.outside_lights_card:
-        name: 'Outside lights'
+      group.outdoor_lights_card:
+        name: 'Outdoor lights'
         display_categories: 'LIGHT'
       group.stairs_lights:
         name: 'Stairs lights'
