@@ -31,3 +31,4 @@ homebridge/
 .*
 !/.gitignore
 !/zwcfg_0xca115759.xml
+core

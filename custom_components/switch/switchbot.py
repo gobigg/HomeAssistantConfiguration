@@ -5,6 +5,10 @@ Thanks to https://github.com/OpenWonderLabs/python-host/blob/master/switchbot.py
 and
 https://gist.github.com/aerialist/163a5794e95ccd28dc023161324009ed#file-switchbot_bluepy-py
 """
+# Code for only pressing and not turning "on" and "off" as separate events is "570100".
+# Change the numbers in "hand.write(binascii.a2b_hex("570101"))" in both turn_on and turn_off to make both states only do a press.
+# Thanks to Mattias_
+
 import asyncio
 import logging
 import voluptuous as vol
@@ -68,6 +72,7 @@ class SwitchBot(SwitchDevice):
             hand_service = p.getServiceByUUID("cba20d00-224d-11e6-9fb8-0002a5d5c51b")
             hand = hand_service.getCharacteristics("cba20002-224d-11e6-9fb8-0002a5d5c51b")[0]
             hand.write(binascii.a2b_hex("570101"))
+            p.disconnect()
             self._state = True
         except:
             _LOGGER.error("Cannot connect to switchbot.")
@@ -92,6 +97,7 @@ class SwitchBot(SwitchDevice):
             hand_service = p.getServiceByUUID("cba20d00-224d-11e6-9fb8-0002a5d5c51b")
             hand = hand_service.getCharacteristics("cba20002-224d-11e6-9fb8-0002a5d5c51b")[0]
             hand.write(binascii.a2b_hex("570102"))
+            p.disconnect()
             self._state = False
         except:
             _LOGGER.error("Cannot connect to switchbot.")
@@ -105,7 +111,3 @@ class SwitchBot(SwitchDevice):
     def name(self):
         """Return the name of the switch."""
         return self._name
-    # @property
-    # def available(self):
-    #     """Return the availability of the device."""
-    #     return False

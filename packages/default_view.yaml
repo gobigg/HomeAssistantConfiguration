@@ -27,6 +27,8 @@ group:
       - sensor.front_door_latest_ding
       - sensor.front_door_latest_motion
       - sensor.mailbox
+      - input_boolean.car_heater
+      - switch.stefan_radiator
 
   everything_view:
     view: yes

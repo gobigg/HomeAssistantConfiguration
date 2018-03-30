@@ -30,8 +30,23 @@ automation:
       platform: mqtt
       topic: "home/stefan/radiator/failed"
       payload: 'Failed'
+    condition:
+      - condition: template
+        value_template: >
+          {% if states.automation.radiator_failed_to_turn_on.last_triggered is not none %}
+            {% if as_timestamp(now()) | int   -  as_timestamp(states.automation.radiator_failed_to_turn_on.attributes.last_triggered) | int > 60 %} true {% else %} false
+            {% endif %}
+          {% else %}
+          false
+          {% endif %}
     action:
       - service: notify.pushbullet_isa
         data:
           title: 'Radiator'
           message: 'Failed to turn on, try again'
+      - service: notify.ios_stefan_iphone_7
+        data:
+          title: 'Radiator'
+          message: 'Failed to turn on, try again'
+      - service: switch.turn_off
+        entity_id: switch.stefan_radiator
