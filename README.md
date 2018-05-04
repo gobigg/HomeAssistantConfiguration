@@ -1,6 +1,6 @@
 # My Home Assistant Configuration
 I'm often behind on updating the readme. Ask me about anything!
-My configuration is broken down into [packages](https://github.com/isabellaalstrom/HomeAssistantConfiguration/blob/master/packages/README.md, sort of mini configuration-files. This makes it easy to see everything pertaining to a specific automation or implementation.
+My configuration is broken down into [packages](https://github.com/isabellaalstrom/HomeAssistantConfiguration/blob/master/packages/README.md), sort of mini configuration-files. This makes it easy to see everything pertaining to a specific automation or implementation.
 
 ### Running Hass.io on an Intel Nuc with Ubuntu Server, in docker.
 * Running a slave instance of Home Assistant on a Raspberry Pi 3 with a 16 gb memory card, since Hass.io can't use the Intel Nuc built in bluetooth (hoping for support soon!).
@@ -12,7 +12,7 @@ My configuration is broken down into [packages](https://github.com/isabellaalstr
 * Zigbee: Xiaomi and Hue gateways
 * Home made [MiLight hub](https://github.com/sidoh/esp8266_milight_hub)
 
-## Devices
+## Ecosystem
 #### Lights
 * Hue
 * Trådfri, dimmers and remotes via Hue bridge
@@ -23,7 +23,7 @@ My configuration is broken down into [packages](https://github.com/isabellaalstr
 #### Phones, tablet and smart watches
 * Ios-devices (iPhones, Apple watches, iPad mini)
 
-### Media
+#### Media
 * Nvidia Shield TV (Android tv, media center)
 * Plex Media Server
 * Samsung Media system
@@ -54,6 +54,7 @@ My configuration is broken down into [packages](https://github.com/isabellaalstr
 * Xiaomi Temperature and Humidity Sensors
 * Fibaro Wall Plugs
 * Pax Calima Bluetooth Bathroom Fan (currently not included)
+* Switchbots
 * and probably some more things I've forgotten to mention...
 
 ### Presence-detection
