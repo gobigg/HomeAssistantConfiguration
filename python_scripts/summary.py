@@ -1,149 +1,216 @@
-## https://home-assistant.io/components/python_script/
-## https://home-assistant.io/docs/configuration/state_object/
+# ## Repo: https://github.com/maattdiy/home-assistant-config
+# ## Screenshot: https://github.com/maattdiy/home-assistant-config/blob/master/screenshots/summary.png
+# ## Script call: https://github.com/maattdiy/home-assistant-config/blob/master/config/packages/summary.yaml
 
-## Idea stolen from https://github.com/maattdiy/home-assistant-config/blob/490abea923cdf824d91b94060155d73ca2695dc4/python_scripts/summary.py
+# ## Resources:
+# ## https://home-assistant.io/components/python_script/
+# ## https://home-assistant.io/docs/configuration/state_object/
 
-# home_count = 0
-# home_desc = ""
-light_count = 0
-light_desc = ""
-door_count = 0
-door_desc = ""
-inuse_count = 0
-inuse_desc = ""
-summary = ""
+# debug = False
+# show_badges = True
+# show_card = True
+
+# group_count = 0
+# group_desc = ''
+# summary = ''
+# idx = 0
+# dt_prevstate = None
+
+# if debug:
+#     event = data.get('event')
+#     logger.error("\n\nSUMMARY: " + str(event))
 
 # ##################################################
-# ## People count
+# ## Groups summary (people and devices)
+# ## Groups config: https://github.com/maattdiy/home-assistant-config/blob/master/config/groups.yaml#L267
 # ##################################################
 
-# # People at home (only by phone)
-# for entity_id in hass.states.entity_ids('device_tracker'):
-#     if entity_id.find("phone") >= 0:
+# # Summary by groups
+# groups = ['group.family', 'group.devices_default', 'group.devices_alwayson']
+# groups_format = ['{} at home: {}', '{} in use: {}', '!{} to check it out: {}'] # Message prefix
+# groups_filter = ['homex', 'on|playing', 'off|not_home'] # Filter to list
+# groups_badge = ['Home', 'In use', 'Status'] # Badge 'belt' (unit_of_measurement)
+# groups_badge_pic = ['', '', 'ok|bug|critical'] # Pictures: none, on picure or a list of picture (in this case the picture position will match the count)
+# groups_min_show = [0, 1, 1] # Mininum count to show
+# groups_theme = ['entity_green', 'entity_purple', 'entity_green|entity_orange|entity_red'] # Theme template
+# groups_desc = ['!Nobody in home since ', '', ''] # Can set the default description, for use in case count = 0
+# #groups_desc = ['!Nobody in home', '', '+System ok']
+# groups_count = [0, 0, 0]
+
+# for group in groups:
+#     group_count = 0
+#     group_desc = ''
+    
+#     for entity_id in hass.states.get(group).attributes['entity_id']:
 #         state = hass.states.get(entity_id)
-#         if state.state == 'home':
-#             home_count = home_count + 1
-#             home_desc = home_desc + state.name + ', '
-#             #relative_time(state.last_changed) Is possible show the relative time?
-
-# if home_count > 0:
-#     home_desc = str(home_count) + ' at home: ' + home_desc[:-2]
-# else:
-#     home_desc = 'Nobody in home'
-
-# summary = home_desc
-
-##################################################
-## Light count
-##################################################
-
-# People at home (only by phone)
-for entity_id in hass.states.entity_ids('light'):
-    # if entity_id.find("phone") >= 0:
-        state = hass.states.get(entity_id)
-        if state.state == 'on':
-            light_count = light_count + 1
-            light_desc = light_desc + state.name + ', '
-            #relative_time(state.last_changed) Is possible show the relative time?
-
-if light_count > 0:
-    light_desc = str(light_count) + ' lights on. - ' #+ light_desc[:-2]
-else:
-    light_desc = 'No lights on. - '
-
-summary = light_desc + '\r' 
-
-
-##################################################
-## Door count
-##################################################
-
-# People at home (only by phone)
-for entity_id in hass.states.entity_ids('sensor'):
-    if entity_id.find("_door") >= 0:
-        state = hass.states.get(entity_id)
-        if state.state == 'Open':
-            door_count = door_count + 1
-            door_desc = door_desc + state.name + ', '
-            #relative_time(state.last_changed) Is possible show the relative time?
-
-if door_count == 1:
-    door_desc = 'One door open: ' + door_desc[:-2]
-elif door_count > 0:
-    door_desc = str(door_count) + ' doors open: ' + door_desc[:-2]    
-else:
-    door_desc = 'No doors open'
-
-last_door_opened = hass.states.get('sensor.last_door_opened')
-
-summary = summary + '\n ' + door_desc #+ '\n Last opened: ' + last_door_opened.state
-##################################################
-## Devices in use count
-##################################################
-
-domnains = ['switch', 'media_player']
-for domain in domnains:
-    for entity_id in hass.states.entity_ids(domain):
-        show = False
-        state = hass.states.get(entity_id)
+#         filter = groups_filter[idx]
         
-        # Media players
-        if (state.state == 'playing'):
-            show = True
+#         if (state.state in filter.split('|') or debug):
+#             dt = state.last_changed
+#             dt = dt + datetime.timedelta(hours=-3) # For time zone :( How to do native?
+#             time = '%02d:%02d' % (dt.hour, dt.minute)
             
-        # Switchs with icons
-        if (state.state == 'on'):
-            ## Only switchs with icons are relevants (ignore internal switchs). Find by tag "icon" in dictionary because "state.attributes.icon" didn't work
-            if (str(state.attributes).find("'icon'")) >= 0:
-                show = True
+#             # If state changed in the past days show the date too
+#             if dt.date() < datetime.datetime.now().date():
+#                 time = '{} {}'.format('%02d/%02d' % (dt.day, dt.month), time)
+            
+#             group_count = group_count + 1
+#             group_desc = '{} {} ({}), '.format(group_desc, state.name, time)
+#         else:
+#             if (dt_prevstate is None):
+#                 dt_prevstate = state.last_changed
+#             else:
+#                 if (not state.last_changed is None):
+#                     if (state.last_changed > dt_prevstate):
+#                         dt_prevstate = state.last_changed
+            
+#     # Final format for this group
+#     if (group_count >= groups_min_show[idx]):
+#         if (group_count == 0):
+#             group_desc = groups_desc[idx]
+#             # If need to show since (for people, where there is none 'On/Home' state in group)
+#             if (group_desc.find(' since ') > 0):
+#                 dt = dt_prevstate + datetime.timedelta(hours=-3)
+#                 group_desc = '{}{}'.format(group_desc, '%02d:%02d' % (dt.hour, dt.minute))
+#         else:
+#             group_desc = groups_format[idx].format(group_count, group_desc[:-2])
         
-        if (show):
-            if (inuse_desc.find(state.name + ', ') == -1):
-                #logger.info("state.attributes = " + str(state.attributes))
-                inuse_count = inuse_count + 1
-                inuse_desc = inuse_desc + state.name + ', '
+#         groups_desc[idx] = group_desc
+#         groups_count[idx] = group_count
+        
+#     idx = idx + 1
 
-if inuse_count > 0:
-    inuse_desc = str(inuse_count) + ' in use: ' + inuse_desc[:-2]
-    summary = summary + '\n ' + inuse_desc
+# ##################################################
+# ## Badges updates
+# ## Badges images: https://github.com/maattdiy/home-assistant-config/tree/master/www/badges
+# ##################################################
+
+# idx = 0
+# order = 2
+
+# if show_badges:
+#     for badge in groups_badge:
+#         if (badge != ''):
+#             entity_id = 'sensor.{}_badge'.format(badge.replace(' ', '').lower());
+#             hidden = False if (groups_count[idx] >= groups_min_show[idx] or debug) else True
+#             fname = groups_desc[idx] if debug else ' '
+#             picture = groups_badge_pic[idx].replace(' ', '').lower()
+#             theme = groups_theme[idx].replace('value', 'entities["{}"].state'.format(entity_id)) if (groups_theme[idx] != '') else 'default'
+            
+#             # Check for theme X index/count
+#             if (theme.find('|') > 0):
+#                 list = theme.split('|')
+#                 if (len(list) in [1, groups_count[idx]]):
+#                     theme = list[len(list)-1]
+#                 else:
+#                     theme = list[groups_count[idx]]
+            
+#             # Check for picture X index/count
+#             if (picture != ''):
+#                 list = picture.split('|')
+#                 if (len(list) in [1, groups_count[idx]]):
+#                     picture = list[len(list)-1]
+#                 else:
+#                     picture = list[groups_count[idx]]
+                
+#                 if (picture != ''):
+#                     picture = '/local/badges/{}.png'.format(picture)
+            
+#             hass.states.set(entity_id, groups_count[idx], {
+#               'friendly_name': fname,
+#               'unit_of_measurement': badge, 
+#               'entity_picture': picture,
+#               'hidden': hidden,
+#               'state_card_mode': 'badges',
+#               'templates': { 'theme': theme }
+#             })
+#             # Order seems not working
+#             # 'order': order
+        
+#         order = order + 1
+#         idx = idx + 1
 
 # ##################################################
 # ## Alarm clock
+# ## Package: https://github.com/maattdiy/home-assistant-config/blob/master/config/packages/alarmclock.yaml
 # ##################################################
 
-# if (hass.states.get('input_boolean.alarmclock_wd_enabled').state != 'on') and (hass.states.get('input_boolean.alarmclock_we_enabled').state != 'on'):
-#     summary = summary + '\n ' + '!Alarm clock is disabled'
+# alarms_prefix = ['alarmclock_wd', 'alarmclock_we']
+# alarms_wfilter = ['1|2|3|4|5', '6|7']
+# alarms_desc = ''
+# idx = 0
+
+# for entity_id in alarms_prefix:
+#     state = hass.states.get('input_boolean.{}_enabled'.format(entity_id))
+#     if (not state is None):
+#         if (state.state == 'on'):
+#             # Show the alarm for the next day
+#             if (str(datetime.datetime.now().isoweekday()) in alarms_wfilter[idx].split('|')):
+#                 state = hass.states.get('sensor.{}_time_template'.format(entity_id))
+#                 alarms_desc = '{}{}, '.format(alarms_desc, state.state)
+#     idx = idx + 1
+
+# if (alarms_desc == ''):
+#     alarms_desc = '!Alarm clock is disabled'
+# else:
+#     alarms_desc = 'Alarm clock at ' + alarms_desc[:-2]
 
 # ##################################################
 # ## Profile/mode
+# ## General package: https://github.com/maattdiy/home-assistant-config/blob/master/config/packages/profiles.yaml
+# ## Developer package: https://github.com/maattdiy/home-assistant-config/blob/master/config/packages/developer.yaml
+# ## Badges images: https://github.com/maattdiy/home-assistant-config/tree/master/www/profiles
 # ##################################################
 
+# profile_desc = ''
 # state = hass.states.get('input_select.ha_mode')
-# if (state.state != 'Normal'):
-#     summary = summary + '\n ' + '* ' + state.state + '  profile is activated'
+
+# if (not state is None):
+#     hidden = False if (state.state != 'Normal') else True
+    
 #     hass.states.set('sensor.profile_badge', '', {
-#         'entity_picture': '/local/profiles/developer.png',
-#         'friendly_name': ' ',
-#         'unit_of_measurement': 'Mode'
+#       'entity_picture':  '/local/profiles/{}.png'.format(state.state.replace(' ', '').lower()),
+#       'friendly_name': ' ',
+#       'unit_of_measurement': 'Mode',
+#       'hidden': hidden,
+#       'order': order
 #     })
+    
+#     if not hidden:
+#         profile_desc = '*{} profile is activated'.format(state.state)
 
-##################################################
-## Sensors updates
-##################################################
+# ##################################################
+# ## Activity
+# ## Package: https://github.com/maattdiy/home-assistant-config/blob/master/python_scripts/activity.py
+# ##################################################
 
-# # People badge update
-# hass.states.set('sensor.people_badge', str(home_count), {
-#     'friendly_name': ' ',
-#     'unit_of_measurement': 'Home',
-# })
+# # activity_desc = ''
+# # state = hass.states.get('input_select.activity')
+# # time = '?'
 
-# # In use badge update
-# hass.states.set('sensor.inuse_badge', str(inuse_count), {
-#     'friendly_name': ' ',
-#     'unit_of_measurement': 'In use'
-# })
+# # if (not state is None):
+# #     if (state.state != 'Unknown'):
+# #         dt = hass.states.get('automation.activity_change').attributes.get('last_triggered')        
+# #         if (not dt is None):
+# #             time = "%02d:%02d" % (dt.hour, dt.minute)
+        
+# #         # Alternative way for time
+# #         #time = hass.states.get('sensor.activity_badge').attributes.get('friendly_name')
+# #         activity_desc = 'Activity: {} ({})'.format(state.state, time)
 
-# Summary sensors update
-hass.states.set('sensor.summary', summary, {
-    'custom_ui_state_card': 'state-card-value_only'
-})
+# ##################################################
+# ## Summary update
+# ## Custom card: https://github.com/maattdiy/home-assistant-config/blob/master/www/custom_ui/state-card-text.html
+# ##################################################
+
+# for group_desc in groups_desc:
+#     if (group_desc != '' and not group_desc.endswith(': ')):
+#         summary = '{}{}\n'.format(summary, group_desc)
+
+# summary = '{}\n{}\n{}\n{}'.format(summary, alarms_desc, profile_desc, activity_desc)
+
+# if show_card:
+#     hass.states.set('sensor.summary', '', {
+#       'custom_ui_state_card': 'state-card-text',
+#       'text': summary
+#     })

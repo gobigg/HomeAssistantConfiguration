@@ -12,7 +12,7 @@
       hidden: true
        
     switch.roomba:
-      icon: mdi:roomba
+      icon: mdi:robot-vacuum
     switch.air_cleaner_quiet_auto:
       icon: mdi:fan
     switch.bedroom_light_switch:

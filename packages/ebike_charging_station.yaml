@@ -1,0 +1,72 @@
+homeassistant:
+  customize:
+    switch.dryer_plug_switch:
+      friendly_name: E-bike Switch
+      icon: mdi:bike
+    sensor.ebike_charger:
+      icon: mdi:bike
+    sensor.dryer_plug_power:
+      hidden: false
+sensor:
+  - platform: template
+    sensors:
+      ebike_charger:
+        friendly_name: E-bike Charger Idle
+        value_template: "{{ states('sensor.dryer_plug_power') | int < 30 }}"
+
+history_graph:
+  ebike_charger_graph:
+    name: E-bike Charger Graph
+    entities:
+      - sensor.dryer_plug_power
+
+group:
+  ebike_battery:
+    name: E-bike Battery
+    entities:
+      - history_graph.ebike_charger_graph
+      - sensor.ebike_charger
+      - switch.dryer_plug_switch
+
+automation:
+  - alias: Charger Turn On
+    initial_state: on
+    trigger:
+      - platform: state
+        entity_id: device_tracker.isabella
+        to: 'Home'
+    action:
+      - delay: '01:30:00'
+      - service: home_assistant.turn_on
+        entity_id: switch.dryer_plug_switch
+
+  - alias: Charging Reminder
+    initial_state: on
+    trigger:
+      - platform: state
+        entity_id: switch.dryer_plug_switch
+        to: 'on'
+    condition:
+      condition: and
+      conditions:
+        - condition: state
+          entity_id: device_tracker.isabella
+          state: 'Home'
+        - condition: state
+          entity_id: sensor.ebike_charger
+          state: 'True'
+    action:
+      - service: notify.ios_isabellas_iphone_x
+        data:
+          title: 'Rembember'
+          message: 'Charge e-bike battery'
+
+  - alias: Charger Turn Off
+    initial_state: on
+    trigger:
+      - platform: state
+        entity_id: sensor.ebike_charger
+        to: 'True'
+    action:
+      - service: home_assistant.turn_off
+        entity_id: switch.dryer_plug_switch

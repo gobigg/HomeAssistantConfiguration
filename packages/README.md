@@ -3,7 +3,7 @@
 Using a Broadlink RM3 turn on and off Air cleaner quiet mode.
 
 #### alarm
-Using Home Assistants Alarm Control Panel automatically arming and disarming on for instance presence.
+Using Home Assistants Alarm Control Panel automatically arming and disarming on presence etc.
 
 #### alarm_clock
 Alarm clock with sensors and automation. Right now not using as a normal alarm clock, just automation trigger. Using Ios app and actionable notifications to let Hass know I'm up.
@@ -12,40 +12,52 @@ Alarm clock with sensors and automation. Right now not using as a normal alarm c
 Using [PyCalima](https://github.com/PatrickE94/pycalima) command line sensor to get values from my bathroom fan. Currently not in use.
 
 #### batteries
-Template sensors for sensor battery levels and automations to notify on low battery.
+View and groups for batteries.
+
+#### battery_alert
+Package for dynamic creation of sensors for all entities with battery attributes, and notifications.
 
 #### bedroom_lights
-Controls bedroom lights with a Xiaomi switch
+Controls bedroom lights with a Xiaomi switch.
 
-#### charging_station
-Reminder to charge my e-bike battery every night. Will redo with more variables when I get another power metering plug to monitor with.
+#### camera_fireplace
+Camera configuration and video notification if temperature seems to high in livingroom.
+
+#### cats
+Package for things concering the cats. Litterbox automations in separate package. More to come!
 
 #### cleaning_day
-Turns off certain behaviour that's not wanted when the cleaners are here.
+Turns off certain behaviour that's not wanted when the cleaners are here and turning on all lights.
 
 #### cleaning_time
-Scripts for telling Alexa to turn all lights on full (for cleaning), putting on some cleaning music (upbeat playlist from Spotify playing on Sonos) and then when done cleaning dim the lights and turn some off again.
+Scripts to turn all lights on full for cleaning, putting on some cleaning music (upbeat playlist from Spotify playing on Sonos) and then when done cleaning dim the lights and turn some off again.
 
 #### doors
 Template sensors for door sensors and alerts when doors are left open.
+
+#### ebike_charging_station
+Reminder to charge my e-bike battery.
 
 #### flood_sensors
 Template sensors for flood sensors and alert for when they detect water leak.
 
 #### floorlamp
-Control the uplight with a Xiaomi switch. Toggle, full brightness and dimmer.
+Control the floorlamp with a Xiaomi switch. Toggle for both lights and dimmer for uplight.
 
 #### goodnight
 Script that can be called with Siri or Alexa to get ready for bed. Also playing some with trying to detect when we go to bed by tracking when our phones are charging, not working 100 %.
 
 #### guest_mode
-Boolean for setting the house in guest mode. Used to override automations.
+Boolean for setting the house in guest mode. Used to override automations. Turns on automatically when a friend connects to our wifi.
 
 #### hallway_light
-Control the uplight with a Xiaomi switch. Toggle light and toggle full and lower brightness. Long click press used for mailbox (see that package).
+Control the uplight with a Xiaomi switch. Toggle light and toggle full and lower brightness. Long click press used for mailbox (see mailbox package).
+
+#### homekit_specific
+The native homekit component can't handle media players yet.
 
 #### house
-Things having to do with the whole house, more or less
+Things having to do with the whole house, more or less.
 
 #### internet_monitor
 Speedtests and router status.
@@ -53,14 +65,14 @@ Speedtests and router status.
 #### laundry_dryer
 Basically the same as laundry_washing_machine, see below.
 
-#### laundry_Outdoor
-Keeping track of if there is laundry hanging to dry Outdoor (on balcony) manually by pressing a switch. Notifications if there is aprobaility it's going to rain and laundry is hanging Outdoor and if the laundry has hung Outdoor for 12 hours (probably dry by then...).
+#### laundry_outdoor
+Keeping track of if there is laundry hanging to dry outdoor (on balcony) manually by pressing a switch. Notifications if there is a probability it's going to rain and laundry is hanging outdoor and if the laundry has hung outdoors for 12 hours (probably dry by then).
 
 #### laundry_washing_machine
 Sensor and input_select for washing machine (with the help of Fibaro wall plug). Automations for checking what state the washing machine is in and sending notifications and turning a light red (red light temporarely turned off) when it's done, but only under certain circumstances (time and presence). Using actionable notifications for ios.
 
 #### lights_at_dark
-Automations for turning on certain lights based on sunset, and turn them off again at midnight.
+Automations for turning on certain lights based on sunset, and turn them off again at night.
 
 #### lights_at_presence
 Automations for turning on certain lights if we come home during the night and then turning the Outdoor lights off again after ten minutes. Turn certain ceiling lights on if we come home based on sunset (it's nice to come home to a little bit of light during the winter especially).
@@ -72,25 +84,19 @@ Automations for turning certain lights on at 06.40 during the work week and turn
 Script for movie time called by Alexa or Siri. Also using a custom state card with tiles (link in main readme) for controlling some scripts for lights. Generic light groups.
 
 #### litterbox_downstairs and litterbox_upstairs
-Lot's of things to help determine if the litterboxes need cleaning and keeping track of visits to litterboxes. You can read about it [at the forums](https://community.home-assistant.io/t/smart-litter-box-or-smart-cats/27646) or [in swedish](https://www.automatiserar.se/tavlingsbidrag-smarta-kattlador/).
-
-#### magic_mirror_specific
-A place for the things I need specifically for the Magic Mirror I'm making.
+Help determine if the litterboxes need cleaning, send notifications and keeping track of visits to litterboxes. You can read about it [at the forums](https://community.home-assistant.io/t/smart-litter-box-or-smart-cats/27646) or [in swedish](https://www.automatiserar.se/tavlingsbidrag-smarta-kattlador/). Some changes made since both of these were written.
 
 #### mailbox
 Using two Xiaomi door/window sensors sending notifications when we get mail or packages in mailbox. Switch for resetting, delay so that I can press first, then get the mail, if on my way out.
 
 #### miflora
-Setup for my plant monitors. (Currently disabled due to some error showing up alot)
+Setup for my plant monitors. Moved to my hass slave instance on rpi3, since hass.io can't use the Intel Nuc built in ble (yet).
 
 #### motion_sensors
 Template sensors for pirs and customize to shown with Homebridge.
 
-#### notify_stefan
-Playing around with sending custom notification to hubby for example when dinner is ready. Thinking about having a button in kitchen to auto send initial message.
-
-#### presence_isa and presence_stefan
-Trying to find a good way to determine presence... Now trying a python script to update a custom device_tracker from latest update.
+#### presence_detection
+Combining device_trackers to determine presence. Combined with a python script to update a custom device_tracker from latest update.
 
 #### ring_doorbell
 Flash lights when someone rings the doorbell using a python script to flash the lights and then return to previous state and brightness. Also turn the Outdoor front light and hallway window light to 100 % on ding or motion. Plus some other config for the Ring Doorbell.
@@ -98,8 +104,17 @@ Flash lights when someone rings the doorbell using a python script to flash the 
 #### roomba
 Using a Broadlink RM3 to turn on, off and dock the Roomba robot vacuum. I use a Xiaomi door sensor to determine if the Roomba is docked. Using actionable notifications for ios to ask if the Roomba should vacuum when everyone is away.
 
+#### smoke_alarm
+Xiaomi Honeywell smoke alarms, sends notifications when (if) they go off.
+
 #### stairs_lights
-Mqtt light config for stairs lights (MiLight).
+Mqtt light config for stairs lights (MiLight via mqtt).
+
+#### stefan_radiator
+Using a custom component I use a Switchbot to manually turn on my husbands radiator. The action happens on the slave hass on rpi3, since ble on Nuc with hass.io...
+
+#### summary
+Currently not in use, but I plan to implement soon. Link to summary card in the package.
 
 #### svtplay
 Using custom component for playing web tv on chromecast. Currently only using it to put the morning news on our NVidia Shield, but could do more.
@@ -108,8 +123,8 @@ Using custom component for playing web tv on chromecast. Currently only using it
 Template sensors (with custom icons) to track states of the devices on our network. Automations for notifying when some of the more critical ones have been offline for more then five minutes. I'm using the nmap component to track the devices.
 Groups for system information, internet status and network devices. Automations for when critical devices go offline.
 
-#### system_monitor
-Some sensors to keep track of my RPi3, Hass, other processes and speedtesting our internet. Alerting on critical disk use on the RPi. Notifying when Homebridge or Mosquitto has been down for one minute.
+#### system_monitor_hass
+Automations for things that happens on start and stop of hass. Some sensors to keep track of my RPi3 slave Hass instance, other processes and speedtesting our internet.
 
 #### temp_light_humidity
 Graphs and groups for temperature, humidity and light sensors.

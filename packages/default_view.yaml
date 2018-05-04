@@ -6,6 +6,7 @@ group:
     entities:
       - device_tracker.isabella
       - device_tracker.stefan
+      - group.summary
       - group.info_card
       # - input_boolean.stefan_home
       # - input_boolean.isabella_home
@@ -29,6 +30,7 @@ group:
       - sensor.mailbox
       - input_boolean.car_heater
       - switch.stefan_radiator
+      - input_boolean.test
 
   everything_view:
     view: yes

@@ -112,12 +112,12 @@ automation:
           minutes: 1
       - platform: state
         entity_id: device_tracker.isabella
-        to: 'home'
+        to: 'Home'
         for:
           minutes: 10
       - platform: state
         entity_id: device_tracker.stefan
-        to: 'home'
+        to: 'Home'
         for:
           minutes: 10
       - platform: time
@@ -149,13 +149,13 @@ automation:
           brightness: 150
           color_name: 'red'
 
-      - service: notify.ios_isabellas_iphone_6s
+      - service: notify.ios_isabellas_iphone_x
       ## Hubby has back pain and is relieved of this duty temporarely
       # - service_template: >
       #     {% if (is_state('device_tracker.isabella', 'home')) and (is_state('device_tracker.stefan', 'home'))  %}
       #       notify.all
       #     {% elif is_state('device_tracker.isabella', 'home') %}
-      #       notify.ios_isabellas_iphone_6s
+      #       notify.ios_isabellas_iphone_x
       #     {% elif is_state('device_tracker.stefan', 'home') %}
       #       notify.ios_stefan_iphone_7
       #     {% endif %}
@@ -182,7 +182,7 @@ automation:
       # - service: notify.all
       - service: light.turn_off
         entity_id: light.floorlamp_uplight
-      - service: notify.ios_isabellas_iphone_6s
+      - service: notify.ios_isabellas_iphone_x
         data:
           message: 'The laundry is taken care of'
 
@@ -195,12 +195,12 @@ automation:
         actionName: WASHER_NOT_EMPTIED
     action:
       - delay: 0:30
-      - service: notify.ios_isabellas_iphone_6s
+      - service: notify.ios_isabellas_iphone_x
       # - service_template: >
       #     {% if (is_state('device_tracker.isabella', 'home')) and (is_state('device_tracker.stefan', 'home'))  %}
       #       notify.all
       #     {% elif is_state('device_tracker.isabella', 'home') %}
-      #       notify.ios_isabellas_iphone_6s
+      #       notify.ios_isabellas_iphone_x
       #     {% elif is_state('device_tracker.stefan', 'home') %}
       #       notify.ios_stefan_iphone_7
       #     {% endif %}

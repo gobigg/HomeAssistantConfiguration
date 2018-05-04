@@ -56,41 +56,21 @@ script:
     sequence:
       - service: light.turn_off
         data:
-          entity_id: light.living_room_spotlights_level, light.passage_ceiling_spotlights_level, light.upstairs_hallway_ceiling_light_level, light.kitchen_ceiling_spotlights_level, light.dining_area_ceiling_light_level, light.floorlamp_reading_light, light.floorlamp_uplight, light.isa_ceiling_light
+          entity_id: light.living_room_spotlights_level, light.passage_ceiling_spotlights_level, light.kitchen_ceiling_spotlights_level, light.dining_area_ceiling_light_level, light.floorlamp_reading_light, light.floorlamp_uplight, light.isa_ceiling_light
           transition: 30
       - service: light.turn_on
         data:
-          entity_id: light.living_room_ceiling_light_level, group.stairs_lights
+          entity_id: light.living_room_ceiling_light_level, group.stairs_lights, light.upstairs_hallway_ceiling_light_level
           brightness: 10
 
 light:
-#   - platform: rfxtrx
-#     automatic_add: true
-#     devices:
-#       # 0b11000676bc0cfe01010f70:
-#       #   name: Proove Dimmer
-#       0b11000552bc0cfe07010f70:
-#         name: Outdoor Yard Hanging Lights
-  # - name: 'Stairs Bottom Spot'
-  #   command_topic: milight/0x2/rgbw/1 
-  #   state_topic: milight/updates/0x2/rgbw/1 
-  #   <<: &MILIGHT_PARAMS
-  #     platform: mqtt_json
-  #     color_temp: true
-  #     rgb: true
-  #     brightness: true
-
-  # - name: "Stairs Middle Spot"
-  #   command_topic: milight/0x3/rgbw/1 
-  #   state_topic: milight/updates/0x3/rgbw/1 
-  #   <<: *MILIGHT_PARAMS
-
-  # - name: "Stairs Top Spot"
-  #   command_topic: milight/0x1/rgbw/1 
-  #   state_topic: milight/updates/0x1/rgbw/1 
-  #   <<: *MILIGHT_PARAMS
-
   - platform: lifx
+  - platform: group
+    name: 'Outdoor lights'
+    entities:
+      - light.outdoor_plug
+      - light.outdoor_front_light
+      - light.outdoor_yard_light
 
 
 group:
@@ -99,7 +79,8 @@ group:
     name: Inside lights
     entities:
       - input_text.lights_tiles
-      - group.outdoor_lights_card
+      # - group.outdoor_lights_card
+      - light.outdoor_lights
       - light.bedroom_ceiling_light
       - light.bedside_lamp
       - light.dining_area_ceiling_light_level  
@@ -120,14 +101,14 @@ group:
       - light.upstairs_hallway_ceiling_light_level
       - light.gateway_light_34ce008bfc4b
 
-  outdoor_lights_card:
-    name: Outdoor lights
-    icon: mdi:lightbulb
-    entities:
-      - light.outdoor_plug
-      - light.outdoor_front_light
-      - light.outdoor_yard_light
-      - light.outdoor_yard_hanging_lights
+  # outdoor_lights_card:
+  #   name: Outdoor lights
+  #   icon: mdi:wall-sconce
+  #   entities:
+  #     - light.outdoor_plug
+  #     - light.outdoor_front_light
+  #     - light.outdoor_yard_light
+  #     # - light.outdoor_yard_hanging_lights
 
 # for automations, hubby doesn't like his lights to be included
   inside_lights_automations:

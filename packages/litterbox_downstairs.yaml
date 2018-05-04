@@ -31,8 +31,10 @@ automation:
               state: 'Dirty'
     action:
       # Count the visit on counter for this litterbox and also all litterboxes
-      - service: python_script.dlitter_counter
-      - service: python_script.all_litter_counter
+      - service: counter.increment
+        entity_id: counter.litterbox_downstairs_visits
+      - service: counter.increment
+        entity_id: counter.all_litterbox_visits_today
       # Set the input select to Dirty
       - service: input_select.select_option
         data:
@@ -49,12 +51,12 @@ automation:
     trigger:
       # Trigger either on second or higher visit
       - platform: numeric_state
-        entity_id: sensor.downstairs_litterbox_visits
+        entity_id: counter.litterbox_downstairs_visits
         above: '1'
       # or ten minutes after I get home
       - platform: state
         entity_id: device_tracker.isabella
-        to: 'home'
+        to: 'Home'
         for:
           minutes: 10
     condition:
@@ -67,19 +69,19 @@ automation:
         # Don't notify if I'm not home
         - condition: state
           entity_id: device_tracker.isabella
-          state: 'home'
+          state: 'Home'
         # Notify only if only more than two visits (for when triggered when I get home)
         - condition: numeric_state
-          entity_id: sensor.downstairs_litterbox_visits
+          entity_id: counter.litterbox_downstairs_visits
           above: '1'
     action:
       # Notify me on my ios app
-      - service: notify.ios_isabellas_iphone_6s
+      - service: notify.ios_isabellas_iphone_x
         data_template:
           title: 'Time to clean'
           # Dynamic message that takes current number of visits
           message: >
-            '{{ states('sensor.downstairs_litterbox_visits') }} visits to downstairs litterbox'
+            '{{ states('counter.litterbox_downstairs_visits') }} visits to downstairs litterbox'
 
 
   # Set in cleaning mode on button press
@@ -132,8 +134,8 @@ automation:
         data:
           entity_id: input_select.dlitterbox_state
           option: 'Clean'
-      # Run the python script for reseting counter
-      - service: python_script.dlitter_reset
+      - service: counter.reset
+        entity_id: counter.litterbox_downstairs_visits
 
 
 ## ------------------------------------------------------------------
@@ -147,7 +149,7 @@ automation:
         for:
           minutes: 1
     action:
-      - service: notify.ios_isabellas_iphone_6s
+      - service: notify.ios_isabellas_iphone_x
         data:
           title: 'Downstairs litterbox'
           message: 'Are you done cleaning?'
@@ -167,19 +169,19 @@ automation:
         data:
           entity_id: input_select.dlitterbox_state
           option: 'Clean'
-      - service: notify.ios_isabellas_iphone_6s
-        data:
-          title: 'Downstairs litterbox'
-          message: 'Cleaning mode off'
+      # - service: notify.ios_isabellas_iphone_x
+      #   data:
+      #     title: 'Downstairs litterbox'
+      #     message: 'Cleaning mode off'
 
-  - alias: 'Litterbox Downstairs Cleaning Not Done'
-    trigger:
-      platform: event
-      event_type: ios.notification_action_fired
-      event_data:
-        actionName: CLEANING_D_NOT_DONE
-    action:
-      - service: notify.ios_isabellas_iphone_6s
-        data:
-          title: 'Not done cleaning downstairs litter box'
-          message: 'Remember to change status later'
+  # - alias: 'Litterbox Downstairs Cleaning Not Done'
+  #   trigger:
+  #     platform: event
+  #     event_type: ios.notification_action_fired
+  #     event_data:
+  #       actionName: CLEANING_D_NOT_DONE
+  #   action:
+  #     - service: notify.ios_isabellas_iphone_x
+  #       data:
+  #         title: 'Not done cleaning downstairs litter box'
+  #         message: 'Remember to change status later'

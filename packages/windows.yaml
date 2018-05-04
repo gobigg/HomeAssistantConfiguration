@@ -3,7 +3,7 @@ homeassistant:
     binary_sensor.dining_area_window_sensor_sensor:
       homebridge_visible: true
       device_class: opening
-      homebridge_name: Dining area window
+      homebridge_name: Dining room window
       
 
 sensor:
@@ -28,7 +28,7 @@ sensor:
 #       entity_id: group.persons
 #       state: 'not_home'
 #     action:
-#       - service: notify.ios_isabellas_iphone_6s
+#       - service: notify.ios_isabellas_iphone_x
 #         data_template:
 #           title: 'Window opened'
 #           message: >
@@ -45,7 +45,7 @@ sensor:
 #       entity_id: group.persons
 #       state: 'not_home'
 #     action:
-#       - service: notify.ios_isabellas_iphone_6s
+#       - service: notify.ios_isabellas_iphone_x
 #         data_template:
 #           title: 'Window closed'
 #           message: >

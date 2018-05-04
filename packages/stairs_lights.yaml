@@ -3,24 +3,31 @@ homeassistant:
     light.stairs_bottom_spot:
       icon: mdi:spotlight-beam
       friendly_name: Stairs Bottom Spot
-        
+      homebridge_visible: true     
+      homebridge_name: Stairs Bottom Spot
+
     light.stairs_middle_spot:
       friendly_name: Stairs Middle Spot
       icon: mdi:spotlight-beam
-        
+      homebridge_visible: true     
+      homebridge_name: Stairs Middle Spot
+
     light.stairs_top_spot:
       friendly_name: Stairs Top Spot
       icon: mdi:spotlight-beam
+      homebridge_visible: true     
+      homebridge_name: Stairs Top Spot
         
     group.stairs_lights:
       friendly_name: Stairs Lights
-      homebridge_visible: true
-      homebridge_name: Stairs Lights
+      # icon: mdi:stairs
+      # homebridge_visible: true
+      # homebridge_name: Stairs Lights
       
 group:
   stairs_lights:
     name: Stairs Spotlights
-    icon: mdi:spotlight-beam
+    icon: mdi:stairs
     entities:
       - light.stairs_bottom_spot
       - light.stairs_middle_spot

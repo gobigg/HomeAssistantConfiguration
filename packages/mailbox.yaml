@@ -18,7 +18,7 @@ automation:
       - service: python_script.mailbox
         data_template:
           state: 'package'
-      - service: notify.ios_isabellas_iphone_6s
+      - service: notify.ios_isabellas_iphone_x
         data:
           title: 'Package?'
           message: 'You have mail'
@@ -33,7 +33,7 @@ automation:
       - service: python_script.mailbox
         data_template:
           state: 'mail'
-      - service: notify.ios_isabellas_iphone_6s
+      - service: notify.ios_isabellas_iphone_x
         data:
           title: 'Mail!'
           message: 'Someone put a letter in the mailbox'

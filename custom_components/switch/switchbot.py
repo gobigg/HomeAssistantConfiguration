@@ -7,7 +7,7 @@ https://gist.github.com/aerialist/163a5794e95ccd28dc023161324009ed#file-switchbo
 """
 # Code for only pressing and not turning "on" and "off" as separate events is "570100".
 # Change the numbers in "hand.write(binascii.a2b_hex("570101"))" in both turn_on and turn_off to make both states only do a press.
-# Thanks to Mattias_
+# Thanks to Mattias_Persson at the hass community
 
 import asyncio
 import logging

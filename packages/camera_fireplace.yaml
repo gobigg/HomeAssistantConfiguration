@@ -26,7 +26,7 @@ automation:
         entity_id: sensor.temperature_158d000123552c
         above: 27
     action:
-      - service: notify.ios_isabellas_iphone_6s
+      - service: notify.ios_isabellas_iphone_x
         data:
           message: Fire Camera Motion
           data:

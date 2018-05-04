@@ -1,4 +1,6 @@
 homeassistant:
+  # whitelist_external_dirs:
+  #   - '/share'
   name: Home
   latitude: !secret lat_coord
   longitude: !secret long_coord
@@ -8,8 +10,8 @@ homeassistant:
   customize: !include_dir_merge_named customize
   customize_glob: !include customglob.yaml
   packages: !include_dir_named packages
+
 config:
-cloud: !include alexa.yaml
 hassio:
 http:
   api_password: !secret http_password
@@ -19,6 +21,10 @@ updater:
 conversation:
 customizer:
   custom_ui: hosted
+cloud: !include alexa.yaml
+## To be included:
+homekit: !include homekit.yaml
+
 
 # ########################################
 # ###                GUI               ###
@@ -93,7 +99,7 @@ sun:
 #   debug:
 zwave:
   usb_path: /dev/ttyACM0
-  new_entity_ids: true
+  # new_entity_ids: true
 xiaomi_aqara:
   gateways:
    - mac: !secret xiaomi_mac
@@ -121,6 +127,8 @@ notify: !include notify.yaml
 python_script:
 # group: !include_dir_merge_named group/
 mqtt:
+  discovery: true
+  discovery_prefix: homeassistant
   broker: core-mosquitto
   username: !secret mqtt_username
   password: !secret mqtt_password

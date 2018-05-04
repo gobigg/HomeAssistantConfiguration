@@ -26,7 +26,7 @@ automation:
     action:
       - service: homeassistant.turn_on
         entity_id: switch.laundry_line_drying
-      - service: notify.ios_isabellas_iphone_6s
+      - service: notify.ios_isabellas_iphone_x
         data:
           title: 'Laundry hung out to dry'
           message: ''
@@ -44,7 +44,7 @@ automation:
     action:
       - service: homeassistant.turn_off
         entity_id: switch.laundry_line_drying
-      - service: notify.ios_isabellas_iphone_6s
+      - service: notify.ios_isabellas_iphone_x
         data:
           title: 'Laundry taken in'
           message: ''
@@ -60,7 +60,7 @@ automation:
       entity_id: switch.laundry_line_drying
       state: 'on'
     action:
-      - service: notify.ios_isabellas_iphone_6s
+      - service: notify.ios_isabellas_iphone_x
         data:
           title: 'Take in the laundry'
           message: 'Its going to rain'
@@ -74,7 +74,7 @@ automation:
         for:
           hours: 12
     action:
-      - service: notify.ios_isabellas_iphone_6s
+      - service: notify.ios_isabellas_iphone_x
         data:
           title: 'Take in the laundry'
           message: 'Its been out there forever...'

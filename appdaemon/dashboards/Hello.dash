@@ -1,0 +1,31 @@
+#
+# Main arguments, all optional
+#
+title: House Panel
+widget_dimensions: [120, 120]
+widget_margins: [5, 5]
+columns: 8
+
+clock:
+    widget_type: clock
+    date_format_country: "se"
+    date_format_options:
+      weekday: "short"
+      day: "numeric"
+      month: "numeric"
+alarm:
+    widget_type: alarm
+    entity: alarm_control_panel.home_alarm
+weather:
+    widget_type: weather
+goodnight:
+    widget_type: light
+    entity: script.goodnight
+    icon_on: mdi-moon
+    icon_off: mdi-sun
+    title: Goodnight
+
+
+layout:
+    - clock(2x1), alarm, goodnight
+    - weather(2x2)

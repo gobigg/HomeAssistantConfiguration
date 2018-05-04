@@ -139,7 +139,7 @@ automation:
 
 ##################  Double click - full light  ##################
 
-  - alias:  Light Floorlamp Uplight Full Light
+  - alias:  Light Floorlamp Reading Light Toggle
     initial_state: 'on'
     trigger:
       platform: event
@@ -148,7 +148,5 @@ automation:
         entity_id: binary_sensor.switch_158d00019d674a
         click_type: double
     action:
-      service: light.turn_on
-      data:
-        entity_id: light.floorlamp_uplight
-        brightness: 255
+      service: light.toggle
+      entity_id: light.floorlamp_reading_light

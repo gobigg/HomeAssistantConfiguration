@@ -1,25 +1,46 @@
 ## From https://philhawthorne.com/making-home-assistants-presence-detection-not-so-binary/
+homeassistant:
+  customize:
+    input_boolean.isabella_home:
+      homebridge_visible: true
+      confirm_controls_show_lock: true
+      homebridge_name: Isabella home
+    input_boolean.stefan_home:
+      homebridge_visible: true
+      confirm_controls_show_lock: true
+      homebridge_name: Stefan home
+
+input_boolean:
+  isabella_home:
+    name: Isabella homekit
+    initial: on
+    icon: mdi:human-female
+  stefan_home:
+    name: Stefan homekit
+    initial: on
+    icon: mdi:human-male
 
 group:
   persons:
     view: no
     entities:
-      - device_tracker.isabellas_iphone_6s
-      - device_tracker.isabellas_iphone_6s_wifi
+      - device_tracker.isabellas_iphone_x
+      - device_tracker.isabellsiphonex
       - device_tracker.isabellas_iphone_6s_bt
       - device_tracker.stefan_iphone_7_wifi
       - device_tracker.stefan_iphone_7
   isabella:
     name: Isabella
     entities:
-      - device_tracker.isabellas_iphone_6s
-      - device_tracker.isabellas_iphone_6s_wifi
+      - device_tracker.isabellas_iphone_x
+      - device_tracker.isabellsiphonex
       - device_tracker.isabellas_iphone_6s_bt
   stefan:
     name: Stefan
     entities:
       - device_tracker.stefan_iphone_7_wifi
       - device_tracker.stefan_iphone_7
+      
 input_select:
   stefan_status_dropdown:
     name: Stefan

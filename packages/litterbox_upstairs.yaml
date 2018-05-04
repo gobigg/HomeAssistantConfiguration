@@ -2,7 +2,7 @@
 
 homeassistant:
   customize:
-    sensor.all_litterbox_visits_today:
+    counter.all_litterbox_visits_today:
       icon: mdi:poop
       friendly_name: All Litterbox Visits Today
     ## Upstairs
@@ -18,13 +18,11 @@ homeassistant:
     sensor.upstairs_litterbox:
       extra_badge:
         entity_id: counter.litterbox_upstairs_visits
-    script.ifttt_litterbox_day_summary:
-      alexa_hidden: true
     binary_sensor.switch_158d0001a6687f:
       friendly_name: Upstairs litterbox switch
 
     ## Downstairs
-    sensor.downstairs_litterbox_visits:
+    counter.downstairs_litterbox_visits:
       icon: mdi:poop
       friendly_name: Downstairs Litterbox Visits
     binary_sensor.motion_sensor_158d0001a24ef1:
@@ -48,7 +46,7 @@ counter:
     initial: 0
     step: 1
   litterbox_downstairs_visits:
-    name: Upstairs Litterbox Visits
+    name: Downstairs Litterbox Visits
     initial: 0
     step: 1
   all_litterbox_visits_today:
@@ -57,20 +55,6 @@ counter:
     step: 1
 
 sensor:
-  # Dummy sensors for counting with python script
-  - platform: mqtt
-    state_topic: "litterbox/upstairs/count"
-    name: Upstairs Litterbox Visits
-    unit_of_measurement: "visits"
-  - platform: mqtt
-    state_topic: "litterbox/downstairs/count"
-    name: Downstairs Litterbox Visits
-    unit_of_measurement: "visits"
-  - platform: mqtt
-    state_topic: "litterbox/all/count"
-    name: All Litterbox Visits Today
-    unit_of_measurement: "visits"
-
   # Template sensors for dynamic icon and value
   - platform: template
     sensors:
@@ -121,7 +105,7 @@ group:
   cat_card:
     name: Cats!
     entities:
-      - sensor.all_litterbox_visits_today
+      - counter.all_litterbox_visits_today
       - sensor.downstairs_litterbox
       - sensor.upstairs_litterbox
       - input_select.dlitterbox_state
@@ -137,15 +121,15 @@ group:
 automation:
   # Trigger state for setting all the dummy sensors to zero at home assistant restart
   # (otherwise they're set as 'none')
-  - alias: Litterbox All Sensors Set To Zero On Start
-    initial_state: 'on'
-    trigger:
-      platform: homeassistant
-      event: start
-    action:
-      - service: python_script.ulitter_reset
-      - service: python_script.dlitter_reset
-      - service: python_script.all_litter_reset
+  # - alias: Litterbox All Sensors Set To Zero On Start
+  #   initial_state: 'on'
+  #   trigger:
+  #     platform: homeassistant
+  #     event: start
+  #   action:
+  #     - service: python_script.ulitter_reset
+  #     - service: python_script.dlitter_reset
+  #     - service: python_script.all_litter_reset
   
   # Count visits
   - alias: Litterbox Upstairs Counter
@@ -179,7 +163,8 @@ automation:
       # Count the visit on counter for this litterbox and also all litterboxes
       - service: counter.increment
         entity_id: counter.litterbox_upstairs_visits
-      - service: python_script.all_litter_counter
+      - service: counter.increment
+        entity_id: counter.all_litterbox_visits_today
       # Set the input select to Dirty
       - service: input_select.select_option
         data:
@@ -201,7 +186,7 @@ automation:
       # or ten minutes after I get home
       - platform: state
         entity_id: device_tracker.isabella
-        to: 'home'
+        to: 'Home'
         for:
           minutes: 10
     condition:
@@ -214,14 +199,14 @@ automation:
         # Don't notify if I'm not home
         - condition: state
           entity_id: device_tracker.isabella
-          state: 'home'
+          state: 'Home'
         # Notify only if only more than two visits (for when triggered when I get home)
         - condition: numeric_state
           entity_id: counter.litterbox_upstairs_visits
           above: '1'
     action:
       # Notify me on my ios app
-      - service: notify.ios_isabellas_iphone_6s
+      - service: notify.ios_isabellas_iphone_x
         data_template:
           title: 'Time to clean'
           # Dynamic message that takes current number of visits
@@ -285,7 +270,7 @@ automation:
 
 
   # Reset the all litterbox counter at midnight
-  - alias: Litterbox All Counter Reset At Midnight
+  - alias: Litterbox All Counter Send At Midnight
     initial_state: 'on'
     trigger:
       - platform: time
@@ -294,11 +279,10 @@ automation:
       # Log total visits for the day in Ifttt via script for dynamic counter
       - service: script.ifttt_litterbox_day_summary
         data_template:
-          value1: "{{ states('sensor.all_litterbox_visits_today') }}"
+          value1: "{{ states('counter.all_litterbox_visits_today') }}"
           value2: "test"
-      # Wait one minute and then reset the counter
-      - delay: 0:01
-      - service: python_script.all_litter_reset
+      - service: counter.reset
+        entity_id: counter.all_litterbox_visits_today
 
 ## ------------------------------------------------------------------
 ##   Cleaning mode left on, actionable ios-notification 
@@ -311,7 +295,7 @@ automation:
         for:
           minutes: 1
     action:
-      - service: notify.ios_isabellas_iphone_6s
+      - service: notify.ios_isabellas_iphone_x
         data:
           title: 'Upstairs litterbox'
           message: 'Are you done cleaning?'
@@ -331,22 +315,22 @@ automation:
         data:
           entity_id: input_select.ulitterbox_state
           option: 'Clean'
-      - service: notify.ios_isabellas_iphone_6s
-        data:
-          title: 'Upstairs litterbox'
-          message: 'Cleaning mode off'
+      # - service: notify.ios_isabellas_iphone_x
+      #   data:
+      #     title: 'Upstairs litterbox'
+      #     message: 'Cleaning mode off'
 
-  - alias: 'Litterbox Upstairs Cleaning Not Done'
-    trigger:
-      platform: event
-      event_type: ios.notification_action_fired
-      event_data:
-        actionName: CLEANING_U_NOT_DONE
-    action:
-      - service: notify.ios_isabellas_iphone_6s
-        data:
-          title: 'Not done cleaning upstairs litter box'
-          message: 'Remember to change status later'
+  # - alias: 'Litterbox Upstairs Cleaning Not Done'
+  #   trigger:
+  #     platform: event
+  #     event_type: ios.notification_action_fired
+  #     event_data:
+  #       actionName: CLEANING_U_NOT_DONE
+  #   action:
+  #     - service: notify.ios_isabellas_iphone_x
+  #       data:
+  #         title: 'Not done cleaning upstairs litter box'
+  #         message: 'Remember to change status later'
 
 
 ## To make sure I don't forget anyway

@@ -1,6 +1,6 @@
     device_tracker.isabella:
       icon: mdi:cellphone-iphone
-    device_tracker.isabellas_iphone_6s_wifi:
+    device_tracker.isabellsiphonex:
       icon: mdi:cellphone-iphone
     device_tracker.isabellas_iphone_6s_bt:
       icon: mdi:bluetooth

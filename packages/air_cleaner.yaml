@@ -21,37 +21,69 @@ homeassistant:
             row: 1
             column: 2
             icon: mdi:fan
+    switch.air_cleaner:
+      homebridge_visible: true
+      homebridge_name: 'Air cleaner'
 switch:
   - platform: broadlink
     friendly_name: Broadlink Bedroom
     host: !secret broadlink_bedroom_ip
     mac: !secret broadlink_bedroom_mac
+    # switches:
+    #   air_cleaner_quiet:
+    #     friendly_name: Air Cleaner Quiet
+    #     command_on: 'JgBQAAABI5MRFBE4FBETEhQ1EhMTEhMSFDUSExQ2EjgSExQ2EjgSOBE5ERQTEhQQFBEUERQQFRAUERQ1EjgSOBI4EjgTNxM2FAAFJQABAUoUAA0FAAAAAAAAAAA='
+    #     command_off: 'JgBQAAABJJUTEhM2FBEUERQ2FBEUERQRFDYUERQ2FDYUERQ1FDYUNhQ2FBEUERQRFDYTEhMSExITERQ2FDYUNhQRFDUUNhQ2FAAFJAABJ0oSAA0FAAAAAAAAAAA='
+    #   air_cleaner_auto:
+    #     friendly_name: Air Cleaner Auto
+    #     command_on: 'JgBQAAABJJUTEhM2FBEUERQ2FBEUERQRFDYUERQ2FDYUERQ1FDYUNhQ2FBEUERQRFDYTEhMSExITERQ2FDYUNhQRFDUUNhQ2FAAFJAABJ0oSAA0FAAAAAAAAAAA='
+    #     command_off: 'JgBQAAABI5MRFBE4FBETEhQ1EhMTEhMSFDUSExQ2EjgSExQ2EjgSOBE5ERQTEhQQFBEUERQQFRAUERQ1EjgSOBI4EjgTNxM2FAAFJQABAUoUAA0FAAAAAAAAAAA='
+  - platform: template
     switches:
-      air_cleaner_quiet:
-        friendly_name: Air Cleaner Quiet
-        command_on: 'JgBQAAABI5MRFBE4FBETEhQ1EhMTEhMSFDUSExQ2EjgSExQ2EjgSOBE5ERQTEhQQFBEUERQQFRAUERQ1EjgSOBI4EjgTNxM2FAAFJQABAUoUAA0FAAAAAAAAAAA='
-        command_off: 'JgBQAAABJJUTEhM2FBEUERQ2FBEUERQRFDYUERQ2FDYUERQ1FDYUNhQ2FBEUERQRFDYTEhMSExITERQ2FDYUNhQRFDUUNhQ2FAAFJAABJ0oSAA0FAAAAAAAAAAA='
-      air_cleaner_auto:
-        friendly_name: Air Cleaner Auto
-        command_on: 'JgBQAAABJJUTEhM2FBEUERQ2FBEUERQRFDYUERQ2FDYUERQ1FDYUNhQ2FBEUERQRFDYTEhMSExITERQ2FDYUNhQRFDUUNhQ2FAAFJAABJ0oSAA0FAAAAAAAAAAA='
-        command_off: 'JgBQAAABI5MRFBE4FBETEhQ1EhMTEhMSFDUSExQ2EjgSExQ2EjgSOBE5ERQTEhQQFBEUERQQFRAUERQ1EjgSOBI4EjgTNxM2FAAFJQABAUoUAA0FAAAAAAAAAAA='
-
+      air_cleaner:
+        value_template: "{{ is_state('script.air_cleaner_auto', 'on') }}"
+        # value_template: >
+        #   {% if states('sensor.time') > '11:00' %}
+        #   'on'
+        #   {%else%}
+        #   'off'
+        #   {%endif%}
+        turn_on:
+          service: script.turn_on
+          data:
+            entity_id: script.air_cleaner_auto
+        turn_off:
+          service: script.turn_on
+          data:
+            entity_id: script.air_cleaner_quiet
 input_text:
   air_tiles:
     name: Tiles
 
 script:
+  # air_cleaner_quiet:
+  #   sequence:
+  #     service: homeassistant.turn_on
+  #     data:
+  #       entity_id: switch.air_cleaner_quiet
+  # air_cleaner_auto:
+  #   sequence:
+  #     service: homeassistant.turn_on
+  #     data:
+  #       entity_id: switch.air_cleaner_auto
   air_cleaner_quiet:
     sequence:
-      service: homeassistant.turn_on
-      data:
-        entity_id: switch.air_cleaner_quiet
+      - service: switch.broadlink_send_packet_192_168_1_53
+        data:
+          packet:
+            - 'JgBQAAABI5MRFBE4FBETEhQ1EhMTEhMSFDUSExQ2EjgSExQ2EjgSOBE5ERQTEhQQFBEUERQQFRAUERQ1EjgSOBI4EjgTNxM2FAAFJQABAUoUAA0FAAAAAAAAAAA='
   air_cleaner_auto:
     sequence:
-      service: homeassistant.turn_on
-      data:
-        entity_id: switch.air_cleaner_auto
-
+      - service: switch.broadlink_send_packet_192_168_1_53
+        data:
+          packet:
+            - 'JgBQAAABJJUTEhM2FBEUERQ2FBEUERQRFDYUERQ2FDYUERQ1FDYUNhQ2FBEUERQRFDYTEhMSExITERQ2FDYUNhQRFDUUNhQ2FAAFJAABJ0oSAA0FAAAAAAAAAAA='
+          
 group:
   air:
     name: Air Cleaner Bedroom
@@ -65,8 +97,8 @@ automation:
       - platform: time
         at: '21:00:00'
     action:
-      - service: homeassistant.turn_on
-        entity_id: switch.air_cleaner_quiet
+      - service: homeassistant.turn_off
+        entity_id: switch.air_cleaner
 
   - alias: Air Cleaner To Auto At 11
     initial_state: 'on'
@@ -75,4 +107,4 @@ automation:
         at: '11:00:00'
     action:
       - service: homeassistant.turn_on
-        entity_id: switch.air_cleaner_auto
+        entity_id: switch.air_cleaner

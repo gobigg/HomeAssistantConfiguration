@@ -1,26 +1,31 @@
-# input_boolean:
-#   test:
-#     name: Test stuff
-#     initial: off
+input_boolean:
+  test:
+    name: Test stuff
+    initial: off
 
-# automation:
-#   - alias: 'Test Automation'
-#     initial_state: True
-#     trigger:
-#       - platform: state
-#         entity_id: input_boolean.test
-#         to: 'on'
-#     action:
-#       - service: notify.ios_isabellas_iphone_6s
-#         data:
-#           message: Fire camera motion
-#           data:
-#             attachment:
-#               content-type: jpeg
-#             push:
-#               category: camera
-#             entity_id: camera.back_door
-
+automation:
+  - alias: 'Tile Away'
+    initial_state: True
+    trigger:
+      - platform: state
+        entity_id: device_tracker.tile_trash
+        to: 'not_home'
+    action:
+      - service: notify.ios_isabellas_iphone_x
+        data:
+          message: 'not home'
+          title: 'trash tile'
+  - alias: 'Tile Home'
+    initial_state: True
+    trigger:
+      - platform: state
+        entity_id: device_tracker.tile_trash
+        to: 'home'
+    action:
+      - service: notify.ios_isabellas_iphone_x
+        data:
+          message: 'home'
+          title: 'trash tile'
 # group:
 #   test_view:
 #     view: yes
@@ -36,17 +41,17 @@
 #       - switch.radiator_off
 
 # binary_sensor.switch_158d0001b86ce1
-automation:
-  - alias: Light Poker Someones Out
-    initial_state: 'on'
-    trigger:
-      platform: event
-      event_type: click
-      event_data:
-        entity_id: binary_sensor.switch_158d0001b86ce1
-        click_type: single
-    action:
-      - service: python_script.flash_light_poker
+# automation:
+#   - alias: Light Poker Someones Out
+#     initial_state: 'on'
+#     trigger:
+#       platform: event
+#       event_type: click
+#       event_data:
+#         entity_id: binary_sensor.switch_158d0001b86ce1
+#         click_type: single
+#     action:
+#       - service: python_script.flash_light_poker
       # - service: light.turn_off
       #   entity_id: light.dining_area_ceiling_light_level
       # - service: light.turn_on
@@ -90,22 +95,22 @@ automation:
       # - service: light.turn_on
       #   entity_id: light.dining_area_ceiling_light_level
 
-  - alias: Light Poker Reset
-    initial_state: 'on'
-    trigger:
-      platform: event
-      event_type: click
-      event_data:
-        entity_id: binary_sensor.switch_158d0001b86ce1
-        click_type: double
-    action:
-      - service: light.turn_on
-        data:
-          entity_id: light.floorlamp_uplight
-          brightness: 100
-          rgb_color: 
-            - 255
-            - 214
-            - 170
-      - service: light.turn_on
-        entity_id: light.dining_area_ceiling_light_level
+  # - alias: Light Poker Reset
+  #   initial_state: 'on'
+  #   trigger:
+  #     platform: event
+  #     event_type: click
+  #     event_data:
+  #       entity_id: binary_sensor.switch_158d0001b86ce1
+  #       click_type: double
+  #   action:
+  #     - service: light.turn_on
+  #       data:
+  #         entity_id: light.floorlamp_uplight
+  #         brightness: 100
+  #         rgb_color: 
+  #           - 255
+  #           - 214
+  #           - 170
+  #     - service: light.turn_on
+  #       entity_id: light.dining_area_ceiling_light_level

@@ -2,7 +2,13 @@ homeassistant:
   customize:
     binary_sensor.switch_158d0001a5e3c4:
       friendly_name: Hallway Dimmer
+        
+    light.hallway_window_light:
+      icon: mdi:lamp
+      homebridge_visible: true     
+      homebridge_name: Hallway Window Light
 
+      
 input_boolean:
   dimmer_hallway:
     name: Dimmer Hallway

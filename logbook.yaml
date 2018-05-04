@@ -1,21 +1,69 @@
   include:
     domains:
       - light
+      - automation
       - binary_sensor
-      - switch
-      - sensor
-      - device_tracker
+    entities:
+      - switch.roomba
+      - sensor.back_door
+      - sensor.backyard_door
+      - sensor.balcony_door
+      - sensor.dining_area_window
+      - sensor.front_door
+      - sensor.front_door_outdoor_movement
+      - sensor.hallway_movement
+      - sensor.kitchen_sink
+      - sensor.last_seen_motion
+      - sensor.living_room_movement
+      - sensor.mailbox
+      - sensor.passage_movement
+      - sensor.temperature_158d0001235510
+      - sensor.temperature_158d000123552c
+      - sensor.temperature_158d0001a2a899
+      - sensor.temperature_158d0001fd83e7
+      - sensor.upstairs_hallway_movement
+      - sensor.water_heater
+      - device_tracker.isabellas_iphone_x
+      - device_tracker.isabellsiphonex
+      - device_tracker.isabella
+      - device_tracker.stefan
+      - device_tracker.stefan_iphone_7
+      - device_tracker.stefan_iphone_7_wifi
+      - device_tracker.stefan_computer
+      - device_tracker.isa_computer
+      - device_tracker.isa_laptop
+      - device_tracker.desktop39i618g
   exclude:
     domains:
-  #     - camera
-  #     - media_player
+      - alert
+      - camera
+      - media_player
       - sun
-  #     - calendar
-  #     - sensor
+      - calendar
+      - sensor
       - group
+      - switch
+      - script
+      - device_tracker
     entities:
-      - sensor.since_last_boot
-      - sensor.last_boot
-      - sensor.date__time
-      - sensor.date
-      - sensor.time
+      # - sensor.since_last_boot
+      # - sensor.last_boot
+      # - sensor.date__time
+      # - sensor.date
+      # - sensor.time
+      - automation.battery_sensor_from_battery_numeric_attribute
+      - automation.battery_sensor_from_battery_level_attribute
+      - automation.battery_sensor_from_battery_attribute
+      - automation.battery_notification_clear
+      - automation.battery_notification
+      - binary_sensor.switch_158d0001243520 # bed switch
+      - binary_sensor.switch_158d00016c0a49 # fd mailbox reset
+      - binary_sensor.switch_158d00019d674a # floorlamp switch
+      - binary_sensor.switch_158d0001a5e3c4 # hallway dimmer
+      - binary_sensor.switch_158d0001a6687f # upstairs litterbox switch
+      - binary_sensor.switch_158d0001b86ce1 # switch
+      - binary_sensor.switch_158d0001b8f876 # downstairs litterbox switch
+      - binary_sensor.motion_sensor_158d000165ff1f # living room motion
+      - binary_sensor.motion_sensor_158d0001a24ef1 # downstairs litterbox motion
+      - binary_sensor.motion_sensor_158d0001a66256 # hallway motion
+      - binary_sensor.motion_sensor_158d0001a66291 # upstairs litterbox motion

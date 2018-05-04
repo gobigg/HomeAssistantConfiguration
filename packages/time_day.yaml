@@ -164,7 +164,7 @@ automation:
         #     state: Offline
 
     action:
-      - service: notify.ios_isabellas_iphone_6s
+      - service: notify.ios_isabellas_iphone_x
         data:
           message: 'It seems like everyone is asleep'
           title: 'Good night!'

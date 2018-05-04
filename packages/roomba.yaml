@@ -20,7 +20,7 @@ switch:
           {% if is_state('binary_sensor.door_window_sensor_158d0001a3df50', 'on') %}
             mdi:broom
           {% else %}
-            mdi:roomba
+            mdi:robot-vacuum
           {% endif %}
 
   - platform: broadlink
@@ -56,7 +56,7 @@ input_select:
      - 'Dock'
      - 'Not Today'
     initial: 'Waiting To Vacuum'
-    icon: mdi:roomba
+    icon: mdi:robot-vacuum
 
 
 group:
@@ -97,7 +97,7 @@ automation:
           entity_id: binary_sensor.door_window_sensor_158d0001a3df50
           state: 'off'
     action:
-      - service: notify.ios_isabellas_iphone_6s
+      - service: notify.ios_isabellas_iphone_x
         data:
           message: 'Vacuum now?'
           title: 'No one seems to be at home'
@@ -121,7 +121,7 @@ automation:
           entity_id: input_select.roomba_mode
           option: 'Vacuuming'
       # - service: python_script.vacuuming
-      - service: notify.ios_isabellas_iphone_6s
+      - service: notify.ios_isabellas_iphone_x
         data:
           message: 'Telling the Roomba to start vacuuming'
 
@@ -133,7 +133,7 @@ automation:
       event_data:
         actionName: VACUUM_LATER
     action:
-      - service: notify.ios_isabellas_iphone_6s
+      - service: notify.ios_isabellas_iphone_x
         data:
           message: 'I will check again next hour'
           title: 'Not vacuuming right now'
@@ -146,7 +146,7 @@ automation:
       event_data:
         actionName: VACUUM_STOP_ASKING
     action:
-      - service: notify.ios_isabellas_iphone_6s
+      - service: notify.ios_isabellas_iphone_x
         data:
           message: 'Got it'
           title: 'No vacuuming today'
@@ -187,7 +187,7 @@ automation:
         entity_id: switch.roomba_dock
       - service: homeassistant.turn_on
         entity_id: switch.roomba_dock_living_room
-      - service: notify.ios_isabellas_iphone_6s
+      - service: notify.ios_isabellas_iphone_x
         data:
           message: 'Trying to dock Roomba'
       - service: input_select.select_option
@@ -205,7 +205,7 @@ automation:
     action:
       - service: homeassistant.turn_on
         entity_id: switch.roomba
-      # - service: notify.ios_isabellas_iphone_6s
+      # - service: notify.ios_isabellas_iphone_x
       #   data:
       #     message: 'Vacuuming'
       # - service: input_select.select_option
@@ -220,7 +220,7 @@ automation:
       entity_id: binary_sensor.door_window_sensor_158d0001a3df50
       to: 'off'
     action:
-      - service: notify.ios_isabellas_iphone_6s
+      - service: notify.ios_isabellas_iphone_x
         data:
           message: 'Vacuuming done'
       - service: input_select.select_option
@@ -235,7 +235,7 @@ automation:
       entity_id: binary_sensor.door_window_sensor_158d0001a3df50
       to: 'on'
     action:
-      - service: notify.ios_isabellas_iphone_6s
+      - service: notify.ios_isabellas_iphone_x
         data:
           message: 'Vacuuming'
       - service: input_select.select_option

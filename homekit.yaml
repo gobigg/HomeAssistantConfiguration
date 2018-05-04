@@ -1,0 +1,63 @@
+  auto_start: false
+  filter:
+    include_entities:
+      - media_player.sonos
+
+      - scene.lights_at_dark
+      - scene.welcome_home
+      - scene.watch_tv
+      - scene.ceiling_lights
+
+      - alarm_control_panel.home_alarm
+
+      - binary_sensor.door_window_sensor_158d00019f5110
+      - binary_sensor.door_window_sensor_158d00019e152b
+      - binary_sensor.door_window_sensor_158d0001a3e45e
+      - binary_sensor.dining_area_window_sensor_sensor
+      - binary_sensor.front_door_homebridge
+      - binary_sensor.back_door_sensor
+
+      - input_boolean.guest_mode
+      - input_boolean.isabella_home
+      - input_boolean.stefan_home
+      - input_boolean.sonos
+
+      - switch.air_cleaner
+      - switch.stefan_radiator
+
+      - script.goodmorning
+      - script.goodnight
+      - script.movie_time
+
+      - sensor.temperature_158d0001235510
+      - sensor.temperature_158d000123552c
+      - sensor.temperature_158d0001a2a899
+      - sensor.temperature_158d0001fd83e7
+      
+      - light.walk_in_closet_1
+      - light.walk_in_closet_2
+      - light.walk_in_closet_3
+      - light.walk_in_closet_4
+      - light.stairs_bottom_spot
+      - light.stairs_middle_spot
+      - light.stairs_top_spot
+      - group.outdoor_lights
+      - group.inside_lights_automations
+      - light.hallway_window_light
+      - light.gateway_light_34ce008bfc4b
+      - light.outdoor_front_light
+      - light.outdoor_plug
+      - light.outdoor_yard_light
+      - light.bedroom_ceiling_light
+      - light.bedside_lamp
+      - light.dining_area_ceiling_light_level
+      - light.floorlamp_reading_light
+      - light.floorlamp_uplight
+      - light.hallway_window_light
+      - light.isa_ceiling_light
+      - light.living_room_ceiling_light_level
+      - light.living_room_spotlights_level
+      - light.passage_ceiling_spotlights_level
+      - light.stefan_lightstrip
+      - light.upstairs_hallway_ceiling_light_level
+      - light.kitchen_ceiling_spotlights_level

@@ -4,6 +4,7 @@ homeassistant:
       icon: mdi:radiator
       homebridge_visible: true
       homebridge_name: Stefan Radiator
+      confirm_controls_show_lock: true
 # switch:
 #   - platform: rest
 #     name: Stefan Radiator Api

@@ -38,7 +38,8 @@ sensor:
       - wind_speed
   #    - wind_bearing
     #   - cloud_cover
-    #   - humidity
+      - humidity
+      - icon
   #    - nearest_storm_distance
   #    - minutely_summary
       - daily_summary

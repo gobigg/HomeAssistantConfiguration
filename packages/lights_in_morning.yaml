@@ -20,7 +20,7 @@ automation:
             - fri
         - condition: state
           entity_id: device_tracker.isabella
-          state: 'home'
+          state: 'Home'
     action:
       - service: scene.turn_on
         entity_id: scene.lights_at_dark
