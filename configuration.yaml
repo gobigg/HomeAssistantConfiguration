@@ -8,7 +8,7 @@ homeassistant:
   unit_system: metric
   time_zone: !secret time_zone
   customize: !include_dir_merge_named customize
-  customize_glob: !include customglob.yaml
+  customize_glob: !include customize/customglob.yaml
   packages: !include_dir_named packages
 
 config:
@@ -17,14 +17,14 @@ http:
   api_password: !secret http_password
   base_url: !secret base_url
 updater:
-# discovery:
 conversation:
 customizer:
   custom_ui: hosted
-cloud: !include alexa.yaml
-## To be included:
-homekit: !include homekit.yaml
+cloud: !include assistants/cloud.yaml # Alexa
+homekit: !include assistants/homekit.yaml
+ios: !include ios_config.yaml
 
+# discovery:
 
 # ########################################
 # ###                GUI               ###
@@ -37,8 +37,6 @@ frontend:
     - /local/custom_ui/state-card-custom-ui.html
     - /local/custom_ui/state-card-value_only.html
     - /local/custom_ui/state-card-tiles.html
-  # extra_html_url_es5:
-  #   - /local/custom_ui/state-card-tiles.html
 panel_iframe:
   ide:
     title: IDE
@@ -49,22 +47,11 @@ panel_iframe:
     icon: mdi:console
     url: !secret terminal_address
     
-#   # grafana:
-#   #   title: "Grafana"
-#   #   icon: mdi:chart-areaspline
-#   #   url: !secret grafana_url
   # mdi_index:
   #   title: MDI Icons
   #   icon: mdi:vector-square
   #   url: !secret mdi_index_url
-#   # hadashboard:
-#   #   title: HaDashboard
-#   #   icon: mdi:television-guide
-#   #   url: !secret hadashboard_url
-#   # configurator:
-#   #   title: Configurator
-#   #   icon: mdi:wrench
-#   #   url: !secret configurator_url
+
 panel_custom: 
   - name: floorplan
     sidebar_title: Floorplan
@@ -76,30 +63,17 @@ panel_custom:
 # ###              LOGGING             ###
 # ########################################
 
-recorder: !include recorder.yaml
-history: !include history.yaml
-logbook: !include logbook.yaml
-logger: !include logger.yaml
+recorder: !include logging/recorder.yaml
+history: !include logging/history.yaml
+logbook: !include logging/logbook.yaml
+logger: !include logging/logger.yaml
 sun:
-
-# tts:
-#   platform: google
-# # influxdb:
-# #   host: 127.0.0.1
-# #   database: home_assistant
-# #   username: !secret influxdb_username
-# #   password: !secret influxdb_password
-
 
 ########################################
 ###               HUBS               ###
 ########################################
-# rfxtrx:
-#   device: /dev/serial/by-id/usb-RFXCOM_RFXtrx433_A14SREW-if00-port0
-#   debug:
 zwave:
   usb_path: /dev/ttyACM0
-  # new_entity_ids: true
 xiaomi_aqara:
   gateways:
    - mac: !secret xiaomi_mac
@@ -125,44 +99,17 @@ device_tracker: !include device_tracker.yaml
 # ########################################
 notify: !include notify.yaml
 python_script:
-# group: !include_dir_merge_named group/
 mqtt:
   discovery: true
   discovery_prefix: homeassistant
   broker: core-mosquitto
   username: !secret mqtt_username
   password: !secret mqtt_password
-
-# mqtt:
-#   broker: !secret mqtt_broker
-#   port: 1883
-#   client_id: home-assistant
-#   username: !secret mqtt_username
-#   password: !secret mqtt_password
-# mqtt_statestream:
-#   base_topic: /homeassistant
-  # publish_attributes: true
-  # publish_timestamps: true
 mqtt_eventstream:
   # publish_topic: master/topic
   subscribe_topic: slave/rpi
-  # ignore_event:
-  #   - call_service
-  #   - state_changed
 google:
   client_id: !secret google_id
   client_secret: !secret google_secret
-# # ffmpeg:
-# #   ffmpeg_bin: /usr/bin/avconv
 ifttt:
   key: !secret ifttt_key
-
-########################################
-###                IOS               ###
-########################################
-ios: !include ios_config.yaml
-
-# switch:
-#   - platform: switchbot
-#     name: 'Stefan radiator'  
-#     mac: 'EA:E1:11:E2:B1:77'

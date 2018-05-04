@@ -9,6 +9,15 @@ homeassistant:
       homebridge_visible: true
       confirm_controls_show_lock: true
       homebridge_name: Stefan home
+      
+    # device_tracker.isabella:
+    #   icon: mdi:cellphone-iphone
+    # device_tracker.isabellsiphonex:
+    #   icon: mdi:cellphone-iphone
+    # device_tracker.isabellas_iphone_6s_bt:
+    #   icon: mdi:bluetooth
+    # device_tracker.stefan:
+    #   icon: mdi:cellphone-iphone
 
 input_boolean:
   isabella_home:
