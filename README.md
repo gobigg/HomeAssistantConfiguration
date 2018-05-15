@@ -6,6 +6,12 @@ My configuration is broken down into [packages](https://github.com/isabellaalstr
 * Running a slave instance of Home Assistant on a Raspberry Pi 3 with a 16 gb memory card, since Hass.io can't use the Intel Nuc built in bluetooth (hoping for support soon!).
 * Using native Homekit component to get support for Homekit and Siri.
 * Using Home Assistant Cloud for Alexa.
+#### Add-ons
+* IDE
+* MariaDB
+* Mosquitto broker
+* Samba share
+* Terminal
 
 ## Hubs
 * Zwave: Aeon Labs Z Wave Stick (GEN 5)

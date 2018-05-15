@@ -23,14 +23,15 @@ group:
     entities:
       - sun.sun
       - alarm_control_panel.home_alarm
+      - sensor.front_door_lock
       - sensor.last_seen_motion
       - sensor.last_door_opened
       - sensor.front_door_latest_ding
       - sensor.front_door_latest_motion
       - sensor.mailbox
-      - input_boolean.car_heater
+      # - input_boolean.car_heater
       - switch.stefan_radiator
-      - input_boolean.test
+      # - input_boolean.test
 
   everything_view:
     view: yes

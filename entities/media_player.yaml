@@ -3,3 +3,13 @@
   # - platform: spotify
   #   client_id: !secret spotify_id
   #   client_secret: !secret spotify_secret
+  - platform: samsungtv
+    name: 'Livingroom tv'
+    host: 192.168.1.50
+    port: 8001
+    mac: 90:F1:AA:C2:07:7C
+  - platform: samsungtv
+    name: 'Livingroom movie system'
+    host: 192.168.1.86
+    mac: 0C:89:10:92:04:FF
+  # - platform: plex

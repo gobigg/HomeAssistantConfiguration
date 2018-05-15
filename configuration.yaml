@@ -24,7 +24,7 @@ cloud: !include assistants/cloud.yaml # Alexa
 homekit: !include assistants/homekit.yaml
 ios: !include notify/ios_config.yaml
 
-# discovery:
+discovery:
 
 # ########################################
 # ###                GUI               ###
@@ -84,11 +84,14 @@ hue:
       allow_hue_groups: false
 
 # ########################################
-# ###              ENTITES             ###
+# ###              ENTITIES             ###
 # ########################################
 ring:
   username: !secret ring_username
   password: !secret ring_password
+verisure:
+  username: !secret verisure_username
+  password: !secret verisure_password
 media_player: !include entities/media_player.yaml
 scene: !include_dir_merge_list scene
 device_tracker: !include entities/device_tracker.yaml
@@ -113,3 +116,5 @@ google:
   client_secret: !secret google_secret
 ifttt:
   key: !secret ifttt_key
+tts:
+  - platform: google

@@ -1,0 +1,75 @@
+homeassistant:
+  customize:
+    media_player.shield:
+      friendly_name: Chromecast Shield
+    media_player.big_fucking_tv_ue65hu8500:
+      friendly_name: Vardagsrums-tv
+    media_player.sonos:
+      homebridge_visible: true
+      homebridge_name: Sonos
+    media_player.htse6730_hte6730:
+      friendly_name: Livingroom Movie System
+    media_player.sovrum:
+      friendly_name: Chromecast sovrum
+    media_player._samsung_5_series_49_ue49k5505:
+      friendly_name: Sovrumstv
+    media_player.shield_2:
+      friendly_name: Plex Shield
+      icon: mdi:plex
+
+group:  
+  media_players:
+    view: yes
+    name: Media Players
+    icon: mdi:movie
+    entities:
+      - media_player.sonos
+      - media_player.shield
+      - media_player.sovrum
+      # - media_player.htse6730_hte6730
+      - media_player.livingroom_movie_system
+      - media_player.chrome
+      - media_player.livingroom_tv
+      - media_player.shield_2
+
+script:
+  sonos_say:
+    alias: "Sonos TTS script"
+    sequence:
+     - service: media_player.sonos_snapshot
+       data_template:
+         entity_id: "{{ sonos_entity }}"
+     - service: media_player.sonos_unjoin
+       data_template:
+         entity_id: "{{ sonos_entity }}"
+     - service: media_player.volume_set
+       data_template:
+         entity_id: "{{ sonos_entity }}"
+         volume_level: "{{ volume }}"
+     - service: tts.google_say
+       data_template:
+         entity_id: "{{ sonos_entity }}"
+         message: "{{ message }}"
+     - delay: "{{ delay }}"
+     - service: media_player.sonos_restore
+       data_template:
+         entity_id: "{{ sonos_entity }}"
+
+automation:
+  - alias: 'TTS Sonos on Media center not on'
+    initial_state: 'on'
+    trigger:
+      platform: state
+      entity_id: media_player.livingroom_tv
+      to: 'on'
+    action:
+      - delay: '00:01:00'
+      - condition: state
+        entity_id: media_player.livingroom_movie_system
+        state: 'off'
+      - service: script.sonos_say
+        data:
+          sonos_entity: media_player.sonos
+          volume: 0.2
+          message: 'Media system is not turned on'
+          delay: '00:00:10'

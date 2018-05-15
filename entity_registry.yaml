@@ -766,3 +766,19 @@ sensor.isabellas_iphone_x_battery_state:
   name:
   platform: ios
   unique_id: state_isabellas_iphone_x
+media_player.chrome:
+  name:
+  platform: plex
+  unique_id: bq26zmltkttxnl0lvs9sqpjv
+media_player.isabellas_iphone_x:
+  name:
+  platform: plex
+  unique_id: 526924B4-BB0E-4708-B8E7-57CC7BD9FA60
+media_player.shield_2:
+  name:
+  platform: plex
+  unique_id: 8e3893d2d746d835-com-plexapp-android
+media_player.igrims:
+  name:
+  platform: plex
+  unique_id: 86BDC300-4F32-4F09-AF77-FB83EAB7EAB1

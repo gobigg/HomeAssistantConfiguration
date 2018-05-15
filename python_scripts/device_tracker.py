@@ -9,16 +9,13 @@ newStatus = newState.state
 stefan = hass.states.get('device_tracker.stefan')
 isabella = hass.states.get('device_tracker.isabella')
 
+
+if metatrackerName == 'device_tracker.Stefan':
+    picture = '/local/Stefan.jpg'
+elif metatrackerName == 'device_tracker.Isabella':
+    picture = '/local/Isa.jpg'  
+
 hass.states.set(metatrackerName, newStatus, {
-    'friendly_name' : data.get('meta_entity')
+    'friendly_name' : data.get('meta_entity'),
+    'entity_picture' : picture
 })
-
-# groupState = hass.states.get('group.persons')
-
-# if stefan.state == 'Away' or stefan.state == 'Extended Away' or stefan.state == 'Just Left' and isabella.state == 'Away' or isabella.state == 'Extended Away' or isabella.state == 'Just Left':
-#     hass.states.set('group.persons', 'not_home')
-# else:
-#     hass.states.set('group.persons', 'home')
-# if groupState.state == 'not_home' or groupState.state == 'unknown':
-#     if newStatus == 'Just Arrived':
-#         hass.states.set('group.persons', newStatus)

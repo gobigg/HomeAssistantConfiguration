@@ -3,6 +3,17 @@ homeassistant:
     alarm_control_panel.home_alarm:
       homebridge_visible: true
       homebridge_name: House Alarm
+    lock.ytterdorr:
+      friendly_name: 'Front Door Lock'
+      confirm_controls_show_lock: true
+
+sensor:
+  - platform: template
+    sensors:
+      front_door_lock:
+        friendly_name: 'Front Door Lock'
+        value_template: '{% if is_state("lock.ytterdorr", "unlocked") %}Unlocked{% elif is_state("lock.ytterdorr", "locked")%}Locked{% else %}Unknown{% endif %}'
+        icon_template: '{% if is_state("lock.ytterdorr", "unlocked") %}mdi:home-lock-open{% elif is_state("lock.ytterdorr", "locked")%}mdi:home-lock{% else %}mdi:comment-question-outline{% endif %}'
 
 alarm_control_panel:
   - platform: manual
@@ -22,6 +33,7 @@ group:
     icon: mdi:home-variant
     entities:
       - alarm_control_panel.home_alarm
+      - sensor.front_door_lock
       - sensor.last_seen_motion
       - sensor.front_door
       - sensor.back_door
