@@ -1,3 +1,31 @@
+script:
+  house_summary:
+    alias: House Summary
+    sequence:
+     - service: media_player.sonos_snapshot
+       data_template:
+         entity_id: media_player.sonos
+     - service: media_player.sonos_unjoin
+       data_template:
+         entity_id: media_player.sonos
+     - service: media_player.volume_set
+       data_template:
+         entity_id: media_player.sonos
+         volume_level: 0.2
+     - service: tts.google_say
+       data_template:
+         entity_id: media_player.sonos
+         message:
+          >
+            {%- for entity_id in states.group.doors_and_windows.attributes.entity_id if states(entity_id) == 'Open' -%}
+            {% set parts = entity_id.split('.') -%}
+            {%- if loop.first %}The {{ states[parts[0]][parts[1]].name }} {%- if loop.length == 2 %} is open{%endif%}{% elif loop.last %} and the {{ states[parts[0]][parts[1]].name }}{%- if loop.length > 1%} are open {%endif%}{% else %}, the {{ states[parts[0]][parts[1]].name }}{% endif -%}
+            {%- endfor %}
+     - delay: '00:01:00'
+     - service: media_player.sonos_restore
+       data_template:
+         entity_id: media_player.sonos
+
 group:
   house_mode:
     control: hidden
@@ -8,6 +36,7 @@ group:
       - input_boolean.vacation_mode
       - input_boolean.cleaning_day
       - input_boolean.guest_mode
+      - input_boolean.isa_mode
 
   house_view:
     view: yes
@@ -18,14 +47,15 @@ group:
       - group.air
       - group.laundry_card
       - group.vacuum_card    
-      - group.temp_and_light    
-      - group.cat_card
+      # - group.temp_and_light    
+      # - group.cat_card
       - group.plant_card
       - device_tracker.isabella
       - device_tracker.stefan
       - history_graph.temperatures
-      - history_graph.stefans_room
-      - history_graph.stefans_room_long_term
+      - history_graph.temperatures_seven_days
+      - history_graph.humidity_seven_days
+      - history_graph.luminance_seven_days
 
   camera:
     name: Cameras

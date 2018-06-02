@@ -782,3 +782,75 @@ media_player.igrims:
   name:
   platform: plex
   unique_id: 86BDC300-4F32-4F09-AF77-FB83EAB7EAB1
+binary_sensor.door_window_sensor_158d00020195a0:
+  name:
+  platform: xiaomi_aqara
+  unique_id: status158d00020195a0
+zwave.aeotec_zw090_zstick_gen5:
+  name:
+  platform: zwave
+  unique_id: node-1
+zwave.washer_plug:
+  name:
+  platform: zwave
+  unique_id: node-3
+zwave.front_door:
+  name:
+  platform: zwave
+  unique_id: node-4
+zwave.dining_area_window_sensor:
+  name:
+  platform: zwave
+  unique_id: node-6
+zwave.living_room_ceiling_light:
+  name:
+  platform: zwave
+  unique_id: node-9
+zwave.upstairs_hallway_ceiling_light:
+  name:
+  platform: zwave
+  unique_id: node-10
+zwave.dining_area_ceiling_light:
+  name:
+  platform: zwave
+  unique_id: node-11
+zwave.living_room_spotlights:
+  name:
+  platform: zwave
+  unique_id: node-12
+zwave.passage_ceiling_spotlights:
+  name:
+  platform: zwave
+  unique_id: node-13
+zwave.passage_pir:
+  name:
+  platform: zwave
+  unique_id: node-18
+zwave.back_door:
+  name:
+  platform: zwave
+  unique_id: node-19
+zwave.water_heater:
+  name:
+  platform: zwave
+  unique_id: node-20
+zwave.upstairs_hallway_pir:
+  name:
+  platform: zwave
+  unique_id: node-22
+zwave.kitchen_ceiling_spotlights:
+  name:
+  platform: zwave
+  unique_id: node-23
+zwave.dryer_plug:
+  name:
+  platform: zwave
+  unique_id: node-24
+binary_sensor.door_window_sensor_158d00022b96b4:
+  name:
+  platform: xiaomi_aqara
+  unique_id: status158d00022b96b4
+media_player.tv_ue49k5505:
+  name:
+  platform: plex
+  unique_id: wn50y3w990n

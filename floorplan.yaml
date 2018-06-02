@@ -98,7 +98,7 @@
             - light.living_room_ceiling_light_level
             - light.living_room_spotlights_level
             - light.passage_ceiling_spotlights_level
-            - group.walk_in_closet_lights        
+            - light.walk_in_closet_lights        
             - light.upstairs_hallway_ceiling_light_level   
             - light.hallway_window_light     
           # groups:
@@ -111,7 +111,7 @@
             service: toggle
         - name: Stairs Lights
           entities:
-            - group.stairs_lights                       
+            - light.stairs_lights                       
           states:
             - state: 'on'
               class: 'light-on'

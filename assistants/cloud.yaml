@@ -3,8 +3,8 @@
       include_entities:
         - group.inside_lights_automations
         - group.outdoor_lights_card
-        - group.stairs_lights
-        - group.walk_in_closet_lights
+        - light.stairs_lights
+        - light.walk_in_closet_lights
         - script.goodnight
         - script.goodmorning
         - script.cleaning_music
@@ -41,10 +41,10 @@
       group.outdoor_lights_card:
         name: 'Outdoor lights'
         display_categories: 'LIGHT'
-      group.stairs_lights:
+      light.stairs_lights:
         name: 'Stairs lights'
         display_categories: 'LIGHT'
-      group.walk_in_closet_lights:
+      light.walk_in_closet_lights:
         name: 'Walk in closet lights'
         display_categories: 'LIGHT'
       script.goodnight:

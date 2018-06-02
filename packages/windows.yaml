@@ -4,6 +4,8 @@ homeassistant:
       homebridge_visible: true
       device_class: opening
       homebridge_name: Dining room window
+    binary_sensor.door_window_sensor_158d00020195a0:
+      friendly_name: Bedroom window
       
 
 sensor:
@@ -13,7 +15,10 @@ sensor:
         friendly_name: 'Dining area window'
         value_template: '{% if is_state("binary_sensor.dining_area_window_sensor_sensor", "on") %}Open{% elif is_state("binary_sensor.dining_area_window_sensor_sensor", "off")%}Closed{% else %}Unknown{% endif %}'
         icon_template: '{% if is_state("binary_sensor.dining_area_window_sensor_sensor", "on") %}mdi:window-open{% elif is_state("binary_sensor.dining_area_window_sensor_sensor", "off")%}mdi:window-closed{% else %}mdi:comment-question-outline{% endif %}'
-
+      bedroom_window:
+        friendly_name: 'Bedroom window'
+        value_template: '{% if is_state("binary_sensor.door_window_sensor_158d00020195a0", "on") %}Open{% elif is_state("binary_sensor.door_window_sensor_158d00020195a0", "off")%}Closed{% else %}Unknown{% endif %}'
+        icon_template: '{% if is_state("binary_sensor.door_window_sensor_158d00020195a0", "on") %}mdi:window-open{% elif is_state("binary_sensor.door_window_sensor_158d00020195a0", "off")%}mdi:window-closed{% else %}mdi:comment-question-outline{% endif %}'
 
 # automation:
 #   - alias: Window opened
@@ -56,6 +61,6 @@ alert:
     done_message: Window closed
     entity_id: binary_sensor.dining_area_window_sensor_sensor
     state: 'on'
-    repeat: 1
+    repeat: 5
     notifiers:
-      - ios_isabellas_iphone_6s
+      - ios_isabellas_iphone_x

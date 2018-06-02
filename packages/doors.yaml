@@ -30,6 +30,35 @@ homeassistant:
       homebridge_name: Back Door
       device_class: opening
       
+  customize_glob:
+    sensor.*door*:
+      custom_ui_state_card: state-card-custom-ui
+      templates:
+        hs_color: "if (state === 'Closed') return [0, 0];
+        else if (state === 'Unknown') return [40, 70];
+        else if (state === 'Open') return [0, 85];"
+
+    sensor.*window*:
+      custom_ui_state_card: state-card-custom-ui
+      templates:
+        hs_color: "if (state === 'Closed') return [0, 0];
+        else if (state === 'Unknown') return [40, 70];
+        else if (state === 'Open') return [0, 85];"
+
+    sensor.*lock*:
+      custom_ui_state_card: state-card-custom-ui
+      templates:
+        hs_color: "if (state === 'Locked') return [0, 0];
+        else if (state === 'Unknown') return [40, 70];
+        else if (state === 'Unlocked') return [0, 85];"
+    sensor.front_door_combined:
+      custom_ui_state_card: state-card-custom-ui
+      templates:
+        hs_color: "if (state === 'Locked and Closed') return [0, 0];
+        else if (state === 'Locked and Open') return [0, 85];
+        else if (state === 'Unlocked and Open') return [0, 85];
+        else return [40, 70];"
+
 sensor:
   - platform: template
     sensors:
@@ -64,6 +93,7 @@ binary_sensor:
       front_door_homebridge:
         friendly_name: "Front Door"
         value_template: '{% if is_state("sensor.front_door_access_control", "22") %}on{% else %}off{% endif %}'
+
 alert:
   backyard_door_open:
     name: Backyard Door left open
@@ -125,6 +155,19 @@ group:
       - alert.balcony_door_open
       - alert.yard_storage_door_open
 
+  doors_and_windows:
+    view: no
+    name: Security
+    icon: mdi:home-variant
+    entities:   
+      - sensor.front_door
+      - sensor.back_door
+      - sensor.backyard_door
+      - sensor.balcony_door
+      - sensor.dining_area_window
+      - sensor.bedroom_window
+      - sensor.yard_storage_door
+      
 automation:
   - alias: Light Outdoor On When Door Opens
     initial_state: 'on'

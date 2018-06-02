@@ -1,0 +1,89 @@
+homeassistant:
+  customize:
+    input_boolean.isa_mode:
+      confirm_controls_show_lock: true
+
+input_boolean:
+  isa_mode:
+    name: Isabella Mode
+    initial: 'off'
+    icon: mdi:account-multiple
+
+
+automation:
+  - alias: House Isa Mode Ask
+    initial_state: 'on'
+    trigger:
+      - platform: state
+        entity_id: device_tracker.isabella
+        to: 'Just Arrived'
+      - platform: state
+        entity_id: device_tracker.stefan
+        to: 'Just Left'
+    # condition:
+      # condition: and
+      # conditions:
+      #   - condition: or
+      #     conditions:
+      #       - condition: state
+      #         entity_id: device_tracker.isabella
+      #         state: 'Home'
+      #       - condition: state
+      #         entity_id: device_tracker.isabella
+      #         state: 'Just Arrived'
+      #   - condition: or
+      #     conditions:
+      #       - condition: state
+      #         entity_id: device_tracker.stefan
+      #         state: 'Away'
+      #       - condition: state
+      #         entity_id: device_tracker.stefan
+      #         state: 'Just Left'
+    action:
+      - service: notify.ios_isabellas_iphone_x
+        data:
+          message: 'Test'
+      # - service: notify.ios_isabellas_iphone_x
+      #   data:
+      #     title: 'Home alone!'
+      #     message: 'Turn on mode?'
+          # data:
+          #   push:
+          #     badge: 0
+          #     category: "isa_mode"
+
+  - alias: House Isa Mode On
+    initial_state: 'on'
+    trigger:
+      platform: event
+      event_type: ios.notification_action_fired
+      event_data:
+        actionName: HOME_ALONE_MODE_ON
+    action:
+      - service: homeassistant.turn_on
+        entity_id: input_boolean.isa_mode
+      # - More to come when confirmed working as intended
+
+  - alias: House Isa Mode Off
+    initial_state: 'on'
+    trigger:
+      - platform: state
+        entity_id: device_tracker.stefan
+        to: 'Just Arrived'
+      - platform: state
+        entity_id: device_tracker.stefan
+        to: 'Home'
+      - platform: state
+        entity_id: device_tracker.isabella
+        to: 'Just Left'
+    condition:
+      - condition: state
+        entity_id: input_boolean.isa_mode
+        state: 'on'
+    action:
+      - service: homeassistant.turn_off
+        entity_id: input_boolean.isa_mode
+      - service: notify.ios_isabellas_iphone_x
+        data:
+          title: 'No more alone time'
+          message: 'Stefan is home'

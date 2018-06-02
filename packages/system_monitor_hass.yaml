@@ -117,3 +117,31 @@ automation:
         data_template: 
           title: 'New Home Assistant Release Available'
           message: "Home Assistant  {{ states.updater.updater.state }}  is now available."
+
+  - alias: 'Hass Ios notify error'
+    initial_state: 'on'
+    trigger:
+      platform: event
+      event_type: system_log_event
+    condition:
+      condition: template
+      value_template: '{{ "Platform application is disabled" in trigger.event.data.message }}'
+    action:
+      - service: notify.pushbullet_isa
+        data:
+          title: 'Error message'
+          message: '{{ trigger.event.data.message }}'
+
+  - alias: 'Hass Ios notify error 2'
+    initial_state: 'on'
+    trigger:
+      platform: event
+      event_type: system_log_event
+    condition:
+      condition: template
+      value_template: '{{ "ios" in trigger.event.data.source }}'
+    action:
+      - service: notify.pushbullet_isa
+        data:
+          title: 'Error source'
+          message: '{{ trigger.event.data.message }}'

@@ -31,7 +31,7 @@ group:
     name: Front Door
     # control: hidden
     entities:
-      - camera.front_door
+      # - camera.front_door
       - binary_sensor.ring_front_door_ding
       - binary_sensor.ring_front_door_motion
       - sensor.ring_front_door_last_activity

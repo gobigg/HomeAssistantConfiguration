@@ -145,14 +145,46 @@ automation:
       - service: input_boolean.turn_off
         entity_id: input_boolean.bedside_lamp_dimmer
 
-  # - alias: Light Switch Bedroom All Lights
-  #   initial_state: 'on'
-  #   trigger:
-  #     platform: event
-  #     event_type: click
-  #     event_data:
-  #       entity_id: binary_sensor.switch_158d0001243520
-  #       click_type: long_click_press
-  #   action:
-  #     service: homeassistant.turn_off
-  #     entity_id: group.inside_lights_automations
+  - alias: 'Notification on window open and lights on'
+    initial_state: 'on'
+    trigger:
+      - platform: state
+        entity_id: binary_sensor.door_window_sensor_158d00020195a0
+        to: 'on'
+        for:
+          minutes: 10
+    condition:
+      condition: and
+      conditions:
+        - condition: state
+          entity_id: sun.sun
+          state: below_horizon
+        - condition: or
+          conditions:
+            - condition: state
+              entity_id: light.bedroom_ceiling_light 
+              state: 'on'
+            - condition: state
+              entity_id: light.bedside_lamp
+              state: 'on'
+
+    action:
+    - service: notify.ios_isabellas_iphone_x
+      data:
+        title: 'Bedroom window open'
+        message: 'Do you want to turn off lights?'
+        data:
+          push:
+            badge: 0
+            category: "lights_off_bedroom"
+
+  - alias: 'Lights off when bedroom window open'
+    initial_state: 'on'
+    trigger:
+      platform: event
+      event_type: ios.notification_action_fired
+      event_data:
+        actionName: LIGHTS_OFF_BEDROOM
+    action:
+      - service: light.turn_off
+        entity_id: light.bedroom_ceiling_light, light.bedside_lamp

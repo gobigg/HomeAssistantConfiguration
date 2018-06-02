@@ -14,6 +14,10 @@ sensor:
         friendly_name: 'Front Door Lock'
         value_template: '{% if is_state("lock.ytterdorr", "unlocked") %}Unlocked{% elif is_state("lock.ytterdorr", "locked")%}Locked{% else %}Unknown{% endif %}'
         icon_template: '{% if is_state("lock.ytterdorr", "unlocked") %}mdi:home-lock-open{% elif is_state("lock.ytterdorr", "locked")%}mdi:home-lock{% else %}mdi:comment-question-outline{% endif %}'
+      front_door_combined:
+        friendly_name: 'Front door'
+        value_template: '{{states.sensor.front_door_lock.state}} and {{states.sensor.front_door.state}}'
+        icon_template: '{% if is_state("lock.ytterdorr", "unlocked") %}mdi:home-lock-open{% elif is_state("lock.ytterdorr", "locked")%}mdi:home-lock{% else %}mdi:comment-question-outline{% endif %}'
 
 alarm_control_panel:
   - platform: manual
@@ -33,13 +37,14 @@ group:
     icon: mdi:home-variant
     entities:
       - alarm_control_panel.home_alarm
-      - sensor.front_door_lock
       - sensor.last_seen_motion
+      - sensor.front_door_lock      
       - sensor.front_door
       - sensor.back_door
       - sensor.backyard_door
       - sensor.balcony_door
       - sensor.dining_area_window
+      - sensor.bedroom_window
       - sensor.front_door_outdoor_movement
       - sensor.hallway_movement
       - sensor.passage_movement
@@ -141,6 +146,9 @@ automation:
     - service: alarm_control_panel.alarm_disarm
       entity_id: alarm_control_panel.home_alarm
 
+##############################################################
+######################### TRIGGERS ###########################
+##############################################################
 
 - alias: 'Alarm Trigger While Armed Away'
   initial_state: 'on'

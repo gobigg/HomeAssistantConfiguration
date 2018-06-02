@@ -55,7 +55,7 @@ homeassistant:
     sensor.milight_hub:
       icon: mdi:google-keep
     sensor.ring_doorbell:
-      icon: mdi:camera-iris
+      icon: mdi:doorbell-video
     sensor.ring_chime_pro:
       icon: mdi:wifi
     sensor.ring_chime:

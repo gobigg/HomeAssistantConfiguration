@@ -1,9 +1,23 @@
-  - name: School
-    latitude: !secret school_lat
-    longitude: !secret school_long
+  - name: Store
+    latitude: !secret ica_lat
+    longitude: !secret ica_long
+    icon: mdi:cart
+    radius: 300
+
+  - name: Work S
+    latitude: !secret s_work_lat
+    longitude: !secret s_work_long
     icon: mdi:code-braces
-  - name: Work
-    latitude: !secret work_lat
-    longitude: !secret work_long
-    icon: mdi:briefcase
+    radius: 300
+
+  - name: Work I
+    latitude: !secret i_work_lat
+    longitude: !secret i_work_long
+    icon: mdi:code-braces
+    radius: 300
+    
+  - name: Golf
+    latitude: !secret golf_lat
+    longitude: !secret golf_long
+    icon: mdi:golf
     radius: 300

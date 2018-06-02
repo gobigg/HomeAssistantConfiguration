@@ -18,7 +18,7 @@ homeassistant:
       homebridge_visible: true     
       homebridge_name: Stairs Top Spot
         
-    group.stairs_lights:
+    light.stairs_lights_lights:
       friendly_name: Stairs Lights
       # icon: mdi:stairs
       # homebridge_visible: true
@@ -52,3 +52,10 @@ light:
     command_topic: milight/0x1/rgbw/1 
     state_topic: milight/updates/0x1/rgbw/1 
     <<: *MILIGHT_PARAMS
+    
+  - platform: group
+    name: 'Stairs lights'
+    entities:
+      - light.stairs_bottom_spot
+      - light.stairs_middle_spot
+      - light.stairs_top_spot

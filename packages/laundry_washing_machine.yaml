@@ -41,15 +41,15 @@ automation:
       entity_id: sensor.washer
       from: 'True'
       to: 'False'
-    # condition:
-    #   condition: or
-    #   conditions:
-    #     - condition: state
-    #       entity_id: sensor.washing_machine_status
-    #       state: Idle
-    #     - condition: state
-    #       entity_id: sensor.washing_machine_status
-    #       state: Clean
+    condition:
+      condition: or
+      conditions:
+        - condition: state
+          entity_id: sensor.washing_machine_status
+          state: Idle
+        - condition: state
+          entity_id: sensor.washing_machine_status
+          state: Clean
     action:
       - service: input_select.select_option
         data:
@@ -64,7 +64,7 @@ automation:
       from: 'False'
       to: 'True'
       for:
-        minutes: 10
+        minutes: 5
     condition:
       condition: and
       conditions:
@@ -78,25 +78,32 @@ automation:
           option: Clean
 
 
-## Plan to implement:
-  # - alias: Set washing machine idle when door opens
-  #   trigger:
-  #     # I've setup a template sensor to change make the binary_sensor report open and closed
-  #     # instead of 1 and 0
-  #     - platform: state
-  #       entity_id: input_select.washingmachine_door_status
-  #       to: 'Open'
-  #   condition:
-  #     condition: and
-  #     conditions:
-  #       - condition: state
-  #         entity_id: input_select.washing_machine_status
-  #         state: Clean
-  #   action:
-  #     - service: input_select.select_option
-  #       data:
-  #         entity_id: input_select.washing_machine_status
-  #         option: Idle
+  - alias: Laundry Washing Machine Emptied
+    trigger:
+      - platform: state
+        entity_id: binary_sensor.door_window_sensor_158d00022b96b4
+        to: 'on'
+    condition:
+      condition: and
+      conditions:
+        - condition: state
+          entity_id: input_select.washing_machine_status
+          state: Clean
+    action:
+      - service: input_select.select_option
+        data:
+          entity_id: input_select.washing_machine_status
+          option: Idle
+      - service: light.turn_on
+        data:
+          entity_id: light.floorlamp_uplight
+          brightness: 150
+          rgb_color: 
+            - 255
+            - 214
+            - 170
+      - service: light.turn_off
+        entity_id: light.floorlamp_uplight
 
 
 
@@ -113,13 +120,11 @@ automation:
       - platform: state
         entity_id: device_tracker.isabella
         to: 'Home'
-        for:
-          minutes: 10
-      - platform: state
-        entity_id: device_tracker.stefan
-        to: 'Home'
-        for:
-          minutes: 10
+      # - platform: state
+      #   entity_id: device_tracker.stefan
+      #   to: 'Home'
+      #   for:
+      #     minutes: 10
       - platform: time
         at: '08:01:00'
     condition:
@@ -128,9 +133,6 @@ automation:
         - condition: time
           before: '23:00:00'
           after: '08:00:00'
-        - condition: state
-          entity_id: group.persons
-          state: 'home'
         - condition: state
           entity_id: input_select.washing_machine_status
           state: Clean
@@ -167,24 +169,26 @@ automation:
               badge: 0
               category: "washer"
 
-  - alias: Laundry Washing Machine Emptied
-    initial_state: 'on'
-    trigger:
-      platform: event
-      event_type: ios.notification_action_fired
-      event_data:
-        actionName: WASHER_EMPTIED
-    action:
-      - service: input_select.select_option
-        data:
-          entity_id: input_select.washing_machine_status
-          option: Idle
-      # - service: notify.all
-      - service: light.turn_off
-        entity_id: light.floorlamp_uplight
-      - service: notify.ios_isabellas_iphone_x
-        data:
-          message: 'The laundry is taken care of'
+  # - alias: Laundry Washing Machine Emptied
+  #   initial_state: 'on'
+  #   trigger:
+  #     platform: state
+  #     entity_id: 
+  #     platform: event
+  #     event_type: ios.notification_action_fired
+  #     event_data:
+  #       actionName: WASHER_EMPTIED
+  #   action:
+  #     - service: input_select.select_option
+  #       data:
+  #         entity_id: input_select.washing_machine_status
+  #         option: Idle
+  #     # - service: notify.all
+  #     - service: light.turn_off
+  #       entity_id: light.floorlamp_uplight
+  #     - service: notify.ios_isabellas_iphone_x
+  #       data:
+  #         message: 'The laundry is taken care of'
 
   - alias: Laundry Washing Machine Snoozed
     initial_state: 'on'

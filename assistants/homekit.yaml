@@ -28,6 +28,7 @@
       - script.goodmorning
       - script.goodnight
       - script.movie_time
+      - script.house_summary
 
       - sensor.temperature_158d0001235510
       - sensor.temperature_158d000123552c

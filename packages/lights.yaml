@@ -33,9 +33,8 @@ homeassistant:
       homebridge_visible: true
       homebridge_name: Movie Time
 
-    group.outdoor_lights:
-      homebridge_visible: true
-      homebridge_name: Outdoor Lights
+    light.outdoor_lights:
+      icon: mdi:wall-sconce
       
     group.inside_lights_automations:
       homebridge_visible: true
@@ -134,7 +133,7 @@ script:
           transition: 30
       - service: light.turn_on
         data:
-          entity_id: light.living_room_ceiling_light_level, group.stairs_lights, light.upstairs_hallway_ceiling_light_level
+          entity_id: light.living_room_ceiling_light_level, light.stairs_lights_lights, light.upstairs_hallway_ceiling_light_level
           brightness: 10
 
 light:
@@ -145,12 +144,29 @@ light:
       - light.outdoor_plug
       - light.outdoor_front_light
       - light.outdoor_yard_light
-
+  - platform: group
+    name: 'Inside lights'
+    entities:
+      - light.bedroom_ceiling_light
+      - light.bedside_lamp
+      - light.living_room_ceiling_light_level
+      - light.living_room_spotlights_level
+      - light.passage_ceiling_spotlights_level
+      - light.upstairs_hallway_ceiling_light_level
+      - light.dining_area_ceiling_light_level
+      - light.isa_ceiling_light
+      - light.floorlamp_reading_light
+      - light.floorlamp_uplight
+      - light.gateway_light_34ce008bfc4b
+      - light.kitchen_sink_light
+      - light.stairs_lights
+      - light.walk_in_closet_lights
+      - light.kitchen_ceiling_spotlights_level
 
 group:
   lights:
     control: hidden
-    name: Inside lights
+    name: Lights
     entities:
       - input_text.lights_tiles
       # - group.outdoor_lights_card
@@ -168,8 +184,8 @@ group:
       - light.living_room_ceiling_light_level
       - light.living_room_spotlights_level
       - light.passage_ceiling_spotlights_level
-      - group.stairs_lights
-      - group.walk_in_closet_lights
+      - light.stairs_lights_lights
+      - light.walk_in_closet_lights
       # - light.stefan_ceiling_light
       - light.stefan_lightstrip
       - light.upstairs_hallway_ceiling_light_level
@@ -191,6 +207,6 @@ group:
       - light.floorlamp_uplight
       - light.gateway_light_34ce008bfc4b
       - light.kitchen_sink_light
-      - group.stairs_lights
-      - group.walk_in_closet_lights
+      - light.stairs_lights
+      - light.walk_in_closet_lights
       - light.kitchen_ceiling_spotlights_level
