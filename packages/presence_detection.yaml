@@ -60,6 +60,9 @@ input_select:
       - Just Arrived
       - Just Left
       - Away
+      - Work
+      - Golf
+      - Store
       - Extended Away
     initial: Home
   isa_status_dropdown:
@@ -69,6 +72,9 @@ input_select:
       - Just Arrived
       - Just Left
       - Away
+      - Work
+      - Golf
+      - Store
       - Extended Away
     initial: Home
 
@@ -166,12 +172,12 @@ automation:
         entity_id: input_select.stefan_status_dropdown
         to: 'Just Left'
         for:
-          minutes: 10
+          minutes: 5
       - platform: state
         entity_id: input_select.isa_status_dropdown
         to: 'Just Left'
         for:
-          minutes: 10
+          minutes: 5
     action:
       - service: input_select.select_option
         data_template:

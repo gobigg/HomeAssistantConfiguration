@@ -15,10 +15,28 @@ automation:
   trigger:
     - platform: state
       entity_id: binary_sensor.smoke_sensor_158d0001d37bdd, binary_sensor.smoke_sensor_158d0001d37be5, binary_sensor.smoke_sensor_158d0001d37c82
-      to: 'Triggered'
+      to: 'on'
   action:
     - service: notify.ios_isabellas_iphone_x
       data_template:
-        title: 'Smoke Alarm Went Off'
+        title: '{{ trigger.to_state.name }} triggered'
         message: >
-          '{{ trigger.to_state.name }}'
+          {% if is_state('group.persons', 'home') %}{% if is_state('device_tracker.stefan', 'Home') %}Stefan is {{states.device_tracker.stefan.state}} {% endif %}{% if is_state('device_tracker.isabella', 'Home')%}Isabella is {{states.device_tracker.isabella.state}}{% endif %}{% else %}No one is home.
+          {% endif %}
+          Passage: {{states.sensor.temperature_158d000123552c.state_with_unit}}
+          Bathroom: {{states.sensor.temperature_158d0001a2a899.state}}
+          Stefan: {{states.sensor.temperature_158d0001fd83e7.state}}
+          Bedroom: {{states.sensor.temperature_158d0001235510.state}}
+
+- alias: 'High Temperatures'
+  initial_state: 'on'
+  trigger:
+    - platform: numeric_state
+      entity_id: sensor.temperature_158d000123552c, sensor.temperature_158d0001a2a899, sensor.temperature_158d0001fd83e7, sensor.temperature_158d0001235510
+      above: 30.0
+  action:
+    - service: notify.ios_isabellas_iphone_x
+      data_template:
+        title: '{{ trigger.to_state.name }}'
+        message: >
+          {{trigger.to_state.state_with_unit}}
