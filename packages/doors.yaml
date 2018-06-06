@@ -103,7 +103,7 @@ alert:
     repeat: 2
     skip_first: True
     notifiers:
-      - ios_isabellas_iphone_6s
+      - ios_isabellas_iphone_x
   front_door_open:
     name: Front Door left open
     done_message: Door closed
@@ -112,7 +112,7 @@ alert:
     repeat: 2
     skip_first: True
     notifiers:
-      - ios_isabellas_iphone_6s
+      - ios_isabellas_iphone_x
   back_door_open:
     name: Back Door left open
     done_message: Door closed
@@ -121,7 +121,7 @@ alert:
     repeat: 10
     skip_first: True
     notifiers:
-      - ios_isabellas_iphone_6s
+      - ios_isabellas_iphone_x
   balcony_door_open:
     name: Balcony Door left open
     done_message: Door closed
@@ -130,7 +130,7 @@ alert:
     repeat: 1
     skip_first: True
     notifiers:
-      - ios_isabellas_iphone_6s
+      - ios_isabellas_iphone_x
   yard_storage_door_open:
     name: Yard Storage Door left open
     done_message: Door closed
@@ -143,7 +143,7 @@ alert:
       - 5
     skip_first: True
     notifiers:
-      - ios_isabellas_iphone_6s
+      - ios_isabellas_iphone_x
 
 group:
   door_alerts:

@@ -16,5 +16,5 @@ alert:
       - 60
     skip_first: True
     notifiers:
-      - ios_isabellas_iphone_6s
+      - ios_isabellas_iphone_x
 

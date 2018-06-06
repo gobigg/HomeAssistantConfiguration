@@ -1,24 +1,13 @@
 homeassistant:
   customize:
     sensor.temperature_158d0001235510:
-      friendly_name: Bedroom Temperature
-      homebridge_visible: true
-      homebridge_name: Bedroom Temperature
+      friendly_name: Bedroom
     sensor.temperature_158d000123552c:
-      friendly_name: Passage Temperature
-      homebridge_visible: true
-      homebridge_name: Passage Temperature
-
+      friendly_name: Passage
     sensor.temperature_158d0001a2a899:
-      friendly_name: Downstairs Bathroom Temperature
-      homebridge_visible: true
-      homebridge_name: Downstairs BathroomTemperature
-
+      friendly_name: Downstairs Bathroom
     sensor.temperature_158d0001fd83e7:
-      friendly_name: Stefans Room Temperature
-      homebridge_visible: true
-      homebridge_name: Stefans Room Temperature
-
+      friendly_name: Stefans Room
 
     sensor.humidity_158d0001fd83e7:
       friendly_name: Stefans Room Humidity
@@ -43,9 +32,8 @@ homeassistant:
       friendly_name: Hallway Lux
       icon: mdi:theme-light-dark
 
-
 history_graph:
-  temperatures:
+  temperatures_48h:
     name: Temperatures 48h
     refresh: 1800
     hours_to_show: 48
@@ -54,7 +42,7 @@ history_graph:
       - sensor.temperature_158d000123552c
       - sensor.temperature_158d0001a2a899
       - sensor.temperature_158d0001fd83e7
-  temperatures_seven_days:
+  temperatures_7_days:
     name: Temperatures 7 Days
     refresh: 1800
     hours_to_show: 168
@@ -64,7 +52,7 @@ history_graph:
       - sensor.temperature_158d0001a2a899
       - sensor.temperature_158d0001fd83e7
 
-  humidity_seven_days:
+  humidity_7_days:
     name: Humidity 7 Days
     refresh: 1800
     hours_to_show: 168
@@ -74,8 +62,8 @@ history_graph:
       - sensor.humidity_158d0001a2a899
       - sensor.humidity_158d0001fd83e7
   
-  luminance_seven_days:
-    name: Humidity 7 Days
+  luminance_7_days:
+    name: Luminance 7 Days
     refresh: 1800
     hours_to_show: 168
     entities:
@@ -87,15 +75,7 @@ history_graph:
       - sensor.illumination_158d000165ff1f
       - sensor.illumination_158d0001a66256
 
-group:
-  inside_temperatures:
-    name: Inside temperatures
-    entities:
-      - sensor.temperature_158d0001235510
-      - sensor.temperature_158d000123552c
-      - sensor.temperature_158d0001a2a899
-      - sensor.temperature_158d0001fd83e7
-      
+group:    
   temp_and_light:
     name: Temperature, light and humidity
     entities:

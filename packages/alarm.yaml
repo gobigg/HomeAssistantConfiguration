@@ -66,12 +66,26 @@ automation:
       to: 'Away'
       entity_id: input_select.stefan_status_dropdown, input_select.isa_status_dropdown
   condition:
-    - condition: state
-      entity_id: input_select.stefan_status_dropdown
-      state: 'Away'
-    - condition: state
-      entity_id: input_select.isa_status_dropdown
-      state: 'Away'
+    - condition: template
+      value_template: >
+        {%- if states("input_select.stefan_status_dropdown") != "Home" and states("input_select.stefan_status_dropdown") != "Just Arrived"%}
+          true
+        {%- else %}
+          false
+        {%- endif %}
+    - condition: template
+      value_template: >
+        {% if states("input_select.isa_status_dropdown") != "Home" and states("input_select.isa_status_dropdown") != "Just Arrived"%}
+          true
+        {% else %}
+          false
+        {% endif %}
+    # - condition: state
+    #   entity_id: input_select.stefan_status_dropdown
+    #   state: 'Away'
+    # - condition: state
+    #   entity_id: input_select.isa_status_dropdown
+    #   state: 'Away'
     - condition: state
       entity_id: input_boolean.cleaning_day
       state: 'off'
@@ -134,9 +148,6 @@ automation:
 - alias: 'Alarm Disarm'
   initial_state: 'on'
   trigger:
-    # - platform: state
-    #   entity_id: group.persons
-    #   to: 'home'
     - platform: state
       to: 'Just Arrived'
       entity_id: input_select.stefan_status_dropdown, input_select.isa_status_dropdown

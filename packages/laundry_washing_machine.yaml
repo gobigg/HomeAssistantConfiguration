@@ -215,3 +215,32 @@ automation:
             push:
               badge: 0
               category: "WASHER"
+
+  - alias: 'Notification on high humidity in downstairs bathroom'
+    initial_state: 'on'
+    trigger:
+      - platform: numeric_state
+        entity_id: sensor.humidity_158d0001a2a899
+        above: 43
+    condition:
+      condition: and
+      conditions:
+        - condition: state
+          entity_id: input_select.isa_status_dropdown
+          state: 'Home'
+        - condition: time
+          after: '09:00:00'
+          before: '23:00:00'
+        # - condition: template
+        #   value_template: >
+        #     {% if states.automation.notification_on_high_humidity_in_downstairs_bathroom.last_triggered is not none %}
+        #       {% if as_timestamp(now()) | int   -  as_timestamp(states.automation.notification_on_high_humidity_in_downstairs_bathroom.attributes.last_triggered) | int > 1800 %} true {% else %} false
+        #       {% endif %}
+        #     {% else %}
+        #     false
+        #     {% endif %}
+    action:
+    - service: notify.ios_isabellas_iphone_x
+      data:
+        title: 'High humidity in downstairs bathroom'
+        message: 'Turn on the fan'

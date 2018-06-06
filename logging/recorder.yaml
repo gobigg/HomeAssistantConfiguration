@@ -26,8 +26,8 @@
   #     - sensor.downstairs_litterbox
   #     - sensor.downstairs_litterbox_visits
   #     - sensor.front_door
-  #     - sensor.isabellas_iphone_6s_battery_level
-  #     - sensor.isabellas_iphone_6s_battery_state
+  #     - sensor.isabellas_iphone_x_battery_level
+  #     - sensor.isabellas_iphone_x_battery_state
   #     - sensor.passage_movement
   #     - sensor.passage_pir_luminance
   #     - sensor.speedtest_download
@@ -43,8 +43,8 @@
   #     - sensor.vacuumed_today
   #     - sensor.water_heater_flood
   #     - sensor.yard_storage_door
-  #     - device_tracker.isabellas_iphone_6s
-  #     - device_tracker.isabellas_iphone_6s_wifi
+  #     - device_tracker.isabellas_iphone_x
+  #     - device_tracker.isabellas_iphone_x_wifi
   #     - sensor.isa_laptop      
   #     - sensor.isa_computer
   #     - input_boolean.isabella_home

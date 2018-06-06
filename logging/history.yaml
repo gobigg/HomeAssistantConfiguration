@@ -53,7 +53,7 @@
       - sensor.kitchen_sink
       - sensor.water_heater
       - device_tracker.isabellas_iphone_x
-      - device_tracker.isabellsiphonex
+      - device_tracker.isabellas_iphone_x_wifi
       - device_tracker.isabella
       - device_tracker.stefan
       - device_tracker.stefan_iphone_7

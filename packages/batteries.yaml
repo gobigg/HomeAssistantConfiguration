@@ -1,8 +1,8 @@
 homeassistant:
   customize:
-    sensor.isabellas_iphone_6s_battery_state:
+    sensor.isabellas_iphone_x_battery_state:
       icon: mdi:battery-charging
-    sensor.isabellas_iphone_6s_battery_level:
+    sensor.isabellas_iphone_x_battery_level:
       icon: mdi:battery
     sensor.paddan_battery_level:
       icon: mdi:battery
@@ -26,8 +26,8 @@ group:
       - sensor.ring_front_door_battery
       - sensor.igrims_battery_level
       - sensor.igrims_battery_state
-      - sensor.isabellas_iphone_6s_battery_level
-      - sensor.isabellas_iphone_6s_battery_state
+      - sensor.isabellas_iphone_x_battery_level
+      - sensor.isabellas_iphone_x_battery_state
       - sensor.paddan_battery_level
       - sensor.paddan_battery_state
 

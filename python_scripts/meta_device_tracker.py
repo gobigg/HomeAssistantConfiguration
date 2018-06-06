@@ -70,9 +70,9 @@ elif newState.state == 'not_home':
 
 #     # hass.services.call('notify', 'pushbullet_isa', {"message": "Someone is not home. Triggered by: " + triggeredEntity + "Meta tracker name: " + metatrackerName, "title": "Meta tracker script"})
 #     if metatrackerName == 'device_tracker.isabella':
-#         # isa_wifi_state = hass.states.get('device_tracker.isabellas_iphone_6s_wifi')
-#         isa_bt_state = hass.states.get('device_tracker.isabellas_iphone_6s_bt')
-#         isa_ios_state = hass.states.get('device_tracker.isabellas_iphone_6s')
+#         # isa_wifi_state = hass.states.get('device_tracker.isabellas_iphone_x_wifi')
+#         isa_bt_state = hass.states.get('device_tracker.isabellas_iphone_x_bt')
+#         isa_ios_state = hass.states.get('device_tracker.isabellas_iphone_x')
 #         # if isa_wifi_state == 'not_home' and isa_bt_state == 'not_home' and isa_ios_state == 'not_home':
 #         if isa_bt_state == 'not_home' and isa_ios_state == 'not_home':
 #             newStatus = 'not_home'

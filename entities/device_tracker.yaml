@@ -14,4 +14,4 @@
     password: !secret tile_password
   - platform: mqtt
     devices:
-      sabellas_iphone_6s_bt: 'homeassistant/device_tracker/isabellas_iphone_6s/state'
+      isabellas_iphone_x_bt: 'homeassistant/device_tracker/isabellas_iphone_x/state'

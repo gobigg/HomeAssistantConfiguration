@@ -3,7 +3,7 @@ homeassistant:
     input_text.lights_tiles:
       custom_ui_state_card: state-card-tiles
       config:
-        columns: 6
+        columns: 3
         # column_width: 50px
         # row_height: 50px
         # gap: 15px

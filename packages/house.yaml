@@ -52,10 +52,11 @@ group:
       - group.plant_card
       - device_tracker.isabella
       - device_tracker.stefan
-      - history_graph.temperatures
-      - history_graph.temperatures_seven_days
-      - history_graph.humidity_seven_days
-      - history_graph.luminance_seven_days
+      - history_graph.temperatures_48h
+      - history_graph.temperatures_7_days
+      # - history_graph.humidity_7_days
+      # - history_graph.luminance_7_days
+      - plant_card
 
   camera:
     name: Cameras

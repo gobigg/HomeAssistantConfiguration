@@ -167,7 +167,6 @@ automation:
             - condition: state
               entity_id: light.bedside_lamp
               state: 'on'
-
     action:
     - service: notify.ios_isabellas_iphone_x
       data:
@@ -188,3 +187,27 @@ automation:
     action:
       - service: light.turn_off
         entity_id: light.bedroom_ceiling_light, light.bedside_lamp
+
+  - alias: 'Notification on high temp in bedroom'
+    initial_state: 'on'
+    trigger:
+      - platform: numeric_state
+        entity_id: sensor.temperature_158d0001235510
+        above: 26
+    condition:
+      condition: and
+      conditions:
+        - condition: state
+          entity_id: input_select.isa_status_dropdown
+          state: 'Home'
+        - condition: state
+          entity_id: binary_sensor.door_window_sensor_158d00020195a0
+          state: 'off'
+        - condition: time
+          after: '12:00:00'
+          before: '23:00:00'
+    action:
+    - service: notify.ios_isabellas_iphone_x
+      data:
+        title: 'Bedroom temp high'
+        message: 'Open the window!'

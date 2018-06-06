@@ -1,3 +1,8 @@
+homeassistant:
+  customize_glob:
+    group.info_badge_group:
+      state_card_mode: badges
+
 group:
   default_view:
     view: yes
@@ -21,6 +26,8 @@ group:
     name: Info
     control: hidden
     entities:
+      - group.inside_temperatures
+      - group.plant_moisture
       - sun.sun
       - alarm_control_panel.home_alarm
       # - sensor.front_door_lock
@@ -33,6 +40,15 @@ group:
       # - input_boolean.car_heater
       - switch.stefan_radiator
       # - input_boolean.test
+  info_badge_group:
+    name: Badge group
+    entities:
+      - sensor.temperature_158d0001235510
+      - sensor.temperature_158d000123552c
+      - sensor.temperature_158d0001a2a899
+      - sensor.temperature_158d0001fd83e7
+      - sensor.small_chili_moisture
+      - sensor.big_chili_moisture
 
   everything_view:
     view: yes

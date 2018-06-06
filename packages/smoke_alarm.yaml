@@ -38,5 +38,4 @@ automation:
     - service: notify.ios_isabellas_iphone_x
       data_template:
         title: '{{ trigger.to_state.name }}'
-        message: >
-          {{trigger.to_state.state_with_unit}}
+        message: '{{ trigger.to_state.state }}'

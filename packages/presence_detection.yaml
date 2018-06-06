@@ -13,9 +13,9 @@ homeassistant:
     device_tracker.isabella:
       # icon: mdi:cellphone-iphone
       entity_picture: /local/Isa.jpg
-    device_tracker.isabellsiphonex:
+    device_tracker.isabellas_iphone_x_wifi:
       icon: mdi:cellphone-iphone
-    device_tracker.isabellas_iphone_6s_bt:
+    device_tracker.isabellas_iphone_x_bt:
       icon: mdi:bluetooth
     device_tracker.stefan:
       # icon: mdi:cellphone-iphone
@@ -36,16 +36,16 @@ group:
     view: no
     entities:
       - device_tracker.isabellas_iphone_x
-      - device_tracker.isabellsiphonex
-      - device_tracker.isabellas_iphone_6s_bt
+      - device_tracker.isabellas_iphone_x_wifi
+      - device_tracker.isabellas_iphone_x_bt
       - device_tracker.stefan_iphone_7_wifi
       - device_tracker.stefan_iphone_7
   isabella:
     name: Isabella
     entities:
       - device_tracker.isabellas_iphone_x
-      - device_tracker.isabellsiphonex
-      - device_tracker.isabellas_iphone_6s_bt
+      - device_tracker.isabellas_iphone_x_wifi
+      - device_tracker.isabellas_iphone_x_bt
   stefan:
     name: Stefan
     entities:
@@ -178,11 +178,35 @@ automation:
         to: 'Just Left'
         for:
           minutes: 5
+      - platform: zone
+        entity_id: device_tracker.stefan_iphone_7
+        zone: zone.work_s
+        event: leave
+      - platform: zone
+        entity_id: device_tracker.isabellas_iphone_x
+        zone: zone.work_i
+        event: leave
+      - platform: zone
+        entity_id: device_tracker.stefan_iphone_7
+        zone: zone.store
+        event: leave
+      - platform: zone
+        entity_id: device_tracker.isabellas_iphone_x
+        zone: zone.store
+        event: leave
+      - platform: zone
+        entity_id: device_tracker.stefan_iphone_7
+        zone: zone.golf
+        event: leave
+      - platform: zone
+        entity_id: device_tracker.isabellas_iphone_x
+        zone: zone.golf
+        event: leave
     action:
       - service: input_select.select_option
         data_template:
           entity_id: >
-            {% if trigger.entity_id == 'input_select.stefan_status_dropdown' %}
+            {% if trigger.entity_id == 'input_select.stefan_status_dropdown' or trigger.entity_id == 'device_tracker.stefan_iphone_7' %}
               input_select.stefan_status_dropdown
             {% else %}
               input_select.isa_status_dropdown
@@ -212,6 +236,68 @@ automation:
             {% endif %}
           option: Extended Away
 
+  - alias: Presence work
+    trigger:
+      - platform: zone
+        entity_id: device_tracker.stefan_iphone_7
+        zone: zone.work_s
+        event: enter
+      - platform: zone
+        entity_id: device_tracker.isabellas_iphone_x
+        zone: zone.work_i
+        event: enter
+    action:
+      - service: input_select.select_option
+        data_template:
+          entity_id: >
+            {% if trigger.entity_id == 'device_tracker.stefan_iphone_7' %}
+              input_select.stefan_status_dropdown
+            {% else %}
+              input_select.isa_status_dropdown
+            {% endif %}
+          option: Work
+
+  - alias: Presence golf
+    trigger:
+      - platform: zone
+        entity_id: device_tracker.stefan_iphone_7
+        zone: zone.golf
+        event: enter
+      - platform: zone
+        entity_id: device_tracker.isabellas_iphone_x
+        zone: zone.golf
+        event: enter
+    action:
+      - service: input_select.select_option
+        data_template:
+          entity_id: >
+            {% if trigger.entity_id == 'device_tracker.stefan_iphone_7' %}
+              input_select.stefan_status_dropdown
+            {% else %}
+              input_select.isa_status_dropdown
+            {% endif %}
+          option: Golf
+
+  - alias: Presence store
+    trigger:
+      - platform: zone
+        entity_id: device_tracker.stefan_iphone_7
+        zone: zone.store
+        event: enter
+      - platform: zone
+        entity_id: device_tracker.isabellas_iphone_x
+        zone: zone.store
+        event: enter
+    action:
+      - service: input_select.select_option
+        data_template:
+          entity_id: >
+            {% if trigger.entity_id == 'device_tracker.stefan_iphone_7' %}
+              input_select.stefan_status_dropdown
+            {% else %}
+              input_select.isa_status_dropdown
+            {% endif %}
+          option: Store
 
   - alias: Presence update tracker
     trigger:

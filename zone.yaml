@@ -20,4 +20,4 @@
     latitude: !secret golf_lat
     longitude: !secret golf_long
     icon: mdi:golf
-    radius: 300
+    radius: 500

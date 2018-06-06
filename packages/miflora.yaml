@@ -1,127 +1,101 @@
-# # homeassistant:
-# #   customize:
-# #     sensor.monstera_temperature:
-# #       homebridge_visible: true
-# #       icon: mdi:thermometer
-# #     sensor.palm_temperature:
-# #       homebridge_visible: true
-# #       icon: mdi:thermometer      
-# #     sensor.palm_light_intensity:
-# #       icon: mdi:theme-light-dark
-# #     sensor.monstera_light_intensity:
-# #       icon: mdi:theme-light-dark
-# group:
-#   plant_card:
-#     view: no
-#     name: Plants
-#     entities:
-#       - plant.palm
-#       - plant.monstera
-#       - plant.plant
-# sensor:
-#   - platform: mqtt
-#     state_topic: "homeassistant/sensor/palm_temperature/state"
-#     name: Palm temperature
-#     unit_of_measurement: '°C'
-#   - platform: mqtt
-#     state_topic: "homeassistant/sensor/plant_temperature/state"
-#     name: Plant temperature
-#     unit_of_measurement: '°C'
-#   - platform: mqtt
-#     state_topic: "homeassistant/sensor/monstera_temperature/state"
-#     name: Monstera temperature
-#     unit_of_measurement: '°C'
+homeassistant:
+  customize:
+    sensor.small_chili_temperature:
+      homebridge_visible: true
+      icon: mdi:thermometer
+    sensor.palm_temperature:
+      homebridge_visible: true
+      icon: mdi:thermometer      
+    sensor.palm_light_intensity:
+      icon: mdi:theme-light-dark
+    sensor.small_chili_light_intensity:
+      icon: mdi:theme-light-dark
 
-#   - platform: mqtt
-#     state_topic: "homeassistant/sensor/palm_moisture/state"
-#     name: Palm moisture
-#     unit_of_measurement: '%'
-#   - platform: mqtt
-#     state_topic: "homeassistant/sensor/plant_moisture/state"
-#     name: Plant moisture
-#     unit_of_measurement: '%'
-#   - platform: mqtt
-#     state_topic: "homeassistant/sensor/monstera_moisture/state"
-#     name: Monstera moisture
-#     unit_of_measurement: '%'
+group:
+  plant_card:
+    view: no
+    name: Plants
+    entities:
+      - plant.palm
+      - plant.small_chili
+      - plant.big_chili
 
-#   - platform: mqtt
-#     state_topic: "homeassistant/sensor/palm_battery/state"
-#     name: Palm battery
-#     unit_of_measurement: '%'
-#   - platform: mqtt
-#     state_topic: "homeassistant/sensor/plant_battery/state"
-#     name: Plant battery
-#     unit_of_measurement: '%'
-#   - platform: mqtt
-#     state_topic: "homeassistant/sensor/monstera_battery/state"
-#     name: Monstera battery
-#     unit_of_measurement: '%'
+sensor:                
+  - platform: mqtt
+    state_topic: "homeassistant/sensor/palm_temperature/state"
+    name: Palm temperature
+    unit_of_measurement: '°C'
+  - platform: mqtt
+    state_topic: "homeassistant/sensor/big_chili_temperature/state"
+    name: Big chili temperature
+    unit_of_measurement: '°C'
+  - platform: mqtt
+    state_topic: "homeassistant/sensor/small_chili_temperature/state"
+    name: Small chili temperature
+    unit_of_measurement: '°C'
 
-# plant:
-#   palm:
-#     sensors:
-#       moisture: sensor.palm_moisture
-#       battery: sensor.palm_battery
-#       temperature: sensor.palm_temperature
-#       # conductivity: sensor.palm_conductivity
-#       # brightness: sensor.palm_light_intensity
-#     min_moisture: 20
-#     max_moisture: 60
-#     min_battery: 10
-#     # min_conductivity: 500
-#     # max_conductivity: 3000
+  - platform: mqtt
+    state_topic: "homeassistant/sensor/palm_moisture/state"
+    name: Palm moisture
+    unit_of_measurement: '%'
+  - platform: mqtt
+    state_topic: "homeassistant/sensor/big_chili_moisture/state"
+    name: Big chili moisture
+    unit_of_measurement: '%'
+  - platform: mqtt
+    state_topic: "homeassistant/sensor/small_chili_moisture/state"
+    name: Small chili moisture
+    unit_of_measurement: '%'
 
-#   monstera:
-#     sensors:
-#       moisture: sensor.monstera_moisture
-#       battery: sensor.monstera_battery
-#       temperature: sensor.monstera_temperature
-#       # conductivity: sensor.monstera_conductivity
-#       # brightness: sensor.monstera_light_intensity
-#     min_moisture: 20
-#     max_moisture: 60
-#     min_battery: 10
-#     # min_conductivity: 500
-#     # max_conductivity: 3000 
+  - platform: mqtt
+    state_topic: "homeassistant/sensor/palm_battery/state"
+    name: Palm battery
+    unit_of_measurement: '%'
+  - platform: mqtt
+    state_topic: "homeassistant/sensor/big_chili_battery/state"
+    name: Big chili battery
+    unit_of_measurement: '%'
+  - platform: mqtt
+    state_topic: "homeassistant/sensor/small_chili_battery/state"
+    name: Small chili battery
+    unit_of_measurement: '%'
 
-#   plant:
-#     sensors:
-#       moisture: sensor.plant_moisture
-#       battery: sensor.plant_battery
-#       temperature: sensor.plant_temperature
-#       # conductivity: sensor.plant_conductivity
-#       # brightness: sensor.plant_light_intensity
-#     min_moisture: 20
-#     max_moisture: 60
-#     min_battery: 10
-#     # min_conductivity: 500
-#     # max_conductivity: 3000      
-    
-# alert:
-#   palm_problem:
-#     name: Palm is having a problem
-#     entity_id: plant.palm
-#     state: 'problem'
-#     repeat: 1440 # every 24h
-#     can_acknowledge: True
-#     notifiers:
-#       - ios_isabellas_iphone_6s
+plant:
+  palm:
+    sensors:
+      moisture: sensor.palm_moisture
+      battery: sensor.palm_battery
+      temperature: sensor.palm_temperature
+      # conductivity: sensor.palm_conductivity
+      # brightness: sensor.palm_light_intensity
+    min_moisture: 20
+    max_moisture: 60
+    min_battery: 10
+    # min_conductivity: 500
+    # max_conductivity: 3000
 
-#   monstera_problem:
-#     name: Monstera is having a problem
-#     entity_id: plant.monstera
-#     state: 'problem'
-#     repeat: 1440 # every 24h
-#     can_acknowledge: True
-#     notifiers:
-#       - ios_isabellas_iphone_6s
+  small_chili:
+    sensors:
+      moisture: sensor.small_chili_moisture
+      battery: sensor.small_chili_battery
+      temperature: sensor.small_chili_temperature
+      # conductivity: sensor.small_chili_conductivity
+      # brightness: sensor.small_chili_light_intensity
+    min_moisture: 20
+    max_moisture: 60
+    min_battery: 10
+    # min_conductivity: 500
+    # max_conductivity: 3000 
 
-#   plant_problem:
-#     name: Plant is having a problem
-#     entity_id: plant.plant
-#     state: 'problem'
-#     repeat: 1440 # every 24h
-#     can_acknowledge: True
-#     notifiers:
-#       - ios_isabellas_iphone_6s
+  big_chili:
+    sensors:
+      moisture: sensor.big_chili_moisture
+      battery: sensor.big_chili_battery
+      temperature: sensor.big_chili_temperature
+      # conductivity: sensor.big_chili_conductivity
+      # brightness: sensor.big_chili_light_intensity
+    min_moisture: 20
+    max_moisture: 60
+    min_battery: 10
+    # min_conductivity: 500
+    # max_conductivity: 3000      

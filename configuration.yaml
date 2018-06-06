@@ -96,6 +96,8 @@ ring:
 verisure:
   username: !secret verisure_username
   password: !secret verisure_password
+  alarm: 0
+  locks: 1
 media_player: !include entities/media_player.yaml
 scene: !include_dir_merge_list scene
 device_tracker: !include entities/device_tracker.yaml
@@ -112,9 +114,9 @@ mqtt:
   broker: core-mosquitto
   username: !secret mqtt_username
   password: !secret mqtt_password
-mqtt_eventstream:
-  # publish_topic: master/topic
-  subscribe_topic: slave/rpi
+# mqtt_eventstream:
+#   # publish_topic: master/topic
+#   subscribe_topic: slave/rpi
 google:
   client_id: !secret google_id
   client_secret: !secret google_secret

@@ -22,7 +22,7 @@ homeassistant:
       friendly_name: Upstairs litterbox switch
 
     ## Downstairs
-    counter.downstairs_litterbox_visits:
+    counter.litterbox_downstairs_visits:
       icon: mdi:poop
       friendly_name: Downstairs Litterbox Visits
     binary_sensor.motion_sensor_158d0001a24ef1:
@@ -33,7 +33,7 @@ homeassistant:
       icon: mdi:theme-light-dark
     sensor.downstairs_litterbox:
       extra_badge:
-        entity_id: sensor.downstairs_litterbox_visits
+        entity_id: counter.litterbox_downstairs_visits
     binary_sensor.switch_158d0001b8f876:
       friendly_name: Downstairs litterbox switch
 
@@ -111,9 +111,6 @@ group:
       - input_select.dlitterbox_state
       - input_select.ulitterbox_state
       - history_graph.litterbox_visits
-      - counter.litterbox_upstairs_visits
-      - counter.litterbox_downstairs_visits
-      - counter.all_litterbox_visits_today
       
 
 #-------------------------------------------
@@ -331,28 +328,3 @@ automation:
   #       data:
   #         title: 'Not done cleaning upstairs litter box'
   #         message: 'Remember to change status later'
-
-
-## To make sure I don't forget anyway
-alert:
-  litterbox_upstairs_cleaning:
-    name: Upstairs Litterbox in Cleaning mode
-    done_message: Cleaning mode exited
-    entity_id: input_select.ulitterbox_state
-    state: 'Cleaning'
-    repeat: 20
-    can_acknowledge: True
-    skip_first: True
-    notifiers:
-      - ios_isabellas_iphone_6s
-
-  litterbox_downstairs_cleaning:
-    name: Downstairs Litterbox in Cleaning mode
-    done_message: Cleaning mode exited
-    entity_id: input_select.dlitterbox_state
-    state: 'Cleaning'
-    repeat: 20
-    can_acknowledge: True
-    skip_first: True
-    notifiers:
-      - ios_isabellas_iphone_6s
