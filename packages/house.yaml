@@ -56,7 +56,7 @@ group:
       - history_graph.temperatures_7_days
       # - history_graph.humidity_7_days
       # - history_graph.luminance_7_days
-      - plant_card
+      - group.plant_card
 
   camera:
     name: Cameras

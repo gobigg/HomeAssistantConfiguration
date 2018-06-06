@@ -26,7 +26,7 @@ group:
     name: Info
     control: hidden
     entities:
-      - group.inside_temperatures
+      - group.info_badge_group
       - group.plant_moisture
       - sun.sun
       - alarm_control_panel.home_alarm

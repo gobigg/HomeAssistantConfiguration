@@ -2,14 +2,6 @@ homeassistant:
   customize:
     sensor.disk_used_:
       friendly_name: Rpi Disk Used
-    # sensor.process_mosquitto:
-    #   friendly_name: 'Mosquitto'
-    #   hidden: False
-    #   icon: mdi:message-processing
-    # sensor.process_homebridge:
-    #   friendly_name: 'Apple HomeKit'
-    #   hidden: False
-    #   icon: mdi:apple
     sensor.uptime:
       friendly_name: 'Hass Uptime'
 
@@ -48,7 +40,6 @@ automation:
       - service: notify.ios_isabellas_iphone_x
         data:
           message: "request_location_update"
-      # - service: python_script.device_tracker_placeholders
       - service: python_script.summary
       - service: python_script.mailbox
         data_template:
