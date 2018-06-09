@@ -29,6 +29,10 @@ homeassistant:
       homebridge_visible: true
       homebridge_name: Back Door
       device_class: opening
+
+    sensor.front_door_access_control:
+      homebridge_name: Front Door
+
       
   customize_glob:
     sensor.*door*:

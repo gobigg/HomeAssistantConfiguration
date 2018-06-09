@@ -64,6 +64,15 @@ automation:
   trigger:
     - platform: state
       to: 'Away'
+      from: 'Just Left'
+      entity_id: input_select.stefan_status_dropdown, input_select.isa_status_dropdown
+    - platform: state
+      to: 'Away'
+      from: 'Just Arrived'
+      entity_id: input_select.stefan_status_dropdown, input_select.isa_status_dropdown
+    - platform: state
+      to: 'Away'
+      from: 'Home'
       entity_id: input_select.stefan_status_dropdown, input_select.isa_status_dropdown
   condition:
     - condition: template
@@ -92,6 +101,9 @@ automation:
   action:
     - service: alarm_control_panel.alarm_arm_away
       entity_id: alarm_control_panel.home_alarm
+    - condition: state
+      entity_id: group.inside_lights_automations
+      state: 'on'
     - service: notify.ios_isabellas_iphone_x
       data:
         title: 'Alarm Armed Away'
@@ -112,26 +124,26 @@ automation:
     - service: homeassistant.turn_off
       entity_id: group.inside_lights_automations
 
-- alias: 'Alarm Arm Home'
-  initial_state: 'on'
-  trigger:
-    # - platform: state
-    #   entity_id: group.persons
-    #   to: 'home'
-      - platform: state
-        to: 'Just Arrived'
-        entity_id: input_select.stefan_status_dropdown, input_select.isa_status_dropdown
-  condition:
-    condition: template
-    value_template: '{{ states.alarm_control_panel.home_alarm.state != armed_home}}'
-  action:
-    - service: alarm_control_panel.alarm_arm_home
-      entity_id: alarm_control_panel.home_alarm
-    - service: notify.pushbullet_isa
-      data_template:
-        title: 'Alarm Armed Home'
-        message: >
-          '{{ trigger.to_state.last_changed }}'
+# - alias: 'Alarm Arm Home'
+#   initial_state: 'on'
+#   trigger:
+#     # - platform: state
+#     #   entity_id: group.persons
+#     #   to: 'home'
+#       - platform: state
+#         to: 'Just Arrived'
+#         entity_id: input_select.stefan_status_dropdown, input_select.isa_status_dropdown
+#   condition:
+#     condition: template
+#     value_template: '{{ states.alarm_control_panel.home_alarm.state != armed_home}}'
+#   action:
+#     - service: alarm_control_panel.alarm_arm_home
+#       entity_id: alarm_control_panel.home_alarm
+#     - service: notify.pushbullet_isa
+#       data_template:
+#         title: 'Alarm Armed Home'
+#         message: >
+#           '{{ trigger.to_state.last_changed }}'
 
 - alias: 'Alarm Arm Night'
   initial_state: 'on'
@@ -234,6 +246,9 @@ automation:
         to: 'on'
       - platform: state
         entity_id: binary_sensor.door_window_sensor_158d00019f5110 ## Yard Storage
+        to: 'on'
+      - platform: state
+        entity_id: binary_sensor.back_door_sensor
         to: 'on'
   condition:
     - condition: state

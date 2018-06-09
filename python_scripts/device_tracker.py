@@ -6,10 +6,6 @@ metatrackerName = "device_tracker." + data.get('meta_entity')
 newState = hass.states.get(triggeredEntity)
 newStatus = newState.state
 
-stefan = hass.states.get('device_tracker.stefan')
-isabella = hass.states.get('device_tracker.isabella')
-
-
 if metatrackerName == 'device_tracker.Stefan':
     picture = '/local/Stefan.jpg'
 elif metatrackerName == 'device_tracker.Isabella':
