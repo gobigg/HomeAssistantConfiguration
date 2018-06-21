@@ -28,8 +28,9 @@ harmony_media_room.conf
 pyozw.sqlite
 withings/
 homebridge/
-appdaemon.yaml
+/appdaemon/appdaemon.yaml
 .*
 !/.gitignore
 !/zwcfg_0xca115759.xml
+coreappdaemon/appdaemon.yaml
 core
