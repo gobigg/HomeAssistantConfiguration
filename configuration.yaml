@@ -24,7 +24,7 @@ cloud: !include assistants/cloud.yaml # Alexa
 homekit: !include assistants/homekit.yaml
 ios: !include notify/ios_config.yaml
 
-discovery:
+# discovery:
 
 # ########################################
 # ###                GUI               ###
@@ -63,6 +63,7 @@ panel_custom:
     url_path: floorplan
     config: !include floorplan.yaml
 
+
 # ########################################
 # ###              LOGGING             ###
 # ########################################
@@ -78,6 +79,27 @@ sun:
 ########################################
 zwave:
   usb_path: /dev/ttyACM0
+deconz:
+  host: !secret deconz_ip
+  port: !secret deconz_port
+  api_key: !secret deconz_api
+rfxtrx:
+  device: /dev/ttyACM0
+switch:
+  platform: rfxtrx
+  automatic_add: True
+  signal_repetitions: 3
+  devices:
+    0b11000261bc0cfe05010f70:
+      name: Switch 1
+    0b11000273bc0cfe08010f70:
+      name: Outdoor hanging lights
+    0b11000494bc0cfe01010f70:
+      name: Switch 2
+    0b11000226bc0cfe09010f70:
+      name: Switch 3
+    0b11000317bc0cfe08010f70:
+      name: Dimmer switch
 xiaomi_aqara:
   gateways:
    - mac: !secret xiaomi_mac
@@ -96,7 +118,7 @@ ring:
 verisure:
   username: !secret verisure_username
   password: !secret verisure_password
-  alarm: 0
+  alarm: 1
   locks: 1
 media_player: !include entities/media_player.yaml
 scene: !include_dir_merge_list scene

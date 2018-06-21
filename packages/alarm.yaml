@@ -89,12 +89,6 @@ automation:
         {% else %}
           false
         {% endif %}
-    # - condition: state
-    #   entity_id: input_select.stefan_status_dropdown
-    #   state: 'Away'
-    # - condition: state
-    #   entity_id: input_select.isa_status_dropdown
-    #   state: 'Away'
     - condition: state
       entity_id: input_boolean.cleaning_day
       state: 'off'

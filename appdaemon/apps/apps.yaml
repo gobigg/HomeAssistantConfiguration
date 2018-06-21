@@ -1,3 +1,19 @@
-hello_world:
-  module: hello
-  class: HelloWorld
+isa_remote_control:
+  module: tradfri_remote
+  class: TradfriRemote
+  event: deconz_event
+  id: isa_remote
+  lightId: light.isa_ceiling_light
+isa_dimmer:
+  module: tradfri_remote
+  class: TradfriRemote
+  event: deconz_event
+  id: isa_dimmer
+  lightId: light.isa_ceiling_light
+floorlamp_dimmer:
+  module: xiaomi_switch
+  class: XiaomiDimmer
+  event: deconz_event
+  id: floorlamp_dimmer
+  lightId: light.floorlamp_uplight
+  secondLightId: light.floorlamp_reading_light

@@ -690,10 +690,6 @@ light.outdoor_front_light:
   name:
   platform: hue
   unique_id: 00:0b:57:ff:fe:26:97:16-01
-light.isa_ceiling_light:
-  name:
-  platform: hue
-  unique_id: 00:0b:57:ff:fe:1f:7a:5c-01
 light.extra_light:
   name:
   platform: hue
@@ -706,14 +702,6 @@ light.walk_in_closet_3:
   name:
   platform: hue
   unique_id: 00:0b:57:ff:fe:94:1b:41-01
-light.floorlamp_reading_light:
-  name:
-  platform: hue
-  unique_id: 00:0b:57:ff:fe:90:42:4f-01
-light.floorlamp_uplight:
-  name:
-  platform: hue
-  unique_id: 00:17:88:01:02:7d:55:62-0b
 light.extra_light_2:
   name:
   platform: hue
@@ -854,3 +842,51 @@ media_player.tv_ue49k5505:
   name:
   platform: plex
   unique_id: wn50y3w990n
+sensor.daylight:
+  name:
+  platform: deconz
+  unique_id: 00:21:2e:ff:ff:02:2c:95-01
+sensor.tradfri_wireless_dimmer_battery_level:
+  name:
+  platform: deconz
+  unique_id: 00:0b:57:ff:fe:23:2f:6e-01-1000
+sensor.lumisensor_switch_3_battery_level:
+  name:
+  platform: deconz
+  unique_id: 00:15:8d:00:01:6c:0a:49-01-0006
+light.isa_ceiling_light:
+  name:
+  platform: deconz
+  unique_id: 00:0b:57:ff:fe:32:d7:f6-01
+zwave.unknown_node_5:
+  name:
+  platform: zwave
+  unique_id: node-5
+sensor.lightlevel_5:
+  name:
+  platform: deconz
+  unique_id: 00:15:8d:00:01:a6:62:56-01-0400
+binary_sensor.presence_6:
+  name:
+  platform: deconz
+  unique_id: 00:15:8d:00:01:a6:62:56-01-0406
+light.floorlamp_reading_light:
+  name:
+  platform: deconz
+  unique_id: 00:0b:57:ff:fe:90:42:4f-01
+binary_sensor.openclose_8:
+  name:
+  platform: deconz
+  unique_id: 00:15:8d:00:01:9f:51:10-01-0006
+sensor.smart_switch_battery_level:
+  name:
+  platform: deconz
+  unique_id: 00:15:8d:00:01:b8:6c:e1-01-0006
+sensor.isa_remote_battery_level:
+  name:
+  platform: deconz
+  unique_id: 00:0b:57:ff:fe:b2:26:1b-01-1000
+light.floorlamp_uplight:
+  name:
+  platform: deconz
+  unique_id: 00:17:88:01:02:7d:55:62-0b

@@ -1,4 +1,11 @@
 homeassistant:
+  customize_glob:
+    light.*:
+      state_card_mode: break-slider
+      stretch_slider: true
+      slider_theme:
+        pin: true
+      confirm_controls: true
   customize:
     input_text.lights_tiles:
       custom_ui_state_card: state-card-tiles
@@ -29,94 +36,63 @@ homeassistant:
             row: 1
             icon: mdi:television-classic
             
-    script.movie_time:
-      homebridge_visible: true
-      homebridge_name: Movie Time
+    # script.movie_time:
 
     light.outdoor_lights:
       icon: mdi:wall-sconce
       
-    group.inside_lights_automations:
-      homebridge_visible: true
-      homebridge_name: All Lights
+    # group.inside_lights_automations:
 
     light.gateway_light_34ce008bfc4b:
       friendly_name: Nightlight
-      homebridge_visible: true
-      homebridge_name: Nightlight
 
     light.living_room_ceiling_light_level:
       icon: mdi:sofa
       friendly_name: Living Room Light
-      homebridge_visible: true     
-      homebridge_name: Living Room Ceiling Light
         
     light.upstairs_hallway_ceiling_light_level:
       icon: mdi:ceiling-light
       friendly_name: Upstairs Hallway Light
-      homebridge_visible: true     
-      homebridge_name: Upstairs Hallway Light
         
     light.dining_area_ceiling_light_level:
       friendly_name: Dining Room Light
       icon: mdi:silverware-variant
-      homebridge_visible: true     
-      homebridge_name: Dining Room Light
         
     light.passage_ceiling_spotlights_level:
       friendly_name: Passage Lights
       icon: mdi:spotlight-beam
-      homebridge_visible: true     
-      homebridge_name: Passage Lights
         
     light.living_room_spotlights_level:
       friendly_name: Living room Spotlights
       icon: mdi:book-open-page-variant
-      homebridge_visible: true     
-      homebridge_name: Living room Spotlights
         
     light.isa_ceiling_light:
       friendly_name: Isa Ceiling Light
       icon: mdi:human-female
-      homebridge_visible: true     
-      homebridge_name: Isa Light
 
     light.bedroom_ceiling_light:
       friendly_name: Bedroom Ceiling Light
       icon: mdi:hotel
-      homebridge_visible: true     
-      homebridge_name: Bedroom Light
 
     light.bedside_lamp:
       friendly_name: Bedside Lamp
       icon: mdi:hotel
-      homebridge_visible: true     
-      homebridge_name: Bedside Lamp
 
     light.floorlamp_uplight:
       icon: mdi:floor-lamp
       friendly_name: Floorlamp
-      homebridge_visible: true     
-      homebridge_name: Floorlamp
         
     light.floorlamp_reading_light:
       icon: mdi:lamp
       friendly_name: Floorlamp Reading Light
-      homebridge_visible: true     
-      homebridge_name: Floorlamp Reading Light
 
     light.stefan_lightstrip:
-      confirm_controls_show_lock: true
       state_card_mode: no-slider
-      homebridge_visible: true
-      homebridge_name: Stefan Lightstrip
       icon: mdi:led-strip
             
     light.kitchen_ceiling_spotlights_level:
       icon: mdi:fridge
       friendly_name: Kitchen Lights
-      homebridge_visible: true
-      homebridge_name: Kitchen Lights
 
 
 input_text:
@@ -191,7 +167,7 @@ group:
       - light.upstairs_hallway_ceiling_light_level
       - light.gateway_light_34ce008bfc4b
 
-# for automations, hubby doesn't like his lights to be included
+# for automations, without Stefans lights
   inside_lights_automations:
     name: Inside Lights Without Stefan
     entities:
