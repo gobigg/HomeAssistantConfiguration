@@ -47,15 +47,11 @@ group:
       - group.air
       - group.laundry_card
       - group.vacuum_card    
-      # - group.temp_and_light    
-      # - group.cat_card
       - group.plant_card
       - device_tracker.isabella
       - device_tracker.stefan
       - history_graph.temperatures_48h
       - history_graph.temperatures_7_days
-      # - history_graph.humidity_7_days
-      # - history_graph.luminance_7_days
       - group.plant_card
 
   camera:

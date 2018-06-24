@@ -4,10 +4,10 @@ automation:
     trigger:
       - platform: state
         entity_id: device_tracker.stefan
-        to: home
+        to: 'Just Arrived'
       - platform: state
         entity_id: device_tracker.isabella
-        to: home
+        to: 'Just Arrived'
       # - platform: state
       #   entity_id: input_boolean.stefan_home
       #   to: 'on'
@@ -44,10 +44,10 @@ automation:
     trigger:
       - platform: state
         entity_id: device_tracker.stefan
-        to: home
+        to: 'Just Arrived'
       - platform: state
         entity_id: device_tracker.isabella
-        to: home
+        to: 'Just Arrived'
     condition:
       condition: time
       after: '00:01:00'

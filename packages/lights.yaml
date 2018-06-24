@@ -113,6 +113,11 @@ script:
           brightness: 10
 
 light:
+  - platform: rfxtrx
+    signal_repetitions: 3
+    devices:
+      0b11000273bc0cfe08010f70:
+        name: Outdoor hanging lights
   - platform: lifx
   - platform: group
     name: 'Outdoor lights'
@@ -120,6 +125,7 @@ light:
       - light.outdoor_plug
       - light.outdoor_front_light
       - light.outdoor_yard_light
+      - light.outdoor_hanging_lights
   - platform: group
     name: 'Inside lights'
     entities:

@@ -3,5 +3,50 @@ group:
     view: yes
     icon: mdi:cat
     entities:
-      - group.cat_card
-      - calendar.claws
+      - group.litter_card
+      # - calendar.claws
+      - group.cat_grooming
+      - group.cat_ordering
+
+  cat_grooming:
+    name: Grooming schedule
+    control: hidden
+    entities:
+      - input_boolean.cut_claws_ziggy
+      - input_boolean.cut_fur_ziggy
+      - input_boolean.cut_claws_honey
+      - input_boolean.cut_fur_honey
+
+  cat_ordering:
+    name: Order for cats
+    control: hidden
+    entities:
+      - input_boolean.cat_food
+      - input_boolean.cat_litter
+
+input_boolean:
+  cat_food:
+    name: Order Cat Food
+    initial: off
+    icon: mdi:barcode-scan
+  cat_litter:
+    name: Order Cat Litter
+    initial: off
+    icon: mdi:emoticon-poop
+
+  cut_claws_ziggy:
+    name: Cut Claws Ziggy
+    initial: off
+    icon: mdi:cat
+  cut_claws_honey:
+    name: Cut Claws Honey
+    initial: off
+    icon: mdi:cat
+  cut_fur_ziggy:
+    name: Cut Fur Ziggy
+    initial: off
+    icon: mdi:cat
+  cut_fur_honey:
+    name: Cut Fur Honey
+    initial: off
+    icon: mdi:cat

@@ -1,6 +1,4 @@
 homeassistant:
-  # whitelist_external_dirs:
-  #   - '/share'
   name: Home
   latitude: !secret lat_coord
   longitude: !secret long_coord
@@ -10,7 +8,8 @@ homeassistant:
   customize: !include_dir_merge_named customize
   customize_glob: !include customglob.yaml
   packages: !include_dir_named packages
-
+  whitelist_external_dirs:
+    - '/config/www/motion'
 config:
 hassio:
 http:
@@ -92,8 +91,6 @@ switch:
   devices:
     0b11000261bc0cfe05010f70:
       name: Switch 1
-    0b11000273bc0cfe08010f70:
-      name: Outdoor hanging lights
     0b11000494bc0cfe01010f70:
       name: Switch 2
     0b11000226bc0cfe09010f70:

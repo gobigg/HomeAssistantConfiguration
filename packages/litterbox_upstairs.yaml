@@ -102,7 +102,7 @@ script:
 
 # Group for displaying in front end
 group:
-  cat_card:
+  litter_card:
     name: Cats!
     entities:
       - counter.all_litterbox_visits_today
