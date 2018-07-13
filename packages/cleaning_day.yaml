@@ -34,8 +34,9 @@ automation:
   - alias: Cleaning Mode
     initial_state: 'on'
     trigger:
-      - platform: time
-        at: '07:55:00'
+      - platform: state
+        entity_id: sensor.unlocked_by
+        to: 'Cleaners'
     condition:
     - condition: state
       entity_id: input_boolean.cleaning_day
@@ -47,6 +48,10 @@ automation:
         entity_id: alarm_control_panel.home_alarm
       - service: script.turn_on
         entity_id: script.cleaning_time
+      - service: notify.ios_isabellas_iphone_x
+        data_template:
+          title: 'Cleaning time'
+          message: 'Cleaners have arrived'
 
   - alias: Cleaning Mode Off
     initial_state: 'on'

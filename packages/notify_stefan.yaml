@@ -1,41 +1,41 @@
-homeassistant:
-  customize:
-    input_boolean.notify_stefan:
-      icon: mdi:message-bulleted
-      confirm_controls_show_lock: true
+# homeassistant:
+#   customize:
+#     input_boolean.notify_stefan:
+#       icon: mdi:message-bulleted
+#       confirm_controls_show_lock: true
       
-    input_text.stefan_notify_text:
-      icon: mdi:message-bulleted
+#     input_text.stefan_notify_text:
+#       icon: mdi:message-bulleted
 
-input_boolean:
-  notify_stefan:
-    name: Send
-    initial: 'off'
+# input_boolean:
+#   notify_stefan:
+#     name: Send
+#     initial: 'off'
 
-input_text:
-  stefan_notify_text:
-    name: Stefan Notify Text
-    initial: Fem minuter till mat
+# input_text:
+#   stefan_notify_text:
+#     name: Stefan Notify Text
+#     initial: Fem minuter till mat
 
-group:
-  notify_stefan:
-    view: no
-    name: Notify Stefan
-    entities:
-      - input_text.stefan_notify_text
-      - input_boolean.notify_stefan    
+# group:
+#   notify_stefan:
+#     view: no
+#     name: Notify Stefan
+#     entities:
+#       - input_text.stefan_notify_text
+#       - input_boolean.notify_stefan    
 
-automation:
-  - alias: Notify Stefan
-    initial_state: 'on'
-    trigger:
-      platform: state
-      entity_id: input_boolean.notify_stefan
-      to: 'on'
-    action:
-      - service: notify.pushbullet_stefan
-        data:
-          message: ''
-          title: '{{ states.input_text.stefan_notify_text.state }}'
-      - service: homeassistant.turn_off
-        entity_id: input_boolean.notify_stefan
+# automation:
+#   - alias: Notify Stefan
+#     initial_state: 'on'
+#     trigger:
+#       platform: state
+#       entity_id: input_boolean.notify_stefan
+#       to: 'on'
+#     action:
+#       - service: notify.pushbullet_stefan
+#         data:
+#           message: ''
+#           title: '{{ states.input_text.stefan_notify_text.state }}'
+#       - service: homeassistant.turn_off
+#         entity_id: input_boolean.notify_stefan

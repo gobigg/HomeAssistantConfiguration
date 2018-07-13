@@ -23,6 +23,9 @@ cloud: !include assistants/cloud.yaml # Alexa
 homekit: !include assistants/homekit.yaml
 ios: !include notify/ios_config.yaml
 
+shell_command:
+  lovelace_migrate: 'python3 /config/lovelace_migrate.py -c /config'
+
 # discovery:
 
 # ########################################
@@ -91,7 +94,7 @@ switch:
   devices:
     0b11000261bc0cfe05010f70:
       name: Switch 1
-    0b11000494bc0cfe01010f70:
+    0b11000417bc0cfe09010f70:
       name: Switch 2
     0b11000226bc0cfe09010f70:
       name: Switch 3
@@ -101,10 +104,10 @@ xiaomi_aqara:
   gateways:
    - mac: !secret xiaomi_mac
      key: !secret xiaomi_key
-hue:
-  bridges:
-    - host: !secret hue_ip
-      allow_hue_groups: false
+# hue:
+#   bridges:
+#     - host: !secret hue_ip
+#       allow_hue_groups: false
 
 # ########################################
 # ###              ENTITIES             ###
@@ -117,6 +120,8 @@ verisure:
   password: !secret verisure_password
   alarm: 1
   locks: 1
+  # persons: 1
+  
 media_player: !include entities/media_player.yaml
 scene: !include_dir_merge_list scene
 device_tracker: !include entities/device_tracker.yaml
@@ -139,6 +144,7 @@ mqtt:
 google:
   client_id: !secret google_id
   client_secret: !secret google_secret
+
 ifttt:
   key: !secret ifttt_key
 tts:

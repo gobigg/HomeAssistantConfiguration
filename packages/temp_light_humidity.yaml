@@ -1,12 +1,12 @@
 homeassistant:
   customize:
-    sensor.temperature_158d0001235510:
+    sensor.temperature_bedroom:
       friendly_name: Bedroom
-    sensor.temperature_158d000123552c:
+    sensor.temperature_passage:
       friendly_name: Passage
-    sensor.temperature_158d0001a2a899:
+    sensor.temperature_downstairs_bathroom:
       friendly_name: Downstairs Bathroom
-    sensor.temperature_158d0001fd83e7:
+    sensor.temperature_stefan:
       friendly_name: Stefans Room
 
     sensor.humidity_158d0001fd83e7:
@@ -38,19 +38,19 @@ history_graph:
     refresh: 1800
     hours_to_show: 48
     entities:
-      - sensor.temperature_158d0001235510
-      - sensor.temperature_158d000123552c
-      - sensor.temperature_158d0001a2a899
-      - sensor.temperature_158d0001fd83e7
+      - sensor.temperature_bedroom
+      - sensor.temperature_passage
+      - sensor.temperature_downstairs_bathroom
+      - sensor.temperature_stefan
   temperatures_7_days:
     name: Temperatures 7 Days
     refresh: 1800
     hours_to_show: 168
     entities:
-      - sensor.temperature_158d0001235510
-      - sensor.temperature_158d000123552c
-      - sensor.temperature_158d0001a2a899
-      - sensor.temperature_158d0001fd83e7
+      - sensor.temperature_bedroom
+      - sensor.temperature_passage
+      - sensor.temperature_downstairs_bathroom
+      - sensor.temperature_stefan
 
   humidity_7_days:
     name: Humidity 7 Days
@@ -80,11 +80,11 @@ group:
     name: Temperature, light and humidity
     entities:
       # Passage
-      # - sensor.temperature_158d000123552c
+      # - sensor.temperature_passage
       # - sensor.humidity_158d000123552c
       # - sensor.passage_pir_luminance
       # Bedroom
-      # - sensor.temperature_158d0001235510
+      # - sensor.temperature_bedroom
       # - sensor.humidity_158d0001235510
       # Upstairs hallway      
       # - sensor.illumination_34ce008bfc4b
@@ -94,7 +94,7 @@ group:
       - sensor.fan_temperature  
       - sensor.fan_humidity
       # Downstairs bathroom
-      # - sensor.temperature_158d0001a2a899
+      # - sensor.temperature_downstairs_bathroom
       # - sensor.humidity_158d0001a2a899
       # # Isas room
       # - sensor.illumination_158d0001a66291
@@ -104,12 +104,12 @@ group:
       # - sensor.illumination_158d000165ff1f
       # - sensor.illumination_158d0001a66256
       # Stefans room
-      # - sensor.temperature_158d0001fd83e7
+      # - sensor.temperature_stefan
       # - sensor.humidity_158d0001fd83e7
       # - switch.stefan_radiator
       # Miflora
-      - sensor.palm_temperature
-      - sensor.palm_light_intensity
+      - sensor.herbs_temperature
+      - sensor.herbs_light_intensity
       - sensor.monstera_temperature
       - sensor.monstera_light_intensity
       - sensor.plant_temperature

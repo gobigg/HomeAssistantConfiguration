@@ -36,13 +36,14 @@ homeassistant:
             row: 1
             icon: mdi:television-classic
             
-    # script.movie_time:
+    light.hallway_window_light:
+      icon: mdi:lamp
+      homebridge_visible: true     
+      homebridge_name: Hallway Window Light
 
     light.outdoor_lights:
       icon: mdi:wall-sconce
       
-    # group.inside_lights_automations:
-
     light.gateway_light_34ce008bfc4b:
       friendly_name: Nightlight
 
@@ -111,7 +112,25 @@ script:
         data:
           entity_id: light.living_room_ceiling_light_level, light.stairs_lights_lights, light.upstairs_hallway_ceiling_light_level
           brightness: 10
-
+  occusim_stefan_on:
+    alias: Occusim Stefan On
+    sequence:
+      - service: light.turn_on
+        data:
+          entity_id: light.stefan_lightstrip
+          brightness: 255
+          color_temp: 153
+  occusim_stefan_normal:
+    alias: Occusim Stefan Normal
+    sequence:
+      - service: light.turn_on
+        data:
+          entity_id: light.stefan_lightstrip
+          brightness: 200
+          rgb_color:
+            - 70
+            - 255
+            - 236
 light:
   - platform: rfxtrx
     signal_repetitions: 3

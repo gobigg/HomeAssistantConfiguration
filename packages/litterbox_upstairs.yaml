@@ -180,12 +180,12 @@ automation:
       - platform: numeric_state
         entity_id: counter.litterbox_upstairs_visits
         above: '1'
-      # or ten minutes after I get home
-      - platform: state
-        entity_id: device_tracker.isabella
-        to: 'Home'
-        for:
-          minutes: 10
+      # # or ten minutes after I get home
+      # - platform: state
+      #   entity_id: device_tracker.isabella
+      #   to: 'Home'
+      #   for:
+      #     minutes: 10
     condition:
       condition: and
       conditions:

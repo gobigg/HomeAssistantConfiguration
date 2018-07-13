@@ -30,8 +30,8 @@ homeassistant:
       icon: mdi:speaker
     sensor.samsung65:
       icon: mdi:television
-    sensor.hue_hub:
-      icon: mdi:lightbulb-outline
+    # sensor.hue_hub:
+      # icon: mdi:lightbulb-outline
     sensor.ikea_gateway:
       icon: mdi:google-keep
     sensor.xiaomi_gateway:
@@ -111,9 +111,9 @@ sensor:
         galaxy_tab:
           friendly_name: 'Galaxy Tab'
           value_template: "{{ 'Online' if is_state('device_tracker.android8c0fc07d9694a5a2', 'home') else 'Offline' }}"
-        hue_hub:
-          friendly_name: 'Philips Hue Gateway'
-          value_template: "{{ 'Online' if is_state('device_tracker.philipshue', 'home') else 'Offline' }}"
+        # hue_hub:
+        #   friendly_name: 'Philips Hue Gateway'
+        #   value_template: "{{ 'Online' if is_state('device_tracker.philipshue', 'home') else 'Offline' }}"
         asus_router:
           friendly_name: 'Asus Router'
           value_template: "{{ 'Online' if is_state('device_tracker.router_asus', 'home') else 'Offline' }}"
@@ -175,6 +175,13 @@ group:
       - group.isabella
       - group.stefan
       - group.ring_front_door
+      - group.appdaemon_automations
+
+  appdaemon_automations:
+    name: Appdaemon Apps
+    entities:
+      - input_boolean.ad_presence
+
 
   device_states:
     name: Device status
@@ -188,7 +195,7 @@ group:
     - sensor.ir_blaster_bedroom
     - sensor.ir_blaster_living_room
     - sensor.withings_scale
-    - sensor.hue_hub
+    # - sensor.hue_hub
     - sensor.milight_hub
     - sensor.ikea_gateway
     - sensor.xiaomi_gateway
@@ -226,7 +233,7 @@ automation:
               - sensor.netgear_router
               - sensor.printer
               - sensor.nas
-              - sensor.hue_hub
+              # - sensor.hue_hub
               - sensor.ir_blaster
               - sensor.ir_blaster_bedroom
               - sensor.ip_camera

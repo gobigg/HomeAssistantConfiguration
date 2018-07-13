@@ -1,94 +1,90 @@
-homeassistant:
-  customize:
-    binary_sensor.switch_158d0001a5e3c4:
-      friendly_name: Hallway Dimmer
-        
-    light.hallway_window_light:
-      icon: mdi:lamp
-      homebridge_visible: true     
-      homebridge_name: Hallway Window Light
+## functionality moved to appdaemon
 
-      
-input_boolean:
-  dimmer_hallway:
-    name: Dimmer Hallway
-    initial: off
+# homeassistant:
+#   customize:
+#     binary_sensor.switch_158d0001a5e3c4:
+#       friendly_name: Hallway Dimmer
+              
+# input_boolean:
+#   dimmer_hallway:
+#     name: Dimmer Hallway
+#     initial: off
 
-script:
-  dim_light_hallway:
-    sequence:
-      - condition: state
-        entity_id: input_boolean.dimmer_hallway
-        state: 'on'
-      - service: light.turn_on
-        entity_id: light.hallway_window_light
-        data_template:
-          brightness: '{{states.light.hallway_window_light.attributes.brightness - 10}}'
-      - service: script.turn_off
-        entity_id: script.dim_light_hallway
-      - service: script.turn_on
-        entity_id: script.dim_light_hallway
+# script:
+#   dim_light_hallway:
+#     sequence:
+#       - condition: state
+#         entity_id: input_boolean.dimmer_hallway
+#         state: 'on'
+#       - service: light.turn_on
+#         entity_id: light.hallway_window_light
+#         data_template:
+#           brightness: '{{states.light.hallway_window_light.attributes.brightness - 10}}'
+#       - service: script.turn_off
+#         entity_id: script.dim_light_hallway
+#       - service: script.turn_on
+#         entity_id: script.dim_light_hallway
 
-  brighten_light_hallway:
-    sequence:
-    - condition: state
-      entity_id: input_boolean.dimmer_hallway
-      state: 'off'
-    - service: light.turn_on
-      entity_id: light.hallway_window_light
-      data_template:
-        brightness: '{{states.light.hallway_window_light.attributes.brightness + 10}}'
-    - service: script.turn_off
-      entity_id: script.brighten_light_hallway
-    - service: script.turn_on
-      entity_id: script.brighten_light_hallway
+#   brighten_light_hallway:
+#     sequence:
+#     - condition: state
+#       entity_id: input_boolean.dimmer_hallway
+#       state: 'off'
+#     - service: light.turn_on
+#       entity_id: light.hallway_window_light
+#       data_template:
+#         brightness: '{{states.light.hallway_window_light.attributes.brightness + 10}}'
+#     - service: script.turn_off
+#       entity_id: script.brighten_light_hallway
+#     - service: script.turn_on
+#       entity_id: script.brighten_light_hallway
 
 
-automation:
-##################  Toggle light  ##################
-  - alias: Light Hallway Window Toggle
-    initial_state: 'on'
-    trigger:
-      platform: event
-      event_type: click
-      event_data:
-        entity_id: binary_sensor.switch_158d0001a5e3c4
-        click_type: single
-    action:
-      service: light.toggle
-      entity_id: light.hallway_window_light
+# automation:
+# ##################  Toggle light  ##################
+#   - alias: Light Hallway Window Toggle
+#     initial_state: 'on'
+#     trigger:
+#       platform: event
+#       event_type: click
+#       event_data:
+#         entity_id: binary_sensor.switch_158d0001a5e3c4
+#         click_type: single
+#     action:
+#       service: light.toggle
+#       entity_id: light.hallway_window_light
 
-##################  Double click - full/low light  ##################
-  - alias: Light Hallway Window Full Light
-    initial_state: 'on'
-    trigger:
-      platform: event
-      event_type: click
-      event_data:
-        entity_id: binary_sensor.switch_158d0001a5e3c4
-        click_type: double
-    condition:
-      condition: template
-      value_template: '{{ states.light.hallway_window_light.attributes.brightness < 100 }}'
-    action:
-      service: light.turn_on
-      data:
-        entity_id: light.hallway_window_light
-        brightness: 255
+# ##################  Double click - full/low light  ##################
+#   - alias: Light Hallway Window Full Light
+#     initial_state: 'on'
+#     trigger:
+#       platform: event
+#       event_type: click
+#       event_data:
+#         entity_id: binary_sensor.switch_158d0001a5e3c4
+#         click_type: double
+#     condition:
+#       condition: template
+#       value_template: '{{ states.light.hallway_window_light.attributes.brightness < 100 }}'
+#     action:
+#       service: light.turn_on
+#       data:
+#         entity_id: light.hallway_window_light
+#         brightness: 255
 
-  - alias: Light Hallway Window Low Light
-    initial_state: 'on'
-    trigger:
-      platform: event
-      event_type: click
-      event_data:
-        entity_id: binary_sensor.switch_158d0001a5e3c4
-        click_type: double
-    condition:
-      condition: template
-      value_template: '{{ states.light.hallway_window_light.attributes.brightness > 100 }}'
-    action:
-      service: light.turn_on
-      data:
-        entity_id: light.hallway_window_light
-        brightness: 80
+#   - alias: Light Hallway Window Low Light
+#     initial_state: 'on'
+#     trigger:
+#       platform: event
+#       event_type: click
+#       event_data:
+#         entity_id: binary_sensor.switch_158d0001a5e3c4
+#         click_type: double
+#     condition:
+#       condition: template
+#       value_template: '{{ states.light.hallway_window_light.attributes.brightness > 100 }}'
+#     action:
+#       service: light.turn_on
+#       data:
+#         entity_id: light.hallway_window_light
+#         brightness: 80

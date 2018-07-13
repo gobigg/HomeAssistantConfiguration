@@ -149,10 +149,12 @@ automation:
       - platform: time
         at: '21:00:00'
     action:
-      - service: input_select.select_option
-        data:
-          entity_id: input_select.air_cleaner
-          option: 'Quiet'
+      # - service: input_select.select_option
+      #   data:
+      #     entity_id: input_select.air_cleaner
+      #     option: 'Quiet'
+      - service: script.turn_on
+        entity_id: script.air_cleaner_quiet
 
   - alias: Air Cleaner To Auto At 11
     initial_state: 'on'

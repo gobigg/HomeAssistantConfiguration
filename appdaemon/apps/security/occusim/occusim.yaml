@@ -1,0 +1,77 @@
+Occupancy Simulator:
+  module: occusim
+  class: OccuSim
+  constrain_input_boolean: input_boolean.guest_mode,off  
+  log: 1
+  # notify: 0
+  enable: input_boolean.vacation_mode,on
+  test: 1
+  dump_times: 1
+  #reset_time: 02:00:00
+
+  step_morning_name: Morning
+  step_morning_days: mon,tue,wed,thu,fri
+  step_morning_start: 06:45:00
+  step_morning_end: 07:00:00
+  step_morning_on_1: script.goodmorning_lights
+
+  step_leaving_name: Leaving
+  step_leaving_days: mon,tue,wed,thu,fri
+  step_leaving_start: 07:45:00
+  step_leaving_end: 08:00:00
+  step_leaving_off_1: group.inside_lights_automations
+
+  step_evening_name: Evening
+  step_evening_start: sunset - 00:45:00
+
+  random_kitchen_name: Kitchen
+  random_kitchen_start: Evening
+  random_kitchen_end: Night
+  random_kitchen_maxduration: 00:45:00
+  random_kitchen_minduration: 00:15:00
+  random_kitchen_number: '1'
+  random_kitchen_on_1: light.kitchen_ceiling_spotlights_level
+  random_kitchen_off_1: light.kitchen_ceiling_spotlights_level
+
+  random_isa_name: Isas room
+  random_isa_start: Evening
+  random_isa_end: Night
+  random_isa_maxduration: 00:15:00
+  random_isa_minduration: 00:05:00
+  random_isa_number: '1'
+  random_isa_on_1: light.isa_ceiling_light
+  random_isa_off_1: light.isa_ceiling_light
+
+  random_stefan_name: Stefans room
+  random_stefan_start: Evening
+  random_stefan_end: Night
+  random_stefan_maxduration: 01:15:00
+  random_stefan_minduration: 00:25:00
+  random_stefan_number: '1'
+  random_stefan_on_1: script.occusim_stefan_on
+  random_stefan_off_1: script.occusim_stefan_normal
+
+  step_night_name: Night
+  step_night_start: '22:00:00'
+  step_night_end: '23:30:00'
+  step_night_on_1: light.bedroom_ceiling_light
+  step_night_off_1: group.inside_lights_automations
+
+  step_upstairs_hall_off_name: Upstairs Hallway Off
+  step_upstairs_hall_off_1: light.upstairs_hallway_ceiling_light_level
+  step_upstairs_hall_off_end_offset: 00:10:00
+  step_upstairs_hall_off_relative: Night
+  step_upstairs_hall_off_start_offset: 00:05:00
+
+  step_bedtime_name: Bedtime
+  step_bedtime_relative: Night
+  step_bedtime_start_offset: 00:05:00
+  step_bedtime_end_offset: 01:00:00
+  step_bedtime_off_1: light.bedroom_ceiling_light
+  step_bedtime_on_1: light.bedside_lamp
+
+  step_goodnight_name: Goodnight
+  step_goodnight_relative: Bedtime
+  step_goodnight_end_offset: 01:00:00
+  step_goodnight_off_1: light.bedside_lamp
+  step_goodnight_start_offset: 00:05:00

@@ -1,4 +1,6 @@
 # Packages
+## I'm currently moving a lot of my automations to appdaemon. Packages will be left here for now with moved functionality commented out.
+
 #### air_cleaner
 Using a Broadlink RM3 turn on and off Air cleaner quiet mode.
 

@@ -1,0 +1,13 @@
+back_door_camera_snapshot:
+  module: camera_snapshot
+  class: CameraMotion
+  global_dependencies: globals
+  sensor: binary_sensor.back_door_camera_motion
+  camera: camera.back_door
+
+back_door_snapshot:
+  module: camera_snapshot
+  class: CameraMotion
+  global_dependencies: globals
+  sensor: binary_sensor.back_door
+  camera: camera.back_door

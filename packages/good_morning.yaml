@@ -20,20 +20,25 @@ script:
      - service: media_player.sonos_restore
        data_template:
          entity_id: media_player.sonos
-
-      # - service: light.turn_on
-      #   data:
-      #     entity_id: light.living_room_ceiling_light_level
-      #     brightness: 50
-      # - service: light.turn_on
-      #   data:
-      #     entity_id: light.passage_ceiling_spotlights_level
-      #     brightness: 50
-      # - service: light.turn_on
-      #   data:
-      #     entity_id: light.upstairs_hallway_ceiling_light_level
-      #     brightness: 50
-      #     transition: 30
+  goodmorning_lights:
+    alias: Goodmorning Lights
+    sequence:
+      - service: light.turn_on
+        data:
+          entity_id: light.living_room_ceiling_light_level
+          brightness: 50
+      - service: light.turn_on
+        data:
+          entity_id: light.kitchen_ceiling_spotlights_level
+      - service: light.turn_on
+        data:
+          entity_id: light.passage_ceiling_spotlights_level
+          brightness: 50
+      - service: light.turn_on
+        data:
+          entity_id: light.upstairs_hallway_ceiling_light_level
+          brightness: 50
+          transition: 30
       # # if it's a work day, turn on the tv
       # - condition: state
       #   entity_id: binary_sensor.workday_sensor

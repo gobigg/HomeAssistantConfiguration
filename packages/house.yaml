@@ -57,5 +57,8 @@ group:
   camera:
     name: Cameras
     entities:
-      - camera.front_door
       - camera.back_door
+      - camera.downstairs
+      - camera.upstairs
+      - camera.front_door
+      - camera.latest_motion

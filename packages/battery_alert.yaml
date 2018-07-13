@@ -383,7 +383,6 @@ automation:
         retain: true
         payload: >-
           {
-            "device_class": "sensor",
             "name": "{{ trigger.event.data.new_state.name }} Battery",
             "state_topic": "homeassistant/sensor/{{ trigger.event.data.new_state.object_id }}_battery/state",
             "icon": "mdi:battery",
@@ -421,7 +420,6 @@ automation:
         retain: true
         payload: >-
           {
-            "device_class": "sensor",
             "name": "{{ trigger.event.data.new_state.name }} Battery",
             "state_topic": "homeassistant/sensor/{{ trigger.event.data.new_state.object_id }}_battery/state",
             "icon": "mdi:battery",
@@ -459,7 +457,6 @@ automation:
         retain: true
         payload: >-
           {
-            "device_class": "sensor",
             "name": "{{ trigger.event.data.new_state.name }} Battery",
             "state_topic": "homeassistant/sensor/{{ trigger.event.data.new_state.object_id }}_battery/state",
             "icon": "mdi:battery",

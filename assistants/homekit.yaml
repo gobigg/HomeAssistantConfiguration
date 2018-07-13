@@ -12,13 +12,13 @@
 
       - binary_sensor.door_window_sensor_158d00019f5110
       - binary_sensor.door_window_sensor_158d00019e152b
-      - binary_sensor.door_window_sensor_158d0001a3e45e
+      - binary_sensor.door_balcony
       - binary_sensor.dining_area_window_sensor_sensor
       - binary_sensor.front_door_homebridge
-      - binary_sensor.back_door_sensor
+      - binary_sensor.back_door
 
       - input_boolean.guest_mode
-      - input_boolean.isabella_home
+      - input_boolean.isa_home
       - input_boolean.stefan_home
       - input_boolean.sonos
 
@@ -30,10 +30,10 @@
       - script.movie_time
       - script.house_summary
 
-      - sensor.temperature_158d0001235510
-      - sensor.temperature_158d000123552c
-      - sensor.temperature_158d0001a2a899
-      - sensor.temperature_158d0001fd83e7
+      - sensor.temperature_bedroom
+      - sensor.temperature_passage
+      - sensor.temperature_downstairs_bathroom
+      - sensor.temperature_stefan
       
       - light.walk_in_closet_1
       - light.walk_in_closet_2

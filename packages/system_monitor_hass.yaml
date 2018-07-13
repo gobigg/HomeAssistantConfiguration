@@ -34,12 +34,6 @@ automation:
         data:
           title: 'Hass.io Online'
           message: 'Online'
-      - service: notify.ios_stefan_iphone_7
-        data:
-          message: "request_location_update"
-      - service: notify.ios_isabellas_iphone_x
-        data:
-          message: "request_location_update"
       - service: python_script.summary
       - service: python_script.mailbox
         data_template:

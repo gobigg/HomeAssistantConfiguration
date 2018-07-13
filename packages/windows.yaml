@@ -1,10 +1,7 @@
 homeassistant:
   customize:
-    binary_sensor.dining_area_window_sensor_sensor:
-      homebridge_visible: true
-      device_class: opening
-      homebridge_name: Dining room window
-    binary_sensor.door_window_sensor_158d00020195a0:
+    # binary_sensor.dining_area_window_sensor_sensor:
+    binary_sensor.window_bedroom:
       friendly_name: Bedroom window
       
 
@@ -17,8 +14,8 @@ sensor:
         icon_template: '{% if is_state("binary_sensor.dining_area_window_sensor_sensor", "on") %}mdi:window-open{% elif is_state("binary_sensor.dining_area_window_sensor_sensor", "off")%}mdi:window-closed{% else %}mdi:comment-question-outline{% endif %}'
       bedroom_window:
         friendly_name: 'Bedroom window'
-        value_template: '{% if is_state("binary_sensor.door_window_sensor_158d00020195a0", "on") %}Open{% elif is_state("binary_sensor.door_window_sensor_158d00020195a0", "off")%}Closed{% else %}Unknown{% endif %}'
-        icon_template: '{% if is_state("binary_sensor.door_window_sensor_158d00020195a0", "on") %}mdi:window-open{% elif is_state("binary_sensor.door_window_sensor_158d00020195a0", "off")%}mdi:window-closed{% else %}mdi:comment-question-outline{% endif %}'
+        value_template: '{% if is_state("binary_sensor.window_bedroom", "on") %}Open{% elif is_state("binary_sensor.window_bedroom", "off")%}Closed{% else %}Unknown{% endif %}'
+        icon_template: '{% if is_state("binary_sensor.window_bedroom", "on") %}mdi:window-open{% elif is_state("binary_sensor.window_bedroom", "off")%}mdi:window-closed{% else %}mdi:comment-question-outline{% endif %}'
 
 alert:
   dining_area_window_open:

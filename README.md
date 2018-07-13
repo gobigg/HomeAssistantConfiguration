@@ -15,7 +15,7 @@ My configuration is broken down into [packages](https://github.com/isabellaalstr
 
 ## Hubs
 * Zwave: Aeon Labs Z Wave Stick (GEN 5)
-* Zigbee: Xiaomi and Hue gateways
+* Zigbee: Conbee (and Xiaomi hub, but am migrating to Conbee)
 * Home made [MiLight hub](https://github.com/sidoh/esp8266_milight_hub)
 
 ## Ecosystem

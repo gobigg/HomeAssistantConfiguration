@@ -36,6 +36,7 @@ group:
     name: Security
     icon: mdi:home-variant
     entities:
+      - sensor.front_door_unlocked_by
       - alarm_control_panel.home_alarm
       - sensor.last_seen_motion
       - sensor.front_door_lock      
@@ -181,10 +182,10 @@ automation:
         entity_id: sensor.front_door_access_control
         to: '22'
       - platform: state
-        entity_id: binary_sensor.back_door_sensor
+        entity_id: binary_sensor.back_door
         to: 'on'
       - platform: state
-        entity_id: binary_sensor.door_window_sensor_158d0001a3e45e ## Balcony
+        entity_id: binary_sensor.door_balcony ## Balcony
         to: 'on'
       - platform: state
         entity_id: binary_sensor.door_window_sensor_158d00019e152b ## Backyard
@@ -204,27 +205,32 @@ automation:
         title: 'Alarm triggered'
         message: >
           '{{ trigger.to_state.name }}'
+    - service: notify.pushbullet_isa
+      data_template:
+        title: 'Alarm triggered'
+        message: >
+          '{{ trigger.to_state.name }}'
 
-- alias: 'Alarm Trigger While Armed Away Camera Motion'
-  initial_state: 'on'
-  trigger:
-    - platform: state
-      entity_id: binary_sensor.back_door_camera_motion
-      to: 'on'
-  condition:
-    - condition: state
-      entity_id: alarm_control_panel.home_alarm
-      state: armed_away
-  action:
-    - service: notify.ios_isabellas_iphone_x
-      data:
-        message: Fire Camera Motion
-        data:
-          attachment:
-            content-type: jpeg
-          push:
-            category: camera
-          entity_id: camera.back_door
+# - alias: 'Alarm Trigger While Armed Away Camera Motion'
+#   initial_state: 'on'
+#   trigger:
+#     - platform: state
+#       entity_id: binary_sensor.back_door_camera_motion
+#       to: 'on'
+#   condition:
+#     - condition: state
+#       entity_id: alarm_control_panel.home_alarm
+#       state: armed_away
+#   action:
+#     - service: notify.ios_isabellas_iphone_x
+#       data:
+#         message: Fire Camera Motion
+#         data:
+#           attachment:
+#             content-type: jpeg
+#           push:
+#             category: camera
+#           entity_id: camera.back_door
 
 - alias: 'Alarm Trigger While Armed Home'
   initial_state: 'on'
@@ -233,7 +239,7 @@ automation:
         entity_id: sensor.front_door_access_control
         to: '22'
       - platform: state
-        entity_id: binary_sensor.door_window_sensor_158d0001a3e45e ## Balcony
+        entity_id: binary_sensor.door_balcony ## Balcony
         to: 'on'
       - platform: state
         entity_id: binary_sensor.door_window_sensor_158d00019e152b ## Backyard
@@ -242,7 +248,7 @@ automation:
         entity_id: binary_sensor.door_window_sensor_158d00019f5110 ## Yard Storage
         to: 'on'
       - platform: state
-        entity_id: binary_sensor.back_door_sensor
+        entity_id: binary_sensor.back_door
         to: 'on'
   condition:
     - condition: state
@@ -264,10 +270,10 @@ automation:
         entity_id: sensor.front_door_access_control
         to: '22'
       - platform: state
-        entity_id: binary_sensor.back_door_sensor
+        entity_id: binary_sensor.back_door
         to: 'on'
       - platform: state
-        entity_id: binary_sensor.door_window_sensor_158d0001a3e45e ## Balcony
+        entity_id: binary_sensor.door_balcony ## Balcony
         to: 'on'
       - platform: state
         entity_id: binary_sensor.door_window_sensor_158d00019e152b ## Backyard

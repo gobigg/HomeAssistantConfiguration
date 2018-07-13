@@ -19,6 +19,10 @@ group:
       - device_tracker.isabellas_iphone_x_bt
       - device_tracker.stefan_iphone_7_wifi
       - device_tracker.stefan_iphone_7
+      - device_tracker.stefan_iphone_7_bt
+      - input_boolean.stefan_home
+      - input_boolean.isa_home
+      
   isabella:
     name: Isabella
     entities:
@@ -30,7 +34,21 @@ group:
     entities:
       - device_tracker.stefan_iphone_7_wifi
       - device_tracker.stefan_iphone_7
-      
+      - device_tracker.stefan_iphone_7_bt
+   
+input_boolean:
+  isa_home:
+    name: Isa Homekit
+    initial: on
+    # icon: mdi:
+  stefan_home:
+    name: Stefan Homekit
+    initial: on
+    # icon: mdi:
+  ad_presence:
+    name: Appdaemon presence notify
+    initial: on
+
 input_select:
   stefan_status_dropdown:
     name: Stefan

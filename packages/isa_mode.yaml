@@ -7,7 +7,7 @@ input_boolean:
   isa_mode:
     name: Isabella Mode
     initial: 'off'
-    icon: mdi:account-multiple
+    icon: mdi:account
 
 
 automation:

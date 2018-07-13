@@ -3,11 +3,14 @@ camera:
     name: Back Door
     input: !secret camera_input
     extra_arguments: -pred 1
+  - platform: local_file
+    file_path: /config/www/motion/back_door_camera_latest.jpg
+    name: Latest motion
 binary_sensor:
   - platform: ffmpeg_motion
     name: Back Door Camera Motion
     input: !secret camera_input
-    changes: 2
+    changes: 4
     reset: 30
 
 sensor:  
@@ -24,7 +27,7 @@ automation:
     initial_state: 'on'
     trigger:
       - platform: numeric_state
-        entity_id: sensor.temperature_158d000123552c
+        entity_id: sensor.temperature_passage
         above: 27
     action:
       - service: notify.ios_isabellas_iphone_x
@@ -36,14 +39,14 @@ automation:
             push:
               category: camera
             entity_id: camera.back_door_cam
-  - alias: 'Camera Motion Snapshot'
-    initial_state: 'on'
-    trigger:
-      - platform: state
-        entity_id: binary_sensor.back_door_camera_motion
-        to: 'on'
-    action:
-      service: camera.snapshot
-      data_template:
-        entity_id: camera.back_door_cam
-        filename: '/config/www/motion/back_door_camera.jpg'
+  # - alias: 'Camera Motion Snapshot'
+  #   initial_state: 'on'
+  #   trigger:
+  #     - platform: state
+  #       entity_id: binary_sensor.back_door_camera_motion
+  #       to: 'on'
+  #   action:
+  #     service: camera.snapshot
+  #     data_template:
+  #       entity_id: camera.back_door_cam
+  #       filename: '/config/www/motion/back_door_camera.jpg'

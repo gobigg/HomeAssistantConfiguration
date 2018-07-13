@@ -23,16 +23,16 @@ automation:
         message: >
           {% if is_state('group.persons', 'home') %}{% if is_state('device_tracker.stefan', 'Home') %}Stefan is {{states.device_tracker.stefan.state}} {% endif %}{% if is_state('device_tracker.isabella', 'Home')%}Isabella is {{states.device_tracker.isabella.state}}{% endif %}{% else %}No one is home.
           {% endif %}
-          Passage: {{states.sensor.temperature_158d000123552c.state_with_unit}}
-          Bathroom: {{states.sensor.temperature_158d0001a2a899.state}}
-          Stefan: {{states.sensor.temperature_158d0001fd83e7.state}}
-          Bedroom: {{states.sensor.temperature_158d0001235510.state}}
+          Passage: {{states.sensor.temperature_passage.state_with_unit}}
+          Bathroom: {{states.sensor.temperature_downstairs_bathroom.state}}
+          Stefan: {{states.sensor.temperature_stefan.state}}
+          Bedroom: {{states.sensor.temperature_bedroom.state}}
 
 - alias: 'High Temperatures'
   initial_state: 'on'
   trigger:
     - platform: numeric_state
-      entity_id: sensor.temperature_158d000123552c, sensor.temperature_158d0001a2a899, sensor.temperature_158d0001fd83e7, sensor.temperature_158d0001235510
+      entity_id: sensor.temperature_passage, sensor.temperature_downstairs_bathroom, sensor.temperature_stefan, sensor.temperature_bedroom
       above: 35.0
   action:
     - service: notify.ios_isabellas_iphone_x

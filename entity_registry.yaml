@@ -1,13 +1,3 @@
-sensor.temperature_158d000123552c:
-  config_entry_id:
-  name:
-  platform: xiaomi_aqara
-  unique_id: temperature158d000123552c
-sensor.temperature_158d0001fd83e7:
-  config_entry_id:
-  name:
-  platform: xiaomi_aqara
-  unique_id: temperature158d0001fd83e7
 sensor.humidity_158d000123552c:
   config_entry_id:
   name:
@@ -23,11 +13,6 @@ sensor.illumination_158d0001a24ef1:
   name:
   platform: xiaomi_aqara
   unique_id: lux158d0001a24ef1
-sensor.temperature_158d0001a2a899:
-  config_entry_id:
-  name:
-  platform: xiaomi_aqara
-  unique_id: temperature158d0001a2a899
 sensor.illumination_34ce008bfc4b:
   config_entry_id:
   name:
@@ -43,11 +28,6 @@ sensor.humidity_158d0001a2a899:
   name:
   platform: xiaomi_aqara
   unique_id: humidity158d0001a2a899
-sensor.temperature_158d0001235510:
-  config_entry_id:
-  name:
-  platform: xiaomi_aqara
-  unique_id: temperature158d0001235510
 sensor.illumination_158d000165ff1f:
   config_entry_id:
   name:
@@ -63,16 +43,6 @@ sensor.illumination_158d0001a66256:
   name:
   platform: xiaomi_aqara
   unique_id: lux158d0001a66256
-binary_sensor.door_window_sensor_158d0001a3e3a4:
-  config_entry_id:
-  name:
-  platform: xiaomi_aqara
-  unique_id: status158d0001a3e3a4
-binary_sensor.door_window_sensor_158d0001a3e45e:
-  config_entry_id:
-  name:
-  platform: xiaomi_aqara
-  unique_id: status158d0001a3e45e
 binary_sensor.door_window_sensor_158d00016d6ef9:
   config_entry_id:
   name:
@@ -653,31 +623,6 @@ sensor.passage_pir_burglar:
   name:
   platform: zwave
   unique_id: 18-72057594345963681
-binary_sensor.back_door_sensor:
-  config_entry_id:
-  name:
-  platform: zwave
-  unique_id: 19-72057594361675776
-sensor.back_door_alarm_type:
-  config_entry_id:
-  name:
-  platform: zwave
-  unique_id: 19-72057594362740737
-sensor.back_door_alarm_level:
-  config_entry_id:
-  name:
-  platform: zwave
-  unique_id: 19-72057594362740753
-sensor.back_door_sourcenodeid:
-  config_entry_id:
-  name:
-  platform: zwave
-  unique_id: 19-72057594362740769
-sensor.back_door_access_control:
-  config_entry_id:
-  name:
-  platform: zwave
-  unique_id: 19-72057594362740881
 binary_sensor.water_heater_sensor:
   config_entry_id:
   name:
@@ -838,36 +783,6 @@ sensor.dryer_plug_power_management:
   name:
   platform: zwave
   unique_id: 24-72057594446626993
-light.walk_in_closet_2:
-  config_entry_id:
-  name:
-  platform: hue
-  unique_id: 00:0b:57:ff:fe:89:05:ae-01
-light.extra_light:
-  config_entry_id:
-  name:
-  platform: hue
-  unique_id: 00:17:88:01:02:75:e1:23-0b
-light.walk_in_closet_1:
-  config_entry_id:
-  name:
-  platform: hue
-  unique_id: 00:0b:57:ff:fe:8a:f7:93-01
-light.walk_in_closet_3:
-  config_entry_id:
-  name:
-  platform: hue
-  unique_id: 00:0b:57:ff:fe:94:1b:41-01
-light.extra_light_2:
-  config_entry_id:
-  name:
-  platform: hue
-  unique_id: 00:0b:57:ff:fe:13:fe:b0-01
-light.walk_in_closet_4:
-  config_entry_id:
-  name:
-  platform: hue
-  unique_id: 00:0b:57:ff:fe:96:7d:61-01
 sensor.isabellas_iphone_6s_battery_state:
   config_entry_id:
   name:
@@ -898,11 +813,6 @@ sensor.paddan_battery_state:
   name:
   platform: ios
   unique_id: state_iPad
-light.outdoor_plug:
-  config_entry_id:
-  name:
-  platform: hue
-  unique_id: 7c:b0:3e:aa:00:ab:7b:a2-03
 sensor.isabellas_iphone_x_battery_level:
   config_entry_id:
   name:
@@ -933,11 +843,6 @@ media_player.igrims:
   name:
   platform: plex
   unique_id: 86BDC300-4F32-4F09-AF77-FB83EAB7EAB1
-binary_sensor.door_window_sensor_158d00020195a0:
-  config_entry_id:
-  name:
-  platform: xiaomi_aqara
-  unique_id: status158d00020195a0
 zwave.aeotec_zw090_zstick_gen5:
   config_entry_id:
   name:
@@ -1028,12 +933,12 @@ sensor.daylight:
   name:
   platform: deconz
   unique_id: 00:21:2e:ff:ff:02:2c:95-01
-sensor.isa_dimmer_battery_level:
+sensor.dimmer_isa_battery_level:
   config_entry_id:
   name:
   platform: deconz
   unique_id: 00:0b:57:ff:fe:23:2f:6e-01-1000
-sensor.lumisensor_switch_3_battery_level:
+sensor.dimmer_bedroom_battery_level:
   config_entry_id:
   name:
   platform: deconz
@@ -1048,7 +953,7 @@ zwave.unknown_node_5:
   name:
   platform: zwave
   unique_id: node-5
-sensor.lightlevel_5:
+sensor.lux_cat_food:
   config_entry_id:
   name:
   platform: deconz
@@ -1058,7 +963,7 @@ light.floorlamp_reading_light:
   name:
   platform: deconz
   unique_id: 00:0b:57:ff:fe:90:42:4f-01
-binary_sensor.openclose_8:
+binary_sensor.lock_sensor:
   config_entry_id:
   name:
   platform: deconz
@@ -1123,22 +1028,22 @@ binary_sensor.cat_food:
   name:
   platform: deconz
   unique_id: 00:15:8d:00:01:a6:62:56-01-0406
-light.walk_in_closet_2_2:
+light.walk_in_closet_2:
   config_entry_id: b0430cacefee411abe675469239fe33f
   name:
   platform: deconz
   unique_id: 00:0b:57:ff:fe:89:05:ae-01
-light.walk_in_closet_3_2:
+light.walk_in_closet_3:
   config_entry_id: b0430cacefee411abe675469239fe33f
   name:
   platform: deconz
   unique_id: 00:0b:57:ff:fe:94:1b:41-01
-light.walk_in_closet_4_2:
+light.walk_in_closet_4:
   config_entry_id: b0430cacefee411abe675469239fe33f
   name:
   platform: deconz
   unique_id: 00:0b:57:ff:fe:96:7d:61-01
-light.walk_in_closet_1_2:
+light.walk_in_closet_1:
   config_entry_id: b0430cacefee411abe675469239fe33f
   name:
   platform: deconz
@@ -1148,8 +1053,88 @@ sensor.power_16:
   name:
   platform: deconz
   unique_id: 7c:b0:3e:aa:00:ab:7b:a2-03-0b04
-light.outdoor_plug_2:
+light.outdoor_plug:
   config_entry_id: b0430cacefee411abe675469239fe33f
   name:
   platform: deconz
   unique_id: 7c:b0:3e:aa:00:ab:7b:a2-03
+binary_sensor.back_door:
+  config_entry_id: b0430cacefee411abe675469239fe33f
+  name:
+  platform: deconz
+  unique_id: 00:15:8d:00:02:2b:96:b4-01-0006
+sensor.temperature_passage:
+  config_entry_id: b0430cacefee411abe675469239fe33f
+  name:
+  platform: deconz
+  unique_id: 00:15:8d:00:01:23:55:2c-01-0402
+sensor.humidity_passage:
+  config_entry_id: b0430cacefee411abe675469239fe33f
+  name:
+  platform: deconz
+  unique_id: 00:15:8d:00:01:23:55:2c-01-0405
+sensor.temperature_stefan:
+  config_entry_id: b0430cacefee411abe675469239fe33f
+  name:
+  platform: deconz
+  unique_id: 00:15:8d:00:01:fd:83:e7-01-0402
+sensor.humidity_stefan:
+  config_entry_id: b0430cacefee411abe675469239fe33f
+  name:
+  platform: deconz
+  unique_id: 00:15:8d:00:01:fd:83:e7-01-0405
+binary_sensor.window_bedroom:
+  config_entry_id: b0430cacefee411abe675469239fe33f
+  name:
+  platform: deconz
+  unique_id: 00:15:8d:00:02:01:95:a0-01-0006
+binary_sensor.door_balcony:
+  config_entry_id: b0430cacefee411abe675469239fe33f
+  name:
+  platform: deconz
+  unique_id: 00:15:8d:00:01:a3:e4:5e-01-0006
+binary_sensor.door_bathroom_cabinet:
+  config_entry_id: b0430cacefee411abe675469239fe33f
+  name:
+  platform: deconz
+  unique_id: 00:15:8d:00:01:a3:e3:a4-01-0006
+binary_sensor.roomba:
+  config_entry_id: b0430cacefee411abe675469239fe33f
+  name:
+  platform: deconz
+  unique_id: 00:15:8d:00:01:a3:df:50-01-0006
+sensor.temperature_downstairs_bathroom:
+  config_entry_id: b0430cacefee411abe675469239fe33f
+  name:
+  platform: deconz
+  unique_id: 00:15:8d:00:01:a2:a8:99-01-0402
+sensor.humidity_downstairs_bathroom:
+  config_entry_id: b0430cacefee411abe675469239fe33f
+  name:
+  platform: deconz
+  unique_id: 00:15:8d:00:01:a2:a8:99-01-0405
+binary_sensor.water_leak_kitchen:
+  config_entry_id: b0430cacefee411abe675469239fe33f
+  name:
+  platform: deconz
+  unique_id: 00:15:8d:00:01:d5:31:bb-01-0500
+sensor.temperature_bedroom:
+  config_entry_id: b0430cacefee411abe675469239fe33f
+  name:
+  platform: deconz
+  unique_id: 00:15:8d:00:01:23:55:10-01-0402
+sensor.humidity_bedroom:
+  config_entry_id: b0430cacefee411abe675469239fe33f
+  name:
+  platform: deconz
+  unique_id: 00:15:8d:00:01:23:55:10-01-0405
+sensor.temperature_158d0001a2a899:
+  config_entry_id:
+  name:
+  platform: xiaomi_aqara
+  unique_id: temperature158d0001a2a899
+sensor.daylight_2:
+  config_entry_id: b0430cacefee411abe675469239fe33f
+  name:
+  platform: deconz
+  unique_id: 00:00:00:00:00:00:00:00-01

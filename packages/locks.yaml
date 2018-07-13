@@ -1,0 +1,30 @@
+sensor:
+  - platform: imap_email_content
+    server: imap.gmail.com
+    port: 993
+    name: Verisure Mail
+    username: !secret verisure_mail_username
+    password: !secret verisure_mail_password
+    senders:
+      - no-reply@verisure.com
+
+  - platform: template
+    sensors:
+      unlocked_by:
+        friendly_name: "Unlocked by"
+        value_template: >-
+          {% if states.sensor.verisure_mail.attributes.subject == "Upplåst utifrån" %}
+            {% if states.sensor.verisure_mail.attributes.body.find("Isabella") | int >= 0 %}
+              Isabella
+            {% elif states.sensor.verisure_mail.attributes.body.find("Stefan") | int >= 0 %}
+              Stefan
+            {% elif states.sensor.verisure_mail.attributes.body.find("firma") | int >= 0 %}
+              Cleaners
+            {% elif states.sensor.verisure_mail.attributes.body.find("Dante") | int >= 0 %}
+              Dante
+            {% elif states.sensor.verisure_mail.attributes.body.find("drar") | int >= 0 %}
+              Parents
+            {% else %}
+              Unknown
+            {% endif %}
+          {% endif %}

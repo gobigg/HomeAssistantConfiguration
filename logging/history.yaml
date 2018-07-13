@@ -6,7 +6,7 @@
       - media_player
       - sun
       - calendar
-      - sensor
+      # - sensor
       - group
       - switch
       - script
@@ -46,10 +46,10 @@
       - sensor.hallway_movement
       - sensor.living_room_movement
       - sensor.passage_movement
-      - sensor.temperature_158d0001235510
-      - sensor.temperature_158d000123552c
-      - sensor.temperature_158d0001a2a899
-      - sensor.temperature_158d0001fd83e7
+      - sensor.temperature_bedroom
+      - sensor.temperature_passage
+      - sensor.temperature_downstairs_bathroom
+      - sensor.temperature_stefan
       - sensor.kitchen_sink
       - sensor.water_heater
       - device_tracker.isabellas_iphone_x

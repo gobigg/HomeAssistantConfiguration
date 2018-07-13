@@ -1,0 +1,5 @@
+switch:
+  - platform: broadlink
+    friendly_name: Broadlink Livingroom
+    host: !secret broadlink_livingroom_ip
+    mac: !secret broadlink_livingroom_mac

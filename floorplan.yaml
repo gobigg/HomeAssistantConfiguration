@@ -33,10 +33,10 @@
           '
         - name: Temperatures
           entities:
-             - sensor.temperature_158d000123552c # passage
-             - sensor.temperature_158d0001235510 # upstairs hallway
-             - sensor.temperature_158d0001fd83e7 # Stefan
-             - sensor.temperature_158d0001a2a899 # downstairs bathroom
+             - sensor.temperature_passage # passage
+             - sensor.temperature_bedroom # upstairs hallway
+             - sensor.temperature_stefan # Stefan
+             - sensor.temperature_downstairs_bathroom # downstairs bathroom
              - sensor.dark_sky_temperature # Outdoor
           text_template: '${entity.state ? entity.state + "°" : "unknown"}'
           class_template: '
@@ -213,11 +213,11 @@
         - name: Door and window sensors
           entities:
             - binary_sensor.dining_area_window_sensor_sensor
-            - binary_sensor.back_door_sensor
+            - binary_sensor.back_door
             - binary_sensor.front_door_sensor
             - binary_sensor.door_window_sensor_158d00019e152b # backyard door
             - binary_sensor.door_window_sensor_158d00019f5110 # yard storage door
-            - binary_sensor.door_window_sensor_158d0001a3e45e # balcony door
+            - binary_sensor.door_balcony # balcony door
           states:
             # - state: 'off'
             #   class: 'hidden'
