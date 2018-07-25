@@ -1,12 +1,14 @@
 homeassistant:
   customize:
-    alarm_control_panel.home_alarm:
-      homebridge_visible: true
-      homebridge_name: House Alarm
     lock.ytterdorr:
       friendly_name: 'Front Door Lock'
       confirm_controls_show_lock: true
-
+    alarm_control_panel.home_alarm:
+      custom_ui_state_card: state-card-custom-ui
+      templates:
+        hs_color: "if (state === 'disarmed') return [0, 0];
+        else if (state === 'triggered') return [0, 85];
+        else return [40, 70];"
 sensor:
   - platform: template
     sensors:

@@ -1,5 +1,105 @@
+homeassistant:
+  customize:
+    input_text.ac_tiles:
+      custom_ui_state_card: state-card-tiles
+      config:
+        columns: 3
+        column_width: 50px
+        row_height: 50px
+        gap: 15px
+        color: '#555B65'
+        color_on: '#D5D619'
+        color_off: '#BBBEC2'
+        entities:
+          - entity: script.ac_on
+            # label: S1
+            row: 1
+            column: 1
+            icon: mdi:air-conditioner
+          - entity: script.ac_off
+            # label: S1
+            row: 1
+            column: 2
+            icon: mdi:fan-off
+          # - entity: script.air_cleaner_turbo
+          #   # label: S1
+          #   row: 1
+          #   column: 3
+          #   icon: mdi:run-fast
+
+    input_text.tv_tiles:
+      custom_ui_state_card: state-card-tiles
+      config:
+        columns: 3
+        column_width: 50px
+        row_height: 50px
+        gap: 15px
+        color: '#555B65'
+        color_on: '#D5D619'
+        color_off: '#BBBEC2'
+        entities:
+          - entity: script.tv_on_off
+            # label: S1
+            row: 1
+            column: 1
+            icon: mdi:television
+          - entity: script.media_system_on_off
+            # label: S1
+            row: 1
+            column: 2
+            icon: mdi:speaker
+          - entity: script.tv_mute_unmute
+            # label: S1
+            row: 1
+            column: 3
+            icon: mdi:volume-off
+
 switch:
   - platform: broadlink
     friendly_name: Broadlink Livingroom
     host: !secret broadlink_livingroom_ip
     mac: !secret broadlink_livingroom_mac
+
+script:
+  ac_off:
+    sequence:
+      - service: switch.broadlink_send_packet_192_168_1_90
+        data:
+          packet:
+            - 'JgA2AWw4DQ8NDwwPDQ8NDwwPDSoNDw0ODQ8NDwwPDQ8MDw0PDQ8MDw0PDSoNDg0rDQ4NDw0PDA8NDwwPDQ8NDwwPDQ8MKw0ODSsMKw0qDQ8MKw0qDQ8MKw0ODSoNDw0PDA8NDw0ODQ8NKg0rDA8NDwwrDQ8MKwwPDQ8NKg0qDQ8MKw0qDSoNKg0rDA8NDw0ODQ8NDwwPDQ8NDg0PDQ8MDw0qDSsNDg0PDQ4NDw0PDSoNKg0PDA8NDwwrDQ8MKwwrDSoNDw0qDQ4NKwwPDQ8NDg0PDQ8MDw0qDQ8NDw0ODQ8NDg0PDQ8MDw0PDA8NDw0PDA8NDw0ODQ8NDg0PDQ8MDw0PDQ4NDw0PDQ4NDw0ODQ8NDw0ODQ8NDg0PDQ8NDg0PDQ4NDw0PDQ4NDw0ODQ8NKg0qDSsMDw0ADQUAAA=='
+ 
+  ac_on:
+    sequence:
+      - service: switch.broadlink_send_packet_192_168_1_90
+        data:
+          packet:
+            - 'JgA2AW04DQ8MDw0PDQ4NDw0PDCsNDg0PDQ8MDw0PDQ4NDw0PDQ4NDw0ODSsMDw0rDA8NDwwPDQ8NDg0PDQ8MDw0PDQ4NKg0PDSoNKwwrDQ4NKg0rDQ4NDw0qDSoNDw0ODQ8NDwwPDQ8NKg0qDQ8NDg0rDA8NKg0rDA8NKg0rDA8NKg0qDSsNKg0qDQ8NDg0PDSoNDw0ODQ8NDg0PDQ8MDw0qDSsMDw0PDQ8MDw0PDCsNKg0PDA8NDwwrDQ8MKw0qDSoNDw0qDQ8MKwwPDQ8NDwwPDQ8NDg0rDA8NDwwPDQ8NDwwPDQ8MDw0PDQ4NDw0PDA8NDw0ODQ8NDwwPDQ8NDg0PDQ8MDw0PDQ4NDw0PDA8NDw0ODQ8NDwwPDQ8NDg0PDQ8MDw0PDQ4NDw0qDQ8NKg0qDSoNDw0ADQUAAA=='
+
+  media_system_on_off:
+    sequence:
+      - service: switch.broadlink_send_packet_192_168_1_90
+        data:
+          packet:
+            - 'JgCMAJKVEjgSORETERQRExITETkRFBE5ETkRFBETEjgSExE5EhMROREUERMSExEUERMRFBETEhMRORE5EjgSOBI5ETkROREABeSSlhE5ETkRFBETEhMRExI5ERMRORI4EhMRFBE5ERMSOBITETkSExEUERMRFBETEhMRFBETETkSOBI5ETkRORE5ETkRAA0FAAAAAAAAAAAAAAAA'
+
+  tv_on_off:
+    sequence:
+      - service: switch.broadlink_send_packet_192_168_1_90
+        data:
+          packet:
+            - 'JgCMAJKVEjkRORE5ERMSExEUERMSExE5ETkRORMSExITEREUExETEhE5ERQTERMSExIRExITETkRFBE5ETkRORE5ETkSOBIABgmTlRE5ETkSOBMSEhMSEhMSERQSOBI4EjgSExISExISExISEhMSOBITEhISExISExISExI4EhIUNhM4EjgSOBI4EjgTAA0FAAAAAAAAAAAAAAAA'
+
+  tv_mute_unmute:
+    sequence:
+      - service: switch.broadlink_send_packet_192_168_1_90
+        data:
+          packet:
+            - 'JgCQAAUABeaTlRE5ETkSOBITERQRExEUERMSORE5ETkRExITERQRExITETkRORE5ETkSExETEhMRFBETEhMRFBETEjgSOBI5ETkRAAYJkpYRORE5ETkRFBETEhMRFBETETkSOBI4EhMRFBETEhMRFBE5ETkRORE5ERQRExITERMSExEUERMSExE5ETkRORI4EgANBQAAAAAAAAAA'
+
+
+input_text:
+  ac_tiles:
+    name: AC Tiles
+
+  tv_tiles:
+    name: TV Tiles

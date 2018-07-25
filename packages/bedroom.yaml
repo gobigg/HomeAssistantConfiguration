@@ -1,3 +1,11 @@
+script:
+  bedroom_tv_on_off:
+    sequence:
+      - service: switch.broadlink_send_packet_192_168_1_53
+        data:
+          packet:
+            - 'JgCMAJaTEzYUNhQ1FBEUERQRFBETEhM2FDYTNhQRFBEUERMSExEUERQ2ExITERQRFBEUERQREzYUERQ2EzYUNhM2FDYUNRQABgCWkxM2FDYUNRQRFBEUERQRExEUNhQ2EzYUERQRFBETERQRFBEUNhMRFBEUERQRFBEUERM2FBEUNRQ2FDYTNhQ2FDUUAA0FAAAAAAAAAAAAAAAA'
+
 automation:
   - alias: 'Notification on window open and lights on'
     initial_state: 'on'

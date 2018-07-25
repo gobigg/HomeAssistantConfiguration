@@ -1,3 +1,10 @@
+resources:
+  - url: /local/lovelace_ui/plan-coordinates.js
+    type: js
+  - url: /local/lovelace_ui/monster-card.js
+    type: js
+  - url: /local/lovelace_ui/picture-entity-status.js?v=1
+    type: js
 title: Home
 views:
   - icon: mdi:information-outline
@@ -6,36 +13,110 @@ views:
     cards:
       - type: vertical-stack
         cards:
-        - type: glance
-          entities:
-            - alarm_control_panel.home_alarm
-            - sensor.front_door_combined
-            - device_tracker.isabella
-            - device_tracker.stefan
-        - type: glance
-          entities:
-            - entity: sensor.temperature_stefan
-              name: Stefan
-            - sensor.temperature_bedroom
-            - sensor.temperature_passage
-            - entity: sensor.temperature_downstairs_bathroom
-              name: Laundry
-        - type: glance
-          entities:
-            - entity: sensor.big_chili_moisture
-              name: Big Chili
-            - entity: sensor.small_chili_moisture
-              name: Small Chili
-            - entity: sensor.herbs_moisture
-              name: Herbs
-        - type: glance
-          entities:
-            - entity: sensor.big_chili_temperature
-              name: Big Chili
-            - entity: sensor.small_chili_temperature
-              name: Small Chili
-            - entity: sensor.herbs_temperature
-              name: Herbs
+        - type: horizontal-stack
+          cards:
+            - type: custom:picture-entity-status
+              entity: device_tracker.isabella
+              image: /local/isa_alt.jpg
+
+            - type: custom:picture-entity-status
+              entity: device_tracker.stefan
+              image: /local/Stefan_cropped.jpg
+
+
+        - type: picture-elements
+          image: /local/house-element.jpg
+          elements:
+            - type: state-icon
+              entity: alarm_control_panel.home_alarm
+              style:
+                top: 87%
+                left: 5%
+                "--paper-item-icon-color": white
+            - type: state-icon
+              entity: sensor.front_door_combined
+              style:
+                top: 86%
+                left: 14%
+            - type: state-icon
+              entity: sensor.mailbox
+              style:
+                top: 86%
+                left: 23%
+                "--paper-item-icon-color": white
+
+            - type: icon
+              icon: mdi:hotel
+              style:
+                top: 82%
+                left: 50%              
+            - type: state-label
+              entity: sensor.temperature_bedroom
+              style:
+                top: 95%
+                left: 50%
+            - type: icon
+              icon: mdi:human-male
+              style:
+                top: 82%
+                left: 64% 
+            - type: state-label
+              entity: sensor.temperature_stefan
+              style:
+                top: 95%
+                left: 64%
+                --ha-label-badge-font-size: 1em
+            - type: icon
+              icon: mdi:stairs
+              style:
+                top: 82%
+                left: 78% 
+            - type: state-label
+              entity: sensor.temperature_passage
+              style:
+                top: 95%
+                left: 78%
+                --ha-label-badge-font-size: 1em
+            - type: icon
+              icon: mdi:washing-machine
+              style:
+                top: 82%
+                left: 92% 
+            - type: state-label
+              entity: sensor.temperature_downstairs_bathroom
+              style:
+                top: 95%
+                left: 92%
+                --ha-label-badge-font-size: 1em
+
+        - type: picture-elements
+          image: /local/plants.jpg
+          elements:
+            - type: state-badge
+              entity: sensor.small_chili_moisture
+              style:
+                top: 27%
+                left: 10%
+                --ha-label-badge-font-size: 1em
+            - type: state-badge
+              entity: sensor.big_chili_moisture
+              style:
+                top: 27%
+                left: 25%
+                --ha-label-badge-font-size: 1em
+            - type: state-badge
+              entity: sensor.herbs_moisture
+              style:
+                top: 27%
+                left: 40%
+                --ha-label-badge-font-size: 1em
+            - type: state-label
+              entity: sensor.greenhouse_temperature
+              style:
+                top: 15%
+                left: 92%
+                --ha-label-badge-font-size: 1em
+                
         - type: entity-filter
           entities:
             - entity: sensor.front_door_lock
@@ -67,22 +148,18 @@ views:
             - 'Movement detected'
             - 'Leaking'
             - 'Unlocked'
-            - 'Unknown'
+            # - 'Unknown'
           card: 
             type: glance
-            # title: Security glance
+
         - type: entity-filter
           entities:
-            - input_text.lights_tiles
-            # - group.outdoor_lights_card
             - light.outdoor_lights
             - light.bedroom_ceiling_light
             - light.bedside_lamp
             - light.dining_area_ceiling_light_level  
             - light.kitchen_ceiling_spotlights_level
             - light.floorlamp_reading_light
-            - light.christmas_candelabra
-            - light.storage_christmas_candelabra
             - light.floorlamp_uplight
             - light.hallway_window_light
             - light.isa_ceiling_light
@@ -91,7 +168,6 @@ views:
             - light.passage_ceiling_spotlights_level
             - light.stairs_lights_lights
             - light.walk_in_closet_lights
-            # - light.stefan_ceiling_light
             - light.stefan_lightstrip
             - light.upstairs_hallway_ceiling_light_level
             - light.gateway_light_34ce008bfc4b
@@ -99,22 +175,27 @@ views:
             - 'on'
           card:
             type: glance
+            # type: picture-glance
+            # image: /local/house-element.jpg
 
-      - type: entities
-        entities:
-          - sun.sun
-          - sensor.front_door_combined
-          - sensor.front_door_latest_ding
-          - sensor.front_door_latest_motion
-          - sensor.mailbox
-          - switch.stefan_radiator
+      - type: vertical-stack
+        cards:
+        - type: weather-forecast
+          entity: weather.dark_sky
+        - type: entities
+          entities:
+            # - sun.sun
+            # - sensor.front_door_combined
+            # - sensor.mailbox
+            - switch.stefan_radiator
 
+ 
 #########################################
 ####             Home view           ####
 #########################################
 
   - icon: mdi:home-heart
-    id: info
+    id: home-info
     title: Home info
     cards:
       - type: vertical-stack
@@ -145,7 +226,7 @@ views:
             show_header_toggle: false
             entities:
               - input_select.roomba_mode
-              - switch.roomba_combined
+              # - switch.roomba_combined
               - sensor.roomba_docked
               # - switch.roomba
               # - switch.roomba_dock
@@ -190,16 +271,20 @@ views:
           - type: horizontal-stack
             cards:
               - type: picture-entity
+                name: Live Downstairs           
                 image:
-                entity: camera.back_door
-                name: Live Back Door            
-                camera_image: camera.back_door
+                entity: camera.downstairs
+                camera_image: camera.upstairs      
               - type: picture-entity
                 name: Live Upstairs           
                 image:
                 entity: camera.upstairs
                 camera_image: camera.upstairs
-
+          - type: picture-entity
+            image:
+            entity: camera.back_door
+            name: Live Back Door            
+            camera_image: camera.back_door
 #########################################
 ####           Lights view           ####
 #########################################
@@ -210,16 +295,12 @@ views:
     cards:
       - type: entities
         entities:
-          # - input_text.lights_tiles
-          # - group.outdoor_lights_card
           - light.outdoor_lights
           - light.bedroom_ceiling_light
           - light.bedside_lamp
           - light.dining_area_ceiling_light_level  
           - light.kitchen_ceiling_spotlights_level
           - light.floorlamp_reading_light
-          - light.christmas_candelabra
-          - light.storage_christmas_candelabra
           - light.floorlamp_uplight
           - light.hallway_window_light
           - light.isa_ceiling_light
@@ -232,3 +313,70 @@ views:
           - light.stefan_lightstrip
           - light.upstairs_hallway_ceiling_light_level
           - light.gateway_light_34ce008bfc4b
+
+
+#########################################
+####            Info view            ####
+#########################################
+
+
+  - icon: mdi:lan
+    id: info
+    title: Info
+    cards:
+
+      - type: entities
+        entities:
+          - sensor.printer
+          - sensor.nas
+          - sensor.ipad
+          - sensor.galaxy_tab
+          - sensor.ip_camera
+          - sensor.ir_blaster
+          - sensor.ir_blaster_bedroom
+          # - sensor.ir_blaster_livingroom
+          - sensor.withings_scale
+          # - sensor.hue_hub
+          - sensor.milight_hub
+          # - sensor.ikea_gateway
+          - sensor.xiaomi_gateway
+          # - sensor.hass_rpi
+          # - sensor.magic_mirror_rpi
+          - sensor.ring_doorbell
+          - sensor.ring_chime_pro
+          - sensor.ring_chime
+
+      - type: entities
+        entities:
+          - sensor.stefan_computer
+          - sensor.isa_computer
+          - sensor.isa_laptop
+
+      - type: entities
+        entities:
+          - sensor.samsung65
+          - sensor.samsung49
+          - sensor.movie_system
+          - sensor.chromecast_bedroom
+          - sensor.shield
+          # - sensor.shield_2
+          - sensor.sonos
+
+      - type: entities
+        title: Appdaemon apps
+        entities:
+          - input_boolean.ad_presence
+
+
+      - type: custom:monster-card
+        show_empty: false
+        card:
+          type: entities
+          title: Things that are probably broken
+        filter:
+          include:
+            - state: "unknown"
+          exclude:
+            - domain: group
+            - domain: input_text
+            - domain: history_graph

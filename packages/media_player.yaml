@@ -23,10 +23,10 @@ group:
     name: Media Players
     icon: mdi:movie
     entities:
+      - input_text.tv_tiles
       - media_player.sonos
       - media_player.shield
       - media_player.sovrum
-      # - media_player.htse6730_hte6730
       - media_player.livingroom_movie_system
       - media_player.chrome
       - media_player.livingroom_tv

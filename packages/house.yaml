@@ -62,3 +62,12 @@ group:
       - camera.upstairs
       - camera.front_door
       - camera.latest_motion
+
+  air:
+    name: Air
+    entities:
+      - input_text.air_tiles
+      - input_text.ac_tiles
+      - sensor.pollen_bjork
+      - sensor.pollen_gras
+      - sensor.pollen_grabo

@@ -33,7 +33,7 @@ shell_command:
 # ########################################
 map:
 frontend:
-  javascript_version: auto
+  javascript_version: latest
   themes: !include_dir_named themes
   extra_html_url:
     - /local/custom_ui/state-card-custom-ui.html

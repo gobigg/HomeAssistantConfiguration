@@ -32,21 +32,6 @@ switch:
     friendly_name: Broadlink Bedroom
     host: !secret broadlink_bedroom_ip
     mac: !secret broadlink_bedroom_mac
-   
-  # - platform: template
-  #   switches:
-  #     air_cleaner:
-  #       value_template: "{{ is_state('script.air_cleaner_auto', 'on') }}"
-  #       turn_on:
-  #         service: script.turn_on
-  #         data:
-  #           entity_id: script.air_cleaner_auto
-  #       turn_off:
-  #         service: script.turn_on
-  #         data:
-  #           entity_id: script.air_cleaner_quiet
-
-
 
 input_text:
   air_tiles:
@@ -77,15 +62,7 @@ script:
   #       data:
   #         packet:
   #           - 'JgBQAAABKpIUERQ2FBEUERQ2ExITEhMSEzYUERQ2FDYUERQ2FDUUNhQ2FDYUERQ2ExITEhMSExITERQRFDYUERQ2FDYUNhM2FAAFJQABKUkUAA0FAAAAAAAAAAA='
-              
-group:
-  air:
-    name: Air
-    entities:
-      - input_text.air_tiles
-      - sensor.pollen_bjork
-      - sensor.pollen_gras
-      - sensor.pollen_grabo
+            
 
 input_select:
   air_cleaner:
