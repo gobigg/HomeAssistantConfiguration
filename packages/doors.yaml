@@ -9,14 +9,9 @@ homeassistant:
     binary_sensor.door_balcony:
       friendly_name: Balcony Door
 
-    # binary_sensor.front_door_homebridge:
-
     binary_sensor.back_door:
       friendly_name: Back Door
 
-    # sensor.front_door_access_control:
-
-      
   customize_glob:
     sensor.*door*:
       custom_ui_state_card: state-card-custom-ui

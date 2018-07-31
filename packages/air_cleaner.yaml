@@ -56,13 +56,7 @@ script:
         data:
           packet:
             - 'JgBYAAABIJITEhI4EhMSExI4EhMSExITEjgSExI4EjgRFBE4EjgSOBITEjgSOBITEjgRFBEUERQROBIUERQROBITEjgSOBI4EgAFJwABIEkSAAxXAAEdShMADQU='
-  # air_cleaner_toggle:
-  #   sequence:
-  #     - service: switch.broadlink_send_packet_192_168_1_53
-  #       data:
-  #         packet:
-  #           - 'JgBQAAABKpIUERQ2FBEUERQ2ExITEhMSEzYUERQ2FDYUERQ2FDUUNhQ2FDYUERQ2ExITEhMSExITERQRFDYUERQ2FDYUNhM2FAAFJQABKUkUAA0FAAAAAAAAAAA='
-            
+     
 
 input_select:
   air_cleaner:

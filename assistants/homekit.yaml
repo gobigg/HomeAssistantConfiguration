@@ -62,3 +62,6 @@
       - light.stefan_lightstrip
       - light.upstairs_hallway_ceiling_light_level
       - light.kitchen_ceiling_spotlights_level
+  entity_config:
+    alarm_control_panel.home_alarm:
+      code: !secret alarm_control_panel_code

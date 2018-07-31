@@ -87,7 +87,20 @@ My configuration is broken down into [packages](https://github.com/isabellaalstr
 * Setting up a Magic mirror with information from Hass
 * Setting up Floorplan on tablets
 
-## Examples from my gui
+## Examples from my Lovelace gui
+I have tried to make a gui that is mobile first, since that's how I most often look at it
+<img src="https://github.com/isabellaalstrom/HomeAssistantConfiguration/blob/master/Images/Lovelace-home.png" alt="Home Assistant" />
+<img src="https://github.com/isabellaalstrom/HomeAssistantConfiguration/blob/master/Images/Lovelace-home-info.png" alt="Home Assistant" />
+<img src="https://github.com/isabellaalstrom/HomeAssistantConfiguration/blob/master/Images/Lovelace-lights.png" alt="Home Assistant" />
+<img src="https://github.com/isabellaalstrom/HomeAssistantConfiguration/blob/master/Images/Lovelace-info.png" alt="Home Assistant" />
+
+<img src="https://github.com/isabellaalstrom/HomeAssistantConfiguration/blob/master/Images/Lovelace-home-web.png" alt="Home Assistant" />
+<img src="https://github.com/isabellaalstrom/HomeAssistantConfiguration/blob/master/Images/Lovelace-home-info-web.png" alt="Home Assistant" />
+<img src="https://github.com/isabellaalstrom/HomeAssistantConfiguration/blob/master/Images/Lovelace-lights-web.png" alt="Home Assistant" />
+<img src="https://github.com/isabellaalstrom/HomeAssistantConfiguration/blob/master/Images/Lovelace-info-web.png" alt="Home Assistant" />
+
+
+## Examples from my old gui
 <img src="https://github.com/isabellaalstrom/HomeAssistantConfiguration/blob/master/Images/default_view.png" alt="Home Assistant" />
 <img src="https://github.com/isabellaalstrom/HomeAssistantConfiguration/blob/master/Images/house_view.png" alt="Home Assistant" />
 <img src="https://github.com/isabellaalstrom/HomeAssistantConfiguration/blob/master/Images/system_info.png" alt="Home Assistant" />

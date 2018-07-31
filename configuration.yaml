@@ -15,16 +15,14 @@ hassio:
 http:
   api_password: !secret http_password
   base_url: !secret base_url
+  ip_ban_enabled: true
+  login_attempts_threshold: 3
 updater:
 conversation:
 customizer:
-  # custom_ui: local
 cloud: !include assistants/cloud.yaml # Alexa
 homekit: !include assistants/homekit.yaml
 ios: !include notify/ios_config.yaml
-
-shell_command:
-  lovelace_migrate: 'python3 /config/lovelace_migrate.py -c /config'
 
 # discovery:
 
@@ -58,12 +56,12 @@ panel_iframe:
   #   icon: mdi:vector-square
   #   url: !secret mdi_index_url
 
-panel_custom: 
-  - name: floorplan
-    sidebar_title: Floorplan
-    sidebar_icon: mdi:home
-    url_path: floorplan
-    config: !include floorplan.yaml
+# panel_custom: 
+#   - name: floorplan
+#     sidebar_title: Floorplan
+#     sidebar_icon: mdi:home
+#     url_path: floorplan
+#     config: !include floorplan.yaml
 
 
 # ########################################
@@ -86,7 +84,7 @@ deconz:
   port: !secret deconz_port
   api_key: !secret deconz_api
 rfxtrx:
-  device: /dev/ttyACM0
+  device: /dev/ttyUSB1
 switch:
   platform: rfxtrx
   automatic_add: True
@@ -118,9 +116,8 @@ ring:
 verisure:
   username: !secret verisure_username
   password: !secret verisure_password
-  alarm: 1
+  alarm: 0
   locks: 1
-  # persons: 1
   
 media_player: !include entities/media_player.yaml
 scene: !include_dir_merge_list scene

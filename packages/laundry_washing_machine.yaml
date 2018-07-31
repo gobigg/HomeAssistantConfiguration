@@ -21,6 +21,7 @@ sensor:
         friendly_name: Washer Idle
         value_template: "{{ states('sensor.washer_plug_power') | int < 3.4 }}"
 
+
 group:
   laundry_card:
     name: Laundry

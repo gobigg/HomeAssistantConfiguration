@@ -1025,7 +1025,7 @@ sensor.stefan_remote_battery_level:
   unique_id: 00:0b:57:ff:fe:30:05:07-01-1000
 binary_sensor.cat_food:
   config_entry_id: b0430cacefee411abe675469239fe33f
-  name:
+  name: Cat Food
   platform: deconz
   unique_id: 00:15:8d:00:01:a6:62:56-01-0406
 light.walk_in_closet_2:

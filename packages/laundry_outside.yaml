@@ -1,80 +1,80 @@
-homeassistant:
-  customize:
-    switch.laundry_line_drying:
-      icon: mdi:tshirt-crew
+# homeassistant:
+#   customize:
+#     switch.laundry_line_drying:
+#       icon: mdi:tshirt-crew
       
-#-------------------------------------------
+# #-------------------------------------------
 
-switch:
-  - platform: mqtt
-    command_topic: "dummy/laundry/linedrying"
-    name: Laundry Line Drying
+# switch:
+#   - platform: mqtt
+#     command_topic: "dummy/laundry/linedrying"
+#     name: Laundry Line Drying
     
-#-------------------------------------------
+# #-------------------------------------------
 
-automation:
-  - alias: Laundry Line Drying On
-    initial_state: 'on'
-    trigger:
-      - platform: state
-        entity_id: binary_sensor.white5
-        to: 'on'
-    condition:
-      condition: state
-      entity_id: switch.laundry_line_drying
-      state: 'off'
-    action:
-      - service: homeassistant.turn_on
-        entity_id: switch.laundry_line_drying
-      - service: notify.ios_isabellas_iphone_x
-        data:
-          title: 'Laundry hung out to dry'
-          message: ''
+# automation:
+#   - alias: Laundry Line Drying On
+#     initial_state: 'on'
+#     trigger:
+#       - platform: state
+#         entity_id: binary_sensor.white5
+#         to: 'on'
+#     condition:
+#       condition: state
+#       entity_id: switch.laundry_line_drying
+#       state: 'off'
+#     action:
+#       - service: homeassistant.turn_on
+#         entity_id: switch.laundry_line_drying
+#       - service: notify.ios_isabellas_iphone_x
+#         data:
+#           title: 'Laundry hung out to dry'
+#           message: ''
 
-  - alias: Laundry Line Drying Off
-    initial_state: 'on'
-    trigger:
-      - platform: state
-        entity_id: binary_sensor.white5
-        to: 'off'
-    condition:
-      condition: state
-      entity_id: switch.laundry_line_drying
-      state: 'on'
-    action:
-      - service: homeassistant.turn_off
-        entity_id: switch.laundry_line_drying
-      - service: notify.ios_isabellas_iphone_x
-        data:
-          title: 'Laundry taken in'
-          message: ''
+#   - alias: Laundry Line Drying Off
+#     initial_state: 'on'
+#     trigger:
+#       - platform: state
+#         entity_id: binary_sensor.white5
+#         to: 'off'
+#     condition:
+#       condition: state
+#       entity_id: switch.laundry_line_drying
+#       state: 'on'
+#     action:
+#       - service: homeassistant.turn_off
+#         entity_id: switch.laundry_line_drying
+#       - service: notify.ios_isabellas_iphone_x
+#         data:
+#           title: 'Laundry taken in'
+#           message: ''
 
-  - alias: Laundry Line If Raining
-    initial_state: 'on'
-    trigger:
-      - platform: numeric_state
-        entity_id: sensor.yr_precipitation
-        above: 0.5
-    condition:
-      condition: state
-      entity_id: switch.laundry_line_drying
-      state: 'on'
-    action:
-      - service: notify.ios_isabellas_iphone_x
-        data:
-          title: 'Take in the laundry'
-          message: 'Its going to rain'
+#   - alias: Laundry Line If Raining
+#     initial_state: 'on'
+#     trigger:
+#       - platform: numeric_state
+#         entity_id: sensor.yr_precipitation
+#         above: 0.5
+#     condition:
+#       condition: state
+#       entity_id: switch.laundry_line_drying
+#       state: 'on'
+#     action:
+#       - service: notify.ios_isabellas_iphone_x
+#         data:
+#           title: 'Take in the laundry'
+#           message: 'Its going to rain'
 
-  - alias: Laundry Line 12h
-    initial_state: 'on'
-    trigger:
-      - platform: state
-        entity_id: switch.laundry_line_drying
-        to: 'on'
-        for:
-          hours: 12
-    action:
-      - service: notify.ios_isabellas_iphone_x
-        data:
-          title: 'Take in the laundry'
-          message: 'Its been out there forever...'
+#   - alias: Laundry Line 12h
+#     initial_state: 'on'
+#     trigger:
+#       - platform: state
+#         entity_id: switch.laundry_line_drying
+#         to: 'on'
+#         for:
+#           hours: 12
+#     action:
+#       - service: notify.ios_isabellas_iphone_x
+#         data:
+#           title: 'Take in the laundry'
+#           message: 'Its been out there forever...'

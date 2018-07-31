@@ -1,53 +1,58 @@
-homeassistant:
-  customize:
-    switch.stefan_radiator:
-      icon: mdi:radiator
-      homebridge_visible: true
-      homebridge_name: Stefan Radiator
-      confirm_controls_show_lock: true
+# homeassistant:
+#   customize:
+#     switch.stefan_radiator:
+#       icon: mdi:radiator
+#       homebridge_visible: true
+#       homebridge_name: Stefan Radiator
+#       confirm_controls_show_lock: true
+# # switch:
+# #   - platform: rest
+# #     name: Stefan Radiator Api
+# #     resource: !secret radiator_api
+# #     body_on: '{"state": "on"}'
+# #     body_off: '{"state": "off"}'
+#     # is_on_template: '{{value_json.state}}'
 # switch:
-#   - platform: rest
-#     name: Stefan Radiator Api
-#     resource: !secret radiator_api
-#     body_on: '{"state": "on"}'
-#     body_off: '{"state": "off"}'
-    # is_on_template: '{{value_json.state}}'
-switch:
-  - platform: mqtt
-    name: "Stefan Radiator"
-    state_topic: "home/stefan/radiator/set"
-    command_topic: "home/stefan/radiator/set"
-    # availability_topic: "home/bedroom/switch1/available"
-    payload_on: "on"
-    payload_off: "off"
-    optimistic: false
-    qos: 0
-    retain: true
+#   - platform: mqtt
+#     name: "Stefan Radiator"
+#     state_topic: "home/stefan/radiator/set"
+#     command_topic: "home/stefan/radiator/set"
+#     # availability_topic: "home/bedroom/switch1/available"
+#     payload_on: "on"
+#     payload_off: "off"
+#     optimistic: false
+#     qos: 0
+#     retain: true
 
-automation:
-  - alias: 'Radiator failed to turn on'
-    initial_state: 'on'
-    trigger:
-      platform: mqtt
-      topic: "home/stefan/radiator/failed"
-      payload: 'Failed'
-    condition:
-      - condition: template
-        value_template: >
-          {% if states.automation.radiator_failed_to_turn_on.last_triggered is not none %}
-            {% if as_timestamp(now()) | int   -  as_timestamp(states.automation.radiator_failed_to_turn_on.attributes.last_triggered) | int > 60 %} true {% else %} false
-            {% endif %}
-          {% else %}
-          false
-          {% endif %}
-    action:
-      - service: notify.pushbullet_isa
-        data:
-          title: 'Radiator'
-          message: 'Failed to turn on, try again'
-      - service: notify.ios_stefan_iphone_7
-        data:
-          title: 'Radiator'
-          message: 'Failed to turn on, try again'
-      - service: switch.turn_off
-        entity_id: switch.stefan_radiator
+# automation:
+#   - alias: 'Radiator failed to turn on'
+#     initial_state: 'on'
+#     trigger:
+#       platform: mqtt
+#       topic: "home/stefan/radiator/failed"
+#       payload: 'Failed'
+#     condition:
+#       - condition: template
+#         value_template: >
+#           {% if states.automation.radiator_failed_to_turn_on.last_triggered is not none %}
+#             {% if as_timestamp(now()) | int   -  as_timestamp(states.automation.radiator_failed_to_turn_on.attributes.last_triggered) | int > 60 %} true {% else %} false
+#             {% endif %}
+#           {% else %}
+#           false
+#           {% endif %}
+#     action:
+#       - service: notify.pushbullet_isa
+#         data:
+#           title: 'Radiator'
+#           message: 'Failed to turn on, try again'
+#       - service: notify.ios_stefan_iphone_7
+#         data:
+#           title: 'Radiator'
+#           message: 'Failed to turn on, try again'
+#       - service: switch.turn_off
+#         entity_id: switch.stefan_radiator
+
+switch:
+  - platform: switchbot
+    name: 'Stefan radiator'  
+    mac: 'EA:E1:11:E2:B1:77'

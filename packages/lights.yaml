@@ -164,6 +164,31 @@ light:
       - light.walk_in_closet_lights
       - light.kitchen_ceiling_spotlights_level
 
+  - platform: group
+    name: 'Downstairs lights'
+    entities:
+      - light.dining_area_ceiling_light_level  
+      - light.kitchen_ceiling_spotlights_level
+      - light.floorlamp_reading_light
+      - light.floorlamp_uplight
+      - light.hallway_window_light
+      - light.stairs_lights
+      - light.passage_ceiling_spotlights_level
+      - light.living_room_ceiling_light_level
+      - light.living_room_spotlights_level
+
+  - platform: group
+    name: 'Upstairs lights'
+    entities:
+      - light.bedroom_ceiling_light
+      - light.bedside_lamp
+      - light.isa_ceiling_light
+      - light.walk_in_closet_lights
+      # - light.stefan_ceiling_light
+      - light.stefan_lightstrip
+      - light.upstairs_hallway_ceiling_light_level
+      - light.gateway_light_34ce008bfc4b
+
 group:
   lights:
     control: hidden

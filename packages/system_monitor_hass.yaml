@@ -1,44 +1,28 @@
-homeassistant:
-#   customize:
-#     sensor.disk_used_:
-#       friendly_name: Rpi Disk Used
-#     sensor.uptime:
-#       friendly_name: 'Hass Uptime'
-
-# group:
-#   system_monitor_card:
-#     name: System Monitor Hass Rpi
-#     entities:
-#       - sensor.uptime
-#       - sensor.last_boot
-#       - sensor.since_last_boot
-
-# sensor:
-#   - platform: systemmonitor
-#     resources:
-#       - type: last_boot
-#       - type: since_last_boot
-
-#   - platform: uptime
-#     unit_of_measurement: hours
-
 sensor:
-  - platform: rest
-    name: SC Tiles latest version
-    resource: https://raw.githubusercontent.com/c727/home-assistant-tiles/master/LATEST_VERSION
+  - platform: mqtt
+    state_topic: "homeassistant/sensor/uptime/state"
+    name: Hass Rpi Uptime
+    icon: mdi:clock-outline
+  - platform: mqtt
+    state_topic: "homeassistant/sensor/memory_free/state"
+    name: Hass Rpi Free Memory
+    icon: mdi:memory
+  - platform: mqtt
+    state_topic: "homeassistant/sensor/last_boot/state"
+    name: Hass Rpi Last Boot
+    icon: mdi:clock-outline
+  - platform: mqtt
+    state_topic: "homeassistant/sensor/disk_use_percent_/state"
+    name: Hass Rpi Disk Use Percent
+    icon: mdi:memory
+
+binary_sensor:
+  - platform: mqtt
+    state_topic: "homeassistant/binary_sensor/critical_disk_use/state"
+    name: Hass Rpi Critical Disk Use
+    icon: mdi:floppy
 
 automation:
-  - alias: SC Tiles update info
-    trigger:
-      platform: state
-      entity_id: sensor.sc_tiles_latest_version
-    action:
-      service: persistent_notification.create
-      data_template:
-        title: Update available
-        message: "A new version of [Tiles custom state card](https://github.com/c727/home-assistant-tiles#changelog) is available: {{ states('sensor.sc_tiles_latest_version') }}"
-        notification_id: tiles_update_info
-
   - alias: 'Hass Started'
     initial_state: 'on'
     trigger:

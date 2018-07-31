@@ -67,9 +67,12 @@ automation:
       - condition: state
         entity_id: media_player.livingroom_movie_system
         state: 'off'
+      - condition: state
+        entity_id: device_tracker.livingroom_movie_system
+        state: 'not_home'
       - service: script.sonos_say
         data:
           sonos_entity: media_player.sonos
           volume: 0.2
           message: 'Media system is not turned on'
-          delay: '00:00:10'
+          delay: '00:00:15'

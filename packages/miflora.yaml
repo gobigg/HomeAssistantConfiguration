@@ -37,84 +37,83 @@ sensor:
       - sensor.big_chili_temperature
       - sensor.herbs_temperature
 
-  - platform: miflora
-    mac: "C4:7C:8D:60:A5:B3"
-    name: Small chili
-    median: 3
-    cache: 10800
-    force_update: false
-    monitored_conditions:
-      - temperature
-      - light
-      - moisture
-      - conductivity
-      - battery
+  # - platform: miflora
+  #   mac: "C4:7C:8D:60:A5:B3"
+  #   name: Small chili
+  #   median: 3
+  #   cache: 10800
+  #   force_update: false
+  #   monitored_conditions:
+  #     - temperature
+  #     - light
+  #     - moisture
+  #     - conductivity
+  #     - battery
 
-  - platform: miflora
-    mac: "C4:7C:8D:63:13:9B"
-    name: Herbs
-    median: 3
-    cache: 10800
-    force_update: false
-    monitored_conditions:
-      - temperature
-      - light
-      - moisture
-      - conductivity
-      - battery
+  # - platform: miflora
+  #   mac: "C4:7C:8D:63:13:9B"
+  #   name: Herbs
+  #   median: 3
+  #   cache: 10800
+  #   force_update: false
+  #   monitored_conditions:
+  #     - temperature
+  #     - light
+  #     - moisture
+  #     - conductivity
+  #     - battery
 
-  - platform: miflora
-    mac: "C4:7C:8D:65:C3:A6"
-    name: Big chili
-    median: 3
-    cache: 10800
-    force_update: false
-    monitored_conditions:
-      - temperature
-      - light
-      - moisture
-      - conductivity
-      - battery
+  # - platform: miflora
+  #   mac: "C4:7C:8D:65:C3:A6"
+  #   name: Big chili
+  #   median: 3
+  #   cache: 10800
+  #   force_update: false
+  #   monitored_conditions:
+  #     - temperature
+  #     - light
+  #     - moisture
+  #     - conductivity
+  #     - battery
 
-# sensor:                
-#   - platform: mqtt
-#     state_topic: "homeassistant/sensor/herbs_temperature/state"
-#     name: Herbs temperature
-#     unit_of_measurement: '°C'
-#   - platform: mqtt
-#     state_topic: "homeassistant/sensor/big_chili_temperature/state"
-#     name: Big chili temperature
-#     unit_of_measurement: '°C'
-#   - platform: mqtt
-#     state_topic: "homeassistant/sensor/small_chili_temperature/state"
-#     name: Small chili temperature
-#     unit_of_measurement: '°C'
+  - platform: mqtt
+    state_topic: "homeassistant/sensor/herbs_temperature/state"
+    name: Herbs temperature
+    unit_of_measurement: '°C'
+  - platform: mqtt
+    state_topic: "homeassistant/sensor/big_chili_temperature/state"
+    name: Big chili temperature
+    unit_of_measurement: '°C'
+  - platform: mqtt
+    state_topic: "homeassistant/sensor/small_chili_temperature/state"
+    name: Small chili temperature
+    unit_of_measurement: '°C'
 
-#   - platform: mqtt
-#     state_topic: "homeassistant/sensor/herbs_moisture/state"
-#     name: Herbs moisture
-#     unit_of_measurement: '%'
-#   - platform: mqtt
-#     state_topic: "homeassistant/sensor/big_chili_moisture/state"
-#     name: Big chili moisture
-#     unit_of_measurement: '%'
-#   - platform: mqtt
-#     state_topic: "homeassistant/sensor/small_chili_moisture/state"
-#     name: Small chili moisture
-#     unit_of_measurement: '%'
+  - platform: mqtt
+    state_topic: "homeassistant/sensor/herbs_moisture/state"
+    name: Herbs moisture
+    unit_of_measurement: '%'
+  - platform: mqtt
+    state_topic: "homeassistant/sensor/big_chili_moisture/state"
+    name: Big chili moisture
+    unit_of_measurement: '%'
+  - platform: mqtt
+    state_topic: "homeassistant/sensor/small_chili_moisture/state"
+    name: Small chili moisture
+    unit_of_measurement: '%'
 
-#   - platform: mqtt
-#     state_topic: "homeassistant/sensor/herbs_battery/state"
-#     name: herbs battery
-#     unit_of_measurement: '%'
-#   - platform: mqtt
-#     state_topic: "homeassistant/sensor/big_chili_battery/state"
-#     name: Big chili battery
-#     unit_of_measurement: '%'
-#   - platform: mqtt
-#     state_topic: "homeassistant/sensor/small_chili_battery/state"
-#     name: Small chili battery
-#     unit_of_measurement: '%'
+  - platform: mqtt
+    state_topic: "homeassistant/sensor/herbs_battery/state"
+    name: herbs battery
+    unit_of_measurement: '%'
+  - platform: mqtt
+    state_topic: "homeassistant/sensor/big_chili_battery/state"
+    name: Big chili battery
+    unit_of_measurement: '%'
+  - platform: mqtt
+    state_topic: "homeassistant/sensor/small_chili_battery/state"
+    name: Small chili battery
+    unit_of_measurement: '%'
 
 plant:
   herbs:

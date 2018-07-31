@@ -24,7 +24,7 @@ sensor:
 alarm_control_panel:
   - platform: manual
     name: Home Alarm
-    # code:
+    code: !secret alarm_control_panel_code
     pending_time: 0
     disarm_after_trigger: 'false'
     armed_away:
@@ -97,7 +97,9 @@ automation:
       state: 'off'
   action:
     - service: alarm_control_panel.alarm_arm_away
-      entity_id: alarm_control_panel.home_alarm
+      data:
+        entity_id: alarm_control_panel.home_alarm
+        code: !secret alarm_control_panel_code
     - condition: state
       entity_id: group.inside_lights_automations
       state: 'on'
@@ -152,7 +154,9 @@ automation:
       at: '00:00:00'
   action:
     - service: alarm_control_panel.alarm_arm_night
-      entity_id: alarm_control_panel.home_alarm
+      data:
+        entity_id: alarm_control_panel.home_alarm
+        code: !secret alarm_control_panel_code
 
 - alias: 'Alarm Disarm'
   initial_state: 'on'
@@ -164,7 +168,9 @@ automation:
       at: '06:40:00'
   action:
     - service: alarm_control_panel.alarm_disarm
-      entity_id: alarm_control_panel.home_alarm
+      data:
+        entity_id: alarm_control_panel.home_alarm
+        code: !secret alarm_control_panel_code
 
 ##############################################################
 ######################### TRIGGERS ###########################

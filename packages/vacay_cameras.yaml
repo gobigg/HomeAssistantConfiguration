@@ -1,7 +1,7 @@
-camera:
-  - platform: mjpeg
-    mjpeg_url: http://192.168.1.57:8081/
-    name: Upstairs
-  - platform: mjpeg
-    mjpeg_url: http://192.168.1.80:8081/
-    name: Downstairs
+# camera:
+#   - platform: mjpeg
+#     mjpeg_url: http://192.168.1.57:8081/
+#     name: Upstairs
+#   - platform: mjpeg
+#     mjpeg_url: http://192.168.1.80:8081/
+#     name: Downstairs

@@ -21,11 +21,6 @@ homeassistant:
             row: 1
             column: 2
             icon: mdi:fan-off
-          # - entity: script.air_cleaner_turbo
-          #   # label: S1
-          #   row: 1
-          #   column: 3
-          #   icon: mdi:run-fast
 
     input_text.tv_tiles:
       custom_ui_state_card: state-card-tiles

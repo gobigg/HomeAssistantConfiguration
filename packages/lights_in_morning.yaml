@@ -38,4 +38,4 @@ automation:
       - service: homeassistant.turn_off
         entity_id: light.hallway_window_light
       - service: light.turn_off
-        entity_id: light.outdoor_yard_hanging_lights
+        entity_id: light.outdoor_hanging_lights
