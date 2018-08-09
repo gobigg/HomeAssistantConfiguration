@@ -26,7 +26,6 @@ resources:
 title: Home
 excluded_entities:
   - alarm_control_panel.home_alarm
-  {% for state in states.automation-%}{{ state.entity_id }}{%- endfor %}
 views:
   - !include 1_home_view.yaml
   - !include 2_home_info_view.yaml
