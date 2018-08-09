@@ -1,0 +1,144 @@
+title: Automations
+icon: mdi:flash-auto
+id: automations
+cards:
+  - !include dev_card.yaml
+  - type: custom:monster-card
+    show_empty: false
+    card:
+      type: entities
+      show_header_toggle: false
+      title: Appdaemon Apps
+    filter:
+      include:
+        - entity_id: input_boolean.ad_*
+
+  - type: custom:monster-card
+    show_empty: false
+    card:
+      type: entities
+      show_header_toggle: false
+      title: Security
+    filter:
+      include:
+        - entity_id: automation.*alarm*
+
+  - type: custom:monster-card
+    show_empty: false
+    card:
+      type: entities
+      show_header_toggle: false
+      title: Light
+    filter:
+      include:
+        - entity_id: automation.*light*
+
+  - type: custom:monster-card
+    show_empty: false
+    card:
+      type: entities
+      show_header_toggle: false
+      title: Batteries
+    filter:
+      include:
+        - entity_id: automation.*charger*
+        - entity_id: automation.*charging*
+        - entity_id: automation.*battery*
+
+  - type: custom:monster-card
+    show_empty: false
+    card:
+      type: entities
+      show_header_toggle: false
+      title: House
+    filter:
+      include:
+        - entity_id: automation.*house*
+        - entity_id: automation.*cleaning*
+        - entity_id: automation.*day_mode*
+        - entity_id: automation.*guest_mode*
+        - entity_id: automation.*temperature*
+        - entity_id: automation.*laundry*
+        - entity_id: automation.*air_cleaner*
+        - entity_id: automation.*mailbox*
+        - entity_id: automation.*ring_doorbell*
+        - entity_id: automation.*vacuum*
+
+  - type: custom:monster-card
+    show_empty: false
+    card:
+      type: entities
+      show_header_toggle: false
+      title: System
+    filter:
+      include:
+        - entity_id: automation.*device_status*
+        - entity_id: automation.*hass*
+        - entity_id: automation.*tile*
+        - entity_id: automation.*sonos*
+
+  - type: custom:monster-card
+    show_empty: false
+    card:
+      type: entities
+      show_header_toggle: false
+      title: TTS
+    filter:
+      include:
+        - entity_id: automation.*tts*
+
+  - type: custom:monster-card
+    show_empty: false
+    card:
+      type: entities
+      show_header_toggle: false
+      title: Notifications
+    filter:
+      include:
+        - entity_id: automation.*notification*
+
+  - type: custom:monster-card
+    show_empty: false
+    card:
+      type: entities
+      show_header_toggle: false
+      title: Presence
+    filter:
+      include:
+        - entity_id: automation.*presence*
+
+
+  - type: custom:monster-card
+    show_empty: false
+    card:
+      type: entities
+      show_header_toggle: false
+      title: Misc
+    filter:
+      include:
+        - entity_id: automation.*goodnight*
+        - entity_id: automation.*goodmorning*
+
+  - type: custom:monster-card
+    show_empty: false
+    card:
+      type: entities
+      show_header_toggle: false
+      title: Cat
+    filter:
+      include:
+        - entity_id: automation.*litter*
+
+  - type: custom:monster-card
+    show_empty: false
+    card:
+      type: entities
+      show_header_toggle: false
+      title: Alerts
+    filter:
+      include:
+        - entity_id: alert.*
+
+
+   
+  

@@ -63,13 +63,16 @@ automation:
       entity_id: media_player.livingroom_tv
       to: 'on'
     action:
-      - delay: '00:01:00'
+      - delay: '00:02:00'
       - condition: state
         entity_id: media_player.livingroom_movie_system
         state: 'off'
       - condition: state
         entity_id: device_tracker.livingroom_movie_system
         state: 'not_home'
+      - condition: state
+        entity_id: device_tracker.livingroom_tv
+        state: 'home'
       - service: script.sonos_say
         data:
           sonos_entity: media_player.sonos

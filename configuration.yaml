@@ -51,6 +51,7 @@ panel_iframe:
     icon: mdi:console
     url: !secret terminal_address
     
+custom_updater:
   # mdi_index:
   #   title: MDI Icons
   #   icon: mdi:vector-square
@@ -123,7 +124,8 @@ media_player: !include entities/media_player.yaml
 scene: !include_dir_merge_list scene
 device_tracker: !include entities/device_tracker.yaml
 zone: !include zone.yaml
-
+shell_command:
+  lovelace_gen: 'python /config/lovelace-gen.py'
 # ########################################
 # ###             SERVICES             ###
 # ########################################
@@ -135,6 +137,15 @@ mqtt:
   broker: core-mosquitto
   username: !secret mqtt_username
   password: !secret mqtt_password
+mqtt_statestream:
+  base_topic: hassio
+  publish_attributes: true
+  publish_timestamps: true
+  include:
+    entities:
+      - counter.litterbox_downstairs_visits
+      - counter.litterbox_upstairs_visits
+      - input_select.washing_machine_status
 # mqtt_eventstream:
 #   # publish_topic: master/topic
 #   subscribe_topic: slave/rpi

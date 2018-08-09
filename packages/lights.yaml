@@ -46,9 +46,10 @@ homeassistant:
       
     light.gateway_light_34ce008bfc4b:
       friendly_name: Nightlight
+      icon: mdi:lamp
 
     light.living_room_ceiling_light_level:
-      icon: mdi:sofa
+      icon: mdi:ceiling-light
       friendly_name: Living Room Light
         
     light.upstairs_hallway_ceiling_light_level:
@@ -57,27 +58,27 @@ homeassistant:
         
     light.dining_area_ceiling_light_level:
       friendly_name: Dining Room Light
-      icon: mdi:silverware-variant
+      icon: mdi:ceiling-light
         
     light.passage_ceiling_spotlights_level:
       friendly_name: Passage Lights
-      icon: mdi:spotlight-beam
+      icon: mdi:track-light
         
     light.living_room_spotlights_level:
       friendly_name: Living room Spotlights
-      icon: mdi:book-open-page-variant
+      icon: mdi:track-light
         
     light.isa_ceiling_light:
       friendly_name: Isa Ceiling Light
-      icon: mdi:human-female
+      icon: mdi:ceiling-light
 
     light.bedroom_ceiling_light:
       friendly_name: Bedroom Ceiling Light
-      icon: mdi:hotel
+      icon: mdi:ceiling-light
 
     light.bedside_lamp:
       friendly_name: Bedside Lamp
-      icon: mdi:hotel
+      icon: mdi:lamp
 
     light.floorlamp_uplight:
       icon: mdi:floor-lamp
@@ -92,9 +93,21 @@ homeassistant:
       icon: mdi:led-strip
             
     light.kitchen_ceiling_spotlights_level:
-      icon: mdi:fridge
+      icon: mdi:track-light
       friendly_name: Kitchen Lights
 
+    light.outdoor_front_light:
+      icon: mdi:wall-sconce
+      
+    light.outdoor_hanging_lights:
+      icon: mdi:lightbulb
+
+    light.outdoor_yard_light:
+      icon: mdi:wall-sconce
+
+    light.walk_in_closet_lights:
+      icon: mdi:wall-sconce
+    
 
 input_text:
   lights_tiles:

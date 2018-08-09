@@ -1,0 +1,37 @@
+title: Settings
+icon: mdi:cogs
+id: settings
+cards:
+  - type: custom:home-setter
+    pages:
+      - name: Default
+        path: lovelace/home
+      - name: Isa
+        path: lovelace/isa
+      - name: Stefan
+        path: lovelace/mobile
+  - type: custom:tracker-card
+    title:
+    trackers:
+      - sensor.custom_card_tracker
+      - sensor.custom_component_tracker
+      
+  - type: entities
+    show_header_toggle: false
+    entities:
+      - input_boolean.hass_dev_mode
+      - type: call-service
+        name: "Lovelace generator"
+        service: shell_command.lovelace_gen
+        icon: mdi:refresh
+        action_name: "Run"
+        service_data: {}
+        
+    #   - type: picture-elements
+    #     image: /local/lovelace_ui/button-template.png
+    #     elements:
+    #       - type: custom:light-slider
+    #         entity: light.outdoor_front_light
+    #         style:
+    #           top: 80%
+    #           left: 80%

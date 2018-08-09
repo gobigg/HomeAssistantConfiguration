@@ -20,6 +20,7 @@ door_opens:
   class: SensorLights
   constrain_start_time: sunset - 00:45:00
   constrain_end_time: sunrise + 00:45:00
+  constrain_input_boolean: input_boolean.guest_mode,off
   sensor: binary_sensor.door_window_sensor_158d00019e152b,binary_sensor.back_door,binary_sensor.front_door_homebridge
   entity_on: light.outdoor_lights
   entity_off: light.outdoor_front_light,light.hallway_window_light,light.outdoor_yard_light

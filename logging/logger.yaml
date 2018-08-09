@@ -13,7 +13,7 @@ logs:
   # homeassistant.components.switch.switchbot: debug  
   homeassistant.components.sensor: fatal  
   # homeassistant.components.sensor.imap_email_content: debug
-  homeassistant.components.switch.rfxtrx: debug
+  # homeassistant.components.switch.rfxtrx: debug
   # homeassistant.components.sensor.miflora: error
   # # homeassistant.components.binary_sensor: debug  
   # # homeassistant.components.python_script: debug
@@ -25,7 +25,7 @@ logs:
   # homeassistant.components.sensor.darksky: error
   # homeassistant.components.zwave: debug
   # homeassistant.components.zwave.util: error
-  homeassistant.components.rfxtrx: debug
+  # homeassistant.components.rfxtrx: debug
   # homeassistant.components.notify: error
   # # homeassistant.helpers.script: info
   # homeassistant.components.light: warn

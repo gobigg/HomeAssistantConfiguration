@@ -1,3 +1,9 @@
+input_boolean:
+  hass_dev_mode:
+    name: Hass developer mode
+    initial: off
+    icon: mdi:code-braces
+
 sensor:
   - platform: mqtt
     state_topic: "homeassistant/sensor/uptime/state"

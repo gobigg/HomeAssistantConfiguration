@@ -56,4 +56,4 @@
     latitude: !secret fagelbro_lat
     longitude: !secret fagelbro_long
     icon: mdi:golf
-    radius: 800
+    radius: 1000

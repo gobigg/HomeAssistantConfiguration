@@ -1,0 +1,183 @@
+icon: mdi:floor-plan
+id: floorplan
+title: Floorplan
+theme: teal
+cards:
+  - !include dev_card.yaml
+  - type: picture-elements
+    image: /local/lovelace_ui/floorplan_v1.png
+    elements:
+    
+    ## LIGHTS
+      ## Outdoor
+      - type: state-icon
+        entity: light.outdoor_yard_light
+        tap_action: toggle
+        style:
+          left: 22%
+          top: 25%
+          transform: none;
+      - type: state-icon
+        entity: light.outdoor_front_light
+        tap_action: toggle
+        style:
+          left: 18%
+          top: 88%
+          transform: none;
+      - type: state-icon
+        entity: light.outdoor_hanging_lights
+        tap_action: toggle
+        style:
+          left: 7%
+          top: 16%
+          transform: none;
+
+      ## Downstairs
+      - type: state-icon
+        entity: light.living_room_ceiling_light_level
+        tap_action: toggle
+        style:
+          left: 36%
+          top: 38%
+          transform: none;
+      - type: state-icon
+        entity: light.living_room_spotlights_level
+        tap_action: toggle
+        style:
+          left: 14%
+          top: 38%
+          transform: none;
+      - type: state-icon
+        entity: light.kitchen_ceiling_spotlights_level
+        tap_action: toggle
+        style:
+          left: 39%
+          top: 56%
+          transform: none;
+      - type: state-icon
+        entity: light.passage_ceiling_spotlights_level
+        tap_action: toggle
+        style:
+          left: 15%
+          top: 56%
+          transform: none;
+      - type: state-icon
+        entity: light.dining_area_ceiling_light_level
+        tap_action: toggle
+        style:
+          left: 34%
+          top: 71%
+          transform: none;
+      - type: state-icon
+        entity: light.floorlamp_uplight
+        tap_action: toggle
+        style:
+          left: 19%
+          top: 71%
+          transform: none;
+      - type: state-icon
+        entity: light.hallway_window_light
+        tap_action: toggle
+        style:
+          left: 16%
+          top: 82%
+          transform: none;
+
+
+      ## Upstairs
+      - type: state-icon
+        entity: light.bedroom_ceiling_light
+        tap_action: toggle
+        style:
+          left: 85%
+          top: 38%
+          transform: none;
+      - type: state-icon
+        entity: light.bedside_lamp
+        tap_action: toggle
+        style:
+          left: 95%
+          top: 31%
+          transform: none;
+      - type: state-icon
+        entity: light.isa_ceiling_light
+        tap_action: toggle
+        style:
+          left: 61%
+          top: 38%
+          transform: none;
+      - type: state-icon
+        entity: light.upstairs_hallway_ceiling_light_level
+        tap_action: toggle
+        style:
+          left: 71%
+          top: 55%
+          transform: none;
+      - type: state-icon
+        entity: light.stefan_lightstrip
+        tap_action: more-info
+        style:
+          left: 71%
+          top: 71%
+          transform: none;
+      - type: state-icon
+        entity: light.walk_in_closet_lights
+        tap_action: more-info
+        style:
+          left: 88%
+          top: 68%
+          transform: none;
+
+    ## SENSORS
+      # misc
+      - type: state-icon
+        entity: sensor.washer
+        tap_action: more-info
+        style:
+          left: 23%
+          top: 57%
+          transform: none;
+      - type: state-icon
+        entity: sensor.mailbox
+        tap_action: more-info
+        style:
+          left: 18%
+          top: 97%
+          transform: none;
+
+      # temperature
+      - type: state-label
+        entity: sensor.temperature_bedroom
+        tap_action: more-info
+        style:
+          left: 93%
+          top: 45%
+          transform: none;
+          color: black
+      - type: state-label
+        entity: sensor.temperature_stefan
+        tap_action: more-info
+        style:
+          left: 68%
+          top: 76%
+          transform: none;
+          color: black
+      - type: state-label
+        entity: sensor.temperature_passage
+        tap_action: more-info
+        style:
+          left: 7%
+          top: 45%
+          transform: none;
+          color: black
+      - type: state-label
+        entity: sensor.temperature_downstairs_bathroom
+        tap_action: more-info
+        style:
+          left: 24%
+          top: 49%
+          transform: none;
+          color: black
+          font-size: 0.8em
+
+  # - type: custom:plan-coordinates

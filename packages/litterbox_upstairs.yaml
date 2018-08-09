@@ -3,11 +3,11 @@
 homeassistant:
   customize:
     counter.all_litterbox_visits_today:
-      icon: mdi:poop
+      icon: mdi:emoticon-poop
       friendly_name: All Litterbox Visits Today
     ## Upstairs
     counter.litterbox_upstairs_visits:
-      icon: mdi:poop
+      icon: mdi:emoticon-poop
       friendly_name: Upstairs Litterbox Visits
     binary_sensor.motion_sensor_158d0001a66291:
       friendly_name: Upstairs Litterbox
@@ -23,7 +23,7 @@ homeassistant:
 
     ## Downstairs
     counter.litterbox_downstairs_visits:
-      icon: mdi:poop
+      icon: mdi:emoticon-poop
       friendly_name: Downstairs Litterbox Visits
     binary_sensor.motion_sensor_158d0001a24ef1:
       hidden: true

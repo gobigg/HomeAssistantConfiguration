@@ -1,0 +1,12 @@
+title: Isa
+icon: mdi:human-female
+id: isa
+
+cards:
+  - !include dev_card.yaml
+  - type: entities
+    entities:
+      - sensor.isa_at_work
+  - type: "custom:state-card-aftership-ll"
+    entity: sensor.aftership_sensor
+      

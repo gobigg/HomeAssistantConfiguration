@@ -1,0 +1,121 @@
+title: Lights
+icon: mdi:lightbulb-on
+id: lights
+cards:
+  - type: vertical-stack
+    cards:
+    - !include dev_card.yaml
+    - type: horizontal-stack
+      cards:
+        - type: picture-elements
+          image: /local/lovelace_ui/button-template.png
+          elements:
+            - type: image
+              entity: script.goodnight
+              tap_action: toggle
+              image: /local/lovelace_ui/button-template.png
+              style:
+                left: 50%
+                top: 50%
+            - type: icon
+              icon: mdi:hotel
+              entity: script.goodnight
+              tap_action: toggle
+              style:
+                width: 100%
+                left: 50%
+                top: 50%
+        - type: picture-elements
+          image: /local/lovelace_ui/button-template.png
+          elements:
+            - type: icon
+              icon: mdi:kettle
+              entity: script.goodmorning
+              tap_action: toggle
+              style:
+                left: 50%
+                top: 50%
+        - type: picture-elements
+          image: /local/lovelace_ui/button-template.png
+          elements:
+            - type: icon
+              icon: mdi:television-classic
+              entity: script.movie_time
+              tap_action: toggle
+              style:
+                left: 50%
+                top: 50%       
+    - type: entities
+      title: Outdoor
+      entities:
+        - light.outdoor_front_light
+        # - type: "custom:light-slider"
+        #  entity: light.outdoor_front_light
+        #  light: light.outdoor_front_light
+        - light.outdoor_yard_light
+        - light.outdoor_hanging_lights
+  - type: entities
+    title: Downstairs
+    show_header_toggle: false
+    entities:
+      - light.dining_area_ceiling_light_level  
+      - light.kitchen_ceiling_spotlights_level
+      - light.floorlamp_reading_light
+      - light.floorlamp_uplight
+      - light.hallway_window_light
+      - light.stairs_lights
+      - light.passage_ceiling_spotlights_level
+      - light.living_room_ceiling_light_level
+      - light.living_room_spotlights_level
+
+
+  - type: entities
+    title: Upstairs
+    show_header_toggle: false
+    entities:
+      - light.bedroom_ceiling_light
+      - light.bedside_lamp
+      - light.isa_ceiling_light
+      - light.walk_in_closet_lights
+      # - light.stefan_ceiling_light
+      - light.stefan_lightstrip
+      - light.upstairs_hallway_ceiling_light_level
+      - light.gateway_light_34ce008bfc4b
+  - type: horizontal-stack
+    cards:
+        - type: picture-elements
+          image: /local/lovelace_ui/button-template.png
+          elements:
+            - type: icon
+              icon: mdi:page-layout-footer
+              service: light.toggle
+              service_data:
+                entity_id: light.downstairs_lights
+              tap_action: call-service
+              style:
+                left: 50%
+                top: 50%
+        - type: picture-elements
+          image: /local/lovelace_ui/button-template.png
+          elements:
+            - type: icon
+              icon: mdi:page-layout-header
+              service: light.toggle
+              service_data:
+                entity_id: light.upstairs_lights
+              tap_action: call-service
+              style:
+                left: 50%
+                top: 50%
+        - type: picture-elements
+          image: /local/lovelace_ui/button-template.png
+          elements:
+            - type: icon
+              icon: mdi:flash-off
+              service: homeassistant.turn_off
+              service_data:
+                entity_id: group.inside_lights_automations
+              tap_action: call-service
+              style:
+                left: 50%
+                top: 50%  

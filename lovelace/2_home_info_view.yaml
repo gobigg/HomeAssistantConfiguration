@@ -1,0 +1,190 @@
+title: Home info
+icon: mdi:home-heart
+id: home-info
+cards:
+  - type: vertical-stack
+    cards:
+      - !include dev_card.yaml
+      - type: horizontal-stack
+        cards:
+          ## Air cleaner
+          - type: picture-elements
+            image: /local/lovelace_ui/button-template.png
+            elements:
+              - type: custom:text-element
+                text: Air
+                style:                  
+                  top: 15%
+                  left: 50%
+                  color: black
+              - type: custom:text-element
+                text: Cleaner
+                style:                  
+                  top: 85%
+                  left: 50%
+                  color: black
+              - type: icon
+                icon: mdi:fan-off
+                entity: script.air_cleaner_quiet
+                tap_action: toggle
+                style:
+                  left: 50%
+                  top: 50%
+          - type: picture-elements
+            image: /local/lovelace_ui/button-template.png
+            elements:
+              - type: custom:text-element
+                text: Air
+                style:                  
+                  top: 15%
+                  left: 50%
+                  color: black
+              - type: custom:text-element
+                text: Cleaner
+                style:                  
+                  top: 85%
+                  left: 50%
+                  color: black
+              - type: icon
+                icon: mdi:fan
+                entity: script.air_cleaner_auto
+                tap_action: toggle
+                style:
+                  left: 50%
+                  top: 50%
+          - type: picture-elements
+            image: /local/lovelace_ui/button-template.png
+            elements:
+              - type: custom:text-element
+                text: Air
+                style:                  
+                  top: 15%
+                  left: 50%
+                  color: black
+              - type: custom:text-element
+                text: Cleaner
+                style:                  
+                  top: 85%
+                  left: 50%
+                  color: black
+              - type: icon
+                icon: mdi:run-fast
+                entity: script.air_cleaner_turbo
+                tap_action: toggle
+                style:
+                  left: 50%
+                  top: 50% 
+
+          - type: picture-elements
+            image: /local/lovelace_ui/button-template.png
+            elements:
+              - type: custom:text-element
+                text: AC
+                style:                  
+                  top: 15%
+                  left: 50%
+                  color: black
+              - type: custom:text-element
+                text: Downstairs
+                style:                  
+                  top: 85%
+                  left: 50%
+                  color: black
+              - type: icon
+                icon: mdi:fan-off
+                entity: script.ac_off
+                tap_action: toggle
+                style:
+                  left: 50%
+                  top: 50%
+          - type: picture-elements
+            image: /local/lovelace_ui/button-template.png
+            elements:
+              - type: custom:text-element
+                text: AC
+                style:                  
+                  top: 15%
+                  left: 50%
+                  color: black
+              - type: custom:text-element
+                text: Downstairs
+                style:                  
+                  top: 85%
+                  left: 50%
+                  color: black
+              - type: icon
+                icon: mdi:air-conditioner
+                entity: script.ac_on
+                tap_action: toggle
+                style:
+                  left: 50%
+                  top: 50%
+      - type: horizontal-stack  
+        cards:
+        - type: picture-entity
+          name: Laundry
+          entity: input_select.washing_machine_status
+          state_image:
+            "Idle": /local/lovelace_ui/laundry.jpg
+            "Running": /local/lovelace_ui/laundry_running.jpg
+            "Clean": /local/lovelace_ui/laundry_clean.jpg
+        - type: picture-entity
+          name: Roomba
+          entity: input_select.roomba_mode
+          image: /local/lovelace_ui/roomba.jpg
+   
+      - type: glance
+        entities:
+          - sensor.pollen_bjork
+          - sensor.pollen_gras
+          - sensor.pollen_grabo  
+      - type: glance
+        # title: House Modes
+        show_header_toggle: false
+        entities:
+          - entity: input_boolean.vacation_mode
+            name: Vacation
+          - input_boolean.cleaning_day
+          - input_boolean.guest_mode
+          - entity: input_boolean.isa_mode
+            name: Isa Mode
+            tap_action: toggle
+
+      - type: custom:monster-card
+        show_empty: false
+        card:
+          type: entities
+        filter:
+          include:
+            - entity_id: "sensor.*movement*"
+              options:
+                secondary_info: last-changed
+
+  - type: vertical-stack
+    cards: 
+      - type: history-graph
+        title: Temperatures 48h
+        hours_to_show: 48
+        entities:
+          - sensor.temperature_bedroom
+          - sensor.temperature_passage
+          - sensor.temperature_downstairs_bathroom
+          - sensor.temperature_stefan
+      - type: history-graph
+        title: Temperatures 7 Days
+        hours_to_show: 168
+        entities:
+          - sensor.temperature_bedroom
+          - sensor.temperature_passage
+          - sensor.temperature_downstairs_bathroom
+          - sensor.temperature_stefan
+
+      - type: history-graph
+        title: Light 48h
+        hours_to_show: 48
+        entities:
+          - sensor.upstairs_hallway_pir_luminance
+          - sensor.passage_pir_luminance
+          - sensor.illumination_34ce008bfc4b
+          - sensor.illumination_158d0001a66291
+          - sensor.illumination_158d0001a24ef1

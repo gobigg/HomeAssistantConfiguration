@@ -1,0 +1,146 @@
+title: Info
+icon: mdi:lan
+id: info
+cards:
+  # - type: horizontal-stack
+  #   cards:
+  - !include dev_card.yaml
+  - type: vertical-stack
+    cards:
+    - type: glance
+      show_state: false
+      entities:
+        - sensor.system_printer
+        - sensor.system_nas
+        - sensor.system_ipad
+        - sensor.system_ip_camera
+        - entity: sensor.system_ir_blaster
+          name: IR Hallway
+        - entity: sensor.system_ir_blaster_bedroom
+          name: IR Bedroom
+        - entity: sensor.system_ir_blaster_living_room
+          name: IR Livingroom
+        - sensor.system_milight_hub
+        - entity: sensor.system_xiaomi_gateway
+          name: Xiaomi
+        - sensor.system_ring_doorbell
+        - sensor.system_ring_chime_pro
+        - sensor.system_ring_chime
+    - type: glance
+      show_state: false
+      column_width: calc(100% / 3)
+      entities:
+        - entity: sensor.system_isa_computer
+          name: Isa
+        - entity: sensor.system_isa_dell_xps
+          name: Isa work laptop
+        - entity: sensor.system_isa_laptop
+          name: Isa laptop
+        - entity: sensor.system_stefan_computer
+          name: Stefan
+        - entity: sensor.system_stefan_laptop
+          name: Stefan work laptop
+
+    - type: glance
+      show_state: false
+      column_width: calc(100% / 4)
+      entities:
+        - entity: sensor.system_samsung65
+          name: TV
+        - entity: sensor.system_movie_system
+          name: Movie System
+        - entity: sensor.system_shield
+          name: Shield
+        - sensor.system_sonos
+        - entity: sensor.system_samsung49
+          name: Bed TV
+        - entity: sensor.system_chromecast_bedroom
+          name: Bed CC
+
+
+        - type: conditional
+          conditions:
+            - entity: group.persons
+              state_not: 'not_home'
+          card:
+            - type: horizontal-stack
+              cards:
+              - type: media-control
+                entity: media_player.livingroom_movie_system
+              - type: media-control
+                entity: media_player.livingroom_tv
+            - type: horizontal-stack
+              cards:
+                - type: media-control
+                  entity: media_player.shield
+                - type: media-control
+                  entity: media_player.sovrum
+
+  - type: vertical-stack
+    cards:          
+    - type: entities
+      entities:
+        - sensor.system_asus_router
+        - sensor.system_netgear_router
+        - type: divider
+        - sensor.speedtest_ping
+        - sensor.speedtest_download
+        - sensor.speedtest_upload
+    - type: history-graph
+      entities:
+        - sensor.speedtest_download
+        - sensor.speedtest_ping
+        - sensor.speedtest_upload 
+    - type: conditional
+      conditions:
+        - entity: group.persons
+          state_not: 'not_home'
+      card:
+        - type: media-control
+          entity: media_player.sonos
+          
+  - type: vertical-stack
+    cards:
+    - type: custom:monster-card
+      show_empty: false
+      card:
+        type: entities
+        title: Things that are probably broken
+      filter:
+        include:
+          - state: "unknown"
+        exclude:
+          - domain: group
+          - domain: input_text
+          - domain: history_graph
+    - type: entities
+      entities:
+        - entity: device_tracker.isabellas_iphone_x
+          name: Isa ios
+          secondary_info: last-changed
+        - entity: device_tracker.isabellas_iphone_x_wifi
+          name: Isa Wifi
+          secondary_info: last-changed
+        - entity: sensor.isabellas_iphone_x_bt
+          name: Isa bt
+          secondary_info: last-changed
+        - entity: sensor.presence_isa
+          name: Isa presence
+          secondary_info: last-changed
+        - type: divider
+        - entity: device_tracker.stefan_iphone_7
+          name: Stefan ios
+          secondary_info: last-changed
+        - entity: device_tracker.stefan_iphone_7_wifi
+          name: Stefan Wifi
+          secondary_info: last-changed
+        - entity: sensor.stefan_iphone_7_bt
+          name: Stefan bt
+          secondary_info: last-changed
+        - entity: sensor.presence_stefan
+          name: Stefan presence
+          secondary_info: last-changed
+        - type: divider
+        - entity: sensor.unlocked_by
+          name: Front door last unlocked by
+          secondary_info: last-changed

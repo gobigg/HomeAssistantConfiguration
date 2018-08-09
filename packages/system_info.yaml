@@ -59,7 +59,11 @@ homeassistant:
     sensor.system_ring_chime_pro:
       icon: mdi:wifi
     sensor.system_ring_chime:
-      icon: mdi:bell-outline  
+      icon: mdi:bell-outline
+    sensor.system_isa_dell_xps:
+      icon: mdi:laptop-windows
+    sensor.system_stefan_laptop:
+      icon: mdi:laptop-windows
 
   customize_glob:
     sensor.system_*:

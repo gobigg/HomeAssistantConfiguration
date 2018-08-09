@@ -23,11 +23,6 @@ sensor.illumination_158d0001a66291:
   name:
   platform: xiaomi_aqara
   unique_id: lux158d0001a66291
-sensor.humidity_158d0001a2a899:
-  config_entry_id:
-  name:
-  platform: xiaomi_aqara
-  unique_id: humidity158d0001a2a899
 sensor.illumination_158d000165ff1f:
   config_entry_id:
   name:
@@ -144,17 +139,17 @@ binary_sensor.motion_sensor_158d0001a66291:
   platform: xiaomi_aqara
   unique_id: status158d0001a66291
 media_player.shield:
-  config_entry_id:
+  config_entry_id: ea04f73b30f54144a307ce1d03dc84ca
   name:
   platform: cast
   unique_id: 60880921-9eaa-cc1a-945c-9fe6dbbd022f
 media_player.sovrum:
-  config_entry_id:
+  config_entry_id: ea04f73b30f54144a307ce1d03dc84ca
   name:
   platform: cast
   unique_id: b8b04a8d-c96f-4e8e-eff0-353ee5798c48
 media_player.sonos:
-  config_entry_id:
+  config_entry_id: 2943ee74e3b848559390629995b4ca69
   name:
   platform: sonos
   unique_id: RINCON_B8E937D7030201400
@@ -929,22 +924,22 @@ media_player.tv_ue49k5505:
   platform: plex
   unique_id: wn50y3w990n
 sensor.daylight:
-  config_entry_id:
+  config_entry_id: b0430cacefee411abe675469239fe33f
   name:
   platform: deconz
   unique_id: 00:21:2e:ff:ff:02:2c:95-01
 sensor.dimmer_isa_battery_level:
-  config_entry_id:
+  config_entry_id: b0430cacefee411abe675469239fe33f
   name:
   platform: deconz
   unique_id: 00:0b:57:ff:fe:23:2f:6e-01-1000
 sensor.dimmer_bedroom_battery_level:
-  config_entry_id:
+  config_entry_id: b0430cacefee411abe675469239fe33f
   name:
   platform: deconz
   unique_id: 00:15:8d:00:01:6c:0a:49-01-0006
 light.isa_ceiling_light:
-  config_entry_id:
+  config_entry_id: b0430cacefee411abe675469239fe33f
   name:
   platform: deconz
   unique_id: 00:0b:57:ff:fe:32:d7:f6-01
@@ -954,32 +949,32 @@ zwave.unknown_node_5:
   platform: zwave
   unique_id: node-5
 sensor.lux_cat_food:
-  config_entry_id:
+  config_entry_id: b0430cacefee411abe675469239fe33f
   name:
   platform: deconz
   unique_id: 00:15:8d:00:01:a6:62:56-01-0400
 light.floorlamp_reading_light:
-  config_entry_id:
+  config_entry_id: b0430cacefee411abe675469239fe33f
   name:
   platform: deconz
   unique_id: 00:0b:57:ff:fe:90:42:4f-01
 binary_sensor.lock_sensor:
-  config_entry_id:
+  config_entry_id: b0430cacefee411abe675469239fe33f
   name:
   platform: deconz
   unique_id: 00:15:8d:00:01:9f:51:10-01-0006
 sensor.smart_switch_battery_level:
-  config_entry_id:
+  config_entry_id: b0430cacefee411abe675469239fe33f
   name:
   platform: deconz
   unique_id: 00:15:8d:00:01:b8:6c:e1-01-0006
 sensor.isa_remote_battery_level:
-  config_entry_id:
+  config_entry_id: b0430cacefee411abe675469239fe33f
   name:
   platform: deconz
   unique_id: 00:0b:57:ff:fe:b2:26:1b-01-1000
 light.floorlamp_uplight:
-  config_entry_id:
+  config_entry_id: b0430cacefee411abe675469239fe33f
   name:
   platform: deconz
   unique_id: 00:17:88:01:02:7d:55:62-0b
@@ -1128,13 +1123,18 @@ sensor.humidity_bedroom:
   name:
   platform: deconz
   unique_id: 00:15:8d:00:01:23:55:10-01-0405
-sensor.temperature_158d0001a2a899:
-  config_entry_id:
-  name:
-  platform: xiaomi_aqara
-  unique_id: temperature158d0001a2a899
 sensor.daylight_2:
   config_entry_id: b0430cacefee411abe675469239fe33f
   name:
   platform: deconz
   unique_id: 00:00:00:00:00:00:00:00-01
+sensor.temperature_158d0001a2a899:
+  config_entry_id:
+  name:
+  platform: xiaomi_aqara
+  unique_id: temperature158d0001a2a899
+sensor.humidity_158d0001a2a899:
+  config_entry_id:
+  name:
+  platform: xiaomi_aqara
+  unique_id: humidity158d0001a2a899

@@ -1,0 +1,40 @@
+resources:
+  - url: !resource plan-coordinates/plan-coordinates.js
+    type: js
+  - url: !resource monster-card/monster-card.js?v=0.2.3
+    type: js
+  - url: !resource text-element/text-element.js?v=0.0.2
+    type: js
+  # - url: !resource /local/lovelace_ui/vertical-stack-in-card.js?v=0.0.5
+  #   type: js
+  # - url: !resource /local/lovelace_ui/entity-attributes-card.js?v=0.1.0
+  #   type: js
+  - url: !resource home-setter/home-setter.js?v=0.0.1
+    type: js
+  - url: !resource tracker-card/tracker-card.js?v=0.1.4
+    type: js
+  - url: !resource aftership/state-card-aftership.js
+    type: js
+  - url: !resource light-slider/light-slider-element.js
+    type: js
+  # - url: https://fonts.googleapis.com/css?family=Clicker+Script
+  #   type: css
+#  - url: /local/lovelace_ui/wired-cards.js?v=0.0.9
+ #   type: module
+ # - url: /local/lovelace_ui/light-slider-element.js?v=0.0.1
+#    type: module
+title: Home
+excluded_entities:
+  - alarm_control_panel.home_alarm
+  {% for state in states.automation-%}{{ state.entity_id }}{%- endfor %}
+views:
+  - !include 1_home_view.yaml
+  - !include 2_home_info_view.yaml
+  - !include 3_lights_view.yaml
+  - !include 4_info_view.yaml
+  - !include 5_camera_view.yaml
+  - !include 6_cat_view.yaml
+  - !include 7_floorplan_view.yaml
+  - !include 8_isa_view.yaml
+  - !include 9_automations_view.yaml
+  - !include 10_settings_view.yaml

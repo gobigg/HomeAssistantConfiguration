@@ -44,7 +44,7 @@ class SensorLights(hass.Hass):
         if "delay" in self.args:
           delay = self.args["delay"]
         else:
-          delay = 60
+          delay = 300
         self.cancel_timer(self.handle)
         self.handle = self.run_in(self.light_off, delay)
   
