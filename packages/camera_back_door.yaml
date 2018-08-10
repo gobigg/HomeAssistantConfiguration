@@ -10,9 +10,9 @@ binary_sensor:
   - platform: ffmpeg_motion
     name: Back Door Camera Motion
     input: !secret camera_input
-    changes: 4
-    reset: 30
-
+    repeat: 1
+    repeat_time: 60
+    
 sensor:  
   - platform: template
     sensors:

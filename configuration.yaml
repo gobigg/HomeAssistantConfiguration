@@ -124,8 +124,7 @@ media_player: !include entities/media_player.yaml
 scene: !include_dir_merge_list scene
 device_tracker: !include entities/device_tracker.yaml
 zone: !include zone.yaml
-shell_command:
-  lovelace_gen: 'python /config/lovelace-gen.py'
+
 # ########################################
 # ###             SERVICES             ###
 # ########################################
@@ -157,3 +156,6 @@ ifttt:
   key: !secret ifttt_key
 tts:
   - platform: google
+shell_command:
+  lovelace_gen: 'python /config/lovelace-gen.py'
+  lovelace_gen_states: !secret lovelace_gen_states

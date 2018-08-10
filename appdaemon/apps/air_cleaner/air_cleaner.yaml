@@ -1,0 +1,11 @@
+air_cleaner:
+  module: air_cleaner
+  class: AirCleaner
+  global_dependencies: globals
+  input_select: input_select.air_cleaner
+
+air_cleaner_schedule:
+  module: air_cleaner
+  class: AirCleanerSchedule
+  global_dependencies: globals
+  constrain_input_boolean: input_boolean.ad_air_cleaner,on

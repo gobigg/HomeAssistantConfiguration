@@ -21,5 +21,6 @@ class CameraMotion(hass.Hass):
         self.call_service("camera/snapshot", entity_id = "camera.back_door", filename = "/config/www/motion/back_door_camera_latest.jpg")
         self.call_service("camera/snapshot", entity_id = "camera.back_door", filename = filenames)
         # self.notify("Motion detected: {}".format(self.friendly_name(entity)), name=globals.ios_isa)
-        data = {"push": {"category": "camera"}, "entity_id": "camera.latest_motion"}
-        self.call_service("notify/ios_isabellas_iphone_x", message = "Motion detected: {}".format(self.friendly_name(entity)), data=data)
+        if (self.get_state(entity='input_boolean.ad_camera_motion_notification') == 'on'):
+          data = {"push": {"category": "camera"}, "entity_id": "camera.latest_motion"}
+          self.call_service("notify/ios_isabellas_iphone_x", message = "Motion detected: {}".format(self.friendly_name(entity)), data=data)

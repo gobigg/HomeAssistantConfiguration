@@ -1,0 +1,11 @@
+# input_boolean.ad_* will automatically show in automations view due to lovelace monster card filter
+input_boolean:
+  ad_presence:
+    name: Appdaemon presence notify
+    initial: on
+  ad_camera_motion_notification:
+    name: Appdaemon camera motion notify
+    initial: on
+  ad_air_cleaner_schedule:
+    name: Appdaemon air cleaner schedule
+    initial: on

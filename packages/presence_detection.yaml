@@ -79,9 +79,6 @@ input_boolean:
     name: Stefan Homekit
     initial: on
     # icon: mdi:
-  ad_presence:
-    name: Appdaemon presence notify
-    initial: on
 
 input_select:
   stefan_status_dropdown:

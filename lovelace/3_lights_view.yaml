@@ -10,19 +10,11 @@ cards:
         - type: picture-elements
           image: /local/lovelace_ui/button-template.png
           elements:
-            - type: image
-              entity: script.goodnight
-              tap_action: toggle
-              image: /local/lovelace_ui/button-template.png
-              style:
-                left: 50%
-                top: 50%
             - type: icon
               icon: mdi:hotel
               entity: script.goodnight
               tap_action: toggle
               style:
-                width: 100%
                 left: 50%
                 top: 50%
         - type: picture-elements

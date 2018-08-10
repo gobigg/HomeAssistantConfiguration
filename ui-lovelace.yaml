@@ -3,15 +3,67 @@
 # https://github.com/thomasloven/homeassistant-lovelace-gen
 # Any changes made to it will be overwritten the next time the script is run.
 
-excluded_entities: [alarm_control_panel.home_alarm]
+excluded_entities: [alert.back_door_open, alert.balcony_door_open, alert.yard_storage_door_open,
+  alert.bathroom_cabinet_door_open, alert.backyard_door_open, alert.water_heater_flooding,
+  alert.dining_area_window_open, alert.front_door_open, alert.kitchen_sink_flooding,
+  automation.house_isa_mode_on, automation.house_isa_mode_off, automation.tts_sonos_stefan_leaving_golf_course,
+  automation.tts_sonos_on_media_center_not_on, automation.ring_doorbell_low_battery,
+  automation.ring_doorbell_disconnected, automation.ring_doorbell_connected, automation.ring_doorbell_flash_lights,
+  automation.litterbox_upstairs_counter, automation.litterbox_upstairs_cleaning_notification,
+  automation.litterbox_upstairs_cleaning_mode, automation.litterbox_upstairs_cleaned,
+  automation.litterbox_all_counter_send_at_midnight, automation.litterbox_upstairs_cleaning,
+  automation.litterbox_upstairs_cleaning_done, automation.hass_started, automation.hass_ready,
+  automation.hass_stopped, automation.hass_new_device_tracked, automation.hass_updater,
+  automation.goodnight_isa, automation.day_mode_to_evening, automation.day_mode_to_morning,
+  automation.goodmorning_isa, automation.day_mode_to_day, automation.goodnight_stefan,
+  automation.goodmorning_stefan, automation.day_mode_to_night, automation.light_floorlamp_uplight_brighten_on,
+  automation.presence_just_arrived, automation.light_floorlamp_uplight_brighten_off,
+  automation.presence_home, automation.light_floorlamp_uplight_dim_on, automation.presence_just_left,
+  automation.light_floorlamp_uplight_dim_off, automation.presence_away, automation.light_floorlamp_uplight_toggle,
+  automation.presence_extended_away, automation.light_floorlamp_reading_light_toggle,
+  automation.presence_zones, automation.notification_on_window_open_and_lights_on,
+  automation.presence_homebound, automation.lights_off_when_bedroom_window_open, automation.presence_update_tracker,
+  automation.notification_on_high_temp_in_bedroom, automation.laundry_washing_machine_start,
+  automation.notification_quiet_mode_on, automation.laundry_washing_machine_clean_after_timeout,
+  automation.notification_quiet_mode_off, automation.laundry_washing_machine_emptied,
+  automation.notification_summary_coming_home, automation.laundry_notification_on_washing_machine_done,
+  automation.lights_on_outdoor_and_hallway_at_0640_if_before_sunrise, automation.laundry_washing_machine_snoozed,
+  automation.lights_off_outdoor_and_hallway_at_sunrise, automation.notification_on_high_humidity_in_downstairs_bathroom,
+  automation.charger_turn_on, automation.lights_on_outdoor_and_hallway_at_sunset,
+  automation.charging_reminder, automation.lights_off_outdoor_and_hallway_at_22_weekday,
+  automation.charger_turn_off, automation.lights_off_outdoor_and_hallway_at_00_weekend,
+  automation.cleaning_day_on, automation.low_battery_ipad, automation.cleaning_day_off,
+  automation.vacuum_ask_when_everyone_is_away, automation.cleaning_mode, automation.vacuum_now_selected,
+  automation.cleaning_mode_off, automation.vacuum_snoozed_selected, automation.vacuum_stop_asking_selected,
+  automation.house_isa_mode_ask, automation.vacuum_reset_at_midnight, automation.vacuum_dock_roomba,
+  automation.vacuum_now, automation.vacuum_is_done, automation.vacuum_starting, automation.mailbox_package,
+  automation.mailbox_letter, automation.mailbox_reset, automation.smoke_alarm, automation.high_temperatures,
+  automation.tile_away, automation.tile_home, automation.lights_on_at_coming_home_at_night_delay_ten_then_off,
+  automation.lights_on_passage_at_coming_home_at_night, automation.lights_on_at_presence_while_dark,
+  automation.battery_notification, automation.battery_notification_clear, automation.battery_sensor_from_battery_level_attribute,
+  automation.battery_sensor_from_battery_attribute, automation.battery_sensor_from_battery_numeric_attribute,
+  automation.guest_mode_on_by_presence, automation.guest_mode_on, automation.guest_mode_off,
+  automation.litterbox_downstairs_counter, automation.litterbox_downstairs_cleaning_notification,
+  automation.litterbox_downstairs_cleaning_mode, automation.litterbox_downstairs_cleaned,
+  automation.litterbox_downstairs_cleaning, automation.litterbox_downstairs_cleaning_done,
+  automation.alarm_arm_away, automation.lights_off_on_armed_away, automation.alarm_arm_night,
+  automation.alarm_disarm, automation.alarm_trigger_while_armed_away, automation.alarm_trigger_while_armed_home,
+  automation.alarm_trigger_while_armed_night, automation.sonos_on, automation.sonos_off,
+  automation.sonos_on_2, automation.air_cleaner_quiet, automation.air_cleaner_auto,
+  automation.air_cleaner_turbo, automation.air_cleaner_to_turbo_on_high_pollen, automation.air_cleaner_to_quiet_at_21,
+  automation.air_cleaner_to_auto_at_11, automation.device_status, zwave.aeotec_zw090_zstick_gen5,
+  zwave.washer_plug, zwave.front_door, zwave.dining_area_window_sensor, zwave.living_room_ceiling_light,
+  zwave.upstairs_hallway_ceiling_light, zwave.dining_area_ceiling_light, zwave.living_room_spotlights,
+  zwave.passage_ceiling_spotlights, zwave.passage_pir, zwave.water_heater, zwave.upstairs_hallway_pir,
+  zwave.kitchen_ceiling_spotlights, zwave.dryer_plug, zwave.unknown_node_5_2]
 resources:
-- {type: js, url: '/local/lovelace/plan-coordinates.js?1533809925.9753067'}
-- {type: js, url: '/local/lovelace/monster-card.js?1533809925.9753067&v=0.2.3'}
-- {type: js, url: '/local/lovelace/text-element.js?1533809925.9753067&v=0.0.2'}
-- {type: js, url: '/local/lovelace/home-setter.js?1533809925.9753067&v=0.0.1'}
-- {type: js, url: '/local/lovelace/tracker-card.js?1533809925.9753067&v=0.1.4'}
-- {type: js, url: '/local/lovelace/state-card-aftership.js?1533809925.9753067'}
-- {type: js, url: '/local/lovelace/light-slider-element.js?1533809925.9753067'}
+- {type: js, url: '/local/lovelace/plan-coordinates.js?1533900927.3702962'}
+- {type: js, url: '/local/lovelace/monster-card.js?1533900927.3702962&v=0.2.3'}
+- {type: js, url: '/local/lovelace/text-element.js?1533900927.3702962&v=0.0.2'}
+- {type: js, url: '/local/lovelace/home-setter.js?1533900927.3702962&v=0.0.1'}
+- {type: js, url: '/local/lovelace/tracker-card.js?1533900927.3702962&v=0.1.4'}
+- {type: js, url: '/local/lovelace/state-card-aftership.js?1533900927.3702962'}
+- {type: js, url: '/local/lovelace/light-slider-element.js?1533900927.3702962'}
 title: Home
 views:
 - cards:
@@ -133,7 +185,7 @@ views:
       - binary_sensor.smoke_sensor_158d0001d37be5
       - binary_sensor.smoke_sensor_158d0001d37c82
       show_empty: false
-      state_filter: [Open, Movement detected, Leaking, Unlocked]
+      state_filter: [Open, Movement detected, Leaking, Unlocked, 'on']
       type: entity-filter
     - card: {type: glance}
       entities: [light.outdoor_lights, light.bedroom_ceiling_light, light.bedside_lamp,
@@ -310,13 +362,8 @@ views:
     - cards:
       - elements:
         - entity: script.goodnight
-          image: /local/lovelace_ui/button-template.png
-          style: {left: 50%, top: 50%}
-          tap_action: toggle
-          type: image
-        - entity: script.goodnight
           icon: mdi:hotel
-          style: {left: 50%, top: 50%, width: 100%}
+          style: {left: 50%, top: 50%}
           tap_action: toggle
           type: icon
         image: /local/lovelace_ui/button-template.png
@@ -796,7 +843,7 @@ views:
     - action_name: Run
       icon: mdi:refresh
       name: Lovelace generator
-      service: shell_command.lovelace_gen
+      service: shell_command.lovelace_gen_states
       service_data: {}
       type: call-service
     show_header_toggle: false
