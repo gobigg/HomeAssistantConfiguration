@@ -86,6 +86,52 @@ cards:
         - sensor.speedtest_ping
         - sensor.speedtest_download
         - sensor.speedtest_upload
+    # - type: picture-elements
+    #   image: "/local/lovelace_ui/button-template.png"
+    #   elements:
+    #     # - type: state-icon
+    #     #   entity: media_player.sonos
+    #     #   style:
+    #     #     left: 7%
+    #     #     top: 10%
+    #     # - type: custom:text-element
+    #     #   text: Sonos
+    #     #   style:                  
+    #     #     left: 19%
+    #     #     top: 10%
+    #     #     # color: black
+    #     # - type: state-label
+    #     #   entity: media_player.sonos
+    #     #   style:
+    #     #     left: 92%
+    #     #     top: 10%
+    #     - type: entities
+    #       entities:
+    #         - media_player.sonos
+    #       style:
+    #         left: 7%
+    #         top: 10%
+    #     - type: icon
+    #       icon: mdi:skip-backward
+    #       style:
+    #         left: 80%
+    #         top: 20%
+    #     - type: icon
+    #       icon: mdi:play
+    #       style:
+    #         left: 85%
+    #         top: 20%
+    #     - type: icon
+    #       icon: mdi:pause
+    #       style:
+    #         left: 90%
+    #         top: 20%
+    #     - type: icon
+    #       icon: mdi:skip-forward
+    #       style:
+    #         left: 95%
+    #         top: 20%
+            
     - type: history-graph
       entities:
         - sensor.speedtest_download
@@ -96,8 +142,9 @@ cards:
         - entity: group.persons
           state_not: 'not_home'
       card:
-        - type: media-control
-          entity: media_player.sonos
+        type: media-control
+        entity: media_player.sonos
+
           
   - type: vertical-stack
     cards:
@@ -144,3 +191,11 @@ cards:
         - entity: sensor.unlocked_by
           name: Front door last unlocked by
           secondary_info: last-changed
+  - type: custom:group-card
+    card:
+      type: entities
+    group: group.battery_alert
+  - type: custom:group-card
+    card:
+      type: entities
+    group: group.battery_status

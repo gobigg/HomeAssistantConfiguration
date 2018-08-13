@@ -215,9 +215,9 @@
             - binary_sensor.dining_area_window_sensor_sensor
             - binary_sensor.back_door
             - binary_sensor.front_door_sensor
-            - binary_sensor.door_window_sensor_158d00019e152b # backyard door
+            - binary_sensor.yard_door # backyard door
             - binary_sensor.door_window_sensor_158d00019f5110 # yard storage door
-            - binary_sensor.door_balcony # balcony door
+            - binary_sensor.balcony_door # balcony door
           states:
             # - state: 'off'
             #   class: 'hidden'

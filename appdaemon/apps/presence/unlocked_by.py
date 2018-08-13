@@ -16,11 +16,13 @@ class UnlockedBy(hass.Hass):
         now = i.strftime('%Y-%m-%d %H.%M.%S')
         if (new == 'Stefan'):
             device = self.get_state(entity=self.args["stefan"], attribute="all")
+            deviceState = self.get_state(self.args["stefan"])
             attributes["lock_last_updated"]=now
-            if (device.state != 'Home'):
+            if (deviceState != 'Home'):
                 self.set_state(self.args["stefan"], state='Home', attributes=attributes)
         if (new == 'Isabella'):
             device = self.get_state(entity=self.args["isa"], attribute="all")
+            deviceState = self.get_state(self.args["isa"])
             attributes["lock_last_updated"]=now
-            if (device.state != 'Home'):
+            if (deviceState != 'Home'):
                 self.set_state(self.args["isa"], state='Home', attributes=attributes)

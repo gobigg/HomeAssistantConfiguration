@@ -193,10 +193,10 @@ automation:
         entity_id: binary_sensor.back_door
         to: 'on'
       - platform: state
-        entity_id: binary_sensor.door_balcony ## Balcony
+        entity_id: binary_sensor.balcony_door ## Balcony
         to: 'on'
       - platform: state
-        entity_id: binary_sensor.door_window_sensor_158d00019e152b ## Backyard
+        entity_id: binary_sensor.yard_door ## Backyard
         to: 'on'
       - platform: state
         entity_id: binary_sensor.door_window_sensor_158d00019f5110 ## Yard Storage
@@ -247,10 +247,10 @@ automation:
         entity_id: sensor.front_door_access_control
         to: '22'
       - platform: state
-        entity_id: binary_sensor.door_balcony ## Balcony
+        entity_id: binary_sensor.balcony_door ## Balcony
         to: 'on'
       - platform: state
-        entity_id: binary_sensor.door_window_sensor_158d00019e152b ## Backyard
+        entity_id: binary_sensor.yard_door ## Backyard
         to: 'on'
       - platform: state
         entity_id: binary_sensor.door_window_sensor_158d00019f5110 ## Yard Storage
@@ -281,10 +281,10 @@ automation:
         entity_id: binary_sensor.back_door
         to: 'on'
       - platform: state
-        entity_id: binary_sensor.door_balcony ## Balcony
+        entity_id: binary_sensor.balcony_door ## Balcony
         to: 'on'
       - platform: state
-        entity_id: binary_sensor.door_window_sensor_158d00019e152b ## Backyard
+        entity_id: binary_sensor.yard_door ## Backyard
         to: 'on'
       - platform: state
         entity_id: binary_sensor.door_window_sensor_158d00019f5110 ## Yard Storage

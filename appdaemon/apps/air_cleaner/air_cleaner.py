@@ -22,23 +22,24 @@ class AirCleaner(hass.Hass):
 class AirCleanerSchedule(hass.Hass):
 
     def initialize(self):
-        autoTime = datetime.time(11, 0, 0)
-        turboTime = datetime.time(19, 0, 0)
-        quietTime = datetime.time(21, 0, 0)
+        autoTime = self.parse_time(self.args["auto_time"])
+        turboTime = self.parse_time(self.args["turbo_time"])
+        quietTime = self.parse_time(self.args["quiet_time"])
+
         self.run_daily(self.auto_at_11, autoTime)
         self.run_daily(self.turbo_at_19_pollen, turboTime)
         self.run_daily(self.quiet_at_21, quietTime)
 
-    def auto_at_11(self):
+    def auto_at_11(self, kwargs):
         self.turn_on('script.air_cleaner_auto')
         self.log('Air cleaner set to auto')
         
-    def turbo_at_19_pollen(self):
-        pollen = self.get_state("sensor.pollen_levels")
-        if(pollen == 'high' or pollen == 'moderate'):
-            self.turn_on('script.air_cleaner_turbo')
-            self.log('Air cleaner set to turbo')
+    def turbo_at_19_pollen(self, kwargs):
+        # pollen = self.get_state("sensor.pollen_levels")
+        # if(pollen == 'high' or pollen == 'moderate'):
+        self.turn_on('script.air_cleaner_turbo')
+        self.log('Air cleaner set to turbo')
         
-    def quiet_at_21(self):
+    def quiet_at_21(self, kwargs):
         self.turn_on('script.air_cleaner_quiet')
         self.log('Air cleaner set to quiet')

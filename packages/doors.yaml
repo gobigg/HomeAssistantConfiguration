@@ -3,10 +3,10 @@ homeassistant:
     binary_sensor.door_window_sensor_158d00019f5110:
       friendly_name: Yard Storage Door
 
-    binary_sensor.door_window_sensor_158d00019e152b:
-      friendly_name: Backyard Door
+    binary_sensor.yard_door:
+      friendly_name: Yard Door
 
-    binary_sensor.door_balcony:
+    binary_sensor.balcony_door:
       friendly_name: Balcony Door
 
     binary_sensor.back_door:
@@ -49,10 +49,10 @@ sensor:
         value_template: '{% if is_state("sensor.front_door_access_control", "22") %}Open{% elif is_state("sensor.front_door_access_control", "23")%}Closed{% else %}Unknown{% endif %}'
         icon_template: '{% if is_state("sensor.front_door_access_control", "22") %}mdi:door-open{% elif is_state("sensor.front_door_access_control", "23")%}mdi:door{% else %}mdi:comment-question-outline{% endif %}'
 
-      backyard_door:
-        friendly_name: 'Back Yard Door'
-        value_template: '{% if is_state("binary_sensor.door_window_sensor_158d00019e152b", "on") %}Open{% elif is_state("binary_sensor.door_window_sensor_158d00019e152b", "off")%}Closed{% else %}Unknown{% endif %}'
-        icon_template: '{% if is_state("binary_sensor.door_window_sensor_158d00019e152b", "on") %}mdi:door-open{% elif is_state("binary_sensor.door_window_sensor_158d00019e152b", "off")%}mdi:door{% else %}mdi:comment-question-outline{% endif %}'
+      yard_door:
+        friendly_name: 'Yard Door'
+        value_template: '{% if is_state("binary_sensor.yard_door", "on") %}Open{% elif is_state("binary_sensor.yard_door", "off")%}Closed{% else %}Unknown{% endif %}'
+        icon_template: '{% if is_state("binary_sensor.yard_door", "on") %}mdi:door-open{% elif is_state("binary_sensor.yard_door", "off")%}mdi:door{% else %}mdi:comment-question-outline{% endif %}'
 
       back_door:
         friendly_name: 'Back Door'
@@ -61,13 +61,13 @@ sensor:
       
       balcony_door:
         friendly_name: 'Balcony Door'
-        value_template: '{% if is_state("binary_sensor.door_balcony", "on") %}Open{% elif is_state("binary_sensor.door_balcony", "off")%}Closed{% else %}Unknown{% endif %}'
-        icon_template: '{% if is_state("binary_sensor.door_balcony", "on") %}mdi:door-open{% elif is_state("binary_sensor.door_balcony", "off")%}mdi:door{% else %}mdi:comment-question-outline{% endif %}'
+        value_template: '{% if is_state("binary_sensor.balcony_door", "on") %}Open{% elif is_state("binary_sensor.balcony_door", "off")%}Closed{% else %}Unknown{% endif %}'
+        icon_template: '{% if is_state("binary_sensor.balcony_door", "on") %}mdi:door-open{% elif is_state("binary_sensor.balcony_door", "off")%}mdi:door{% else %}mdi:comment-question-outline{% endif %}'
               
-      yard_storage_door:
-        friendly_name: 'Yard Storage Door'
-        value_template: '{% if is_state("binary_sensor.door_window_sensor_158d00019f5110", "on") %}Open{% elif is_state("binary_sensor.door_window_sensor_158d00019f5110", "off")%}Closed{% else %}Unknown{% endif %}'
-        icon_template: '{% if is_state("binary_sensor.door_window_sensor_158d00019f5110", "on") %}mdi:door-open{% elif is_state("binary_sensor.door_window_sensor_158d00019f5110", "off")%}mdi:door{% else %}mdi:comment-question-outline{% endif %}'
+      # yard_storage_door:
+      #   friendly_name: 'Yard Storage Door'
+      #   value_template: '{% if is_state("binary_sensor.door_window_sensor_158d00019f5110", "on") %}Open{% elif is_state("binary_sensor.door_window_sensor_158d00019f5110", "off")%}Closed{% else %}Unknown{% endif %}'
+      #   icon_template: '{% if is_state("binary_sensor.door_window_sensor_158d00019f5110", "on") %}mdi:door-open{% elif is_state("binary_sensor.door_window_sensor_158d00019f5110", "off")%}mdi:door{% else %}mdi:comment-question-outline{% endif %}'
 
 binary_sensor:
   - platform: template
@@ -78,9 +78,9 @@ binary_sensor:
 
 alert:
   backyard_door_open:
-    name: Backyard Door left open
+    name: Yard Door left open
     done_message: Door closed
-    entity_id: binary_sensor.door_window_sensor_158d00019e152b
+    entity_id: binary_sensor.yard_door
     state: 'on'
     repeat: 15
     skip_first: True
@@ -107,7 +107,7 @@ alert:
   balcony_door_open:
     name: Balcony Door left open
     done_message: Door closed
-    entity_id: binary_sensor.door_balcony
+    entity_id: binary_sensor.balcony_door
     state: 'on'
     repeat: 1
     skip_first: True
@@ -159,7 +159,7 @@ group:
 #     initial_state: 'on'
 #     trigger:
 #       - platform: state
-#         entity_id: binary_sensor.door_window_sensor_158d00019e152b, binary_sensor.back_door
+#         entity_id: binary_sensor.yard_door, binary_sensor.back_door
 #         to: 'on'
 #       - platform: state
 #         entity_id: sensor.front_door_access_control

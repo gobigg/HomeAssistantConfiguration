@@ -41,9 +41,9 @@ automation:
           title: 'Hass.io Online'
           message: 'Online'
       - service: python_script.summary
-      - service: python_script.mailbox
-        data_template:
-          state: 'reset'
+      # - service: python_script.mailbox
+      #   data_template:
+      #     state: 'reset'
 
 
   - alias: 'Hass Ready'
