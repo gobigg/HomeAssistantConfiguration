@@ -1,0 +1,4 @@
+alarm_keep_state:
+  module: alarm_arm
+  class: AlarmKeepState
+  alarm_code: !secret alarm_control_panel_code

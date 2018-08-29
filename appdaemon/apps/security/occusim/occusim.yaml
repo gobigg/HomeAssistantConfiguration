@@ -2,11 +2,11 @@ Occupancy Simulator:
   module: occusim
   class: OccuSim
   constrain_input_boolean: input_boolean.guest_mode,off  
-  log: 1
+  log: 0
   # notify: 0
   enable: input_boolean.vacation_mode,on
-  test: 1
-  dump_times: 1
+  test: 0
+  dump_times: 0
   #reset_time: 02:00:00
 
   step_morning_name: Morning

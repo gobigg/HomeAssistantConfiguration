@@ -2,6 +2,7 @@ mailbox:
   module: mailbox
   class: Mailbox
   global_dependencies: globals
-  slot_sensor: binary_sensor.mailbox_letter
-  door_sensor: binary_sensor.mailbox_package
+  mail_slot_sensor: binary_sensor.mailbox_letter
+  mail_door_sensor: binary_sensor.mailbox_package
   mail_sensor: sensor.mailbox
+  door: sensor.front_door

@@ -1,0 +1,3 @@
+input_boolean:
+  change_bedsheets:
+    name: Change Bedsheets

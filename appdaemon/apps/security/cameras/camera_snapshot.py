@@ -23,4 +23,4 @@ class CameraMotion(hass.Hass):
         # self.notify("Motion detected: {}".format(self.friendly_name(entity)), name=globals.ios_isa)
         if (self.get_state(entity='input_boolean.ad_camera_motion_notification') == 'on'):
           data = {"push": {"category": "camera"}, "entity_id": "camera.latest_motion"}
-          self.call_service("notify/ios_isabellas_iphone_x", message = "Motion detected: {}".format(self.friendly_name(entity)), data=data)
+          self.call_service(globals.notify_ios_isa, message = "Motion detected: {}".format(self.friendly_name(entity)), data=data)

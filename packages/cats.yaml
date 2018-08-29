@@ -27,26 +27,20 @@ group:
 input_boolean:
   cat_food:
     name: Order Cat Food
-    initial: off
     icon: mdi:barcode-scan
   cat_litter:
     name: Order Cat Litter
-    initial: off
     icon: mdi:emoticon-poop
 
   cut_claws_ziggy:
     name: Cut Claws Ziggy
-    initial: off
     icon: mdi:cat
   cut_claws_honey:
     name: Cut Claws Honey
-    initial: off
     icon: mdi:cat
   cut_fur_ziggy:
     name: Cut Fur Ziggy
-    initial: off
     icon: mdi:cat
   cut_fur_honey:
     name: Cut Fur Honey
-    initial: off
     icon: mdi:cat

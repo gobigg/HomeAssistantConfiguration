@@ -79,15 +79,14 @@ input_select:
       - Clean
       - Dirty
       - Cleaning
-    initial: Clean
     icon: mdi:paw
+    
   dlitterbox_state:
     name: Downstairs Litterbox State
     options:
       - Clean
       - Dirty
       - Cleaning
-    initial: Clean
     icon: mdi:paw
 #-------------------------------------------
 
@@ -116,18 +115,6 @@ group:
 #-------------------------------------------
 
 automation:
-  # Trigger state for setting all the dummy sensors to zero at home assistant restart
-  # (otherwise they're set as 'none')
-  # - alias: Litterbox All Sensors Set To Zero On Start
-  #   initial_state: 'on'
-  #   trigger:
-  #     platform: homeassistant
-  #     event: start
-  #   action:
-  #     - service: python_script.ulitter_reset
-  #     - service: python_script.dlitter_reset
-  #     - service: python_script.all_litter_reset
-  
   # Count visits
   - alias: Litterbox Upstairs Counter
     initial_state: 'on'

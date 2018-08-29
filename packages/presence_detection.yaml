@@ -2,9 +2,9 @@
 homeassistant:
   customize:     
     device_tracker.isabella:
-      entity_picture: /local/Isa.jpg
+      entity_picture: /local/Isa_BW.jpg
     sensor.presence_isa:
-      entity_picture: /local/Isa.jpg
+      entity_picture: /local/Isa_BW.jpg
     device_tracker.isabellas_iphone_x_wifi:
       icon: mdi:cellphone-iphone
     device_tracker.isabellas_iphone_x_bt:
@@ -73,11 +73,9 @@ group:
 input_boolean:
   isa_home:
     name: Isa Homekit
-    initial: on
     # icon: mdi:
   stefan_home:
     name: Stefan Homekit
-    initial: on
     # icon: mdi:
 
 input_select:
@@ -94,7 +92,6 @@ input_select:
       - Golf
       - Store
       - Extended Away
-    initial: Home
 
   isa_status_dropdown:
     name: Isa
@@ -108,7 +105,6 @@ input_select:
       - Golf
       - Store
       - Extended Away
-    initial: Home
 
 proximity:
   home_isa: 

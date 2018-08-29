@@ -6,7 +6,6 @@ input_select:
      - Day
      - Evening
      - Night
-    initial: Day
     icon: mdi:white-balance-sunny
 
 sensor:
@@ -60,7 +59,7 @@ automation:
     initial_state: 'on'
     trigger:
       - platform: time
-        at: "08:00:00"
+        at: "09:00:00"
 
     action:
       - service: input_select.select_option
@@ -75,51 +74,50 @@ automation:
   - alias: 'Day Mode To Night'
     initial_state: 'on'
     trigger:
-      - platform: time
-        minutes: '/15'
-        seconds: 00
+      # - platform: time
+      #   minutes: '/15'
+      #   seconds: 00
+      - platform: state
+        entity_id: group.inside_lights_automations
+        to: 'off'
     condition:
       condition: and
       conditions:
-        - condition: state
-          entity_id: input_select.day_mode
-          state: 'Evening'
+        # - condition: state
+        #   entity_id: input_select.day_mode
+        #   state: 'Evening'
         ## Has to be between 22 and 06
         - condition: time
           after: '22:00:00'
           before: '06:00:00'
 
-        ## Someone has to be home
+        # ## Someone has to be home
         - condition: state
           entity_id: group.persons
           state: 'home'
 
-        ## No movement detected
-        # - condition: state
-        #   entity_id: sensor.upstairs_hallway_movement
-        #   state: 'No movement'
-        # - condition: state
-        #   entity_id: sensor.passage_movement
-        #   state: 'No movement'
+        # ## No movement detected
+        # # - condition: state
+        # #   entity_id: sensor.upstairs_hallway_movement
+        # #   state: 'No movement'
+        # # - condition: state
+        # #   entity_id: sensor.passage_movement
+        # #   state: 'No movement'
 
-        ## Bedroom lights has to be off
-        - condition: state
-          entity_id: light.bedroom_ceiling_light
-          state: 'off'
-        - condition: state
-          entity_id: light.bedside_lamp
-          state: 'off'
+        # - condition: state
+        #   entity_id: group.inside_lights_automations
+        #   state: 'off'
 
         ## All computers off (not reliable, due to sometimes leaving on, how to fix?)
-        - condition: state
-          entity_id: sensor.isa_computer
-          state: Offline
-        - condition: state
-          entity_id: sensor.isa_laptop
-          state: Offline
-        - condition: state
-          entity_id: sensor.stefan_computer
-          state: Offline
+        # - condition: state
+        #   entity_id: sensor.isa_computer
+        #   state: Offline
+        # - condition: state
+        #   entity_id: sensor.isa_laptop
+        #   state: Offline
+        # - condition: state
+        #   entity_id: sensor.stefan_computer
+        #   state: Offline
 
         # - condition: state
         #   entity_id: sensor.isabellas_iphone_x_battery_state

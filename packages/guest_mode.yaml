@@ -2,13 +2,10 @@ homeassistant:
   customize:
     input_boolean.guest_mode:
       confirm_controls_show_lock: true
-      homebridge_name: "Guest mode"
-      homebridge_visible: true
 
 input_boolean:
   guest_mode:
     name: Guest Mode
-    initial: 'off'
     icon: mdi:account-multiple
 
 
@@ -20,7 +17,7 @@ automation:
       entity_id: device_tracker.naprapajsvenzon, device_tracker.marek, device_tracker.anette, device_tracker.mareksiphonex
       to: home
   action:
-    - service: home_assistant.turn_on
+    - service: homeassistant.turn_on
       entity_id: input_boolean.guest_mode
     - service: notify.ios_isabellas_iphone_x
       data_template:

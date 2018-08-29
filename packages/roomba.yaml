@@ -55,7 +55,6 @@ input_select:
      - 'Has Vacuumed'
      - 'Dock'
      - 'Not Today'
-    initial: 'Waiting'
     icon: mdi:robot-vacuum
 
 

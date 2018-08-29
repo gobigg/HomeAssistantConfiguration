@@ -3,41 +3,27 @@
 # https://github.com/thomasloven/homeassistant-lovelace-gen
 # Any changes made to it will be overwritten the next time the script is run.
 
-excluded_entities: null
 resources:
-- {type: js, url: '/local/lovelace/plan-coordinates.js?1534160955.9743404'}
-- {type: js, url: '/local/lovelace/monster-card.js?1534160955.9743404&v=0.2.3'}
-- {type: js, url: '/local/lovelace/text-element.js?1534160955.9743404&v=0.0.2'}
-- {type: js, url: '/local/lovelace/vertical-stack-in-card.js?1534160955.9743404&v=0.0.5'}
-- {type: js, url: '/local/lovelace/home-setter.js?1534160955.9743404&v=0.0.1'}
-- {type: js, url: '/local/lovelace/tracker-card.js?1534160955.9743404&v=0.1.4'}
-- {type: js, url: '/local/lovelace/state-card-aftership.js?1534160955.9743404'}
-- {type: js, url: '/local/lovelace/light-slider-element.js?1534160955.9743404'}
-- {type: js, url: '/local/lovelace/group-card.js?1534160955.9743404'}
+- {type: js, url: '/local/lovelace/plan-coordinates.js?1534933390.1464062'}
+- {type: js, url: '/local/lovelace/monster-card.js?1534933390.1464062&v=0.2.3'}
+- {type: js, url: '/local/lovelace/vertical-stack-in-card.js?1534933390.1464062&v=0.0.6'}
+- {type: js, url: '/local/lovelace/slider-entity-row.js?1534933390.1464062'}
+- {type: js, url: '/local/lovelace/useful-markdown-card.js?1534933390.1464062'}
+- {type: js, url: '/local/lovelace/gauge-card.js?1534933390.1464062'}
+- {type: js, url: '/local/lovelace/home-setter.js?1534933390.1464062&v=0.0.1'}
+- {type: js, url: '/local/lovelace/tracker-card.js?1534933390.1464062&v=0.1.4'}
+- {type: js, url: '/local/lovelace/state-card-aftership.js?1534933390.1464062'}
+- {type: js, url: '/local/lovelace/light-slider-element.js?1534933390.1464062'}
+- {type: js, url: '/local/lovelace/group-card.js?1534933390.1464062'}
+- {type: js, url: '/local/lovelace/state-element.js?1534933390.1464062'}
+- {type: js, url: '/local/lovelace/text-element.js?1534933390.1464062'}
+- {type: js, url: '/local/lovelace/username-element.js?1534933390.1464062'}
+- {type: js, url: '/local/lovelace/state-attribute-element.js?1534933390.1464062'}
+- {type: css, url: 'https://fonts.googleapis.com/css?family=Roboto+Condensed'}
 title: Home
 views:
 - cards:
   - cards:
-    - card:
-        entities:
-        - input_boolean.hass_dev_mode
-        - action_name: Run
-          icon: mdi:refresh
-          name: Lovelace generator
-          service: shell_command.lovelace_gen
-          service_data: {}
-          type: call-service
-        show_header_toggle: false
-        type: entities
-      conditions:
-      - {entity: input_boolean.hass_dev_mode, state: 'on'}
-      type: conditional
-    - card: {type: glance}
-      filter:
-        include:
-        - {domain: persistent_notification}
-      show_empty: false
-      type: custom:monster-card
     - cards:
       - {entity: sensor.presence_isa, image: /local/isa_alt.jpg, show_name: false,
         type: picture-entity}
@@ -148,6 +134,15 @@ views:
       show_empty: false
       state_filter: ['on']
       type: entity-filter
+    - cards:
+      - entity: input_select.washing_machine_status
+        name: Laundry
+        state_image: {Clean: /local/lovelace_ui/laundry_clean.jpg, Idle: /local/lovelace_ui/laundry.jpg,
+          Running: /local/lovelace_ui/laundry_running.jpg}
+        type: picture-entity
+      - {entity: input_select.roomba_mode, image: /local/lovelace_ui/roomba.jpg, name: Roomba,
+        type: picture-entity}
+      type: horizontal-stack
     - entities: [switch.stefan_radiator]
       type: entities
     - card: {show_header_toggle: true, title: Alerts, type: entities}
@@ -158,19 +153,19 @@ views:
         - {entity_id: alert.*}
       show_empty: false
       type: custom:monster-card
-    type: vertical-stack
-  icon: mdi:information-outline
-  id: home
-  title: Home
-- cards:
-  - cards:
+    - card: {type: glance}
+      filter:
+        include:
+        - {domain: persistent_notification}
+      show_empty: false
+      type: custom:monster-card
     - card:
         entities:
         - input_boolean.hass_dev_mode
         - action_name: Run
           icon: mdi:refresh
           name: Lovelace generator
-          service: shell_command.lovelace_gen
+          service: shell_command.lovelace_gen_states
           service_data: {}
           type: call-service
         show_header_toggle: false
@@ -178,6 +173,12 @@ views:
       conditions:
       - {entity: input_boolean.hass_dev_mode, state: 'on'}
       type: conditional
+    type: vertical-stack
+  icon: mdi:information-outline
+  id: home
+  title: Home
+- cards:
+  - cards:
     - cards:
       - elements:
         - style: {color: black, left: 50%, top: 15%}
@@ -250,33 +251,55 @@ views:
         image: /local/lovelace_ui/button-template.png
         type: picture-elements
       type: horizontal-stack
-    - cards:
-      - entity: input_select.washing_machine_status
-        name: Laundry
-        state_image: {Clean: /local/lovelace_ui/laundry_clean.jpg, Idle: /local/lovelace_ui/laundry.jpg,
-          Running: /local/lovelace_ui/laundry_running.jpg}
-        type: picture-entity
-      - {entity: input_select.roomba_mode, image: /local/lovelace_ui/roomba.jpg, name: Roomba,
-        type: picture-entity}
-      type: horizontal-stack
-    - entities: [sensor.pollen_bjork, sensor.pollen_gras, sensor.pollen_grabo]
-      type: glance
-    - entities:
+    - column_width: calc(100% / 4)
+      entities:
       - {entity: input_boolean.vacation_mode, name: Vacation}
       - input_boolean.cleaning_day
       - input_boolean.guest_mode
       - {entity: input_boolean.isa_mode, name: Isa Mode, tap_action: toggle}
       show_header_toggle: false
       type: glance
-    - card: {type: entities}
-      filter:
-        include:
-        - entity_id: sensor.*movement*
-          options: {secondary_info: last-changed}
-      show_empty: false
-      type: custom:monster-card
     type: vertical-stack
   - cards:
+    - entities:
+      - {entity: input_boolean.show_security, icon: 'mdi:security-home', name: Show
+          security}
+      type: entities
+    - card:
+        card: {type: entities}
+        filter:
+          include:
+          - entity_id: sensor.*movement*
+            options: {secondary_info: last-changed}
+        show_empty: false
+        type: custom:monster-card
+      conditions:
+      - {entity: input_boolean.show_security, state: 'on'}
+      type: conditional
+    - card:
+        card: {type: entities}
+        filter:
+          include:
+          - entity_id: sensor.front_door_lock
+            options: {icon: 'mdi:lock-smart', secondary_info: last-changed}
+          - entity_id: sensor.unlocked_by
+            options: {icon: 'mdi:lock-open-outline', name: Last unlocked by, secondary_info: last-changed}
+          - entity_id: sensor.*door*
+            options: {secondary_info: last-changed}
+            state: Closed
+          - entity_id: sensor.*window*
+            options: {secondary_info: last-changed}
+            state: Closed
+        show_empty: false
+        type: custom:monster-card
+      conditions:
+      - {entity: input_boolean.show_security, state: 'on'}
+      type: conditional
+    type: custom:vertical-stack-in-card
+  - cards:
+    - column_width: calc(100% / 3)
+      entities: [sensor.pollen_bjork, sensor.pollen_gras, sensor.pollen_grabo]
+      type: glance
     - entities: [sensor.temperature_bedroom, sensor.temperature_passage, sensor.temperature_downstairs_bathroom,
         sensor.temperature_stefan]
       hours_to_show: 48
@@ -287,31 +310,26 @@ views:
       hours_to_show: 168
       title: Temperatures 7 Days
       type: history-graph
-    - entities: [sensor.upstairs_hallway_pir_luminance, sensor.passage_pir_luminance,
-        sensor.illumination_34ce008bfc4b, sensor.illumination_158d0001a66291, sensor.illumination_158d0001a24ef1]
-      hours_to_show: 48
-      title: Light 48h
-      type: history-graph
-    type: vertical-stack
+    type: custom:vertical-stack-in-card
+  - card:
+      entities:
+      - input_boolean.hass_dev_mode
+      - action_name: Run
+        icon: mdi:refresh
+        name: Lovelace generator
+        service: shell_command.lovelace_gen_states
+        service_data: {}
+        type: call-service
+      show_header_toggle: false
+      type: entities
+    conditions:
+    - {entity: input_boolean.hass_dev_mode, state: 'on'}
+    type: conditional
   icon: mdi:home-heart
   id: home-info
   title: Home info
 - cards:
   - cards:
-    - card:
-        entities:
-        - input_boolean.hass_dev_mode
-        - action_name: Run
-          icon: mdi:refresh
-          name: Lovelace generator
-          service: shell_command.lovelace_gen
-          service_data: {}
-          type: call-service
-        show_header_toggle: false
-        type: entities
-      conditions:
-      - {entity: input_boolean.hass_dev_mode, state: 'on'}
-      type: conditional
     - cards:
       - elements:
         - entity: script.goodnight
@@ -338,70 +356,98 @@ views:
         image: /local/lovelace_ui/button-template.png
         type: picture-elements
       type: horizontal-stack
-    - entities: [light.outdoor_front_light, light.outdoor_yard_light, light.outdoor_hanging_lights]
+    - entities:
+      - {entity: light.outdoor_front_light, hide_when_off: true, name: Front, type: 'custom:slider-entity-row'}
+      - {entity: light.outdoor_yard_light, hide_when_off: true, name: Yard, type: 'custom:slider-entity-row'}
+      - {entity: light.outdoor_hanging_lights, name: Hanging}
+      show_header_toggle: false
       title: Outdoor
       type: entities
+    - cards:
+      - elements:
+        - icon: mdi:page-layout-footer
+          service: light.toggle
+          service_data: {entity_id: light.downstairs_lights}
+          style: {left: 50%, top: 50%}
+          tap_action: call-service
+          type: icon
+        image: /local/lovelace_ui/button-template.png
+        type: picture-elements
+      - elements:
+        - icon: mdi:page-layout-header
+          service: light.toggle
+          service_data: {entity_id: light.upstairs_lights}
+          style: {left: 50%, top: 50%}
+          tap_action: call-service
+          type: icon
+        image: /local/lovelace_ui/button-template.png
+        type: picture-elements
+      - elements:
+        - icon: mdi:flash-off
+          service: homeassistant.turn_off
+          service_data: {entity_id: group.inside_lights_automations}
+          style: {left: 50%, top: 50%}
+          tap_action: call-service
+          type: icon
+        image: /local/lovelace_ui/button-template.png
+        type: picture-elements
+      type: horizontal-stack
     type: vertical-stack
-  - entities: [light.dining_area_ceiling_light_level, light.kitchen_ceiling_spotlights_level,
-      light.floorlamp_reading_light, light.floorlamp_uplight, light.hallway_window_light,
-      light.stairs_lights, light.passage_ceiling_spotlights_level, light.living_room_ceiling_light_level,
-      light.living_room_spotlights_level]
-    show_header_toggle: false
-    title: Downstairs
-    type: entities
-  - entities: [light.bedroom_ceiling_light, light.bedside_lamp, light.isa_ceiling_light,
-      light.walk_in_closet_lights, light.stefan_lightstrip, light.upstairs_hallway_ceiling_light_level,
-      light.gateway_light_34ce008bfc4b]
-    show_header_toggle: false
-    title: Upstairs
-    type: entities
   - cards:
-    - elements:
-      - icon: mdi:page-layout-footer
-        service: light.toggle
-        service_data: {entity_id: light.downstairs_lights}
-        style: {left: 50%, top: 50%}
-        tap_action: call-service
-        type: icon
-      image: /local/lovelace_ui/button-template.png
-      type: picture-elements
-    - elements:
-      - icon: mdi:page-layout-header
-        service: light.toggle
-        service_data: {entity_id: light.upstairs_lights}
-        style: {left: 50%, top: 50%}
-        tap_action: call-service
-        type: icon
-      image: /local/lovelace_ui/button-template.png
-      type: picture-elements
-    - elements:
-      - icon: mdi:flash-off
-        service: homeassistant.turn_off
-        service_data: {entity_id: group.inside_lights_automations}
-        style: {left: 50%, top: 50%}
-        tap_action: call-service
-        type: icon
-      image: /local/lovelace_ui/button-template.png
-      type: picture-elements
-    type: horizontal-stack
+    - entities:
+      - {entity: light.kitchen_ceiling_spotlights_level, name: Kitchen}
+      - {entity: light.dining_area_ceiling_light_level, hide_when_off: true, name: Dining
+          area, type: 'custom:slider-entity-row'}
+      - {entity: light.living_room_ceiling_light_level, hide_when_off: true, name: Livingroom,
+        type: 'custom:slider-entity-row'}
+      - {entity: light.living_room_spotlights_level, hide_when_off: true, name: Livingroom
+          spots, type: 'custom:slider-entity-row'}
+      - {entity: light.floorlamp_uplight, hide_when_off: true, name: Floorlamp, type: 'custom:slider-entity-row'}
+      - {entity: light.floorlamp_reading_light, hide_when_off: true, name: Floorlamp
+          reading, type: 'custom:slider-entity-row'}
+      - {entity: light.passage_ceiling_spotlights_level, hide_when_off: true, name: Passage,
+        type: 'custom:slider-entity-row'}
+      - {entity: light.hallway_window_light, hide_when_off: true, name: Hallway window,
+        type: 'custom:slider-entity-row'}
+      - {entity: light.stairs_lights, hide_when_off: true, name: Stairs, type: 'custom:slider-entity-row'}
+      show_header_toggle: false
+      title: Downstairs
+      type: entities
+    type: vertical-stack
+  - cards:
+    - entities:
+      - {entity: light.bedroom_ceiling_light, hide_when_off: true, name: Bedroom,
+        type: 'custom:slider-entity-row'}
+      - {entity: light.bedside_lamp, hide_when_off: true, name: Bedside, type: 'custom:slider-entity-row'}
+      - {entity: light.isa_ceiling_light, hide_when_off: true, name: Isa, type: 'custom:slider-entity-row'}
+      - {entity: light.upstairs_hallway_ceiling_light_level, hide_when_off: true,
+        name: Upstairs hallway, type: 'custom:slider-entity-row'}
+      - {entity: light.gateway_light_34ce008bfc4b, hide_when_off: true, name: Nightlight,
+        type: 'custom:slider-entity-row'}
+      - {entity: light.walk_in_closet_lights, name: Walk in closet}
+      - {entity: light.stefan_lightstrip, name: Stefan}
+      show_header_toggle: false
+      title: Upstairs
+      type: entities
+    - card:
+        entities:
+        - input_boolean.hass_dev_mode
+        - action_name: Run
+          icon: mdi:refresh
+          name: Lovelace generator
+          service: shell_command.lovelace_gen_states
+          service_data: {}
+          type: call-service
+        show_header_toggle: false
+        type: entities
+      conditions:
+      - {entity: input_boolean.hass_dev_mode, state: 'on'}
+      type: conditional
+    type: vertical-stack
   icon: mdi:lightbulb-on
   id: lights
   title: Lights
 - cards:
-  - card:
-      entities:
-      - input_boolean.hass_dev_mode
-      - action_name: Run
-        icon: mdi:refresh
-        name: Lovelace generator
-        service: shell_command.lovelace_gen
-        service_data: {}
-        type: call-service
-      show_header_toggle: false
-      type: entities
-    conditions:
-    - {entity: input_boolean.hass_dev_mode, state: 'on'}
-    type: conditional
   - cards:
     - entities:
       - sensor.system_printer
@@ -452,51 +498,61 @@ views:
     type: vertical-stack
   - cards:
     - entities:
-      - sensor.system_asus_router
-      - sensor.system_netgear_router
-      - {type: divider}
-      - sensor.speedtest_ping
-      - sensor.speedtest_download
-      - sensor.speedtest_upload
-      type: entities
+      - {entity: sensor.system_asus_router, name: Asus}
+      - {entity: sensor.system_netgear_router, name: Netgear}
+      - {entity: sensor.speedtest_ping, name: Ping}
+      - {entity: sensor.speedtest_download, name: Download}
+      - {entity: sensor.speedtest_upload, name: Upload}
+      type: glance
     - entities: [sensor.speedtest_download, sensor.speedtest_ping, sensor.speedtest_upload]
       type: history-graph
     - card: {entity: media_player.sonos, type: media-control}
       conditions:
       - {entity: group.persons, state_not: not_home}
       type: conditional
-    type: vertical-stack
+    type: custom:vertical-stack-in-card
   - cards:
-    - card: {title: Things that are probably broken, type: entities}
-      filter:
-        exclude:
-        - {domain: group}
-        - {domain: input_text}
-        - {domain: history_graph}
-        include:
-        - {state: unknown}
-      show_empty: false
-      type: custom:monster-card
     - entities:
-      - {entity: device_tracker.isabellas_iphone_x, name: Isa ios, secondary_info: last-changed}
-      - {entity: device_tracker.isabellas_iphone_x_wifi, name: Isa Wifi, secondary_info: last-changed}
-      - {entity: sensor.isabellas_iphone_x_bt, name: Isa bt, secondary_info: last-changed}
-      - {entity: sensor.presence_isa, name: Isa presence, secondary_info: last-changed}
-      - {type: divider}
-      - {entity: device_tracker.stefan_iphone_7, name: Stefan ios, secondary_info: last-changed}
-      - {entity: device_tracker.stefan_iphone_7_wifi, name: Stefan Wifi, secondary_info: last-changed}
-      - {entity: sensor.stefan_iphone_7_bt, name: Stefan bt, secondary_info: last-changed}
+      - {entity: sensor.presence_isa, entity_picture: /local/Isa_BW.jpg, name: Isa
+          presence, secondary_info: last-changed}
+      - {entity: device_tracker.isabellas_iphone_x, icon: 'mdi:apple', name: Isa ios,
+        secondary_info: last-changed}
+      - {entity: device_tracker.isabellas_iphone_x_wifi, icon: 'mdi:wifi', name: Isa
+          Wifi, secondary_info: last-changed}
+      - {entity: sensor.isabellas_iphone_x_bt, icon: 'mdi:bluetooth', name: Isa bt,
+        secondary_info: last-changed}
+      type: entities
+    - entities:
       - {entity: sensor.presence_stefan, name: Stefan presence, secondary_info: last-changed}
-      - {type: divider}
+      - {entity: device_tracker.stefan_iphone_7, icon: 'mdi:apple', name: Stefan ios,
+        secondary_info: last-changed}
+      - {entity: device_tracker.stefan_iphone_7_wifi, icon: 'mdi:wifi', name: Stefan
+          Wifi, secondary_info: last-changed}
+      - {entity: sensor.stefan_iphone_7_bt, icon: 'mdi:bluetooth', name: Stefan bt,
+        secondary_info: last-changed}
+      type: entities
+    - entities:
       - {entity: sensor.unlocked_by, name: Front door last unlocked by, secondary_info: last-changed}
       type: entities
-    type: vertical-stack
-  - card: {type: entities}
-    group: group.battery_alert
-    type: custom:group-card
-  - card: {type: entities}
-    group: group.battery_status
-    type: custom:group-card
+    type: custom:vertical-stack-in-card
+  - entities: [sensor.system_hass_rpi, sensor.system_magic_mirror_rpi, binary_sensor.hass_rpi_critical_disk_use,
+      sensor.hass_rpi_disk_use_percent, sensor.hass_rpi_free_memory, sensor.hass_rpi_last_boot,
+      sensor.hass_rpi_uptime]
+    type: entities
+  - card:
+      entities:
+      - input_boolean.hass_dev_mode
+      - action_name: Run
+        icon: mdi:refresh
+        name: Lovelace generator
+        service: shell_command.lovelace_gen_states
+        service_data: {}
+        type: call-service
+      show_header_toggle: false
+      type: entities
+    conditions:
+    - {entity: input_boolean.hass_dev_mode, state: 'on'}
+    type: conditional
   icon: mdi:lan
   id: info
   title: Info
@@ -507,7 +563,7 @@ views:
       - action_name: Run
         icon: mdi:refresh
         name: Lovelace generator
-        service: shell_command.lovelace_gen
+        service: shell_command.lovelace_gen_states
         service_data: {}
         type: call-service
       show_header_toggle: false
@@ -517,10 +573,67 @@ views:
     type: conditional
   - {camera_image: camera.front_door, entity: camera.front_door, image: null, name: Latest
       Motion Front Door, show_state: false, type: picture-entity}
+  - camera_image: camera.dafang
+    entities: [script.dafang_up, script.dafang_down, script.dafang_left, script.dafang_right,
+      switch.dafang_h264_rtsp_server]
+    entity: switch.dafang_h264_rtsp_server
+    state_image: {'off': /local/lovelace_ui/camera_background.png}
+    type: picture-glance
+  - elements:
+    - camera_image: camera.back_door
+      entity: camera.back_door
+      style: {heigth: 100%, left: 50%, top: 50%, width: 100%}
+      type: image
+    - image: /local/lovelace_ui/glance_overlay.png
+      style: {left: 50%, opacity: 0.4, top: 92%, width: 100%}
+      type: image
+    - entity: script.dafang_left
+      image: /local/lovelace_ui/arrow_left.svg
+      style: {left: 5%, top: 91%, width: 12%}
+      tap_action: toggle
+      title: Left
+      type: image
+    - entity: script.dafang_up
+      image: /local/lovelace_ui/arrow_up.svg
+      style: {left: 12%, top: 91%, width: 12%}
+      tap_action: toggle
+      title: Up
+      type: image
+    - entity: script.dafang_down
+      image: /local/lovelace_ui/arrow_down.svg
+      style: {left: 19%, top: 91%, width: 12%}
+      tap_action: toggle
+      title: Down
+      type: image
+    - entity: script.dafang_right
+      image: /local/lovelace_ui/arrow_right.svg
+      style: {left: 26%, top: 91%, width: 12%}
+      tap_action: toggle
+      title: Right
+      type: image
+    - entity: input_boolean.test
+      state_image: {'off': /local/lovelace_ui/power_off.svg, 'on': /local/lovelace_ui/power_on.svg}
+      style: {left: 94%, top: 91%, width: 17%}
+      tap_action: toggle
+      type: image
+    - entity: input_boolean.test
+      image: /local/lovelace_ui/blue_led.svg
+      state_filter: {'off': brightness(30%), 'on': brightness(100%)}
+      style: {left: 78%, top: 91%, width: 11%}
+      tap_action: toggle
+      title: Toggle
+      type: image
+    - entity: input_boolean.test
+      image: /local/lovelace_ui/orange_led.svg
+      state_filter: {'off': brightness(30%), 'on': brightness(100%)}
+      style: {left: 85%, top: 91%, width: 11%}
+      tap_action: toggle
+      title: Toggle
+      type: image
+    image: /local/lovelace_ui/camera_background.png
+    type: picture-elements
   - {camera_image: camera.latest_motion, entity: camera.latest_motion, image: null,
     name: Latest Motion Back Door, show_state: false, type: picture-entity}
-  - {camera_image: camera.back_door, entity: camera.back_door, image: null, name: Live
-      Back Door, type: picture-entity}
   icon: mdi:cctv
   id: cameras
   title: Cameras
@@ -531,7 +644,7 @@ views:
       - action_name: Run
         icon: mdi:refresh
         name: Lovelace generator
-        service: shell_command.lovelace_gen
+        service: shell_command.lovelace_gen_states
         service_data: {}
         type: call-service
       show_header_toggle: false
@@ -539,12 +652,22 @@ views:
     conditions:
     - {entity: input_boolean.hass_dev_mode, state: 'on'}
     type: conditional
-  - entities:
-    - {entity: counter.all_litterbox_visits_today, name: All}
-    - {entity: counter.litterbox_downstairs_visits, name: Downstairs}
-    - {entity: counter.litterbox_upstairs_visits, name: Upstairs}
-    title: Litterboxes
-    type: history-graph
+  - cards:
+    - entity: counter.litterbox_downstairs_visits
+      max: 6
+      measurement: visits
+      min: 0
+      severity: {amber: 2, green: 0, red: 3}
+      title: Downstairs
+      type: custom:gauge-card
+    - entity: counter.litterbox_upstairs_visits
+      max: 6
+      measurement: visits
+      min: 0
+      severity: {amber: 2, green: 0, red: 3}
+      title: Upstairs
+      type: custom:gauge-card
+    type: horizontal-stack
   - entities: [input_boolean.cut_claws_ziggy, input_boolean.cut_fur_ziggy, input_boolean.cut_claws_honey,
       input_boolean.cut_fur_honey]
     show_header_toggle: false
@@ -564,7 +687,7 @@ views:
       - action_name: Run
         icon: mdi:refresh
         name: Lovelace generator
-        service: shell_command.lovelace_gen
+        service: shell_command.lovelace_gen_states
         service_data: {}
         type: call-service
       show_header_toggle: false
@@ -668,13 +791,70 @@ views:
   theme: teal
   title: Floorplan
 - cards:
+  - elements:
+    - camera_image: camera.unsplash
+      style: {height: 100%, left: 50%, top: 50%, width: 100%}
+      type: image
+    - entity: sensor.time
+      style: {-moz-osx-font-smoothing: grayscale, -webkit-font-smoothing: antialiased,
+        color: 'rgb(249, 251, 255)', font-family: Roboto Condensed, font-smoothing: antialiased,
+        left: 10%, pointer-events: none, text-rendering: optimizeLegibility, top: 4%}
+      type: state-label
+    - entity: sensor.outside_temp
+      style: {color: 'rgb(249, 251, 255)', left: 80%, max-height: 24px, max-width: 24px,
+        pointer-events: none, top: 3%}
+      type: state-icon
+    - entity: sensor.outside_temp
+      style: {-moz-osx-font-smoothing: grayscale, -webkit-font-smoothing: antialiased,
+        color: 'rgb(249, 251, 255)', font-family: Roboto Condensed, font-smoothing: antialiased,
+        left: 90%, text-rendering: optimizeLegibility, top: 4%}
+      type: state-label
+    - entity: sensor.greeting
+      style: {-moz-osx-font-smoothing: grayscale, -webkit-font-smoothing: antialiased,
+        background-color: 'rgb(0, 0, 0, 0.2)', color: 'rgb(249, 251, 255)', font-family: Roboto
+          Condensed, font-size: 250%, font-smoothing: antialiased, font-weight: 400,
+        left: 50%, padding: 20px, pointer-events: none, text-align: center, text-rendering: optimizeLegibility,
+        top: 4%, width: 100%}
+      type: state-label
+    - entity: sensor.greeter_card_weather_info
+      style: {-moz-osx-font-smoothing: grayscale, -webkit-font-smoothing: antialiased,
+        background-color: 'rgb(0, 0, 0, 0.2)', color: 'rgb(249, 251, 255)', font-family: Roboto
+          Condensed, font-size: 120%, font-smoothing: antialiased, font-weight: 400,
+        left: 50%, padding: 10px, pointer-events: none, text-rendering: optimizeLegibility,
+        top: 30%}
+      type: custom:state-element
+    - entity: sensor.presence_isa
+      prefix: 'Isa: '
+      style: {background-color: 'rgb(0, 0, 0, 0.2)', border-color: 'rgb(0, 0, 0)',
+        border-left-style: solid, box-shadow: '0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px
+          20px 0 rgba(0, 0, 0, 0.19)', color: 'rgb(255, 255, 255)', font-family: Trebuchet
+          MS, font-size: 90%, font-weight: bold, left: 0%, padding: 7px, pointer-events: none,
+        text-shadow: 2px 2px black, top: 82%, transform: none}
+      type: custom:state-element
+    - entity: sensor.presence_stefan
+      prefix: 'Stefan: '
+      style: {background-color: 'rgb(0, 0, 0, 0.2)', border-color: 'rgb(0, 0, 0)',
+        border-left-style: solid, box-shadow: '0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px
+          20px 0 rgba(0, 0, 0, 0.19)', color: 'rgb(255, 255, 255)', font-family: Trebuchet
+          MS, font-size: 90%, font-weight: bold, left: 0%, padding: 7px, pointer-events: none,
+        text-shadow: 2px 2px black, top: 88%, transform: none}
+      type: custom:state-element
+    - attribute: author_name
+      entity: camera.unsplash
+      prefix: 'Author: '
+      show_empty: true
+      style: {color: 'rgb(249, 251, 255)', font-family: Roboto Condensed, left: 50%,
+        top: 98%}
+      type: custom:state-attribute-element
+    image: /local/lovelace_ui/greeter_default.jpg
+    type: picture-elements
   - card:
       entities:
       - input_boolean.hass_dev_mode
       - action_name: Run
         icon: mdi:refresh
         name: Lovelace generator
-        service: shell_command.lovelace_gen
+        service: shell_command.lovelace_gen_states
         service_data: {}
         type: call-service
       show_header_toggle: false
@@ -695,7 +875,7 @@ views:
       - action_name: Run
         icon: mdi:refresh
         name: Lovelace generator
-        service: shell_command.lovelace_gen
+        service: shell_command.lovelace_gen_states
         service_data: {}
         type: call-service
       show_header_toggle: false
@@ -812,6 +992,16 @@ views:
       type: call-service
     show_header_toggle: false
     type: entities
+  - card: {title: Things that are probably broken, type: entities}
+    filter:
+      exclude:
+      - {domain: group}
+      - {domain: input_text}
+      - {domain: history_graph}
+      include:
+      - {state: unknown}
+    show_empty: false
+    type: custom:monster-card
   icon: mdi:cogs
   id: settings
   title: Settings

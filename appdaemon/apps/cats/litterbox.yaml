@@ -1,0 +1,17 @@
+upstairs_litterbox:
+  module: litterbox
+  class: Litterbox
+  global_dependencies: globals
+  motion_sensor: binary_sensor.motion_sensor_158d0001a66291
+  counter: counter.litterbox_upstairs_visits
+  counter_total: counter.all_litterbox_visits_today
+  input_select: input_select.ulitterbox_state
+
+downstairs_litterbox:
+  module: litterbox
+  class: Litterbox
+  global_dependencies: globals
+  motion_sensor: binary_sensor.motion_sensor_158d0001a24ef1
+  counter: counter.litterbox_downstairs_visits
+  counter_total: counter.all_litterbox_visits_today
+  input_select: input_select.dlitterbox_state

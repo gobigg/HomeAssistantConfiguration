@@ -12,7 +12,6 @@ input_select:
       - Idle
       - Running
       - Clean
-    initial: Idle
 
 sensor:
   - platform: template

@@ -2,7 +2,6 @@
 input_boolean:
   sonos:
     name: Sonos
-    initial: off
 
 automation:
   - alias: Sonos On
@@ -21,13 +20,4 @@ automation:
         to: 'off'
     action:
       - service: media_player.turn_off
-        entity_id: media_player.sonos
-  
-  - alias: Sonos On
-    trigger:
-      - platform: state
-        entity_id: input_boolean.sonos
-        to: 'on'
-    action:
-      - service: media_player.turn_on
         entity_id: media_player.sonos

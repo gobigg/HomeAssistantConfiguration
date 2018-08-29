@@ -1,7 +1,6 @@
 homeassistant:
 
 automation:
-## Turn on Outdoor lights and hallway window light at sunset
   - alias: Lights On Outdoor And Hallway At Sunset
     trigger:
       platform: sun
@@ -11,11 +10,10 @@ automation:
       - service: scene.turn_on
         entity_id: scene.lights_at_dark
 
-## Turn off Outdoor lights and hallway window light at 22
   - alias: Lights Off Outdoor And Hallway At 22 Weekday
     trigger:
       platform: time
-      at: '22:00:00'
+      at: '22:30:00'
     condition:
       condition: time
       weekday:
@@ -40,7 +38,6 @@ automation:
       - service: light.turn_off
         entity_id: light.outdoor_hanging_lights
         
-## Turn off Outdoor lights and hallway window light at 22
   - alias: Lights Off Outdoor And Hallway At 00 Weekend
     trigger:
       platform: time

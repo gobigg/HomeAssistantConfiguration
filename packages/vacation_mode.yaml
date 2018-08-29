@@ -6,7 +6,6 @@ homeassistant:
 input_boolean:
   vacation_mode:
     name: Vacation Mode
-    initial: off
     icon: mdi:beach
 
 # automation:

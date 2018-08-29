@@ -1,0 +1,50 @@
+title: Cats
+icon: mdi:cat
+id: cat
+cards:
+  - !include dev_card.yaml
+  # - type: history-graph
+  #   title: Litterboxes
+  #   entities:
+  #     - entity: counter.all_litterbox_visits_today
+  #       name: All
+  #     - entity: counter.litterbox_downstairs_visits
+  #       name: Downstairs
+  #     - entity: counter.litterbox_upstairs_visits
+  #       name: Upstairs
+  - type: horizontal-stack
+    cards:
+      - type: custom:gauge-card
+        title: Downstairs
+        entity: counter.litterbox_downstairs_visits
+        measurement: "visits"
+        min: 0
+        max: 6
+        severity:
+          red: 3
+          green: 0
+          amber: 2
+      - type: custom:gauge-card
+        title: Upstairs
+        entity: counter.litterbox_upstairs_visits
+        measurement: "visits"
+        min: 0
+        max: 6
+        severity:
+          red: 3
+          green: 0
+          amber: 2
+  - type: entities
+    title: Grooming Schedule
+    show_header_toggle: false
+    entities:
+      - input_boolean.cut_claws_ziggy
+      - input_boolean.cut_fur_ziggy
+      - input_boolean.cut_claws_honey
+      - input_boolean.cut_fur_honey
+  - type: entities
+    title: Ordering Schedule
+    show_header_toggle: false
+    entities:
+      - input_boolean.cat_food
+      - input_boolean.cat_litter

@@ -23,18 +23,12 @@ sensor:
     api_key: !secret darksky_key
     forecast:
       - 1
-#       # - 2
-#       # - 3
-#       # - 4
-#       # - 5
-#       # - 6
-#       # - 7
     monitored_conditions:
       - summary
       - precip_probability
       - precip_type
       - precip_intensity
-#       - precip_intensity_max
+      - precip_intensity_max
       - temperature
 #   #    - dew_point
       - wind_speed
@@ -42,8 +36,8 @@ sensor:
       - cloud_cover
 #       - humidity
 #       - icon
-#   #    - nearest_storm_distance
-#   #    - minutely_summary
+      - nearest_storm_distance
+      - minutely_summary
 #       - daily_summary
 #       - hourly_summary
       - apparent_temperature
@@ -55,36 +49,24 @@ sensor:
 #       - visibility
 #   #    - ozone
 
-# group:
-#   dark_sky:
-#     name: Dark sky
-#     entities:
-#       - sensor.dark_sky_daily_summary
-#       - sensor.dark_sky_hourly_summary
-#       - sensor.dark_sky_temperature
-#       - sensor.dark_sky_apparent_temperature
-#       - sensor.dark_sky_cloud_coverage
-#       - sensor.dark_sky_daily_high_apparent_temperature
-#       - sensor.dark_sky_daily_high_temperature
-#       - sensor.dark_sky_daily_low_apparent_temperature
-#       - sensor.dark_sky_daily_low_temperature
-#       - sensor.dark_sky_daily_max_precip_intensity
-#       - sensor.dark_sky_humidity
-#       - sensor.dark_sky_precip
-#       - sensor.dark_sky_precip_intensity
-#       - sensor.dark_sky_precip_probability
-#       - sensor.dark_sky_wind_speed
-#       # - sensor.dark_sky_visibility
 
-#       - sensor.dark_sky_cloud_coverage_1
-#       - sensor.dark_sky_daily_high_apparent_temperature_1
-#       - sensor.dark_sky_daily_high_temperature_1
-#       - sensor.dark_sky_daily_low_apparent_temperature_1
-#       - sensor.dark_sky_daily_low_temperature_1
-#       - sensor.dark_sky_daily_max_precip_intensity_1
-#       - sensor.dark_sky_humidity_1
-#       - sensor.dark_sky_precip_1
-#       - sensor.dark_sky_precip_intensity_1
-#       - sensor.dark_sky_precip_probability_1
-#       - sensor.dark_sky_wind_speed_1
-#       # - sensor.dark_sky_visibility_1
+  - platform: command_line
+    name: "Forecast Stockholm"
+    icon: alert-outline
+    command: "bash /config/check-weather-sthlm.sh"
+    scan_interval: 180
+  - platform: command_line
+    name: "Forecast Fiskis"
+    icon: alert-outline
+    command: "bash /config/check-weather-fiskis.sh"
+    scan_interval: 180
+    
+camera:
+  - platform: generic
+    name: "Fisksätra meteogram"
+    still_image_url: https://www.yr.no/place/Sweden/Stockholm/Nacka_Kommun/meteogram.svg
+    content_type: 'image/svg+xml'
+  - platform: generic
+    name: "Stockholm meteogram"
+    still_image_url: https://www.yr.no/place/Sweden/Stockholm/Stockholm/meteogram.svg
+    content_type: 'image/svg+xml'

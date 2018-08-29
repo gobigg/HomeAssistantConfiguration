@@ -2,10 +2,11 @@
 input_boolean:
   ad_presence:
     name: Presence notify
-    initial: on
   ad_camera_motion_notification:
     name: Camera motion notify
     initial: on
   ad_air_cleaner_schedule:
     name: Air cleaner schedule
     initial: on
+  ad_bike_charger:
+    name: Bike Charger

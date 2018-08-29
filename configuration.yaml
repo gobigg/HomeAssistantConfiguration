@@ -10,17 +10,24 @@ homeassistant:
   packages: !include_dir_named packages
   whitelist_external_dirs:
     - '/config/www/motion'
+  # auth_providers:
+  #   - type: homeassistant
+  #   # uncomment this to enable backwards compatible API password support
+  #   - type: legacy_api_password
 config:
 hassio:
 http:
   api_password: !secret http_password
   base_url: !secret base_url
+  ssl_certificate: /ssl/fullchain.pem
+  ssl_key: /ssl/privkey.pem
   ip_ban_enabled: true
   login_attempts_threshold: 3
 updater:
 conversation:
 customizer:
-cloud: !include assistants/cloud.yaml # Alexa
+
+cloud: !include assistants/cloud.yaml
 homekit: !include assistants/homekit.yaml
 ios: !include notify/ios_config.yaml
 
@@ -50,20 +57,12 @@ panel_iframe:
     title: Terminal
     icon: mdi:console
     url: !secret terminal_address
+  log_viewer:
+    title: Log
+    icon: mdi:information-outline
+    url: !secret logviewer_address
     
 custom_updater:
-  # mdi_index:
-  #   title: MDI Icons
-  #   icon: mdi:vector-square
-  #   url: !secret mdi_index_url
-
-# panel_custom: 
-#   - name: floorplan
-#     sidebar_title: Floorplan
-#     sidebar_icon: mdi:home
-#     url_path: floorplan
-#     config: !include floorplan.yaml
-
 
 # ########################################
 # ###              LOGGING             ###
@@ -73,19 +72,22 @@ recorder: !include logging/recorder.yaml
 history: !include logging/history.yaml
 logbook: !include logging/logbook.yaml
 logger: !include logging/logger.yaml
-sun:
 
 ########################################
 ###               HUBS               ###
 ########################################
+
 zwave:
   usb_path: /dev/ttyACM0
+  
 deconz:
   host: !secret deconz_ip
   port: !secret deconz_port
   api_key: !secret deconz_api
+  
 rfxtrx:
   device: /dev/ttyUSB1
+  
 switch:
   platform: rfxtrx
   automatic_add: True
@@ -99,14 +101,11 @@ switch:
       name: Switch 3
     0b11000317bc0cfe08010f70:
       name: Dimmer switch
+      
 xiaomi_aqara:
   gateways:
    - mac: !secret xiaomi_mac
      key: !secret xiaomi_key
-# hue:
-#   bridges:
-#     - host: !secret hue_ip
-#       allow_hue_groups: false
 
 # ########################################
 # ###              ENTITIES             ###
@@ -114,6 +113,7 @@ xiaomi_aqara:
 ring:
   username: !secret ring_username
   password: !secret ring_password
+  
 verisure:
   username: !secret verisure_username
   password: !secret verisure_password
@@ -128,14 +128,18 @@ zone: !include zone.yaml
 # ########################################
 # ###             SERVICES             ###
 # ########################################
+sun:
 notify: !include notify/notify.yaml
+
 python_script:
+
 mqtt:
   discovery: true
   discovery_prefix: homeassistant
   broker: core-mosquitto
   username: !secret mqtt_username
   password: !secret mqtt_password
+  
 mqtt_statestream:
   base_topic: hassio
   publish_attributes: true
@@ -145,17 +149,19 @@ mqtt_statestream:
       - counter.litterbox_downstairs_visits
       - counter.litterbox_upstairs_visits
       - input_select.washing_machine_status
-# mqtt_eventstream:
-#   # publish_topic: master/topic
-#   subscribe_topic: slave/rpi
+
 google:
   client_id: !secret google_id
   client_secret: !secret google_secret
 
 ifttt:
   key: !secret ifttt_key
+  
 tts:
   - platform: google
+
+ffmpeg:
+
 shell_command:
   lovelace_gen: 'python /config/lovelace-gen.py'
   lovelace_gen_states: !secret lovelace_gen_states

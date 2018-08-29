@@ -9,6 +9,10 @@ homeassistant:
         hs_color: "if (state === 'disarmed') return [0, 0];
         else if (state === 'triggered') return [0, 85];
         else return [40, 70];"
+        icon_color: "if (state === 'disarmed') return [0, 0];
+        else if (state === 'triggered') return [0, 85];
+        else return [40, 70];"
+
 sensor:
   - platform: template
     sensors:
@@ -29,6 +33,7 @@ alarm_control_panel:
     disarm_after_trigger: 'false'
     armed_away:
       pending_time: 0
+      delay_time: 30
     triggered:
       pending_time: 0   
 

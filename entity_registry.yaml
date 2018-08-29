@@ -118,11 +118,6 @@ binary_sensor.switch_158d0001243520:
   name:
   platform: xiaomi_aqara
   unique_id: status158d0001243520
-# binary_sensor.door_window_sensor_158d00019f5110:
-#   config_entry_id:
-#   name:
-#   platform: xiaomi_aqara
-#   unique_id: status158d00019f5110
 binary_sensor.motion_sensor_158d0001a24ef1:
   config_entry_id:
   name:
@@ -728,16 +723,6 @@ sensor.kitchen_ceiling_spotlights_system:
   name:
   platform: zwave
   unique_id: 23-72057594429849793
-switch.dryer_plug_switch:
-  config_entry_id:
-  name:
-  platform: zwave
-  unique_id: 24-72057594445381632
-sensor.dryer_plug_power:
-  config_entry_id:
-  name:
-  platform: zwave
-  unique_id: 24-72057594445578306
 sensor.dryer_plug_energy:
   config_entry_id:
   name:
@@ -903,11 +888,6 @@ zwave.kitchen_ceiling_spotlights:
   name:
   platform: zwave
   unique_id: node-23
-zwave.dryer_plug:
-  config_entry_id:
-  name:
-  platform: zwave
-  unique_id: node-24
 binary_sensor.door_window_sensor_158d00022b96b4:
   config_entry_id:
   name:
@@ -1138,3 +1118,198 @@ binary_sensor.yard_door:
   name: Yard door
   platform: deconz
   unique_id: 00:15:8d:00:01:9e:15:2b-01-0006
+sensor.front_door_battery:
+  config_entry_id:
+  name:
+  platform: mqtt
+  unique_id: front_door_battery
+sensor.dining_area_window_sensor_battery:
+  config_entry_id:
+  name:
+  platform: mqtt
+  unique_id: dining_area_window_sensor_battery
+sensor.passage_pir_battery:
+  config_entry_id:
+  name:
+  platform: mqtt
+  unique_id: passage_pir_battery
+sensor.back_door_battery:
+  config_entry_id:
+  name:
+  platform: mqtt
+  unique_id: back_door_battery
+sensor.water_heater_battery:
+  config_entry_id:
+  name:
+  platform: mqtt
+  unique_id: water_heater_battery
+sensor.upstairs_hallway_pir_battery:
+  config_entry_id:
+  name:
+  platform: mqtt
+  unique_id: upstairs_hallway_pir_battery
+sensor.smoke_sensor_dining_room_battery:
+  config_entry_id:
+  name:
+  platform: mqtt
+  unique_id: smoke_sensor_158d0001d37be5_battery
+sensor.smoke_sensor_3_battery:
+  config_entry_id:
+  name:
+  platform: mqtt
+  unique_id: smoke_sensor_158d0001d37c82_battery
+sensor.downstairs_litterbox_lux_battery:
+  config_entry_id:
+  name:
+  platform: mqtt
+  unique_id: illumination_158d0001a24ef1_battery
+sensor.isas_room_lux_battery:
+  config_entry_id:
+  name:
+  platform: mqtt
+  unique_id: illumination_158d0001a66291_battery
+sensor.smoke_sensor_1_battery:
+  config_entry_id:
+  name:
+  platform: mqtt
+  unique_id: smoke_sensor_158d0001d37bdd_battery
+sensor.upstairs_litterbox_battery:
+  config_entry_id:
+  name:
+  platform: mqtt
+  unique_id: motion_sensor_158d0001a66291_battery
+sensor.stefan_iphone_7_battery:
+  config_entry_id:
+  name:
+  platform: mqtt
+  unique_id: stefan_iphone_7_battery
+sensor.upstairs_litterbox_switch_battery:
+  config_entry_id:
+  name:
+  platform: mqtt
+  unique_id: switch_158d0001a6687f_battery
+sensor.downstairs_litterbox_battery:
+  config_entry_id:
+  name:
+  platform: mqtt
+  unique_id: motion_sensor_158d0001a24ef1_battery
+sensor.downstairs_litterbox_switch_battery:
+  config_entry_id:
+  name:
+  platform: mqtt
+  unique_id: switch_158d0001b8f876_battery
+sensor.isabellas_iphone_x_battery:
+  config_entry_id:
+  name:
+  platform: mqtt
+  unique_id: isabellas_iphone_x_battery
+sensor.big_chili_battery_2:
+  config_entry_id:
+  name:
+  platform: mqtt
+  unique_id: big_chili_battery
+sensor.small_chili_battery_2:
+  config_entry_id:
+  name:
+  platform: mqtt
+  unique_id: small_chili_battery
+sensor.mailbox_letter_slot_battery:
+  config_entry_id:
+  name:
+  platform: mqtt
+  unique_id: mailbox_letter_battery
+sensor.mailbox_package_door_battery:
+  config_entry_id:
+  name:
+  platform: mqtt
+  unique_id: mailbox_package_battery
+sensor.isa_battery:
+  config_entry_id:
+  name:
+  platform: mqtt
+  unique_id: presence_isa_battery
+sensor.stefan_battery:
+  config_entry_id:
+  name:
+  platform: mqtt
+  unique_id: presence_stefan_battery
+sensor.passage_battery:
+  config_entry_id:
+  name:
+  platform: mqtt
+  unique_id: temperature_passage_battery
+sensor.passage_humidity_battery:
+  config_entry_id:
+  name:
+  platform: mqtt
+  unique_id: humidity_passage_battery
+sensor.bedroom_battery:
+  config_entry_id:
+  name:
+  platform: mqtt
+  unique_id: temperature_bedroom_battery
+sensor.bedroom_humidity_battery:
+  config_entry_id:
+  name:
+  platform: mqtt
+  unique_id: humidity_bedroom_battery
+sensor.downstairs_bathroom_battery:
+  config_entry_id:
+  name:
+  platform: mqtt
+  unique_id: temperature_downstairs_bathroom_battery
+sensor.downstairs_bathroom_humidity_battery:
+  config_entry_id:
+  name:
+  platform: mqtt
+  unique_id: humidity_downstairs_bathroom_battery
+sensor.bathroom_cabinet_door_battery:
+  config_entry_id:
+  name:
+  platform: mqtt
+  unique_id: door_bathroom_cabinet_battery
+sensor.bedroom_window_battery:
+  config_entry_id:
+  name:
+  platform: mqtt
+  unique_id: window_bedroom_battery
+sensor.herbs_battery_2:
+  config_entry_id:
+  name:
+  platform: mqtt
+  unique_id: herbs_battery
+sensor.stefans_room_battery:
+  config_entry_id:
+  name:
+  platform: mqtt
+  unique_id: temperature_stefan_battery
+sensor.stefan_humidity_battery:
+  config_entry_id:
+  name:
+  platform: mqtt
+  unique_id: humidity_stefan_battery
+sensor.roomba_docked_battery:
+  config_entry_id:
+  name:
+  platform: mqtt
+  unique_id: roomba_battery
+sensor.balcony_door_battery_2:
+  config_entry_id:
+  name:
+  platform: mqtt
+  unique_id: balcony_door_battery
+zwave.bike_plug:
+  config_entry_id:
+  name: Bike plug
+  platform: zwave
+  unique_id: node-24
+sensor.bike_plug_power:
+  config_entry_id:
+  name: Bike Plug Power
+  platform: zwave
+  unique_id: 24-72057594445578306
+switch.bike_plug_switch:
+  config_entry_id:
+  name: Bike Plug
+  platform: zwave
+  unique_id: 24-72057594445381632

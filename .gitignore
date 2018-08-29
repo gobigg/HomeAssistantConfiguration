@@ -34,3 +34,4 @@ homebridge/
 !/zwcfg_0xca115759.xml
 coreappdaemon/appdaemon.yaml
 core
+removed_or_templates/

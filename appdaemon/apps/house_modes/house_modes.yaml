@@ -1,0 +1,3 @@
+house_modes:
+  module: house_modes
+  class: CleaningDay

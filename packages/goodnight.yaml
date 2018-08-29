@@ -7,10 +7,10 @@ homeassistant:
 input_boolean:
   goodnight_stefan:
     name: Goodnight Stefan
-    initial: off
+
   goodnight_isa:
     name: Goodnight Isa
-    initial: off
+
     
 script:
   goodnight:

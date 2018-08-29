@@ -39,14 +39,15 @@ class SensorLights(hass.Hass):
     if new == "on":
         if "entity_on" in self.args:
           for entity_on in self.split_device_list(self.args["entity_on"]):
-            self.log("Motion detected: turning {} on".format(entity_on))
-            self.turn_on(entity_on)
-        if "delay" in self.args:
-          delay = self.args["delay"]
-        else:
-          delay = 300
-        self.cancel_timer(self.handle)
-        self.handle = self.run_in(self.light_off, delay)
+            if self.get_state(entity_on) != "on":
+              self.log("Motion detected: turning {} on".format(entity_on))
+              self.turn_on(entity_on)
+              if "delay" in self.args:
+                delay = self.args["delay"]
+              else:
+                delay = 300
+              self.cancel_timer(self.handle)
+              self.handle = self.run_in(self.light_off, delay)
   
   def light_off(self, kwargs):
     if "entity_off" in self.args:

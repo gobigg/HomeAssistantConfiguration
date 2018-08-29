@@ -1,0 +1,7 @@
+# yard_door_tts:
+#   module: doors
+#   class: Doors
+#   dependencies:
+#     # - house_status
+#     # - notification_manager
+#     - tts_manager

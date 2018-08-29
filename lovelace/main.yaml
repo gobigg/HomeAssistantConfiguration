@@ -3,9 +3,14 @@ resources:
     type: js
   - url: !resource monster-card/monster-card.js?v=0.2.3
     type: js
-  - url: !resource text-element/text-element.js?v=0.0.2
+
+  - url: !resource vertical-stack-in-card/vertical-stack-in-card.js?v=0.0.6
     type: js
-  - url: !resource vertical-stack-in-card/vertical-stack-in-card.js?v=0.0.5
+  - url: !resource slider-entity-row/slider-entity-row.js
+    type: js
+  - url: !resource useful-markdown-card/useful-markdown-card.js
+    type: js
+  - url: !resource gauge-card/gauge-card.js
     type: js
   # - url: !resource /local/lovelace_ui/entity-attributes-card.js?v=0.1.0
   #   type: js
@@ -19,31 +24,38 @@ resources:
     type: js
   - url: !resource group-card/group-card.js
     type: js
-  # - url: https://fonts.googleapis.com/css?family=Clicker+Script
-  #   type: css
-#  - url: /local/lovelace_ui/wired-cards.js?v=0.0.9
- #   type: module
- # - url: /local/lovelace_ui/light-slider-element.js?v=0.0.1
-#    type: module
+  - url: !resource state-element/state-element.js
+    type: js
+  - url: !resource text-element/text-element.js
+    type: js
+  - url: !resource username-element/username-element.js
+    type: js
+  - url: !resource state-attribute-element/state-attribute-element.js
+    type: js
+    
+    
+  - url: https://fonts.googleapis.com/css?family=Roboto+Condensed
+    type: css
+  
 title: Home
-excluded_entities:
-  {% for state in states.alert %}
-  - {{ states.alert[state].entity_id }}
-  {% endfor %}
-  {% for state in states.automation %}
-  - {{ states.automation[state].entity_id }}
-  {% endfor %}
-  {% for state in states.zwave %}
-  - {{ states.zwave[state].entity_id }}
-  {% endfor %}
+# excluded_entities:
+#   {% for state in states.alert %}
+#   - {{ states.alert[state].entity_id }}
+#   {% endfor %}
+#   {% for state in states.automation %}
+#   - {{ states.automation[state].entity_id }}
+#   {% endfor %}
+#   {% for state in states.zwave %}
+#   - {{ states.zwave[state].entity_id }}
+#   {% endfor %}
 views:
-  - !include 01_home_view.yaml
-  - !include 02_home_info_view.yaml
-  - !include 03_lights_view.yaml
-  - !include 04_info_view.yaml
-  - !include 05_camera_view.yaml
-  - !include 06_cat_view.yaml
-  - !include 07_floorplan_view.yaml
-  - !include 08_isa_view.yaml
-  - !include 09_automations_view.yaml
+  - !include 00_home_view.yaml
+  - !include 10_home_info_view.yaml
+  - !include 20_lights_view.yaml
+  - !include 30_info_view.yaml
+  - !include 40_camera_view.yaml
+  - !include 50_cat_view.yaml
+  - !include 60_floorplan_view.yaml
+  - !include 70_isa_view.yaml
+  - !include 80_automations_view.yaml
   - !include 100_settings_view.yaml
