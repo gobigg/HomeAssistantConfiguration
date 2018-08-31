@@ -4,357 +4,309 @@
 # Any changes made to it will be overwritten the next time the script is run.
 
 resources:
-- {type: js, url: '/local/lovelace/plan-coordinates.js?1534933390.1464062'}
-- {type: js, url: '/local/lovelace/monster-card.js?1534933390.1464062&v=0.2.3'}
-- {type: js, url: '/local/lovelace/vertical-stack-in-card.js?1534933390.1464062&v=0.0.6'}
-- {type: js, url: '/local/lovelace/slider-entity-row.js?1534933390.1464062'}
-- {type: js, url: '/local/lovelace/useful-markdown-card.js?1534933390.1464062'}
-- {type: js, url: '/local/lovelace/gauge-card.js?1534933390.1464062'}
-- {type: js, url: '/local/lovelace/home-setter.js?1534933390.1464062&v=0.0.1'}
-- {type: js, url: '/local/lovelace/tracker-card.js?1534933390.1464062&v=0.1.4'}
-- {type: js, url: '/local/lovelace/state-card-aftership.js?1534933390.1464062'}
-- {type: js, url: '/local/lovelace/light-slider-element.js?1534933390.1464062'}
-- {type: js, url: '/local/lovelace/group-card.js?1534933390.1464062'}
-- {type: js, url: '/local/lovelace/state-element.js?1534933390.1464062'}
-- {type: js, url: '/local/lovelace/text-element.js?1534933390.1464062'}
-- {type: js, url: '/local/lovelace/username-element.js?1534933390.1464062'}
-- {type: js, url: '/local/lovelace/state-attribute-element.js?1534933390.1464062'}
+- {type: js, url: '/local/lovelace/plan-coordinates.js?1535710765.2025652'}
+- {type: js, url: '/local/lovelace/monster-card.js?1535710765.2025652&v=0.2.3'}
+- {type: js, url: '/local/lovelace/light-card.js?1535710765.2025652'}
+- {type: module, url: '/local/lovelace/button-card.js?1535710765.2025652'}
+- {type: js, url: '/local/lovelace/vertical-stack-in-card.js?1535710765.2025652&v=0.0.6'}
+- {type: js, url: '/local/lovelace/slider-entity-row.js?1535710765.2025652'}
+- {type: js, url: '/local/lovelace/useful-markdown-card.js?1535710765.2025652'}
+- {type: js, url: '/local/lovelace/gauge-card.js?1535710765.2025652'}
+- {type: js, url: '/local/lovelace/bignumber-card.js?1535710765.2025652'}
+- {type: js, url: '/local/lovelace/column-card.js?1535710765.2025652'}
+- {type: js, url: '/local/lovelace/home-setter.js?1535710765.2025652&v=0.0.1'}
+- {type: js, url: '/local/lovelace/tracker-card.js?1535710765.2025652&v=0.1.4'}
+- {type: js, url: '/local/lovelace/state-card-aftership.js?1535710765.2025652'}
+- {type: js, url: '/local/lovelace/light-slider-element.js?1535710765.2025652'}
+- {type: js, url: '/local/lovelace/group-card.js?1535710765.2025652'}
+- {type: js, url: '/local/lovelace/state-element.js?1535710765.2025652'}
+- {type: js, url: '/local/lovelace/text-element.js?1535710765.2025652'}
+- {type: js, url: '/local/lovelace/username-element.js?1535710765.2025652'}
+- {type: js, url: '/local/lovelace/state-attribute-element.js?1535710765.2025652'}
 - {type: css, url: 'https://fonts.googleapis.com/css?family=Roboto+Condensed'}
 title: Home
 views:
 - cards:
   - cards:
     - cards:
-      - {entity: sensor.presence_isa, image: /local/isa_alt.jpg, show_name: false,
-        type: picture-entity}
-      - {entity: sensor.presence_stefan, image: /local/Stefan_cropped.jpg, show_name: false,
-        type: picture-entity}
-      type: horizontal-stack
-    - elements:
-      - entity: light.inside_lights_automation
-        icon: mdi:lightbulb
-        navigation_path: /lovelace/lights
-        style: {color: white, left: 92%, top: 20%}
-        tap_action: navigate
-        type: icon
-      - entity: alarm_control_panel.home_alarm
-        style: {color: white, left: 5%, top: 87%}
-        type: state-icon
-      - entity: sensor.front_door_combined
-        style: {color: white, left: 14%, top: 86%}
-        type: state-icon
-      - entity: sensor.mailbox
-        style: {color: white, left: 23%, top: 86%}
-        type: state-icon
-      - entity: sensor.trash_bin
-        style: {color: white, left: 32%, top: 86%}
-        type: state-icon
-      - entity: sensor.temperature_bedroom
-        icon: mdi:hotel
-        style: {color: white, left: 50%, top: 82%}
-        tap_action: more-info
-        type: icon
-      - entity: sensor.temperature_bedroom
-        style: {color: white, left: 50%, top: 95%}
-        type: state-label
-      - entity: sensor.temperature_stefan
-        icon: mdi:human-male
-        style: {color: white, left: 64%, top: 82%}
-        tap_action: more-info
-        type: icon
-      - entity: sensor.temperature_stefan
-        style: {color: white, left: 64%, top: 95%}
-        type: state-label
-      - entity: sensor.temperature_passage
-        icon: mdi:stairs
-        style: {color: white, left: 78%, top: 82%}
-        tap_action: more-info
-        type: icon
-      - entity: sensor.temperature_passage
-        style: {color: white, left: 78%, top: 95%}
-        type: state-label
-      - entity: sensor.temperature_downstairs_bathroom
-        icon: mdi:washing-machine
-        style: {color: white, left: 92%, top: 82%}
-        tap_action: more-info
-        type: icon
-      - entity: sensor.temperature_downstairs_bathroom
-        style: {color: white, left: 92%, top: 95%}
-        type: state-label
-      image: /local/house-element.jpg
-      type: picture-elements
-    - elements:
-      - entity: sensor.small_chili_moisture
-        style: {--ha-label-badge-font-size: 1em, left: 10%, top: 27%}
-        type: state-badge
-      - entity: sensor.big_chili_moisture
-        style: {--ha-label-badge-font-size: 1em, left: 25%, top: 27%}
-        type: state-badge
-      - entity: sensor.herbs_moisture
-        style: {--ha-label-badge-font-size: 1em, left: 40%, top: 27%}
-        type: state-badge
-      - entity: sensor.greenhouse_temperature
-        style: {--ha-label-badge-font-size: 1em, left: 92%, top: 15%}
-        type: state-label
-      image: /local/plants.jpg
-      type: picture-elements
-    type: vertical-stack
-  - cards:
-    - card: {type: glance}
-      entities:
-      - {entity: sensor.front_door_lock, name: Lock}
-      - sensor.front_door
-      - sensor.back_door
-      - sensor.backyard_door
-      - sensor.balcony_door
-      - {entity: sensor.dining_area_window, name: Dining area}
-      - {entity: sensor.bedroom_window, name: Bedroom}
-      - {entity: sensor.front_door_outdoor_movement, name: Ring motion}
-      - sensor.hallway_movement
-      - sensor.passage_movement
-      - sensor.upstairs_hallway_movement
-      - sensor.living_room_movement
-      - sensor.back_door_camera_movement
-      - {entity: sensor.yard_storage_door, name: Storage door}
-      - sensor.water_heater
-      - sensor.kitchen_sink
-      - binary_sensor.smoke_sensor_158d0001d37bdd
-      - binary_sensor.smoke_sensor_158d0001d37be5
-      - binary_sensor.smoke_sensor_158d0001d37c82
-      show_empty: false
-      state_filter: [Open, Movement detected, Leaking, Unlocked, 'on']
-      type: entity-filter
-    - card: {type: glance}
-      entities: [light.outdoor_lights, light.bedroom_ceiling_light, light.bedside_lamp,
-        light.dining_area_ceiling_light_level, light.kitchen_ceiling_spotlights_level,
-        light.floorlamp_reading_light, light.floorlamp_uplight, light.hallway_window_light,
-        light.isa_ceiling_light, light.living_room_ceiling_light_level, light.living_room_spotlights_level,
-        light.passage_ceiling_spotlights_level, light.stairs_lights_lights, light.walk_in_closet_lights,
-        light.upstairs_hallway_ceiling_light_level, light.gateway_light_34ce008bfc4b]
-      show_empty: false
-      state_filter: ['on']
-      type: entity-filter
-    - cards:
-      - entity: input_select.washing_machine_status
-        name: Laundry
-        state_image: {Clean: /local/lovelace_ui/laundry_clean.jpg, Idle: /local/lovelace_ui/laundry.jpg,
-          Running: /local/lovelace_ui/laundry_running.jpg}
-        type: picture-entity
-      - {entity: input_select.roomba_mode, image: /local/lovelace_ui/roomba.jpg, name: Roomba,
-        type: picture-entity}
-      type: horizontal-stack
-    - entities: [switch.stefan_radiator]
-      type: entities
-    - card: {show_header_toggle: true, title: Alerts, type: entities}
-      filter:
-        exclude:
-        - {state: idle}
-        include:
-        - {entity_id: alert.*}
-      show_empty: false
-      type: custom:monster-card
-    - card: {type: glance}
-      filter:
-        include:
-        - {domain: persistent_notification}
-      show_empty: false
-      type: custom:monster-card
-    - card:
-        entities:
-        - input_boolean.hass_dev_mode
-        - action_name: Run
-          icon: mdi:refresh
-          name: Lovelace generator
-          service: shell_command.lovelace_gen_states
-          service_data: {}
-          type: call-service
-        show_header_toggle: false
-        type: entities
-      conditions:
-      - {entity: input_boolean.hass_dev_mode, state: 'on'}
-      type: conditional
+      - cards:
+        - cards:
+          - {entity: sensor.presence_isa, image: /local/isa_alt.jpg, show_name: false,
+            type: picture-entity}
+          - {entity: sensor.presence_stefan, image: /local/Stefan_cropped.jpg, show_name: false,
+            type: picture-entity}
+          type: horizontal-stack
+        - elements:
+          - entity: light.inside_lights_automation
+            icon: mdi:lightbulb
+            navigation_path: /lovelace/lights
+            style: {color: white, left: 92%, top: 20%}
+            tap_action: navigate
+            type: icon
+          - entity: alarm_control_panel.home_alarm
+            style: {color: white, left: 5%, top: 87%}
+            type: state-icon
+          - entity: sensor.front_door_combined
+            style: {color: white, left: 14%, top: 86%}
+            type: state-icon
+          - entity: sensor.mailbox
+            style: {color: white, left: 23%, top: 86%}
+            type: state-icon
+          - entity: sensor.trash_bin
+            style: {color: white, left: 32%, top: 86%}
+            type: state-icon
+          - entity: sensor.temperature_bedroom
+            icon: mdi:hotel
+            style: {color: white, left: 50%, top: 82%}
+            tap_action: more-info
+            type: icon
+          - entity: sensor.temperature_bedroom
+            style: {color: white, left: 50%, top: 95%}
+            type: state-label
+          - entity: sensor.temperature_stefan
+            icon: mdi:human-male
+            style: {color: white, left: 64%, top: 82%}
+            tap_action: more-info
+            type: icon
+          - entity: sensor.temperature_stefan
+            style: {color: white, left: 64%, top: 95%}
+            type: state-label
+          - entity: sensor.temperature_passage
+            icon: mdi:stairs
+            style: {color: white, left: 78%, top: 82%}
+            tap_action: more-info
+            type: icon
+          - entity: sensor.temperature_passage
+            style: {color: white, left: 78%, top: 95%}
+            type: state-label
+          - entity: sensor.temperature_downstairs_bathroom
+            icon: mdi:washing-machine
+            style: {color: white, left: 92%, top: 82%}
+            tap_action: more-info
+            type: icon
+          - entity: sensor.temperature_downstairs_bathroom
+            style: {color: white, left: 92%, top: 95%}
+            type: state-label
+          image: /local/house-element.jpg
+          type: picture-elements
+        - elements:
+          - entity: sensor.small_chili_moisture
+            style: {--ha-label-badge-font-size: 1em, left: 10%, top: 27%}
+            type: state-badge
+          - entity: sensor.big_chili_moisture
+            style: {--ha-label-badge-font-size: 1em, left: 25%, top: 27%}
+            type: state-badge
+          - entity: sensor.herbs_moisture
+            style: {--ha-label-badge-font-size: 1em, left: 40%, top: 27%}
+            type: state-badge
+          - entity: sensor.greenhouse_temperature
+            style: {--ha-label-badge-font-size: 1em, left: 92%, top: 15%}
+            type: state-label
+          image: /local/plants.jpg
+          type: picture-elements
+        type: vertical-stack
+      - cards:
+        - cards:
+          - card: {type: glance}
+            entities:
+            - {entity: sensor.front_door_lock, name: Lock}
+            - sensor.front_door
+            - sensor.back_door
+            - sensor.backyard_door
+            - sensor.balcony_door
+            - {entity: sensor.dining_area_window, name: Dining area}
+            - {entity: sensor.bedroom_window, name: Bedroom}
+            - {entity: sensor.front_door_outdoor_movement, name: Ring motion}
+            - sensor.hallway_movement
+            - sensor.passage_movement
+            - sensor.upstairs_hallway_movement
+            - sensor.living_room_movement
+            - sensor.back_door_camera_movement
+            - {entity: sensor.yard_storage_door, name: Storage door}
+            - sensor.water_heater
+            - sensor.kitchen_sink
+            - binary_sensor.smoke_sensor_158d0001d37bdd
+            - binary_sensor.smoke_sensor_158d0001d37be5
+            - binary_sensor.smoke_sensor_158d0001d37c82
+            show_empty: false
+            state_filter: [Open, Movement detected, Leaking, Unlocked, 'on']
+            type: entity-filter
+          - card: {type: glance}
+            entities: [light.outdoor_lights, light.bedroom_ceiling_light, light.bedside_lamp,
+              light.dining_area_ceiling_light_level, light.kitchen_ceiling_spotlights_level,
+              light.floorlamp_reading_light, light.floorlamp_uplight, light.hallway_window_light,
+              light.isa_ceiling_light, light.living_room_ceiling_light_level, light.living_room_spotlights_level,
+              light.passage_ceiling_spotlights_level, light.stairs_lights_lights,
+              light.walk_in_closet_lights, light.upstairs_hallway_ceiling_light_level,
+              light.gateway_light_34ce008bfc4b]
+            show_empty: false
+            state_filter: ['on']
+            type: entity-filter
+          type: custom:vertical-stack-in-card
+        type: vertical-stack
+      - cards:
+        - cards:
+          - entity: input_select.washing_machine_status
+            name: Laundry
+            state_image: {Clean: /local/lovelace_ui/laundry_clean.jpg, Idle: /local/lovelace_ui/laundry.jpg,
+              Running: /local/lovelace_ui/laundry_running.jpg}
+            type: picture-entity
+          - {entity: input_select.roomba_mode, image: /local/lovelace_ui/roomba.jpg,
+            name: Roomba, type: picture-entity}
+          type: horizontal-stack
+        - entities: [switch.stefan_radiator]
+          type: entities
+        - card: {show_header_toggle: true, title: Alerts, type: entities}
+          filter:
+            exclude:
+            - {state: idle}
+            include:
+            - {entity_id: alert.*}
+          show_empty: false
+          type: custom:monster-card
+        - card: {type: glance}
+          filter:
+            include:
+            - {domain: persistent_notification}
+          show_empty: false
+          type: custom:monster-card
+        type: vertical-stack
+      - cards:
+        - {entity: camera.fisksatra_meteogram, show_name: false, show_state: false,
+          type: picture-entity}
+        - {entity: camera.stockholm_meteogram, show_name: false, show_state: false,
+          type: picture-entity}
+        - card:
+            entities:
+            - input_boolean.hass_dev_mode
+            - action_name: Run
+              icon: mdi:refresh
+              name: Lovelace generator
+              service: shell_command.lovelace_gen_states
+              service_data: {}
+              type: call-service
+            show_header_toggle: false
+            type: entities
+          conditions:
+          - {entity: input_boolean.hass_dev_mode, state: 'on'}
+          type: conditional
+        type: custom:vertical-stack-in-card
+      type: custom:column-card
     type: vertical-stack
   icon: mdi:information-outline
   id: home
+  panel: true
   title: Home
 - cards:
   - cards:
     - cards:
-      - elements:
-        - style: {color: black, left: 50%, top: 15%}
-          text: Air
-          type: custom:text-element
-        - style: {color: black, left: 50%, top: 85%}
-          text: Cleaner
-          type: custom:text-element
-        - entity: script.air_cleaner_quiet
-          icon: mdi:fan-off
-          style: {left: 50%, top: 50%}
-          tap_action: toggle
-          type: icon
-        image: /local/lovelace_ui/button-template.png
-        type: picture-elements
-      - elements:
-        - style: {color: black, left: 50%, top: 15%}
-          text: Air
-          type: custom:text-element
-        - style: {color: black, left: 50%, top: 85%}
-          text: Cleaner
-          type: custom:text-element
-        - entity: script.air_cleaner_auto
-          icon: mdi:fan
-          style: {left: 50%, top: 50%}
-          tap_action: toggle
-          type: icon
-        image: /local/lovelace_ui/button-template.png
-        type: picture-elements
-      - elements:
-        - style: {color: black, left: 50%, top: 15%}
-          text: Air
-          type: custom:text-element
-        - style: {color: black, left: 50%, top: 85%}
-          text: Cleaner
-          type: custom:text-element
-        - entity: script.air_cleaner_turbo
-          icon: mdi:run-fast
-          style: {left: 50%, top: 50%}
-          tap_action: toggle
-          type: icon
-        image: /local/lovelace_ui/button-template.png
-        type: picture-elements
-      - elements:
-        - style: {color: black, left: 50%, top: 15%}
-          text: AC
-          type: custom:text-element
-        - style: {color: black, left: 50%, top: 85%}
-          text: Downstairs
-          type: custom:text-element
-        - entity: script.ac_off
-          icon: mdi:fan-off
-          style: {left: 50%, top: 50%}
-          tap_action: toggle
-          type: icon
-        image: /local/lovelace_ui/button-template.png
-        type: picture-elements
-      - elements:
-        - style: {color: black, left: 50%, top: 15%}
-          text: AC
-          type: custom:text-element
-        - style: {color: black, left: 50%, top: 85%}
-          text: Downstairs
-          type: custom:text-element
-        - entity: script.ac_on
-          icon: mdi:air-conditioner
-          style: {left: 50%, top: 50%}
-          tap_action: toggle
-          type: icon
-        image: /local/lovelace_ui/button-template.png
-        type: picture-elements
-      type: horizontal-stack
-    - column_width: calc(100% / 4)
-      entities:
-      - {entity: input_boolean.vacation_mode, name: Vacation}
-      - input_boolean.cleaning_day
-      - input_boolean.guest_mode
-      - {entity: input_boolean.isa_mode, name: Isa Mode, tap_action: toggle}
-      show_header_toggle: false
-      type: glance
+      - cards:
+        - cards:
+          - {color: 'rgb(220,220,220)', color_off: 'rgb(220,220,220)', entity: script.air_cleaner_quiet,
+            icon: 'mdi:fan-off', name: AC bed, type: 'custom:button-card'}
+          - {color: 'rgb(220,220,220)', color_off: 'rgb(220,220,220)', entity: script.air_cleaner_auto,
+            icon: 'mdi:fan', name: AC bed, type: 'custom:button-card'}
+          - {color: 'rgb(220,220,220)', color_off: 'rgb(220,220,220)', entity: script.air_cleaner_turbo,
+            icon: 'mdi:run-fast', name: AC bed, type: 'custom:button-card'}
+          - {color: 'rgb(220,220,220)', color_off: 'rgb(220,220,220)', entity: script.ac_off,
+            icon: 'mdi:fan-off', name: AC, type: 'custom:button-card'}
+          - {color: 'rgb(220,220,220)', color_off: 'rgb(220,220,220)', entity: script.ac_on,
+            icon: 'mdi:fan', name: AC, type: 'custom:button-card'}
+          type: horizontal-stack
+        - column_width: calc(100% / 4)
+          entities:
+          - {entity: input_boolean.vacation_mode, name: Vacation}
+          - input_boolean.cleaning_day
+          - input_boolean.guest_mode
+          - {entity: input_boolean.isa_mode, name: Isa Mode, tap_action: toggle}
+          show_header_toggle: false
+          type: glance
+        - entities:
+          - {entity: input_boolean.change_bedsheets, icon: 'mdi:bed-empty', secondary_info: last-changed}
+          show_header_toggle: false
+          title: House schedule
+          type: entities
+        - card:
+            entities:
+            - input_boolean.hass_dev_mode
+            - action_name: Run
+              icon: mdi:refresh
+              name: Lovelace generator
+              service: shell_command.lovelace_gen_states
+              service_data: {}
+              type: call-service
+            show_header_toggle: false
+            type: entities
+          conditions:
+          - {entity: input_boolean.hass_dev_mode, state: 'on'}
+          type: conditional
+        type: vertical-stack
+      - cards:
+        - entities:
+          - {entity: input_boolean.show_security, icon: 'mdi:security-home', name: Show
+              security}
+          type: entities
+        - card:
+            card: {type: entities}
+            filter:
+              include:
+              - entity_id: sensor.*movement*
+                options: {secondary_info: last-changed}
+            show_empty: false
+            type: custom:monster-card
+          conditions:
+          - {entity: input_boolean.show_security, state: 'on'}
+          type: conditional
+        - card:
+            card: {type: entities}
+            filter:
+              include:
+              - entity_id: sensor.front_door_lock
+                options: {icon: 'mdi:lock-smart', secondary_info: last-changed}
+              - entity_id: sensor.unlocked_by
+                options: {icon: 'mdi:lock-open-outline', name: Last unlocked by, secondary_info: last-changed}
+              - entity_id: sensor.*door*
+                options: {secondary_info: last-changed}
+                state: Closed
+              - entity_id: sensor.*window*
+                options: {secondary_info: last-changed}
+                state: Closed
+            show_empty: false
+            type: custom:monster-card
+          conditions:
+          - {entity: input_boolean.show_security, state: 'on'}
+          type: conditional
+        type: custom:vertical-stack-in-card
+      - cards:
+        - column_width: calc(100% / 3)
+          entities: [sensor.pollen_bjork, sensor.pollen_gras, sensor.pollen_grabo]
+          type: glance
+        - entities: [sensor.temperature_bedroom, sensor.temperature_passage, sensor.temperature_downstairs_bathroom,
+            sensor.temperature_stefan]
+          hours_to_show: 48
+          title: Temperatures 48h
+          type: history-graph
+        - entities: [sensor.temperature_bedroom, sensor.temperature_passage, sensor.temperature_downstairs_bathroom,
+            sensor.temperature_stefan]
+          hours_to_show: 168
+          title: Temperatures 7 Days
+          type: history-graph
+        type: custom:vertical-stack-in-card
+      type: custom:column-card
     type: vertical-stack
-  - cards:
-    - entities:
-      - {entity: input_boolean.show_security, icon: 'mdi:security-home', name: Show
-          security}
-      type: entities
-    - card:
-        card: {type: entities}
-        filter:
-          include:
-          - entity_id: sensor.*movement*
-            options: {secondary_info: last-changed}
-        show_empty: false
-        type: custom:monster-card
-      conditions:
-      - {entity: input_boolean.show_security, state: 'on'}
-      type: conditional
-    - card:
-        card: {type: entities}
-        filter:
-          include:
-          - entity_id: sensor.front_door_lock
-            options: {icon: 'mdi:lock-smart', secondary_info: last-changed}
-          - entity_id: sensor.unlocked_by
-            options: {icon: 'mdi:lock-open-outline', name: Last unlocked by, secondary_info: last-changed}
-          - entity_id: sensor.*door*
-            options: {secondary_info: last-changed}
-            state: Closed
-          - entity_id: sensor.*window*
-            options: {secondary_info: last-changed}
-            state: Closed
-        show_empty: false
-        type: custom:monster-card
-      conditions:
-      - {entity: input_boolean.show_security, state: 'on'}
-      type: conditional
-    type: custom:vertical-stack-in-card
-  - cards:
-    - column_width: calc(100% / 3)
-      entities: [sensor.pollen_bjork, sensor.pollen_gras, sensor.pollen_grabo]
-      type: glance
-    - entities: [sensor.temperature_bedroom, sensor.temperature_passage, sensor.temperature_downstairs_bathroom,
-        sensor.temperature_stefan]
-      hours_to_show: 48
-      title: Temperatures 48h
-      type: history-graph
-    - entities: [sensor.temperature_bedroom, sensor.temperature_passage, sensor.temperature_downstairs_bathroom,
-        sensor.temperature_stefan]
-      hours_to_show: 168
-      title: Temperatures 7 Days
-      type: history-graph
-    type: custom:vertical-stack-in-card
-  - card:
-      entities:
-      - input_boolean.hass_dev_mode
-      - action_name: Run
-        icon: mdi:refresh
-        name: Lovelace generator
-        service: shell_command.lovelace_gen_states
-        service_data: {}
-        type: call-service
-      show_header_toggle: false
-      type: entities
-    conditions:
-    - {entity: input_boolean.hass_dev_mode, state: 'on'}
-    type: conditional
   icon: mdi:home-heart
   id: home-info
+  panel: true
   title: Home info
 - cards:
   - cards:
     - cards:
-      - elements:
-        - entity: script.goodnight
-          icon: mdi:hotel
-          style: {left: 50%, top: 50%}
-          tap_action: toggle
-          type: icon
-        image: /local/lovelace_ui/button-template.png
-        type: picture-elements
-      - elements:
-        - entity: script.goodmorning
-          icon: mdi:kettle
-          style: {left: 50%, top: 50%}
-          tap_action: toggle
-          type: icon
-        image: /local/lovelace_ui/button-template.png
-        type: picture-elements
-      - elements:
-        - entity: script.movie_time
-          icon: mdi:television-classic
-          style: {left: 50%, top: 50%}
-          tap_action: toggle
-          type: icon
-        image: /local/lovelace_ui/button-template.png
-        type: picture-elements
+      - {color: 'rgb(220,220,220)', color_off: 'rgb(220,220,220)', entity: script.goodnight,
+        icon: 'mdi:hotel', size: 50%, type: 'custom:button-card'}
+      - {color: 'rgb(220,220,220)', color_off: 'rgb(220,220,220)', entity: script.goodmorning,
+        icon: 'mdi:kettle', size: 50%, type: 'custom:button-card'}
+      - {color: 'rgb(220,220,220)', color_off: 'rgb(220,220,220)', entity: script.movie_time,
+        icon: 'mdi:television-classic', size: 50%, type: 'custom:button-card'}
       type: horizontal-stack
     - entities:
       - {entity: light.outdoor_front_light, hide_when_off: true, name: Front, type: 'custom:slider-entity-row'}
@@ -364,33 +316,12 @@ views:
       title: Outdoor
       type: entities
     - cards:
-      - elements:
-        - icon: mdi:page-layout-footer
-          service: light.toggle
-          service_data: {entity_id: light.downstairs_lights}
-          style: {left: 50%, top: 50%}
-          tap_action: call-service
-          type: icon
-        image: /local/lovelace_ui/button-template.png
-        type: picture-elements
-      - elements:
-        - icon: mdi:page-layout-header
-          service: light.toggle
-          service_data: {entity_id: light.upstairs_lights}
-          style: {left: 50%, top: 50%}
-          tap_action: call-service
-          type: icon
-        image: /local/lovelace_ui/button-template.png
-        type: picture-elements
-      - elements:
-        - icon: mdi:flash-off
-          service: homeassistant.turn_off
-          service_data: {entity_id: group.inside_lights_automations}
-          style: {left: 50%, top: 50%}
-          tap_action: call-service
-          type: icon
-        image: /local/lovelace_ui/button-template.png
-        type: picture-elements
+      - {color: 'rgb(220,220,220)', color_off: 'rgb(220,220,220)', entity: light.downstairs_lights,
+        icon: 'mdi:page-layout-footer', size: 50%, type: 'custom:button-card'}
+      - {color: 'rgb(220,220,220)', color_off: 'rgb(220,220,220)', entity: light.upstairs_lights,
+        icon: 'mdi:page-layout-header', size: 50%, type: 'custom:button-card'}
+      - {color: 'rgb(220,220,220)', color_off: 'rgb(220,220,220)', entity: group.inside_lights_automations,
+        icon: 'mdi:flash-off', size: 50%, type: 'custom:button-card'}
       type: horizontal-stack
     type: vertical-stack
   - cards:
@@ -449,112 +380,163 @@ views:
   title: Lights
 - cards:
   - cards:
-    - entities:
-      - sensor.system_printer
-      - sensor.system_nas
-      - sensor.system_ipad
-      - sensor.system_ip_camera
-      - {entity: sensor.system_ir_blaster, name: IR Hallway}
-      - {entity: sensor.system_ir_blaster_bedroom, name: IR Bedroom}
-      - {entity: sensor.system_ir_blaster_living_room, name: IR Livingroom}
-      - sensor.system_milight_hub
-      - {entity: sensor.system_xiaomi_gateway, name: Xiaomi}
-      - sensor.system_ring_doorbell
-      - sensor.system_ring_chime_pro
-      - sensor.system_ring_chime
-      show_state: false
-      type: glance
-    - column_width: calc(100% / 3)
-      entities:
-      - {entity: sensor.system_isa_computer, name: Isa}
-      - {entity: sensor.system_isa_dell_xps, name: Isa work laptop}
-      - {entity: sensor.system_isa_laptop, name: Isa laptop}
-      - {entity: sensor.system_stefan_computer, name: Stefan}
-      - {entity: sensor.system_stefan_laptop, name: Stefan work laptop}
-      show_state: false
-      type: glance
-    - column_width: calc(100% / 4)
-      entities:
-      - {entity: sensor.system_samsung65, name: TV}
-      - {entity: sensor.system_movie_system, name: Movie System}
-      - {entity: sensor.system_shield, name: Shield}
-      - sensor.system_sonos
-      - {entity: sensor.system_samsung49, name: Bed TV}
-      - {entity: sensor.system_chromecast_bedroom, name: Bed CC}
+    - cards:
+      - cards:
+        - column_width: calc(100% / 4)
+          entities:
+          - sensor.system_printer
+          - sensor.system_nas
+          - sensor.system_ipad
+          - sensor.system_ip_camera
+          - {entity: sensor.system_ir_blaster, name: IR Hallway}
+          - {entity: sensor.system_ir_blaster_bedroom, name: IR Bedroom}
+          - {entity: sensor.system_ir_blaster_living_room, name: IR Livingroom}
+          - sensor.system_milight_hub
+          - {entity: sensor.system_xiaomi_gateway, name: Xiaomi}
+          - sensor.system_ring_doorbell
+          - sensor.system_ring_chime_pro
+          - sensor.system_ring_chime
+          show_state: false
+          type: glance
+        - column_width: calc(100% / 3)
+          entities:
+          - {entity: sensor.system_isa_computer, name: Isa}
+          - {entity: sensor.system_isa_dell_xps, name: Isa work laptop}
+          - {entity: sensor.system_isa_laptop, name: Isa laptop}
+          - {entity: sensor.system_stefan_computer, name: Stefan}
+          - {entity: sensor.system_stefan_laptop, name: Stefan work laptop}
+          show_state: false
+          type: glance
+        - column_width: calc(100% / 3)
+          entities:
+          - {entity: sensor.system_samsung65, name: TV}
+          - {entity: sensor.system_movie_system, name: Movie System}
+          - {entity: sensor.system_shield, name: Shield}
+          - sensor.system_sonos
+          - {entity: sensor.system_samsung49, name: Bed TV}
+          - {entity: sensor.system_chromecast_bedroom, name: Bed CC}
+          - card:
+            - cards:
+              - {entity: media_player.livingroom_movie_system, type: media-control}
+              - {entity: media_player.livingroom_tv, type: media-control}
+              type: horizontal-stack
+            - cards:
+              - {entity: media_player.shield, type: media-control}
+              - {entity: media_player.sovrum, type: media-control}
+              type: horizontal-stack
+            conditions:
+            - {entity: group.persons, state_not: not_home}
+            type: conditional
+          show_state: false
+          type: glance
+        type: vertical-stack
+      - cards:
+        - entities:
+          - {entity: sensor.system_asus_router, name: Asus}
+          - {entity: sensor.system_netgear_router, name: Netgear}
+          - {entity: sensor.speedtest_ping, name: Ping}
+          - {entity: sensor.speedtest_download, name: Download}
+          - {entity: sensor.speedtest_upload, name: Upload}
+          type: glance
+        - entities: [sensor.speedtest_download, sensor.speedtest_ping, sensor.speedtest_upload]
+          type: history-graph
+        - card: {entity: media_player.sonos, type: media-control}
+          conditions:
+          - {entity: group.persons, state_not: not_home}
+          type: conditional
+        type: custom:vertical-stack-in-card
+      - cards:
+        - entities:
+          - {entity: sensor.presence_isa, entity_picture: /local/Isa_BW.jpg, name: Isa
+              presence, secondary_info: last-changed}
+          - {entity: device_tracker.isabellas_iphone_x, icon: 'mdi:apple', name: Isa
+              ios, secondary_info: last-changed}
+          - {entity: device_tracker.isabellas_iphone_x_wifi, icon: 'mdi:wifi', name: Isa
+              Wifi, secondary_info: last-changed}
+          - {entity: sensor.isabellas_iphone_x_bt, icon: 'mdi:bluetooth', name: Isa
+              bt, secondary_info: last-changed}
+          type: entities
+        - entities:
+          - {entity: sensor.presence_stefan, name: Stefan presence, secondary_info: last-changed}
+          - {entity: device_tracker.stefan_iphone_7, icon: 'mdi:apple', name: Stefan
+              ios, secondary_info: last-changed}
+          - {entity: device_tracker.stefan_iphone_7_wifi, icon: 'mdi:wifi', name: Stefan
+              Wifi, secondary_info: last-changed}
+          - {entity: sensor.stefan_iphone_7_bt, icon: 'mdi:bluetooth', name: Stefan
+              bt, secondary_info: last-changed}
+          type: entities
+        - entities:
+          - {entity: sensor.unlocked_by, name: Front door last unlocked by, secondary_info: last-changed}
+          type: entities
+        type: custom:vertical-stack-in-card
+      - cards:
+        - column_width: calc(100% / 2)
+          entities:
+          - {entity: sensor.system_hass_rpi, name: Hass Rpi}
+          - {entity: sensor.system_magic_mirror_rpi, name: Magic Mirror}
+          type: glance
+        - cards:
+          - entity: sensor.hass_rpi_disk_use_percent
+            measurement: '%'
+            scale: 30px
+            severity: {amber: 50, green: 0, red: 80}
+            title: Disk use
+            type: custom:gauge-card
+          - {entity: sensor.hass_rpi_free_memory, scale: 30px, title: Free memory,
+            type: 'custom:bignumber-card'}
+          type: horizontal-stack
+        - entities: [binary_sensor.hass_rpi_critical_disk_use, sensor.hass_rpi_free_memory,
+            sensor.hass_rpi_last_boot, sensor.hass_rpi_uptime]
+          type: entities
+        type: custom:vertical-stack-in-card
+      - cards:
+        - cards:
+          - entity: sensor.memory_use_percent
+            scale: 30px
+            severity: {amber: 50, green: 0, red: 80}
+            title: Memory use
+            type: custom:gauge-card
+          - entity: sensor.disk_use_percent_
+            scale: 30px
+            severity: {amber: 50, green: 0, red: 80}
+            title: Disk use
+            type: custom:gauge-card
+          type: horizontal-stack
+        - cards:
+          - entity: sensor.processor_use
+            max: 100
+            min: 0
+            scale: 30px
+            severity:
+            - {style: var(--label-badge-green), value: 70}
+            - {style: var(--label-badge-yellow), value: 90}
+            - {style: var(--label-badge-red), value: 100}
+            title: Processor use
+            type: custom:bignumber-card
+          type: horizontal-stack
+        - entities: [sensor.last_boot]
+          type: entities
+        title: Nuc
+        type: custom:vertical-stack-in-card
       - card:
-        - cards:
-          - {entity: media_player.livingroom_movie_system, type: media-control}
-          - {entity: media_player.livingroom_tv, type: media-control}
-          type: horizontal-stack
-        - cards:
-          - {entity: media_player.shield, type: media-control}
-          - {entity: media_player.sovrum, type: media-control}
-          type: horizontal-stack
+          entities:
+          - input_boolean.hass_dev_mode
+          - action_name: Run
+            icon: mdi:refresh
+            name: Lovelace generator
+            service: shell_command.lovelace_gen_states
+            service_data: {}
+            type: call-service
+          show_header_toggle: false
+          type: entities
         conditions:
-        - {entity: group.persons, state_not: not_home}
+        - {entity: input_boolean.hass_dev_mode, state: 'on'}
         type: conditional
-      show_state: false
-      type: glance
+      type: custom:column-card
     type: vertical-stack
-  - cards:
-    - entities:
-      - {entity: sensor.system_asus_router, name: Asus}
-      - {entity: sensor.system_netgear_router, name: Netgear}
-      - {entity: sensor.speedtest_ping, name: Ping}
-      - {entity: sensor.speedtest_download, name: Download}
-      - {entity: sensor.speedtest_upload, name: Upload}
-      type: glance
-    - entities: [sensor.speedtest_download, sensor.speedtest_ping, sensor.speedtest_upload]
-      type: history-graph
-    - card: {entity: media_player.sonos, type: media-control}
-      conditions:
-      - {entity: group.persons, state_not: not_home}
-      type: conditional
-    type: custom:vertical-stack-in-card
-  - cards:
-    - entities:
-      - {entity: sensor.presence_isa, entity_picture: /local/Isa_BW.jpg, name: Isa
-          presence, secondary_info: last-changed}
-      - {entity: device_tracker.isabellas_iphone_x, icon: 'mdi:apple', name: Isa ios,
-        secondary_info: last-changed}
-      - {entity: device_tracker.isabellas_iphone_x_wifi, icon: 'mdi:wifi', name: Isa
-          Wifi, secondary_info: last-changed}
-      - {entity: sensor.isabellas_iphone_x_bt, icon: 'mdi:bluetooth', name: Isa bt,
-        secondary_info: last-changed}
-      type: entities
-    - entities:
-      - {entity: sensor.presence_stefan, name: Stefan presence, secondary_info: last-changed}
-      - {entity: device_tracker.stefan_iphone_7, icon: 'mdi:apple', name: Stefan ios,
-        secondary_info: last-changed}
-      - {entity: device_tracker.stefan_iphone_7_wifi, icon: 'mdi:wifi', name: Stefan
-          Wifi, secondary_info: last-changed}
-      - {entity: sensor.stefan_iphone_7_bt, icon: 'mdi:bluetooth', name: Stefan bt,
-        secondary_info: last-changed}
-      type: entities
-    - entities:
-      - {entity: sensor.unlocked_by, name: Front door last unlocked by, secondary_info: last-changed}
-      type: entities
-    type: custom:vertical-stack-in-card
-  - entities: [sensor.system_hass_rpi, sensor.system_magic_mirror_rpi, binary_sensor.hass_rpi_critical_disk_use,
-      sensor.hass_rpi_disk_use_percent, sensor.hass_rpi_free_memory, sensor.hass_rpi_last_boot,
-      sensor.hass_rpi_uptime]
-    type: entities
-  - card:
-      entities:
-      - input_boolean.hass_dev_mode
-      - action_name: Run
-        icon: mdi:refresh
-        name: Lovelace generator
-        service: shell_command.lovelace_gen_states
-        service_data: {}
-        type: call-service
-      show_header_toggle: false
-      type: entities
-    conditions:
-    - {entity: input_boolean.hass_dev_mode, state: 'on'}
-    type: conditional
   icon: mdi:lan
   id: info
+  panel: true
   title: Info
 - cards:
   - card:
@@ -681,116 +663,6 @@ views:
   id: cat
   title: Cats
 - cards:
-  - card:
-      entities:
-      - input_boolean.hass_dev_mode
-      - action_name: Run
-        icon: mdi:refresh
-        name: Lovelace generator
-        service: shell_command.lovelace_gen_states
-        service_data: {}
-        type: call-service
-      show_header_toggle: false
-      type: entities
-    conditions:
-    - {entity: input_boolean.hass_dev_mode, state: 'on'}
-    type: conditional
-  - elements:
-    - entity: light.outdoor_yard_light
-      style: {left: 22%, top: 25%, transform: none;}
-      tap_action: toggle
-      type: state-icon
-    - entity: light.outdoor_front_light
-      style: {left: 18%, top: 88%, transform: none;}
-      tap_action: toggle
-      type: state-icon
-    - entity: light.outdoor_hanging_lights
-      style: {left: 7%, top: 16%, transform: none;}
-      tap_action: toggle
-      type: state-icon
-    - entity: light.living_room_ceiling_light_level
-      style: {left: 36%, top: 38%, transform: none;}
-      tap_action: toggle
-      type: state-icon
-    - entity: light.living_room_spotlights_level
-      style: {left: 14%, top: 38%, transform: none;}
-      tap_action: toggle
-      type: state-icon
-    - entity: light.kitchen_ceiling_spotlights_level
-      style: {left: 39%, top: 56%, transform: none;}
-      tap_action: toggle
-      type: state-icon
-    - entity: light.passage_ceiling_spotlights_level
-      style: {left: 15%, top: 56%, transform: none;}
-      tap_action: toggle
-      type: state-icon
-    - entity: light.dining_area_ceiling_light_level
-      style: {left: 34%, top: 71%, transform: none;}
-      tap_action: toggle
-      type: state-icon
-    - entity: light.floorlamp_uplight
-      style: {left: 19%, top: 71%, transform: none;}
-      tap_action: toggle
-      type: state-icon
-    - entity: light.hallway_window_light
-      style: {left: 16%, top: 82%, transform: none;}
-      tap_action: toggle
-      type: state-icon
-    - entity: light.bedroom_ceiling_light
-      style: {left: 85%, top: 38%, transform: none;}
-      tap_action: toggle
-      type: state-icon
-    - entity: light.bedside_lamp
-      style: {left: 95%, top: 31%, transform: none;}
-      tap_action: toggle
-      type: state-icon
-    - entity: light.isa_ceiling_light
-      style: {left: 61%, top: 38%, transform: none;}
-      tap_action: toggle
-      type: state-icon
-    - entity: light.upstairs_hallway_ceiling_light_level
-      style: {left: 71%, top: 55%, transform: none;}
-      tap_action: toggle
-      type: state-icon
-    - entity: light.stefan_lightstrip
-      style: {left: 71%, top: 71%, transform: none;}
-      tap_action: more-info
-      type: state-icon
-    - entity: light.walk_in_closet_lights
-      style: {left: 88%, top: 68%, transform: none;}
-      tap_action: more-info
-      type: state-icon
-    - entity: sensor.washer
-      style: {left: 23%, top: 57%, transform: none;}
-      tap_action: more-info
-      type: state-icon
-    - entity: sensor.mailbox
-      style: {left: 18%, top: 97%, transform: none;}
-      tap_action: more-info
-      type: state-icon
-    - entity: sensor.temperature_bedroom
-      style: {color: black, left: 93%, top: 45%, transform: none;}
-      tap_action: more-info
-      type: state-label
-    - entity: sensor.temperature_stefan
-      style: {color: black, left: 68%, top: 76%, transform: none;}
-      tap_action: more-info
-      type: state-label
-    - entity: sensor.temperature_passage
-      style: {color: black, left: 7%, top: 45%, transform: none;}
-      tap_action: more-info
-      type: state-label
-    - entity: sensor.temperature_downstairs_bathroom
-      style: {color: black, font-size: 0.8em, left: 24%, top: 49%, transform: none;}
-      tap_action: more-info
-      type: state-label
-    image: /local/lovelace_ui/floorplan_v1.png
-    type: picture-elements
-  icon: mdi:floor-plan
-  id: floorplan
-  theme: teal
-  title: Floorplan
-- cards:
   - elements:
     - camera_image: camera.unsplash
       style: {height: 100%, left: 50%, top: 50%, width: 100%}
@@ -864,7 +736,15 @@ views:
     type: conditional
   - entities: [sensor.isa_at_work]
     type: entities
-  - {entity: sensor.aftership_sensor, type: 'custom:state-card-aftership-ll'}
+  - entities:
+    - {entity: device_tracker.tile_bike, icon: 'mdi:bike', name: Bike (keys)}
+    - {entity: switch.bike_plug_switch, name: Charger Switch}
+    - {entity: sensor.ebike_charger, name: Charger Idle}
+    type: entities
+  - entities: [sensor.bike_plug_power]
+    hours_to_show: 24
+    title: Bike charging
+    type: history-graph
   icon: mdi:human-female
   id: isa
   title: Isa
@@ -982,6 +862,9 @@ views:
   - title: null
     trackers: [sensor.custom_card_tracker, sensor.custom_component_tracker]
     type: custom:tracker-card
+  - entities: [input_boolean.test]
+    show_header_toggle: false
+    type: entities
   - entities:
     - input_boolean.hass_dev_mode
     - action_name: Run

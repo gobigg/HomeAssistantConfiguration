@@ -6,36 +6,25 @@ cards:
     cards:
     - type: horizontal-stack
       cards:
-        - type: picture-elements
-          image: /local/lovelace_ui/button-template.png
-          elements:
-            - type: icon
-              icon: mdi:hotel
-              entity: script.goodnight
-              tap_action: toggle
-              style:
-                left: 50%
-                top: 50%
-        - type: picture-elements
-          image: /local/lovelace_ui/button-template.png
-          elements:
-            - type: icon
-              icon: mdi:kettle
-              entity: script.goodmorning
-              tap_action: toggle
-              style:
-                left: 50%
-                top: 50%
-        - type: picture-elements
-          image: /local/lovelace_ui/button-template.png
-          elements:
-            - type: icon
-              icon: mdi:television-classic
-              entity: script.movie_time
-              tap_action: toggle
-              style:
-                left: 50%
-                top: 50%     
+        - type: custom:button-card
+          entity: script.goodnight
+          icon: mdi:hotel
+          size: 50%
+          color: rgb(220,220,220)
+          color_off: rgb(220,220,220)
+        - type: custom:button-card
+          entity: script.goodmorning
+          icon: mdi:kettle
+          size: 50%
+          color: rgb(220,220,220)
+          color_off: rgb(220,220,220)
+        - type: custom:button-card
+          entity: script.movie_time
+          icon: mdi:television-classic
+          size: 50%
+          color: rgb(220,220,220)
+          color_off: rgb(220,220,220)
+
     - type: entities
       title: Outdoor
       show_header_toggle: false
@@ -53,42 +42,24 @@ cards:
 
     - type: horizontal-stack
       cards:
-          - type: picture-elements
-            image: /local/lovelace_ui/button-template.png
-            elements:
-              - type: icon
-                icon: mdi:page-layout-footer
-                service: light.toggle
-                service_data:
-                  entity_id: light.downstairs_lights
-                tap_action: call-service
-                style:
-                  left: 50%
-                  top: 50%
-          - type: picture-elements
-            image: /local/lovelace_ui/button-template.png
-            elements:
-              - type: icon
-                icon: mdi:page-layout-header
-                service: light.toggle
-                service_data:
-                  entity_id: light.upstairs_lights
-                tap_action: call-service
-                style:
-                  left: 50%
-                  top: 50%
-          - type: picture-elements
-            image: /local/lovelace_ui/button-template.png
-            elements:
-              - type: icon
-                icon: mdi:flash-off
-                service: homeassistant.turn_off
-                service_data:
-                  entity_id: group.inside_lights_automations
-                tap_action: call-service
-                style:
-                  left: 50%
-                  top: 50%  
+          - type: custom:button-card
+            entity: light.downstairs_lights
+            icon: mdi:page-layout-footer
+            size: 50%
+            color: rgb(220,220,220)
+            color_off: rgb(220,220,220)
+          - type: custom:button-card
+            entity: light.upstairs_lights
+            icon: mdi:page-layout-header
+            size: 50%
+            color: rgb(220,220,220)
+            color_off: rgb(220,220,220)
+          - type: custom:button-card
+            entity: group.inside_lights_automations
+            icon: mdi:flash-off
+            size: 50%
+            color: rgb(220,220,220)
+            color_off: rgb(220,220,220)
 
   - type: vertical-stack
     cards:

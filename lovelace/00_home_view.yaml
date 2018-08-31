@@ -1,290 +1,283 @@
 title: Home
 icon: mdi:information-outline
+panel: true
 id: home
 cards:
   - type: vertical-stack
     cards:
-    # - type: conditional
-    #   conditions:
-    #     - entity: input_select.day_mode
-    #       state: "Morning"
-    #   card:
-    #     type: custom:useful-markdown-card
-    #     content: >
-    #       [[ sensor.time.state ]]
-  
-    #       Outside  it feels like [[ sensor.dark_sky_apparent_temperature.state ]]º c and the risk of rain today is [[ sensor.dark_sky_precip_probability.state ]] %.
-  
-    #       Highest temperature today is [[ sensor.dark_sky_daytime_high_temperature.state ]]º c and lowest [[ sensor.dark_sky_overnight_low_temperature.state ]]º c.
-    # - type: conditional
-    #   conditions:
-    #     - entity: input_select.day_mode
-    #       state: "Day"
-    #   card:
-    #     type: custom:useful-markdown-card
-    #     content: >
-    #       [[ sensor.time.state ]]
-  
-    #       The risk of [[ sensor.dark_sky_precip_1.state ]] tomorrow is [[ sensor.dark_sky_precip_probability_1.state ]] % with an intensity of [[ sensor.dark_sky_precip_intensity_1.state ]] mm/h.
-  
-    #       Highest temperature tomorrow will be [[ sensor.dark_sky_daytime_high_temperature_1.state ]]º c and lowest [[ sensor.dark_sky_overnight_low_temperature_1.state ]]º c.
-    # - !include greeter_card.yaml
+      - type: custom:column-card
+        cards:
+          - type: vertical-stack
+            cards:
+            ############
+            # presence #
+            ############
+            - type: horizontal-stack
+              cards:
+                - type: picture-entity
+                  entity: sensor.presence_isa
+                  # show_name: false
+                  image: /local/isa_alt.jpg
+                  show_name: false
+        
+                - type: picture-entity
+                  entity: sensor.presence_stefan
+                  image: /local/Stefan_cropped.jpg
+                  show_name: false
+        
+            ###############
+            # home glance #
+            ###############
+            - type: picture-elements
+              image: /local/house-element.jpg
+              elements:
+                - type: icon
+                  icon: mdi:lightbulb
+                  entity: light.inside_lights_automation
+                  tap_action: navigate
+                  navigation_path: /lovelace/lights
+                  style:
+                    top: 20%
+                    left: 92%
+                    color: white
+        
+                - type: state-icon
+                  entity: alarm_control_panel.home_alarm
+                  style:
+                    top: 87%
+                    left: 5%
+                    color: white
+                - type: state-icon
+                  entity: sensor.front_door_combined
+                  style:
+                    top: 86%
+                    left: 14%
+                    color: white
+                - type: state-icon
+                  entity: sensor.mailbox
+                  style:
+                    top: 86%
+                    left: 23%
+                    color: white
+                - type: state-icon
+                  entity: sensor.trash_bin
+                  style:
+                    top: 86%
+                    left: 32%
+                    color: white
+        
+                ## temp
+                - type: icon
+                  icon: mdi:hotel
+                  entity: sensor.temperature_bedroom
+                  tap_action: more-info
+                  style:
+                    top: 82%
+                    left: 50%              
+                    color: white
+                - type: state-label
+                  entity: sensor.temperature_bedroom
+                  style:
+                    top: 95%
+                    left: 50%
+                    color: white
+        
+                - type: icon
+                  icon: mdi:human-male
+                  entity: sensor.temperature_stefan
+                  tap_action: more-info
+                  style:
+                    top: 82%
+                    left: 64% 
+                    color: white
+                - type: state-label
+                  entity: sensor.temperature_stefan
+                  style:
+                    top: 95%
+                    left: 64%
+                    color: white
+        
+                - type: icon
+                  icon: mdi:stairs
+                  entity: sensor.temperature_passage
+                  tap_action: more-info
+                  style:
+                    top: 82%
+                    left: 78% 
+                    color: white
+                - type: state-label
+                  entity: sensor.temperature_passage
+                  style:
+                    top: 95%
+                    left: 78%
+                    color: white
+        
+                - type: icon
+                  icon: mdi:washing-machine
+                  entity: sensor.temperature_downstairs_bathroom
+                  tap_action: more-info
+                  style:
+                    top: 82%
+                    left: 92% 
+                    color: white
+                - type: state-label
+                  entity: sensor.temperature_downstairs_bathroom
+                  style:
+                    top: 95%
+                    left: 92%
+                    color: white
+        
+            ##############
+            # plant info #
+            ##############
+            - type: picture-elements
+              image: /local/plants.jpg
+              elements:
+                - type: state-badge
+                  entity: sensor.small_chili_moisture
+                  style:
+                    top: 27%
+                    left: 10%
+                    --ha-label-badge-font-size: 1em
+                - type: state-badge
+                  entity: sensor.big_chili_moisture
+                  style:
+                    top: 27%
+                    left: 25%
+                    --ha-label-badge-font-size: 1em
+                - type: state-badge
+                  entity: sensor.herbs_moisture
+                  style:
+                    top: 27%
+                    left: 40%
+                    --ha-label-badge-font-size: 1em
+                - type: state-label
+                  entity: sensor.greenhouse_temperature
+                  style:
+                    top: 15%
+                    left: 92%
+                    --ha-label-badge-font-size: 1em
+          - type: vertical-stack
+            cards:
+              - type: custom:vertical-stack-in-card
+                cards:
+                ##############
+                #    info    #
+                ##############                
+                - type: entity-filter
+                  show_empty: false
+                  entities:
+                    - entity: sensor.front_door_lock
+                      name: Lock
+                    - sensor.front_door
+                    - sensor.back_door
+                    - sensor.backyard_door
+                    - sensor.balcony_door
+                    - entity: sensor.dining_area_window
+                      name: Dining area
+                    - entity: sensor.bedroom_window
+                      name: Bedroom
+                    - entity: sensor.front_door_outdoor_movement
+                      name: Ring motion
+                    - sensor.hallway_movement
+                    - sensor.passage_movement
+                    - sensor.upstairs_hallway_movement
+                    - sensor.living_room_movement
+                    - sensor.back_door_camera_movement
+                    - entity: sensor.yard_storage_door
+                      name: Storage door
+                    - sensor.water_heater
+                    - sensor.kitchen_sink
+                    - binary_sensor.smoke_sensor_158d0001d37bdd
+                    - binary_sensor.smoke_sensor_158d0001d37be5
+                    - binary_sensor.smoke_sensor_158d0001d37c82
+                  state_filter:
+                    - 'Open'
+                    - 'Movement detected'
+                    - 'Leaking'
+                    - 'Unlocked'
+                    - 'on'
+                    # - 'Unknown'
+                  card: 
+                    type: glance
+            
+                - type: entity-filter
+                  show_empty: false
+                  entities:
+                    - light.outdoor_lights
+                    - light.bedroom_ceiling_light
+                    - light.bedside_lamp
+                    - light.dining_area_ceiling_light_level  
+                    - light.kitchen_ceiling_spotlights_level
+                    - light.floorlamp_reading_light
+                    - light.floorlamp_uplight
+                    - light.hallway_window_light
+                    - light.isa_ceiling_light
+                    - light.living_room_ceiling_light_level
+                    - light.living_room_spotlights_level
+                    - light.passage_ceiling_spotlights_level
+                    - light.stairs_lights_lights
+                    - light.walk_in_closet_lights
+                    - light.upstairs_hallway_ceiling_light_level
+                    - light.gateway_light_34ce008bfc4b
+                  state_filter:
+                    - 'on'
+                  card:
+                    type: glance
+          - type: vertical-stack
+            cards:
+            - type: horizontal-stack  
+              cards:
+              - type: picture-entity
+                name: Laundry
+                entity: input_select.washing_machine_status
+                state_image:
+                  "Idle": /local/lovelace_ui/laundry.jpg
+                  "Running": /local/lovelace_ui/laundry_running.jpg
+                  "Clean": /local/lovelace_ui/laundry_clean.jpg
+              - type: picture-entity
+                name: Roomba
+                entity: input_select.roomba_mode
+                image: /local/lovelace_ui/roomba.jpg
+        
+            - type: entities
+              entities:
+                - switch.stefan_radiator
+        
+            - type: custom:monster-card
+              show_empty: false
+              card:
+                type: entities
+                title: Alerts
+                show_header_toggle: true
+              filter:
+                include:
+                  # - domain: alert
+                  # - state: 'on'
+                  - entity_id: alert.*
+                exclude:
+                  - state: 'idle'
+        
+            #################
+            # notifications #
+            #################
+            - type: custom:monster-card
+              show_empty: false
+              card:
+                type: glance
+              filter:
+                include:
+                  - domain: persistent_notification
+          - type: custom:vertical-stack-in-card
+            cards:
+            - type: picture-entity
+              entity: camera.fisksatra_meteogram
+              show_name: false
+              show_state: false
 
-    ############
-    # presence #
-    ############
-    - type: horizontal-stack
-      cards:
-        - type: picture-entity
-          entity: sensor.presence_isa
-          # show_name: false
-          image: /local/isa_alt.jpg
-          show_name: false
-
-        - type: picture-entity
-          entity: sensor.presence_stefan
-          image: /local/Stefan_cropped.jpg
-          show_name: false
-
-    ###############
-    # home glance #
-    ###############
-    - type: picture-elements
-      image: /local/house-element.jpg
-      elements:
-        - type: icon
-          icon: mdi:lightbulb
-          entity: light.inside_lights_automation
-          tap_action: navigate
-          navigation_path: /lovelace/lights
-          style:
-            top: 20%
-            left: 92%
-            color: white
-
-        - type: state-icon
-          entity: alarm_control_panel.home_alarm
-          style:
-            top: 87%
-            left: 5%
-            color: white
-        - type: state-icon
-          entity: sensor.front_door_combined
-          style:
-            top: 86%
-            left: 14%
-            color: white
-        - type: state-icon
-          entity: sensor.mailbox
-          style:
-            top: 86%
-            left: 23%
-            color: white
-        - type: state-icon
-          entity: sensor.trash_bin
-          style:
-            top: 86%
-            left: 32%
-            color: white
-
-        ## temp
-        - type: icon
-          icon: mdi:hotel
-          entity: sensor.temperature_bedroom
-          tap_action: more-info
-          style:
-            top: 82%
-            left: 50%              
-            color: white
-        - type: state-label
-          entity: sensor.temperature_bedroom
-          style:
-            top: 95%
-            left: 50%
-            color: white
-
-        - type: icon
-          icon: mdi:human-male
-          entity: sensor.temperature_stefan
-          tap_action: more-info
-          style:
-            top: 82%
-            left: 64% 
-            color: white
-        - type: state-label
-          entity: sensor.temperature_stefan
-          style:
-            top: 95%
-            left: 64%
-            color: white
-
-        - type: icon
-          icon: mdi:stairs
-          entity: sensor.temperature_passage
-          tap_action: more-info
-          style:
-            top: 82%
-            left: 78% 
-            color: white
-        - type: state-label
-          entity: sensor.temperature_passage
-          style:
-            top: 95%
-            left: 78%
-            color: white
-
-        - type: icon
-          icon: mdi:washing-machine
-          entity: sensor.temperature_downstairs_bathroom
-          tap_action: more-info
-          style:
-            top: 82%
-            left: 92% 
-            color: white
-        - type: state-label
-          entity: sensor.temperature_downstairs_bathroom
-          style:
-            top: 95%
-            left: 92%
-            color: white
-
-    ##############
-    # plant info #
-    ##############
-    - type: picture-elements
-      image: /local/plants.jpg
-      elements:
-        - type: state-badge
-          entity: sensor.small_chili_moisture
-          style:
-            top: 27%
-            left: 10%
-            --ha-label-badge-font-size: 1em
-        - type: state-badge
-          entity: sensor.big_chili_moisture
-          style:
-            top: 27%
-            left: 25%
-            --ha-label-badge-font-size: 1em
-        - type: state-badge
-          entity: sensor.herbs_moisture
-          style:
-            top: 27%
-            left: 40%
-            --ha-label-badge-font-size: 1em
-        - type: state-label
-          entity: sensor.greenhouse_temperature
-          style:
-            top: 15%
-            left: 92%
-            --ha-label-badge-font-size: 1em
-
-  - type: vertical-stack
-    cards:
-    ##############
-    #    info    #
-    ##############                
-    - type: entity-filter
-      show_empty: false
-      entities:
-        - entity: sensor.front_door_lock
-          name: Lock
-        - sensor.front_door
-        - sensor.back_door
-        - sensor.backyard_door
-        - sensor.balcony_door
-        - entity: sensor.dining_area_window
-          name: Dining area
-        - entity: sensor.bedroom_window
-          name: Bedroom
-        - entity: sensor.front_door_outdoor_movement
-          name: Ring motion
-        - sensor.hallway_movement
-        - sensor.passage_movement
-        - sensor.upstairs_hallway_movement
-        - sensor.living_room_movement
-        - sensor.back_door_camera_movement
-        - entity: sensor.yard_storage_door
-          name: Storage door
-        - sensor.water_heater
-        - sensor.kitchen_sink
-        - binary_sensor.smoke_sensor_158d0001d37bdd
-        - binary_sensor.smoke_sensor_158d0001d37be5
-        - binary_sensor.smoke_sensor_158d0001d37c82
-      state_filter:
-        - 'Open'
-        - 'Movement detected'
-        - 'Leaking'
-        - 'Unlocked'
-        - 'on'
-        # - 'Unknown'
-      card: 
-        type: glance
-
-    - type: entity-filter
-      show_empty: false
-      entities:
-        - light.outdoor_lights
-        - light.bedroom_ceiling_light
-        - light.bedside_lamp
-        - light.dining_area_ceiling_light_level  
-        - light.kitchen_ceiling_spotlights_level
-        - light.floorlamp_reading_light
-        - light.floorlamp_uplight
-        - light.hallway_window_light
-        - light.isa_ceiling_light
-        - light.living_room_ceiling_light_level
-        - light.living_room_spotlights_level
-        - light.passage_ceiling_spotlights_level
-        - light.stairs_lights_lights
-        - light.walk_in_closet_lights
-        - light.upstairs_hallway_ceiling_light_level
-        - light.gateway_light_34ce008bfc4b
-      state_filter:
-        - 'on'
-      card:
-        type: glance
-
-    - type: horizontal-stack  
-      cards:
-      - type: picture-entity
-        name: Laundry
-        entity: input_select.washing_machine_status
-        state_image:
-          "Idle": /local/lovelace_ui/laundry.jpg
-          "Running": /local/lovelace_ui/laundry_running.jpg
-          "Clean": /local/lovelace_ui/laundry_clean.jpg
-      - type: picture-entity
-        name: Roomba
-        entity: input_select.roomba_mode
-        image: /local/lovelace_ui/roomba.jpg
-
-    - type: entities
-      entities:
-        - switch.stefan_radiator
-
-    - type: custom:monster-card
-      show_empty: false
-      card:
-        type: entities
-        title: Alerts
-        show_header_toggle: true
-      filter:
-        include:
-          # - domain: alert
-          # - state: 'on'
-          - entity_id: alert.*
-        exclude:
-          - state: 'idle'
-
-    #################
-    # notifications #
-    #################
-    - type: custom:monster-card
-      show_empty: false
-      card:
-        type: glance
-      filter:
-        include:
-          - domain: persistent_notification
-    - !include dev_card.yaml
+            - type: picture-entity
+              entity: camera.stockholm_meteogram
+              show_name: false
+              show_state: false
+                  
+            - !include dev_card.yaml

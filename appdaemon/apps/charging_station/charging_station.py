@@ -13,12 +13,14 @@ class ChargingStation(Base):
         self.plug = "switch.bike_plug_switch"
         self.power_sensor_idle = "sensor.ebike_charger"
         self.isa = PEOPLE['Isa']['device_tracker']
+        self.bike = "device_tracker.tile_bike"
 
         self.reminder_handle = None
         self.start_quiet = globals.notification_mode["start_quiet_weekday"]
         self.stop_quiet = globals.notification_mode["stop_quiet_weekday"]
 
-        self.listen_state(self.coming_home, self.isa, new = "Just arrived")
+
+        self.listen_state(self.coming_home, self.bike, new = "home")
         self.listen_state(self.turn_off_charger, self.power_sensor_idle, new = "True")
 
     def coming_home(self, entity, attribute, new, old, kwargs):

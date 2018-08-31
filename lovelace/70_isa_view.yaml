@@ -8,5 +8,19 @@ cards:
   - type: entities
     entities:
       - sensor.isa_at_work
-  - type: "custom:state-card-aftership-ll"
-    entity: sensor.aftership_sensor
+  # - type: "custom:state-card-aftership-ll"
+    # entity: sensor.aftership_sensor
+  - type: entities
+    entities:
+      - entity: device_tracker.tile_bike
+        name: Bike (keys)
+        icon: mdi:bike
+      - entity: switch.bike_plug_switch
+        name: Charger Switch
+      - entity: sensor.ebike_charger
+        name: Charger Idle
+  - type: history-graph
+    title: Bike charging
+    hours_to_show: 24
+    entities:
+      - sensor.bike_plug_power

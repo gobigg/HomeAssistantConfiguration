@@ -141,7 +141,7 @@ sensor:
           value_template: "{{ 'Online' if is_state('device_tracker.broadlink_hallway', 'home') else 'Offline' }}"
         system_withings_scale:
           friendly_name: 'Withings scale'
-          value_template: "{{ 'Online' if is_state('device_tracker.withings_scale', 'home') else 'Offline' }}"
+          value_template: "{{ 'Online' if is_state('device_tracker.0024e40a2868', 'home') else 'Offline' }}"
         system_ir_blaster_bedroom:
           friendly_name: 'Broadlink IR Blaster Bedroom'
           value_template: "{{ 'Online' if is_state('device_tracker.broadlink_bedroom', 'home') else 'Offline' }}"
@@ -172,72 +172,75 @@ sensor:
         system_ring_chime:
           friendly_name: 'Ring Chime Pro'
           value_template: "{{ 'Online' if is_state('device_tracker.ring_chime', 'home') else 'Offline' }}"
+        system_dafang:
+          friendly_name: 'Rpi Upstairs'
+          value_template: "{{ 'Online' if is_state('device_tracker.7811dc70faaf', 'home') else 'Offline' }}"
 
-group:
-  system_info_view:
-    name: System info
-    icon: mdi:lan
-    view: yes
-    entities:
-      - device_tracker.isabella
-      - device_tracker.stefan
-      - group.device_states
-      - group.computer_states
-      - group.media_states
-      - group.hass_card
-      - group.internet_card
-      - group.system_monitor_card
-      - history_graph.internet_speed_tests
-      - group.isabella
-      - group.stefan
-      - group.ring_front_door
-      - group.appdaemon_automations
+# group:
+#   system_info_view:
+#     name: System info
+#     icon: mdi:lan
+#     view: yes
+#     entities:
+#       - device_tracker.isabella
+#       - device_tracker.stefan
+#       - group.device_states
+#       - group.computer_states
+#       - group.media_states
+#       - group.hass_card
+#       - group.internet_card
+#       - group.system_monitor_card
+#       - history_graph.internet_speed_tests
+#       - group.isabella
+#       - group.stefan
+#       - group.ring_front_door
+#       - group.appdaemon_automations
 
-  appdaemon_automations:
-    name: Appdaemon Apps
-    entities:
-      - input_boolean.ad_presence
+#   appdaemon_automations:
+#     name: Appdaemon Apps
+#     entities:
+#       - input_boolean.ad_presence
 
 
-  device_states:
-    name: Device status
-    entities:
-    - sensor.system_printer
-    - sensor.system_nas
-    - sensor.system_ipad
-    - sensor.system_galaxy_tab
-    - sensor.system_ip_camera
-    - sensor.system_ir_blaster
-    - sensor.system_ir_blaster_bedroom
-    - sensor.system_ir_blaster_living_room
-    - sensor.system_withings_scale
-    # - sensor.system_hue_hub
-    - sensor.system_milight_hub
-    - sensor.system_ikea_gateway
-    - sensor.system_xiaomi_gateway
-    - sensor.system_hass_rpi
-    - sensor.system_magic_mirror_rpi
-    - sensor.system_ring_doorbell
-    - sensor.system_ring_chime_pro
-    - sensor.system_ring_chime
+#   device_states:
+#     name: Device status
+#     entities:
+#     - sensor.system_printer
+#     - sensor.system_nas
+#     - sensor.system_ipad
+#     - sensor.system_galaxy_tab
+#     - sensor.system_ip_camera
+#     - sensor.system_ir_blaster
+#     - sensor.system_ir_blaster_bedroom
+#     - sensor.system_ir_blaster_living_room
+#     - sensor.system_withings_scale
+#     # - sensor.system_hue_hub
+#     - sensor.system_milight_hub
+#     - sensor.system_ikea_gateway
+#     - sensor.system_xiaomi_gateway
+#     - sensor.system_hass_rpi
+#     - sensor.system_magic_mirror_rpi
+#     - sensor.system_ring_doorbell
+#     - sensor.system_ring_chime_pro
+#     - sensor.system_ring_chime
 
-  computer_states:
-    name: Computer status
-    entities:
-    - sensor.system_stefan_computer
-    - sensor.system_isa_computer
-    - sensor.system_isa_laptop
+#   computer_states:
+#     name: Computer status
+#     entities:
+#     - sensor.system_stefan_computer
+#     - sensor.system_isa_computer
+#     - sensor.system_isa_laptop
 
-  media_states:
-    name: Media player status
-    entities:
-    - sensor.system_samsung65
-    - sensor.system_samsung49
-    - sensor.system_movie_system
-    - sensor.system_chromecast_bedroom
-    - sensor.system_shield
-    - sensor.system_shield_2
-    - sensor.system_sonos
+#   media_states:
+#     name: Media player status
+#     entities:
+#     - sensor.system_samsung65
+#     - sensor.system_samsung49
+#     - sensor.system_movie_system
+#     - sensor.system_chromecast_bedroom
+#     - sensor.system_shield
+#     - sensor.system_shield_2
+#     - sensor.system_sonos
 
 automation:
   - alias: 'Device Status'

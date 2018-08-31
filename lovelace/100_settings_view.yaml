@@ -15,6 +15,11 @@ cards:
     trackers:
       - sensor.custom_card_tracker
       - sensor.custom_component_tracker
+  
+  - type: entities
+    show_header_toggle: false
+    entities:
+      - input_boolean.test
       
   - type: entities
     show_header_toggle: false

@@ -1,6 +1,0 @@
-change_bedsheets:
-  module: calendar
-  class: Calendar
-  global_dependencies: globals
-  calendar_boolean_name: test # change_bedsheets
-  days_until_next: 14

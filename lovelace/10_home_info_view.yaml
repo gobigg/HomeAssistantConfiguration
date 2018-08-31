@@ -1,249 +1,186 @@
 title: Home info
 icon: mdi:home-heart
+panel: true
 id: home-info
 cards:
   - type: vertical-stack
     cards:
-      - type: horizontal-stack
+      - type: custom:column-card
         cards:
-          ## Air cleaner
-          - type: picture-elements
-            image: /local/lovelace_ui/button-template.png
-            elements:
-              - type: custom:text-element
-                text: Air
-                style:                  
-                  top: 15%
-                  left: 50%
-                  color: black
-              - type: custom:text-element
-                text: Cleaner
-                style:                  
-                  top: 85%
-                  left: 50%
-                  color: black
-              - type: icon
-                icon: mdi:fan-off
-                entity: script.air_cleaner_quiet
-                tap_action: toggle
-                style:
-                  left: 50%
-                  top: 50%
-          - type: picture-elements
-            image: /local/lovelace_ui/button-template.png
-            elements:
-              - type: custom:text-element
-                text: Air
-                style:                  
-                  top: 15%
-                  left: 50%
-                  color: black
-              - type: custom:text-element
-                text: Cleaner
-                style:                  
-                  top: 85%
-                  left: 50%
-                  color: black
-              - type: icon
-                icon: mdi:fan
-                entity: script.air_cleaner_auto
-                tap_action: toggle
-                style:
-                  left: 50%
-                  top: 50%
-          - type: picture-elements
-            image: /local/lovelace_ui/button-template.png
-            elements:
-              - type: custom:text-element
-                text: Air
-                style:                  
-                  top: 15%
-                  left: 50%
-                  color: black
-              - type: custom:text-element
-                text: Cleaner
-                style:                  
-                  top: 85%
-                  left: 50%
-                  color: black
-              - type: icon
-                icon: mdi:run-fast
-                entity: script.air_cleaner_turbo
-                tap_action: toggle
-                style:
-                  left: 50%
-                  top: 50% 
+          - type: vertical-stack
+            cards:
+              - type: horizontal-stack
+                cards:
+                  ## Air cleaner
+                  - type: custom:button-card
+                    entity: script.air_cleaner_quiet
+                    icon: mdi:fan-off
+                    name: AC bed
+                    # size: 50%
+                    color: rgb(220,220,220)
+                    color_off: rgb(220,220,220)
+                  - type: custom:button-card
+                    entity: script.air_cleaner_auto
+                    icon: mdi:fan
+                    name: AC bed
+                    # size: 50%
+                    color: rgb(220,220,220)
+                    color_off: rgb(220,220,220)
+                  - type: custom:button-card
+                    entity: script.air_cleaner_turbo
+                    icon: mdi:run-fast
+                    name: AC bed
+                    # size: 50%
+                    color: rgb(220,220,220)
+                    color_off: rgb(220,220,220)
+                  - type: custom:button-card
+                    entity: script.ac_off
+                    icon: mdi:fan-off
+                    name: AC
+                    # size: 50%
+                    color: rgb(220,220,220)
+                    color_off: rgb(220,220,220)
+                  - type: custom:button-card
+                    entity: script.ac_on
+                    icon: mdi:fan
+                    name: AC
+                    # size: 50%
+                    color: rgb(220,220,220)
+                    color_off: rgb(220,220,220)
+                  
+              - type: glance
+                show_header_toggle: false
+                column_width: calc(100% / 4)
+                entities:
+                  - entity: input_boolean.vacation_mode
+                    name: Vacation
+                  - input_boolean.cleaning_day
+                  - input_boolean.guest_mode
+                  - entity: input_boolean.isa_mode
+                    name: Isa Mode
+                    tap_action: toggle
+              - type: entities
+                title: "House schedule"
+                show_header_toggle: false
+                entities:
+                  - entity: input_boolean.change_bedsheets
+                    icon: mdi:bed-empty
+                    secondary_info: last-changed
+              - !include dev_card.yaml
 
-          - type: picture-elements
-            image: /local/lovelace_ui/button-template.png
-            elements:
-              - type: custom:text-element
-                text: AC
-                style:                  
-                  top: 15%
-                  left: 50%
-                  color: black
-              - type: custom:text-element
-                text: Downstairs
-                style:                  
-                  top: 85%
-                  left: 50%
-                  color: black
-              - type: icon
-                icon: mdi:fan-off
-                entity: script.ac_off
-                tap_action: toggle
-                style:
-                  left: 50%
-                  top: 50%
-          - type: picture-elements
-            image: /local/lovelace_ui/button-template.png
-            elements:
-              - type: custom:text-element
-                text: AC
-                style:                  
-                  top: 15%
-                  left: 50%
-                  color: black
-              - type: custom:text-element
-                text: Downstairs
-                style:                  
-                  top: 85%
-                  left: 50%
-                  color: black
-              - type: icon
-                icon: mdi:air-conditioner
-                entity: script.ac_on
-                tap_action: toggle
-                style:
-                  left: 50%
-                  top: 50%
-  
-      - type: glance
-        show_header_toggle: false
-        column_width: calc(100% / 4)
-        entities:
-          - entity: input_boolean.vacation_mode
-            name: Vacation
-          - input_boolean.cleaning_day
-          - input_boolean.guest_mode
-          - entity: input_boolean.isa_mode
-            name: Isa Mode
-            tap_action: toggle
 
-  - type: custom:vertical-stack-in-card
-    cards:
-      - type: entities
-        entities:
-          - entity: input_boolean.show_security
-            name: Show security
-            icon: mdi:security-home
-            
-      # - type: horizontal-stack
-      #   cards:
-      #     - type: picture-entity
-      #       entity: camera.back_door
-      #       show_name: false
-      #       show_state: false
-      #     - type: picture-entity
-      #       entity: camera.dafang
-      #       show_name: false
-      #       show_state: false
-            
-      # - type: horizontal-stack
-      #   cards:
-      #     - type: picture-entity
-      #       entity: camera.latest_motion
-      #       show_name: false
-      #       show_state: false
-      #     - type: picture-entity
-      #       entity: camera.dafang_motion_snapshot
-      #       show_name: false
-      #       show_state: false
-      #     - type: picture-entity
-      #       entity: camera.front_door
-      #       show_name: false
-      #       show_state: false
+          - type: custom:vertical-stack-in-card
+            cards:
+              - type: entities
+                entities:
+                  - entity: input_boolean.show_security
+                    name: Show security
+                    icon: mdi:security-home
+                    
+              # - type: horizontal-stack
+              #   cards:
+              #     - type: picture-entity
+              #       entity: camera.back_door
+              #       show_name: false
+              #       show_state: false
+              #     - type: picture-entity
+              #       entity: camera.dafang
+              #       show_name: false
+              #       show_state: false
+                    
+              # - type: horizontal-stack
+              #   cards:
+              #     - type: picture-entity
+              #       entity: camera.latest_motion
+              #       show_name: false
+              #       show_state: false
+              #     - type: picture-entity
+              #       entity: camera.dafang_motion_snapshot
+              #       show_name: false
+              #       show_state: false
+              #     - type: picture-entity
+              #       entity: camera.front_door
+              #       show_name: false
+              #       show_state: false
 
-      - type: conditional
-        conditions:
-          - entity: input_boolean.show_security
-            state: "on"
-        card:
-          type: custom:monster-card
-          show_empty: false
-          card:
-            type: entities
-          filter:
-            include:
-              - entity_id: "sensor.*movement*"
-                options:
-                  secondary_info: last-changed
-      - type: conditional
-        conditions:
-          - entity: input_boolean.show_security
-            state: "on"
-        card:
-          type: custom:monster-card
-          show_empty: false
-          card:
-            type: entities
-          filter:
-            include:
-              - entity_id: "sensor.front_door_lock"
-                options:
-                  secondary_info: last-changed
-                  icon: mdi:lock-smart
-              - entity_id: "sensor.unlocked_by"
-                options:
-                  secondary_info: last-changed
-                  icon: mdi:lock-open-outline
-                  name: Last unlocked by
-              - entity_id: "sensor.*door*"
-                options:
-                  secondary_info: last-changed
-                state: 'Open'
-                state: 'Closed'
-              - entity_id: "sensor.*window*"
-                options:
-                  secondary_info: last-changed
-                state: 'Open'
-                state: 'Closed'
+              - type: conditional
+                conditions:
+                  - entity: input_boolean.show_security
+                    state: "on"
+                card:
+                  type: custom:monster-card
+                  show_empty: false
+                  card:
+                    type: entities
+                  filter:
+                    include:
+                      - entity_id: "sensor.*movement*"
+                        options:
+                          secondary_info: last-changed
+              - type: conditional
+                conditions:
+                  - entity: input_boolean.show_security
+                    state: "on"
+                card:
+                  type: custom:monster-card
+                  show_empty: false
+                  card:
+                    type: entities
+                  filter:
+                    include:
+                      - entity_id: "sensor.front_door_lock"
+                        options:
+                          secondary_info: last-changed
+                          icon: mdi:lock-smart
+                      - entity_id: "sensor.unlocked_by"
+                        options:
+                          secondary_info: last-changed
+                          icon: mdi:lock-open-outline
+                          name: Last unlocked by
+                      - entity_id: "sensor.*door*"
+                        options:
+                          secondary_info: last-changed
+                        state: 'Open'
+                        state: 'Closed'
+                      - entity_id: "sensor.*window*"
+                        options:
+                          secondary_info: last-changed
+                        state: 'Open'
+                        state: 'Closed'
 
 
 
-  - type: custom:vertical-stack-in-card
-    cards: 
-      - type: glance
-        column_width: calc(100% / 3)
-        entities:
-          - sensor.pollen_bjork
-          - sensor.pollen_gras
-          - sensor.pollen_grabo  
-      - type: history-graph
-        title: Temperatures 48h
-        hours_to_show: 48
-        entities:
-          - sensor.temperature_bedroom
-          - sensor.temperature_passage
-          - sensor.temperature_downstairs_bathroom
-          - sensor.temperature_stefan
-      - type: history-graph
-        title: Temperatures 7 Days
-        hours_to_show: 168
-        entities:
-          - sensor.temperature_bedroom
-          - sensor.temperature_passage
-          - sensor.temperature_downstairs_bathroom
-          - sensor.temperature_stefan
+          - type: custom:vertical-stack-in-card
+            cards: 
+              - type: glance
+                column_width: calc(100% / 3)
+                entities:
+                  - sensor.pollen_bjork
+                  - sensor.pollen_gras
+                  - sensor.pollen_grabo  
+              - type: history-graph
+                title: Temperatures 48h
+                hours_to_show: 48
+                entities:
+                  - sensor.temperature_bedroom
+                  - sensor.temperature_passage
+                  - sensor.temperature_downstairs_bathroom
+                  - sensor.temperature_stefan
+              - type: history-graph
+                title: Temperatures 7 Days
+                hours_to_show: 168
+                entities:
+                  - sensor.temperature_bedroom
+                  - sensor.temperature_passage
+                  - sensor.temperature_downstairs_bathroom
+                  - sensor.temperature_stefan
 
-      # - type: history-graph
-      #   title: Light 48h
-      #   hours_to_show: 48
-      #   entities:
-      #     - sensor.upstairs_hallway_pir_luminance
-      #     - sensor.passage_pir_luminance
-      #     - sensor.illumination_34ce008bfc4b
-      #     - sensor.illumination_158d0001a66291
-      #     - sensor.illumination_158d0001a24ef1
-  - !include dev_card.yaml
+              # - type: history-graph
+              #   title: Light 48h
+              #   hours_to_show: 48
+              #   entities:
+              #     - sensor.upstairs_hallway_pir_luminance
+              #     - sensor.passage_pir_luminance
+              #     - sensor.illumination_34ce008bfc4b
+              #     - sensor.illumination_158d0001a66291
+              #     - sensor.illumination_158d0001a24ef1
