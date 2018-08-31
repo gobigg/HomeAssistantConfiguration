@@ -92,6 +92,7 @@ script:
         data:
           entity_id: light.living_room_ceiling_light_level, light.stairs_lights_lights, light.upstairs_hallway_ceiling_light_level
           brightness: 10
+          
   occusim_stefan_on:
     alias: Occusim Stefan On
     sequence:
@@ -100,6 +101,7 @@ script:
           entity_id: light.stefan_lightstrip
           brightness: 255
           color_temp: 153
+
   occusim_stefan_normal:
     alias: Occusim Stefan Normal
     sequence:
@@ -111,6 +113,25 @@ script:
             - 70
             - 255
             - 236
+
+  dark_lights_off:
+    alias: Dark Lights Off
+    sequence:
+      - service: light.turn_off
+        data:
+          entity_id: light.outdoor_front_light
+          transition: 30
+      - service: light.turn_off
+        data:
+          entity_id: light.outdoor_yard_light
+          transition: 30
+      - service: light.turn_off
+        data:
+          entity_id: light.hallway_window_light
+          transition: 30
+      - service: light.turn_off
+        entity_id: light.outdoor_hanging_lights
+
 light:
   - platform: rfxtrx
     signal_repetitions: 3

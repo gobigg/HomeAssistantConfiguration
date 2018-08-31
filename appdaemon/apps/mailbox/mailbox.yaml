@@ -6,3 +6,5 @@ mailbox:
   mail_door_sensor: binary_sensor.mailbox_package
   mail_sensor: sensor.mailbox
   door: sensor.front_door
+  dependencies:
+    - presence_helper

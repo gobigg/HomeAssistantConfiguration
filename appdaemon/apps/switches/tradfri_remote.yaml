@@ -1,10 +1,10 @@
-stefan_remote_control:
-  module: tradfri_remote
-  class: TradfriRemote
-  event: deconz_event
-  id: stefan_remote
-  lightId: light.stefan_lightstrip
-  sideButtonType: color
+# stefan_remote_control:
+#   module: tradfri_remote
+#   class: TradfriRemote
+#   event: deconz_event
+#   id: stefan_remote
+#   lightId: light.stefan_lightstrip
+#   sideButtonType: color
 isa_remote_control:
   module: tradfri_remote
   class: TradfriRemote

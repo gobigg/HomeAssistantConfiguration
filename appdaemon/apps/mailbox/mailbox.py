@@ -3,16 +3,18 @@ import datetime
 import time
 import globals
 from globals import PEOPLE
+from base import Base
 
-class Mailbox(hass.Hass):
-
-    def initialize(self):
-
+class Mailbox(Base):
+    
+    def initialize(self) -> None:
+        """Initialize."""
+        super().initialize()
         self.door_sensor = self.args["mail_door_sensor"]
         self.slot_sensor = self.args["mail_slot_sensor"]
         self.mail_sensor = self.args["mail_sensor"]
         self.state = self.get_state(self.mail_sensor)
-        
+
         self.start_quiet = globals.notification_mode["start_quiet_weekday"]
         self.stop_quiet = globals.notification_mode["stop_quiet_weekday"]
 
@@ -78,7 +80,7 @@ class Mailbox(hass.Hass):
     def package_or_emptied(self, entity, old, new):
         if (entity == self.door_sensor):
 
-            if (self.just_opened_door or self.isa == "Just arrived" or self.stefan == "Just arrived"):
+            if (self.just_opened_door or self.presence_helper.anyone_just_arrived()):
                 self.mailbox_emptied()
             else:
                 self.new_package()

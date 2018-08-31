@@ -3,6 +3,7 @@ homeassistant:
 automation:
 ## Lights on in morning if sun below horizon
   - alias: 'Lights On Outdoor And Hallway At 06:40 If Before Sunrise'
+    initial_state: 'off'
     trigger:
       platform: time
       at: '06:40:00'
@@ -27,6 +28,7 @@ automation:
 
   ## Lights off at sunrise
   - alias: Lights Off Outdoor And Hallway At Sunrise
+    initial_state: 'off'
     trigger:
       platform: sun
       event: sunrise
