@@ -169,26 +169,35 @@ automation:
               badge: 0
               category: "washer"
 
-  # - alias: Laundry Washing Machine Emptied
-  #   initial_state: 'on'
-  #   trigger:
-  #     platform: state
-  #     entity_id: 
-  #     platform: event
-  #     event_type: ios.notification_action_fired
-  #     event_data:
-  #       actionName: WASHER_EMPTIED
-  #   action:
-  #     - service: input_select.select_option
-  #       data:
-  #         entity_id: input_select.washing_machine_status
-  #         option: Idle
-  #     # - service: notify.all
-  #     - service: light.turn_off
-  #       entity_id: light.floorlamp_uplight
-  #     - service: notify.ios_isabellas_iphone_x
-  #       data:
-  #         message: 'The laundry is taken care of'
+  - alias: Laundry Washing Machine Emptied
+    initial_state: 'on'
+    trigger:
+      platform: state
+      entity_id: 
+      platform: event
+      event_type: ios.notification_action_fired
+      event_data:
+        actionName: WASHER_EMPTIED
+    action:
+      - service: input_select.select_option
+        data:
+          entity_id: input_select.washing_machine_status
+          option: Idle
+      # - service: notify.all
+      - service: light.turn_on
+        data:
+          entity_id: light.floorlamp_uplight
+          brightness: 150
+          rgb_color: 
+            - 255
+            - 214
+            - 170
+      - delay: 00:00:20
+      - service: light.turn_off
+        entity_id: light.floorlamp_uplight
+      - service: notify.ios_isabellas_iphone_x
+        data:
+          message: 'The laundry is taken care of'
 
   - alias: Laundry Washing Machine Snoozed
     initial_state: 'on'
@@ -214,7 +223,7 @@ automation:
           data:
             push:
               badge: 0
-              category: "WASHER"
+              category: "washer"
 
   - alias: 'Notification on high humidity in downstairs bathroom'
     initial_state: 'on'

@@ -1,0 +1,9 @@
+light_schedule:
+  module: light_schedule
+  class: LightSchedule
+  dependencies:
+    - house_modes
+    - notification_manager
+    - presence_helper
+    - scheduler
+    - tts_manager

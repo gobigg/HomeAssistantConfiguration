@@ -1,0 +1,5 @@
+notification_manager:
+  module: notification_manager
+  class: NotificationManager
+  dependencies:
+    - house_modes

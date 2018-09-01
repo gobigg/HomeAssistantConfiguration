@@ -1,0 +1,6 @@
+scheduler:
+  module: scheduler
+  class: Scheduler
+  dependencies:
+    - house_modes
+    - notification_manager
