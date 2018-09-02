@@ -6,13 +6,16 @@ https://home-assistant.io/components/switch.switchbot/
 """
 import binascii
 import bluepy
-from bluepy.btle import Peripheral
-import homeassistant.helpers.config_validation as cv
-from homeassistant.components.switch import SwitchDevice, PLATFORM_SCHEMA
-from homeassistant.const import CONF_NAME, CONF_MAC
 import logging
 import time
 import voluptuous as vol
+
+from bluepy.btle import Peripheral
+
+import homeassistant.helpers.config_validation as cv
+from homeassistant.components.switch import SwitchDevice, PLATFORM_SCHEMA
+from homeassistant.const import CONF_NAME, CONF_MAC
+
 
 REQUIREMENTS = ['bluepy==1.2.0']
 
@@ -100,4 +103,4 @@ class SwitchBot(SwitchDevice):
     @property
     def unique_id(self) -> str:
         """Return a unique, HASS-friendly identifier for this entity."""
-        return self._mac.replace(':', '')
+        return self._mac
