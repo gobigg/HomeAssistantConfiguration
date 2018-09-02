@@ -37,17 +37,17 @@ class Scheduler(Base):
             **kwargs) -> list:
         """Run a callback on weekdays (at the specified time)."""
         return self.run_on_days(
-            callback, ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday'],
+            callback, ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
             start, **kwargs)
 
     def run_on_weekend_days(self, callback: Callable[..., None], start: datetime.time,
             **kwargs) -> list:
         """Run a callback on weekend days (at the specified time)."""
-        return self.run_on_days(callback, ['Friday', 'Saturday'], start, **kwargs)
+        return self.run_on_days(callback, ['Saturday', 'Sunday'], start, **kwargs)
 
     def run_on_night_before_weekend_day(self, callback: Callable[..., None], start: datetime.time,
             **kwargs):
-        """Run a callback on evenings before weekend days (at the specified time)."""
+        """Run a callback on nights to weekend days (at the specified time)."""
         return self.run_on_days(callback, ['Saturday', 'Sunday'], start, **kwargs)
 
     def run_on_evening_before_weekday(self, callback: Callable[..., None], start: datetime.time,

@@ -21,7 +21,7 @@ class LightSchedule(Base):
 
     def lights_on(self, kwargs):
         self.turn_on_device(self.lights_at_dark)
-        self.log("Turned on lights at sunset")
+        self.log("Turned on dark lights")
     
     def lights_out(self, kwargs):
         self.turn_off_device(self.dark_lights_off)

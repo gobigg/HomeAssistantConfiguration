@@ -8,3 +8,4 @@ mailbox:
   door: sensor.front_door
   dependencies:
     - presence_helper
+    - notification_manager
