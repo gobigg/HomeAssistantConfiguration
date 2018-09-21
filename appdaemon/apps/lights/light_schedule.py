@@ -9,6 +9,9 @@ class LightSchedule(Base):
         """Initialize."""
         super().initialize()
 
+        self.outdoor_lights = "light.outdoor_lights"
+        self.hallway_window = "light.hallway_window_light"
+        
         self.lights_at_dark = "scene.lights_at_dark"
         self.dark_lights_off = "script.dark_lights_off"
         self.run_at_sunset(self.lights_on, offset = datetime.timedelta(minutes = -45).total_seconds())
@@ -20,9 +23,9 @@ class LightSchedule(Base):
         self.run_at_sunrise(self.lights_out, offset = datetime.timedelta(minutes = 45).total_seconds())
 
     def lights_on(self, kwargs):
-        self.turn_on_device(self.lights_at_dark)
-        self.log("Turned on dark lights")
+        self.turn_on_device(self.outdoor_lights)
+        self.log("Turned on outdoor lights")
     
     def lights_out(self, kwargs):
-        self.turn_off_device(self.dark_lights_off)
-        self.log("Turned off dark lights")
+        self.turn_off_device(self.outdoor_lights)
+        self.log("Turned off outdoor lights")

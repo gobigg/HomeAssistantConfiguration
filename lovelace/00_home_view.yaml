@@ -9,40 +9,26 @@ cards:
         cards:
           - type: vertical-stack
             cards:
-            ############
-            # presence #
-            ############
-            - type: horizontal-stack
-              cards:
-                - type: picture-entity
-                  entity: sensor.presence_isa
-                  # show_name: false
-                  image: /local/isa_alt.jpg
-                  show_name: false
-        
-                - type: picture-entity
-                  entity: sensor.presence_stefan
-                  image: /local/Stefan_cropped.jpg
-                  show_name: false
-        
+            - !include presence_card.yaml
+      
             ###############
             # home glance #
             ###############
             - type: picture-elements
               image: /local/house-element.jpg
               elements:
-                - type: icon
-                  icon: mdi:lightbulb
-                  entity: light.inside_lights_automation
-                  tap_action: navigate
-                  navigation_path: /lovelace/lights
-                  style:
-                    top: 20%
-                    left: 92%
-                    color: white
+                # - type: icon
+                #   icon: mdi:lightbulb
+                #   entity: light.inside_lights_automation
+                #   tap_action: navigate
+                #   navigation_path: /lovelace/lights
+                #   style:
+                #     top: 20%
+                #     left: 92%
+                #     color: white
         
                 - type: state-icon
-                  entity: alarm_control_panel.home_alarm
+                  entity: alarm_control_panel.house
                   style:
                     top: 87%
                     left: 5%
@@ -127,48 +113,18 @@ cards:
                     left: 92%
                     color: white
         
-            ##############
-            # plant info #
-            ##############
-            - type: picture-elements
-              image: /local/plants.jpg
-              elements:
-                - type: state-badge
-                  entity: sensor.small_chili_moisture
-                  style:
-                    top: 27%
-                    left: 10%
-                    --ha-label-badge-font-size: 1em
-                - type: state-badge
-                  entity: sensor.big_chili_moisture
-                  style:
-                    top: 27%
-                    left: 25%
-                    --ha-label-badge-font-size: 1em
-                - type: state-badge
-                  entity: sensor.herbs_moisture
-                  style:
-                    top: 27%
-                    left: 40%
-                    --ha-label-badge-font-size: 1em
-                - type: state-label
-                  entity: sensor.greenhouse_temperature
-                  style:
-                    top: 15%
-                    left: 92%
-                    --ha-label-badge-font-size: 1em
+            - !include plant_card.yaml
           - type: vertical-stack
             cards:
               - type: custom:vertical-stack-in-card
                 cards:
-                ##############
-                #    info    #
-                ##############                
                 - type: entity-filter
                   show_empty: false
                   entities:
                     - entity: sensor.front_door_lock
-                      name: Lock
+                      name: Front door lock
+                    - entity: sensor.yard_door_lock
+                      name: Yard door lock
                     - sensor.front_door
                     - sensor.back_door
                     - sensor.backyard_door
@@ -224,50 +180,75 @@ cards:
                     - 'on'
                   card:
                     type: glance
-          - type: vertical-stack
-            cards:
-            - type: horizontal-stack  
-              cards:
-              - type: picture-entity
-                name: Laundry
-                entity: input_select.washing_machine_status
-                state_image:
-                  "Idle": /local/lovelace_ui/laundry.jpg
-                  "Running": /local/lovelace_ui/laundry_running.jpg
-                  "Clean": /local/lovelace_ui/laundry_clean.jpg
-              - type: picture-entity
-                name: Roomba
-                entity: input_select.roomba_mode
-                image: /local/lovelace_ui/roomba.jpg
+              - !include laundry-roomba_card.yaml
+              
+              - type: entities
+                entities:
+                  - entity: switch.livingroom_tv
+                    name: Tv
+                    icon: mdi:television-classic
+                  - type: custom:mini-media-player
+                    entity: media_player.livingroom_tv
+                    icon: mdi:television-classic
+                    group: true
+                  - entity: switch.livingroom_movie_system
+                    name: Movie system
+                    icon: mdi:movie
+                  - type: custom:mini-media-player
+                    entity: media_player.livingroom_movie_system
+                    icon: mdi:movie
+                    group: true
+                  - type: custom:mini-media-player
+                    entity: media_player.shield
+                    icon: mdi:cast
+                    group: true
+                  - type: custom:mini-media-player
+                    entity: media_player.sonos
+                    icon: mdi:speaker-wireless
+                    group: true
+                  # - entity: switch.livingroom_movie_system
+                  #   name: Bedroom Tv
+                  #   icon: mdi:television-classic
+                  - type: custom:mini-media-player
+                    entity: media_player.sovrum
+                    icon: mdi:cast
+                    group: true
         
-            - type: entities
-              entities:
-                - switch.stefan_radiator
+                # - type: conditional
+                #   conditions:
+                #     - entity: group.persons
+                #       state_not: 'not_home'
+                #   card:
+                #     - type: horizontal-stack
+                #       cards:
+                #       - type: media-control
+                #         entity: media_player.livingroom_movie_system
+                #       - type: media-control
+                #         entity: media_player.livingroom_tv
+                #     - type: horizontal-stack
+                #       cards:
+                #         - type: media-control
+                #           entity: media_player.shield
+                #         - type: media-control
+                #           entity: media_player.sovrum
+            # - type: entities
+            #   entities:
+            #     - switch.stefan_radiator
         
-            - type: custom:monster-card
-              show_empty: false
-              card:
-                type: entities
-                title: Alerts
-                show_header_toggle: true
-              filter:
-                include:
-                  # - domain: alert
-                  # - state: 'on'
-                  - entity_id: alert.*
-                exclude:
-                  - state: 'idle'
+            # - type: custom:monster-card
+            #   show_empty: false
+            #   card:
+            #     type: entities
+            #     title: Alerts
+            #     show_header_toggle: true
+            #   filter:
+            #     include:
+            #       # - domain: alert
+            #       # - state: 'on'
+            #       - entity_id: alert.*
+            #     exclude:
+            #       - state: 'idle'
         
-            #################
-            # notifications #
-            #################
-            - type: custom:monster-card
-              show_empty: false
-              card:
-                type: glance
-              filter:
-                include:
-                  - domain: persistent_notification
           - type: custom:vertical-stack-in-card
             cards:
             - type: picture-entity

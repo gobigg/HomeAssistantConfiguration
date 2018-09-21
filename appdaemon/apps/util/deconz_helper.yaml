@@ -1,0 +1,9 @@
+deconz_helper:
+  module: deconz_helper
+  class: DeconzHelper
+  dependencies:
+    - house_modes
+    - notification_manager
+    - presence_helper
+    - scheduler
+    - tts_manager

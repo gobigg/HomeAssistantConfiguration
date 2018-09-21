@@ -35,3 +35,4 @@ homebridge/
 coreappdaemon/appdaemon.yaml
 core
 removed_or_templates/
+/appdaemon/apps/dfreeeze/

@@ -19,6 +19,8 @@ resources:
     type: js
   - url: !resource column-card/column-card.js
     type: js
+  - url: !resource alarm_control_panel-card/alarm_control_panel-card.js
+    type: js
   # - url: !resource /local/lovelace_ui/entity-attributes-card.js?v=0.1.0
   #   type: js
   - url: !resource home-setter/home-setter.js?v=0.0.1
@@ -39,7 +41,8 @@ resources:
     type: js
   - url: !resource state-attribute-element/state-attribute-element.js
     type: js
-    
+  - url: !resource mini-media-player/mini-media-player.js?v=0.5
+    type: js
     
   - url: https://fonts.googleapis.com/css?family=Roboto+Condensed
     type: css
@@ -66,3 +69,4 @@ views:
   - !include 70_isa_view.yaml
   - !include 80_automations_view.yaml
   - !include 100_settings_view.yaml
+  - !include 101_dashboard.yaml

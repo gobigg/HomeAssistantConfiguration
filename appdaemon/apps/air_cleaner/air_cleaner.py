@@ -27,7 +27,7 @@ class AirCleanerSchedule(hass.Hass):
         quietTime = self.parse_time(self.args["quiet_time"])
 
         self.run_daily(self.auto_at_11, autoTime)
-        self.run_daily(self.turbo_at_19_pollen, turboTime)
+        # self.run_daily(self.turbo_at_19_pollen, turboTime)
         self.run_daily(self.quiet_at_21, quietTime)
 
     def auto_at_11(self, kwargs):

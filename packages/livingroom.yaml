@@ -1,59 +1,39 @@
-homeassistant:
-  customize:
-    input_text.ac_tiles:
-      custom_ui_state_card: state-card-tiles
-      config:
-        columns: 3
-        column_width: 50px
-        row_height: 50px
-        gap: 15px
-        color: '#555B65'
-        color_on: '#D5D619'
-        color_off: '#BBBEC2'
-        entities:
-          - entity: script.ac_on
-            # label: S1
-            row: 1
-            column: 1
-            icon: mdi:air-conditioner
-          - entity: script.ac_off
-            # label: S1
-            row: 1
-            column: 2
-            icon: mdi:fan-off
-
-    input_text.tv_tiles:
-      custom_ui_state_card: state-card-tiles
-      config:
-        columns: 3
-        column_width: 50px
-        row_height: 50px
-        gap: 15px
-        color: '#555B65'
-        color_on: '#D5D619'
-        color_off: '#BBBEC2'
-        entities:
-          - entity: script.tv_on_off
-            # label: S1
-            row: 1
-            column: 1
-            icon: mdi:television
-          - entity: script.media_system_on_off
-            # label: S1
-            row: 1
-            column: 2
-            icon: mdi:speaker
-          - entity: script.tv_mute_unmute
-            # label: S1
-            row: 1
-            column: 3
-            icon: mdi:volume-off
-
 switch:
   - platform: broadlink
     friendly_name: Broadlink Livingroom
     host: !secret broadlink_livingroom_ip
     mac: !secret broadlink_livingroom_mac
+
+  - platform: template
+    switches:
+      livingroom_tv:
+        value_template: "{{ is_state('media_player.livingroom_tv', 'on') }}"
+        turn_on:
+          service: switch.broadlink_send_packet_192_168_1_90
+          data:
+            packet:
+              - 'JgCMAJKVEjkRORE5ERMSExEUERMSExE5ETkRORMSExITEREUExETEhE5ERQTERMSExIRExITETkRFBE5ETkRORE5ETkSOBIABgmTlRE5ETkSOBMSEhMSEhMSERQSOBI4EjgSExISExISExISEhMSOBITEhISExISExISExI4EhIUNhM4EjgSOBI4EjgTAA0FAAAAAAAAAAAAAAAA'
+
+        turn_off:
+          service: switch.broadlink_send_packet_192_168_1_90
+          data:
+            packet:
+              - 'JgCMAJKVEjkRORE5ERMSExEUERMSExE5ETkRORMSExITEREUExETEhE5ERQTERMSExIRExITETkRFBE5ETkRORE5ETkSOBIABgmTlRE5ETkSOBMSEhMSEhMSERQSOBI4EjgSExISExISExISEhMSOBITEhISExISExISExI4EhIUNhM4EjgSOBI4EjgTAA0FAAAAAAAAAAAAAAAA'
+
+      livingroom_movie_system:
+        value_template: "{{ is_state('device_tracker.livingroom_movie_system', 'home') }}"
+        turn_on:
+          service: switch.broadlink_send_packet_192_168_1_90
+          data:
+            packet:
+              - 'JgCMAJKVEjgSORETERQRExITETkRFBE5ETkRFBETEjgSExE5EhMROREUERMSExEUERMRFBETEhMRORE5EjgSOBI5ETkROREABeSSlhE5ETkRFBETEhMRExI5ERMRORI4EhMRFBE5ERMSOBITETkSExEUERMRFBETEhMRFBETETkSOBI5ETkRORE5ETkRAA0FAAAAAAAAAAAAAAAA'
+
+        turn_off:
+          service: switch.broadlink_send_packet_192_168_1_90
+          data:
+            packet:
+              - 'JgCMAJKVEjgSORETERQRExITETkRFBE5ETkRFBETEjgSExE5EhMROREUERMSExEUERMRFBETEhMRORE5EjgSOBI5ETkROREABeSSlhE5ETkRFBETEhMRExI5ERMRORI4EhMRFBE5ERMSOBITETkSExEUERMRFBETEhMRFBETETkSOBI5ETkRORE5ETkRAA0FAAAAAAAAAAAAAAAA'
+
 
 script:
   ac_off:
@@ -90,11 +70,3 @@ script:
         data:
           packet:
             - 'JgCQAAUABeaTlRE5ETkSOBITERQRExEUERMSORE5ETkRExITERQRExITETkRORE5ETkSExETEhMRFBETEhMRFBETEjgSOBI5ETkRAAYJkpYRORE5ETkRFBETEhMRFBETETkSOBI4EhMRFBETEhMRFBE5ETkRORE5ERQRExITERMSExEUERMSExE5ETkRORI4EgANBQAAAAAAAAAA'
-
-
-input_text:
-  ac_tiles:
-    name: AC Tiles
-
-  tv_tiles:
-    name: TV Tiles

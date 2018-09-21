@@ -92,10 +92,10 @@ Help determine if the litterboxes need cleaning, send notifications and keeping 
 Using two Xiaomi door/window sensors sending notifications when we get mail or packages in mailbox. Switch for resetting, delay so that I can press first, then get the mail, if on my way out.
 
 #### miflora
-Setup for my plant monitors. Moved to my hass slave instance on rpi3, since hass.io can't use the Intel Nuc built in ble (yet).
+Setup for my plant monitors.
 
 #### motion_sensors
-Template sensors for pirs and customize to shown with Homebridge.
+Template sensors for pirs.
 
 #### presence_detection
 Combining device_trackers to determine presence. Combined with a python script to update a custom device_tracker from latest update.

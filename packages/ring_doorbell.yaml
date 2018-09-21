@@ -1,7 +1,7 @@
 homeassistant:
   customize:
     camera.front_door:
-      friendly_name: Latest Capture Front Door Outdoor
+      friendly_name: Last Motion Front Door
       
 
 binary_sensor:

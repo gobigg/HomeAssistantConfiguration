@@ -1,0 +1,54 @@
+type: picture-elements
+image: /local/lovelace_ui/bicycleside.png
+elements:
+  - type: state-label
+    entity: device_tracker.tile_bike
+    prefix: "Bike: "
+    style:
+      top: 62%
+      left: 0%
+      color: rgb(255, 255, 255)
+      transform: none
+      font-family: Trebuchet MS
+      text-shadow: 2px 2px black
+      font-size: 90%
+      pointer-events: none
+      font-weight: bold
+      border-left-style: solid
+      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)
+      border-color: rgb(0, 0, 0)
+      background-color: rgb(0, 0, 0, 0.2)
+      padding: 7px
+
+  - type: state-label
+    entity: sensor.ebike_battery_charging
+    prefix: "Time spent charging last week: "
+    style:
+      top: 82%
+      left: 0%
+      color: rgb(255, 255, 255)
+      transform: none
+      font-family: Trebuchet MS
+      text-shadow: 2px 2px black
+      font-size: 90%
+      pointer-events: none
+      font-weight: bold
+      border-left-style: solid
+      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)
+      border-color: rgb(0, 0, 0)
+      background-color: rgb(0, 0, 0, 0.2)
+      padding: 7px
+
+  - type: state-icon
+    entity: sensor.ebike_charging
+    style:
+      top: 75%
+      left: 90%
+      transform: none
+  - type: state-label
+    entity: switch.bike_plug_switch
+    tap_action: toggle
+    style:
+      top: 85%
+      left: 90%
+      transform: none

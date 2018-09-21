@@ -1,0 +1,12 @@
+type: horizontal-stack
+cards:
+  - type: picture-entity
+    entity: sensor.presence_isa
+    # show_name: false
+    image: /local/isa_alt.jpg
+    show_name: false
+
+  - type: picture-entity
+    entity: sensor.presence_stefan
+    image: /local/Stefan_cropped.jpg
+    show_name: false

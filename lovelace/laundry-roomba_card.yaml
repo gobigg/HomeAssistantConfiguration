@@ -1,0 +1,17 @@
+type: vertical-stack
+cards:
+- type: horizontal-stack  
+  cards:
+  - type: picture-entity
+    name: Laundry
+    entity: input_select.washing_machine_status
+    state_image:
+      "Idle": /local/lovelace_ui/laundry.jpg
+      "Running": /local/lovelace_ui/laundry_running_1.jpg
+      "Clean": /local/lovelace_ui/laundry_clean_1.jpg
+  - type: picture-entity
+    name: Roomba
+    entity: input_select.roomba_mode
+    image: /local/lovelace_ui/roomba.jpg
+    state_image:
+      "Not Today": /local/lovelace_ui/roomba_bw.jpg

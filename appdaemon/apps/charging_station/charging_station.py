@@ -21,7 +21,7 @@ class ChargingStation(Base):
 
 
         self.listen_state(self.coming_home, self.bike, new = "home")
-        self.listen_state(self.turn_off_charger, self.power_sensor_idle, new = "True")
+        self.listen_state(self.turn_off_charger, self.power_sensor_idle, new = "True", duration = 60)
 
     def coming_home(self, entity, attribute, new, old, kwargs):
         if(new != old):
@@ -41,7 +41,7 @@ class ChargingStation(Base):
         if (self.get_state(self.power_sensor_idle) == "True"):
             if (self.now_is_between(self.stop_quiet, self.start_quiet)):
                 self.log("Reminding to charge ebike battery")
-                self.call_service(globals.notify_ios_isa, message = "Charge ebike battery!")
+                self.notification_manager.notify_if_home(person = "Isa", message = "Charge ebike battery!")
         else:
             self.log("Reminder canceled")
             self.cancel_timer(self.reminder_handle)

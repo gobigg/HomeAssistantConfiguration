@@ -1,9 +1,9 @@
-homeassistant:
-  customize_glob:
-    group.info_temp_group:
-      state_card_mode: badges
-    group.info_plant_group:
-      state_card_mode: badges
+# homeassistant:
+#   customize_glob:
+#     group.info_temp_group:
+#       state_card_mode: badges
+#     group.info_plant_group:
+#       state_card_mode: badges
 
 group:
   default_view:

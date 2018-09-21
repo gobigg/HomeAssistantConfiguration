@@ -81,7 +81,7 @@ automation:
   - alias: Laundry Washing Machine Emptied
     trigger:
       - platform: state
-        entity_id: binary_sensor.door_window_sensor_158d00022b96b4
+        entity_id: binary_sensor.washer_hatch
         to: 'on'
     condition:
       condition: and
@@ -97,7 +97,6 @@ automation:
       - service: light.turn_on
         data:
           entity_id: light.floorlamp_uplight
-          brightness: 150
           rgb_color: 
             - 255
             - 214
@@ -172,8 +171,6 @@ automation:
   - alias: Laundry Washing Machine Emptied
     initial_state: 'on'
     trigger:
-      platform: state
-      entity_id: 
       platform: event
       event_type: ios.notification_action_fired
       event_data:
@@ -183,11 +180,9 @@ automation:
         data:
           entity_id: input_select.washing_machine_status
           option: Idle
-      # - service: notify.all
       - service: light.turn_on
         data:
           entity_id: light.floorlamp_uplight
-          brightness: 150
           rgb_color: 
             - 255
             - 214

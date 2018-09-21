@@ -77,31 +77,22 @@ cards:
                     name: Show security
                     icon: mdi:security-home
                     
-              # - type: horizontal-stack
-              #   cards:
-              #     - type: picture-entity
-              #       entity: camera.back_door
-              #       show_name: false
-              #       show_state: false
-              #     - type: picture-entity
-              #       entity: camera.dafang
-              #       show_name: false
-              #       show_state: false
-                    
-              # - type: horizontal-stack
-              #   cards:
-              #     - type: picture-entity
-              #       entity: camera.latest_motion
-              #       show_name: false
-              #       show_state: false
-              #     - type: picture-entity
-              #       entity: camera.dafang_motion_snapshot
-              #       show_name: false
-              #       show_state: false
-              #     - type: picture-entity
-              #       entity: camera.front_door
-              #       show_name: false
-              #       show_state: false
+              # - type: custom:alarm_control_panel-card
+              #   entity: alarm_control_panel.home_alarm
+              #   scale: 10px
+              #   # style: '--alarm-color-disarmed: var(--label-badge-blue);'
+              #   states:
+              #     - arm_home
+              #     - arm_away
+              #     - arm_night
+              - type: custom:alarm_control_panel-card
+                entity: alarm_control_panel.house
+                scale: 10px
+                # style: '--alarm-color-disarmed: var(--label-badge-blue);'
+                states:
+                  - arm_home
+                  - arm_away
+                  - arm_night
 
               - type: conditional
                 conditions:
@@ -132,11 +123,21 @@ cards:
                         options:
                           secondary_info: last-changed
                           icon: mdi:lock-smart
+                      - entity_id: "sensor.last_action"
+                        options:
+                          secondary_info: last-changed
+                          icon: mdi:lock-open-outline
+                          name: Last action
                       - entity_id: "sensor.unlocked_by"
                         options:
                           secondary_info: last-changed
                           icon: mdi:lock-open-outline
                           name: Last unlocked by
+                      - entity_id: sensor.yard_door_lock
+                        options:
+                          secondary_info: last-changed
+                          name: Yard Door Lock
+
                       - entity_id: "sensor.*door*"
                         options:
                           secondary_info: last-changed
@@ -174,7 +175,12 @@ cards:
                   - sensor.temperature_passage
                   - sensor.temperature_downstairs_bathroom
                   - sensor.temperature_stefan
-
+              - type: history-graph
+                title: Light 7 Days
+                hours_to_show: 168
+                entities:
+                  - sensor.passage_pir_luminance
+                  - sensor.upstairs_hallway_pir_luminance
               # - type: history-graph
               #   title: Light 48h
               #   hours_to_show: 48

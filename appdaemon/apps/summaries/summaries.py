@@ -31,13 +31,13 @@ class Summary(Base):
     mailbox = self.get_state("sensor.mailbox")
     laundry = self.get_state("input_select.washing_machine_status")
     
-    if (int(litterbox_downstairs_visits) > 1):
+    if (int(litterbox_downstairs_visits) > 0):
       # start = "" if message_part == 0 else " "
       end = "" if int(litterbox_upstairs_visits) > 1 else "."
       message = "{} visits to downstairs litterbox".format(litterbox_downstairs_visits) + end
       message_part = message_part + 1
       
-    if (int(litterbox_upstairs_visits) > 1):
+    if (int(litterbox_upstairs_visits) > 0):
       start = "" if message_part == 0 else " and "
       message = message + start + "{} visits to upstairs litterbox.".format(litterbox_upstairs_visits)
       message_part = message_part + 1

@@ -1,0 +1,159 @@
+  ##########################################################
+  ## CUSTOM ALARM COMPONENT ALARM.YAML
+  ## https://github.com/gazoscalvertos/Hass-Custom-Alarm
+  ## VERSION:  1.0.1
+  ## MODIFIED: 28/03/18
+  ##########################################################
+alarm_control_panel:
+  platform: bwalarm
+  name: House
+  persistence: true
+  alarm: automation.alarm_triggered
+  warning: automation.alarm_warning
+  
+  ##[CODE RELATED]
+  #[REQUIRED] Master Code, should consist of one or more digits ie '6482' ensure your passcode is encapsulated by quotes
+  code: !secret alarm_control_panel_code
+  #[OPTIONAL] Panic Code should consist of one or more digits ie '9876' ensure your passcode is encapsulated by quotes, it needs to be different to your standard alarm code. This enables a special panic mode. This can be used under duress to deactivate the alarm which would appear to the unseeing eye as deactivated however a special attribute [panic_mode] listed under the alarm_control_panel.[identifier] will change to ACTIVE. This status could be used in your automations to send a notification to someone else police/spouse/sibling/neighbour that you are under duress. To deactive this mode arm then disarm your alarm in the usual manner. 
+  panic_code: !secret alarm_control_panel_panic_code
+  
+  #[DEFAULT] Grace time in seconds to allow for exit and entry using Away mode
+  pending_time: 60
+  #[DEFAULT] The amount of time the alarm stays triggered before returning to its previous state
+  trigger_time: 300
+  
+  ##[STATE RELATED]
+  #[OPTIONAL]
+  armed_perimeter: 
+    ##[OPTIONAL however either an immediate or delayed group must exist] Sensors in this group tigger the alarm immediately 
+    immediate:
+      - binary_sensor.front_door_access_control
+      - binary_sensor.balcony_door
+      - binary_sensor.yard_door
+      # - binary_sensor.door_window_sensor_158d00019f5110 ## Yard Storage
+      - binary_sensor.back_door
+      - binary_sensor.dining_area_window_sensor_sensor
+  
+  #[REQUIRED]
+  armed_home: 
+    # #[OPTIONAL] State specific overrides default time above
+    # pending_time: 10
+    # #[OPTIONAL] State specific overrides default time above
+    # trigger_time: 300 
+    ##[OPTIONAL however either an immediate or delayed group must exist] Sensors in this group tigger the alarm immediately 
+    immediate:
+      - binary_sensor.front_door_access_control
+      - binary_sensor.balcony_door
+      - binary_sensor.yard_door
+
+    # ##[OPTIONAL] Sensors in this group start the clock (pending_time) when tripped before the alarm is triggered 
+    # delayed:
+    #   - binary_sensor.first_floor_motion
+  
+  #[REQUIRED]
+  armed_away: 
+    #[OPTIONAL] State specific overrides default time above
+    trigger_time: 600  
+    ##[OPTIONAL however either an immediate or delayed group must exist] Sensors in this group tigger the alarm immediately 
+    immediate:
+      - binary_sensor.passage_pir_sensor
+      - binary_sensor.upstairs_hallway_pir_sensor
+      - binary_sensor.balcony_door
+      - binary_sensor.yard_door
+      # - binary_sensor.door_window_sensor_158d00019f5110 ## Yard Storage
+      - binary_sensor.back_door
+      - binary_sensor.dining_area_window_sensor_sensor
+      - binary_sensor.window_bedroom
+      - binary_sensor.stefans_room_motion
+    ##[OPTIONAL] Sensors in this group start the clock (pending_time) when tripped before the alarm is triggered 
+    delayed:
+      - binary_sensor.front_door_access_control
+      - binary_sensor.yard_door
+    #[OPTIONAL] Use this group to automatically override the warning message on open sensors when arming. (I use this as I have a motion sensor at the front door)
+    override:
+      - binary_sensor.window_bedroom
+      
+      
+      
+automation:
+  - id: alarm_armed_away
+    alias: '[Alarm] Away Mode Armed'
+    trigger:
+    - platform: state
+      entity_id: alarm_control_panel.house
+      to: 'armed_away'
+    action:
+    - data:
+        message: 'The house alarm has been switched on in away mode. Goodbye'
+      service: notify.pushbullet_isa
+  
+  - id: alarm_armed_home
+    alias: '[Alarm] Home Mode Armed'
+    trigger:
+    - platform: state
+      entity_id: alarm_control_panel.house
+      to: 'armed_home'
+    action:
+    - data:
+        message: 'The house alarm has been switched on in home mode. Goodnight'
+      service: notify.pushbullet_isa
+  
+  - id: alarm_arming_away
+    alias: '[Alarm] Away Mode Arming'
+    trigger:
+    - platform: state
+      entity_id: alarm_control_panel.house
+      to: 'pending'
+    action:
+    - data:
+        message: 'House alarm activating, ensure all doors and windows are closed'
+      service: notify.pushbullet_isa
+  
+  - id: alarm_disarmed
+    alias: '[Alarm] Disarmed'
+    trigger:
+    - platform: state
+      entity_id: alarm_control_panel.house
+      to: 'disarmed'
+    action:
+    - data:
+        message: 'The house alarm has been Deactivated'
+      service: notify.pushbullet_isa
+  
+  - id: alarm_triggered
+    alias: '[Alarm] Triggered'
+    trigger:
+    - platform: state
+      entity_id: alarm_control_panel.house
+      to: 'triggered'
+    action:
+    - service: notify.pushbullet_isa
+      data:
+        message: 'ALARM TRIGGERED!!! {{ states[states.alarm_control_panel.house.attributes.changed_by.split(".")[0]][ states.alarm_control_panel.house.attributes.changed_by.split(".")[1]].name }}'
+  
+  - id: alarm_warning
+    alias: '[Alarm] Warning'
+    trigger:
+    - platform: state
+      entity_id: alarm_control_panel.house
+      to: 'warning'
+    action:
+    - service: notify.pushbullet_isa
+      data:
+        message: 'ALARM Warning {{ states[states.alarm_control_panel.house.attributes.changed_by.split(".")[0]][ states.alarm_control_panel.house.attributes.changed_by.split(".")[1]].name }}'
+        
+  - id: alarm_disarm
+    alias: '[Alarm] Disarm'
+    initial_state: 'on'
+    trigger:
+      - platform: state
+        to: 'Just arrived'
+        entity_id: sensor.presence_isa, sensor.presence_stefan
+      - platform: state
+        to: 'Home'
+        entity_id: sensor.presence_isa, sensor.presence_stefan
+    action:
+      - service: alarm_control_panel.alarm_disarm
+        data:
+          entity_id: alarm_control_panel.house
+          code: !secret alarm_control_panel_code

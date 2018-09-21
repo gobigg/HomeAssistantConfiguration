@@ -18,11 +18,11 @@ class UnlockedBy(hass.Hass):
             device = self.get_state(entity=self.args["stefan"], attribute="all")
             deviceState = self.get_state(self.args["stefan"])
             attributes["lock_last_updated"]=now
-            if (deviceState != 'Home'):
-                self.set_state(self.args["stefan"], state='Home', attributes=attributes)
+            if (deviceState != 'Home' and deviceState != 'Just arrived'):
+                self.set_state(self.args["stefan"], state='Just arrived', attributes=attributes)
         if (new == 'Isabella'):
             device = self.get_state(entity=self.args["isa"], attribute="all")
             deviceState = self.get_state(self.args["isa"])
             attributes["lock_last_updated"]=now
-            if (deviceState != 'Home'):
-                self.set_state(self.args["isa"], state='Home', attributes=attributes)
+            if (deviceState != 'Home' and deviceState != 'Just arrived'):
+                self.set_state(self.args["isa"], state='Just arrived', attributes=attributes)

@@ -25,7 +25,7 @@ class TradfriRemote(hass.Hass):
                 prevBrightness = self.get_state(entity=self.args['lightId'], attribute="brightness")
                 self.log('Button dim down')
                 self.log(prevBrightness)
-                if prevBrightness <= 25:
+                if prevBrightness < 26:
                     self.turn_off(self.args['lightId'])
                 elif prevBrightness != None:
                     self.turn_on(self.args['lightId'], brightness = prevBrightness - 25)

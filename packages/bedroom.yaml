@@ -30,14 +30,14 @@ automation:
               entity_id: light.bedside_lamp
               state: 'on'
     action:
-    - service: notify.ios_isabellas_iphone_x
-      data:
-        title: 'Bedroom window open'
-        message: 'Do you want to turn off lights?'
+      - service: notify.ios_isabellas_iphone_x
         data:
-          push:
-            badge: 0
-            category: "lights_off_bedroom"
+          title: 'Bedroom window open'
+          message: 'Do you want to turn off lights?'
+          data:
+            push:
+              badge: 0
+              category: "lights_off_bedroom"
 
   - alias: 'Lights off when bedroom window open'
     initial_state: 'on'

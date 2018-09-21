@@ -9,7 +9,7 @@ class NotificationManager(Base):
         super().initialize()
 
     """title and during_quiet is optional, default is not during quiet time, use True to override"""
-    def notify_if_home(self, person:str, message:str, title:str="", during_quiet:bool=False, **kwargs:dict):
+    def notify_if_home(self, person:str, message:str, title:str="", during_quiet:bool=False, data:dict={"push": { "thread-id":"home-assistant"}}, **kwargs:dict):
         self.log(f"Checking if {person} is home")
         if self.get_state(PEOPLE[person]['device_tracker']) == "Home":
             if during_quiet is False:

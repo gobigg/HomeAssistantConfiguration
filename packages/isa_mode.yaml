@@ -1,7 +1,7 @@
-homeassistant:
-  customize:
-    input_boolean.isa_mode:
-      confirm_controls_show_lock: true
+# homeassistant:
+#   customize:
+#     input_boolean.isa_mode:
+#       confirm_controls_show_lock: true
 
 input_boolean:
   isa_mode:
@@ -55,7 +55,6 @@ automation:
           message: 'Turn on mode?'
           data:
             push:
-              badge: 0
               category: "isa_mode"
 
   - alias: House Isa Mode On

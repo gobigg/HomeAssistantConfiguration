@@ -60,25 +60,6 @@ cards:
                 - entity: sensor.system_chromecast_bedroom
                   name: Bed CC
         
-        
-                - type: conditional
-                  conditions:
-                    - entity: group.persons
-                      state_not: 'not_home'
-                  card:
-                    - type: horizontal-stack
-                      cards:
-                      - type: media-control
-                        entity: media_player.livingroom_movie_system
-                      - type: media-control
-                        entity: media_player.livingroom_tv
-                    - type: horizontal-stack
-                      cards:
-                        - type: media-control
-                          entity: media_player.shield
-                        - type: media-control
-                          entity: media_player.sovrum
-        
           - type: custom:vertical-stack-in-card
             cards:          
             - type: glance
@@ -99,15 +80,7 @@ cards:
                 - sensor.speedtest_download
                 - sensor.speedtest_ping
                 - sensor.speedtest_upload 
-            - type: conditional
-              conditions:
-                - entity: group.persons
-                  state_not: 'not_home'
-              card:
-                type: media-control
-                entity: media_player.sonos
-        
-                  
+
           - type: custom:vertical-stack-in-card
             cards:
             - type: entities

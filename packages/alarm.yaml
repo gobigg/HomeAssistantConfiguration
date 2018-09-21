@@ -37,35 +37,6 @@ alarm_control_panel:
     triggered:
       pending_time: 0   
 
-group:
-  security_card:
-    view: no
-    name: Security
-    icon: mdi:home-variant
-    entities:
-      - sensor.front_door_unlocked_by
-      - alarm_control_panel.home_alarm
-      - sensor.last_seen_motion
-      - sensor.front_door_lock      
-      - sensor.front_door
-      - sensor.back_door
-      - sensor.backyard_door
-      - sensor.balcony_door
-      - sensor.dining_area_window
-      - sensor.bedroom_window
-      - sensor.front_door_outdoor_movement
-      - sensor.hallway_movement
-      - sensor.passage_movement
-      - sensor.upstairs_hallway_movement
-      - sensor.living_room_movement
-      - sensor.back_door_camera_movement
-      - sensor.yard_storage_door
-      - sensor.water_heater
-      - sensor.kitchen_sink
-      - binary_sensor.smoke_sensor_158d0001d37bdd
-      - binary_sensor.smoke_sensor_158d0001d37be5
-      - binary_sensor.smoke_sensor_158d0001d37c82
-
 automation:
 - alias: 'Alarm Arm Away'
   initial_state: 'on'
@@ -111,11 +82,7 @@ automation:
     - service: notify.ios_isabellas_iphone_x
       data:
         title: 'Alarm Armed Away'
-        message: 'Do you want to turn off lights?'
-        data:
-          push:
-            badge: 0
-            category: "lights_off_away"
+        message: 'Old alarm'
 
 - alias: 'Lights off on armed away'
   initial_state: 'on'

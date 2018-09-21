@@ -1,4 +1,4 @@
 battery_manager:
   module: battery
   class: BatteryManager
-  low_battery_level: 30
+  low_battery_level: 15

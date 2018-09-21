@@ -1,7 +1,7 @@
-homeassistant:
-  customize:
-    input_boolean.guest_mode:
-      confirm_controls_show_lock: true
+# homeassistant:
+#   customize:
+#     input_boolean.guest_mode:
+#       confirm_controls_show_lock: true
 
 input_boolean:
   guest_mode:

@@ -4,25 +4,27 @@
 # Any changes made to it will be overwritten the next time the script is run.
 
 resources:
-- {type: js, url: '/local/lovelace/plan-coordinates.js?1535710765.2025652'}
-- {type: js, url: '/local/lovelace/monster-card.js?1535710765.2025652&v=0.2.3'}
-- {type: js, url: '/local/lovelace/light-card.js?1535710765.2025652'}
-- {type: module, url: '/local/lovelace/button-card.js?1535710765.2025652'}
-- {type: js, url: '/local/lovelace/vertical-stack-in-card.js?1535710765.2025652&v=0.0.6'}
-- {type: js, url: '/local/lovelace/slider-entity-row.js?1535710765.2025652'}
-- {type: js, url: '/local/lovelace/useful-markdown-card.js?1535710765.2025652'}
-- {type: js, url: '/local/lovelace/gauge-card.js?1535710765.2025652'}
-- {type: js, url: '/local/lovelace/bignumber-card.js?1535710765.2025652'}
-- {type: js, url: '/local/lovelace/column-card.js?1535710765.2025652'}
-- {type: js, url: '/local/lovelace/home-setter.js?1535710765.2025652&v=0.0.1'}
-- {type: js, url: '/local/lovelace/tracker-card.js?1535710765.2025652&v=0.1.4'}
-- {type: js, url: '/local/lovelace/state-card-aftership.js?1535710765.2025652'}
-- {type: js, url: '/local/lovelace/light-slider-element.js?1535710765.2025652'}
-- {type: js, url: '/local/lovelace/group-card.js?1535710765.2025652'}
-- {type: js, url: '/local/lovelace/state-element.js?1535710765.2025652'}
-- {type: js, url: '/local/lovelace/text-element.js?1535710765.2025652'}
-- {type: js, url: '/local/lovelace/username-element.js?1535710765.2025652'}
-- {type: js, url: '/local/lovelace/state-attribute-element.js?1535710765.2025652'}
+- {type: js, url: '/local/lovelace/plan-coordinates.js?1537453201.749111'}
+- {type: js, url: '/local/lovelace/monster-card.js?1537453201.749111&v=0.2.3'}
+- {type: js, url: '/local/lovelace/light-card.js?1537453201.749111'}
+- {type: module, url: '/local/lovelace/button-card.js?1537453201.749111'}
+- {type: js, url: '/local/lovelace/vertical-stack-in-card.js?1537453201.749111&v=0.0.6'}
+- {type: js, url: '/local/lovelace/slider-entity-row.js?1537453201.749111'}
+- {type: js, url: '/local/lovelace/useful-markdown-card.js?1537453201.749111'}
+- {type: js, url: '/local/lovelace/gauge-card.js?1537453201.749111'}
+- {type: js, url: '/local/lovelace/bignumber-card.js?1537453201.749111'}
+- {type: js, url: '/local/lovelace/column-card.js?1537453201.749111'}
+- {type: js, url: '/local/lovelace/alarm_control_panel-card.js?1537453201.749111'}
+- {type: js, url: '/local/lovelace/home-setter.js?1537453201.749111&v=0.0.1'}
+- {type: js, url: '/local/lovelace/tracker-card.js?1537453201.749111&v=0.1.4'}
+- {type: js, url: '/local/lovelace/state-card-aftership.js?1537453201.749111'}
+- {type: js, url: '/local/lovelace/light-slider-element.js?1537453201.749111'}
+- {type: js, url: '/local/lovelace/group-card.js?1537453201.749111'}
+- {type: js, url: '/local/lovelace/state-element.js?1537453201.749111'}
+- {type: js, url: '/local/lovelace/text-element.js?1537453201.749111'}
+- {type: js, url: '/local/lovelace/username-element.js?1537453201.749111'}
+- {type: js, url: '/local/lovelace/state-attribute-element.js?1537453201.749111'}
+- {type: js, url: '/local/lovelace/mini-media-player.js?1537453201.749111&v=0.5'}
 - {type: css, url: 'https://fonts.googleapis.com/css?family=Roboto+Condensed'}
 title: Home
 views:
@@ -37,13 +39,7 @@ views:
             type: picture-entity}
           type: horizontal-stack
         - elements:
-          - entity: light.inside_lights_automation
-            icon: mdi:lightbulb
-            navigation_path: /lovelace/lights
-            style: {color: white, left: 92%, top: 20%}
-            tap_action: navigate
-            type: icon
-          - entity: alarm_control_panel.home_alarm
+          - entity: alarm_control_panel.house
             style: {color: white, left: 5%, top: 87%}
             type: state-icon
           - entity: sensor.front_door_combined
@@ -109,7 +105,8 @@ views:
         - cards:
           - card: {type: glance}
             entities:
-            - {entity: sensor.front_door_lock, name: Lock}
+            - {entity: sensor.front_door_lock, name: Front door lock}
+            - {entity: sensor.yard_door_lock, name: Yard door lock}
             - sensor.front_door
             - sensor.back_door
             - sensor.backyard_door
@@ -143,33 +140,33 @@ views:
             state_filter: ['on']
             type: entity-filter
           type: custom:vertical-stack-in-card
-        type: vertical-stack
-      - cards:
         - cards:
-          - entity: input_select.washing_machine_status
-            name: Laundry
-            state_image: {Clean: /local/lovelace_ui/laundry_clean.jpg, Idle: /local/lovelace_ui/laundry.jpg,
-              Running: /local/lovelace_ui/laundry_running.jpg}
-            type: picture-entity
-          - {entity: input_select.roomba_mode, image: /local/lovelace_ui/roomba.jpg,
-            name: Roomba, type: picture-entity}
-          type: horizontal-stack
-        - entities: [switch.stefan_radiator]
+          - cards:
+            - entity: input_select.washing_machine_status
+              name: Laundry
+              state_image: {Clean: /local/lovelace_ui/laundry_clean_1.jpg, Idle: /local/lovelace_ui/laundry.jpg,
+                Running: /local/lovelace_ui/laundry_running_1.jpg}
+              type: picture-entity
+            - entity: input_select.roomba_mode
+              image: /local/lovelace_ui/roomba.jpg
+              name: Roomba
+              state_image: {Not Today: /local/lovelace_ui/roomba_bw.jpg}
+              type: picture-entity
+            type: horizontal-stack
+          type: vertical-stack
+        - entities:
+          - {entity: switch.livingroom_tv, icon: 'mdi:television-classic', name: Tv}
+          - {entity: media_player.livingroom_tv, group: true, icon: 'mdi:television-classic',
+            type: 'custom:mini-media-player'}
+          - {entity: switch.livingroom_movie_system, icon: 'mdi:movie', name: Movie
+              system}
+          - {entity: media_player.livingroom_movie_system, group: true, icon: 'mdi:movie',
+            type: 'custom:mini-media-player'}
+          - {entity: media_player.shield, group: true, icon: 'mdi:cast', type: 'custom:mini-media-player'}
+          - {entity: media_player.sonos, group: true, icon: 'mdi:speaker-wireless',
+            type: 'custom:mini-media-player'}
+          - {entity: media_player.sovrum, group: true, icon: 'mdi:cast', type: 'custom:mini-media-player'}
           type: entities
-        - card: {show_header_toggle: true, title: Alerts, type: entities}
-          filter:
-            exclude:
-            - {state: idle}
-            include:
-            - {entity_id: alert.*}
-          show_empty: false
-          type: custom:monster-card
-        - card: {type: glance}
-          filter:
-            include:
-            - {domain: persistent_notification}
-          show_empty: false
-          type: custom:monster-card
         type: vertical-stack
       - cards:
         - {entity: camera.fisksatra_meteogram, show_name: false, show_state: false,
@@ -246,6 +243,10 @@ views:
           - {entity: input_boolean.show_security, icon: 'mdi:security-home', name: Show
               security}
           type: entities
+        - entity: alarm_control_panel.house
+          scale: 10px
+          states: [arm_home, arm_away, arm_night]
+          type: custom:alarm_control_panel-card
         - card:
             card: {type: entities}
             filter:
@@ -263,8 +264,12 @@ views:
               include:
               - entity_id: sensor.front_door_lock
                 options: {icon: 'mdi:lock-smart', secondary_info: last-changed}
+              - entity_id: sensor.last_action
+                options: {icon: 'mdi:lock-open-outline', name: Last action, secondary_info: last-changed}
               - entity_id: sensor.unlocked_by
                 options: {icon: 'mdi:lock-open-outline', name: Last unlocked by, secondary_info: last-changed}
+              - entity_id: sensor.yard_door_lock
+                options: {name: Yard Door Lock, secondary_info: last-changed}
               - entity_id: sensor.*door*
                 options: {secondary_info: last-changed}
                 state: Closed
@@ -290,6 +295,10 @@ views:
             sensor.temperature_stefan]
           hours_to_show: 168
           title: Temperatures 7 Days
+          type: history-graph
+        - entities: [sensor.passage_pir_luminance, sensor.upstairs_hallway_pir_luminance]
+          hours_to_show: 168
+          title: Light 7 Days
           type: history-graph
         type: custom:vertical-stack-in-card
       type: custom:column-card
@@ -415,18 +424,6 @@ views:
           - sensor.system_sonos
           - {entity: sensor.system_samsung49, name: Bed TV}
           - {entity: sensor.system_chromecast_bedroom, name: Bed CC}
-          - card:
-            - cards:
-              - {entity: media_player.livingroom_movie_system, type: media-control}
-              - {entity: media_player.livingroom_tv, type: media-control}
-              type: horizontal-stack
-            - cards:
-              - {entity: media_player.shield, type: media-control}
-              - {entity: media_player.sovrum, type: media-control}
-              type: horizontal-stack
-            conditions:
-            - {entity: group.persons, state_not: not_home}
-            type: conditional
           show_state: false
           type: glance
         type: vertical-stack
@@ -440,10 +437,6 @@ views:
           type: glance
         - entities: [sensor.speedtest_download, sensor.speedtest_ping, sensor.speedtest_upload]
           type: history-graph
-        - card: {entity: media_player.sonos, type: media-control}
-          conditions:
-          - {entity: group.persons, state_not: not_home}
-          type: conditional
         type: custom:vertical-stack-in-card
       - cards:
         - entities:
@@ -736,15 +729,32 @@ views:
     type: conditional
   - entities: [sensor.isa_at_work]
     type: entities
-  - entities:
-    - {entity: device_tracker.tile_bike, icon: 'mdi:bike', name: Bike (keys)}
-    - {entity: switch.bike_plug_switch, name: Charger Switch}
-    - {entity: sensor.ebike_charger, name: Charger Idle}
-    type: entities
-  - entities: [sensor.bike_plug_power]
-    hours_to_show: 24
-    title: Bike charging
-    type: history-graph
+  - elements:
+    - entity: device_tracker.tile_bike
+      prefix: 'Bike: '
+      style: {background-color: 'rgb(0, 0, 0, 0.2)', border-color: 'rgb(0, 0, 0)',
+        border-left-style: solid, box-shadow: '0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px
+          20px 0 rgba(0, 0, 0, 0.19)', color: 'rgb(255, 255, 255)', font-family: Trebuchet
+          MS, font-size: 90%, font-weight: bold, left: 0%, padding: 7px, pointer-events: none,
+        text-shadow: 2px 2px black, top: 62%, transform: none}
+      type: state-label
+    - entity: sensor.ebike_battery_charging
+      prefix: 'Time spent charging last week: '
+      style: {background-color: 'rgb(0, 0, 0, 0.2)', border-color: 'rgb(0, 0, 0)',
+        border-left-style: solid, box-shadow: '0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px
+          20px 0 rgba(0, 0, 0, 0.19)', color: 'rgb(255, 255, 255)', font-family: Trebuchet
+          MS, font-size: 90%, font-weight: bold, left: 0%, padding: 7px, pointer-events: none,
+        text-shadow: 2px 2px black, top: 82%, transform: none}
+      type: state-label
+    - entity: sensor.ebike_charging
+      style: {left: 90%, top: 75%, transform: none}
+      type: state-icon
+    - entity: switch.bike_plug_switch
+      style: {left: 90%, top: 85%, transform: none}
+      tap_action: toggle
+      type: state-label
+    image: /local/lovelace_ui/bicycleside.png
+    type: picture-elements
   icon: mdi:human-female
   id: isa
   title: Isa
@@ -883,8 +893,108 @@ views:
       - {domain: history_graph}
       include:
       - {state: unknown}
+      - {state: unavailable}
     show_empty: false
     type: custom:monster-card
   icon: mdi:cogs
   id: settings
   title: Settings
+- cards:
+  - cards:
+    - cards:
+      - cards:
+        - cards:
+          - {entity: sensor.presence_isa, image: /local/isa_alt.jpg, show_name: false,
+            type: picture-entity}
+          - {entity: sensor.presence_stefan, image: /local/Stefan_cropped.jpg, show_name: false,
+            type: picture-entity}
+          type: horizontal-stack
+        - cards:
+          - cards:
+            - entity: input_select.washing_machine_status
+              name: Laundry
+              state_image: {Clean: /local/lovelace_ui/laundry_clean_1.jpg, Idle: /local/lovelace_ui/laundry.jpg,
+                Running: /local/lovelace_ui/laundry_running_1.jpg}
+              type: picture-entity
+            - entity: input_select.roomba_mode
+              image: /local/lovelace_ui/roomba.jpg
+              name: Roomba
+              state_image: {Not Today: /local/lovelace_ui/roomba_bw.jpg}
+              type: picture-entity
+            type: horizontal-stack
+          type: vertical-stack
+        - elements:
+          - entity: sensor.small_chili_moisture
+            style: {--ha-label-badge-font-size: 1em, left: 10%, top: 27%}
+            type: state-badge
+          - entity: sensor.big_chili_moisture
+            style: {--ha-label-badge-font-size: 1em, left: 25%, top: 27%}
+            type: state-badge
+          - entity: sensor.herbs_moisture
+            style: {--ha-label-badge-font-size: 1em, left: 40%, top: 27%}
+            type: state-badge
+          - entity: sensor.greenhouse_temperature
+            style: {--ha-label-badge-font-size: 1em, left: 92%, top: 15%}
+            type: state-label
+          image: /local/plants.jpg
+          type: picture-elements
+        type: vertical-stack
+      - cards:
+        - elements:
+          - entity: device_tracker.tile_bike
+            prefix: 'Bike: '
+            style: {background-color: 'rgb(0, 0, 0, 0.2)', border-color: 'rgb(0, 0,
+                0)', border-left-style: solid, box-shadow: '0 4px 8px 0 rgba(0, 0,
+                0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)', color: 'rgb(255, 255,
+                255)', font-family: Trebuchet MS, font-size: 90%, font-weight: bold,
+              left: 0%, padding: 7px, pointer-events: none, text-shadow: 2px 2px black,
+              top: 62%, transform: none}
+            type: state-label
+          - entity: sensor.ebike_battery_charging
+            prefix: 'Time spent charging last week: '
+            style: {background-color: 'rgb(0, 0, 0, 0.2)', border-color: 'rgb(0, 0,
+                0)', border-left-style: solid, box-shadow: '0 4px 8px 0 rgba(0, 0,
+                0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)', color: 'rgb(255, 255,
+                255)', font-family: Trebuchet MS, font-size: 90%, font-weight: bold,
+              left: 0%, padding: 7px, pointer-events: none, text-shadow: 2px 2px black,
+              top: 82%, transform: none}
+            type: state-label
+          - entity: sensor.ebike_charging
+            style: {left: 90%, top: 75%, transform: none}
+            type: state-icon
+          - entity: switch.bike_plug_switch
+            style: {left: 90%, top: 85%, transform: none}
+            tap_action: toggle
+            type: state-label
+          image: /local/lovelace_ui/bicycleside.png
+          type: picture-elements
+        type: vertical-stack
+      - cards:
+        - cards:
+          - {entity: weather.dark_sky, type: weather-forecast}
+          - {entity: camera.fisksatra_meteogram, show_name: false, show_state: false,
+            type: picture-entity}
+          - {entity: camera.stockholm_meteogram, show_name: false, show_state: false,
+            type: picture-entity}
+          - card:
+              entities:
+              - input_boolean.hass_dev_mode
+              - action_name: Run
+                icon: mdi:refresh
+                name: Lovelace generator
+                service: shell_command.lovelace_gen_states
+                service_data: {}
+                type: call-service
+              show_header_toggle: false
+              type: entities
+            conditions:
+            - {entity: input_boolean.hass_dev_mode, state: 'on'}
+            type: conditional
+          type: custom:vertical-stack-in-card
+        type: vertical-stack
+      type: custom:column-card
+    type: vertical-stack
+  icon: mdi:monitor-dashboard
+  id: dashboard
+  panel: true
+  title: Dashboard

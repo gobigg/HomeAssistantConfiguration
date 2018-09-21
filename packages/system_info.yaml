@@ -67,7 +67,6 @@ homeassistant:
 
   customize_glob:
     sensor.system_*:
-      custom_ui_state_card: state-card-custom-ui
       templates:
         hs_color: "if (state === 'Online') return [0, 0];
         else if (state === 'Unknown') return [40, 70];

@@ -380,15 +380,17 @@ automation:
     trigger:
       - platform: numeric_state
         entity_id: proximity.home_isa
-        below: 4
+        below: 6
       - platform: numeric_state
         entity_id: proximity.home_stefan
-        below: 4
+        below: 6
     condition:
-      condition: and
+      condition: or
       conditions:
       - condition: template
         value_template: '{{ states.proximity.home_stefan.attributes.dir_of_travel == "towards" }}'
+      - condition: template
+        value_template: '{{ states.proximity.home_isa.attributes.dir_of_travel == "towards" }}'
     action:
       - service: notify.ios_isabellas_iphone_x
         data_template:

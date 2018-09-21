@@ -1,16 +1,14 @@
 homeassistant:
-  customize_glob:
-    light.*:
-      state_card_mode: break-slider
-      stretch_slider: true
-      slider_theme:
-        pin: true
-      confirm_controls: true
+  # customize_glob:
+  #   light.*:
+  #     state_card_mode: break-slider
+  #     stretch_slider: true
+  #     slider_theme:
+  #       pin: true
+  #     confirm_controls: true
   customize:
     light.hallway_window_light:
       icon: mdi:lamp
-      homebridge_visible: true     
-      homebridge_name: Hallway Window Light
 
     light.outdoor_lights:
       icon: mdi:wall-sconce
@@ -60,7 +58,6 @@ homeassistant:
       friendly_name: Floorlamp Reading Light
 
     light.stefan_lightstrip:
-      state_card_mode: no-slider
       icon: mdi:led-strip
             
     light.kitchen_ceiling_spotlights_level:
@@ -137,6 +134,8 @@ light:
     devices:
       0b11000273bc0cfe08010f70:
         name: Outdoor hanging lights
+      0b11000382bc0cfe00010f70:
+        name: Outdoor front hanging lights
   - platform: lifx
   - platform: group
     name: 'Outdoor lights'

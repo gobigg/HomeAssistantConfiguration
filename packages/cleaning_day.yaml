@@ -1,7 +1,7 @@
-homeassistant:
-  customize:
-    input_boolean.cleaning_day:
-      confirm_controls_show_lock: true
+# homeassistant:
+#   customize:
+#     input_boolean.cleaning_day:
+#       confirm_controls_show_lock: true
 
 input_boolean:
   cleaning_day:

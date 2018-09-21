@@ -1,7 +1,0 @@
-# image_processing:
-#   - platform: classificationbox
-#     ip_address: ip_local
-#     port: 8080
-#     confidence: 50
-#     source:
-#       - entity_id: camera.local_file

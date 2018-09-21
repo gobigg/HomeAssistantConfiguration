@@ -108,12 +108,3 @@ My configuration is broken down into [packages](https://github.com/isabellaalstr
 
 Floorplan gif-demo:
 <img src="https://github.com/isabellaalstrom/HomeAssistantConfiguration/blob/master/Images/floorplangitgif.gif" alt="Home Assistant" />
-
-## Recommended links
-* [Hassbian](https://home-assistant.io/docs/installation/hassbian/)
-* [How to backup your config on Github](https://home-assistant.io/docs/ecosystem/backup/backup_github/)
-* [Homebridge](https://github.com/nfarina/homebridge) and [Homebridge for Home assistant](https://github.com/home-assistant/homebridge-homeassistant)
-* [Backup your sd card with rpi-clone - in swedish](https://snillevilla.se/automatisk-sakerhetskopiering-av-raspberry-pi-minneskort/)
-* [Custom_ui - for sliders, latest update, locks on switches etc.](https://github.com/andrey-git/home-assistant-custom-ui)
-* [Tiles for Home Assistant - custom state card](https://github.com/c727/home-assistant-tiles)
-* [Floorplan](https://github.com/pkozul/ha-floorplan)

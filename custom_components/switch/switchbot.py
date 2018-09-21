@@ -11,7 +11,7 @@ from homeassistant.components.switch import SwitchDevice, PLATFORM_SCHEMA
 from homeassistant.const import CONF_NAME, CONF_MAC
 
 
-REQUIREMENTS = ['bluepy==1.2.0']
+REQUIREMENTS = ['bluepy==1.1.4']
 
 _LOGGER = logging.getLogger(__name__)
 

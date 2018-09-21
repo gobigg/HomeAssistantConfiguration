@@ -15,9 +15,6 @@ class Mailbox(Base):
         self.mail_sensor = self.args["mail_sensor"]
         self.state = self.get_state(self.mail_sensor)
 
-        self.start_quiet = globals.notification_mode["start_quiet_weekday"]
-        self.stop_quiet = globals.notification_mode["stop_quiet_weekday"]
-
         self.newState = ""
         self.attributes = {}      
         self.just_opened_door = False
