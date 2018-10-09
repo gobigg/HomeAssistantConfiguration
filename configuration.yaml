@@ -25,8 +25,8 @@ http:
   login_attempts_threshold: 3
 updater:
 conversation:
-# customizer:
-
+customizer:
+  custom_ui: hosted
 cloud: !include assistants/cloud.yaml
 homekit: !include assistants/homekit.yaml
 ios: !include notify/ios_config.yaml

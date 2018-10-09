@@ -39,50 +39,6 @@ homeassistant:
         hs_color: "if (state < 23) return [0, 0];
         else if (state > 23) return [40, 70];
         else if (state > 25) return [0, 85];"
-
-history_graph:
-  temperatures_48h:
-    name: Temperatures 48h
-    refresh: 1800
-    hours_to_show: 48
-    entities:
-      - sensor.temperature_bedroom
-      - sensor.temperature_passage
-      - sensor.temperature_downstairs_bathroom
-      - sensor.temperature_stefan
-  temperatures_7_days:
-    name: Temperatures 7 Days
-    refresh: 1800
-    hours_to_show: 168
-    entities:
-      - sensor.temperature_bedroom
-      - sensor.temperature_passage
-      - sensor.temperature_downstairs_bathroom
-      - sensor.temperature_stefan
-
-  humidity_7_days:
-    name: Humidity 7 Days
-    refresh: 1800
-    hours_to_show: 168
-    entities:
-      - sensor.humidity_158d000123552c
-      - sensor.humidity_158d0001235510
-      - sensor.humidity_158d0001a2a899
-      - sensor.humidity_158d0001fd83e7
-  
-  luminance_7_days:
-    name: Luminance 7 Days
-    refresh: 1800
-    hours_to_show: 168
-    entities:
-      - sensor.passage_pir_luminance
-      - sensor.illumination_34ce008bfc4b
-      - sensor.upstairs_hallway_pir_luminance
-      - sensor.illumination_158d0001a66291
-      - sensor.illumination_158d0001a24ef1
-      - sensor.illumination_158d000165ff1f
-      - sensor.illumination_158d0001a66256
-
 group:    
   temp_and_light:
     name: Temperature, light and humidity

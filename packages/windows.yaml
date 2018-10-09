@@ -24,6 +24,7 @@ alert:
     entity_id: binary_sensor.dining_area_window_sensor_sensor
     state: 'on'
     repeat: 15
+    can_acknowledge: True
     skip_first: True
     notifiers:
       - ios_isabellas_iphone_x

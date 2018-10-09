@@ -16,15 +16,6 @@ homeassistant:
       friendly_name: Stairs Lights
       # icon: mdi:stairs
 
-group:
-  stairs_lights:
-    name: Stairs Spotlights
-    icon: mdi:stairs
-    entities:
-      - light.stairs_bottom_spot
-      - light.stairs_middle_spot
-      - light.stairs_top_spot
-
 light:
   - name: 'Stairs Bottom Spot'
     command_topic: milight/0x2/rgbw/1 

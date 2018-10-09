@@ -4,27 +4,28 @@
 # Any changes made to it will be overwritten the next time the script is run.
 
 resources:
-- {type: js, url: '/local/lovelace/plan-coordinates.js?1537453201.749111'}
-- {type: js, url: '/local/lovelace/monster-card.js?1537453201.749111&v=0.2.3'}
-- {type: js, url: '/local/lovelace/light-card.js?1537453201.749111'}
-- {type: module, url: '/local/lovelace/button-card.js?1537453201.749111'}
-- {type: js, url: '/local/lovelace/vertical-stack-in-card.js?1537453201.749111&v=0.0.6'}
-- {type: js, url: '/local/lovelace/slider-entity-row.js?1537453201.749111'}
-- {type: js, url: '/local/lovelace/useful-markdown-card.js?1537453201.749111'}
-- {type: js, url: '/local/lovelace/gauge-card.js?1537453201.749111'}
-- {type: js, url: '/local/lovelace/bignumber-card.js?1537453201.749111'}
-- {type: js, url: '/local/lovelace/column-card.js?1537453201.749111'}
-- {type: js, url: '/local/lovelace/alarm_control_panel-card.js?1537453201.749111'}
-- {type: js, url: '/local/lovelace/home-setter.js?1537453201.749111&v=0.0.1'}
-- {type: js, url: '/local/lovelace/tracker-card.js?1537453201.749111&v=0.1.4'}
-- {type: js, url: '/local/lovelace/state-card-aftership.js?1537453201.749111'}
-- {type: js, url: '/local/lovelace/light-slider-element.js?1537453201.749111'}
-- {type: js, url: '/local/lovelace/group-card.js?1537453201.749111'}
-- {type: js, url: '/local/lovelace/state-element.js?1537453201.749111'}
-- {type: js, url: '/local/lovelace/text-element.js?1537453201.749111'}
-- {type: js, url: '/local/lovelace/username-element.js?1537453201.749111'}
-- {type: js, url: '/local/lovelace/state-attribute-element.js?1537453201.749111'}
-- {type: js, url: '/local/lovelace/mini-media-player.js?1537453201.749111&v=0.5'}
+- {type: js, url: '/local/lovelace/plan-coordinates.js?1538489424.7996402'}
+- {type: js, url: '/local/lovelace/monster-card.js?1538489424.7996402&v=0.2.3'}
+- {type: js, url: '/local/lovelace/light-card.js?1538489424.7996402'}
+- {type: module, url: '/local/lovelace/button-card.js?1538489424.7996402'}
+- {type: js, url: '/local/lovelace/vertical-stack-in-card.js?1538489424.7996402&v=0.0.6'}
+- {type: js, url: '/local/lovelace/slider-entity-row.js?1538489424.7996402'}
+- {type: js, url: '/local/lovelace/useful-markdown-card.js?1538489424.7996402'}
+- {type: js, url: '/local/lovelace/gauge-card.js?1538489424.7996402'}
+- {type: js, url: '/local/lovelace/bignumber-card.js?1538489424.7996402'}
+- {type: js, url: '/local/lovelace/column-card.js?1538489424.7996402'}
+- {type: js, url: '/local/lovelace/alarm_control_panel-card.js?1538489424.7996402'}
+- {type: js, url: '/local/lovelace/home-setter.js?1538489424.7996402&v=0.0.1'}
+- {type: js, url: '/local/lovelace/tracker-card.js?1538489424.7996402&v=0.1.5'}
+- {type: js, url: '/local/lovelace/state-card-aftership.js?1538489424.7996402'}
+- {type: js, url: '/local/lovelace/light-slider-element.js?1538489424.7996402'}
+- {type: js, url: '/local/lovelace/group-card.js?1538489424.7996402'}
+- {type: js, url: '/local/lovelace/state-element.js?1538489424.7996402'}
+- {type: js, url: '/local/lovelace/text-element.js?1538489424.7996402'}
+- {type: js, url: '/local/lovelace/username-element.js?1538489424.7996402'}
+- {type: js, url: '/local/lovelace/state-attribute-element.js?1538489424.7996402'}
+- {type: module, url: '/local/lovelace/mini-media-player.js?1538489424.7996402&v=0.5'}
+- {type: js, url: '/local/lovelace/toggle-lock-entity-row.js?1538489424.7996402'}
 - {type: css, url: 'https://fonts.googleapis.com/css?family=Roboto+Condensed'}
 title: Home
 views:
@@ -42,7 +43,7 @@ views:
           - entity: alarm_control_panel.house
             style: {color: white, left: 5%, top: 87%}
             type: state-icon
-          - entity: sensor.front_door_combined
+          - entity: sensor.all_locks
             style: {color: white, left: 14%, top: 86%}
             type: state-icon
           - entity: sensor.mailbox
@@ -155,17 +156,20 @@ views:
             type: horizontal-stack
           type: vertical-stack
         - entities:
-          - {entity: switch.livingroom_tv, icon: 'mdi:television-classic', name: Tv}
-          - {entity: media_player.livingroom_tv, group: true, icon: 'mdi:television-classic',
-            type: 'custom:mini-media-player'}
+          - {entity: switch.livingroom_tv, icon: 'mdi:television-classic', name: Tv,
+            type: 'custom:toggle-lock-entity-row'}
+          - {artwork_border: true, entity: media_player.livingroom_tv, group: true,
+            hide_power: true, icon: 'mdi:television-classic', type: 'custom:mini-media-player'}
           - {entity: switch.livingroom_movie_system, icon: 'mdi:movie', name: Movie
-              system}
-          - {entity: media_player.livingroom_movie_system, group: true, icon: 'mdi:movie',
+              system, type: 'custom:toggle-lock-entity-row'}
+          - {artwork_border: true, entity: media_player.livingroom_movie_system, group: true,
+            hide_power: true, icon: 'mdi:movie', name: Movie system, type: 'custom:mini-media-player'}
+          - {entity: media_player.shield, group: true, hide_power: true, icon: 'mdi:cast',
             type: 'custom:mini-media-player'}
-          - {entity: media_player.shield, group: true, icon: 'mdi:cast', type: 'custom:mini-media-player'}
-          - {entity: media_player.sonos, group: true, icon: 'mdi:speaker-wireless',
-            type: 'custom:mini-media-player'}
-          - {entity: media_player.sovrum, group: true, icon: 'mdi:cast', type: 'custom:mini-media-player'}
+          - {artwork_border: true, entity: media_player.sonos, group: true, icon: 'mdi:speaker-wireless',
+            power_color: true, type: 'custom:mini-media-player'}
+          - {artwork_border: true, entity: media_player.sovrum, group: true, hide_power: true,
+            icon: 'mdi:cast', name: Chromecast Bedroom, type: 'custom:mini-media-player'}
           type: entities
         type: vertical-stack
       - cards:
@@ -297,8 +301,8 @@ views:
           title: Temperatures 7 Days
           type: history-graph
         - entities: [sensor.passage_pir_luminance, sensor.upstairs_hallway_pir_luminance]
-          hours_to_show: 168
-          title: Light 7 Days
+          hours_to_show: 24
+          title: Light 24 Hours
           type: history-graph
         type: custom:vertical-stack-in-card
       type: custom:column-card
@@ -365,7 +369,7 @@ views:
       - {entity: light.gateway_light_34ce008bfc4b, hide_when_off: true, name: Nightlight,
         type: 'custom:slider-entity-row'}
       - {entity: light.walk_in_closet_lights, name: Walk in closet}
-      - {entity: light.stefan_lightstrip, name: Stefan}
+      - {entity: light.stefan_lightstrip, name: Stefan, type: 'custom:toggle-lock-entity-row'}
       show_header_toggle: false
       title: Upstairs
       type: entities
@@ -607,8 +611,6 @@ views:
       type: image
     image: /local/lovelace_ui/camera_background.png
     type: picture-elements
-  - {camera_image: camera.latest_motion, entity: camera.latest_motion, image: null,
-    name: Latest Motion Back Door, show_state: false, type: picture-entity}
   icon: mdi:cctv
   id: cameras
   title: Cameras

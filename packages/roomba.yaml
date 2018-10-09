@@ -57,22 +57,6 @@ input_select:
      - 'Not Today'
     icon: mdi:robot-vacuum
 
-
-group:
-  vacuum_card:
-    control: hidden
-    view: no
-    name: Roomba
-    entities:
-      - input_select.roomba_mode
-      - switch.roomba_combined
-      - sensor.roomba_docked
-      - switch.roomba
-      - switch.roomba_dock
-      - switch.roomba_dock_living_room
-      - switch.roomba_living_room
-      # - sensor.vacuumed_today 
-
 automation:
   - alias: 'Vacuum Ask When Everyone Is Away'
     initial_state: 'on'

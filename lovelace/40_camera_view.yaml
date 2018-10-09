@@ -138,12 +138,12 @@ cards:
           width: 11%
           
           
-  - type: picture-entity
-    show_state: false
-    name: Latest Motion Back Door
-    image:
-    entity: camera.latest_motion
-    camera_image: camera.latest_motion
+  # - type: picture-entity
+  #   show_state: false
+  #   name: Latest Motion Back Door
+  #   image:
+  #   entity: camera.latest_motion
+  #   camera_image: camera.latest_motion
 
   # - type: picture-elements
   #   image: /local/lovelace_ui/camera_background.png

@@ -12,16 +12,14 @@ class ChargingStation(Base):
 
         self.plug = "switch.bike_plug_switch"
         self.power_sensor_idle = "sensor.ebike_charger"
-        self.isa = PEOPLE['Isa']['device_tracker']
         self.bike = "device_tracker.tile_bike"
-
+        self.snoozed = False
         self.reminder_handle = None
-        self.start_quiet = globals.notification_mode["start_quiet_weekday"]
-        self.stop_quiet = globals.notification_mode["stop_quiet_weekday"]
 
+        self.listen_event(self.snooze_reminder, "ios.notification_action_fired", actionName = "CHARGE_TOMORROW")
 
         self.listen_state(self.coming_home, self.bike, new = "home")
-        self.listen_state(self.turn_off_charger, self.power_sensor_idle, new = "True", duration = 60)
+        self.listen_state(self.turn_off_charger, self.power_sensor_idle, new = "True", duration = 90)
 
     def coming_home(self, entity, attribute, new, old, kwargs):
         if(new != old):
@@ -39,9 +37,9 @@ class ChargingStation(Base):
     def check_charge(self, kwargs):
         self.log("Checking charge")
         if (self.get_state(self.power_sensor_idle) == "True"):
-            if (self.now_is_between(self.stop_quiet, self.start_quiet)):
-                self.log("Reminding to charge ebike battery")
-                self.notification_manager.notify_if_home(person = "Isa", message = "Charge ebike battery!")
+            if self.snoozed is not False:
+                self.data = {"push": {"category":"bike", "thread-id":"bike_charger"}}
+                self.notification_manager.notify_if_home(person = "Isa", message = "Charge ebike battery!", data = self.data)
         else:
             self.log("Reminder canceled")
             self.cancel_timer(self.reminder_handle)
@@ -52,3 +50,15 @@ class ChargingStation(Base):
             self.log("Fully charged, turning off plug")
             self.turn_off(self.plug)
             self.call_service(globals.notify_ios_isa, title = "Ebike plug turned off", message = "Battery fully charged")
+
+    def snooze_reminder(self, event_name, data, kwargs):
+        self.snoozed = True
+
+        self.log("Bike reminder snoozed until tomorrow")
+
+        runtime = datetime.time(1, 0, 0)
+        self.run_once(self.cancel_snooze, runtime)
+    
+    def cancel_snooze(self):
+        self.log("Snoozing stopped")
+        self.snoozed = False

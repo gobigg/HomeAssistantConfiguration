@@ -6,17 +6,17 @@ camera:
   - platform: local_file
     file_path: /config/www/motion/back_door_camera_latest.jpg
     name: Latest motion
-binary_sensor:
-  - platform: ffmpeg_motion
-    name: Back Door Camera Motion
-    input: !secret camera_input
-    repeat: 1
-    repeat_time: 60
+# binary_sensor:
+#   - platform: ffmpeg_motion
+#     name: Back Door Camera Motion
+#     input: !secret camera_input
+#     repeat: 1
+#     repeat_time: 60
     
-sensor:  
-  - platform: template
-    sensors:
-      back_door_camera_movement:
-        friendly_name: 'Back Door Camera Movement'
-        value_template: '{% if is_state("binary_sensor.back_door_camera_motion", "on") %}Movement detected{% else %}No movement{% endif %}'
-        icon_template: '{% if is_state("binary_sensor.back_door_camera_motion", "on") %}mdi:run-fast{% else %}mdi:sleep{% endif %}'
+# sensor:  
+#   - platform: template
+#     sensors:
+#       back_door_camera_movement:
+#         friendly_name: 'Back Door Camera Movement'
+#         value_template: '{% if is_state("binary_sensor.back_door_camera_motion", "on") %}Movement detected{% else %}No movement{% endif %}'
+#         icon_template: '{% if is_state("binary_sensor.back_door_camera_motion", "on") %}mdi:run-fast{% else %}mdi:sleep{% endif %}'

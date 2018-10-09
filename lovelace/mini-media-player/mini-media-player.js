@@ -1,28 +1,43 @@
-class MiniMediaPlayer extends HTMLElement {
+/* mini-media-player - version: v0.7 */
+import { LitElement, html } from 'https://unpkg.com/@polymer/lit-element@^0.6.1/lit-element.js?module';
+
+class MiniMediaPlayer extends LitElement {
   constructor() {
     super();
-    this.attachShadow({ mode: 'open' });
     this._icons = {
-      'playing': 'mdi:play',
-      'paused': 'mdi:pause',
-      'prev': 'mdi:mdi:skip-backward',
-      'next': 'mdi:mdi:skip-forward',
+      'playing': {
+        true: 'mdi:pause',
+        false: 'mdi:play'
+      },
+      'prev': 'mdi:skip-previous',
+      'next': 'mdi:skip-next',
       'power': 'mdi:power',
-      'muted': 'mdi:volume-off',
-      'unmuted': 'mdi:volume-high'
+      'volume_up': 'mdi:volume-high',
+      'volume_down': 'mdi:volume-medium',
+      'mute': {
+        true: 'mdi:volume-off',
+        false: 'mdi:volume-high'
+      },
+      'send': 'mdi:send',
+      'dropdown': 'mdi:chevron-down'
     }
+  }
+
+  static get properties() {
+    return {
+      _hass: Object,
+      config: Object,
+      entity: Object,
+
+      source: String
+    };
   }
 
   set hass(hass) {
     this._hass = hass;
-    const entity = hass.states[this._config.entity];
-    if (entity && entity.state != this._state) {
-      this._state = entity.state;
-      if (entity.attributes != this._attributes) this._attributes = entity.attributes;
-      this._render(entity);
-    } else if (entity && entity.attributes != this._attributes) {
-      this._attributes = entity.attributes;
-      this._render(entity);
+    const entity = hass.states[this.config.entity]
+    if (this.entity !== entity) {
+      this.entity = entity;
     }
   }
 
@@ -31,150 +46,227 @@ class MiniMediaPlayer extends HTMLElement {
       throw new Error('Specify an entity from within the media_player domain.');
     }
 
-    const root = this.shadowRoot;
-    if (!config.icon) config.icon = false;
-    if (config.more_info !== false) config.more_info = true;
+    config.title = config.title || '';
+    config.icon = config.icon || false;
+    config.more_info = (config.more_info !== false ? true : false);
+    config.show_tts = config.show_tts || false;
+    config.show_source = config.show_source || false;
+    config.artwork_border = (config.artwork_border ? true : false);
+    config.group = (config.group ? true : false);
+    config.power_color = (config.power_color ? true : false);
+    config.artwork = config.artwork || 'default';
+    config.volume_stateless = (config.volume_stateless ? true : false);
+    config.hide_power = config.hide_power || false;
 
-    this._card = document.createElement('ha-card');
-    const content = document.createElement('div');
-    content.id = 'content';
-    if (config.group) {
-      content.setAttribute('group', 'true');
-      this._card.setAttribute('style', 'box-shadow: none; background: none;');
-    }
-    this._card.style.cursor = config.more_info ? 'pointer' : 'default';
-    this._card.appendChild(this._renderStyle());
-    this._card.appendChild(content);
-    root.appendChild(this._card);
-    this._config = Object.assign({}, config);
+    this.config = config;
   }
 
-  _render(entity) {
-    const config = this._config;
-    const root = this.shadowRoot;
-    const card = root.lastChild;
+  shouldUpdate(changedProps) {
+    const entity = changedProps.has('entity') || changedProps.has('source');
+    const initial = changedProps.get('_hass') == undefined;
+    if (initial || entity) return true;
+  }
 
-    if (config.title) card.header = config.title;
-    if (!config.icon) {
-      this._config.icon = this._attributes['icon'] || 'mdi:cast';
-    }
+  render({_hass, config, entity} = this) {
+    if (!entity) return;
+    const name = config.name || this._getAttribute(entity, 'friendly_name')
+    const attributes = entity.attributes;
+    const active = (entity.state !== 'off' && entity.state !== 'unavailable');
+    const has_artwork = (attributes.entity_picture && attributes.entity_picture != '');
 
-    if (this._state) {
-      root.getElementById('content').innerHTML = `
+    if (!config.icon) config.icon = attributes['icon'] || 'mdi:cast';
+
+    return html`
+      ${this._style()}
+      <ha-card group=${config.group}
+        more-info=${config.more_info} ?has-title=${config.title !== ''}
+        artwork=${config.artwork} has-artwork=${has_artwork}
+        @click='${(e) => this._handleMore()}'>
+        <div id='artwork-cover'
+          style='background-image: url("${attributes.entity_picture}")'>
+        </div>
+        <header>${config.title}</header>
         <div class='flex justify'>
           <div>
-            ${this._renderIcon()}
-            ${this._renderMediaInfo()}
-          </div>
-          <div>
-            ${this._state == 'unavailable' ?
-              `<span class='status'>Unavailable</span>`
+            ${active && has_artwork && config.artwork == 'default' ?
+              html`<div id='artwork' border=${config.artwork_border}
+                style='background-image: url("${attributes.entity_picture}")'
+                state=${entity.state}>
+              </div>`
             :
-              `<paper-icon-button class='power' icon='${this._icons["power"]}'></paper-icon-button>`
+              html`<div id='icon'><ha-icon icon='${config.icon}'></ha-icon></div>`
+            }
+            <div class='info'>
+              <div id='playername' has-info=${this._hasMediaInfo(entity)}>
+                ${name}
+              </div>
+              <div id='mediainfo'>
+                <span id='mediatitle'>${this._getAttribute(entity, 'media_title')}</span>
+                <span id='mediaartist'>${this._getAttribute(entity, 'media_artist')}</span>
+              </div>
+            </div>
+          </div>
+          <div class='power-state'>
+            ${entity.state == 'unavailable' ?
+              html`
+                <span id='unavailable'>
+                  ${this._getLabel('state.default.unavailable', 'Unavailable')}
+                </span>`
+            :
+              html`
+                <div class='select flex'>
+                  ${config.show_source ? this._renderSource(entity) : html``}
+                  ${!config.hide_power ? this._renderPower(active) : html``}
+                </div>`
             }
           </div>
         </div>
-        ${this._state !== 'off' && this._state !== 'unavailable' ? this._renderMediaControls() : '' }
-      `;
+        ${active ? this._renderMediaControls(entity) : html``}
+        ${config.show_tts ? this._renderTts() : html``}
+      </ha-card>`;
+  }
 
-      card.addEventListener('click', e => {
-        e.stopPropagation();
-        if (this._config.more_info) {
-          this._fire('hass-more-info', { entityId: this._config.entity });
-        };
-      });
-      if (this._state !== 'unavailable') {
-        let power = card.querySelector('.power');
-        power.addEventListener('click', e => this._toggle(e));
+  _renderPower(active) {
+    return html`
+      <paper-icon-button id='power-button'
+        icon=${this._icons["power"]}
+        @click='${(e) => this._callService(e, "toggle")}'
+        ?color=${this.config.power_color && active}>
+      </paper-icon-button>`;
+  }
 
-        if (this._state !== 'off') this._setupMediaControls();
-      };
+  _renderSource(entity) {
+    const sources = entity.attributes['source_list'] || false;
+    const source = entity.attributes['source'] || '';
+
+    if (sources) {
+      const selected = sources.indexOf(source);
+      return html`
+        <span id='source'>
+          ${this.source || source}
+        </span>
+        <paper-menu-button slot='dropdown-trigger'
+          @click='${(e) => e.stopPropagation()}'>
+          <paper-icon-button icon=${this._icons['dropdown']} slot='dropdown-trigger'></paper-icon-button>
+          <paper-listbox id='list' slot='dropdown-content' selected=${selected}
+            @click='${(e) => this._handleSource(e)}'>
+            ${sources.map(item => html`<paper-item value=${item}>${item}</paper-item>`)}
+          </paper-listbox>
+        </paper-menu-button>`;
     }
   }
 
-  _renderIcon() {
-    if (this._attributes.entity_picture && this._attributes.entity_picture != '') {
-      return `<div class='artwork' style='background-image: url("${this._attributes.entity_picture}")'></div>`;
-    } else {
-      return `<div class='artwork'><ha-icon icon='${this._config.icon}'> </ha-icon></div>`;
-    }
-  }
+  _renderMediaControls(entity) {
+    const playing = entity.state == 'playing';
 
-  _renderMediaInfo() {
-    return `
-      <div class='info'>
-        <div class='playername' ${this._hasMediaInfo() ? `has-info='true'` : '' } >${this._getAttribute('friendly_name')}</div>
-        <div class='mediainfo'>
-          ${this._hasAttribute('media_title') ? `<span class='mediatitle'>${this._getAttribute('media_title')}</span>` : '' }
-          ${this._hasAttribute('media_artist') ? `<span class='mediaartist'>- ${this._getAttribute('media_artist')}</span>` : '' }
-        </div>
-      </div>`;
-  }
-
-  _renderMediaControls() {
-    const volumeSliderValue = this._attributes.volume_level * 100;
-
-    return `
-      <div class='flex justify mediacontrols'>
-        <div>
-          <paper-icon-button class='mute' icon='${this._attributes.is_volume_muted ? this._icons[`muted`] : this._icons[`unmuted`]}'></paper-icon-button>
-        </div>
-        <paper-slider ${this._attributes.is_volume_muted ? 'disabled' : ''}
-          ignore-bar-touch pin role='slider' min='0' max='100' value='${volumeSliderValue}' class='flex'>
-        </paper-slider>
+    return html`
+      <div id='mediacontrols' class='flex justify flex-wrap' ?wrap=${this.config.volume_stateless}>
+        ${this._renderVolControls(entity)}
         <div class='flex'>
-          <paper-icon-button class='prev' icon='${this._icons["prev"]}'></paper-icon-button>
-          <paper-icon-button class='play-pause' icon='${this._state == 'playing' ? this._icons['paused'] : this._icons['playing'] }'></paper-icon-button>
-          <paper-icon-button class='next' icon='${this._icons["next"]}'></paper-icon-button>
+          <paper-icon-button id='prev-button' icon=${this._icons["prev"]}
+            @click='${(e) => this._callService(e, "media_previous_track")}'>
+          </paper-icon-button>
+          <paper-icon-button id='play-button'
+            icon=${this._icons.playing[playing]}
+            @click='${(e) => this._callService(e, "media_play_pause")}'>
+          </paper-icon-button>
+          <paper-icon-button id='next-button' icon=${this._icons["next"]}
+            @click='${(e) => this._callService(e, "media_next_track")}'>
+          </paper-icon-button>
         </div>
       </div>`;
   }
 
-  _setupMediaControls() {
-    const root = this.shadowRoot;
-    let mute = root.querySelector('.mute');
-    mute.addEventListener('click', e => this._toggleMute(e));
-
-    let slider = root.querySelector('paper-slider');
-    slider.addEventListener('change', e => this._handleVolumeChange(e));
-    slider.addEventListener('click', e => this._handleVolumeChange(e));
-
-    let prev = root.querySelector('.prev');
-    let next = root.querySelector('.next');
-    let playPause = root.querySelector('.play-pause');
-    prev.addEventListener('click', e => this._callService(e, 'media_previous_track'));
-    next.addEventListener('click', e => this._callService(e, 'media_next_track'));
-    playPause.addEventListener('click', e => this._callService(e, 'media_play_pause'));
+  _renderVolControls(entity) {
+    if (this.config.volume_stateless) {
+      return this._renderVolButtons(entity);
+    } else {
+      return this._renderVolSlider(entity);
+    }
   }
 
-  _callService(e, service) {
-    e.stopPropagation();
-    this._hass.callService('media_player', service, { 'entity_id': this._config.entity });
+  _renderVolSlider(entity) {
+    const muted = entity.attributes.is_volume_muted || false;
+    const volumeSliderValue = entity.attributes.volume_level * 100;
+
+    return html`
+      <div>
+        <paper-icon-button id='mute-button' icon=${this._icons.mute[muted]}
+          @click='${(e) => this._callService(e, "volume_mute", { is_volume_muted: !muted })}'>
+        </paper-icon-button>
+      </div>
+      <paper-slider id='volume-slider' class='flex' ?disabled=${muted}
+        @change='${(e) => this._handleVolumeChange(e)}'
+        @click='${(e) => this._handleVolumeChange(e)}'
+        min='0' max='100' value=${volumeSliderValue} ignore-bar-touch pin >
+      </paper-slider>`;
   }
 
-  _toggle(e) {
-    e.stopPropagation();
-    this._hass.callService('media_player', 'toggle', {
-      entity_id: this._config.entity
-    });
+  _renderVolButtons(entity) {
+    const muted = entity.attributes.is_volume_muted || false;
+
+    return html`
+      <div class='flex'>
+        <paper-icon-button id='mute-button' icon=${this._icons.mute[true]}
+          @click='${(e) => this._callService(e, "volume_mute", { is_volume_muted: !muted })}'>
+        </paper-icon-button>
+        <paper-icon-button id='volume-down-button' icon=${this._icons.volume_down}
+          @click='${(e) => this._callService(e, "volume_down")}'>
+        </paper-icon-button>
+        <paper-icon-button id='volume-up-button' icon=${this._icons.volume_up}
+          @click='${(e) => this._callService(e, "volume_up")}'>
+        </paper-icon-button>
+      </div>`;
   }
 
-  _toggleMute(e) {
+  _renderTts() {
+    return html`
+      <div id='tts' class='flex justify'>
+        <paper-input id='tts-input' no-label-float
+          placeholder=${this._getLabel('ui.card.media_player.text_to_speak', 'Say')}...
+          @click='${(e) => e.stopPropagation()}'>
+        </paper-input>
+        <div>
+          <paper-button id='tts-send' @click='${(e) => this._handleTts(e)}'>
+            SEND
+          </paper-button>
+        </div>
+      </div>`;
+  }
+
+  _callService(e, service, options, component = 'media_player') {
     e.stopPropagation();
-    this._hass.callService('media_player', 'volume_mute', {
-      entity_id: this._config.entity,
-      is_volume_muted: !this._attributes.is_volume_muted
-    });
+    options = (options === null || options === undefined) ? {} : options;
+    options.entity_id = options.entity_id || this.config.entity;
+    this._hass.callService(component, service, options);
   }
 
   _handleVolumeChange(e) {
     e.stopPropagation();
-    var volPercentage = parseFloat(e.target.value);
-    var vol = volPercentage > 0 ? volPercentage / 100 : 0;
-    this._hass.callService('media_player', 'volume_set', {
-      entity_id: this._config.entity,
-      volume_level: vol
-    });
+    const volPercentage = parseFloat(e.target.value);
+    const vol = volPercentage > 0 ? volPercentage / 100 : 0;
+    this._callService(e, 'volume_set', { volume_level: vol })
+  }
+
+  _handleTts(e) {
+    e.stopPropagation();
+    const input = this.shadowRoot.querySelector('#tts paper-input');
+    const options = { message: input.value };
+    this._callService(e, this.config.show_tts + '_say' , options, 'tts');
+    input.value = '';
+  }
+
+  _handleMore({config} = this) {
+    if(config.more_info)
+      this._fire('hass-more-info', { entityId: config.entity });
+  }
+
+  _handleSource(e) {
+    e.stopPropagation();
+    const source = e.target.getAttribute('value');
+    const options = { 'source': source };
+    this._callService(e, 'select_source' , options);
+    this.source = source;
   }
 
   _fire(type, detail, options) {
@@ -191,68 +283,188 @@ class MiniMediaPlayer extends HTMLElement {
     return e;
   }
 
-  _hasMediaInfo() {
-    if (this._attributes.media_title && this._attributes.media_title !== '') return true;
-    if (this._attributes.media_artist && this._attributes.media_artist !== '') return true;
+  _hasMediaInfo(entity, attr) {
+    if (entity.attributes.media_title && entity.attributes.media_title !== '')
+      return true;
+    if (entity.attributes.media_artist && entity.attributes.media_artist !== '')
+      return true;
     return false;
   }
 
-  _hasAttribute(attr) {
-    if (this._attributes[attr] && this._attributes[attr] !== '') return true;
+  _hasAttribute(entity, attr) {
+    if (entity.ettributes[attr] && entity.ettributes[attr] !== '') return true;
     return false;
   }
 
-  _getAttribute(attr) {
-    return this._attributes[attr] || '';
+  _getAttribute(entity, attr) {
+    return entity.attributes[attr] || '';
   }
 
-  _renderStyle() {
-    const css = document.createElement('style');
-    css.textContent = `
-      #content {
-        padding: 16px;
-      }
-      #content[group] {
-        padding: 0;
-      }
-      .flex {
-        display: flex;
-        display: -ms-flexbox;
-        display: -webkit-flex;
-        flex-direction: row;
-      }
-      .justify {
-        -webkit-justify-content: space-between;
-        justify-content: space-between;
-      }
-      .info {
-        margin-left: 56px;
-      }
-      .artwork {
-        height: 40px;
-        width: 40px;
-        background-size: cover;
-        background-repeat: no-repeat;
-        background-position: center center;
-        border-radius: 100%;
-        text-align: center;
-        line-height: 40px;
-        float: left;
-      }
-      .playername, .status {
-        line-height: 40px;
-      }
-      .playername[has-info] {
-        line-height: 20px;
-      }
-      .mediainfo {
-        color: var(--secondary-text-color);
-      }
-      .mediacontrols {
-        margin-left: 56px;
-      }
+  _getLabel(label, fallback = 'unknown') {
+    const lang = this._hass.selectedLanguage || this._hass.language;
+    const resources = this._hass.resources[lang];
+    return (resources && resources[label] ? resources[label] : fallback);
+  }
+
+  _style() {
+    return html`
+      <style>
+        ha-card {
+          padding: 16px;
+          position: relative;
+        }
+        ha-card header {
+          display: none;
+        }
+        ha-card[has-title] header {
+          display: block;
+          position: relative;
+          font-size: var(--paper-font-headline_-_font-size);
+          font-weight: var(--paper-font-headline_-_font-weight);
+          letter-spacing: var(--paper-font-headline_-_letter-spacing);
+          line-height: var(--paper-font-headline_-_line-height);
+          padding: 24px 16px 16px;
+        }
+        ha-card[has-title] {
+          padding-top: 0px;
+        }
+        ha-card[group='true'] {
+          padding: 0;
+          background: none;
+          box-shadow: none;
+        }
+        ha-card[group='true'][artwork='cover'][has-artwork='true'] .info {
+          margin-top: 10px;
+        }
+        ha-card[more-info='true'] {
+          cursor: pointer;
+        }
+        ha-card[artwork='cover'][has-artwork='true'] #artwork-cover {
+          display: block;
+        }
+        ha-card[artwork='cover'][has-artwork='true'] paper-icon-button,
+        ha-card[artwork='cover'][has-artwork='true'] ha-icon,
+        ha-card[artwork='cover'][has-artwork='true'] .info,
+        ha-card[artwork='cover'][has-artwork='true'] paper-button {
+          color: #FFFFFF;
+        }
+        ha-card[artwork='cover'][has-artwork='true'] paper-input {
+          --paper-input-container-color: #FFFFFF;
+          --paper-input-container-input-color: #FFFFFF;
+        }
+        #artwork-cover {
+          background-size: cover;
+          background-repeat: no-repeat;
+          background-position: center center;
+          display: none;
+          position: absolute;
+          top: 0; left: 0; bottom: 0; right: 0;
+        }
+        #artwork-cover:before {
+          background: #000000;
+          content: '';
+          opacity: .5;
+          position: absolute;
+          top: 0; left: 0; bottom: 0; right: 0;
+        }
+        .flex {
+          display: flex;
+          display: -ms-flexbox;
+          display: -webkit-flex;
+          flex-direction: row;
+        }
+        .justify {
+          -webkit-justify-content: space-between;
+          justify-content: space-between;
+        }
+        .flex-wrap[wrap] {
+          flex-wrap: wrap;
+        }
+        .info, #mediacontrols, #tts {
+          margin-left: 56px;
+          position: relative;
+        }
+        #power-button[color] {
+          color: var(--accent-color);
+        }
+        #artwork, #icon {
+          height: 40px;
+          width: 40px;
+          background-size: cover;
+          background-repeat: no-repeat;
+          background-position: center center;
+          border-radius: 100%;
+          text-align: center;
+          line-height: 40px;
+          float: left;
+        }
+        #icon {
+          color: var(--paper-item-icon-color, #44739e);
+        }
+        #artwork[border='true'] {
+          border: 2px solid var(--primary-text-color);
+          box-sizing: border-box;
+          -moz-box-sizing: border-box;
+          -webkit-box-sizing: border-box;
+        }
+        #artwork[state='playing'] {
+          border-color: var(--accent-color);
+        }
+        #playername, .power-state {
+          line-height: 40px;
+        }
+        #playername[has-info='true'] {
+          line-height: 20px;
+        }
+        #mediainfo {
+          color: var(--secondary-text-color);
+        }
+        ha-card[artwork='cover'] #mediainfo {
+          color: var(--accent-color);
+        }
+        #mediaartist:before {
+          content: '- ';
+        }
+        #mediainfo > span:empty {
+          display: none;
+        }
+        #tts paper-input {
+          flex: 1;
+          -webkit-flex: 1;
+          cursor: text;
+        }
+        paper-button {
+          color: var(--primary-text-color);
+        }
+        paper-input {
+          opacity: .75;
+          --paper-input-container-color: var(--primary-text-color);
+          --paper-input-container-focus-color: var(--accent-color);
+        }
+        paper-input[focused] {
+          opacity: 1;
+        }
+        paper-menu-button {
+          padding: 0;
+        }
+        paper-menu-button paper-icon-button {
+          height: 36px;
+          width: 36px;
+        }
+        .select {
+          padding-left: 10px;
+        }
+        .select span {
+          position: relative;
+          display: block;
+          max-width: 60px;
+          width: auto;
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+        }
+      </style>
     `;
-    return css;
   }
 
   getCardSize() {

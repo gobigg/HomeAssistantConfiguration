@@ -1,0 +1,12 @@
+washer:
+  module: laundry
+  class: Laundry
+  global_dependencies: globals
+  power_sensor: sensor.washer
+  input_select: input_select.washing_machine_status
+  washer_hatch_sensor: binary_sensor.washer_hatch
+  light: light.floorlamp_uplight
+  # constrain_input_boolean: input_boolean.ad_bike_charger,on
+  dependencies:
+    - presence_helper
+    - notification_manager

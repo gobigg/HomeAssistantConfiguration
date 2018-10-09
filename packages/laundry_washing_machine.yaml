@@ -21,17 +21,6 @@ sensor:
         value_template: "{{ states('sensor.washer_plug_power') | int < 3.4 }}"
 
 
-group:
-  laundry_card:
-    name: Laundry
-    entities:
-      - input_select.washing_machine_status
-      - input_select.dryer_status
-      - sensor.washer
-      - sensor.dryer
-      - switch.laundry_line_drying
-      - history_graph.dryer_graph
-
 ## ------------------------------------------------------------------- ##
 automation:
   - alias: Laundry Washing Machine Start
@@ -168,31 +157,31 @@ automation:
               badge: 0
               category: "washer"
 
-  - alias: Laundry Washing Machine Emptied
-    initial_state: 'on'
-    trigger:
-      platform: event
-      event_type: ios.notification_action_fired
-      event_data:
-        actionName: WASHER_EMPTIED
-    action:
-      - service: input_select.select_option
-        data:
-          entity_id: input_select.washing_machine_status
-          option: Idle
-      - service: light.turn_on
-        data:
-          entity_id: light.floorlamp_uplight
-          rgb_color: 
-            - 255
-            - 214
-            - 170
-      - delay: 00:00:20
-      - service: light.turn_off
-        entity_id: light.floorlamp_uplight
-      - service: notify.ios_isabellas_iphone_x
-        data:
-          message: 'The laundry is taken care of'
+  # - alias: Laundry Washing Machine Emptied
+  #   initial_state: 'on'
+  #   trigger:
+  #     platform: event
+  #     event_type: ios.notification_action_fired
+  #     event_data:
+  #       actionName: WASHER_EMPTIED
+  #   action:
+  #     - service: input_select.select_option
+  #       data:
+  #         entity_id: input_select.washing_machine_status
+  #         option: Idle
+  #     - service: light.turn_on
+  #       data:
+  #         entity_id: light.floorlamp_uplight
+  #         rgb_color: 
+  #           - 255
+  #           - 214
+  #           - 170
+  #     - delay: 00:00:20
+  #     - service: light.turn_off
+  #       entity_id: light.floorlamp_uplight
+  #     - service: notify.ios_isabellas_iphone_x
+  #       data:
+  #         message: 'The laundry is taken care of'
 
   - alias: Laundry Washing Machine Snoozed
     initial_state: 'on'

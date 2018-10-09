@@ -176,8 +176,8 @@ cards:
                   - sensor.temperature_downstairs_bathroom
                   - sensor.temperature_stefan
               - type: history-graph
-                title: Light 7 Days
-                hours_to_show: 168
+                title: Light 24 Hours
+                hours_to_show: 24
                 entities:
                   - sensor.passage_pir_luminance
                   - sensor.upstairs_hallway_pir_luminance

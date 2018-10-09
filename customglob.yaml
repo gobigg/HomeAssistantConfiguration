@@ -1,6 +1,5 @@
-# "*.*":
-#   custom_ui_state_card: state-card-custom-ui
-#   show_last_changed: true
+"*.*":
+  custom_ui_state_card: state-card-custom-ui
 
 "sensor.*_exporting*":
   hidden: true

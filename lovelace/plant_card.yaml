@@ -13,6 +13,7 @@ elements:
       top: 27%
       left: 25%
       --ha-label-badge-font-size: 1em
+      # --ha-label-badge-title-font-size: 0em removing label
   - type: state-badge
     entity: sensor.herbs_moisture
     style:

@@ -25,7 +25,7 @@ resources:
   #   type: js
   - url: !resource home-setter/home-setter.js?v=0.0.1
     type: js
-  - url: !resource tracker-card/tracker-card.js?v=0.1.4
+  - url: !resource tracker-card/tracker-card.js?v=0.1.5
     type: js
   - url: !resource aftership/state-card-aftership.js
     type: js
@@ -42,6 +42,8 @@ resources:
   - url: !resource state-attribute-element/state-attribute-element.js
     type: js
   - url: !resource mini-media-player/mini-media-player.js?v=0.5
+    type: module
+  - url: !resource toggle-lock-entity-row/toggle-lock-entity-row.js
     type: js
     
   - url: https://fonts.googleapis.com/css?family=Roboto+Condensed

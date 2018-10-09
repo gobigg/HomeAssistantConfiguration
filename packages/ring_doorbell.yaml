@@ -26,61 +26,7 @@ sensor:
 camera:
   - platform: ring
 
-group:
-  ring_front_door:
-    name: Front Door
-    # control: hidden
-    entities:
-      # - camera.front_door
-      - binary_sensor.ring_front_door_ding
-      - binary_sensor.ring_front_door_motion
-      - sensor.ring_front_door_last_activity
-      - sensor.ring_front_door_last_ding
-      - sensor.ring_front_door_last_motion
-      - sensor.ring_front_door_volume
-      - sensor.ring_front_door_wifi_signal_category
-      - sensor.ring_front_door_wifi_signal_strength
-      - sensor.ring_front_door_battery      
-
 automation:
- ## Automation moved to Appdaemon
-  # - alias: Ring Doorbell Ding Lights
-  #   initial_state: 'on'
-  #   trigger:
-  #     - platform: state
-  #       entity_id: binary_sensor.ring_front_door_ding
-  #       to: 'on'
-  #   condition:
-  #     - condition: sun
-  #       after: sunset
-  #       after_offset: "-00:45:00"
-  #   action:
-  #     - service: python_script.brighten_then_restore
-  #       data_template:
-  #         entity_id: 'light.outdoor_front_light'
-  #     - service: python_script.brighten_then_restore
-  #       data_template:
-  #         entity_id: 'light.hallway_window_light'
-
- ## Automation moved to Appdaemon
-  # - alias:  Ring Doorbell Motion Lights
-  #   initial_state: 'on'
-  #   trigger:
-  #     - platform: state
-  #       entity_id: binary_sensor.ring_front_door_motion
-  #       to: 'on'
-  #   condition:
-  #     - condition: sun
-  #       after: sunset
-  #       after_offset: "-00:45:00"
-  #   action:
-  #     - service: python_script.brighten_then_restore
-  #       data_template:
-  #         entity_id: 'light.outdoor_front_light'
-  #     - service: python_script.brighten_then_restore
-  #       data_template:
-  #         entity_id: 'light.hallway_window_light'
-
   - alias: Ring Doorbell Low Battery
     initial_state: 'on'
     trigger:
@@ -92,30 +38,6 @@ automation:
         data:
           title: 'Ring Doorbell'
           message: 'Low Battery'
-
-  - alias: Ring Doorbell Disconnected
-    initial_state: 'on'
-    trigger:
-      - platform: state
-        entity_id: 'device_tracker.ring'
-        to: 'not_home'
-    action:
-      - service: notify.ios_isabellas_iphone_x
-        data:
-          title: 'Ring Doorbell'
-          message: 'Disconnected from wifi'
-
-  - alias: Ring Doorbell Connected
-    initial_state: 'on'
-    trigger:
-      - platform: state
-        entity_id: 'device_tracker.ring'
-        to: 'home'
-    action:
-      - service: notify.ios_isabellas_iphone_x
-        data:
-          title: 'Ring Doorbell'
-          message: 'Connected to wifi'
 
   - alias: Ring Doorbell Flash Lights
     initial_state: 'on'

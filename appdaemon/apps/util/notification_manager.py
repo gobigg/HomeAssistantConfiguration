@@ -14,8 +14,12 @@ class NotificationManager(Base):
         if self.get_state(PEOPLE[person]['device_tracker']) == "Home":
             if during_quiet is False:
                 if not self.quiet_time():
-                    self.log("Sending notification")
                     self.notify(message, title = title, name = PEOPLE[person]['notifier'])
+                    if title == "":
+                        self.log(f"Sending notification: {message}")
+                    else:
+                        self.log(f"Sending notification: {title}, {message}")
+
             else:
                 self.log("Sending notification during quiet time")
                 self.notify(message, title = title, name = PEOPLE[person]['notifier'])

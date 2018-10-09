@@ -13,14 +13,15 @@ class Alarm(Base):
 
         # self.listen_event(self.keep_state, "plugin_started")
         self.listen_state(self.notify_state, self.alarm)
+        self.listen_event(self.lights_off_away, "ios.notification_action_fired", actionName = "LIGHTS_OFF")
 
         if "devices" in self.args:
             for device in self.split_device_list(self.args["devices"]):
                 self.listen_state(self.arm_or_disarm, device)
 
     def arm_or_disarm(self, entity, attribute, old, new, kwargs):
-        self.log("Alarm state: {}".format(self.get_state(self.alarm)))
         if new != old and new != None:
+            self.log("Alarm state: {}".format(self.get_state(self.alarm)))
             if self.presence_helper.anyone_just_arrived():
                 self.disarm(entity, old, new)
             elif not self.presence_helper.anyone_home():
@@ -59,17 +60,6 @@ class Alarm(Base):
         else:
             self.log("Alarm already disarmed")
 
-    # def keep_state(self, event_name, data, kwargs):
-    #     self.log("Trying to keep state for alarm after restart")
-
-    #     if not self.presence_helper.anyone_home():
-    #         if (self.get_state("input_boolean.cleaning_day") == "off"):
-    #             self.call_service("alarm_control_panel/alarm_arm_away", entity_id=globals.alarm, code=self.args["alarm_code"])
-    #             self.log("Alarm armed away after restart")
-    #         else:
-    #             self.call_service("alarm_control_panel/alarm_arm_home", entity_id=globals.alarm, code=self.args["alarm_code"])
-    #             self.log("Alarm armed home after restart -> Cleaning day")
-
     def notify_state(self, entity, attribute, old, new, kwargs):
         if new != old and new != None:
             if new == "armed_away":
@@ -80,18 +70,11 @@ class Alarm(Base):
                 else:
                     self.data = {"push": { "thread-id":"alarm_control_panel.house"}}
                     self.notify("Good bye!", title = "Alarm armed away", name = PEOPLE["Isa"]['notifier'], data = self.data)
-                    # self.tts_manager.set_volume_level('0.4')
-                    # self.tts_manager.speak('Alarm is armed away')
-                    # self.tts_manager.when_tts_done_do(callback="restore()")
             elif new == "triggered":
                 trigger = self.get_state(self.alarm, attribute = "changed_by")
                 trigger_name = self.get_state(trigger, attribute = "friendly_name")
                 self.data = {"push": { "thread-id":"alarm_control_panel.house"}}
                 self.notify(trigger_name, title = "ALARM TRIGGERED!", name = PEOPLE["Isa"]['notifier'], data = self.data)
-                # if self.presence_helper.isa_home_alone():
-                #     self.tts_manager.set_volume_level('0.5')
-                #     self.tts_manager.speak('The alarm is triggered by {}'.format(trigger_name))
-                #     self.tts_manager.when_tts_done_do(self.tts_manager.restore())
 
             elif new == "warning":
                 trigger = self.get_state(self.alarm, attribute = "changed_by")
@@ -102,3 +85,7 @@ class Alarm(Base):
             else:
                 self.data = {"push": { "thread-id":"alarm_control_panel.house"}}
                 self.notify(new, title = "Alarm", name = PEOPLE["Isa"]['notifier'], data = self.data)
+
+    def lights_off_away(self, event_name, data, kwargs):
+        self.turn_off("group.inside_lights_automations")
+        self.log("Lights turned off")

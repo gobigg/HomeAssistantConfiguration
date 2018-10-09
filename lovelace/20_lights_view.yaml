@@ -135,5 +135,6 @@ cards:
           name: Walk in closet
         - entity: light.stefan_lightstrip
           name: Stefan
+          type: custom:toggle-lock-entity-row
           
     - !include dev_card.yaml

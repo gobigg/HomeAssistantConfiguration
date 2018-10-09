@@ -23,7 +23,6 @@ script:
         data:
           packet:
             - 'JgBYAAABIJITEhI4EhMSExI4EhMSExITEjgSExI4EjgRFBE4EjgSOBITEjgSOBITEjgRFBEUERQROBIUERQROBITEjgSOBI4EgAFJwABIEkSAAxXAAEdShMADQU='
-     
 
 input_select:
   air_cleaner:

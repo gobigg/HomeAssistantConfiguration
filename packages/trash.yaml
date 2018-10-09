@@ -1,8 +1,0 @@
-
-sensor:
-  - platform: template
-    sensors:
-        trash_bin:
-          friendly_name: 'Trash Bin'
-          value_template: "{{ 'Home' if is_state('device_tracker.tile_trash', 'home') else 'Pick up' }}"
-          icon_template: "{{ 'mdi:delete' if is_state('device_tracker.tile_trash', 'home') else 'mdi:delete-restore' }}"

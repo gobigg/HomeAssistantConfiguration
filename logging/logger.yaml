@@ -30,8 +30,8 @@ logs:
   # # homeassistant.helpers.script: info
   # homeassistant.components.light: warn
   # homeassistant.helpers.entity: error
-  # homeassistant.components.ffmpeg: debug
-  # homeassistant.components.ffmpeg_motion: debug
+  homeassistant.components.ffmpeg: debug
+  # homeassistant.components.FFMPEG_motion: debug
   # homeassistant.components.xiaomi: debug
   # homeassistant.components.device_tracker.owntracks: debug
   # homeassistant.components.mqtt: debug

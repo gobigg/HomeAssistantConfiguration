@@ -10,6 +10,26 @@ sensor:
 
   - platform: template
     sensors:
+      front_door_lock:
+        friendly_name: 'Front Door Lock'
+        value_template: '{% if is_state("lock.ytterdorr", "unlocked") %}Unlocked{% elif is_state("lock.ytterdorr", "locked")%}Locked{% else %}Unknown{% endif %}'
+        icon_template: '{% if is_state("lock.ytterdorr", "unlocked") %}mdi:home-lock-open{% elif is_state("lock.ytterdorr", "locked")%}mdi:home-lock{% else %}mdi:comment-question-outline{% endif %}'
+      
+      front_door_combined:
+        friendly_name: 'Front door'
+        value_template: '{{states.sensor.front_door_lock.state}} and {{states.sensor.front_door.state}}'
+        icon_template: '{% if is_state("lock.ytterdorr", "unlocked") %}mdi:home-lock-open{% elif is_state("lock.ytterdorr", "locked")%}mdi:home-lock{% else %}mdi:comment-question-outline{% endif %}'
+
+      yard_door_lock:
+        friendly_name: 'Yard Door Lock'
+        value_template: '{% if is_state("binary_sensor.lock_sensor", "on") %}Unlocked{% elif is_state("binary_sensor.lock_sensor", "off")%}Locked{% else %}Unknown{% endif %}'
+        icon_template: '{% if is_state("binary_sensor.lock_sensor", "on") %}mdi:lock-open-outline{% elif is_state("binary_sensor.lock_sensor", "off")%}mdi:lock-outline{% else %}mdi:lock-question{% endif %}'
+      
+      all_locks:
+        friendly_name: 'Locks'
+        value_template: '{% if is_state("lock.ytterdorr", "unlocked") and is_state("binary_sensor.lock_sensor", "on") %}All unlocked{% elif is_state("lock.ytterdorr", "locked") and is_state("binary_sensor.lock_sensor", "off") %}All locked{% elif is_state("lock.ytterdorr", "unlocked") and is_state("binary_sensor.lock_sensor", "off") %}Front door unlocked{% elif is_state("lock.ytterdorr", "locked") and is_state("binary_sensor.lock_sensor", "on") %}Yard door unlocked{% else %}Unknown{% endif %}'
+        icon_template: '{% if is_state("lock.ytterdorr", "locked") and is_state("binary_sensor.lock_sensor", "off") %}mdi:home-lock{% else %}mdi:home-lock-open{% endif %}'
+      
       unlocked_by:
         friendly_name: "Unlocked by"
         value_template: >-
@@ -30,8 +50,7 @@ sensor:
           {% else %}
             {{states.sensor.unlocked_by.state}}
           {% endif %}
-  - platform: template
-    sensors:
+
       last_action:
         friendly_name: "Last action"
         value_template: >-
@@ -52,12 +71,7 @@ sensor:
           {% else %}
             {{ states.sensor.verisure_mail.attributes.subject }}
           {% endif %}
-  - platform: template
-    sensors:
-      yard_door_lock:
-        friendly_name: 'Yard Door Lock'
-        value_template: '{% if is_state("binary_sensor.lock_sensor", "on") %}Unlocked{% elif is_state("binary_sensor.lock_sensor", "off")%}Locked{% else %}Unknown{% endif %}'
-        icon_template: '{% if is_state("binary_sensor.lock_sensor", "on") %}mdi:lock-open-outline{% elif is_state("binary_sensor.lock_sensor", "off")%}mdi:lock-outline{% else %}mdi:lock-question{% endif %}'
+
 
 automation:
   - alias: Automation Name
