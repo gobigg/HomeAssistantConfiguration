@@ -60,7 +60,7 @@ automation:
       condition: and
       conditions:
         - condition: state
-          entity_id: input_select.isa_status_dropdown
+          entity_id: sensor.presence_isa
           state: 'Home'
         - condition: state
           entity_id: binary_sensor.window_bedroom

@@ -1,7 +1,7 @@
   alexa:
     filter:
       include_entities:
-        - group.inside_lights_automations
+        - light.lights_automation
         - group.outdoor_lights_card
         - light.stairs_lights
         - light.walk_in_closet_lights
@@ -10,7 +10,7 @@
         - script.cleaning_music
         - script.cleaning_time
         - script.cleaning_time_over
-        - script.movie_time
+        - scene.movie_time
         - script.turn_on_shield
         - script.morning_news
       include_domains:
@@ -35,7 +35,7 @@
         - scene
 
     entity_config:
-      group.inside_lights_automations:
+      light.lights_automation:
         name: 'All lights'
         display_categories: 'LIGHT'
       group.outdoor_lights_card:
@@ -62,7 +62,7 @@
       script.cleaning_time_over:
         name: 'Cleaning time over'
         display_categories: 'SWITCH'
-      script.movie_time:
+      scene.movie_time:
         name: 'Movie time'
         display_categories: 'SWITCH'
       script.turn_on_shield:

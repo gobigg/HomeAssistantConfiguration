@@ -1,0 +1,164 @@
+title: Alarm clock
+icon: mdi:clock-outline
+panel: true
+id: kiosk_clock
+cards:
+  - type: vertical-stack
+    cards:
+      - type: picture-elements
+        image: /local/lovelace_ui/sunrise_1.jpg
+        # image: /local/lovelace_ui/night.jpg
+        elements:
+          - type: service-button
+            title: Run gen
+            service: shell_command.lovelace_gen_states 
+            service_data: {}
+            style:
+              top: 30%
+              left: 50%
+          - type: state-label
+            entity: sensor.time
+            style:
+              top: 50%
+              left: 50%
+              font-size: 500%
+              color: rgb(249, 251, 255)
+              font-family: Roboto Condensed
+              font-weight: bold
+              pointer-events: none
+              text-rendering: optimizeLegibility
+              -moz-osx-font-smoothing: grayscale
+              font-smoothing: antialiased
+              -webkit-font-smoothing: antialiased
+              
+          - type: state-badge
+            entity: sensor.temperature_bedroom
+            style:
+              top: 11%
+              left: 95%
+              # --ha-label-badge-font-size: 1em
+
+          - type: service-button
+            title: Good morning
+            service: scene.turn_on
+            service_data:
+              entity_id: scene.morning_lights
+            style:
+              top: 5%
+              left: 0%
+              --primary-color: rgb(249, 251, 255)
+              transform: none
+              width: 200px
+              font-family: Roboto Condensed
+              font-size: 150%
+              # pointer-events: none
+              font-weight: bold
+              border-left-style: solid
+              box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)
+              border-color: rgb(0, 0, 0)
+              background-color: rgb(0, 0, 0, 0.2)
+              padding: 7px
+
+          - type: service-button
+            title: Good night
+            service: script.turn_on
+            service_data:
+              entity_id: script.goodnight
+            style:
+              top: 20%
+              left: 0%
+              --primary-color: rgb(249, 251, 255)
+              transform: none
+              width: 175px
+              font-family: Roboto Condensed
+              font-size: 150%
+              # pointer-events: none
+              font-weight: bold
+              border-left-style: solid
+              box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)
+              border-color: rgb(0, 0, 0)
+              background-color: rgb(0, 0, 0, 0.2)
+              padding: 7px
+          - type: state-label
+            entity: sensor.all_locks
+            style:
+              top: 88%
+              left: 0%
+              color: rgb(255, 255, 255)
+              transform: none
+              font-family: Trebuchet MS
+              text-shadow: 2px 2px black
+              font-size: 90%
+              pointer-events: none
+              font-weight: bold
+              padding: 7px
+          - type: custom:text-element
+            text: " "
+            style:
+              top: 85%
+              left: 0%
+              color: rgb(255, 255, 255)
+              transform: none
+              font-family: Trebuchet MS
+              text-shadow: 2px 2px black
+              font-size: 90%
+              width: 100%
+              pointer-events: none
+              font-weight: bold
+              border-right-style: solid
+              box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)
+              border-color: rgb(0, 0, 0)
+              background-color: rgb(0, 0, 0, 0.2)
+              padding: 35px
+          - type: state-icon
+            entity: input_boolean.guest_mode
+            tap_action: toggle
+            style:
+              top: 84%
+              left: 93%
+              color: rgb(255, 255, 255)
+              transform: none
+              padding: 7px
+          - type: state-label
+            entity: input_boolean.guest_mode
+            tap_action: toggle
+            style:
+              top: 90%
+              left: 93%
+              color: rgb(255, 255, 255)
+              transform: none
+              padding: 7px
+          - type: state-icon
+            entity: input_boolean.cleaning_day
+            tap_action: toggle
+            style:
+              top: 84%
+              left: 86%
+              color: rgb(255, 255, 255)
+              transform: none
+              padding: 7px
+          - type: state-label
+            entity: input_boolean.cleaning_day
+            tap_action: toggle
+            style:
+              top: 90%
+              left: 86%
+              color: rgb(255, 255, 255)
+              transform: none
+              padding: 7px
+          - type: state-icon
+            entity: sensor.ebike_charging
+            style:
+              top: 84%
+              left: 79%
+              transform: none
+              padding: 7px
+          - type: state-label
+            entity: sensor.ebike_charging
+            tap_action: toggle
+            style:
+              top: 90%
+              left: 79%
+              color: rgb(255, 255, 255)
+              transform: none
+              padding: 7px

@@ -1,11 +1,4 @@
 homeassistant:
-  # customize_glob:
-  #   light.*:
-  #     state_card_mode: break-slider
-  #     stretch_slider: true
-  #     slider_theme:
-  #       pin: true
-  #     confirm_controls: true
   customize:
     light.hallway_window_light:
       icon: mdi:lamp
@@ -76,58 +69,158 @@ homeassistant:
     light.walk_in_closet_lights:
       icon: mdi:wall-sconce
 
-script:
-  movie_time:
-    alias: Movie Time
-    sequence:
-      - service: light.turn_off
-        data:
-          entity_id: light.living_room_spotlights_level, light.passage_ceiling_spotlights_level, light.kitchen_ceiling_spotlights_level, light.dining_area_ceiling_light_level, light.floorlamp_reading_light, light.floorlamp_uplight, light.isa_ceiling_light
-          transition: 30
-      - service: light.turn_on
-        data:
-          entity_id: light.living_room_ceiling_light_level, light.stairs_lights_lights, light.upstairs_hallway_ceiling_light_level
-          brightness: 10
+scene:
+  - name: Morning Lights
+    entities:
+      light.living_room_ceiling_light_level:
+        state: on
+        brightness: 50
+        transition: 30
+      light.kitchen_ceiling_spotlights_level:
+        state: on
+      light.passage_ceiling_spotlights_level:
+        state: on
+        brightness: 50
+        transition: 30
+      light.upstairs_hallway_ceiling_light_level:
+        state: on
+        brightness: 50
+      light.floorlamp_uplight:
+        state: on
+        brightness: 50
+        transition: 30
+      light.stairs_lights:
+        state: on
+        brightness: 50
+        transition: 30
+
+  - name: Dark Lights On
+    entities:
+      light.outdoor_front_light:
+        state: on
+        brightness: 127
+        transition: 60
+      light.outdoor_yard_light:
+        state: on
+        brightness: 127
+        transition: 60
+      light.hallway_window_light:
+        state: on
+        brightness: 45
+        transition: 60
+      light.outdoor_hanging_lights: on
+      
+  - name: Dark Lights Off
+    entities:
+      light.outdoor_front_light:
+        state: off
+        transition: 30
+      light.outdoor_yard_light:
+        state: off
+        transition: 30
+      light.hallway_window_light:
+        state: off
+        transition: 30
+      light.outdoor_hanging_lights: off
+
+      
+  - name: Ceiling lights
+    entities:
+      light.living_room_ceiling_light_level:
+        state: on
+        brightness: 50
+        transition: 30
+      light.living_room_spotlights_level:
+        state: on
+        brightness: 50
+        transition: 30
+      light.passage_ceiling_spotlights_level:
+        state: on
+        brightness: 50
+        transition: 30
+      light.upstairs_hallway_ceiling_light_level:
+        state: on
+        brightness: 50
+        transition: 30
+      light.dining_area_ceiling_light_level:
+        state: on
+        brightness: 50
+        transition: 30
+        
+  - name: Welcome Home
+    entities:
+      light.living_room_ceiling_light_level:
+        state: on
+        brightness: 50
+      light.living_room_spotlights_level:
+        state: on
+        brightness: 50
+      light.passage_ceiling_spotlights_level:
+        state: on
+        brightness: 50
+      light.upstairs_hallway_ceiling_light_level:
+        state: on
+        brightness: 50
+      light.floorlamp_uplight:
+        state: on
+        brightness: 50
+      light.outdoor_lights:
+        state: on
+        brightness: 255
+        
+  - name: Movie Time
+    entities:
+      light.living_room_spotlights_level:
+        state: off
+        transition: 30
+      light.passage_ceiling_spotlights_level:
+        state: off
+        transition: 30
+      light.kitchen_ceiling_spotlights_level:
+        state: off
+        transition: 30
+      light.dining_area_ceiling_light_level:
+        state: off
+        transition: 30
+      light.floorlamp_reading_light:
+        state: off
+        transition: 30
+      light.floorlamp_uplight:
+        state: off
+        transition: 30
+      light.isa_ceiling_light:
+        state: off
+        transition: 30
+      light.living_room_ceiling_light_level:
+        state: on
+        brightness: 10
+      light.stairs_lights:
+        state: on
+        brightness: 10
+      light.upstairs_hallway_ceiling_light_level:
+        state: on
+        brightness: 10
           
-  occusim_stefan_on:
-    alias: Occusim Stefan On
-    sequence:
-      - service: light.turn_on
-        data:
-          entity_id: light.stefan_lightstrip
-          brightness: 255
-          color_temp: 153
+  # occusim_stefan_on:
+  #   alias: Occusim Stefan On
+  #   sequence:
+  #     - service: light.turn_on
+  #       data:
+  #         entity_id: light.stefan_lightstrip
+  #         brightness: 255
+  #         color_temp: 153
 
-  occusim_stefan_normal:
-    alias: Occusim Stefan Normal
-    sequence:
-      - service: light.turn_on
-        data:
-          entity_id: light.stefan_lightstrip
-          brightness: 200
-          rgb_color:
-            - 70
-            - 255
-            - 236
-
-  dark_lights_off:
-    alias: Dark Lights Off
-    sequence:
-      - service: light.turn_off
-        data:
-          entity_id: light.outdoor_front_light
-          transition: 30
-      - service: light.turn_off
-        data:
-          entity_id: light.outdoor_yard_light
-          transition: 30
-      - service: light.turn_off
-        data:
-          entity_id: light.hallway_window_light
-          transition: 30
-      - service: light.turn_off
-        entity_id: light.outdoor_hanging_lights
-
+  # occusim_stefan_normal:
+  #   alias: Occusim Stefan Normal
+  #   sequence:
+  #     - service: light.turn_on
+  #       data:
+  #         entity_id: light.stefan_lightstrip
+  #         brightness: 200
+  #         rgb_color:
+  #           - 70
+  #           - 255
+  #           - 236
 light:
   - platform: rfxtrx
     signal_repetitions: 3
@@ -187,38 +280,8 @@ light:
       # - light.stefan_lightstrip
       - light.upstairs_hallway_ceiling_light_level
       - light.gateway_light_34ce008bfc4b
-
-group:
-  lights:
-    control: hidden
-    name: Lights
-    entities:
-      - input_text.lights_tiles
-      # - group.outdoor_lights_card
-      - light.outdoor_lights
-      - light.bedroom_ceiling_light
-      - light.bedside_lamp
-      - light.dining_area_ceiling_light_level  
-      - light.kitchen_ceiling_spotlights_level
-      - light.floorlamp_reading_light
-      - light.christmas_candelabra
-      - light.storage_christmas_candelabra
-      - light.floorlamp_uplight
-      - light.hallway_window_light
-      - light.isa_ceiling_light
-      - light.living_room_ceiling_light_level
-      - light.living_room_spotlights_level
-      - light.passage_ceiling_spotlights_level
-      - light.stairs_lights_lights
-      - light.walk_in_closet_lights
-      # - light.stefan_ceiling_light
-      - light.stefan_lightstrip
-      - light.upstairs_hallway_ceiling_light_level
-      - light.gateway_light_34ce008bfc4b
-
-# for automations, without Stefans lights
-  inside_lights_automations:
-    name: Inside Lights Without Stefan
+  - platform: group
+    name: 'Lights automation'
     entities:
       - light.bedroom_ceiling_light
       - light.bedside_lamp

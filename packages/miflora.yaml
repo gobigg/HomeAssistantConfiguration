@@ -19,14 +19,14 @@ homeassistant:
 
       
 
-group:
-  plant_card:
-    view: no
-    name: Plants
-    entities:
-      - plant.herbs
-      - plant.small_chili
-      - plant.big_chili
+# group:
+#   plant_card:
+#     view: no
+#     name: Plants
+#     entities:
+#       - plant.herbs
+#       - plant.small_chili
+#       - plant.big_chili
 
 sensor:
   - platform: min_max

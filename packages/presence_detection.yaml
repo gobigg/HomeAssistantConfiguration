@@ -1,18 +1,17 @@
 ## From https://philhawthorne.com/making-home-assistants-presence-detection-not-so-binary/
 homeassistant:
   customize:     
-    device_tracker.isabella:
-      entity_picture: /local/Isa_BW.jpg
     sensor.presence_isa:
       entity_picture: /local/Isa_BW.jpg
+
     device_tracker.isabellas_iphone_x_wifi:
       icon: mdi:cellphone-iphone
     device_tracker.isabellas_iphone_x_bt:
       icon: mdi:bluetooth
     sensor.presence_stefan:
       entity_picture: /local/Stefan.jpg
-    device_tracker.stefan:
-      entity_picture: /local/Stefan.jpg
+    sensor.trash:
+      icon: mdi:delete
 
 sensor:
   - platform: mqtt
@@ -43,6 +42,52 @@ sensor:
     # unit_of_measurement: '%'
     name: stefan_iphone_7_bt
 
+  - platform: mqtt
+    state_topic: 'monitor/home/B0:CA:68:65:A4:39'
+    # value_template: '{{ value_json.confidence }}'
+    # unit_of_measurement: '%'
+    value_template: >
+     {% if float(value_json.confidence) > 0 %}
+      home
+     {% else %}
+      not_home
+     {% endif %}
+    json_attributes:
+      - "confidence"
+    name: isabellas_iphone_x_monitortest
+
+  - platform: mqtt
+    state_topic: 'monitor/home/C0:D0:12:CB:9A:DF'
+    value_template: >
+     {% if float(value_json.confidence) > 0 %}
+      home
+     {% else %}
+      not_home
+     {% endif %}
+    json_attributes:
+      - "confidence"
+    # value_template: '{{ value_json.confidence }}'
+    # unit_of_measurement: '%'
+    name: stefan_iphone_7_monitortest
+
+  - platform: mqtt
+    state_topic: 'monitor/home/FF:FF:50:02:14:21'
+    value_template: >
+     {% if float(value_json.confidence) > 0 %}
+      home
+     {% else %}
+      not_home
+     {% endif %}
+    json_attributes:
+      - "confidence"
+    # value_template: '{{ value_json.confidence }}'
+    # unit_of_measurement: '%'
+    name: Trash
+
+  - platform: mqtt
+    state_topic: 'monitor/home/status'
+    name: Monitor
+
 group:
   persons:
     view: no
@@ -53,8 +98,6 @@ group:
       - device_tracker.stefan_iphone_7_wifi
       - device_tracker.stefan_iphone_7
       - sensor.stefan_iphone_7_bt
-      # - input_boolean.stefan_home
-      # - input_boolean.isa_home
       
   isabella:
     name: Isabella
@@ -68,7 +111,6 @@ group:
       - device_tracker.stefan_iphone_7_wifi
       - device_tracker.stefan_iphone_7
       - sensor.stefan_iphone_7_bt
-      # - input_boolean.stefan_home
    
 input_boolean:
   isa_home:
@@ -77,34 +119,6 @@ input_boolean:
   stefan_home:
     name: Stefan Homekit
     # icon: mdi:
-
-input_select:
-  stefan_status_dropdown:
-    name: Stefan
-    options:
-      - Home
-      - Homebound
-      - Just Arrived
-      - Just Left
-      - Away
-      - Work S
-      - Work solna
-      - Golf
-      - Store
-      - Extended Away
-
-  isa_status_dropdown:
-    name: Isa
-    options:
-      - Home
-      - Homebound
-      - Just Arrived
-      - Just Left
-      - Away
-      - Work I
-      - Golf
-      - Store
-      - Extended Away
 
 proximity:
   home_isa: 
@@ -121,259 +135,15 @@ proximity:
     unit_of_measurement: km
 
 automation:
-  - alias: Presence just arrived
-    initial_state: 'on'
+  - alias: Presence MQTT event
     trigger:
-      - platform: state
-        entity_id: group.stefan
-        from: 'not_home'
-        to: 'home'
-      - platform: state
-        entity_id: group.isabella
-        from: 'not_home'
-        to: 'home'
+    - platform: mqtt
+      topic: 'monitor/home/#'
     action:
-      - service: input_select.select_option
-        data_template:
-          entity_id: >
-            {% if trigger.entity_id == 'group.stefan' %}
-              input_select.stefan_status_dropdown
-            {% else %}
-              input_select.isa_status_dropdown
-            {% endif %}
-          option: >
-            {% if trigger.entity_id == 'group.stefan' %}
-              {% if states.input_select.stefan_status_dropdown.state == 'Just Left' %}
-                Home
-              {% else %}
-                Just Arrived
-              {% endif %}
-            {% else %}
-              {% if states.input_select.isa_status_dropdown.state == 'Just Left' %}
-                Home
-              {% else %}
-                Just Arrived
-              {% endif %}
-            {% endif %}
-
-  - alias: Presence home
-    initial_state: 'on'
-    trigger:
-      - platform: state
-        entity_id: input_select.stefan_status_dropdown
-        to: 'Just Arrived'
-        for:
-          minutes: 10
-      - platform: state
-        entity_id: input_select.isa_status_dropdown
-        to: 'Just Arrived'
-        for:
-          minutes: 10
-      - platform: state
-        entity_id: input_select.stefan_status_dropdown
-        from: 'Just Left'
-        to: 'Just Arrived'
-      - platform: state
-        entity_id: input_select.isa_status_dropdown
-        from: 'Just Left'
-        to: 'Just Arrived'
-    action:
-      - service: input_select.select_option
-        data_template:
-          entity_id: >
-            {% if trigger.entity_id == 'input_select.stefan_status_dropdown' %}
-              input_select.stefan_status_dropdown
-            {% else %}
-              input_select.isa_status_dropdown
-            {% endif %}
-          option: Home
-
-  - alias: Presence just left
-    initial_state: 'on'
-    trigger:
-      - platform: state
-        entity_id: group.stefan
-        from: 'home'
-        to: 'not_home'
-      - platform: state
-        entity_id: group.isabella
-        from: 'home'
-        to: 'not_home'
-    action:
-      - service: input_select.select_option
-        data_template:
-          entity_id: >
-            {% if trigger.entity_id == 'group.stefan' %}
-              input_select.stefan_status_dropdown
-            {% else %}
-              input_select.isa_status_dropdown
-            {% endif %}
-          option: Just Left
-
-  - alias: Presence away
-    initial_state: 'on'
-    trigger:
-      - platform: state
-        entity_id: input_select.stefan_status_dropdown
-        to: 'Just Left'
-        for:
-          minutes: 5
-      - platform: state
-        entity_id: input_select.isa_status_dropdown
-        to: 'Just Left'
-        for:
-          minutes: 5
-      - platform: zone
-        entity_id: device_tracker.stefan_iphone_7
-        zone: zone.work_s
-        event: leave
-      - platform: zone
-        entity_id: device_tracker.isabellas_iphone_x
-        zone: zone.work_i
-        event: leave
-      - platform: zone
-        entity_id: device_tracker.stefan_iphone_7
-        zone: zone.store
-        event: leave
-      - platform: zone
-        entity_id: device_tracker.isabellas_iphone_x
-        zone: zone.store
-        event: leave
-      - platform: zone
-        entity_id: device_tracker.stefan_iphone_7
-        zone: zone.golf
-        event: leave
-      - platform: zone
-        entity_id: device_tracker.isabellas_iphone_x
-        zone: zone.golf
-        event: leave
-    action:
-      - service: input_select.select_option
-        data_template:
-          entity_id: >
-            {% if trigger.entity_id == 'input_select.stefan_status_dropdown' or trigger.entity_id == 'device_tracker.stefan_iphone_7' %}
-              input_select.stefan_status_dropdown
-            {% else %}
-              input_select.isa_status_dropdown
-            {% endif %}
-          option: Away
-
-  - alias: Presence extended away
-    initial_state: 'on'
-    trigger:
-      - platform: state
-        entity_id: input_select.stefan_status_dropdown
-        to: 'Away'
-        for:
-          hours: 24
-      - platform: state
-        entity_id: input_select.isa_status_dropdown
-        to: 'Away'
-        for:
-          hours: 24
-    action:
-      - service: input_select.select_option
-        data_template:
-          entity_id: >
-            {% if trigger.entity_id == 'input_select.stefan_status_dropdown' %}
-              input_select.stefan_status_dropdown
-            {% else %}
-              input_select.isa_status_dropdown
-            {% endif %}
-          option: Extended Away
-
-  # - alias: Presence work
-  #   trigger:
-  #     - platform: zone
-  #       entity_id: device_tracker.stefan_iphone_7
-  #       zone: zone.work_s
-  #       event: enter
-  #     - platform: zone
-  #       entity_id: device_tracker.isabellas_iphone_x
-  #       zone: zone.work_i
-  #       event: enter
-  #   action:
-  #     - service: input_select.select_option
-  #       data_template:
-  #         entity_id: >
-  #           {% if trigger.entity_id == 'device_tracker.stefan_iphone_7' %}
-  #             input_select.stefan_status_dropdown
-  #           {% else %}
-  #             input_select.isa_status_dropdown
-  #           {% endif %}
-  #         option: Work
-
-  # - alias: Presence golf
-  #   trigger:
-  #     - platform: zone
-  #       entity_id: device_tracker.stefan_iphone_7
-  #       zone: zone.golf
-  #       event: enter
-  #     - platform: zone
-  #       entity_id: device_tracker.isabellas_iphone_x
-  #       zone: zone.golf
-  #       event: enter
-  #   action:
-  #     - service: input_select.select_option
-  #       data_template:
-  #         entity_id: >
-  #           {% if trigger.entity_id == 'device_tracker.stefan_iphone_7' %}
-  #             input_select.stefan_status_dropdown
-  #           {% else %}
-  #             input_select.isa_status_dropdown
-  #           {% endif %}
-  #         option: Golf
-
-  # - alias: Presence store
-  #   trigger:
-  #     - platform: zone
-  #       entity_id: device_tracker.stefan_iphone_7
-  #       zone: zone.store
-  #       event: enter
-  #     - platform: zone
-  #       entity_id: device_tracker.isabellas_iphone_x
-  #       zone: zone.store
-  #       event: enter
-  #   action:
-  #     - service: input_select.select_option
-  #       data_template:
-  #         entity_id: >
-  #           {% if trigger.entity_id == 'device_tracker.stefan_iphone_7' %}
-  #             input_select.stefan_status_dropdown
-  #           {% else %}
-  #             input_select.isa_status_dropdown
-  #           {% endif %}
-  #         option: Store
-
-  - alias: Presence zones
-    initial_state: 'on'
-    trigger:
-      - platform: state
-        entity_id: device_tracker.isabellas_iphone_x
-        to: 'Work I'
-      - platform: state
-        entity_id: device_tracker.stefan_iphone_7
-        to: 'Work S'
-      - platform: state
-        entity_id: device_tracker.stefan_iphone_7, device_tracker.isabellas_iphone_x
-        to: 'Store'
-      - platform: state
-        entity_id: device_tracker.stefan_iphone_7, device_tracker.isabellas_iphone_x
-        to: 'Golf'
-    action:
-      - service: input_select.select_option
-        data_template:
-          entity_id: >
-            {% if trigger.entity_id == 'device_tracker.stefan_iphone_7' %}
-              input_select.stefan_status_dropdown
-            {% else %}
-              input_select.isa_status_dropdown
-            {% endif %}
-          option: "{{ trigger.to_state.state | title }}"
-      - service: notify.ios_isabellas_iphone_x
-        data_template:
-          title: "{{ trigger.to_state.name | title }}"
-          message: "{{ trigger.to_state.state | title }}"
+      event: HASS_MQTT_PRESENCE
+      event_data_template:
+        topic: '{{ trigger.topic }}'
+        payload: '{{ trigger.payload }}'
 
   - alias: Presence Homebound
     initial_state: 'on'
@@ -397,21 +167,3 @@ automation:
           title: "{{ trigger.to_state.name | title }}"
           message: "{{ trigger.to_state.state }}"
 
-
-  - alias: Presence update tracker
-    initial_state: 'on'
-    trigger:
-      - platform: state
-        entity_id: input_select.stefan_status_dropdown
-      - platform: state
-        entity_id: input_select.isa_status_dropdown
-    action:
-      - service: python_script.device_tracker
-        data_template:
-          entity_id: '{{trigger.entity_id}}'
-          meta_entity: >
-            {% if trigger.entity_id == 'input_select.stefan_status_dropdown' %}
-              Stefan
-            {% else %}
-              Isabella
-            {% endif %}

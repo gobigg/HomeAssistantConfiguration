@@ -22,7 +22,7 @@ script:
       - service: script.air_cleaner_quiet
       - service: homeassistant.turn_off
         data:
-          entity_id: group.inside_lights_automations
+          entity_id: light.lights_automation
           transition: 30
       - wait_template: "{{ states.light.bedside_lamp.state == 'off' }}"
       - service: light.turn_on
@@ -63,7 +63,7 @@ automation:
           before: '06:00:00'        
           after: '21:00:00'
         - condition: state
-          entity_id: device_tracker.isabella
+          entity_id: sensor.presence_isa
           state: 'Home'
         - condition: state
           entity_id: sensor.isa_computer
@@ -90,7 +90,7 @@ automation:
           after: '03:30:00'
           before: '12:00:00'
         - condition: state
-          entity_id: device_tracker.isabella
+          entity_id: sensor.presence_isa
           state: 'Home'
     action:
       - service: notify.ios_isabellas_iphone_x

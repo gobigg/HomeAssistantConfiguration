@@ -1,0 +1,5 @@
+sensor:
+  - platform: scrape
+    name: Nacka gator Tweet
+    resource: https://twitter.com/Nackagator
+    select: ".js-tweet-text-container .tweet-text"

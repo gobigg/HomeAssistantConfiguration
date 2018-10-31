@@ -12,7 +12,7 @@ class ChargingStation(Base):
 
         self.plug = "switch.bike_plug_switch"
         self.power_sensor_idle = "sensor.ebike_charger"
-        self.bike = "device_tracker.tile_bike"
+        self.bike = "device_tracker.tile_8b84f9654688b3ec"
         self.snoozed = False
         self.reminder_handle = None
 

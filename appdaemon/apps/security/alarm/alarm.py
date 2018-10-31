@@ -64,7 +64,7 @@ class Alarm(Base):
         if new != old and new != None:
             if new == "armed_away":
                 self.log("Armed away")
-                if self.get_state("group.inside_lights_automations") == "on":
+                if self.get_state("light.lights_automation") == "on":
                     self.data = {"push": {"category":"lights_off_away", "thread-id":"alarm_control_panel.house"}}
                     self.notify("Do you want to turn off lights?", title = "Alarm armed away", name = PEOPLE["Isa"]['notifier'], data = self.data)
                 else:
@@ -87,5 +87,5 @@ class Alarm(Base):
                 self.notify(new, title = "Alarm", name = PEOPLE["Isa"]['notifier'], data = self.data)
 
     def lights_off_away(self, event_name, data, kwargs):
-        self.turn_off("group.inside_lights_automations")
+        self.turn_off("light.lights_automation")
         self.log("Lights turned off")

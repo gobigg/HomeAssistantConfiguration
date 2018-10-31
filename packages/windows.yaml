@@ -10,10 +10,12 @@ sensor:
     sensors:
       dining_area_window:
         friendly_name: 'Dining area window'
+        entity_id: "binary_sensor.dining_area_window_sensor_sensor"
         value_template: '{% if is_state("binary_sensor.dining_area_window_sensor_sensor", "on") %}Open{% elif is_state("binary_sensor.dining_area_window_sensor_sensor", "off")%}Closed{% else %}Unknown{% endif %}'
         icon_template: '{% if is_state("binary_sensor.dining_area_window_sensor_sensor", "on") %}mdi:window-open{% elif is_state("binary_sensor.dining_area_window_sensor_sensor", "off")%}mdi:window-closed{% else %}mdi:comment-question-outline{% endif %}'
       bedroom_window:
         friendly_name: 'Bedroom window'
+        entity_id: "binary_sensor.window_bedroom"
         value_template: '{% if is_state("binary_sensor.window_bedroom", "on") %}Open{% elif is_state("binary_sensor.window_bedroom", "off")%}Closed{% else %}Unknown{% endif %}'
         icon_template: '{% if is_state("binary_sensor.window_bedroom", "on") %}mdi:window-open{% elif is_state("binary_sensor.window_bedroom", "off")%}mdi:window-closed{% else %}mdi:comment-question-outline{% endif %}'
 

@@ -3,7 +3,7 @@
     include_entities:
       - media_player.sonos
 
-      - scene.lights_at_dark
+      - scene.dark_lights_on
       - scene.welcome_home
       - scene.watch_tv
       - scene.ceiling_lights
@@ -27,7 +27,7 @@
 
       - script.goodmorning
       - script.goodnight
-      - script.movie_time
+      - scene.movie_time
       - script.house_summary
 
       - sensor.temperature_bedroom
@@ -43,7 +43,7 @@
       - light.stairs_middle_spot
       - light.stairs_top_spot
       - group.outdoor_lights
-      - group.inside_lights_automations
+      - light.lights_automation
       - light.hallway_window_light
       - light.gateway_light_34ce008bfc4b
       - light.outdoor_front_light

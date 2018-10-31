@@ -1,0 +1,9 @@
+trash:
+  module: trash
+  class: Trash
+  global_dependencies: globals
+  DeviceID: "Trash"
+  DeviceMAC: "FF:FF:50:02:14:21"
+  dependencies:
+    - presence_helper
+    - notification_manager

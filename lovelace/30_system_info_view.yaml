@@ -17,6 +17,7 @@ cards:
                 - sensor.system_nas
                 - sensor.system_ipad
                 - sensor.system_ip_camera
+                - sensor.system_dafang
                 - entity: sensor.system_ir_blaster
                   name: IR Hallway
                 - entity: sensor.system_ir_blaster_bedroom
@@ -59,8 +60,17 @@ cards:
                   name: Bed TV
                 - entity: sensor.system_chromecast_bedroom
                   name: Bed CC
-        
-          - type: custom:vertical-stack-in-card
+            - type: glance
+              column_width: calc(100% / 3)
+              entities:
+                - entity: sensor.system_hass_rpi
+                  name: Hass RPi
+                - entity: sensor.system_magic_mirror_rpi
+                  name: Magic Mirror RPi
+                - entity: sensor.system_dashboard_rpi
+                  name: Dashboard RPi
+                  
+          - type: vertical-stack
             cards:          
             - type: glance
               entities:
@@ -125,104 +135,85 @@ cards:
                 - entity: sensor.unlocked_by
                   name: Front door last unlocked by
                   secondary_info: last-changed
-        
+                - entity: sensor.monitor
+                  name: Monitor status
+                  secondary_info: last-changed
+                - entity: sensor.isabellas_iphone_x_monitortest
+                  secondary_info: last-changed
+                - entity: sensor.stefan_iphone_7_monitortest
+                  secondary_info: last-changed
+
           # - type: custom:vertical-stack-in-card
           #   cards:
+          #     - type: glance
+          #       column_width: calc(100% / 2)
+          #       entities:
+          #         - entity: sensor.system_hass_rpi
+          #           name: Hass Rpi
+          #         - entity: sensor.system_magic_mirror_rpi
+          #           name: Magic Mirror
+          #     - type: horizontal-stack
+          #       cards:
+          #         - type: custom:gauge-card
+          #           title: Disk use
+          #           scale: 30px
+          #           measurement: "%"
+          #           entity: sensor.hass_rpi_disk_use_percent
+          #           severity:
+          #             red: 80
+          #             green: 0
+          #             amber: 50
+          #         - type: custom:bignumber-card
+          #           title: Free memory
+          #           scale: 30px
+          #           entity: sensor.hass_rpi_free_memory
+        
           #     - type: entities
           #       entities:
-          #         - entity: input_boolean.show_batteries
-          #           name: Show battery info
-          #           icon: mdi:battery-unknown
-          #     - type: conditional
-          #       conditions:
-          #         - entity: input_boolean.show_batteries
-          #           state: 'on'
-          #       card:
-          #         type: custom:group-card
-          #         card:
-          #           type: entities
-          #         group: group.battery_alert
-          #     - type: conditional
-          #       conditions:
-          #         - entity: input_boolean.show_batteries
-          #           state: 'on'
-          #       card:
-          #         type: custom:group-card
-          #         card:
-          #           type: entities
-          #         group: group.battery_status
-                  
-                  
-          - type: custom:vertical-stack-in-card
-            cards:
-              - type: glance
-                column_width: calc(100% / 2)
-                entities:
-                  - entity: sensor.system_hass_rpi
-                    name: Hass Rpi
-                  - entity: sensor.system_magic_mirror_rpi
-                    name: Magic Mirror
-              - type: horizontal-stack
-                cards:
-                  - type: custom:gauge-card
-                    title: Disk use
-                    scale: 30px
-                    measurement: "%"
-                    entity: sensor.hass_rpi_disk_use_percent
-                    severity:
-                      red: 80
-                      green: 0
-                      amber: 50
-                  - type: custom:bignumber-card
-                    title: Free memory
-                    scale: 30px
-                    entity: sensor.hass_rpi_free_memory
-        
-              - type: entities
-                entities:
-                  - binary_sensor.hass_rpi_critical_disk_use
-                  - sensor.hass_rpi_free_memory
-                  - sensor.hass_rpi_last_boot
-                  - sensor.hass_rpi_uptime
+          #         # - binary_sensor.hass_rpi_critical_disk_use
+          #         - sensor.hass_rpi_free_memory
+          #         - sensor.hass_rpi_last_boot
+          #         - sensor.hass_rpi_uptime
               
           - type: custom:vertical-stack-in-card
             title: Nuc
             cards:
-              - type: horizontal-stack
-                cards:
-                  - type: custom:gauge-card
-                    title: Memory use
-                    scale: 30px
-                    entity: sensor.memory_use_percent
-                    severity:
-                      red: 80
-                      green: 0
-                      amber: 50
-                  - type: custom:gauge-card
-                    title: Disk use
-                    scale: 30px
-                    entity: sensor.disk_use_percent_
-                    severity:
-                      red: 80
-                      green: 0
-                      amber: 50
-              - type: horizontal-stack
-                cards:
-                  - type: custom:bignumber-card
-                    scale: 30px
-                    title: Processor use
-                    entity: sensor.processor_use
-                    min: 0
-                    max: 100
-                    severity:
-                      - value: 70
-                        style: 'var(--label-badge-green)'
-                      - value: 90
-                        style: 'var(--label-badge-yellow)'
-                      - value: 100
-                        style: 'var(--label-badge-red)'
+              - type: gauge
+                title: Memory use
+                # scale: 30px
+                entity: sensor.memory_use_percent
+                severity:
+                  red: 80
+                  green: 0
+                  yellow: 50
+              - type: gauge
+                title: Disk use
+                # scale: 30px
+                entity: sensor.disk_use_percent_
+                severity:
+                  red: 80
+                  green: 0
+                  yellow: 50
+              - type: sensor
+                entity: sensor.processor_use
+                name: Processor Use
+              # - type: horizontal-stack
+              #   cards:
+              #     - type: custom:bignumber-card
+              #       scale: 30px
+              #       title: Processor use
+              #       entity: sensor.processor_use
+              #       min: 0
+              #       max: 100
+              #       severity:
+              #         - value: 70
+              #           style: 'var(--label-badge-green)'
+              #         - value: 90
+              #           style: 'var(--label-badge-yellow)'
+              #         - value: 100
+              #           style: 'var(--label-badge-red)'
                     
               - type: entities
                 entities:
                   - sensor.last_boot
-          - !include dev_card.yaml
+              - !include dev_card.yaml

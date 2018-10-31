@@ -21,11 +21,6 @@ automation:
         data:
           title: 'Hass.io Online'
           message: 'Online'
-      - service: python_script.summary
-      # - service: python_script.mailbox
-      #   data_template:
-      #     state: 'reset'
-
 
   - alias: 'Hass Ready'
     initial_state: 'on'
@@ -37,19 +32,6 @@ automation:
         data:
           title: 'Z-wave network now ready'
           message: 'Home Assistant'
-      - service: python_script.device_tracker
-        data_template:
-          entity_id: 'input_select.stefan_status_dropdown'
-          meta_entity: 'Stefan'
-      - service: python_script.device_tracker
-        data_template:
-          entity_id: 'input_select.isa_status_dropdown'
-          meta_entity: 'Isabella'
-      # - delay:
-      #     minutes: 1
-      # - service: hassio.addon_start
-      #   data:
-      #     addon: a0d7b954_homebridge
       - delay: 00:05  # Waits 5 minutes
       - service: homekit.start
 

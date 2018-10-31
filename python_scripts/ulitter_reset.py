@@ -1,1 +1,0 @@
-hass.states.set('sensor.upstairs_litterbox_visits', 0)

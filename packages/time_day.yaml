@@ -9,13 +9,13 @@ input_select:
     icon: mdi:white-balance-sunny
 
 sensor:
-    - platform: time_date
-      display_options:
-        - 'time'
-        - 'date'
-        - 'date_time'
-        # - 'time_date'
-        # - 'time_utc'
+  - platform: time_date
+    display_options:
+      - 'time'
+      - 'date'
+      - 'date_time'
+      # - 'time_date'
+      # - 'time_utc'
 
 automation:
   ###################################
@@ -78,7 +78,7 @@ automation:
       #   minutes: '/15'
       #   seconds: 00
       - platform: state
-        entity_id: group.inside_lights_automations
+        entity_id: light.lights_automation
         to: 'off'
     condition:
       condition: and
@@ -105,7 +105,7 @@ automation:
         # #   state: 'No movement'
 
         # - condition: state
-        #   entity_id: group.inside_lights_automations
+        #   entity_id: light.lights_automation
         #   state: 'off'
 
         ## All computers off (not reliable, due to sometimes leaving on, how to fix?)

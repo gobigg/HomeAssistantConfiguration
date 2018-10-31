@@ -1,7 +1,7 @@
 title: Dashboard
 icon: mdi:monitor-dashboard
 panel: true
-id: dashboard
+id: kiosk_dashboard
 cards:
   - type: vertical-stack
     cards:
@@ -9,26 +9,98 @@ cards:
         cards:
           - type: vertical-stack
             cards:
-              - !include presence_card.yaml
+              - type: conditional
+                conditions:
+                  - entity: sensor.presence_stefan
+                    state_not: "Home"
+                  - entity: sensor.presence_stefan
+                    state_not: "Just arrived"
+                card:
+                  type: horizontal-stack
+                  cards:
+                    - type: picture-entity
+                      entity: sensor.presence_isa
+                      # show_name: false
+                      image: /local/isa_alt.jpg
+                      show_name: false
+
+                    - type: picture-entity
+                      entity: sensor.presence_stefan
+                      image: /local/Stefan_cropped.jpg
+                      show_name: false
               - !include laundry-roomba_card.yaml
-              - !include plant_card.yaml
-          - type: vertical-stack
+              - type: custom:calendar-card
+                  # name: "Birthdays"
+                showProgressBar: false
+                numberOfDays: 14
+                entities:
+                  - calendar.isabella_alstrom
+          - type: picture-elements
+            image: /local/lovelace_ui/cats.jpg
+            elements:
+              - type: state-label
+                prefix: "Downstairs: "
+                entity: counter.litterbox_downstairs_visits
+                suffix: " visits"
+                style:
+                  top: 5%
+                  left: 0%
+                  color: rgb(255, 255, 255)
+                  transform: none
+                  font-family: Trebuchet MS
+                  text-shadow: 2px 2px black
+                  font-size: 90%
+                  pointer-events: none
+                  font-weight: bold
+                  border-left-style: solid
+                  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)
+                  border-color: rgb(0, 0, 0)
+                  background-color: rgb(0, 0, 0, 0.2)
+                  padding: 7px
+              - type: state-label
+                prefix: "Upstairs: "
+                entity: counter.litterbox_upstairs_visits
+                suffix: " visits"
+                style:
+                  top: 25%
+                  left: 0%
+                  color: rgb(255, 255, 255)
+                  transform: none
+                  font-family: Trebuchet MS
+                  text-shadow: 2px 2px black
+                  font-size: 90%
+                  pointer-events: none
+                  font-weight: bold
+                  border-left-style: solid
+                  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)
+                  border-color: rgb(0, 0, 0)
+                  background-color: rgb(0, 0, 0, 0.2)
+                  padding: 7px
+            # entities:
+            #   - counter.litterbox_downstairs_visits
+            #   - counter.litterbox_upstairs_visits
+          - !include plant_card.yaml
+          - !include bike_card.yaml
+          - !include dev_card.yaml
+          - type: custom:vertical-stack-in-card
             cards:
-              - !include bike_card.yaml
-          - type: vertical-stack
-            cards:
-              - type: custom:vertical-stack-in-card
-                cards:
-                - type: weather-forecast
-                  entity: weather.dark_sky
-              
-                - type: picture-entity
-                  entity: camera.fisksatra_meteogram
-                  show_name: false
-                  show_state: false
-              
-                - type: picture-entity
-                  entity: camera.stockholm_meteogram
-                  show_name: false
-                  show_state: false
-                - !include dev_card.yaml
+            - type: custom:useful-markdown-card
+              content: >
+                # [[sensor.time.state]]
+                
+                [[sensor.date.state]]
+            - type: weather-forecast
+              entity: weather.dark_sky
+            - type: picture-entity
+              entity: camera.fisksatra_meteogram
+              show_name: false
+              show_state: false
+            - type: picture-entity
+              entity: camera.stockholm_meteogram
+              show_name: false
+              show_state: false
+            - type: custom:useful-markdown-card
+              content: >
+                ## @Nackagator
+  
+                [[sensor.nacka_gator_tweet.state]]

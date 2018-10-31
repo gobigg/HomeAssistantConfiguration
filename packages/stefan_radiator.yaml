@@ -56,3 +56,6 @@ switch:
   - platform: switchbot
     name: 'Stefan radiator'  
     mac: 'EA:E1:11:E2:B1:77'
+  - platform: switchbot
+    name: 'switchbot'  
+    mac: 'C9:B0:53:93:69:7D'

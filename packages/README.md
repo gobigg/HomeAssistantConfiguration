@@ -73,7 +73,7 @@ Keeping track of if there is laundry hanging to dry outdoor (on balcony) manuall
 #### laundry_washing_machine
 Sensor and input_select for washing machine (with the help of Fibaro wall plug). Automations for checking what state the washing machine is in and sending notifications and turning a light red (red light temporarely turned off) when it's done, but only under certain circumstances (time and presence). Using actionable notifications for ios.
 
-#### lights_at_dark
+#### dark_lights_on
 Automations for turning on certain lights based on sunset, and turn them off again at night.
 
 #### lights_at_presence

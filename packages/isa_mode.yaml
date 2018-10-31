@@ -1,7 +1,13 @@
-# homeassistant:
-#   customize:
-#     input_boolean.isa_mode:
-#       confirm_controls_show_lock: true
+homeassistant:
+  customize:
+    input_boolean.isa_mode:
+      templates:
+        icon: >
+          if (state === 'on') return 'mdi:account';
+          else if (state === 'off') return 'mdi:account-off';
+        icon_color: >
+          if (state === 'on') return 'rgb(56, 150, 56)';
+          else if (state === 'off') return 'rgb(249, 251, 255)';
 
 input_boolean:
   isa_mode:
@@ -24,8 +30,8 @@ automation:
     initial_state: 'on'
     trigger:
       - platform: state
-        entity_id: device_tracker.isabella
-        to: 'Just Arrived'
+        entity_id: sensor.presence_isa
+        to: 'Just arrived'
       - platform: state
         entity_id: device_tracker.stefan
         to: 'Just Left'
@@ -35,11 +41,11 @@ automation:
         - condition: or
           conditions:
             - condition: state
-              entity_id: device_tracker.isabella
+              entity_id: sensor.presence_isa
               state: 'Home'
             - condition: state
-              entity_id: device_tracker.isabella
-              state: 'Just Arrived'
+              entity_id: sensor.presence_isa
+              state: 'Just arrived'
         - condition: or
           conditions:
             - condition: state
@@ -74,12 +80,12 @@ automation:
     trigger:
       - platform: state
         entity_id: device_tracker.stefan
-        to: 'Just Arrived'
+        to: 'Just arrived'
       - platform: state
         entity_id: device_tracker.stefan
         to: 'Home'
       - platform: state
-        entity_id: device_tracker.isabella
+        entity_id: sensor.presence_isa
         to: 'Just Left'
     condition:
       - condition: state
@@ -96,7 +102,7 @@ automation:
       #   data:
       #     sonos_entity: media_player.sonos
       #     volume: 0.2
-      #     message: 'Stefan just arrived'
+      #     message: 'Stefan Just arrived'
       #     delay: '00:00:10'
 
   - alias: 'TTS Sonos Stefan Leaving Golf Course'

@@ -78,12 +78,13 @@ sensor:
     sensors:
       upstairs_litterbox:
         friendly_name: 'Upstairs Litterbox'
+        entity_id: "binary_sensor.motion_sensor_158d0001a66291"
         value_template: '{% if is_state("binary_sensor.motion_sensor_158d0001a66291", "on") %}In use{% else %}Clear{% endif %}'
         icon_template: '{% if is_state("binary_sensor.motion_sensor_158d0001a66291", "on") %}mdi:cat{% else %}mdi:paw-off{% endif %}'
-  - platform: template
-    sensors:
+
       downstairs_litterbox:
         friendly_name: 'Downstairs Litterbox'
+        entity_id: "binary_sensor.motion_sensor_158d0001a24ef1"
         value_template: '{% if is_state("binary_sensor.motion_sensor_158d0001a24ef1", "on") %}In use{% else %}Clear{% endif %}'
         icon_template: '{% if is_state("binary_sensor.motion_sensor_158d0001a24ef1", "on") %}mdi:cat{% else %}mdi:paw-off{% endif %}'
 

@@ -46,7 +46,7 @@ cards:
                     left: 23%
                     color: white
                 - type: state-icon
-                  entity: sensor.trash_bin
+                  entity: sensor.trash
                   style:
                     top: 86%
                     left: 32%
@@ -273,5 +273,18 @@ cards:
               entity: camera.stockholm_meteogram
               show_name: false
               show_state: false
-                  
+            - type: custom:useful-markdown-card
+              content: >
+                ## @nackagator
+  
+                [[sensor.nacka_gator_tweet.state]]
+                
             - !include dev_card.yaml
+
+          # - type: custom:monster-card
+          #   card:
+          #     type: entities
+          #     title: VMA
+          #   filter:
+          #     include:
+          #     - entity_id: "sensor.vma_*"

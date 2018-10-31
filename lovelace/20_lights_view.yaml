@@ -13,13 +13,13 @@ cards:
           color: rgb(220,220,220)
           color_off: rgb(220,220,220)
         - type: custom:button-card
-          entity: script.goodmorning
+          entity: scene.morning_lights
           icon: mdi:kettle
           size: 50%
           color: rgb(220,220,220)
           color_off: rgb(220,220,220)
         - type: custom:button-card
-          entity: script.movie_time
+          entity: scene.movie_time
           icon: mdi:television-classic
           size: 50%
           color: rgb(220,220,220)
@@ -55,7 +55,7 @@ cards:
             color: rgb(220,220,220)
             color_off: rgb(220,220,220)
           - type: custom:button-card
-            entity: group.inside_lights_automations
+            entity: light.lights_automation
             icon: mdi:flash-off
             size: 50%
             color: rgb(220,220,220)

@@ -2,7 +2,7 @@ type: picture-elements
 image: /local/lovelace_ui/bicycleside.png
 elements:
   - type: state-label
-    entity: device_tracker.tile_bike
+    entity: device_tracker.tile_8b84f9654688b3ec
     prefix: "Bike: "
     style:
       top: 62%

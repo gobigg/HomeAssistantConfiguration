@@ -12,10 +12,15 @@ homeassistant:
       icon: mdi:power-standby
       name: Dafang switch
 
-camera:
-  - platform: ffmpeg
-    name: DaFang
-    input: -rtsp_transport tcp -i rtsp://192.168.1.79:8554/unicast
+# camera:
+#   # - platform: ffmpeg
+#   #   name: DaFang
+#   #   input: !secret dafang_camera_input
+#   - platform: mjpeg
+#     mjpeg_url: !secret motion_eye_upstairs
+#     username: !secret motion_eye_username
+#     password: !secret motion_eye_password
+#     authentication: "basic"
 
 script:
   dafang_up:
