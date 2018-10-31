@@ -1,3 +1,7 @@
+# Lovelace
+### I use [Lovelace gen](https://github.com/thomasloven/homeassistant-lovelace-gen) to split my Lovelace config in this way.
+
+
 ## Custom cards/elements I use/have used
 
 - [Alarm control panel card](https://github.com/ciotlosm/custom-lovelace/tree/master/alarm_control_panel-card)
