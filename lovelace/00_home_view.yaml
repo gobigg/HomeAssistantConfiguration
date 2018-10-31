@@ -17,16 +17,6 @@ cards:
             - type: picture-elements
               image: /local/house-element.jpg
               elements:
-                # - type: icon
-                #   icon: mdi:lightbulb
-                #   entity: light.inside_lights_automation
-                #   tap_action: navigate
-                #   navigation_path: /lovelace/lights
-                #   style:
-                #     top: 20%
-                #     left: 92%
-                #     color: white
-        
                 - type: state-icon
                   entity: alarm_control_panel.house
                   style:
@@ -179,7 +169,9 @@ cards:
                   state_filter:
                     - 'on'
                   card:
-                    type: glance
+                    - type: glance
+                      show_state: false
+                    
               - !include laundry-roomba_card.yaml
               
               - type: entities
@@ -247,20 +239,6 @@ cards:
             # - type: entities
             #   entities:
             #     - switch.stefan_radiator
-        
-            # - type: custom:monster-card
-            #   show_empty: false
-            #   card:
-            #     type: entities
-            #     title: Alerts
-            #     show_header_toggle: true
-            #   filter:
-            #     include:
-            #       # - domain: alert
-            #       # - state: 'on'
-            #       - entity_id: alert.*
-            #     exclude:
-            #       - state: 'idle'
         
           - type: custom:vertical-stack-in-card
             cards:

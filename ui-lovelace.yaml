@@ -4,33 +4,33 @@
 # Any changes made to it will be overwritten the next time the script is run.
 
 resources:
-- {type: js, url: '/local/lovelace/plan-coordinates.js?1540911778.7619576'}
-- {type: js, url: '/local/lovelace/monster-card.js?1540911778.7619576&v=0.2.3'}
-- {type: js, url: '/local/lovelace/light-card.js?1540911778.7619576'}
+- {type: js, url: '/local/lovelace/plan-coordinates.js?1540977538.1301365'}
+- {type: js, url: '/local/lovelace/monster-card.js?1540977538.1301365&v=0.2.3'}
+- {type: js, url: '/local/lovelace/light-card.js?1540977538.1301365'}
 - {type: js, url: 'https://unpkg.com/moment@2.22.2/moment.js'}
-- {type: module, url: '/local/lovelace/calendar-card.js?1540911778.7619576'}
-- {type: js, url: '/local/lovelace/dual-gauge-card.js?1540911778.7619576'}
-- {type: js, url: '/local/lovelace/kiosk.js?1540911778.7619576'}
-- {type: module, url: '/local/lovelace/button-card.js?1540911778.7619576'}
-- {type: js, url: '/local/lovelace/vertical-stack-in-card.js?1540911778.7619576&v=0.0.8'}
-- {type: js, url: '/local/lovelace/slider-entity-row.js?1540911778.7619576'}
-- {type: js, url: '/local/lovelace/useful-markdown-card.js?1540911778.7619576'}
-- {type: js, url: '/local/lovelace/gauge-card.js?1540911778.7619576'}
-- {type: js, url: '/local/lovelace/bignumber-card.js?1540911778.7619576'}
-- {type: js, url: '/local/lovelace/column-card.js?1540911778.7619576'}
-- {type: js, url: '/local/lovelace/alarm_control_panel-card.js?1540911778.7619576'}
-- {type: js, url: '/local/lovelace/entity-attributes-card.js?1540911778.7619576&v=0.1.1'}
-- {type: js, url: '/local/lovelace/home-setter.js?1540911778.7619576&v=0.0.1'}
-- {type: js, url: '/local/lovelace/tracker-card.js?1540911778.7619576&v=0.1.5'}
-- {type: js, url: '/local/lovelace/state-card-aftership.js?1540911778.7619576'}
-- {type: js, url: '/local/lovelace/light-slider-element.js?1540911778.7619576'}
-- {type: js, url: '/local/lovelace/group-card.js?1540911778.7619576'}
-- {type: js, url: '/local/lovelace/state-element.js?1540911778.7619576'}
-- {type: js, url: '/local/lovelace/text-element.js?1540911778.7619576'}
-- {type: js, url: '/local/lovelace/username-element.js?1540911778.7619576'}
-- {type: js, url: '/local/lovelace/state-attribute-element.js?1540911778.7619576'}
-- {type: module, url: '/local/lovelace/mini-media-player.js?1540911778.7619576&v=0.5'}
-- {type: js, url: '/local/lovelace/toggle-lock-entity-row.js?1540911778.7619576'}
+- {type: module, url: '/local/lovelace/calendar-card.js?1540977538.1301365'}
+- {type: js, url: '/local/lovelace/dual-gauge-card.js?1540977538.1301365'}
+- {type: js, url: '/local/lovelace/kiosk.js?1540977538.1301365'}
+- {type: module, url: '/local/lovelace/button-card.js?1540977538.1301365'}
+- {type: js, url: '/local/lovelace/vertical-stack-in-card.js?1540977538.1301365&v=0.0.8'}
+- {type: js, url: '/local/lovelace/slider-entity-row.js?1540977538.1301365'}
+- {type: js, url: '/local/lovelace/useful-markdown-card.js?1540977538.1301365'}
+- {type: js, url: '/local/lovelace/gauge-card.js?1540977538.1301365'}
+- {type: js, url: '/local/lovelace/bignumber-card.js?1540977538.1301365'}
+- {type: js, url: '/local/lovelace/column-card.js?1540977538.1301365'}
+- {type: js, url: '/local/lovelace/alarm_control_panel-card.js?1540977538.1301365'}
+- {type: js, url: '/local/lovelace/entity-attributes-card.js?1540977538.1301365&v=0.1.1'}
+- {type: js, url: '/local/lovelace/home-setter.js?1540977538.1301365&v=0.0.1'}
+- {type: js, url: '/local/lovelace/tracker-card.js?1540977538.1301365&v=0.1.5'}
+- {type: js, url: '/local/lovelace/state-card-aftership.js?1540977538.1301365'}
+- {type: js, url: '/local/lovelace/light-slider-element.js?1540977538.1301365'}
+- {type: js, url: '/local/lovelace/group-card.js?1540977538.1301365'}
+- {type: js, url: '/local/lovelace/state-element.js?1540977538.1301365'}
+- {type: js, url: '/local/lovelace/text-element.js?1540977538.1301365'}
+- {type: js, url: '/local/lovelace/username-element.js?1540977538.1301365'}
+- {type: js, url: '/local/lovelace/state-attribute-element.js?1540977538.1301365'}
+- {type: module, url: '/local/lovelace/mini-media-player.js?1540977538.1301365&v=0.5'}
+- {type: js, url: '/local/lovelace/toggle-lock-entity-row.js?1540977538.1301365'}
 - {type: css, url: 'https://fonts.googleapis.com/css?family=Roboto+Condensed'}
 title: Home
 views:
@@ -134,7 +134,8 @@ views:
             show_empty: false
             state_filter: [Open, Movement detected, Leaking, Unlocked, 'on']
             type: entity-filter
-          - card: {type: glance}
+          - card:
+            - {show_state: false, type: glance}
             entities: [light.outdoor_lights, light.bedroom_ceiling_light, light.bedside_lamp,
               light.dining_area_ceiling_light_level, light.kitchen_ceiling_spotlights_level,
               light.floorlamp_reading_light, light.floorlamp_uplight, light.hallway_window_light,
@@ -261,40 +262,6 @@ views:
           scale: 10px
           states: [arm_home, arm_away, arm_night]
           type: custom:alarm_control_panel-card
-        - card:
-            card: {type: entities}
-            filter:
-              include:
-              - entity_id: sensor.*movement*
-                options: {secondary_info: last-changed}
-            show_empty: false
-            type: custom:monster-card
-          conditions:
-          - {entity: input_boolean.show_security, state: 'on'}
-          type: conditional
-        - card:
-            card: {type: entities}
-            filter:
-              include:
-              - entity_id: sensor.front_door_lock
-                options: {icon: 'mdi:lock-smart', secondary_info: last-changed}
-              - entity_id: sensor.last_action
-                options: {icon: 'mdi:lock-open-outline', name: Last action, secondary_info: last-changed}
-              - entity_id: sensor.unlocked_by
-                options: {icon: 'mdi:lock-open-outline', name: Last unlocked by, secondary_info: last-changed}
-              - entity_id: sensor.yard_door_lock
-                options: {name: Yard Door Lock, secondary_info: last-changed}
-              - entity_id: sensor.*door*
-                options: {secondary_info: last-changed}
-                state: Closed
-              - entity_id: sensor.*window*
-                options: {secondary_info: last-changed}
-                state: Closed
-            show_empty: false
-            type: custom:monster-card
-          conditions:
-          - {entity: input_boolean.show_security, state: 'on'}
-          type: conditional
         type: custom:vertical-stack-in-card
       - cards:
         - column_width: calc(100% / 3)

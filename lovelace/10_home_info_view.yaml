@@ -77,77 +77,68 @@ cards:
                     name: Show security
                     icon: mdi:security-home
                     
-              # - type: custom:alarm_control_panel-card
-              #   entity: alarm_control_panel.home_alarm
-              #   scale: 10px
-              #   # style: '--alarm-color-disarmed: var(--label-badge-blue);'
-              #   states:
-              #     - arm_home
-              #     - arm_away
-              #     - arm_night
               - type: custom:alarm_control_panel-card
                 entity: alarm_control_panel.house
                 scale: 10px
-                # style: '--alarm-color-disarmed: var(--label-badge-blue);'
                 states:
                   - arm_home
                   - arm_away
                   - arm_night
 
-              - type: conditional
-                conditions:
-                  - entity: input_boolean.show_security
-                    state: "on"
-                card:
-                  type: custom:monster-card
-                  show_empty: false
-                  card:
-                    type: entities
-                  filter:
-                    include:
-                      - entity_id: "sensor.*movement*"
-                        options:
-                          secondary_info: last-changed
-              - type: conditional
-                conditions:
-                  - entity: input_boolean.show_security
-                    state: "on"
-                card:
-                  type: custom:monster-card
-                  show_empty: false
-                  card:
-                    type: entities
-                  filter:
-                    include:
-                      - entity_id: "sensor.front_door_lock"
-                        options:
-                          secondary_info: last-changed
-                          icon: mdi:lock-smart
-                      - entity_id: "sensor.last_action"
-                        options:
-                          secondary_info: last-changed
-                          icon: mdi:lock-open-outline
-                          name: Last action
-                      - entity_id: "sensor.unlocked_by"
-                        options:
-                          secondary_info: last-changed
-                          icon: mdi:lock-open-outline
-                          name: Last unlocked by
-                      - entity_id: sensor.yard_door_lock
-                        options:
-                          secondary_info: last-changed
-                          name: Yard Door Lock
+              # - type: conditional
+              #   conditions:
+              #     - entity: input_boolean.show_security
+              #       state: "on"
+              #   card:
+              #     type: custom:monster-card
+              #     show_empty: false
+              #     card:
+              #       type: entities
+              #     filter:
+              #       include:
+              #         - entity_id: "sensor.*movement*"
+              #           options:
+              #             secondary_info: last-changed
+              # - type: conditional
+              #   conditions:
+              #     - entity: input_boolean.show_security
+              #       state: "on"
+              #   card:
+              #     type: custom:monster-card
+              #     show_empty: false
+              #     card:
+              #       type: entities
+              #     filter:
+              #       include:
+              #         - entity_id: "sensor.front_door_lock"
+              #           options:
+              #             secondary_info: last-changed
+              #             icon: mdi:lock-smart
+              #         - entity_id: "sensor.last_action"
+              #           options:
+              #             secondary_info: last-changed
+              #             icon: mdi:lock-open-outline
+              #             name: Last action
+              #         - entity_id: "sensor.unlocked_by"
+              #           options:
+              #             secondary_info: last-changed
+              #             icon: mdi:lock-open-outline
+              #             name: Last unlocked by
+              #         - entity_id: sensor.yard_door_lock
+              #           options:
+              #             secondary_info: last-changed
+              #             name: Yard Door Lock
 
-                      - entity_id: "sensor.*door*"
-                        options:
-                          secondary_info: last-changed
-                        state: 'Open'
-                        state: 'Closed'
-                      - entity_id: "sensor.*window*"
-                        options:
-                          secondary_info: last-changed
-                        state: 'Open'
-                        state: 'Closed'
+              #         - entity_id: "sensor.*door*"
+              #           options:
+              #             secondary_info: last-changed
+              #           state: 'Open'
+              #           state: 'Closed'
+              #         - entity_id: "sensor.*window*"
+              #           options:
+              #             secondary_info: last-changed
+              #           state: 'Open'
+              #           state: 'Closed'
 
 
 

@@ -37,6 +37,7 @@ import json
 
 indir = "lovelace"
 infile = "main.yaml"
+secretsfile = "secrets.yaml"
 
 outfile = "ui-lovelace.yaml"
 
@@ -52,6 +53,8 @@ usage: lovelace-gen.py
 Special commands:
   !include <filename>
     Is replaced by the contents of the file lovelace/<filename>
+  !secret <identifier>
+    Is replaced by the value from secrets.yaml for <identifier>.
   !resource [<path>/]<filename>
     Copies the file lovelace/<path><filename> to www/lovelace/<filename> and is replaced with /local/lovelace/<filename>
 """
@@ -65,6 +68,15 @@ def include_statement(loader, node):
     retval = yaml.load(template.render(states=states))
     return retval
 yaml.add_constructor('!include', include_statement)
+
+def secret_statement(loader, node):
+    with open(secretsfile, 'r') as fp:
+        data = fp.read()
+    data = yaml.load(data)
+    if not node.value in data:
+        raise yaml.scanner.ScannerError('Could not find secret {}'. format(node.value))
+    return data[node.value]
+yaml.add_constructor('!secret', secret_statement)
 
 def resource_statement(loader, node):
     global indir, wwwdir, resourcedir, timestamp
@@ -109,7 +121,7 @@ def main(argv):
     if len(argv) > 1:
         if len(argv) > 3:
             print(helpstring)
-            sys.exit(2)
+            sys.exit(1)
         base_url = argv[1]
         password = argv[2] if len(argv) > 2 else ""
         get_states(base_url, password)
@@ -135,7 +147,7 @@ def main(argv):
         print("Something went wrong.", file=sys.stderr)
         print(e, file=sys.stderr)
         print("Run `{} help` for help.".format(argv[0]), file=sys.stderr)
-        sys.exit(2)
+        sys.exit(3)
 
     try:
         with open(outfile, 'w') as fp:
@@ -149,7 +161,7 @@ def main(argv):
     except:
         print("Could not write to output file.", file=sys.stderr)
         print("Run {} -h for help.".format(argv[0]), file=sys.stderr)
-        sys.exit(2)
+        sys.exit(4)
 
 
 if __name__ == '__main__':

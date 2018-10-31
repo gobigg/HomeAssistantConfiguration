@@ -64,6 +64,10 @@ panel_iframe:
     url: !secret motioneye_address
     
 custom_updater:
+  track:
+    - cards
+    - components
+  # show_installable: true
 
 # ########################################
 # ###              LOGGING             ###
