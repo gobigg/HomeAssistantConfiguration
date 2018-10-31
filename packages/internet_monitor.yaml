@@ -1,11 +1,3 @@
-history_graph:
-  internet_speed_tests:
-    name: Internet Speed Tests
-    entities:
-      - sensor.speedtest_download
-      - sensor.speedtest_ping
-      - sensor.speedtest_upload 
-
 sensor:
   - platform: speedtest
     monitored_conditions:
