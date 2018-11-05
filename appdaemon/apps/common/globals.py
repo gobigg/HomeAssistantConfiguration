@@ -12,8 +12,8 @@ alarm = "alarm_control_panel.home_alarm"
 
 
 notification_mode = {}
-notification_mode["start_quiet_weekday"] = "22:00:00"
-notification_mode["start_quiet_weekend"] = "23:00:00"
+notification_mode["start_quiet_weekday"] = "23:00:00"
+notification_mode["start_quiet_weekend"] = "23:59:00"
 notification_mode["stop_quiet_weekday"] = "07:00:00"
 notification_mode["stop_quiet_weekend"] = "09:00:00"
 

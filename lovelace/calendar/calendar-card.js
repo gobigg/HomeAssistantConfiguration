@@ -2,9 +2,9 @@ class CalendarCard extends HTMLElement {
     set hass(hass) {
       if (!this.content) {
         const card = document.createElement('ha-card');
-        card.header = this.config.name;
+        // card.header = this.config.name;
         this.content = document.createElement('div');
-        this.content.style.padding = '0 16px 16px';
+        this.content.style.padding = '7px 16px 7px';
         card.appendChild(this.content);
         this.appendChild(card);
         moment.locale(hass.language);
@@ -63,12 +63,15 @@ class CalendarCard extends HTMLElement {
         this.content.innerHTML = `
           <style>
             .day-wrapper {
-              border-bottom: 1px solid;
+              border-bottom: none;
               margin-bottom: 10px;
+              border-left: solid black 2px;
+              background-color: rgba(0, 0, 0, 0.5);
             }
   
             .day-wrapper:last-child {
               border-bottom: none;
+              margin-bottom: 0
             }
   
             .day {
@@ -113,7 +116,7 @@ class CalendarCard extends HTMLElement {
   
             .time {
               font-size: smaller;
-              color: var(--primary-color);
+              color: black;
             }
   
             .now {

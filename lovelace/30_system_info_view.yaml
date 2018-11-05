@@ -138,10 +138,10 @@ cards:
                 - entity: sensor.monitor
                   name: Monitor status
                   secondary_info: last-changed
-                - entity: sensor.isabellas_iphone_x_monitortest
-                  secondary_info: last-changed
-                - entity: sensor.stefan_iphone_7_monitortest
-                  secondary_info: last-changed
+                # - entity: sensor.isabellas_iphone_x_monitortest
+                #   secondary_info: last-changed
+                # - entity: sensor.stefan_iphone_7_monitortest
+                #   secondary_info: last-changed
 
           # - type: custom:vertical-stack-in-card
           #   cards:

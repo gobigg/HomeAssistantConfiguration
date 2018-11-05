@@ -146,6 +146,7 @@ cards:
                     # - 'Unknown'
                   card: 
                     type: glance
+                    show_state: false
             
                 - type: entity-filter
                   show_empty: false
@@ -169,9 +170,9 @@ cards:
                   state_filter:
                     - 'on'
                   card:
-                    - type: glance
-                      show_state: false
-                    
+                    type: glance
+                    show_state: false
+
               - !include laundry-roomba_card.yaml
               
               - type: entities

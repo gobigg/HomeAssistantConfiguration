@@ -67,6 +67,8 @@ custom_updater:
   track:
     - cards
     - components
+  card_urls:
+    - "https://github.com/kalkih/mini-media-player/blob/master/tracker.json"
   # show_installable: true
 
 # ########################################
@@ -135,6 +137,7 @@ zone: !include zone.yaml
 # ###             SERVICES             ###
 # ########################################
 sun:
+shopping_list:
 notify: !include notify/notify.yaml
 
 python_script:

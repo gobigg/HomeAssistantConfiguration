@@ -12,6 +12,13 @@ input_select:
       - Idle
       - Running
       - Clean
+  
+  dryer_status:
+    name: Dryer Status
+    options:
+      - Idle
+      - Running
+      - Clean
 
 sensor:
   - platform: template

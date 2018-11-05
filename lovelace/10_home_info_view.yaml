@@ -67,6 +67,17 @@ cards:
                     icon: mdi:bed-empty
                     secondary_info: last-changed
               - !include dev_card.yaml
+              - type: history-graph
+                title: vibration
+                hours_to_show: 24
+                entities:
+                  - sensor.bed_activity_158d0002a8cf44
+                  - sensor.coordination_158d0002a8cf44
+              - type: sensor
+                entity: sensor.bed_activity_158d0002a8cf44
+                name: Vibration
+                height: 75
+                line_color: "#3498db"
 
 
           - type: custom:vertical-stack-in-card
@@ -84,7 +95,51 @@ cards:
                   - arm_home
                   - arm_away
                   - arm_night
+                  
+              - type: custom:monster-card
+                card:
+                  type: entities
+                filter:
+                  include:
+                    - entity_id: "sensor.*movement*"
+                      options:
+                        secondary_info: last-changed
+              - type: custom:monster-card
+                card:
+                  type: entities
+                filter:
+                  include:
+                    - entity_id: "sensor.front_door_lock"
+                      options:
+                        secondary_info: last-changed
+                        icon: mdi:lock-smart
+                    - entity_id: "sensor.last_action"
+                      options:
+                        secondary_info: last-changed
+                        icon: mdi:lock-open-outline
+                        name: Last action
+                    - entity_id: "sensor.unlocked_by"
+                      options:
+                        secondary_info: last-changed
+                        icon: mdi:lock-open-outline
+                        name: Last unlocked by
+                    - entity_id: sensor.yard_door_lock
+                      options:
+                        secondary_info: last-changed
+                        name: Yard Door Lock
 
+                    - entity_id: "sensor.*door*"
+                      options:
+                        secondary_info: last-changed
+                      state: 'Open'
+                      state: 'Closed'
+                    - entity_id: "sensor.*window*"
+                      options:
+                        secondary_info: last-changed
+                      state: 'Open'
+                      state: 'Closed'
+                      
+                        
               # - type: conditional
               #   conditions:
               #     - entity: input_boolean.show_security

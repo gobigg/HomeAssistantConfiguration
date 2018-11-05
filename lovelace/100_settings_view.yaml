@@ -10,6 +10,10 @@ cards:
         path: lovelace/isa
       - name: Stefan
         path: lovelace/mobile
+      - name: Dashboard
+        path: lovelace/kiosk_dashboard
+      - name: Alarm Clock
+        path: lovelace/kiosk_clock
   - type: custom:tracker-card
     title:
     trackers:
