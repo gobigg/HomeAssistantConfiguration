@@ -7,8 +7,8 @@ cards:
     cards:
       - type: custom:column-card
         cards:
-
-## FIRST COLUMN
+    
+    ## FIRST COLUMN
           - type: vertical-stack
             cards:
               - type: horizontal-stack
@@ -18,20 +18,19 @@ cards:
                     # show_name: false
                     image: /local/isa_cropped.jpg
                     show_name: false
-
+        
                   - type: picture-entity
                     entity: sensor.presence_stefan
                     image: /local/Stefan_cropped_1.jpg
                     show_name: false
-
+        
               - type: custom:card-modder
                 card:
-                  type: custom:calendar-card
                   showProgressBar: false
                   numberOfDays: 14
                   entities:
                     - calendar.house
-                # report_size: 1
+                report_size: 3
                 style:
                   "background": "url(/local/lovelace_ui/balloons.jpg)"
               - type: picture-elements
@@ -69,7 +68,10 @@ cards:
                       border-color: rgb(0, 0, 0)
                       background-color: rgb(0, 0, 0, 0.4)
                       padding: 7px
-
+                      
+              # - type: iframe
+              #   url: !secret iframecamera
+              #   aspect_ratio: 75%
               - type: horizontal-stack
                 cards:
                   - type: picture-entity
@@ -77,14 +79,14 @@ cards:
                     image: /local/lovelace_ui/guests.jpg
                     show_name: true
                     tap_action: toggle
-
+        
                   - type: picture-entity
                     entity: input_boolean.cleaning_day
                     image: /local/lovelace_ui/cleaning.jpg
                     show_name: true
                     tap_action: toggle
-
-## SECOND COLUMN
+        
+        ## SECOND COLUMN
           - type: vertical-stack
             cards:
               - type: horizontal-stack  
@@ -93,17 +95,17 @@ cards:
                   name: Washer
                   entity: input_select.washing_machine_status
                   state_image:
-                    "Idle": /local/lovelace_ui/laundry_cropped.jpg
+                    "Idle": /local/lovelace_ui/washer_cropped.jpg
                     "Running": /local/lovelace_ui/laundry_running_cropped.jpg
                     "Clean": /local/lovelace_ui/laundry_clean_2_cropped.jpg
                 - type: picture-entity
                   name: Dryer
                   entity: input_select.dryer_status
                   state_image:
-                    "Idle": /local/lovelace_ui/laundry_cropped.jpg
+                    "Idle": /local/lovelace_ui/dryer_cropped.jpg
                     "Running": /local/lovelace_ui/clothes_drying.jpg
                     "Clean": /local/lovelace_ui/folded_clothes.jpg
-
+        
               - type: picture-elements
                 image: /local/lovelace_ui/front_door.png
                 elements:
@@ -113,7 +115,7 @@ cards:
                       top: 13%
                       left: 4%
                       z-index: 1
-
+        
                   - type: state-label
                     prefix: "Front: "
                     entity: sensor.front_door
@@ -130,14 +132,14 @@ cards:
                       background-color: rgb(0, 0, 0, 0.4)
                       padding: 7px
                       padding-left: 25px
-
+        
                   - type: state-icon
                     entity: sensor.back_door
                     style:
                       top: 35%
                       left: 4%
                       z-index: 1
-
+        
                   - type: state-label
                     prefix: "Back: "
                     entity: sensor.back_door
@@ -161,7 +163,7 @@ cards:
                       top: 57%
                       left: 4%
                       z-index: 1
-
+        
                   - type: state-label
                     prefix: "Yard: "
                     entity: sensor.yard_door
@@ -178,14 +180,14 @@ cards:
                       background-color: rgb(0, 0, 0, 0.4)
                       padding: 7px
                       padding-left: 25px
-
+        
                   - type: state-icon
                     entity: sensor.balcony_door
                     style:
                       top: 79%
                       left: 4%
                       z-index: 1
-
+        
                   - type: state-label
                     prefix: "Balcony: "
                     entity: sensor.balcony_door
@@ -202,8 +204,8 @@ cards:
                       background-color: rgb(0, 0, 0, 0.4)
                       padding: 7px
                       padding-left: 25px
-
-
+        
+        
               - type: picture-elements
                 image: /local/lovelace_ui/highway.jpg
                 elements:
@@ -262,9 +264,9 @@ cards:
                     image: /local/lovelace_ui/roomba_cropped.jpg
                     state_image:
                       "Not Today": /local/lovelace_ui/roomba_bw_cropped.jpg
-
+        
           
-## THIRD COLUMN
+        ## THIRD COLUMN
           - type: vertical-stack
             cards:
               - type: horizontal-stack
@@ -284,7 +286,7 @@ cards:
                     state_image:
                       "Empty": /local/lovelace_ui/trash_bear_bw.jpg
                       "Package": /local/lovelace_ui/trash_bear.jpg
-
+        
               - type: picture-elements
                 image: /local/lovelace_ui/window.jpg
                 elements:
@@ -310,7 +312,7 @@ cards:
                       top: 13%
                       left: 4%
                       z-index: 1
-
+        
                   - type: state-label
                     prefix: "Bedroom: "
                     entity: sensor.bedroom_window
@@ -333,7 +335,7 @@ cards:
                       top: 35%
                       left: 4%
                       z-index: 1
-
+        
                   # - type: custom:text-element
                   #   text: " "
                   #   style:
@@ -349,8 +351,8 @@ cards:
                   #     border-color: rgb(0, 0, 0)
                   #     background-color: rgb(0, 0, 0, 0.4)
                   #     padding: 35px
-
-
+        
+        
               - type: picture-elements
                 image: /local/lovelace_ui/bicycleside.png
                 elements:
@@ -400,8 +402,8 @@ cards:
                       left: 90%
                       transform: none
               - !include dev_card.yaml
-
-## FOURTH COLUMN
+        
+        ## FOURTH COLUMN
           - type: vertical-stack
             cards:
               - type: horizontal-stack
@@ -445,11 +447,12 @@ cards:
                         style:
                           top: 89%
                           left: 50%
-
+        
               - type: custom:card-modder
                 card:
                   # type: weather-forecast
                   # entity: weather.smhi_home
+                  report_size: 1
                   type: "custom:weather-card"
                   entity_weather: weather.smhi_home
                   entity_sun: sun.sun
@@ -466,5 +469,5 @@ cards:
               # - type: custom:useful-markdown-card
               #   content: >
               #     ## @Nackagator
-    
+        
               #     [[sensor.nacka_gator_tweet.state]]

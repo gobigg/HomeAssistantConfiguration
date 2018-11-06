@@ -14,7 +14,6 @@ automation:
     initial_state: 'on'
     trigger:
       platform: homeassistant
-      # Event can also be 'shutdown'
       event: start
     action:
       - service: notify.pushbullet_isa
@@ -32,23 +31,19 @@ automation:
         data:
           title: 'Z-wave network now ready'
           message: 'Home Assistant'
-      - delay: 00:05  # Waits 5 minutes
+      - delay: 00:05
       - service: homekit.start
 
   - alias: 'Hass Stopped'
     initial_state: 'on'
     trigger:
       platform: homeassistant
-      # Event can also be 'shutdown'
       event: shutdown
     action:
       - service: notify.pushbullet_isa
         data:
           title: 'Hass.io Offline'
           message: 'Offline'
-      # - service: hassio.addon_stop
-      #   data:
-      #     addon: a0d7b954_homebridge
 
   - alias: Hass New Device Tracked
     trigger:
@@ -71,3 +66,27 @@ automation:
         data_template: 
           title: 'New Home Assistant Release Available'
           message: "Home Assistant  {{ states.updater.updater.state }}  is now available."
+
+  - alias: Snapshot Create Daily at 3 AM
+    trigger:
+      platform: time
+      at: '03:00:00'
+    action:
+    - service: hassio.snapshot_full
+      data_template:
+        name: "Automated Snapshot {{ now().strftime('%Y-%m-%d') }}"
+    - service: notify.pushbullet_isa
+      data_template:
+        title: "Creating Snapshot"
+        message: "Automated Snapshot {{ now().strftime('%Y-%m-%d') }}"
+        
+  - alias: Snapshot Upload Daily
+    trigger:
+      - platform: time
+        at: '03:30:00'
+    action:
+      - service: hassio.addon_stdin
+        data:
+          addon: "7be23ff5_dropbox_sync"
+          input:
+            command: "upload"

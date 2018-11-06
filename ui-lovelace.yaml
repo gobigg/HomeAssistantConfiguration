@@ -4,34 +4,35 @@
 # Any changes made to it will be overwritten the next time the script is run.
 
 resources:
-- {type: js, url: '/local/lovelace/plan-coordinates.js?1541429088.1570709'}
-- {type: js, url: '/local/lovelace/weather-card.js?1541429088.1570709'}
-- {type: js, url: '/local/lovelace/monster-card.js?1541429088.1570709&v=0.2.3'}
-- {type: js, url: '/local/lovelace/light-card.js?1541429088.1570709'}
-- {type: js, url: '/local/lovelace/card-modder.js?1541429088.1570709'}
+- {type: js, url: '/local/lovelace/plan-coordinates.js?1541505781.5851562'}
+- {type: js, url: '/local/lovelace/fold-entity-row.js?1541505781.5851562'}
+- {type: js, url: '/local/lovelace/weather-card.js?1541505781.5851562'}
+- {type: js, url: '/local/lovelace/monster-card.js?1541505781.5851562&v=0.2.3'}
+- {type: js, url: '/local/lovelace/light-card.js?1541505781.5851562'}
+- {type: js, url: '/local/lovelace/card-modder.js?1541505781.5851562'}
 - {type: js, url: 'https://unpkg.com/moment@2.22.2/moment.js'}
-- {type: module, url: '/local/lovelace/calendar-card.js?1541429088.1570709'}
-- {type: js, url: '/local/lovelace/dual-gauge-card.js?1541429088.1570709'}
-- {type: js, url: '/local/lovelace/kiosk.js?1541429088.1570709'}
-- {type: module, url: '/local/lovelace/button-card.js?1541429088.1570709'}
-- {type: js, url: '/local/lovelace/vertical-stack-in-card.js?1541429088.1570709&v=0.0.8'}
-- {type: js, url: '/local/lovelace/slider-entity-row.js?1541429088.1570709'}
-- {type: js, url: '/local/lovelace/useful-markdown-card.js?1541429088.1570709'}
-- {type: js, url: '/local/lovelace/gauge-card.js?1541429088.1570709'}
-- {type: js, url: '/local/lovelace/bignumber-card.js?1541429088.1570709'}
-- {type: js, url: '/local/lovelace/column-card.js?1541429088.1570709'}
-- {type: js, url: '/local/lovelace/alarm_control_panel-card.js?1541429088.1570709'}
-- {type: js, url: '/local/lovelace/entity-attributes-card.js?1541429088.1570709&v=0.1.1'}
-- {type: js, url: '/local/lovelace/home-setter.js?1541429088.1570709&v=0.0.1'}
-- {type: js, url: '/local/lovelace/tracker-card.js?1541429088.1570709&v=0.1.5'}
-- {type: js, url: '/local/lovelace/light-slider-element.js?1541429088.1570709'}
-- {type: js, url: '/local/lovelace/group-card.js?1541429088.1570709'}
-- {type: js, url: '/local/lovelace/state-element.js?1541429088.1570709'}
-- {type: js, url: '/local/lovelace/text-element.js?1541429088.1570709'}
-- {type: js, url: '/local/lovelace/username-element.js?1541429088.1570709'}
-- {type: js, url: '/local/lovelace/state-attribute-element.js?1541429088.1570709'}
-- {type: module, url: '/local/lovelace/mini-media-player.js?1541429088.1570709&v=0.5'}
-- {type: js, url: '/local/lovelace/toggle-lock-entity-row.js?1541429088.1570709'}
+- {type: module, url: '/local/lovelace/calendar-card.js?1541505781.5851562'}
+- {type: js, url: '/local/lovelace/dual-gauge-card.js?1541505781.5851562'}
+- {type: js, url: '/local/lovelace/kiosk.js?1541505781.5851562'}
+- {type: module, url: '/local/lovelace/button-card.js?1541505781.5851562'}
+- {type: js, url: '/local/lovelace/vertical-stack-in-card.js?1541505781.5851562&v=0.0.8'}
+- {type: js, url: '/local/lovelace/slider-entity-row.js?1541505781.5851562'}
+- {type: js, url: '/local/lovelace/useful-markdown-card.js?1541505781.5851562'}
+- {type: js, url: '/local/lovelace/gauge-card.js?1541505781.5851562'}
+- {type: js, url: '/local/lovelace/bignumber-card.js?1541505781.5851562'}
+- {type: js, url: '/local/lovelace/column-card.js?1541505781.5851562'}
+- {type: js, url: '/local/lovelace/alarm_control_panel-card.js?1541505781.5851562'}
+- {type: js, url: '/local/lovelace/entity-attributes-card.js?1541505781.5851562&v=0.1.1'}
+- {type: js, url: '/local/lovelace/home-setter.js?1541505781.5851562&v=0.0.1'}
+- {type: js, url: '/local/lovelace/tracker-card.js?1541505781.5851562&v=0.1.5'}
+- {type: js, url: '/local/lovelace/light-slider-element.js?1541505781.5851562'}
+- {type: js, url: '/local/lovelace/group-card.js?1541505781.5851562'}
+- {type: js, url: '/local/lovelace/state-element.js?1541505781.5851562'}
+- {type: js, url: '/local/lovelace/text-element.js?1541505781.5851562'}
+- {type: js, url: '/local/lovelace/username-element.js?1541505781.5851562'}
+- {type: js, url: '/local/lovelace/state-attribute-element.js?1541505781.5851562'}
+- {type: module, url: '/local/lovelace/mini-media-player.js?1541505781.5851562&v=0.5'}
+- {type: js, url: '/local/lovelace/toggle-lock-entity-row.js?1541505781.5851562'}
 - {type: css, url: 'https://fonts.googleapis.com/css?family=Roboto+Condensed'}
 title: Home
 views:
@@ -839,7 +840,7 @@ views:
             entities: [calendar.house]
             numberOfDays: 14
             showProgressBar: false
-            type: custom:calendar-card
+          report_size: 3
           style: {background: url(/local/lovelace_ui/balloons.jpg)}
           type: custom:card-modder
         - elements:
@@ -874,12 +875,12 @@ views:
         - cards:
           - entity: input_select.washing_machine_status
             name: Washer
-            state_image: {Clean: /local/lovelace_ui/laundry_clean_2_cropped.jpg, Idle: /local/lovelace_ui/laundry_cropped.jpg,
+            state_image: {Clean: /local/lovelace_ui/laundry_clean_2_cropped.jpg, Idle: /local/lovelace_ui/washer_cropped.jpg,
               Running: /local/lovelace_ui/laundry_running_cropped.jpg}
             type: picture-entity
           - entity: input_select.dryer_status
             name: Dryer
-            state_image: {Clean: /local/lovelace_ui/folded_clothes.jpg, Idle: /local/lovelace_ui/laundry_cropped.jpg,
+            state_image: {Clean: /local/lovelace_ui/folded_clothes.jpg, Idle: /local/lovelace_ui/dryer_cropped.jpg,
               Running: /local/lovelace_ui/clothes_drying.jpg}
             type: picture-entity
           type: horizontal-stack
@@ -1067,7 +1068,8 @@ views:
             image: /local/lovelace_ui/background.png
             type: picture-elements
           type: horizontal-stack
-        - card: {entity_sun: sun.sun, entity_weather: weather.smhi_home, type: 'custom:weather-card'}
+        - card: {entity_sun: sun.sun, entity_weather: weather.smhi_home, report_size: 1,
+            type: 'custom:weather-card'}
           style: {background: url(/local/lovelace_ui/darksky.jpg)}
           type: custom:card-modder
         - {entity: camera.fisksatra_meteogram, show_name: false, show_state: false,
