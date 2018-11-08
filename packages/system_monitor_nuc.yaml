@@ -67,7 +67,7 @@ automation:
           title: 'New Home Assistant Release Available'
           message: "Home Assistant  {{ states.updater.updater.state }}  is now available."
 
-  - alias: Snapshot Create Daily at 3 AM
+  - alias: Snapshot Create Nightly at 03 AM
     trigger:
       platform: time
       at: '03:00:00'
@@ -80,7 +80,7 @@ automation:
         title: "Creating Snapshot"
         message: "Automated Snapshot {{ now().strftime('%Y-%m-%d') }}"
         
-  - alias: Snapshot Upload Daily
+  - alias: Snapshot Upload Nightly at 0330 AM
     trigger:
       - platform: time
         at: '03:30:00'

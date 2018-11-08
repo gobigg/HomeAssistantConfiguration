@@ -10,3 +10,8 @@ sensor:
     destination: zone.work_solna
     region: 'EU'
     realtime: true
+
+camera:
+- platform: generic
+  name: TPL Nacka
+  still_image_url: https://api.trafikinfo.trafikverket.se/v1/Images/TrafficFlowCamera_39626472.Jpeg?type=fullsize

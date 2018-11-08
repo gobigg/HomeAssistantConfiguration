@@ -7,6 +7,10 @@ resources:
     type: js
   - url: !resource monster-card/monster-card.js?v=0.2.3
     type: js
+  - url: !resource layout-card/layout-card.js
+    type: js
+  - url: !resource popup-card/popup-card.js
+    type: js
   - url: !resource light-card/light-card.js
     type: js
   - url: !resource card-modder/card-modder.js
@@ -85,3 +89,4 @@ views:
   - !include 100_settings_view.yaml
   - !include 101_dashboard.yaml
   - !include 102_alarm_clock.yaml
+  - !include 103_dashboard_test.yaml

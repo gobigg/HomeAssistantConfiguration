@@ -5,7 +5,7 @@ id: kiosk_dashboard
 cards:
   - type: vertical-stack
     cards:
-      - type: custom:column-card
+      - type: custom:layout-card
         cards:
     
     ## FIRST COLUMN

@@ -4,7 +4,7 @@ class CalendarCard extends HTMLElement {
         const card = document.createElement('ha-card');
         // card.header = this.config.name;
         this.content = document.createElement('div');
-        this.content.style.padding = '7px 16px 7px';
+        this.content.style.padding = '7px 7px 7px 0';
         card.appendChild(this.content);
         this.appendChild(card);
         moment.locale(hass.language);
@@ -63,10 +63,11 @@ class CalendarCard extends HTMLElement {
         this.content.innerHTML = `
           <style>
             .day-wrapper {
-              border-bottom: none;
               margin-bottom: 10px;
-              border-left: solid black 2px;
+              border-left: solid black 3px;
               background-color: rgba(0, 0, 0, 0.5);
+              font-size: 20px;
+              color: white;
             }
   
             .day-wrapper:last-child {
@@ -74,7 +75,7 @@ class CalendarCard extends HTMLElement {
               margin-bottom: 0
             }
   
-            .day {
+            .days {
               display: flex;
               flex-direction: row;
               width: 100%;
@@ -85,7 +86,7 @@ class CalendarCard extends HTMLElement {
               flex-direction: column;
               align-items: center;
               justify-content: top;
-              flex: 0 1 40px;
+              flex: 0 1 50px;
             }
   
             .events {
@@ -120,7 +121,7 @@ class CalendarCard extends HTMLElement {
             }
   
             .now {
-              color: var(--paper-item-icon-color, #44739e);
+              color: black;
             }
   
             hr.now {
@@ -158,7 +159,7 @@ class CalendarCard extends HTMLElement {
     getDayHtml(day, events) {
       let clazz = moment().format('DD') === moment(day).format('DD') ? 'date now' : 'date';
       return `
-        <div class="day">
+        <div class="days">
           <div class="${clazz}">
             <div>${moment(day).format('DD')}</div>
             <div>${moment(day).format('ddd')}</div>

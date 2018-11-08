@@ -4,35 +4,37 @@
 # Any changes made to it will be overwritten the next time the script is run.
 
 resources:
-- {type: js, url: '/local/lovelace/plan-coordinates.js?1541505781.5851562'}
-- {type: js, url: '/local/lovelace/fold-entity-row.js?1541505781.5851562'}
-- {type: js, url: '/local/lovelace/weather-card.js?1541505781.5851562'}
-- {type: js, url: '/local/lovelace/monster-card.js?1541505781.5851562&v=0.2.3'}
-- {type: js, url: '/local/lovelace/light-card.js?1541505781.5851562'}
-- {type: js, url: '/local/lovelace/card-modder.js?1541505781.5851562'}
+- {type: js, url: '/local/lovelace/plan-coordinates.js?1541679989.882383'}
+- {type: js, url: '/local/lovelace/fold-entity-row.js?1541679989.882383'}
+- {type: js, url: '/local/lovelace/weather-card.js?1541679989.882383'}
+- {type: js, url: '/local/lovelace/monster-card.js?1541679989.882383&v=0.2.3'}
+- {type: js, url: '/local/lovelace/layout-card.js?1541679989.882383'}
+- {type: js, url: '/local/lovelace/popup-card.js?1541679989.882383'}
+- {type: js, url: '/local/lovelace/light-card.js?1541679989.882383'}
+- {type: js, url: '/local/lovelace/card-modder.js?1541679989.882383'}
 - {type: js, url: 'https://unpkg.com/moment@2.22.2/moment.js'}
-- {type: module, url: '/local/lovelace/calendar-card.js?1541505781.5851562'}
-- {type: js, url: '/local/lovelace/dual-gauge-card.js?1541505781.5851562'}
-- {type: js, url: '/local/lovelace/kiosk.js?1541505781.5851562'}
-- {type: module, url: '/local/lovelace/button-card.js?1541505781.5851562'}
-- {type: js, url: '/local/lovelace/vertical-stack-in-card.js?1541505781.5851562&v=0.0.8'}
-- {type: js, url: '/local/lovelace/slider-entity-row.js?1541505781.5851562'}
-- {type: js, url: '/local/lovelace/useful-markdown-card.js?1541505781.5851562'}
-- {type: js, url: '/local/lovelace/gauge-card.js?1541505781.5851562'}
-- {type: js, url: '/local/lovelace/bignumber-card.js?1541505781.5851562'}
-- {type: js, url: '/local/lovelace/column-card.js?1541505781.5851562'}
-- {type: js, url: '/local/lovelace/alarm_control_panel-card.js?1541505781.5851562'}
-- {type: js, url: '/local/lovelace/entity-attributes-card.js?1541505781.5851562&v=0.1.1'}
-- {type: js, url: '/local/lovelace/home-setter.js?1541505781.5851562&v=0.0.1'}
-- {type: js, url: '/local/lovelace/tracker-card.js?1541505781.5851562&v=0.1.5'}
-- {type: js, url: '/local/lovelace/light-slider-element.js?1541505781.5851562'}
-- {type: js, url: '/local/lovelace/group-card.js?1541505781.5851562'}
-- {type: js, url: '/local/lovelace/state-element.js?1541505781.5851562'}
-- {type: js, url: '/local/lovelace/text-element.js?1541505781.5851562'}
-- {type: js, url: '/local/lovelace/username-element.js?1541505781.5851562'}
-- {type: js, url: '/local/lovelace/state-attribute-element.js?1541505781.5851562'}
-- {type: module, url: '/local/lovelace/mini-media-player.js?1541505781.5851562&v=0.5'}
-- {type: js, url: '/local/lovelace/toggle-lock-entity-row.js?1541505781.5851562'}
+- {type: module, url: '/local/lovelace/calendar-card.js?1541679989.882383'}
+- {type: js, url: '/local/lovelace/dual-gauge-card.js?1541679989.882383'}
+- {type: js, url: '/local/lovelace/kiosk.js?1541679989.882383'}
+- {type: module, url: '/local/lovelace/button-card.js?1541679989.882383'}
+- {type: js, url: '/local/lovelace/vertical-stack-in-card.js?1541679989.882383&v=0.0.8'}
+- {type: js, url: '/local/lovelace/slider-entity-row.js?1541679989.882383'}
+- {type: js, url: '/local/lovelace/useful-markdown-card.js?1541679989.882383'}
+- {type: js, url: '/local/lovelace/gauge-card.js?1541679989.882383'}
+- {type: js, url: '/local/lovelace/bignumber-card.js?1541679989.882383'}
+- {type: js, url: '/local/lovelace/column-card.js?1541679989.882383'}
+- {type: js, url: '/local/lovelace/alarm_control_panel-card.js?1541679989.882383'}
+- {type: js, url: '/local/lovelace/entity-attributes-card.js?1541679989.882383&v=0.1.1'}
+- {type: js, url: '/local/lovelace/home-setter.js?1541679989.882383&v=0.0.1'}
+- {type: js, url: '/local/lovelace/tracker-card.js?1541679989.882383&v=0.1.5'}
+- {type: js, url: '/local/lovelace/light-slider-element.js?1541679989.882383'}
+- {type: js, url: '/local/lovelace/group-card.js?1541679989.882383'}
+- {type: js, url: '/local/lovelace/state-element.js?1541679989.882383'}
+- {type: js, url: '/local/lovelace/text-element.js?1541679989.882383'}
+- {type: js, url: '/local/lovelace/username-element.js?1541679989.882383'}
+- {type: js, url: '/local/lovelace/state-attribute-element.js?1541679989.882383'}
+- {type: module, url: '/local/lovelace/mini-media-player.js?1541679989.882383&v=0.5'}
+- {type: js, url: '/local/lovelace/toggle-lock-entity-row.js?1541679989.882383'}
 - {type: css, url: 'https://fonts.googleapis.com/css?family=Roboto+Condensed'}
 title: Home
 views:
@@ -234,11 +236,23 @@ views:
           - {entity: input_boolean.isa_mode, name: Isa Mode, tap_action: toggle}
           show_header_toggle: false
           type: glance
-        - entities:
-          - {entity: input_boolean.change_bedsheets, icon: 'mdi:bed-empty', secondary_info: last-changed}
-          show_header_toggle: false
-          title: House schedule
-          type: entities
+        - column_width: calc(100% / 3)
+          entities: [sensor.pollen_bjork, sensor.pollen_gras, sensor.pollen_grabo]
+          type: glance
+        - cards:
+          - cards:
+            - entity: input_select.washing_machine_status
+              name: Laundry
+              state_image: {Clean: /local/lovelace_ui/laundry_clean_1.jpg, Idle: /local/lovelace_ui/laundry.jpg,
+                Running: /local/lovelace_ui/laundry_running_1.jpg}
+              type: picture-entity
+            - entity: input_select.roomba_mode
+              image: /local/lovelace_ui/roomba.jpg
+              name: Roomba
+              state_image: {Not Today: /local/lovelace_ui/roomba_bw.jpg}
+              type: picture-entity
+            type: horizontal-stack
+          type: vertical-stack
         - card:
             entities:
             - input_boolean.hass_dev_mode
@@ -253,51 +267,26 @@ views:
           conditions:
           - {entity: input_boolean.hass_dev_mode, state: 'on'}
           type: conditional
-        - entities: [sensor.bed_activity_158d0002a8cf44, sensor.coordination_158d0002a8cf44]
-          hours_to_show: 24
-          title: vibration
-          type: history-graph
-        - {entity: sensor.bed_activity_158d0002a8cf44, height: 75, line_color: '#3498db',
-          name: Vibration, type: sensor}
         type: vertical-stack
       - cards:
-        - entities:
-          - {entity: input_boolean.show_security, icon: 'mdi:security-home', name: Show
-              security}
-          type: entities
         - entity: alarm_control_panel.house
           scale: 10px
           states: [arm_home, arm_away, arm_night]
           type: custom:alarm_control_panel-card
-        - card: {type: entities}
-          filter:
-            include:
-            - entity_id: sensor.*movement*
-              options: {secondary_info: last-changed}
-          type: custom:monster-card
-        - card: {type: entities}
-          filter:
-            include:
-            - entity_id: sensor.front_door_lock
-              options: {icon: 'mdi:lock-smart', secondary_info: last-changed}
-            - entity_id: sensor.last_action
-              options: {icon: 'mdi:lock-open-outline', name: Last action, secondary_info: last-changed}
-            - entity_id: sensor.unlocked_by
-              options: {icon: 'mdi:lock-open-outline', name: Last unlocked by, secondary_info: last-changed}
-            - entity_id: sensor.yard_door_lock
-              options: {name: Yard Door Lock, secondary_info: last-changed}
-            - entity_id: sensor.*door*
-              options: {secondary_info: last-changed}
-              state: Closed
-            - entity_id: sensor.*window*
-              options: {secondary_info: last-changed}
-              state: Closed
-          type: custom:monster-card
-        type: custom:vertical-stack-in-card
+        - card:
+            entities:
+            - group_config: {secondary_info: last-changed}
+              head: {label: Security, type: section}
+              items: [sensor.front_door, sensor.back_door, sensor.yard_door, sensor.balcony_door,
+                sensor.dining_area_window, sensor.bedroom_window, sensor.passage_movement,
+                sensor.upstairs_hallway_movement, binary_sensor.stefans_room_motion,
+                sensor.ring_front_door_last_motion]
+              type: custom:fold-entity-row
+            type: entities
+          report_size: 5
+          type: custom:card-modder
+        type: vertical-stack
       - cards:
-        - column_width: calc(100% / 3)
-          entities: [sensor.pollen_bjork, sensor.pollen_gras, sensor.pollen_grabo]
-          type: glance
         - entities: [sensor.temperature_bedroom, sensor.temperature_passage, sensor.temperature_downstairs_bathroom,
             sensor.temperature_stefan]
           hours_to_show: 48
@@ -308,11 +297,7 @@ views:
           hours_to_show: 168
           title: Temperatures 7 Days
           type: history-graph
-        - entities: [sensor.passage_pir_luminance, sensor.upstairs_hallway_pir_luminance]
-          hours_to_show: 24
-          title: Light 24 Hours
-          type: history-graph
-        type: custom:vertical-stack-in-card
+        type: vertical-stack
       type: custom:column-card
     type: vertical-stack
   icon: mdi:home-heart
@@ -1077,7 +1062,7 @@ views:
         - {entity: camera.stockholm_meteogram, show_name: false, show_state: false,
           type: picture-entity}
         type: vertical-stack
-      type: custom:column-card
+      type: custom:layout-card
     type: vertical-stack
   icon: mdi:monitor-dashboard
   id: kiosk_dashboard
@@ -1163,3 +1148,207 @@ views:
   id: kiosk_clock
   panel: true
   title: Alarm clock
+- cards:
+  - cards:
+    - cards:
+      - {entity: sensor.presence_isa, image: /local/isa_cropped.jpg, show_name: false,
+        type: picture-entity}
+      - {entity: sensor.presence_stefan, image: /local/Stefan_cropped_1.jpg, show_name: false,
+        type: picture-entity}
+      type: horizontal-stack
+    - cards:
+      - entity: input_select.washing_machine_status
+        name: Washer
+        state_image: {Clean: /local/lovelace_ui/laundry_clean_2_cropped.jpg, Idle: /local/lovelace_ui/washer_cropped.jpg,
+          Running: /local/lovelace_ui/laundry_running_cropped.jpg}
+        type: picture-entity
+      - entity: input_select.dryer_status
+        name: Dryer
+        state_image: {Clean: /local/lovelace_ui/folded_clothes.jpg, Idle: /local/lovelace_ui/dryer_cropped.jpg,
+          Running: /local/lovelace_ui/clothes_drying.jpg}
+        type: picture-entity
+      type: horizontal-stack
+    - cards:
+      - entity: sensor.mailbox
+        show_name: false
+        state_image: {Empty: /local/lovelace_ui/mailbox_bw.jpg, Mail: /local/lovelace_ui/mailbox.jpg,
+          Package: /local/lovelace_ui/mailbox.jpg}
+        type: picture-entity
+      - entity: sensor.trash
+        image: /local/lovelace_ui/trash_bear_bw.jpg
+        show_name: false
+        state_image: {Empty: /local/lovelace_ui/trash_bear_bw.jpg, Package: /local/lovelace_ui/trash_bear.jpg}
+        type: picture-entity
+      type: horizontal-stack
+    - cards:
+      - elements:
+        - entity: alarm_control_panel.house
+          style: {color: white, font-size: 35pt, left: 50%, top: 50%}
+          type: state-label
+        - imate: /local/lovelace_ui/House_cropped.jpg
+          state_filter: {armed_home: brightness(50%), disarmed: brightness(110%) saturate(1.2)}
+          style: {left: 50%, top: 50%, width: 100%}
+          type: image
+        image: /local/lovelace_ui/House_cropped.jpg
+        type: picture-elements
+      - elements:
+        - entity: sensor.time
+          style: {font-size: 50pt, left: 50%, top: 44%}
+          type: state-label
+        - entity: sensor.date
+          style: {left: 50%, top: 89%}
+          type: state-label
+        image: /local/lovelace_ui/background.png
+        type: picture-elements
+      type: horizontal-stack
+    - card:
+        entities: [calendar.house]
+        numberOfDays: 14
+        showProgressBar: false
+        type: custom:calendar-card
+      style: {background: url(/local/lovelace_ui/balloons.jpg)}
+      type: custom:card-modder
+    - elements:
+      - entity: sensor.front_door
+        style: {left: 4%, top: 13%, z-index: 1}
+        type: state-icon
+      - entity: sensor.front_door
+        prefix: 'Front: '
+        style: {background-color: 'rgb(0, 0, 0, 0.4)', border-color: 'rgb(0, 0, 0)',
+          border-left-style: solid, box-shadow: '0 4px 8px 0 rgba(0, 0, 0, 0.2), 0
+            6px 20px 0 rgba(0, 0, 0, 0.19)', color: 'rgb(255, 255, 255)', font-size: 150%,
+          left: 0%, padding: 7px, padding-left: 25px, pointer-events: none, top: 5%,
+          transform: none}
+        type: state-label
+      - entity: sensor.back_door
+        style: {left: 4%, top: 35%, z-index: 1}
+        type: state-icon
+      - entity: sensor.back_door
+        prefix: 'Back: '
+        style: {background-color: 'rgb(0, 0, 0, 0.4)', border-color: 'rgb(0, 0, 0)',
+          border-left-style: solid, box-shadow: '0 4px 8px 0 rgba(0, 0, 0, 0.2), 0
+            6px 20px 0 rgba(0, 0, 0, 0.19)', color: 'rgb(255, 255, 255)', font-size: 150%,
+          left: 0%, padding: 7px, padding-left: 25px, pointer-events: none, top: 27%,
+          transform: none}
+        type: state-label
+      - entity: sensor.yard_door
+        style: {left: 4%, top: 57%, z-index: 1}
+        type: state-icon
+      - entity: sensor.yard_door
+        prefix: 'Yard: '
+        style: {background-color: 'rgb(0, 0, 0, 0.4)', border-color: 'rgb(0, 0, 0)',
+          border-left-style: solid, box-shadow: '0 4px 8px 0 rgba(0, 0, 0, 0.2), 0
+            6px 20px 0 rgba(0, 0, 0, 0.19)', color: 'rgb(255, 255, 255)', font-size: 150%,
+          left: 0%, padding: 7px, padding-left: 25px, pointer-events: none, top: 49%,
+          transform: none}
+        type: state-label
+      - entity: sensor.balcony_door
+        style: {left: 4%, top: 79%, z-index: 1}
+        type: state-icon
+      - entity: sensor.balcony_door
+        prefix: 'Balcony: '
+        style: {background-color: 'rgb(0, 0, 0, 0.4)', border-color: 'rgb(0, 0, 0)',
+          border-left-style: solid, box-shadow: '0 4px 8px 0 rgba(0, 0, 0, 0.2), 0
+            6px 20px 0 rgba(0, 0, 0, 0.19)', color: 'rgb(255, 255, 255)', font-size: 150%,
+          left: 0%, padding: 7px, padding-left: 25px, pointer-events: none, top: 71%,
+          transform: none}
+        type: state-label
+      image: /local/lovelace_ui/front_door.png
+      type: picture-elements
+    - elements:
+      - entity: sensor.dining_area_window
+        prefix: 'Dining area: '
+        style: {background-color: 'rgb(0, 0, 0, 0.4)', border-color: 'rgb(0, 0, 0)',
+          border-left-style: solid, box-shadow: '0 4px 8px 0 rgba(0, 0, 0, 0.2), 0
+            6px 20px 0 rgba(0, 0, 0, 0.19)', color: 'rgb(255, 255, 255)', font-size: 150%,
+          left: 0%, padding: 7px, padding-left: 25px, pointer-events: none, top: 5%,
+          transform: none}
+        type: state-label
+      - entity: sensor.dining_area_window
+        style: {left: 4%, top: 13%, z-index: 1}
+        type: state-icon
+      - entity: sensor.bedroom_window
+        prefix: 'Bedroom: '
+        style: {background-color: 'rgb(0, 0, 0, 0.4)', border-color: 'rgb(0, 0, 0)',
+          border-left-style: solid, box-shadow: '0 4px 8px 0 rgba(0, 0, 0, 0.2), 0
+            6px 20px 0 rgba(0, 0, 0, 0.19)', color: 'rgb(255, 255, 255)', font-size: 150%,
+          left: 0%, padding: 7px, padding-left: 25px, pointer-events: none, top: 27%,
+          transform: none}
+        type: state-label
+      - entity: sensor.bedroom_window
+        style: {left: 4%, top: 35%, z-index: 1}
+        type: state-icon
+      image: /local/lovelace_ui/window.jpg
+      type: picture-elements
+    - card: {entity_sun: sun.sun, entity_weather: weather.smhi_home, report_size: 1,
+        type: 'custom:weather-card'}
+      style: {background: url(/local/lovelace_ui/darksky.jpg)}
+      type: custom:card-modder
+    - elements:
+      - icon: mdi:car
+        style: {--iron-icon-fill-color: white, --iron-icon-stroke-color: white, left: 4%,
+          top: 13%, z-index: 1}
+        type: icon
+      - entity: sensor.homesolna_travel_time
+        prefix: 'Home - Solna: '
+        style: {background-color: 'rgb(0, 0, 0, 0.4)', border-color: 'rgb(0, 0, 0)',
+          border-left-style: solid, box-shadow: '0 4px 8px 0 rgba(0, 0, 0, 0.2), 0
+            6px 20px 0 rgba(0, 0, 0, 0.19)', color: 'rgb(255, 255, 255)', font-size: 150%,
+          left: 0%, padding: 7px, padding-left: 25px, pointer-events: none, top: 5%,
+          transform: none}
+        type: state-label
+      - content: '[[sensor.nacka_gator_tweet.state]]
+
+          '
+        style: {--paper-card-background-color: none, --paper-material-elevation-1_-_box-shadow: none,
+          --shadow-elevation-2dp_-_box-shadow: none, background: none, background-color: 'rgb(0,
+            0, 0, 0.4)', border-color: 'rgb(0, 0, 0)', border-left-style: solid, box-shadow: '0
+            4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)', color: 'rgb(255,
+            255, 255)', font-size: 150%, left: 0%, pointer-events: none, top: 70%,
+          transform: none}
+        type: custom:useful-markdown-card
+      image: /local/lovelace_ui/highway.jpg
+      type: picture-elements
+    - elements:
+      - entity: counter.litterbox_downstairs_visits
+        prefix: 'Downstairs: '
+        style: {background-color: 'rgb(0, 0, 0, 0.4)', border-color: 'rgb(0, 0, 0)',
+          border-left-style: solid, box-shadow: '0 4px 8px 0 rgba(0, 0, 0, 0.2), 0
+            6px 20px 0 rgba(0, 0, 0, 0.19)', color: 'rgb(255, 255, 255)', font-size: 150%,
+          left: 0%, padding: 7px, pointer-events: none, top: 5%, transform: none}
+        suffix: ' visits'
+        type: state-label
+      - entity: counter.litterbox_upstairs_visits
+        prefix: 'Upstairs: '
+        style: {background-color: 'rgb(0, 0, 0, 0.4)', border-color: 'rgb(0, 0, 0)',
+          border-left-style: solid, box-shadow: '0 4px 8px 0 rgba(0, 0, 0, 0.2), 0
+            6px 20px 0 rgba(0, 0, 0, 0.19)', color: 'rgb(255, 255, 255)', font-size: 150%,
+          left: 0%, padding: 7px, pointer-events: none, top: 25%, transform: none}
+        suffix: ' visits'
+        type: state-label
+      image: /local/lovelace_ui/cats.jpg
+      type: picture-elements
+    - break
+    - break
+    - card:
+        entities:
+        - input_boolean.hass_dev_mode
+        - action_name: Run
+          icon: mdi:refresh
+          name: Lovelace generator
+          service: shell_command.lovelace_gen_states
+          service_data: {}
+          type: call-service
+        show_header_toggle: false
+        type: entities
+      conditions:
+      - {entity: input_boolean.hass_dev_mode, state: 'on'}
+      type: conditional
+    - {entity: camera.tpl_nacka, show_state: false, type: picture-entity}
+    column_num: 4
+    layout: horizontal
+    type: custom:layout-card
+  icon: mdi:monitor-dashboard
+  id: kiosk_test_dashboard
+  panel: true
+  title: Dashboard Test

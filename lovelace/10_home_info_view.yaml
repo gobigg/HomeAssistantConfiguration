@@ -59,35 +59,24 @@ cards:
                   - entity: input_boolean.isa_mode
                     name: Isa Mode
                     tap_action: toggle
-              - type: entities
-                title: "House schedule"
-                show_header_toggle: false
+              - type: glance
+                column_width: calc(100% / 3)
                 entities:
-                  - entity: input_boolean.change_bedsheets
-                    icon: mdi:bed-empty
-                    secondary_info: last-changed
+                  - sensor.pollen_bjork
+                  - sensor.pollen_gras
+                  - sensor.pollen_grabo  
+              # - type: entities
+              #   title: "House schedule"
+              #   show_header_toggle: false
+              #   entities:
+              #     - entity: input_boolean.change_bedsheets
+              #       icon: mdi:bed-empty
+              #       secondary_info: last-changed
+              - !include laundry-roomba_card.yaml
               - !include dev_card.yaml
-              - type: history-graph
-                title: vibration
-                hours_to_show: 24
-                entities:
-                  - sensor.bed_activity_158d0002a8cf44
-                  - sensor.coordination_158d0002a8cf44
-              - type: sensor
-                entity: sensor.bed_activity_158d0002a8cf44
-                name: Vibration
-                height: 75
-                line_color: "#3498db"
 
-
-          - type: custom:vertical-stack-in-card
+          - type: vertical-stack
             cards:
-              - type: entities
-                entities:
-                  - entity: input_boolean.show_security
-                    name: Show security
-                    icon: mdi:security-home
-                    
               - type: custom:alarm_control_panel-card
                 entity: alarm_control_panel.house
                 scale: 10px
@@ -95,49 +84,59 @@ cards:
                   - arm_home
                   - arm_away
                   - arm_night
-                  
-              - type: custom:monster-card
+              - type: custom:card-modder
+                report_size: 5
                 card:
                   type: entities
-                filter:
-                  include:
-                    - entity_id: "sensor.*movement*"
-                      options:
+                  entities:
+                    - type: custom:fold-entity-row
+                      head:
+                        type: section
+                        label: Security
+                      group_config:
                         secondary_info: last-changed
-              - type: custom:monster-card
-                card:
-                  type: entities
-                filter:
-                  include:
-                    - entity_id: "sensor.front_door_lock"
-                      options:
-                        secondary_info: last-changed
-                        icon: mdi:lock-smart
-                    - entity_id: "sensor.last_action"
-                      options:
-                        secondary_info: last-changed
-                        icon: mdi:lock-open-outline
-                        name: Last action
-                    - entity_id: "sensor.unlocked_by"
-                      options:
-                        secondary_info: last-changed
-                        icon: mdi:lock-open-outline
-                        name: Last unlocked by
-                    - entity_id: sensor.yard_door_lock
-                      options:
-                        secondary_info: last-changed
-                        name: Yard Door Lock
+                      items:
+                        - sensor.front_door
+                        - sensor.back_door
+                        - sensor.yard_door
+                        - sensor.balcony_door
+                        
+                        - sensor.dining_area_window
+                        - sensor.bedroom_window
+                        
+                        - sensor.passage_movement
+                        - sensor.upstairs_hallway_movement
+                        - binary_sensor.stefans_room_motion
+                        - sensor.ring_front_door_last_motion
+                  # - entity_id: "sensor.front_door_lock"
+                  #   options:
+                  #     secondary_info: last-changed
+                  #     icon: mdi:lock-smart
+                  # - entity_id: "sensor.last_action"
+                  #   options:
+                  #     secondary_info: last-changed
+                  #     icon: mdi:lock-open-outline
+                  #     name: Last action
+                  # - entity_id: "sensor.unlocked_by"
+                  #   options:
+                  #     secondary_info: last-changed
+                  #     icon: mdi:lock-open-outline
+                  #     name: Last unlocked by
+                  # - entity_id: sensor.yard_door_lock
+                  #   options:
+                  #     secondary_info: last-changed
+                  #     name: Yard Door Lock
 
-                    - entity_id: "sensor.*door*"
-                      options:
-                        secondary_info: last-changed
-                      state: 'Open'
-                      state: 'Closed'
-                    - entity_id: "sensor.*window*"
-                      options:
-                        secondary_info: last-changed
-                      state: 'Open'
-                      state: 'Closed'
+                  # - entity_id: "sensor.*door*"
+                  #   options:
+                  #     secondary_info: last-changed
+                  #   state: 'Open'
+                  #   state: 'Closed'
+                  # - entity_id: "sensor.*window*"
+                  #   options:
+                  #     secondary_info: last-changed
+                  #   state: 'Open'
+                  #   state: 'Closed'
                       
                         
               # - type: conditional
@@ -195,16 +194,14 @@ cards:
               #           state: 'Open'
               #           state: 'Closed'
 
-
-
-          - type: custom:vertical-stack-in-card
+          - type: vertical-stack
             cards: 
-              - type: glance
-                column_width: calc(100% / 3)
-                entities:
-                  - sensor.pollen_bjork
-                  - sensor.pollen_gras
-                  - sensor.pollen_grabo  
+              # - type: glance
+              #   column_width: calc(100% / 3)
+              #   entities:
+              #     - sensor.pollen_bjork
+              #     - sensor.pollen_gras
+              #     - sensor.pollen_grabo  
               - type: history-graph
                 title: Temperatures 48h
                 hours_to_show: 48
@@ -221,18 +218,9 @@ cards:
                   - sensor.temperature_passage
                   - sensor.temperature_downstairs_bathroom
                   - sensor.temperature_stefan
-              - type: history-graph
-                title: Light 24 Hours
-                hours_to_show: 24
-                entities:
-                  - sensor.passage_pir_luminance
-                  - sensor.upstairs_hallway_pir_luminance
               # - type: history-graph
-              #   title: Light 48h
-              #   hours_to_show: 48
+              #   title: Light 24 Hours
+              #   hours_to_show: 24
               #   entities:
-              #     - sensor.upstairs_hallway_pir_luminance
               #     - sensor.passage_pir_luminance
-              #     - sensor.illumination_34ce008bfc4b
-              #     - sensor.illumination_158d0001a66291
-              #     - sensor.illumination_158d0001a24ef1
+              #     - sensor.upstairs_hallway_pir_luminance
