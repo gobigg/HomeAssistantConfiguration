@@ -23,6 +23,9 @@ http:
   ssl_key: /ssl/privkey.pem
   ip_ban_enabled: true
   login_attempts_threshold: 3
+  trusted_networks:
+    - 127.0.0.1
+    - 192.168.1.1
 updater:
 conversation:
 customizer:
@@ -36,6 +39,8 @@ ios: !include notify/ios_config.yaml
 # ########################################
 # ###                GUI               ###
 # ########################################
+lovelace:
+  mode: yaml
 map:
 frontend:
   javascript_version: latest
@@ -45,30 +50,25 @@ frontend:
   # extra_html_url_es5:
   #   - /local/custom_ui/state-card-custom-ui-es5.html
 
+alarm_control_panel: !include alarm.yaml
+panel_custom: !include panel_custom.yaml
 panel_iframe:
   ide:
     title: IDE
     icon: mdi:code-braces
     url: !secret ide_address
-  terminal:
-    title: Terminal
-    icon: mdi:console
-    url: !secret terminal_address
-  log_viewer:
-    title: Log
-    icon: mdi:information-outline
-    url: !secret logviewer_address
-  motioneye:
-    title: Motioneye
-    icon: mdi:cctv
-    url: !secret motioneye_address
-    
+
+sensor:
+  - platform: vma
+    latitude: !secret lat_coord
+    longitude: !secret long_coord
+    radius: 7000
 custom_updater:
   track:
     - cards
     - components
-  card_urls:
-    - "https://github.com/kalkih/mini-media-player/blob/master/tracker.json"
+  # card_urls:
+  #   - "https://github.com/kalkih/mini-media-player/blob/master/tracker.json"
   # show_installable: true
 
 # ########################################
@@ -97,11 +97,9 @@ rfxtrx:
   
 switch:
   platform: rfxtrx
-  automatic_add: True
-  signal_repetitions: 3
+  automatic_add: False
+  signal_repetitions: 5
   devices:
-    0b11000261bc0cfe05010f70:
-      name: Switch 1
     0b11000417bc0cfe09010f70:
       name: Switch 2
     0b11000226bc0cfe09010f70:
@@ -142,22 +140,22 @@ notify: !include notify/notify.yaml
 
 python_script:
 
-mqtt:
-  discovery: true
-  discovery_prefix: homeassistant
-  broker: core-mosquitto
-  username: !secret mqtt_username
-  password: !secret mqtt_password
+# mqtt:
+#   discovery: true
+#   discovery_prefix: homeassistant
+#   broker: core-mosquitto
+#   username: !secret mqtt_username
+#   password: !secret mqtt_password
   
-mqtt_statestream:
-  base_topic: hassio
-  publish_attributes: true
-  publish_timestamps: true
-  include:
-    entities:
-      - counter.litterbox_downstairs_visits
-      - counter.litterbox_upstairs_visits
-      - input_select.washing_machine_status
+# mqtt_statestream:
+#   base_topic: hassio
+#   publish_attributes: true
+#   publish_timestamps: true
+#   include:
+#     entities:
+#       - counter.litterbox_downstairs_visits
+#       - counter.litterbox_upstairs_visits
+#       - input_select.washing_machine_status
 
 google:
   client_id: !secret google_id

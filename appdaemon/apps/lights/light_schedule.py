@@ -23,8 +23,12 @@ class LightSchedule(Base):
 
     def outdoor_lights_on(self, kwargs):
         self.turn_on_device(self.outdoor_lights)
+        self.turn_on_device(self.hallway_window)
         self.log("Turned on outdoor lights")
+        self.notification_manager.log_home(message = "Turned on outdoor lights and hallway window.")
     
     def outdoor_lights_out(self, kwargs):
         self.turn_off_device(self.outdoor_lights)
+        self.turn_off_device(self.hallway_window)
         self.log("Turned off outdoor lights")
+        self.notification_manager.log_home(message = "Turned off outdoor lights and hallway window.")

@@ -1,9 +1,9 @@
 title: Isa
 icon: mdi:human-female
-id: isa
+path: isa
 
 cards:
-  - !include greeter_card.yaml
+  # - !include greeter_card.yaml
   - !include dev_card.yaml
   - type: entities
     entities:

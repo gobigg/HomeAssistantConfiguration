@@ -1,50 +1,86 @@
 title: Cats
 icon: mdi:cat
-id: cat
+path: cat
+background: center / cover no-repeat url("/local/lovelace_ui/kittens.jpg") fixed
 cards:
+  - type: custom:card-modder
+    report_size: 7
+    card:
+      type: custom:calendar-card
+      showProgressBar: false
+      numberOfDays: 14
+      entities:
+        - calendar.cats
+    style:
+      background-color: rgba(0, 0, 0, 0.3)
+      border-radius: 10px
+      
+  - type: custom:card-modder
+
+    card:
+      type: horizontal-stack
+      cards:
+        - type: custom:card-modder
+          card:
+            type: custom:gauge-card
+            title: Downstairs
+            entity: counter.litterbox_downstairs_visits
+            measurement: "visits"
+            min: 0
+            max: 6
+            severity:
+              red: 3
+              green: 0
+              amber: 2
+          style:
+            background-color: rgba(0, 0, 0, 0.3)
+        - type: custom:card-modder
+          card:
+            type: custom:gauge-card
+            title: Upstairs
+            entity: counter.litterbox_upstairs_visits
+            measurement: "visits"
+            min: 0
+            max: 6
+            severity:
+              red: 3
+              green: 0
+              amber: 2
+          style:
+            background-color: rgba(0, 0, 0, 0.3)
+    style:
+      border-radius: 10px
+      
+  - type: custom:card-modder
+    report_size: 7
+    card:
+      type: horizontal-stack
+      cards:
+      - type: custom:card-modder
+        card:
+          type: entity-filter
+          entities:
+            - entity: binary_sensor.downstairs_litterbox_motion
+              name: Downstairs
+            - entity: binary_sensor.upstairs_litterbox_motion
+              name: Upstairs
+          state_filter:
+            - 'off'
+          card: 
+            type: glance
+        style:
+          background-color: rgba(0, 0, 0, 0.3)
+          border-radius: 10px
+          
+      - type: conditional
+        conditions:
+          - entity: binary_sensor.upstairs_litterbox_motion
+            state: "off"
+        card:
+          type: picture-entity
+          entity: camera.upstairs
+          show_name: false
+          show_state: false
+    style:
+      border-radius: 10px
   - !include dev_card.yaml
-  # - type: history-graph
-  #   title: Litterboxes
-  #   entities:
-  #     - entity: counter.all_litterbox_visits_today
-  #       name: All
-  #     - entity: counter.litterbox_downstairs_visits
-  #       name: Downstairs
-  #     - entity: counter.litterbox_upstairs_visits
-  #       name: Upstairs
-  - type: horizontal-stack
-    cards:
-      - type: custom:gauge-card
-        title: Downstairs
-        entity: counter.litterbox_downstairs_visits
-        measurement: "visits"
-        min: 0
-        max: 6
-        severity:
-          red: 3
-          green: 0
-          amber: 2
-      - type: custom:gauge-card
-        title: Upstairs
-        entity: counter.litterbox_upstairs_visits
-        measurement: "visits"
-        min: 0
-        max: 6
-        severity:
-          red: 3
-          green: 0
-          amber: 2
-  - type: entities
-    title: Grooming Schedule
-    show_header_toggle: false
-    entities:
-      - input_boolean.cut_claws_ziggy
-      - input_boolean.cut_fur_ziggy
-      - input_boolean.cut_claws_honey
-      - input_boolean.cut_fur_honey
-  - type: entities
-    title: Ordering Schedule
-    show_header_toggle: false
-    entities:
-      - input_boolean.cat_food
-      - input_boolean.cat_litter

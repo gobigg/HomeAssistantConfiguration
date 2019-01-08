@@ -1,0 +1,62 @@
+title: Traffic info
+icon: mdi:car
+panel: true
+path: traffic
+cards:
+  - type: vertical-stack
+    cards:
+      - type: custom:layout-card
+        layout: vertical
+        cards:
+          - type: vertical-stack
+            cards:
+              - type: glance
+                entities:
+                  - entity: sensor.trafikverket_alta_road_temperature
+                    name: Road temp
+                  - entity: sensor.homesolna_travel_time
+                    name: Solna
+                    icon: mdi:car
+                  - entity: sensor.homec9_travel_time
+                    name: C9
+                    icon: mdi:car
+
+              - type: horizontal-stack  
+                cards:
+                  - type: picture-entity
+                    entity: camera.tpl_skvaltan
+                    show_state: false
+                  - type: picture-entity
+                    entity: camera.tpl_nacka
+                    show_state: false
+                    
+              - type: horizontal-stack  
+                cards:
+                  - type: picture-entity
+                    entity: camera.vikdalen
+                    show_state: false
+                  - type: picture-entity
+                    entity: camera.tpl_kvarnholmen
+                    show_state: false
+                    
+          - break
+          - type: vertical-stack
+            cards:
+              - type: horizontal-stack  
+                cards:
+                  - type: picture-entity
+                    entity: camera.marinstaden
+                    show_state: false
+                  - type: picture-entity
+                    entity: camera.svindersvik
+                    show_state: false
+                    
+              - type: horizontal-stack  
+                cards:
+                  - type: picture-entity
+                    entity: camera.sicklatunneln
+                    show_state: false
+                  - type: picture-entity
+                    entity: camera.tpl_grondal
+                    show_state: false
+              

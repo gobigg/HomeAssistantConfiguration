@@ -93,10 +93,10 @@ class a_better_presence(hass.Hass):
         new_device_tracker_state = device_tracker(new, self)
 
         # __ TEST WITHOUT ACCURACY __ Lets see if it is stable
-        
+        # self.log(new_device_tracker_state.gps_accuracy)
         # if new_device_tracker_state.gps_accuracy != None:
-        #     if new_device_tracker_state.gps_accuracy > self.max_gps_accuracy:
-        #         self.log("GPS ACC HIGHER THAN {} FOR DEVICE {}, ARE {}".format(self.max_gps_accuracy, entity, new_device_tracker_state.gps_accuracy))
+        #     if new_device_tracker_state.gps_accuracy < 30:
+        #         self.log("GPS ACC LOWER THAN {} FOR DEVICE {}, ARE {}".format(30, entity, new_device_tracker_state.gps_accuracy))
         #         return # Not update tracking data from gps device
         
         self.update_changed_values(new_device_tracker_state, entity)
@@ -120,6 +120,7 @@ class a_better_presence(hass.Hass):
        
         for device_name in self._tracked_device_names:
             tracked_device = self.get_state(entity=device_name, attribute="all")
+            # self.log(tracked_device)
             tracked_devices[device_name] = device_tracker(tracked_device, self)
           
         return tracked_devices
@@ -269,18 +270,22 @@ class a_better_presence(hass.Hass):
 
         #if we reach here nether of the bluetooth or router is home we only report home if
         #gps reported value is within time limit else not_home
+        # self.log(f"gps last updated: {gps_device.last_updated}")
         if (gps_device != None and gps_device.state == 'home') and self.is_updated_within_time(gps_device.last_updated):
+            self.log(gps_device.last_updated)
             return 'home' #even if BT and wifi is not present within time the gps are
 
         return initial_home_state
 
     # Returns true if the last updated is not older than now-time_in_seconds or the attribute missing
     def is_updated_within_time(self, last_updated)->bool:
-        
+        self.log(last_updated)
         diff = datetime.datetime.now(datetime.timezone.utc) - last_updated
         if diff.days == 0 and diff.seconds < self.update_time: 
+            self.log("Within time")
             return True
         else:
+            self.log("Not within time")
             return False
 
 

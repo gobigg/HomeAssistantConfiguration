@@ -1,8 +1,8 @@
-vma:
-  module: vma
-  class: VMA
-  notify_service: "notify/ios_isabellas_iphone_x"
-  countries: "Sverige"
-  home_lat: !secret lat_coord
-  home_long: !secret long_coord
-  range_km: 7000
+# vma:
+#   module: vma
+#   class: VMA
+#   notify_service: "notify/ios_isabellas_iphone_x"
+#   countries: "Sverige"
+#   home_lat: !secret lat_coord
+#   home_long: !secret long_coord
+#   range_km: 7000

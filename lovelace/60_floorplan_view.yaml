@@ -1,5 +1,5 @@
 icon: mdi:floor-plan
-id: floorplan
+path: floorplan
 title: Floorplan
 theme: teal
 cards:

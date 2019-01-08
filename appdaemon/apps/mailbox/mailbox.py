@@ -19,7 +19,7 @@ class Mailbox(Base):
         self.attributes = {}      
         self.just_opened_door = False
         self.just_notified = False
-
+        
         self.listen_state(self.just_opened, self.args["door"])
         if (self.state is None or self.state == ""):
             self.make_sensor()
@@ -57,6 +57,7 @@ class Mailbox(Base):
 
                 if (self.state != self.newState and self.just_notified is False):
                     self.notification_manager.notify_if_home(person = "Isa", message = "You've got {}".format(self.newState))
+                    self.notification_manager.log_home(message = "You've got {}".format(self.newState))
                     self.just_notified = True
                     self.run_in(self.reset_notification, 60)
 
@@ -79,6 +80,7 @@ class Mailbox(Base):
         
     def mailbox_emptied(self):
         self.notification_manager.notify_if_home(person = "Isa", message = "Mailbox emptied")
+        self.notification_manager.log_home(message = "Mailbox emptied")
             
         self.attributes['icon'] = "mdi:dots-horizontal"
         self.attributes['latest_emptied'] = self.local_time_str(datetime.datetime.now(datetime.timezone.utc))
@@ -97,6 +99,7 @@ class Mailbox(Base):
             
         if (self.state != self.newState and self.just_notified is False):
             self.notification_manager.notify_if_home(person = "Isa", message = "You've got {}".format(self.newState))
+            self.notification_manager.log_home(message = "You've got {}".format(self.newState))  
             self.just_notified = True
             self.run_in(self.reset_notification, 60)
 

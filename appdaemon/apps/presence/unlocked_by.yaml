@@ -1,7 +1,0 @@
-unlocked_by:
-  module: unlocked_by
-  class: UnlockedBy
-  global_dependencies: globals
-  unlocked_by: sensor.unlocked_by
-  isa: sensor.presence_isa
-  stefan: sensor.presence_stefan

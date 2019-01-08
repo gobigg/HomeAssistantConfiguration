@@ -12,34 +12,35 @@ homeassistant:
       icon: mdi:power-standby
       name: Dafang switch
 
-# camera:
-#   # - platform: ffmpeg
-#   #   name: DaFang
-#   #   input: !secret dafang_camera_input
-#   - platform: mjpeg
-#     mjpeg_url: !secret motion_eye_upstairs
-#     username: !secret motion_eye_username
-#     password: !secret motion_eye_password
-#     authentication: "basic"
+shell_command:
+  dafang_up: !secret dafang_up
+  dafang_down: !secret dafang_down
+  dafang_left: !secret dafang_left
+  dafang_right: !secret dafang_right
+  dafang_calibrate: !secret dafang_calibrate
+  dafang_all_up: !secret dafang_all_up
+
+camera:
+  - platform: generic
+    name: Upstairs
+    still_image_url: !secret dafang_still_image_url
 
 script:
   dafang_up:
     sequence:
-      - service: cover.open_cover
-        data:
-          entity_id: cover.dafang_move_updown
+      - service: shell_command.dafang_up
   dafang_down:
     sequence:
-      - service: cover.close_cover
-        data:
-          entity_id: cover.dafang_move_updown
+      - service: shell_command.dafang_down
   dafang_left:
     sequence:
-      - service: cover.open_cover
-        data:
-          entity_id: cover.dafang_move_leftright
+      - service: shell_command.dafang_left
   dafang_right:
     sequence:
-      - service: cover.close_cover
-        data:
-          entity_id: cover.dafang_move_leftright
+      - service: shell_command.dafang_right
+  dafang_calibrate:
+    sequence:
+      - service: shell_command.dafang_calibrate
+  dafang_all_up:
+    sequence:
+      - service: shell_command.dafang_all_up

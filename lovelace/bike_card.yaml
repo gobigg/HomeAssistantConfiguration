@@ -47,7 +47,8 @@ elements:
       transform: none
   - type: state-label
     entity: switch.bike_plug_switch
-    tap_action: toggle
+    tap_action:
+      action: toggle
     style:
       top: 85%
       left: 90%

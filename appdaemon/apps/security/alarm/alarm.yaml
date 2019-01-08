@@ -1,8 +1,7 @@
 alarm:
   module: alarm
   class: Alarm
-  # devices: sensor.presence_test
-  devices: sensor.presence_stefan, sensor.presence_isa
+  devices: sensor.presence_stefan,sensor.presence_isa
   alarm: alarm_control_panel.house
   alarm_code: !secret alarm_control_panel_code
   dependencies:

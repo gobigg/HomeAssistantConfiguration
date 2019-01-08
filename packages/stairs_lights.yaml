@@ -21,10 +21,11 @@ light:
     command_topic: milight/0x2/rgbw/1 
     state_topic: milight/updates/0x2/rgbw/1 
     <<: &MILIGHT_PARAMS
-      platform: mqtt_json
-      color_temp: true
-      rgb: true
-      brightness: true
+      platform: mqtt
+      schema: json
+      # color_temp: true
+      # rgb: true
+      # brightness: true
 
   - name: "Stairs Middle Spot"
     command_topic: milight/0x3/rgbw/1 

@@ -51,6 +51,7 @@ class Summary(Base):
       start = "" if message_part == 0 else "\n"
       message = message + start + "The laundry is {}.".format(laundry.lower())
       message_part = message_part + 1
+      
     if (message != ""):
       self.log(message)
       self.call_service("notify/ios_isabellas_iphone_x", title = "Welcome home", message = message)

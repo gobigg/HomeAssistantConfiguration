@@ -1,255 +1,88 @@
 title: Cameras
 icon: mdi:cctv
-id: cameras
+path: cameras
+panel: true
 cards:
+  - type: custom:layout-card
+    layout: horizontal
+
+    cards:
   ## Cameras
-  - !include dev_card.yaml
-  - type: picture-entity
-    show_state: false
-    image:
-    name: Latest Motion Front Door
-    entity: camera.front_door
-    camera_image: camera.front_door
+      - type: vertical-stack
+        cards:
+          - type: picture-glance
+            show_state: false
+            title: Latest Motion Front Door
+            entity: camera.front_door
+            camera_image: camera.front_door
+            entities:
+              -  sensor.ring_front_door_battery
+          - !include dev_card.yaml
 
-  - type: iframe
-    url: !secret iframecamera
-    aspect_ratio: 75%
-
-
-# # - type: horizontal-stack
-# #   cards:
-# #     - type: picture-entity
-# #       name: Live Downstairs           
-# #       image:
-# #       entity: camera.downstairs
-# #       camera_image: camera.downstairs      
-# #     - type: picture-entity
-# #       name: Live Upstairs           
-# #       image:
-# #       entity: camera.upstairs
-# #       camera_image: camera.upstairs
-#   # - type: picture-entity
-#   #   image:
-#   #   entity: camera.back_door
-#   #   name: Live Back Door            
-#   #   camera_image: camera.back_door
-#   - type: picture-glance
-#     # title: Living room
-#     entities:
-#       - script.dafang_up
-#       - script.dafang_down
-#       - script.dafang_left
-#       - script.dafang_right
-#       - switch.dafang_h264_rtsp_server
-#     camera_image: camera.dafang
-#     state_image:
-#       "off": /local/lovelace_ui/camera_background.png
-#     entity: switch.dafang_h264_rtsp_server
-
-#   - type: picture-elements
-#     image: /local/lovelace_ui/camera_background.png
-#     elements:
-#       # CAMERA
-#       - type: image
-#         entity: camera.back_door
-#         camera_image: camera.back_door
-#         style:
-#           left: 50%
-#           top: 50%
-#           width: 100%
-#           heigth: 100%
-#       - type: image
-#         image: /local/lovelace_ui/glance_overlay.png
-#         style:
-#           top: 92%
-#           left: 50%
-#           width: 100%
-#           opacity: 0.4
-          
-#       - type: image
-#         entity: script.dafang_left
-#         title: "Left"
-#         image: /local/lovelace_ui/arrow_left.svg
-#         tap_action: toggle
-#         style:
-#           top: 91%
-#           left: 5%
-#           width: 12%
-#       - type: image
-#         entity: script.dafang_up
-#         title: "Up"
-#         image: /local/lovelace_ui/arrow_up.svg
-#         tap_action: toggle
-#         style:
-#           top: 91%
-#           left: 12%
-#           width: 12%
-#       - type: image
-#         entity: script.dafang_down
-#         title: "Down"
-#         image: /local/lovelace_ui/arrow_down.svg
-          
-#         tap_action: toggle
-#         style:
-#           top: 91%
-#           left: 19%
-#           width: 12%
-#       - type: image
-#         entity: script.dafang_right
-#         title: "Right"
-#         image: /local/lovelace_ui/arrow_right.svg
-#         tap_action: toggle
-#         style:
-#           top: 91%
-#           left: 26%
-#           width: 12%
-
-#         # POWER
-#       - type: image
-#         entity: input_boolean.test
-#         state_image:
-#           "on": /local/lovelace_ui/power_on.svg
-#           "off": /local/lovelace_ui/power_off.svg
-#         tap_action: toggle
-#         style:
-#           top: 91%
-#           left: 94%
-#           width: 17%
-
-#         # LEDS
-#       - type: image
-#         entity: input_boolean.test
-#         title: "Toggle"
-#         image: /local/lovelace_ui/blue_led.svg
-#         tap_action: toggle
-#         state_filter:
-#           "on": brightness(100%)
-#           "off": brightness(30%)
-#         style:
-#           top: 91%
-#           left: 78%
-#           width: 11%
-#       - type: image
-#         entity: input_boolean.test
-#         title: "Toggle"
-#         image: /local/lovelace_ui/orange_led.svg
-#         tap_action: toggle
-#         state_filter:
-#           "on": brightness(100%)
-#           "off": brightness(30%)
-#         style:
-#           top: 91%
-#           left: 85%
-#           width: 11%
-          
-          
-#   # - type: picture-entity
-#   #   show_state: false
-#   #   name: Latest Motion Back Door
-#   #   image:
-#   #   entity: camera.latest_motion
-#   #   camera_image: camera.latest_motion
-
-#   # - type: picture-elements
-#   #   image: /local/lovelace_ui/camera_background.png
-#   #   elements:
-#   #     # CAMERA
-#   #     - type: image
-#   #       entity: camera.dafang
-#   #       camera_image: camera.dafang
-#   #       style:
-#   #         left: 50%
-#   #         top: 43%
-#   #         width: 100%
-#   #     - type: icon
-#   #       entity: script.dafang_left
-#   #       title: "Left"
-#   #       icon: mdi:arrow-left-box
-#   #       tap_action: toggle
-#   #       style:
-#   #         top: 93%
-#   #         left: 5%
-#   #     - type: icon
-#   #       entity: script.dafang_up
-#   #       title: "Up"
-#   #       icon: mdi:arrow-up-box
-#   #       tap_action: toggle
-#   #       style:
-#   #         top: 93%
-#   #         left: 12%
-#   #     - type: icon
-#   #       entity: script.dafang_down
-#   #       title: "Down"
-#   #       icon: mdi:arrow-down-box
-#   #       tap_action: toggle
-#   #       style:
-#   #         top: 93%
-#   #         left: 19%
-#   #     - type: icon
-#   #       entity: script.dafang_right
-#   #       title: "Right"
-#   #       icon: mdi:arrow-right-box
-#   #       tap_action: toggle
-#   #       style:
-#   #         top: 93%
-#   #         left: 26%
-
-#   #       # POWER
-#   #     - type: icon
-#   #       entity: switch.dafang_h264_rtsp_server
-#   #       title: "Toggle"
-#   #       icon: mdi:power-standby
-#   #       tap_action: toggle
-#   #       style:
-#   #         top: 93%
-#   #         left: 95%
-
-#   #       # LEDS
-#   #     - type: icon
-#   #       entity: switch.dafang_blue_led
-#   #       title: "Toggle"
-#   #       icon: mdi:led-outline
-#   #       tap_action: toggle
-#   #       style:
-#   #         top: 93%
-#   #         left: 81%
-#   #         color: blue
-#   #     - type: icon
-#   #       entity: switch.dafang_yellow_led
-#   #       title: "Toggle"
-#   #       icon: mdi:led-outline
-#   #       tap_action: toggle
-#   #       style:
-#   #         top: 93%
-#   #         left: 88%
-#   #         color: yellow
-#     # entities:
-#     #   - switch.dafang_h264_rtsp_server
-#     #   # - switch.dafang_blue_led
-#     #   # - switch.dafang_yellow_led
-#     #   - binary_sensor.dafang_motion_sensor
-#     #   - entity: script.dafang_left
-#     #     icon: 
-#     #   - entity: script.dafang_down
-#     #     icon: arrow-down-bold-outline
-#     #   - entity: script.dafang_up
-#     #     icon: mdi:arrow-up-bold-outline
-#     #   - entity: script.dafang_right
-#     #     icon: 
-#   # - type: entities
-#   #   entities:
-#   #     - switch.dafang_h264_rtsp_server
-#   #     - switch.dafang_mjpeg_rtsp_server
-#   #     - sensor.dafang
-#   #     - device_tracker.dafang
-#   #     - sensor.dafang_light_sensor
-#   #     - switch.dafang_ir_filter
-#   #     - switch.dafang_ir_led
-#   #     - switch.dafang_night_mode
-#   #     - switch.dafang_night_mode_auto
-#   #     - switch.dafang_blue_led
-#   #     - switch.dafang_yellow_led
-#   #     - switch.dafang_motion_detection
-#   #     - switch.dafang_motion_tracking
-#   #     - camera.dafang_motion_snapshot
-#   #     - binary_sensor.dafang_motion_sensor
+      - type: custom:vertical-stack-in-card
+        cards:
+          - type: picture-glance
+            title: Upstairs
+            camera_image: camera.upstairs
+            entities:
+              - switch.dafang_night_mode
+              - light.isa_ceiling_light
+              - switch.dafang_h264_rtsp_server
+          - type: glance
+            show_name: false
+            show_state: false
+            entities:
+              - entity: script.dafang_down
+                tap_action:
+                  action: call-service
+                  service: script.dafang_down
+              - entity: script.dafang_up
+                tap_action:
+                  action: toggle
+              - entity: script.dafang_left
+                tap_action:
+                  action: toggle
+              - entity: script.dafang_right
+                tap_action:
+                  action: toggle
+              - entity: script.dafang_calibrate
+                tap_action:
+                  action: toggle
+                icon: mdi:reload
+          - type: picture-entity
+            entity: camera.motion_dafang
+              
+      - type: custom:vertical-stack-in-card
+        cards:
+          - type: picture-glance
+            title: Back door
+            camera_image: camera.back_door
+            entities:
+              - light.living_room_ceiling_light_level
+              - light.living_room_spotlights_level
+          - type: glance
+            show_name: false
+            show_state: false
+            entities:
+              - entity: script.sannce_down
+                tap_action:
+                  action: toggle
+                icon: mdi:chevron-down
+              - entity: script.sannce_up
+                tap_action:
+                  action: toggle
+                icon: mdi:chevron-up
+              - entity: script.sannce_left
+                tap_action:
+                  action: toggle
+                icon: mdi:chevron-left
+              - entity: script.sannce_right
+                tap_action:
+                  action: toggle
+                icon: mdi:chevron-right
+              - entity: script.sannce_calibrate
+                tap_action:
+                  action: toggle
+                icon: mdi:reload
+          - type: picture-entity
+            entity: camera.motion_sannce

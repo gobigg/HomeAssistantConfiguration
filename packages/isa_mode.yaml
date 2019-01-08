@@ -53,7 +53,7 @@ automation:
               state: 'Away'
             - condition: state
               entity_id: device_tracker.stefan
-              state: 'Just Left'
+              state: 'Just left'
     action:
       - service: notify.ios_isabellas_iphone_x
         data:

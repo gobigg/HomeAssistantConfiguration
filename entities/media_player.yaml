@@ -1,8 +1,8 @@
   # - platform: sonos
   # - platform: cast
-  # - platform: spotify
-  #   client_id: !secret spotify_id
-  #   client_secret: !secret spotify_secret
+  - platform: spotify
+    client_id: !secret spotify_id
+    client_secret: !secret spotify_secret
   - platform: samsungtv
     name: 'Livingroom tv'
     host: !secret samsungtv2_host

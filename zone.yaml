@@ -2,7 +2,7 @@
     latitude: !secret ica_lat
     longitude: !secret ica_long
     icon: mdi:cart
-    radius: 250
+    radius: 300
 
   - name: Work S
     latitude: !secret s_work_lat

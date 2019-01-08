@@ -1,23 +1,40 @@
-# camera:
-#   - platform: ffmpeg
-#     name: Back Door
-#     input: !secret camera_input
-#     extra_arguments: -pred 1
-#   - platform: local_file
-#     file_path: /config/www/motion/back_door_camera_latest.jpg
-#     name: Latest motion
-# binary_sensor:
-#   - platform: ffmpeg_motion
-#     name: Back Door Camera Motion
-#     input: !secret camera_input
-#     repeat: 1
-#     repeat_time: 60
-    
-# sensor:  
-#   - platform: template
-#     sensors:
-#       back_door_camera_movement:
-#         friendly_name: 'Back Door Camera Movement'
-#         entity_id: "binary_sensor.back_door_camera_motion"
-#         value_template: '{% if is_state("binary_sensor.back_door_camera_motion", "on") %}Movement detected{% else %}No movement{% endif %}'
-#         icon_template: '{% if is_state("binary_sensor.back_door_camera_motion", "on") %}mdi:run-fast{% else %}mdi:sleep{% endif %}'
+camera:
+  - platform: generic
+    name: Back door
+    still_image_url: !secret sannce_still_image_url
+
+
+  # - platform: push
+  #   name: Motion Sannce
+  #   buffer: 20
+  #   timeout: 5
+  #   token: 7495223453
+
+## example command (calibrate): 'curl -k "http://192.168.1.61:19273/decoder_control.cgi?loginuse=myUser&loginpas=myPassword&command=25&onestep=0&1542658796212.6775"'
+shell_command:
+  sannce_up: !secret sannce_up
+  sannce_down: !secret sannce_down
+  sannce_left: !secret sannce_left
+  sannce_right: !secret sannce_right
+  sannce_calibrate: !secret sannce_calibrate
+  sannce_all_down: !secret sannce_all_down
+  
+script:
+  sannce_up:
+    sequence:
+      - service: shell_command.sannce_up
+  sannce_down:
+    sequence:
+      - service: shell_command.sannce_down
+  sannce_left:
+    sequence:
+      - service: shell_command.sannce_left
+  sannce_right:
+    sequence:
+      - service: shell_command.sannce_right
+  sannce_calibrate:
+    sequence:
+      - service: shell_command.sannce_calibrate
+  sannce_all_down:
+    sequence:
+      - service: shell_command.sannce_all_down

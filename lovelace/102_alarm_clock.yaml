@@ -1,7 +1,7 @@
 title: Alarm clock
-icon: mdi:clock-outline
+icon: mdi:clock-outlines
 panel: true
-id: kiosk_clock
+path: kiosk_clock
 cards:
   - type: vertical-stack
     cards:
@@ -9,13 +9,13 @@ cards:
         image: /local/lovelace_ui/sunrise_1.jpg
         # image: /local/lovelace_ui/night.jpg
         elements:
-          - type: service-button
-            title: Run gen
-            service: shell_command.lovelace_gen_states 
-            service_data: {}
-            style:
-              top: 30%
-              left: 50%
+          # - type: service-button
+          #   title: Run gen
+          #   service: shell_command.lovelace_gen_states 
+          #   service_data: {}
+          #   style:
+          #     top: 30%
+          #     left: 50%
           - type: state-label
             entity: sensor.time
             style:
@@ -30,7 +30,6 @@ cards:
               -moz-osx-font-smoothing: grayscale
               font-smoothing: antialiased
               -webkit-font-smoothing: antialiased
-              
 
           - type: service-button
             title: Good morning
@@ -125,7 +124,8 @@ cards:
               padding: 35px
           - type: state-icon
             entity: input_boolean.guest_mode
-            tap_action: toggle
+            tap_action:
+              action: toggle
             style:
               top: 84%
               left: 93%
@@ -134,7 +134,8 @@ cards:
               padding: 7px
           - type: state-label
             entity: input_boolean.guest_mode
-            tap_action: toggle
+            tap_action:
+              action: toggle
             style:
               top: 90%
               left: 93%
@@ -143,7 +144,8 @@ cards:
               padding: 7px
           - type: state-icon
             entity: input_boolean.cleaning_day
-            tap_action: toggle
+            tap_action:
+              action: toggle
             style:
               top: 84%
               left: 86%
@@ -152,7 +154,8 @@ cards:
               padding: 7px
           - type: state-label
             entity: input_boolean.cleaning_day
-            tap_action: toggle
+            tap_action:
+              action: toggle
             style:
               top: 90%
               left: 86%
@@ -168,7 +171,8 @@ cards:
               padding: 7px
           - type: state-label
             entity: sensor.ebike_charging
-            tap_action: toggle
+            tap_action:
+              action: toggle
             style:
               top: 90%
               left: 79%

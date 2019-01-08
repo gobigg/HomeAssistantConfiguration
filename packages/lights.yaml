@@ -63,8 +63,14 @@ homeassistant:
     light.outdoor_hanging_lights:
       icon: mdi:lightbulb
 
+    light.outdoor_front_hanging_lights:
+      icon: mdi:lightbulb
+
     light.outdoor_yard_light:
       icon: mdi:wall-sconce
+
+    light.outdoor_yard_light_net:
+      icon: mdi:lightbulb
 
     light.walk_in_closet_lights:
       icon: mdi:wall-sconce
@@ -109,6 +115,7 @@ scene:
         brightness: 45
         transition: 60
       light.outdoor_hanging_lights: on
+      light.outdoor_front_hanging_lights: on
       
   - name: Dark Lights Off
     entities:
@@ -122,6 +129,7 @@ scene:
         state: off
         transition: 30
       light.outdoor_hanging_lights: off
+      light.outdoor_front_hanging_lights: off
 
       
   - name: Ceiling lights
@@ -151,10 +159,7 @@ scene:
     entities:
       light.living_room_ceiling_light_level:
         state: on
-        brightness: 50
-      light.living_room_spotlights_level:
-        state: on
-        brightness: 30
+        brightness: 60
       light.passage_ceiling_spotlights_level:
         state: on
         brightness: 50
@@ -201,35 +206,17 @@ scene:
         state: on
         brightness: 10
           
-  # occusim_stefan_on:
-  #   alias: Occusim Stefan On
-  #   sequence:
-  #     - service: light.turn_on
-  #       data:
-  #         entity_id: light.stefan_lightstrip
-  #         brightness: 255
-  #         color_temp: 153
-
-  # occusim_stefan_normal:
-  #   alias: Occusim Stefan Normal
-  #   sequence:
-  #     - service: light.turn_on
-  #       data:
-  #         entity_id: light.stefan_lightstrip
-  #         brightness: 200
-  #         rgb_color:
-  #           - 70
-  #           - 255
-  #           - 236
 light:
   - platform: rfxtrx
-    signal_repetitions: 3
+    signal_repetitions: 5
     devices:
       0b11000273bc0cfe08010f70:
         name: Outdoor hanging lights
       0b11000382bc0cfe00010f70:
         name: Outdoor front hanging lights
-  - platform: lifx
+      0b11000261bc0cfe05010f70:
+        name: Outdoor yard light net
+
   - platform: group
     name: 'Outdoor lights'
     entities:
@@ -237,6 +224,8 @@ light:
       - light.outdoor_front_light
       - light.outdoor_yard_light
       - light.outdoor_hanging_lights
+      - light.outdoor_front_hanging_lights
+
   - platform: group
     name: 'Inside lights'
     entities:
@@ -251,7 +240,6 @@ light:
       - light.floorlamp_reading_light
       - light.floorlamp_uplight
       - light.gateway_light_34ce008bfc4b
-      - light.kitchen_sink_light
       - light.stairs_lights
       - light.walk_in_closet_lights
       - light.kitchen_ceiling_spotlights_level
@@ -280,6 +268,7 @@ light:
       # - light.stefan_lightstrip
       - light.upstairs_hallway_ceiling_light_level
       - light.gateway_light_34ce008bfc4b
+
   - platform: group
     name: 'Lights automation'
     entities:

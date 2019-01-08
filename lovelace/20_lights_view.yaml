@@ -1,6 +1,6 @@
 title: Lights
 icon: mdi:lightbulb-on
-id: lights
+path: lights
 cards:
   - type: vertical-stack
     cards:
@@ -29,16 +29,25 @@ cards:
       title: Outdoor
       show_header_toggle: false
       entities:
+        - type: section
+          label: Front
         - entity: light.outdoor_front_light
-          name: Front
+          name: Wall
           type: custom:slider-entity-row
-          hide_when_off: true
+          toggle: true
+        - entity: light.outdoor_front_hanging_lights
+          name: Chain lights
+          
+        - type: section
+          label: Yard
         - entity: light.outdoor_yard_light
-          name: Yard
+          name: Wall
+          toggle: true
           type: custom:slider-entity-row
-          hide_when_off: true
         - entity: light.outdoor_hanging_lights
-          name: Hanging
+          name: Chain lights
+        - entity: light.outdoor_yard_light_net
+          name: Light net
 
     - type: horizontal-stack
       cards:
@@ -69,41 +78,54 @@ cards:
       entities:
         - entity: light.kitchen_ceiling_spotlights_level
           name: Kitchen
+          
         - entity: light.dining_area_ceiling_light_level
           name: Dining area
           type: custom:slider-entity-row
-          #hide_control: true
-          #break_slider: true
+          toggle: true
           hide_when_off: true
-        - entity: light.living_room_ceiling_light_level
-          name: Livingroom
-          type: custom:slider-entity-row
-          hide_when_off: true
-        - entity: light.living_room_spotlights_level
-          name: Livingroom spots
-          type: custom:slider-entity-row
-          hide_when_off: true
+
         - entity: light.floorlamp_uplight
           name: Floorlamp
           type: custom:slider-entity-row
+          toggle: true
           hide_when_off: true
+          
         - entity: light.floorlamp_reading_light
           name: Floorlamp reading
           type: custom:slider-entity-row
+          toggle: true
           hide_when_off: true
+
+        - entity: light.living_room_ceiling_light_level
+          name: Livingroom
+          type: custom:slider-entity-row
+          toggle: true
+          hide_when_off: true
+
+        - entity: light.living_room_spotlights_level
+          name: Livingroom spots
+          type: custom:slider-entity-row
+          toggle: true
+          hide_when_off: true
+          
         - entity: light.passage_ceiling_spotlights_level
           name: Passage
           type: custom:slider-entity-row
+          toggle: true
           hide_when_off: true
+          
         - entity: light.hallway_window_light
           name: Hallway window
           type: custom:slider-entity-row
+          toggle: true
           hide_when_off: true
+
         - entity: light.stairs_lights
           name: Stairs
           type: custom:slider-entity-row
+          toggle: true
           hide_when_off: true
-          
           
   - type: vertical-stack
     cards:
@@ -111,28 +133,42 @@ cards:
       title: Upstairs
       show_header_toggle: false
       entities:
-        - entity: light.bedroom_ceiling_light
-          name: Bedroom
-          type: custom:slider-entity-row
-          hide_when_off: true
         - entity: light.bedside_lamp
           name: Bedside
           type: custom:slider-entity-row
+          toggle: true
           hide_when_off: true
+      
+        - entity: light.bedroom_ceiling_light
+          name: Bedroom
+          type: custom:slider-entity-row
+          toggle: true
+          hide_when_off: true
+          
         - entity: light.isa_ceiling_light
           name: Isa
           type: custom:slider-entity-row
+          toggle: true
           hide_when_off: true
+          
         - entity: light.upstairs_hallway_ceiling_light_level
           name: Upstairs hallway
           type: custom:slider-entity-row
+          toggle: true
           hide_when_off: true
+          
         - entity: light.gateway_light_34ce008bfc4b
           name: Nightlight
           type: custom:slider-entity-row
+          toggle: true
           hide_when_off: true
+          
         - entity: light.walk_in_closet_lights
           name: Walk in closet
+          type: custom:slider-entity-row
+          toggle: true
+          hide_when_off: true
+          
         - entity: light.stefan_lightstrip
           name: Stefan
           type: custom:toggle-lock-entity-row

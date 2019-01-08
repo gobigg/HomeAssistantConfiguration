@@ -1,0 +1,4 @@
+shell_command:
+  dashboard_monitor_off: !secret dashboard_monitor_off
+  dashboard_monitor_on: !secret dashboard_monitor_on
+  dashboard_refresh_page: !secret dashboard_refresh_page

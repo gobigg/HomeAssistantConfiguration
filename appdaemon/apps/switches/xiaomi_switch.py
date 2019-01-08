@@ -16,7 +16,10 @@ class XiaomiDimmer(hass.Hass):
       self.log('Button release')
       if self.table_hold == False or self.get_state(self.light) == "off":
         self.table_pressed = False
-        self.toggle(self.light)
+        if "only_on" in self.args:
+          self.turn_on(self.light)
+        else:
+          self.toggle(self.light)
       self.table_hold = False
     
     elif self.click_type == 1000:
@@ -35,6 +38,7 @@ class XiaomiDimmer(hass.Hass):
 
     elif self.click_type == 1005:
       self.log('Button triple click')
+      self.turn_on(self.light, color_temp = 366, brightness = 150)
 
     elif self.click_type == 1006:
       self.log('Button quadruple click')

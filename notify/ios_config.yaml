@@ -1,17 +1,5 @@
 push:
     categories:
-      - name: Laundry Clean In Washer
-        identifier: 'washer'
-        actions:
-          # - identifier: 'WASHER_EMPTIED'
-          #   title: 'Yes'
-          #   authenticationRequired: yes
-          #   behavior: 'default'
-          - identifier: 'WASHER_NOT_EMPTIED'
-            title: 'Snooze'
-            activationMode: 'background'
-            destructive: yes
-
       - name: Home Alone
         identifier: 'isa_mode'
         actions:
@@ -55,17 +43,8 @@ push:
           - identifier: 'VACUUM_LATER'
             title: 'Snooze'
             activationMode: 'background'
-            # destructive: yes
           - identifier: 'VACUUM_STOP_ASKING'
             title: 'Stop asking'
-            activationMode: 'background'
-            destructive: yes
-
-      - name: Bike Charger
-        identifier: 'bike'
-        actions:
-          - identifier: 'CHARGE_TOMORROW'
-            title: 'Remind tomorrow'
             activationMode: 'background'
             destructive: yes
 

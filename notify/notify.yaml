@@ -1,15 +1,17 @@
-  - name: Pushbullet Isa
-    platform: pushbullet
-    api_key: !secret pushbullet_key
-  - name: Pushbullet Stefan
-    platform: pushbullet
-    api_key: !secret stefan_pushbullet_key
+#   - name: Pushbullet Isa
+#     platform: pushbullet
+#     api_key: !secret pushbullet_key
+    
+#   - name: Pushbullet Stefan
+#     platform: pushbullet
+#     api_key: !secret stefan_pushbullet_key
+    
   - name: All
     platform: group
     services:
       - service: ios_isabellas_iphone_x
       - service: ios_stefan_iphone_7
-  - name: Pushover Isa
-    platform: pushover
-    api_key: !secret pushover_api_key
-    user_key: !secret pushover_user_key
+
+  - platform: discord
+    name: Hass Discord
+    token: !secret discord_token

@@ -5,3 +5,6 @@ input_boolean:
   show_batteries:
     name: Show batteries
     initial: off
+  show_traffic:
+    name: Show traffic
+    initial: off

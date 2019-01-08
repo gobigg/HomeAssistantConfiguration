@@ -1,0 +1,130 @@
+type: vertical-stack
+cards:
+  - type: horizontal-stack
+    cards:
+      - type: picture-entity
+        entity: input_boolean.guest_mode
+        image: /local/lovelace_ui/guests.jpg
+        show_name: true
+        tap_action:
+          action: toggle
+
+      - type: picture-entity
+        entity: input_boolean.cleaning_day
+        image: /local/lovelace_ui/cleaning.jpg
+        show_name: true
+        tap_action:
+          action: toggle
+
+  - type: horizontal-stack
+    cards:
+      - type: custom:mini-graph-card
+        entity: sensor.temperature_bedroom
+        height: 75
+        accuracy: 50
+        line_color: "#389638"
+        line_value_above: 24
+        line_color_above: orange
+        line_value_below: 22
+        line_color_below: blue
+      - type: custom:mini-graph-card
+        name: S's room
+        entity: sensor.temperature_stefan
+        height: 75
+        accuracy: 50
+        line_color: "#389638"
+        line_value_above: 24
+        line_color_above: orange
+        line_value_below: 22
+        line_color_below: blue
+
+
+  - type: custom:card-modder
+    card:
+      type: glance
+      columns: 4
+      show_state: false
+      entities:
+        - sensor.front_door
+        - sensor.back_door
+        - sensor.yard_door
+        - sensor.balcony_door
+        - entity: sensor.dining_area_window
+          name: Dining area
+        - entity: sensor.bedroom_window
+          name: Bedroom
+    style:
+      background-color: rgba(0, 0, 0, 0.3)
+      font-size: 120%
+      border-radius: 10px
+      
+  - type: custom:card-modder
+    card:
+      type: entity-filter
+      show_empty: false
+      entities:
+        - light.outdoor_lights
+        - entity: light.outdoor_yard_light_net
+          name: Yard net
+        - light.bedroom_ceiling_light
+        - light.bedside_lamp
+        - light.dining_area_ceiling_light_level  
+        - light.kitchen_ceiling_spotlights_level
+        - light.floorlamp_reading_light
+        - light.floorlamp_uplight
+        - light.hallway_window_light
+        - light.isa_ceiling_light
+        - light.living_room_ceiling_light_level
+        - light.living_room_spotlights_level
+        - light.passage_ceiling_spotlights_level
+        - light.stairs_lights_lights
+        - light.walk_in_closet_lights
+        - light.upstairs_hallway_ceiling_light_level
+        - light.gateway_light_34ce008bfc4b
+      state_filter:
+        - 'on'
+      card:
+        type: glance
+        show_state: false
+    style:
+      background-color: rgba(0, 0, 0, 0.3)
+      font-size: 120%
+      border-radius: 10px
+
+
+  - type: custom:card-modder
+    card:
+      type: horizontal-stack
+      cards:
+        - type: custom:card-modder
+          card:
+            type: custom:gauge-card
+            title: Downstairs
+            entity: counter.litterbox_downstairs_visits
+            measurement: "visits"
+            min: 0
+            max: 6
+            severity:
+              red: 3
+              green: 0
+              amber: 2
+          style:
+            background-color: rgba(0, 0, 0, 0.3)
+        - type: custom:card-modder
+          card:
+            type: custom:gauge-card
+            title: Upstairs
+            entity: counter.litterbox_upstairs_visits
+            measurement: "visits"
+            min: 0
+            max: 6
+            severity:
+              red: 3
+              green: 0
+              amber: 2
+          style:
+            background-color: rgba(0, 0, 0, 0.3)
+    style:
+      background-color: rgba(0, 0, 0, 0.3)
+      border-radius: 10px
+  - !include dev_card.yaml

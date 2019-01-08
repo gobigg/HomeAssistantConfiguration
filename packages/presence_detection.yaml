@@ -1,15 +1,10 @@
 ## From https://philhawthorne.com/making-home-assistants-presence-detection-not-so-binary/
 homeassistant:
   customize:     
-    sensor.presence_isa:
-      entity_picture: /local/Isa_BW.jpg
-
     device_tracker.isabellas_iphone_x_wifi:
       icon: mdi:cellphone-iphone
     device_tracker.isabellas_iphone_x_bt:
       icon: mdi:bluetooth
-    sensor.presence_stefan:
-      entity_picture: /local/Stefan.jpg
     sensor.trash:
       icon: mdi:delete
 

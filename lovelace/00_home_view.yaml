@@ -1,109 +1,256 @@
 title: Home
 icon: mdi:information-outline
 panel: true
-id: home
+path: home
 cards:
   - type: vertical-stack
     cards:
-      - type: custom:column-card
+      - type: custom:layout-card
+        layout: vertical
         cards:
-          - type: vertical-stack
+          - type: custom:popup-card
+            entity: sensor.presence_isa
+            title: Isa
+            card:
+              type: entities
+              entities:
+                - entity: sensor.presence_isa
+                  name: Isa presence
+                  secondary_info: last-changed
+                  icon: mdi:map-marker-circle
+                - entity: device_tracker.isabellas_iphone_x
+                  name: Isa ios
+                  icon: mdi:apple
+                  secondary_info: last-changed
+                - entity: device_tracker.isabellas_iphone_x_wifi
+                  name: Isa Wifi
+                  icon: mdi:wifi
+                  secondary_info: last-changed
+                - entity: sensor.isabellas_iphone_x_bt
+                  name: Isa bt
+                  icon: mdi:bluetooth
+                  secondary_info: last-changed
+                - entity: proximity.home_isa
+                  name: Proximity to home
+                - entity: proximity.home_isa
+                  type: custom:state-attribute-element
+                  attribute: dir_of_travel
+                  prefix: "Direction of travel: "
+          - type: custom:popup-card
+            entity: sensor.presence_stefan
+            title: Isa
+            card:
+              type: entities
+              entities:
+                - entity: sensor.presence_stefan
+                  name: Stefan presence
+                  icon: mdi:map-marker-circle
+                  secondary_info: last-changed
+                - entity: device_tracker.stefan_iphone_7
+                  name: Stefan ios
+                  icon: mdi:apple
+                  secondary_info: last-changed
+                - entity: device_tracker.stefan_iphone_7_wifi
+                  name: Stefan Wifi
+                  icon: mdi:wifi
+                  secondary_info: last-changed
+                - entity: sensor.stefan_iphone_7_bt
+                  name: Stefan bt
+                  icon: mdi:bluetooth
+                  secondary_info: last-changed
+                - entity: proximity.home_stefan
+                  name: Proximity to home
+                - entity: proximity.home_stefan
+                  type: custom:state-attribute-element
+                  attribute: dir_of_travel
+                  prefix: "Direction of travel: "
+          - type: horizontal-stack
             cards:
-            - !include presence_card.yaml
-      
-            ###############
-            # home glance #
-            ###############
-            - type: picture-elements
-              image: /local/house-element.jpg
-              elements:
-                - type: state-icon
-                  entity: alarm_control_panel.house
-                  style:
-                    top: 87%
-                    left: 5%
-                    color: white
-                - type: state-icon
-                  entity: sensor.all_locks
-                  style:
-                    top: 86%
-                    left: 14%
-                    color: white
-                - type: state-icon
-                  entity: sensor.mailbox
-                  style:
-                    top: 86%
-                    left: 23%
-                    color: white
-                - type: state-icon
-                  entity: sensor.trash
-                  style:
-                    top: 86%
-                    left: 32%
-                    color: white
+              - type: picture-entity
+                entity: sensor.presence_isa
+                image: /local/isa_square.jpg
+                show_name: false
+                tap_action:
+                  action: more-info
+              - type: picture-entity
+                entity: sensor.presence_stefan
+                image: /local/Stefan_square.jpg
+                show_name: false
+                tap_action:
+                  action: more-info
+              - type: picture-elements
+                image: /local/lovelace_ui/background_square.png
+                elements:
+                  - type: state-icon
+                    entity: light.inside_lights
+                    tap_action:
+                      action: navigate
+                      navigation_path: /lovelace/lights
+                    style:
+                      "--iron-icon-width": 50px
+                      "--iron-icon-height": 50px
+                      top: 50%
+                      left: 20%
+                  - type: state-icon
+                    entity: light.outdoor_lights
+                    style:
+                      "--iron-icon-width": 50px
+                      "--iron-icon-height": 50px
+                      top: 50%
+                      left: 75%
+              - type: picture-elements
+                image: /local/lovelace_ui/background_square.png
+                elements:
+                  - type: icon
+                    icon: mdi:car
+                    tap_action:
+                      action: navigate
+                      navigation_path: /lovelace/traffic
+                    style:
+                      "--iron-icon-width": 100px
+                      "--iron-icon-height": 100px
+                      top: 50%
+                      left: 50%
+
+          - type: horizontal-stack
+            cards:
+              - type: picture-entity
+                name: Alarm
+                show_name: false
+                entity: alarm_control_panel.house
+                image: /local/lovelace_ui/House_square.jpg
+              - type: picture-entity
+                name: Roomba
+                show_name: false
+                entity: input_select.roomba_mode
+                image: /local/lovelace_ui/roomba_square.jpg
+                state_image:
+                  "Not Today": /local/lovelace_ui/roomba_bw_square.jpg
+              - type: picture-entity
+                entity: sensor.mailbox
+                show_name: false
+                state_image:
+                  "Empty": /local/lovelace_ui/mailbox_bw_square.jpg
+                  "Package": /local/lovelace_ui/mailbox_square.jpg
+                  "Mail": /local/lovelace_ui/mailbox_square.jpg
+                  "Package and mail": /local/lovelace_ui/mailbox_square.jpg
+              - type: picture-entity
+                entity: sensor.trash_status
+                image: /local/lovelace_ui/trash_bear_bw_square.jpg
+                show_name: false
+                state_image:
+                  "Put out": /local/lovelace_ui/trash_bear_square.jpg
+                  "Take in": /local/lovelace_ui/trash_bear_square.jpg
+
         
-                ## temp
-                - type: icon
-                  icon: mdi:hotel
-                  entity: sensor.temperature_bedroom
-                  tap_action: more-info
-                  style:
-                    top: 82%
-                    left: 50%              
-                    color: white
-                - type: state-label
-                  entity: sensor.temperature_bedroom
-                  style:
-                    top: 95%
-                    left: 50%
-                    color: white
-        
-                - type: icon
-                  icon: mdi:human-male
-                  entity: sensor.temperature_stefan
-                  tap_action: more-info
-                  style:
-                    top: 82%
-                    left: 64% 
-                    color: white
-                - type: state-label
-                  entity: sensor.temperature_stefan
-                  style:
-                    top: 95%
-                    left: 64%
-                    color: white
-        
-                - type: icon
-                  icon: mdi:stairs
-                  entity: sensor.temperature_passage
-                  tap_action: more-info
-                  style:
-                    top: 82%
-                    left: 78% 
-                    color: white
-                - type: state-label
-                  entity: sensor.temperature_passage
-                  style:
-                    top: 95%
-                    left: 78%
-                    color: white
-        
-                - type: icon
-                  icon: mdi:washing-machine
-                  entity: sensor.temperature_downstairs_bathroom
-                  tap_action: more-info
-                  style:
-                    top: 82%
-                    left: 92% 
-                    color: white
-                - type: state-label
-                  entity: sensor.temperature_downstairs_bathroom
-                  style:
-                    top: 95%
-                    left: 92%
-                    color: white
-        
-            - !include plant_card.yaml
+          - type: horizontal-stack
+            cards:
+              - type: picture-entity
+                name: Washer
+                show_name: false
+                entity: input_select.washing_machine_status
+                state_image:
+                  "Idle": /local/lovelace_ui/washer_square.jpg
+                  "Running": /local/lovelace_ui/laundry_running_square.jpg
+                  "Clean": /local/lovelace_ui/laundry_clean_2_square.jpg
+              - type: picture-entity
+                name: Dryer
+                show_name: false
+                entity: input_select.dryer_status
+                state_image:
+                  "Idle": /local/lovelace_ui/dryer_square.jpg
+                  "Running": /local/lovelace_ui/clothes_drying_square.jpg
+                  "Clean": /local/lovelace_ui/folded_clothes_square.jpg
+              - type: picture-entity
+                entity: input_boolean.guest_mode
+                image: /local/lovelace_ui/guests_square.jpg
+                show_name: false
+                tap_action:
+                  action: toggle
+              - type: picture-entity
+                entity: input_boolean.cleaning_day
+                image: /local/lovelace_ui/cleaning_square.jpg
+                show_name: false
+                tap_action:
+                  action: toggle
+
+          - type: horizontal-stack
+            cards:
+              - type: custom:mini-graph-card
+                entity: sensor.temperature_bedroom
+                height: 75
+                accuracy: 50
+                line_color: "#389638"
+                line_value_above: 24
+                line_color_above: orange
+                line_value_below: 22
+                line_color_below: blue
+              - type: custom:mini-graph-card
+                name: S's room
+                entity: sensor.temperature_stefan
+                height: 75
+                accuracy: 50
+                line_color: "#389638"
+                line_value_above: 24
+                line_color_above: orange
+                line_value_below: 22
+                line_color_below: blue
+          - type: horizontal-stack
+            cards:
+              - type: custom:mini-graph-card
+                entity: sensor.temperature_passage
+                height: 75
+                accuracy: 50
+                line_color: "#389638"
+                line_value_above: 24
+                line_color_above: orange
+                line_value_below: 22
+                line_color_below: blue
+              - type: custom:mini-graph-card
+                entity: sensor.temperature_downstairs_bathroom
+                name: Laundry
+                height: 75
+                accuracy: 50
+                line_color: "#389638"
+                line_value_above: 24
+                line_color_above: orange
+                line_value_below: 22
+                line_color_below: blue
+          - type: horizontal-stack
+            cards:
+              - type: custom:bignumber-card
+                title: Downstairs litterbox
+                entity: counter.litterbox_downstairs_visits
+                scale: 30px
+                min: 0
+                max: 10
+                severity:
+                  - value: 2
+                    style: 'var(--label-badge-green)'
+                  - value: 3
+                    style: 'var(--label-badge-yellow)'
+                  - value: 4
+                    style: 'orange'
+                  - value: 10
+                    style: 'var(--label-badge-red)'
+                from: bottom
+              - type: custom:bignumber-card
+                title: Upstairs litterbox
+                entity: counter.litterbox_upstairs_visits
+                scale: 30px
+                min: 0
+                max: 10
+                from: bottom
+                severity:
+                  - value: 2
+                    style: 'var(--label-badge-green)'
+                  - value: 3
+                    style: 'var(--label-badge-yellow)'
+                  - value: 4
+                    style: 'orange'
+                  - value: 10
+                    style: 'var(--label-badge-red)'
+          - break
           - type: vertical-stack
             cards:
               - type: custom:vertical-stack-in-card
@@ -119,6 +266,7 @@ cards:
                     - sensor.back_door
                     - sensor.backyard_door
                     - sensor.balcony_door
+                    - sensor.yard_door
                     - entity: sensor.dining_area_window
                       name: Dining area
                     - entity: sensor.bedroom_window
@@ -152,6 +300,8 @@ cards:
                   show_empty: false
                   entities:
                     - light.outdoor_lights
+                    - entity: light.outdoor_yard_light_net
+                      name: Yard net
                     - light.bedroom_ceiling_light
                     - light.bedside_lamp
                     - light.dining_area_ceiling_light_level  
@@ -172,9 +322,7 @@ cards:
                   card:
                     type: glance
                     show_state: false
-
-              - !include laundry-roomba_card.yaml
-              
+              - type: shopping-list
               - type: entities
                 entities:
                   - entity: switch.livingroom_tv
@@ -209,38 +357,14 @@ cards:
                     power_color: true
                     icon: mdi:speaker-wireless
                     group: true
-                  # - entity: switch.livingroom_movie_system
-                  #   name: Bedroom Tv
-                  #   icon: mdi:television-classic
                   - type: custom:mini-media-player
                     entity: media_player.sovrum
                     name: Chromecast Bedroom
                     icon: mdi:cast
                     group: true
                     artwork_border: true
-                    hide_power: true
-        
-                # - type: conditional
-                #   conditions:
-                #     - entity: group.persons
-                #       state_not: 'not_home'
-                #   card:
-                #     - type: horizontal-stack
-                #       cards:
-                #       - type: media-control
-                #         entity: media_player.livingroom_movie_system
-                #       - type: media-control
-                #         entity: media_player.livingroom_tv
-                #     - type: horizontal-stack
-                #       cards:
-                #         - type: media-control
-                #           entity: media_player.shield
-                #         - type: media-control
-                #           entity: media_player.sovrum
-            # - type: entities
-            #   entities:
-            #     - switch.stefan_radiator
-        
+
+          - break
           - type: custom:vertical-stack-in-card
             cards:
             - type: picture-entity

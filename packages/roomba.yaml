@@ -80,6 +80,9 @@ automation:
         - condition: state
           entity_id: binary_sensor.roomba
           state: 'off'
+        - condition: state
+          entity_id: input_boolean.cleaning_day
+          state: 'off'
     action:
       - service: notify.ios_isabellas_iphone_x
         data:

@@ -1,11 +1,11 @@
 homeassistant:
   customize:
-    switch.bike_plug_switch:
+    switch.bike_charger:
       friendly_name: E-bike Switch
       icon: mdi:bike
     sensor.ebike_charger:
       icon: mdi:bike
-    sensor.bike_plug_power:
+    sensor.sensor.bike_charger_power:
       hidden: false
 
 sensor:
@@ -13,20 +13,27 @@ sensor:
     sensors:
       ebike_charger:
         friendly_name: E-bike Charger Idle
-        entity_id: "sensor.bike_plug_power"
-        value_template: "{{ states('sensor.bike_plug_power') | int < 30 }}"
+        entity_id: "sensor.bike_charger_power"
+        value_template: "{{ states('sensor.bike_charger_power') | int < 30 }}"
 
-      ebike_charging:
-        friendly_name: E-bike Charger Status
-        entity_id: "sensor.ebike_charger"
-        value_template: '{% if is_state("sensor.ebike_charger", "True") %}Idle{% elif is_state("sensor.ebike_charger", "False")%}Charging{% else %}Unknown{% endif %}'
-        icon_template: '{% if is_state("sensor.ebike_charger", "True") %}mdi:power-plug-off{% elif is_state("sensor.ebike_charger", "False")%}mdi:battery-charging{% else %}mdi:battery-unknown{% endif %}'
-
-        
-  - platform: history_stats
-    name: Ebike battery charging
-    entity_id: sensor.ebike_charger
-    state: 'False'
-    type: time
-    start: '{{ as_timestamp( now().replace(hour=0).replace(minute=0).replace(second=0) ) - now().weekday() * 86400 }}'
-    end: '{{ now() }}'
+input_select:  
+  ebike_charger_status:
+    name: E-bike Charger Status
+    options:
+      - Waiting
+      - Charging
+      - Charged
+ios:
+  push:
+    categories:
+      - name: Bike Charger
+        identifier: 'bike'
+        actions:
+          - identifier: 'CHARGE_NOW'
+            title: 'Charge now'
+            activationMode: 'background'
+            destructive: no
+          - identifier: 'CHARGE_TOMORROW'
+            title: 'Remind tomorrow'
+            activationMode: 'background'
+            destructive: yes

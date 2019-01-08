@@ -1,6 +1,6 @@
 title: Info
 icon: mdi:lan
-id: info
+path: info
 panel: true
 cards:  
   - type: vertical-stack
@@ -11,13 +11,16 @@ cards:
             cards:
             - type: glance
               show_state: false
-              column_width: calc(100% / 4)
+              columns: 5
               entities:
                 - sensor.system_printer
                 - sensor.system_nas
                 - sensor.system_ipad
-                - sensor.system_ip_camera
-                - sensor.system_dafang
+                - entity: sensor.system_ip_camera
+                  name: Sannce
+                - entity: sensor.system_dafang
+                  name: Dafang
+                  icon: mdi:webcam
                 - entity: sensor.system_ir_blaster
                   name: IR Hallway
                 - entity: sensor.system_ir_blaster_bedroom
@@ -32,7 +35,7 @@ cards:
                 - sensor.system_ring_chime
             - type: glance
               show_state: false
-              column_width: calc(100% / 3)
+              columns: 3
               entities:
                 - entity: sensor.system_isa_computer
                   name: Isa
@@ -47,7 +50,7 @@ cards:
         
             - type: glance
               show_state: false
-              column_width: calc(100% / 3)
+              columns: 3
               entities:
                 - entity: sensor.system_samsung65
                   name: TV
@@ -55,20 +58,24 @@ cards:
                   name: Movie System
                 - entity: sensor.system_shield
                   name: Shield
-                - sensor.system_sonos
+                - entity: sensor.system_sonos
+                  name: Sonos
+                  icon: mdi:speaker-wireless
                 - entity: sensor.system_samsung49
                   name: Bed TV
                 - entity: sensor.system_chromecast_bedroom
                   name: Bed CC
             - type: glance
-              column_width: calc(100% / 3)
+              columns: 4
               entities:
                 - entity: sensor.system_hass_rpi
                   name: Hass RPi
                 - entity: sensor.system_magic_mirror_rpi
-                  name: Magic Mirror RPi
-                - entity: sensor.system_dashboard_rpi
                   name: Dashboard RPi
+                - entity: sensor.system_dashboard_rpi
+                  name: '7" Dashboard RPi'
+                - entity: sensor.system_rpi_zero
+                  name: RPi Zero
                   
           - type: vertical-stack
             cards:          
@@ -98,7 +105,7 @@ cards:
                 - entity: sensor.presence_isa
                   name: Isa presence
                   secondary_info: last-changed
-                  entity_picture: /local/Isa_BW.jpg
+                  icon: mdi:map-marker-circle
                 - entity: device_tracker.isabellas_iphone_x
                   name: Isa ios
                   icon: mdi:apple
@@ -111,11 +118,18 @@ cards:
                   name: Isa bt
                   icon: mdi:bluetooth
                   secondary_info: last-changed
+                - entity: proximity.home_isa
+                  name: Proximity to home
+                - entity: proximity.home_isa
+                  type: custom:state-attribute-element
+                  attribute: dir_of_travel
+                  prefix: "Direction of travel: "
         
             - type: entities
               entities:
                 - entity: sensor.presence_stefan
                   name: Stefan presence
+                  icon: mdi:map-marker-circle
                   secondary_info: last-changed
                 - entity: device_tracker.stefan_iphone_7
                   name: Stefan ios
@@ -129,6 +143,12 @@ cards:
                   name: Stefan bt
                   icon: mdi:bluetooth
                   secondary_info: last-changed
+                - entity: proximity.home_stefan
+                  name: Proximity to home
+                - entity: proximity.home_stefan
+                  type: custom:state-attribute-element
+                  attribute: dir_of_travel
+                  prefix: "Direction of travel: "
         
             - type: entities
               entities:
@@ -138,81 +158,51 @@ cards:
                 - entity: sensor.monitor
                   name: Monitor status
                   secondary_info: last-changed
-                # - entity: sensor.isabellas_iphone_x_monitortest
-                #   secondary_info: last-changed
-                # - entity: sensor.stefan_iphone_7_monitortest
-                #   secondary_info: last-changed
-
-          # - type: custom:vertical-stack-in-card
-          #   cards:
-          #     - type: glance
-          #       column_width: calc(100% / 2)
-          #       entities:
-          #         - entity: sensor.system_hass_rpi
-          #           name: Hass Rpi
-          #         - entity: sensor.system_magic_mirror_rpi
-          #           name: Magic Mirror
-          #     - type: horizontal-stack
-          #       cards:
-          #         - type: custom:gauge-card
-          #           title: Disk use
-          #           scale: 30px
-          #           measurement: "%"
-          #           entity: sensor.hass_rpi_disk_use_percent
-          #           severity:
-          #             red: 80
-          #             green: 0
-          #             amber: 50
-          #         - type: custom:bignumber-card
-          #           title: Free memory
-          #           scale: 30px
-          #           entity: sensor.hass_rpi_free_memory
-        
-          #     - type: entities
-          #       entities:
-          #         # - binary_sensor.hass_rpi_critical_disk_use
-          #         - sensor.hass_rpi_free_memory
-          #         - sensor.hass_rpi_last_boot
-          #         - sensor.hass_rpi_uptime
               
           - type: custom:vertical-stack-in-card
             title: Nuc
             cards:
-              - type: gauge
-                title: Memory use
-                # scale: 30px
-                entity: sensor.memory_use_percent
-                severity:
-                  red: 80
-                  green: 0
-                  yellow: 50
-              - type: gauge
-                title: Disk use
-                # scale: 30px
-                entity: sensor.disk_use_percent_
-                severity:
-                  red: 80
-                  green: 0
-                  yellow: 50
-              - type: sensor
+              - type: custom:bignumber-card
+                scale: 30px
+                title: Processor use
                 entity: sensor.processor_use
-                name: Processor Use
-              # - type: horizontal-stack
-              #   cards:
-              #     - type: custom:bignumber-card
-              #       scale: 30px
-              #       title: Processor use
-              #       entity: sensor.processor_use
-              #       min: 0
-              #       max: 100
-              #       severity:
-              #         - value: 70
-              #           style: 'var(--label-badge-green)'
-              #         - value: 90
-              #           style: 'var(--label-badge-yellow)'
-              #         - value: 100
-              #           style: 'var(--label-badge-red)'
-                    
+                min: 0
+                max: 100
+                severity:
+                  - value: 70
+                    style: 'var(--label-badge-green)'
+                  - value: 90
+                    style: 'var(--label-badge-yellow)'
+                  - value: 100
+                    style: 'var(--label-badge-red)'
+              - type: horizontal-stack
+                cards:
+                  - type: custom:bignumber-card
+                    scale: 30px
+                    title: Disk use
+                    entity: sensor.disk_use_percent_
+                    min: 0
+                    max: 100
+                    severity:
+                      - value: 70
+                        style: 'var(--label-badge-green)'
+                      - value: 90
+                        style: 'var(--label-badge-yellow)'
+                      - value: 100
+                        style: 'var(--label-badge-red)'
+                  - type: custom:bignumber-card
+                    scale: 30px
+                    title: Memory use
+                    entity: sensor.memory_use_percent
+                    min: 0
+                    max: 100
+                    severity:
+                      - value: 70
+                        style: 'var(--label-badge-green)'
+                      - value: 90
+                        style: 'var(--label-badge-yellow)'
+                      - value: 100
+                        style: 'var(--label-badge-red)'
               - type: entities
                 entities:
                   - sensor.last_boot

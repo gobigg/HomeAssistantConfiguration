@@ -1,58 +1,100 @@
 title: Settings
 icon: mdi:cogs
-id: settings
+path: settings
+panel: true
 cards:
-  - type: custom:home-setter
-    pages:
-      - name: Default
-        path: lovelace/home
-      - name: Isa
-        path: lovelace/isa
-      - name: Stefan
-        path: lovelace/mobile
-      - name: Dashboard
-        path: lovelace/kiosk_dashboard
-      - name: Alarm Clock
-        path: lovelace/kiosk_clock
-  - type: custom:tracker-card
-    title:
-    trackers:
-      - sensor.custom_card_tracker
-      - sensor.custom_component_tracker
-  
-  - type: entities
-    show_header_toggle: false
-    entities:
-      - input_boolean.test
-      
-  - type: entities
-    show_header_toggle: false
-    entities:
-      - input_boolean.hass_dev_mode
-      - type: call-service
-        name: "Lovelace generator"
-        service: shell_command.lovelace_gen_states
-        icon: mdi:refresh
-        action_name: "Run"
-        service_data: {}
-  - type: custom:monster-card
-    show_empty: false
-    card:
-      type: entities
-      title: Things that are probably broken
-    filter:
-      include:
-        - state: "unknown"
-        - state: "unavailable"
-      exclude:
-        - domain: group
-        - domain: input_text
-        - domain: history_graph
-    #   - type: picture-elements
-    #     image: /local/lovelace_ui/button-template.png
-    #     elements:
-    #       - type: custom:light-slider
-    #         entity: light.outdoor_front_light
-    #         style:
-    #           top: 80%
-    #           left: 80%
+  - type: custom:layout-card
+    layout: horizontal
+    cards:
+      - type: vertical-stack
+        cards:
+          - type: custom:home-setter
+            pages:
+              - name: Default
+                path: lovelace/home
+              - name: Dashboard
+                path: lovelace/dashboard
+          - type: custom:tracker-card
+            title:
+            trackers:
+              - sensor.custom_card_tracker
+              - sensor.custom_component_tracker
+          - type: entities
+            show_header_toggle: false
+            entities:
+              - input_boolean.hass_dev_mode
+              - type: call-service
+                name: "Lovelace generator"
+                service: shell_command.lovelace_gen_states
+                icon: mdi:refresh
+                action_name: "Run"
+                service_data: {}
+          - type: entities
+            title: Debugging
+            show_header_toggle: false
+            entities:
+              - entity: sensor.deconz_event
+                secondary_info: last-changed
+              - entity: sensor.vibration
+                secondary_info: last-changed
+              - input_boolean.test
+
+      - type: vertical-stack
+        cards:
+          - !include links_card.yaml
+
+      - type: vertical-stack
+        cards:
+          - type: custom:monster-card
+            show_empty: false
+            card:
+              type: entities
+              title: Batteries
+              show_header_toggle: false
+            filter:
+              include:
+                - entity_id: "*battery*"
+
+                - attributes:
+                    battery: '< 50'
+                - attributes:
+                    battery_level: '< 50'
+              exclude:
+                - domain: alert
+                - domain: automation
+                - domain: group
+                - entity_id: device_tracker.isabellas_iphone_x
+                - entity_id: device_tracker.stefan_iphone_7
+                - entity_id: sensor.igrims_battery_state
+                - entity_id: sensor.isabellas_iphone_x_battery_state
+                - entity_id: sensor.paddan_battery_state
+                - entity_id: sensor.presence_isa
+                - entity_id: sensor.presence_stefan
+                - entity_id: "*pressure*"
+                - entity_id: "*humidity*"
+
+
+      - type: vertical-stack
+        cards:
+          - type: custom:monster-card
+            show_empty: false
+            card:
+              type: entities
+              title: Things that are probably broken
+              show_header_toggle: false
+            filter:
+              include:
+                - state: "unknown"
+                - state: "unavailable"
+              exclude:
+                - domain: group
+                - domain: input_text
+                - domain: history_graph
+        #   - type: picture-elements
+        #     image: /local/lovelace_ui/button-template.png
+        #     elements:
+        #       - type: custom:light-slider
+        #         entity: light.outdoor_front_light
+        #         style:
+        #           top: 80%
+        #           left: 80%

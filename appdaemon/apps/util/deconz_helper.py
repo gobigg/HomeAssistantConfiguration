@@ -1,10 +1,12 @@
 import appdaemon.plugins.hass.hassapi as hass
 import datetime
-from datetime import datetime
+from datetime import datetime, date
 
 class DeconzHelper(hass.Hass):
     def initialize(self) -> None:
         self.listen_event(self.event_received, "deconz_event")
+        
+        self.handle = None
 
     def event_received(self, event_name, data, kwargs):
         event_data = data["event"]

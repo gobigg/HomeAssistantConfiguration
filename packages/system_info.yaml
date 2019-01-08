@@ -2,8 +2,12 @@ homeassistant:
   customize:
     sensor.system_magic_mirror_rpi:
       icon: mdi:raspberrypi
+    sensor.system_dashboard_rpi:
+      icon: mdi:raspberrypi
     sensor.system_hass_rpi:
-      icon: mdi:home-assistant      
+      icon: mdi:home-assistant
+    sensor.system_rpi_zero:
+      icon: mdi:raspberrypi
     sensor.system_stefan_computer:
       icon: mdi:monitor
     sensor.system_isa_laptop:
@@ -184,17 +188,21 @@ sensor:
           entity_id: "device_tracker.sonos_play_3"
           value_template: "{{ 'Online' if is_state('device_tracker.sonos_play_3', 'home') else 'Offline' }}"
         system_magic_mirror_rpi:
-          friendly_name: 'RPi MM'
-          entity_id: "device_tracker.magic_mirror_rpi"
-          value_template: "{{ 'Online' if is_state('device_tracker.magic_mirror_rpi', 'home') else 'Offline' }}"
+          friendly_name: 'Dashboard RPi'
+          entity_id: "device_tracker.raspberrypi_3"
+          value_template: "{{ 'Online' if is_state('device_tracker.raspberrypi_3', 'home') else 'Offline' }}"
         system_hass_rpi:
-          friendly_name: 'RPi Hass'
+          friendly_name: 'Hass RPi'
           entity_id: "device_tracker.raspberrypi"
           value_template: "{{ 'Online' if is_state('device_tracker.raspberrypi', 'home') else 'Offline' }}"
         system_dashboard_rpi:
-          friendly_name: 'RPi Dashboard'
+          friendly_name: '7" Dashboard RPi'
           entity_id: "device_tracker.raspberrypi_2"
           value_template: "{{ 'Online' if is_state('device_tracker.raspberrypi_2', 'home') else 'Offline' }}"
+        system_rpi_zero:
+          friendly_name: 'RPi Zero'
+          entity_id: "device_tracker.raspberrypi_4"
+          value_template: "{{ 'Online' if is_state('device_tracker.raspberrypi_4', 'home') else 'Offline' }}"
         system_ring_doorbell:
           friendly_name: 'Ring'
           entity_id: "device_tracker.ring"

@@ -1,0 +1,11 @@
+nacka_gator:
+  module: nacka_gator
+  class: NackaGator
+  # light: light.upstairs_hallway_ceiling_light_level
+  # sensor: sensor.upstairs_hallway_pir_luminance
+  dependencies:
+    - house_modes
+    - notification_manager
+    - presence_helper
+    - scheduler
+    - tts_manager

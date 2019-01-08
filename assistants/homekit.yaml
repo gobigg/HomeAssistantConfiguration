@@ -7,6 +7,7 @@
       - scene.welcome_home
       - scene.watch_tv
       - scene.ceiling_lights
+      - scene.morning_lights
 
       - alarm_control_panel.home_alarm
 
@@ -22,33 +23,32 @@
       - input_boolean.stefan_home
       - input_boolean.sonos
 
-      - switch.air_cleaner
+      - script.air_cleaner_quiet
       - switch.stefan_radiator
 
-      - script.goodmorning
+      - script.media_system_on_off
+      - script.bedroom_tv_on_off
+      - script.tv_on_off
+
       - script.goodnight
       - scene.movie_time
-      - script.house_summary
 
       - sensor.temperature_bedroom
       - sensor.temperature_passage
       - sensor.temperature_downstairs_bathroom
       - sensor.temperature_stefan
       
-      - light.walk_in_closet_1
-      - light.walk_in_closet_2
-      - light.walk_in_closet_3
-      - light.walk_in_closet_4
-      - light.stairs_bottom_spot
-      - light.stairs_middle_spot
-      - light.stairs_top_spot
-      - group.outdoor_lights
+      - light.walk_in_closet_lights
+      - light.stairs_lights
       - light.lights_automation
       - light.hallway_window_light
       - light.gateway_light_34ce008bfc4b
       - light.outdoor_front_light
+      - light.outdoor_front_hanging_lights
       - light.outdoor_plug
       - light.outdoor_yard_light
+      - light.outdoor_hanging_lights
+      - light.outdoor_yard_light_net
       - light.bedroom_ceiling_light
       - light.bedside_lamp
       - light.dining_area_ceiling_light_level
@@ -62,6 +62,7 @@
       - light.stefan_lightstrip
       - light.upstairs_hallway_ceiling_light_level
       - light.kitchen_ceiling_spotlights_level
+
   entity_config:
     alarm_control_panel.home_alarm:
       code: !secret alarm_control_panel_code

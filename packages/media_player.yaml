@@ -17,20 +17,16 @@ homeassistant:
       friendly_name: Plex Shield
       icon: mdi:plex
 
-group:  
-  media_players:
-    view: yes
-    name: Media Players
-    icon: mdi:movie
-    entities:
-      - input_text.tv_tiles
-      - media_player.sonos
-      - media_player.shield
-      - media_player.sovrum
-      - media_player.livingroom_movie_system
-      - media_player.chrome
-      - media_player.livingroom_tv
-      - media_player.shield_2
+sensor:
+- platform: plex_recently_added
+  token: !secret plex_token
+  # server_name: "SHIELD"
+  host: !secret plex_host
+  port: !secret plex_port
+  ssl: false
+  ssl_cert: false
+  download_images: true
+  max: 10
 
 script:
   sonos_say:

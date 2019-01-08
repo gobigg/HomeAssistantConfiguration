@@ -1,0 +1,29 @@
+back_door_camera_snapshot:
+  module: camera_snapshot
+  class: CameraMotion
+  global_dependencies: globals
+  sensor: binary_sensor.back_door_camera_motion
+  camera: camera.back_door
+
+back_door_snapshot:
+  module: camera_snapshot
+  class: CameraMotion
+  global_dependencies: globals
+  sensor: binary_sensor.back_door
+  camera: camera.back_door
+  
+camera_night_mode:
+  module: camera_night_mode
+  class: CameraNightMode
+  dependencies:
+    - house_modes
+    - notification_manager
+    - presence_helper
+    - scheduler
+    - tts_manager
+
+camera_home_away:
+  module: camera_home_away
+  class: CameraHomeAway
+  dependencies:
+    - notification_manager

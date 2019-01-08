@@ -6,10 +6,10 @@ monitor:
     - presence_helper
     - notification_manager
 
-monitor_status:
-  module: monitor
-  class: MonitorStatus
-  global_dependencies: globals
-  dependencies:
-    - presence_helper
-    - notification_manager
+# monitor_status:
+#   module: monitor
+#   class: MonitorStatus
+#   global_dependencies: globals
+#   dependencies:
+#     - presence_helper
+#     - notification_manager

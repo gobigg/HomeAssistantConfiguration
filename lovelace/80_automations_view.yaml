@@ -1,6 +1,6 @@
 title: Automations
 icon: mdi:flash-auto
-id: automations
+path: automations
 cards:
   - !include dev_card.yaml
   - type: custom:monster-card

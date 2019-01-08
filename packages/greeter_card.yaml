@@ -1,101 +1,101 @@
-camera:
-  name: Unsplash
-  platform: unsplash
-  api_key: !secret unsplash_key
-  collection_id: 2465889
+# camera:
+#   name: Unsplash
+#   platform: unsplash
+#   api_key: !secret unsplash_key
+#   collection_id: 2465889
   
-sensor:
-  - platform: template
-    sensors:
-      greeting:
-        value_template: >
-          {% set current_hour = strptime(states('sensor.time'), "%H:%M").hour %}
-          {% if current_hour < 09 %}
-            Good morning
-          {% elif 09 <= current_hour < 12 %}
-            Hi
-          {% elif 12 <= current_hour < 18 %}
-            Good afternoon
-          {% elif 18 <= current_hour < 23 %}
-            Good evening
-          {% else %}
-            Good night
-          {% endif %}
+# sensor:
+#   - platform: template
+#     sensors:
+#       greeting:
+#         value_template: >
+#           {% set current_hour = strptime(states('sensor.time'), "%H:%M").hour %}
+#           {% if current_hour < 09 %}
+#             Good morning
+#           {% elif 09 <= current_hour < 12 %}
+#             Hi
+#           {% elif 12 <= current_hour < 18 %}
+#             Good afternoon
+#           {% elif 18 <= current_hour < 23 %}
+#             Good evening
+#           {% else %}
+#             Good night
+#           {% endif %}
 
-      # greeter_card_info:
-      #   value_template: >
-      #     Isa: {{ states('sensor.presence_isa') }}
-      #     Stefan: {{ states('sensor.presence_stefan') }}
+#       # greeter_card_info:
+#       #   value_template: >
+#       #     Isa: {{ states('sensor.presence_isa') }}
+#       #     Stefan: {{ states('sensor.presence_stefan') }}
           
-      #     Next Event: {{ as_timestamp(states.calendar.isabella_alstrom.attributes.start_time) | timestamp_custom('%Y/%m/%d at %H:%M') }} - {{ states.calendar.isabella_alstrom.attributes.message }}
+#       #     Next Event: {{ as_timestamp(states.calendar.isabella_alstrom.attributes.start_time) | timestamp_custom('%Y/%m/%d at %H:%M') }} - {{ states.calendar.isabella_alstrom.attributes.message }}
 
-      greeter_card_weather_info:
-        value_template: >
-          {% set message = "Today's weather is " ~ states.weather.dark_sky.state ~ " with a temperature of " ~ states.weather.dark_sky.attributes.temperature ~ "℃. 
-          " ~ states('sensor.forecast_stockholm') ~ ".
-          The forecast for tomorrow is " ~ states.weather.dark_sky.attributes.forecast[0]['condition'] ~ " with temperatures ranging from " ~ states.sensor.dark_sky_overnight_low_temperature_1.state ~ "℃.to " ~ states.sensor.dark_sky_daytime_high_temperature_1.state ~"℃. " %}
+#       greeter_card_weather_info:
+#         value_template: >
+#           {% set message = "Today's weather is " ~ states.weather.dark_sky.state ~ " with a temperature of " ~ states.weather.dark_sky.attributes.temperature ~ "℃. 
+#           " ~ states('sensor.forecast_stockholm') ~ ".
+#           The forecast for tomorrow is " ~ states.weather.dark_sky.attributes.forecast[0]['condition'] ~ " with temperatures ranging from " ~ states.sensor.dark_sky_overnight_low_temperature_1.state ~ "℃.to " ~ states.sensor.dark_sky_daytime_high_temperature_1.state ~"℃. " %}
 
-            {%- for item in (message | wordwrap(45, true, "|")).split("|") %}
-            {{item}}
-          {%- endfor %}
+#             {%- for item in (message | wordwrap(45, true, "|")).split("|") %}
+#             {{item}}
+#           {%- endfor %}
 
-      outside_temp:
-        friendly_name: "Outside Temperature"
-        unit_of_measurement: '°C'
-        value_template: "{{ states.weather.dark_sky.attributes.temperature }}"
-        icon_template: >
-          {% if is_state("weather.dark_sky", "sunny") -%}
-            mdi:weather-sunny
-          {% elif is_state('weather.dark_sky', 'clear-night') -%}
-            mdi:weather-night
-          {% elif is_state('weather.dark_sky', 'rain') -%}
-            mdi:weather-rainy
-          {% elif is_state('weather.dark_sky', 'snow') -%}
-            mdi:weather-snowy
-          {% elif is_state('weather.dark_sky', 'sleet') -%}
-            mdi:weather-snowy-rainy
-          {% elif is_state('weather.dark_sky', 'wind') -%}
-            mdi:weather-windy-variant
-          {% elif is_state('weather.dark_sky', 'fog') -%}
-            mdi:weather-fog
-          {% elif is_state('weather.dark_sky', 'cloudy') -%}
-            mdi:weather-cloudy
-          {% elif is_state('weather.dark_sky', 'partlycloudy') -%}
-            mdi:weather-partlycloudy
-          {% elif is_state('weather.dark_sky', 'hail') -%}
-            mdi:weather-hail
-          {% elif is_state('weather.dark_sky', 'thunderstorm') -%}
-            mdi:weather-lightning
-          {% else %}
-            mdi:help-circle
-          {% endif %}
+#       outside_temp:
+#         friendly_name: "Outside Temperature"
+#         unit_of_measurement: '°C'
+#         value_template: "{{ states.weather.dark_sky.attributes.temperature }}"
+#         icon_template: >
+#           {% if is_state("weather.dark_sky", "sunny") -%}
+#             mdi:weather-sunny
+#           {% elif is_state('weather.dark_sky', 'clear-night') -%}
+#             mdi:weather-night
+#           {% elif is_state('weather.dark_sky', 'rain') -%}
+#             mdi:weather-rainy
+#           {% elif is_state('weather.dark_sky', 'snow') -%}
+#             mdi:weather-snowy
+#           {% elif is_state('weather.dark_sky', 'sleet') -%}
+#             mdi:weather-snowy-rainy
+#           {% elif is_state('weather.dark_sky', 'wind') -%}
+#             mdi:weather-windy-variant
+#           {% elif is_state('weather.dark_sky', 'fog') -%}
+#             mdi:weather-fog
+#           {% elif is_state('weather.dark_sky', 'cloudy') -%}
+#             mdi:weather-cloudy
+#           {% elif is_state('weather.dark_sky', 'partlycloudy') -%}
+#             mdi:weather-partlycloudy
+#           {% elif is_state('weather.dark_sky', 'hail') -%}
+#             mdi:weather-hail
+#           {% elif is_state('weather.dark_sky', 'thunderstorm') -%}
+#             mdi:weather-lightning
+#           {% else %}
+#             mdi:help-circle
+#           {% endif %}
 
-        # entity_picture_template: >
-        #   {% if is_state("weather.dark_sky", "sunny") -%}
-        #     /local/weather_icons/static/sunny.svg
-        #   {% elif is_state('weather.dark_sky', 'clear-night') -%}
-        #     /local/weather_icons/static/clear-night.svg
-        #   {% elif is_state('weather.dark_sky', 'rain') -%}
-        #     /local/weather_icons/static/rain.svg
-        #   {% elif is_state('weather.dark_sky', 'snow') -%}
-        #     /local/weather_icons/static/snow.svg
-        #   {% elif is_state('weather.dark_sky', 'sleet') -%}
-        #     /local/weather_icons/static/sleet.svg
-        #   {% elif is_state('weather.dark_sky', 'wind') -%}
-        #     /local/weather_icons/static/wind.svg
-        #   {% elif is_state('weather.dark_sky', 'fog') -%}
-        #     /local/weather_icons/static/fog.svg
-        #   {% elif is_state('weather.dark_sky', 'cloudy') -%}
-        #     /local/weather_icons/static/cloudy.svg
-        #   {% elif is_state('weather.dark_sky', 'partly-cloudy-day') -%}
-        #     /local/weather_icons/static/partly-cloudy-day.svg
-        #   {% elif is_state('weather.dark_sky', 'hail') -%}
-        #     /local/weather_icons/static/hail.svg
-        #   {% elif is_state('weather.dark_sky', 'thunderstorm') -%}
-        #     /local/weather_icons/static/thunderstorm.svg
-        #   {% else %}
-        #     /local/weather_icons/static/help.svg
-        #   {% endif %}
+#         # entity_picture_template: >
+#         #   {% if is_state("weather.dark_sky", "sunny") -%}
+#         #     /local/weather_icons/static/sunny.svg
+#         #   {% elif is_state('weather.dark_sky', 'clear-night') -%}
+#         #     /local/weather_icons/static/clear-night.svg
+#         #   {% elif is_state('weather.dark_sky', 'rain') -%}
+#         #     /local/weather_icons/static/rain.svg
+#         #   {% elif is_state('weather.dark_sky', 'snow') -%}
+#         #     /local/weather_icons/static/snow.svg
+#         #   {% elif is_state('weather.dark_sky', 'sleet') -%}
+#         #     /local/weather_icons/static/sleet.svg
+#         #   {% elif is_state('weather.dark_sky', 'wind') -%}
+#         #     /local/weather_icons/static/wind.svg
+#         #   {% elif is_state('weather.dark_sky', 'fog') -%}
+#         #     /local/weather_icons/static/fog.svg
+#         #   {% elif is_state('weather.dark_sky', 'cloudy') -%}
+#         #     /local/weather_icons/static/cloudy.svg
+#         #   {% elif is_state('weather.dark_sky', 'partly-cloudy-day') -%}
+#         #     /local/weather_icons/static/partly-cloudy-day.svg
+#         #   {% elif is_state('weather.dark_sky', 'hail') -%}
+#         #     /local/weather_icons/static/hail.svg
+#         #   {% elif is_state('weather.dark_sky', 'thunderstorm') -%}
+#         #     /local/weather_icons/static/thunderstorm.svg
+#         #   {% else %}
+#         #     /local/weather_icons/static/help.svg
+#         #   {% endif %}
           
-      unsplash_author:
-        value_template: "{{ states.camera.unsplash.attributes.author_name }}, {{ states.camera.unsplash.attributes.author_user }} (Unsplash)"
+#       unsplash_author:
+#         value_template: "{{ states.camera.unsplash.attributes.author_name }}, {{ states.camera.unsplash.attributes.author_user }} (Unsplash)"

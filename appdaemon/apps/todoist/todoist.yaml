@@ -1,7 +1,0 @@
-change_bedsheets:
-  module: todoist
-  class: Todoist
-  global_dependencies: globals
-  calendar_boolean_name: change_bedsheets # change_bedsheets
-  project: Home
-  days_until_next: 14
