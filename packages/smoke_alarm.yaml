@@ -10,7 +10,7 @@ homeassistant:
 
 
 automation:
-- alias: 'Smoke Alarm'
+- alias: '[Security] Smoke Alarm'
   initial_state: 'on'
   trigger:
     - platform: state
@@ -28,7 +28,7 @@ automation:
           Stefan: {{states.sensor.temperature_stefan.state}}
           Bedroom: {{states.sensor.temperature_bedroom.state}}
 
-- alias: 'High Temperatures'
+- alias: '[Temperature] High Temperatures'
   initial_state: 'on'
   trigger:
     - platform: numeric_state

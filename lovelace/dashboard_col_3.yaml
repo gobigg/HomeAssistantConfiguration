@@ -127,4 +127,3 @@ cards:
     style:
       background-color: rgba(0, 0, 0, 0.3)
       border-radius: 10px
-  - !include dev_card.yaml

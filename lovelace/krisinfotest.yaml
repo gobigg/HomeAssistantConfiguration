@@ -1,0 +1,10 @@
+title: Krisinfo
+icon: mdi:alert
+path: kris
+cards:
+  - type: custom:krisinfo-card
+    entity: sensor.krisinformation_stockholm
+  - type: custom:krisinfo-card
+    entity: sensor.krisinformation_stockholm_1km
+  - type: custom:krisinfo-card
+    entity: sensor.krisinformation_all

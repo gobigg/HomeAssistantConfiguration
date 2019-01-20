@@ -5,7 +5,7 @@ input_boolean:
 
 
 automation:
-  - alias: Cleaning Mode
+  - alias: '[House] Cleaning Mode'
     initial_state: 'on'
     trigger:
       - platform: state
@@ -27,7 +27,7 @@ automation:
           title: 'Cleaning time'
           message: 'Cleaners have arrived'
 
-  - alias: Cleaning Mode Off
+  - alias: '[House] Cleaning Mode Off'
     initial_state: 'on'
     trigger:
       - platform: time

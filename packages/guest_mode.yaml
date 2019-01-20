@@ -17,7 +17,7 @@ input_boolean:
 
 
 automation:
-- alias: 'Guest Mode On By Presence'
+- alias: '[House] Guest Mode On By Presence'
   initial_state: 'on'
   trigger:
     - platform: state
@@ -32,7 +32,7 @@ automation:
         message: >
           '{{ trigger.to_state.name }} is here'
 
-- alias: 'Guest Mode On'
+- alias: '[House] Guest Mode On'
   initial_state: 'on'
   trigger:
       - platform: state
@@ -47,7 +47,7 @@ automation:
         message: >
           'Some automations turned off'
 
-- alias: 'Guest Mode Off'
+- alias: '[House] Guest Mode Off'
   initial_state: 'on'
   trigger:
       - platform: state

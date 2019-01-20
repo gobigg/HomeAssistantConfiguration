@@ -102,7 +102,7 @@ proximity:
     unit_of_measurement: km
 
 automation:
-  - alias: Presence MQTT event
+  - alias: '[Presence] Presence MQTT event'
     trigger:
     - platform: mqtt
       topic: 'monitor/home/#'
@@ -112,7 +112,7 @@ automation:
         topic: '{{ trigger.topic }}'
         payload: '{{ trigger.payload }}'
 
-  - alias: Presence Homebound
+  - alias: '[Presence] Presence Homebound'
     initial_state: 'on'
     trigger:
       - platform: numeric_state

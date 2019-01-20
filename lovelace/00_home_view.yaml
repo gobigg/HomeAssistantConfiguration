@@ -78,26 +78,63 @@ cards:
                 show_name: false
                 tap_action:
                   action: more-info
-              - type: picture-elements
-                image: /local/lovelace_ui/background_square.png
-                elements:
-                  - type: state-icon
-                    entity: light.inside_lights
-                    tap_action:
-                      action: navigate
-                      navigation_path: /lovelace/lights
-                    style:
-                      "--iron-icon-width": 50px
-                      "--iron-icon-height": 50px
-                      top: 50%
-                      left: 20%
-                  - type: state-icon
-                    entity: light.outdoor_lights
-                    style:
-                      "--iron-icon-width": 50px
-                      "--iron-icon-height": 50px
-                      top: 50%
-                      left: 75%
+
+              - type: custom:state-switch
+                entity: user
+                default: default
+                states:
+                  Stefan:
+                    type: picture-elements
+                    image: /local/lovelace_ui/background_square.png
+                    elements:
+                      - type: image
+                        entity: switch.stefan_radiator_3
+                        tap_action:
+                          action: more-info
+                        state_image:
+                          "on": /local/lovelace_ui/radiator_on.jpg
+                          "off": /local/lovelace_ui/radiator_off.jpg    
+                        style:
+                          top: 50%
+                          left: 50%
+                          width: 100%
+                      - type: state-label
+                        entity: sensor.temperature_stefan
+                        style:
+                          top: 90%
+                          left: 50%
+                    # type: picture-glance
+                    # entity: switch.stefan_radiator_3
+                    # state_image:
+                    #   "on": /local/lovelace_ui/radiator_on.jpg
+                    #   "off": /local/lovelace_ui/radiator_off.jpg
+                    # show_name: false
+                    # show_state: false
+                    # tap_action:
+                    #   action: more-info
+                  default:
+                    type: picture-elements
+                    image: /local/lovelace_ui/background_square.png
+                    elements:
+                      - type: state-icon
+                        entity: light.inside_lights
+                        tap_action:
+                          action: navigate
+                          navigation_path: /lovelace/lights
+                        style:
+                          "--iron-icon-width": 50px
+                          "--iron-icon-height": 50px
+                          top: 50%
+                          left: 20%
+                      - type: state-icon
+                        entity: light.outdoor_lights
+                        style:
+                          "--iron-icon-width": 50px
+                          "--iron-icon-height": 50px
+                          top: 50%
+                          left: 75%
+
+
               - type: picture-elements
                 image: /local/lovelace_ui/background_square.png
                 elements:
@@ -139,8 +176,8 @@ cards:
                 image: /local/lovelace_ui/trash_bear_bw_square.jpg
                 show_name: false
                 state_image:
-                  "Put out": /local/lovelace_ui/trash_bear_square.jpg
-                  "Take in": /local/lovelace_ui/trash_bear_square.jpg
+                  "Put out": /local/lovelace_ui/trash_square.jpg
+                  "Take in": /local/lovelace_ui/trash_square.jpg
 
         
           - type: horizontal-stack

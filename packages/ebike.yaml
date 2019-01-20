@@ -1,13 +1,3 @@
-homeassistant:
-  customize:
-    switch.bike_charger:
-      friendly_name: E-bike Switch
-      icon: mdi:bike
-    sensor.ebike_charger:
-      icon: mdi:bike
-    sensor.sensor.bike_charger_power:
-      hidden: false
-
 sensor:
   - platform: template
     sensors:

@@ -14,7 +14,7 @@ sensor:
 
 
 automation:
-  - alias: 'Hass Started'
+  - alias: '[System] Hass Started'
     initial_state: 'on'
     trigger:
       platform: homeassistant
@@ -25,7 +25,7 @@ automation:
           target: !secret discord_hass_id
           message: "@here Hass.io Online"
 
-  - alias: 'Hass Ready'
+  - alias: '[System] Hass Ready'
     initial_state: 'on'
     trigger:
       platform: event
@@ -37,9 +37,8 @@ automation:
           message: "Z-wave network now ready"
       - delay: 00:05
       - service: homekit.start
-      - service: shell_command.dashboard_refresh_page
-
-  - alias: 'Hass Stopped'
+      
+  - alias: '[System] Hass Stopped'
     initial_state: 'on'
     trigger:
       platform: homeassistant
@@ -50,7 +49,7 @@ automation:
           target: !secret discord_hass_id
           message: "@here Hass.io Offline"
         
-  - alias: Hass New Device Tracked
+  - alias: '[System] Hass New Device Tracked'
     trigger:
       platform: event
       event_type: device_tracker_new_device
@@ -61,7 +60,7 @@ automation:
             New Device Tracked: {{trigger.event.data.host_name}} ({{trigger.event.data.entity_id}})
           target: !secret discord_hass_id
 
-  - alias: Hass Updater
+  - alias: '[System] Hass Updater'
     trigger:
       - platform: state
         entity_id: sensor.version_available
@@ -88,7 +87,7 @@ automation:
           target: !secret discord_hass_id
           message: "Home Assistant {{ states.sensor.version_available.state }} is now available!"
 
-  - alias: Snapshot Create Nightly at 03 AM
+  - alias: '[System] Snapshot Create Nightly at 03 AM'
     trigger:
       platform: time
       at: '03:00:00'
@@ -101,7 +100,7 @@ automation:
           target: !secret discord_hass_id
           message: "Automated Snapshot {{ now().strftime('%Y-%m-%d') }}"
         
-  - alias: Snapshot Upload Nightly at 0330 AM
+  - alias: '[System] Snapshot Upload Nightly at 0330 AM'
     trigger:
       - platform: time
         at: '03:30:00'
@@ -115,3 +114,17 @@ automation:
         data:
           target: !secret discord_hass_id
           message: "Automatic snapshot uploaded"
+          
+  - alias: '[System] Ip Ban Notify'
+    trigger:
+      - platform: state
+        entity_id: persistent_notification.ipban
+    condition:
+      - condition: template
+        value_template: "{{ trigger.to_state.state != off }}"
+    action:
+      - service: notify.hass_discord
+        data_template:
+          target: !secret discord_hass_id
+          message: >
+            "@here {{ trigger.state.attributes.message }}. Ip address has been banned."

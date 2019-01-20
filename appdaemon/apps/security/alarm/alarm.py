@@ -18,7 +18,7 @@ class Alarm(Base):
                 self.listen_state(self.arm_or_disarm, device)
 
     def arm_or_disarm(self, entity, attribute, old, new, kwargs):
-        if new != old and new != None:
+        if new != old and new != None and old != None:
             self.log("Alarm state: {}".format(self.get_state(self.alarm)))
             if self.presence_helper.anyone_just_arrived():
                 self.notification_manager.log_alarm(message = "Someone just got home.")
@@ -105,6 +105,9 @@ class Alarm(Base):
                 self.notification_manager.log_alarm(message = f"Alarm {new}")
 
     def lights_off_away(self, event_name, data, kwargs):
-        self.turn_off("light.lights_automation")
-        self.log("Lights turned off")
-        self.notification_manager.log_alarm(message = "Lights turned off after arming away.")
+        if not self.presence_helper.anyone_home():
+            self.turn_off("light.lights_automation")
+            self.log("Lights turned off")
+            self.notification_manager.log_alarm(message = "Lights turned off after arming away.")
+        else:
+            self.notification_manager.log_alarm(message = "Someone is home. Lights stay on.")

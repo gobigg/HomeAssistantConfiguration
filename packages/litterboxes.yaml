@@ -15,9 +15,6 @@ homeassistant:
     sensor.illumination_158d0001a66291:
       friendly_name: Isas Room Lux
       icon: mdi:theme-light-dark
-    # sensor.upstairs_litterbox:
-    #   extra_badge:
-    #     entity_id: counter.litterbox_upstairs_visits
     binary_sensor.switch_158d0001a6687f:
       friendly_name: Upstairs litterbox switch
 
@@ -31,9 +28,6 @@ homeassistant:
     sensor.illumination_158d0001a24ef1:
       friendly_name: Downstairs Litterbox Lux
       icon: mdi:theme-light-dark
-    # sensor.downstairs_litterbox:
-    #   extra_badge:
-    #     entity_id: counter.litterbox_downstairs_visits
     binary_sensor.switch_158d0001b8f876:
       friendly_name: Downstairs litterbox switch
 
@@ -107,16 +101,11 @@ input_select:
 #-------------------------------------------
 
 automation:
-  - alias: Litterbox All Counter Reset At Midnight
+  - alias: '[Cats] Litterbox All Counter Reset At Midnight'
     initial_state: 'on'
     trigger:
       - platform: time
         at: '23:59:00'
     action:
-      # # Log total visits for the day in Ifttt via script for dynamic counter
-      # - service: script.ifttt_litterbox_day_summary
-      #   data_template:
-      #     value1: "{{ states('counter.all_litterbox_visits_today') }}"
-      #     value2: "test"
       - service: counter.reset
         entity_id: counter.all_litterbox_visits_today

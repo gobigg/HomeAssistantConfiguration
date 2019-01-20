@@ -26,7 +26,7 @@ sensor:
 
 
 automation:
-  - alias: House Isa Mode Ask
+  - alias: '[House] Isa Mode Ask'
     initial_state: 'on'
     trigger:
       - platform: state
@@ -63,7 +63,7 @@ automation:
             push:
               category: "isa_mode"
 
-  - alias: House Isa Mode On
+  - alias: '[House] Isa Mode On'
     initial_state: 'on'
     trigger:
       platform: event
@@ -75,7 +75,7 @@ automation:
         entity_id: input_boolean.isa_mode
       # - More to come when confirmed working as intended
 
-  - alias: House Isa Mode Off
+  - alias: '[House] Isa Mode Off'
     initial_state: 'on'
     trigger:
       - platform: state
@@ -105,7 +105,7 @@ automation:
       #     message: 'Stefan Just arrived'
       #     delay: '00:00:10'
 
-  - alias: 'TTS Sonos Stefan Leaving Golf Course'
+  - alias: '[TTS] Sonos Stefan Leaving Golf Course'
     initial_state: 'on'
     trigger:
       - platform: zone

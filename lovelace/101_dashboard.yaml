@@ -1,515 +1,303 @@
 title: Dashboard
 icon: mdi:monitor-dashboard
 panel: true
-path: dashboard
+path: dashboardtest
 cards:
   - type: custom:layout-card
     layout: horizontal
-    column_num: 3
+    column_num: 4
     cards:
-## FIRST ROW
-
-      - type: horizontal-stack
+      - type: vertical-stack
         cards:
-          - type: picture-entity
-            entity: sensor.presence_isa
-            # show_name: false
-            image: /local/isa_cropped.jpg
-            show_name: false
-          - type: picture-entity
-            entity: sensor.presence_stefan
-            image: /local/Stefan_cropped_1.jpg
-            show_name: false
-            
-      - type: horizontal-stack  
-        cards:
-          - type: picture-entity
-            entity: sensor.mailbox
-            show_name: false
-            state_image:
-              "Empty": /local/lovelace_ui/mailbox_bw.jpg
-              "Package": /local/lovelace_ui/mailbox.jpg
-              "Mail": /local/lovelace_ui/mailbox.jpg
-          - type: picture-entity
-            entity: sensor.trash
-            image: /local/lovelace_ui/trash_bear_bw.jpg
-            show_name: false
-            state_image:
-              "Empty": /local/lovelace_ui/trash_bear_bw.jpg
-              "Package": /local/lovelace_ui/trash_bear.jpg
-              
-      - type: horizontal-stack
-        cards:
-          - type: picture-elements
-            image: /local/lovelace_ui/House_cropped.jpg
-            elements:
-              - type: state-label
-                entity: alarm_control_panel.house
-                style:
-                  top: 50%
-                  left: 50%
-                  font-size: 35pt
-                  color: white
-              - type: image
-                imate: /local/lovelace_ui/House_cropped.jpg
-                state_filter:
-                  "disarmed": brightness(110%) saturate(1.2)
-                  "armed_home": brightness(50%)
-                style:
-                  left: 50%
-                  top: 50%
-                  width: 100%
-                  
-          - type: picture-elements
-            image: /local/lovelace_ui/background.png
-            elements:
-              - type: state-label
-                entity: sensor.time
-                style:
-                  top: 44%
-                  left: 50%
-                  font-size: 50pt
-              - type: state-label
-                entity: sensor.date
-                style:
-                  top: 89%
-                  left: 50%
-
-## SECOND ROW
-                  
-      # - type: custom:card-modder
-      #   card:
-      #     type: custom:calendar-card
-      #     showProgressBar: false
-      #     numberOfDays: 14
-      #     entities:
-      #       - calendar.house
-      #   style:
-      #     "background": "url(/local/lovelace_ui/balloons.jpg)"
-
-
-
-      # - type: custom:card-modder
-      #   card:
-      #     report_size: 1
-      #     type: "custom:weather-card"
-      #     entity_weather: weather.smhi_home
-      #     entity_sun: sun.sun
-      #   style:
-      #     # "background": "url(/local/lovelace_ui/darksky.jpg)"
-      #     "--primary-text-color": "#696969"
-      #     "--paper-item-icon-color": "#696969"
-      #     "background": "url(/local/lovelace_ui/weather.png)"
-
-
-      - type: picture-elements
-        image: /local/lovelace_ui/front_door.png
-        elements:
-          - type: state-icon
-            entity: sensor.front_door
-            style:
-              top: 13%
-              left: 4%
-              z-index: 1
-          - type: state-label
-            prefix: "Front: "
-            entity: sensor.front_door
-            style:
-              top: 5%
-              left: 0%
-              color: rgb(255, 255, 255)
-              transform: none
-              font-size: 150%
-              pointer-events: none
-              border-left-style: solid
-              box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)
-              border-color: rgb(0, 0, 0)
-              background-color: rgb(0, 0, 0, 0.4)
-              padding: 7px
-              padding-left: 25px
-
-          - type: state-icon
-            entity: sensor.back_door
-            style:
-              top: 35%
-              left: 4%
-              z-index: 1
-          - type: state-label
-            prefix: "Back: "
-            entity: sensor.back_door
-            style:
-              top: 27%
-              left: 0%
-              color: rgb(255, 255, 255)
-              transform: none
-              font-size: 150%
-              pointer-events: none
-              border-left-style: solid
-              box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)
-              border-color: rgb(0, 0, 0)
-              background-color: rgb(0, 0, 0, 0.4)
-              padding: 7px
-              padding-left: 25px
-              
-          - type: state-icon
-            entity: sensor.yard_door
-            style:
-              top: 57%
-              left: 4%
-              z-index: 1
-          - type: state-label
-            prefix: "Yard: "
-            entity: sensor.yard_door
-            style:
-              top: 49%
-              left: 0%
-              color: rgb(255, 255, 255)
-              transform: none
-              font-size: 150%
-              pointer-events: none
-              border-left-style: solid
-              box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)
-              border-color: rgb(0, 0, 0)
-              background-color: rgb(0, 0, 0, 0.4)
-              padding: 7px
-              padding-left: 25px
-
-          - type: state-icon
-            entity: sensor.balcony_door
-            style:
-              top: 79%
-              left: 4%
-              z-index: 1
-          - type: state-label
-            prefix: "Balcony: "
-            entity: sensor.balcony_door
-            style:
-              top: 71%
-              left: 0%
-              color: rgb(255, 255, 255)
-              transform: none
-              font-size: 150%
-              pointer-events: none
-              border-left-style: solid
-              box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)
-              border-color: rgb(0, 0, 0)
-              background-color: rgb(0, 0, 0, 0.4)
-              padding: 7px
-              padding-left: 25px
-
-
-      - type: picture-elements
-        image: /local/lovelace_ui/cats.jpg
-        elements:
-          - type: state-label
-            prefix: "Downstairs: "
-            entity: counter.litterbox_downstairs_visits
-            suffix: " visits"
-            style:
-              top: 5%
-              left: 0%
-              color: rgb(255, 255, 255)
-              transform: none
-              font-size: 150%
-              pointer-events: none
-              border-left-style: solid
-              box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)
-              border-color: rgb(0, 0, 0)
-              background-color: rgb(0, 0, 0, 0.4)
-              padding: 7px
-          - type: state-label
-            prefix: "Upstairs: "
-            entity: counter.litterbox_upstairs_visits
-            suffix: " visits"
-            style:
-              top: 25%
-              left: 0%
-              color: rgb(255, 255, 255)
-              transform: none
-              font-size: 150%
-              pointer-events: none
-              border-left-style: solid
-              box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)
-              border-color: rgb(0, 0, 0)
-              background-color: rgb(0, 0, 0, 0.4)
-              padding: 7px
-
-      - type: picture-elements
-        image: /local/lovelace_ui/highway.jpg
-        elements:
-          - type: icon
-            icon: mdi:car
-            style:
-              --iron-icon-fill-color: white
-              --iron-icon-stroke-color: white
-              top: 13%
-              left: 4%
-              z-index: 1
-          - type: state-label
-            entity: sensor.homesolna_travel_time
-            prefix: "Home - Solna: "
-            style:
-              top: 5%
-              left: 0%
-              color: rgb(255, 255, 255)
-              transform: none
-              font-size: 150%
-              pointer-events: none
-              border-left-style: solid
-              box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)
-              border-color: rgb(0, 0, 0)
-              background-color: rgb(0, 0, 0, 0.4)
-              padding: 7px
-              padding-left: 25px
-              
-          - type: icon
-            icon: mdi:car
-            style:
-              --iron-icon-fill-color: white
-              --iron-icon-stroke-color: white
-              top: 33%
-              left: 4%
-              z-index: 1
-          - type: state-label
-            # entity: sensor.trafikverket_alta_road_temperature
-            entity: sensor.homec9_travel_time
-            # prefix: "Road temp: "
-            prefix: "Home - C9: "
-            style:
-              top: 25%
-              left: 0%
-              color: rgb(255, 255, 255)
-              transform: none
-              font-size: 150%
-              pointer-events: none
-              border-left-style: solid
-              box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)
-              border-color: rgb(0, 0, 0)
-              background-color: rgb(0, 0, 0, 0.4)
-              padding: 7px
-              padding-left: 25px
-              
-          - type: custom:useful-markdown-card
-            content: >
-              [[sensor.bike_tweet.attributes.event_received_date]] [[sensor.bike_tweet.attributes.event_received_time]]
-
-              [[sensor.bike_tweet.state]]
-            style:
-              top: 60%
-              left: 0%
-              color: rgb(255, 255, 255)
-              transform: none
-              font-size: 120%
-              pointer-events: none
-              border-left-style: solid
-              box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)
-              border-color: rgb(0, 0, 0)
-              background: none
-              background-color: rgb(0, 0, 0, 0.4)
-              --paper-card-background-color: none
-              --paper-material-elevation-1_-_box-shadow: none
-              --shadow-elevation-2dp_-_box-shadow: none
-
-
-      - type: picture-elements
-        image: /local/lovelace_ui/window.jpg
-        elements:
-          - type: state-label
-            prefix: "Dining area: "
-            entity: sensor.dining_area_window
-            style:
-              top: 5%
-              left: 0%
-              color: rgb(255, 255, 255)
-              transform: none
-              font-size: 150%
-              pointer-events: none
-              border-left-style: solid
-              box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)
-              border-color: rgb(0, 0, 0)
-              background-color: rgb(0, 0, 0, 0.4)
-              padding: 7px                      
-              padding-left: 25px
-          - type: state-icon
-            entity: sensor.dining_area_window
-            style:
-              top: 13%
-              left: 4%
-              z-index: 1
-
-          - type: state-label
-            prefix: "Bedroom: "
-            entity: sensor.bedroom_window
-            style:
-              top: 27%
-              left: 0%
-              color: rgb(255, 255, 255)
-              transform: none                      
-              font-size: 150%
-              pointer-events: none
-              border-left-style: solid
-              box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)
-              border-color: rgb(0, 0, 0)
-              background-color: rgb(0, 0, 0, 0.4)
-              padding: 7px                      
-              padding-left: 25px
-          - type: state-icon
-            entity: sensor.bedroom_window
-            style:
-              top: 35%
-              left: 4%
-              z-index: 1
-
-
-
-
-## THIRD ROW
-
-      - type: picture-elements
-        image: /local/lovelace_ui/bicycleside.png
-        elements:
-          - type: state-label
-            entity: device_tracker.tile_8b84f9654688b3ec
-            prefix: "Bike: "
-            style:
-              top: 62%
-              left: 0%
-              color: rgb(255, 255, 255)
-              transform: none
-              font-size: 150%
-              pointer-events: none
-              border-left-style: solid
-              box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)
-              border-color: rgb(0, 0, 0)
-              background-color: rgb(0, 0, 0, 0.4)
-              padding: 7px
-        
-          - type: state-label
-            entity: sensor.ebike_battery_charging
-            prefix: "Time spent charging last week: "
-            style:
-              top: 82%
-              left: 0%
-              color: rgb(255, 255, 255)
-              transform: none
-              font-size: 150%
-              pointer-events: none
-              border-left-style: solid
-              box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)
-              border-color: rgb(0, 0, 0)
-              background-color: rgb(0, 0, 0, 0.4)
-              padding: 7px
-        
-          - type: state-icon
-            entity: sensor.ebike_charging
-            style:
-              top: 75%
-              left: 90%
-              transform: none
-          - type: state-label
-            entity: switch.bike_plug_switch
-            tap_action:
-              action: toggle
-            style:
-              top: 85%
-              left: 90%
-              transform: none
-
-      - type: custom:vertical-stack-in-card
-        cards:
-          - type: picture-entity
-            entity: camera.fisksatra_meteogram
-            show_name: false
-            show_state: false
+          - type: horizontal-stack
+            cards:
+              - type: picture-entity
+                entity: sensor.presence_isa
+                image: /local/isa_cropped.jpg
+                show_name: false
+              - type: picture-entity
+                entity: sensor.presence_stefan
+                image: /local/Stefan_cropped_1.jpg
+                show_name: false
+          - type: horizontal-stack
+            cards:
+              - type: picture-entity
+                name: Washer
+                entity: input_select.washing_machine_status
+                state_image:
+                  "Idle": /local/lovelace_ui/washer_cropped.jpg
+                  "Running": /local/lovelace_ui/laundry_running_cropped.jpg
+                  "Clean": /local/lovelace_ui/laundry_clean_2_cropped.jpg
+              - type: picture-entity
+                name: Dryer
+                entity: input_select.dryer_status
+                state_image:
+                  "Idle": /local/lovelace_ui/dryer_cropped.jpg
+                  "Running": /local/lovelace_ui/clothes_drying.jpg
+                  "Clean": /local/lovelace_ui/folded_clothes.jpg
+          - type: "custom:weather-card"
+            entity_weather: weather.smhi_home
+            entity_sun: sun.sun
+          - type: custom:calendar-card-opacity
+            showProgressBar: false
+            numberOfDays: 14
+            entities:
+              - calendar.house
           - type: picture-entity
             entity: camera.stockholm_meteogram
             show_name: false
             show_state: false
-            
-            
-## FORTH ROW     
-      - type: custom:slideshow-card
-        fill: true
-        arrow_color: White
-        arrow_opacity: 0.1
-        auto_play: true
-        auto_delay: 5
-        style:
-          'border-radius': '25px'
+  
+      - type: vertical-stack
         cards:
-          - type: picture-entity
-            entity: camera.tpl_nacka
-            show_state: false
-          - type: picture-entity
-            entity: camera.sicklatunneln
-            show_state: false
-          - type: picture-entity
-            entity: camera.svindersvik
-            show_state: false
-          - type: picture-entity
-            entity: camera.tpl_kvarnholmen
-            show_state: false
-          - type: picture-entity
-            entity: camera.vikdalen
-            show_state: false
-          - type: picture-entity
-            entity: camera.marinstaden
-            show_state: false
-          - type: picture-entity
-            entity: camera.tpl_skvaltan
-            show_state: false
-
-      # - type: shopping-list
-      #   title: Shopping List
-      - break
-
-## FIFTH ROW
-      - type: horizontal-stack  
-        cards:
-          - type: picture-entity
-            name: Washer
-            entity: input_select.washing_machine_status
-            state_image:
-              "Idle": /local/lovelace_ui/washer_cropped.jpg
-              "Running": /local/lovelace_ui/laundry_running_cropped.jpg
-              "Clean": /local/lovelace_ui/laundry_clean_2_cropped.jpg
-          - type: picture-entity
-            name: Dryer
-            entity: input_select.dryer_status
-            state_image:
-              "Idle": /local/lovelace_ui/dryer_cropped.jpg
-              "Running": /local/lovelace_ui/clothes_drying.jpg
-              "Clean": /local/lovelace_ui/folded_clothes.jpg
+          - type: horizontal-stack  
+            cards:
+              - type: picture-entity
+                entity: sensor.mailbox
+                show_name: false
+                state_image:
+                  "Empty": /local/lovelace_ui/mailbox_bw.jpg
+                  "Package": /local/lovelace_ui/mailbox.jpg
+                  "Mail": /local/lovelace_ui/mailbox.jpg
+                  "Package and mail": /local/lovelace_ui/mailbox.jpg
+              - type: picture-entity
+                entity: sensor.trash_status
+                image: /local/lovelace_ui/trash_bear_bw.jpg
+                show_name: false
+                state_image:
+                  "Put out": /local/lovelace_ui/trash_bear.jpg
+                  "Take in": /local/lovelace_ui/trash_bear.jpg
+        
+          - type: horizontal-stack
+            cards:
+              - type: picture-entity
+                entity: input_boolean.vacation_mode
+                image: /local/lovelace_ui/beach.jpg
+                show_name: true
+                tap_action:
+                  action: toggle
+              - type: picture-entity
+                name: Roomba
+                entity: input_select.roomba_mode
+                image: /local/lovelace_ui/roomba_cropped.jpg
+                state_image:
+                  "Not Today": /local/lovelace_ui/roomba_bw_cropped.jpg
+          - type: shopping-list
+        
+  
+          - type: entities
+            entities:
+              - entity: sensor.trafikverket_alta_road_temperature
+                name: Road temp
+              - entity: sensor.homesolna_travel_time
+                name: Home - Solna
+                icon: mdi:car
+              - entity: sensor.homec9_travel_time
+                name: Home - C9
+                icon: mdi:car
+        
+          # - type: custom:useful-markdown-card
+          #   content: >
+          #     [[sensor.bike_tweet.attributes.event_received_time]] [[sensor.bike_tweet.attributes.event_received_date]]
               
-      - type: horizontal-stack
+          #     [[sensor.bike_tweet.state]]
+  
+      - type: vertical-stack
         cards:
-          - type: picture-entity
-            entity: input_boolean.guest_mode
-            image: /local/lovelace_ui/guests.jpg
-            show_name: true
-            tap_action:
-              action: toggle
-
-          - type: picture-entity
-            entity: input_boolean.cleaning_day
-            image: /local/lovelace_ui/cleaning.jpg
-            show_name: true
-            tap_action:
-              action: toggle
-      - type: horizontal-stack
-        cards:
-          - type: picture-entity
-            entity: input_boolean.vacation_mode
-            image: /local/lovelace_ui/beach.jpg
-            show_name: true
-            tap_action:
-              action: toggle
-          - type: picture-entity
-            name: Roomba
-            entity: input_select.roomba_mode
-            image: /local/lovelace_ui/roomba_cropped.jpg
-            state_image:
-              "Not Today": /local/lovelace_ui/roomba_bw_cropped.jpg
+        - type: horizontal-stack
+          cards:
+            - type: picture-entity
+              entity: input_boolean.guest_mode
+              image: /local/lovelace_ui/guests.jpg
+              show_name: true
+              tap_action:
+                action: toggle
+      
+            - type: picture-entity
+              entity: input_boolean.cleaning_day
+              image: /local/lovelace_ui/cleaning.jpg
+              show_name: true
+              tap_action:
+                action: toggle
+    
+        - type: horizontal-stack
+          cards:
+            - type: custom:mini-graph-card
+              entity: sensor.temperature_bedroom
+              height: 75
+              accuracy: 50
+              line_color: "#389638"
+              line_value_above: 24
+              line_color_above: orange
+              line_value_below: 22
+              line_color_below: blue
+            - type: custom:mini-graph-card
+              name: S's room
+              entity: sensor.temperature_stefan
+              height: 75
+              accuracy: 50
+              line_color: "#389638"
+              line_value_above: 24
+              line_color_above: orange
+              line_value_below: 22
+              line_color_below: blue
         
         
-      - !include dev_card.yaml
+        - type: glance
+          columns: 4
+          show_state: false
+          entities:
+            - sensor.front_door
+            - sensor.back_door
+            - sensor.yard_door
+            - sensor.balcony_door
+            - entity: sensor.dining_area_window
+              name: Dining area
+            - entity: sensor.bedroom_window
+              name: Bedroom
+      
+        - type: entity-filter
+          show_empty: false
+          entities:
+            - light.outdoor_lights
+            - entity: light.outdoor_yard_light_net
+              name: Yard net
+            - light.bedroom_ceiling_light
+            - light.bedside_lamp
+            - light.dining_area_ceiling_light_level  
+            - light.kitchen_ceiling_spotlights_level
+            - light.floorlamp_reading_light
+            - light.floorlamp_uplight
+            - light.hallway_window_light
+            - light.isa_ceiling_light
+            - light.living_room_ceiling_light_level
+            - light.living_room_spotlights_level
+            - light.passage_ceiling_spotlights_level
+            - light.stairs_lights_lights
+            - light.walk_in_closet_lights
+            - light.upstairs_hallway_ceiling_light_level
+            - light.gateway_light_34ce008bfc4b
+          state_filter:
+            - 'on'
+          card:
+            type: glance
+            show_state: false
+      
+        - type: horizontal-stack
+          cards:
+            - type: custom:gauge-card
+              title: Downstairs
+              entity: counter.litterbox_downstairs_visits
+              measurement: "visits"
+              min: 0
+              max: 6
+              severity:
+                red: 3
+                green: 0
+                amber: 2
+      
+            - type: custom:gauge-card
+              title: Upstairs
+              entity: counter.litterbox_upstairs_visits
+              measurement: "visits"
+              min: 0
+              max: 6
+              severity:
+                red: 3
+                green: 0
+                amber: 2
+  
+      - type: vertical-stack
+        cards:
+          - type: horizontal-stack
+            cards:
+              - type: picture-elements
+                image: /local/lovelace_ui/House_cropped.jpg
+                elements:
+                  - type: state-badge
+                    entity: alarm_control_panel.house
+                    style:
+                      left: 80%
+                      top: 60%
+                  - type: image
+                    imate: /local/lovelace_ui/House_cropped.jpg
+                    state_filter:
+                      "disarmed": brightness(110%) saturate(1.2)
+                      "armed_home": brightness(50%)
+                    style:
+                      left: 50%
+                      top: 50%
+                      width: 100%
+                        
+              - type: picture-elements
+                image: /local/lovelace_ui/background.png
+                elements:
+                  - type: state-label
+                    entity: sensor.time
+                    style:
+                      top: 44%
+                      left: 50%
+                      font-size: 50pt
+                  - type: state-label
+                    entity: sensor.date
+                    style:
+                      top: 89%
+                      left: 50%
+        
+          - type: horizontal-stack
+            cards:
+              - type: custom:mini-graph-card
+                entity: sensor.temperature_passage
+                height: 75
+                accuracy: 50
+                line_color: "#389638"
+                line_value_above: 24
+                line_color_above: orange
+                line_value_below: 22
+                line_color_below: blue
+              - type: custom:mini-graph-card
+                entity: sensor.temperature_downstairs_bathroom
+                name: Laundry
+                height: 75
+                accuracy: 50
+                line_color: "#389638"
+                line_value_above: 24
+                line_color_above: orange
+                line_value_below: 22
+                line_color_below: blue
+        
+          - type: custom:mini-media-player
+            entity: media_player.sonos
+            artwork: cover
+            hide_icon: true
+            hide_controls: true
+            hide_power: true
+            hide_volume: true
+            consider_pause_idle: true
+        
+          - type: custom:upcoming-media-card
+            entity: sensor.plex_recently_added
+            date: ddmm
+            clock: 24
+            max: 4
+            image_style: fanart
+            flag: false
+            all_shadows: false
+            title_size: medium
+            icon: none
+            flag_color: "#e5a00d"
+            title_text: "$title"
+            line1_text: "$number - $episode"
+            line2_text: "$runtime - $rating - $genres"
+            line3_text: "Released: $aired"
+            line4_text: "Added: $release"
+        
+          - type: custom:useful-markdown-card
+            content: >
+              #### Hey Siri...
+              
+              - ...Movie Time
+              
+              - ...Goodnight
+              
+              - ...Show Traffic Cameras

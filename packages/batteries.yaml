@@ -1,5 +1,5 @@
 automation:
-  - alias: Low Battery Ipad
+  - alias: '[House] Low Battery Ipad'
     initial_state: 'on'
     trigger:
       - platform: numeric_state

@@ -1,13 +1,21 @@
-ring_motion:
+ring_motion_outside:
   module: sensor_lights
   class: SensorLights
   sensor: binary_sensor.ring_front_door_motion
   constrain_start_time: sunset - 00:45:00
   constrain_end_time: sunrise + 00:45:00
-  entity_on: light.outdoor_front_light,light.hallway_window_light
-  entity_off: light.outdoor_front_light,light.hallway_window_light
+  entity_on: light.outdoor_front_light
+  entity_off: light.outdoor_front_light
   constrain_input_boolean: input_boolean.guest_mode,off
-
+# ring_motion_hallway:
+#   module: sensor_lights
+#   class: SensorLights
+#   sensor: binary_sensor.ring_front_door_motion
+#   constrain_start_time: sunset - 00:45:00
+#   constrain_end_time: sunrise + 00:45:00
+#   entity_on: light.hallway_window_light
+#   entity_off: light.hallway_window_light
+#   constrain_input_boolean: input_boolean.guest_mode,off
 ring_ding:
   module: sensor_lights
   class: SensorLights

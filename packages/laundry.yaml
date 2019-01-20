@@ -58,7 +58,7 @@ sensor:
         value_template: "{{ states('sensor.dryer_plug_power') | int < 3.4 }}"
 
 automation:
-  - alias: 'Notification on high humidity in downstairs bathroom'
+  - alias: '[Temperature] Notification on high humidity in downstairs bathroom'
     initial_state: 'on'
     trigger:
       - platform: numeric_state

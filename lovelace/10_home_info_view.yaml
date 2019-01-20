@@ -195,3 +195,9 @@ cards:
                 entities:
                   - sensor.passage_pir_luminance
                   - sensor.upstairs_hallway_pir_luminance
+              - type: plant-status
+                entity: plant.small_chili
+              - type: plant-status
+                entity: plant.big_chili
+              - type: plant-status
+                entity: plant.herbs

@@ -84,8 +84,8 @@ sensor:
 
 
 automation:
-  - alias: Automation Name
-    initial_state: True
+  - alias: '[Security] Yard lock'
+    initial_state: False
     trigger:
       platform: state
       entity_id: binary_sensor.lock_sensor

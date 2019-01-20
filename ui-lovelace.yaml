@@ -1,6 +1,7 @@
 resources:
 - type: module
-  url: /local/lovelace/mini-graph-card.js?v=0.0.1
+  url: /local/lovelace/mini-graph-card.js?v=0.0.9
+  
 - type: module
   url: /local/lovelace/swipe-card.js?v=0.0.1
 - type: js
@@ -10,7 +11,7 @@ resources:
 - type: js
   url: /local/lovelace/upcoming-media-card.js?v=0.3.4
 - type: js
-  url: /local/lovelace/fold-entity-row.js?v=f28e6e
+  url: /local/lovelace/fold-entity-row.js?v=1cb484
 - type: js
   url: /local/lovelace/slideshow-card.js?v=0.0.1
 - type: js
@@ -24,7 +25,7 @@ resources:
 - type: js
   url: /local/lovelace/light-card.js?v=0.0.1 
 - type: js
-  url: /local/lovelace/card-modder.js?v=35eb37
+  url: /local/lovelace/card-modder.js?v=fadc03
 - type: js
   url: https://unpkg.com/moment@2.22.2/moment.js
 - type: module
@@ -34,9 +35,9 @@ resources:
 - type: js
   url: /local/lovelace/kiosk.js?v=0.0.1
 - type: module
-  url: /local/lovelace/button-card.js?v=0.0.1
+  url: /local/lovelace/button-card.js?v=0.0.2
 - type: js
-  url: /local/lovelace/vertical-stack-in-card.js?v=0.1.0
+  url: /local/lovelace/vertical-stack-in-card.js?v=v0.1.0
 - type: js
   url: /local/lovelace/slider-entity-row.js?v=d6da75
 - type: js
@@ -68,15 +69,19 @@ resources:
 - type: js
   url: /local/lovelace/state-attribute-element.js?v=0.2.0
 - type: module
-  url: /local/lovelace/mini-media-player.js?v=0.5
+  url: /local/lovelace/mini-media-player.js?v=0.6
 - type: js
   url: /local/lovelace/toggle-lock-entity-row.js?v=a57ac1
 - type: css
   url: https://fonts.googleapis.com/css?family=Roboto+Condensed
-- url: /local/card-tools.js?v=0a97d3
+- url: /local/card-tools.js?v=6ce5d0
   type: js
- 
+- type: js
+  url: /local/lovelace/krisinfo-card.js?v=0.0.4
+  
+  
 title: Home
+
 views:
   - !include lovelace/00_home_view.yaml
   - !include lovelace/10_home_info_view.yaml
@@ -88,12 +93,8 @@ views:
   # - !include lovelace/60_floorplan_view.yaml
   # - !include lovelace/70_isa_view.yaml
   - !include lovelace/80_automations_view.yaml
-  # - !include lovelace/101_dashboard.yaml
+  - !include lovelace/101_dashboard.yaml
   # - !include lovelace/102_alarm_clock.yaml
-  - !include lovelace/103_dashboard_test.yaml
+  # - !include lovelace/103_dashboard_test.yaml
   - !include lovelace/100_settings_view.yaml
-  
-  
-  
-   
-  
+  - !include lovelace/krisinfotest.yaml

@@ -20,7 +20,7 @@ camera:
   - platform: ring
 
 automation:
-  - alias: Ring Doorbell Low Battery
+  - alias: '[Security] Ring Doorbell Low Battery'
     initial_state: 'on'
     trigger:
       - platform: numeric_state
@@ -32,7 +32,7 @@ automation:
           title: 'Ring Doorbell'
           message: 'Low Battery'
 
-  - alias: Ring Doorbell Flash Lights
+  - alias: '[Security] Ring Doorbell Flash Lights'
     initial_state: 'on'
     trigger:
       - platform: state

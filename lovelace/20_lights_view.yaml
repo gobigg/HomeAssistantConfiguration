@@ -6,24 +6,33 @@ cards:
     cards:
     - type: horizontal-stack
       cards:
-        - type: custom:button-card
-          entity: script.goodnight
-          icon: mdi:hotel
-          size: 50%
-          color: rgb(220,220,220)
-          color_off: rgb(220,220,220)
-        - type: custom:button-card
+        - type: picture
+          image: /local/lovelace_ui/bed.jpg
+          tap_action:
+            action: none
+          hold_action:
+            action: call-service
+            service: script.goodnight
+        - type: entity-button
           entity: scene.morning_lights
-          icon: mdi:kettle
-          size: 50%
-          color: rgb(220,220,220)
-          color_off: rgb(220,220,220)
-        - type: custom:button-card
+          icon: mdi:coffee-outline
+          tap_action:
+            action: none
+          hold_action:
+            action: call-service
+            service: scene.turn_on
+            service_data:
+              entity_id: scene.morning_lights
+        - type: entity-button
           entity: scene.movie_time
           icon: mdi:television-classic
-          size: 50%
-          color: rgb(220,220,220)
-          color_off: rgb(220,220,220)
+          tap_action:
+            action: none
+          hold_action:
+            action: call-service
+            service: scene.turn_on
+            service_data:
+              entity_id: scene.movie_time
 
     - type: entities
       title: Outdoor
@@ -51,24 +60,27 @@ cards:
 
     - type: horizontal-stack
       cards:
-          - type: custom:button-card
-            entity: light.downstairs_lights
-            icon: mdi:page-layout-footer
-            size: 50%
-            color: rgb(220,220,220)
-            color_off: rgb(220,220,220)
-          - type: custom:button-card
-            entity: light.upstairs_lights
-            icon: mdi:page-layout-header
-            size: 50%
-            color: rgb(220,220,220)
-            color_off: rgb(220,220,220)
-          - type: custom:button-card
-            entity: light.lights_automation
-            icon: mdi:flash-off
-            size: 50%
-            color: rgb(220,220,220)
-            color_off: rgb(220,220,220)
+        - type: entity-button
+          entity: light.downstairs_lights
+          icon: mdi:page-layout-footer
+          tap_action:
+            action: none
+          hold_action:
+            action: call-service
+            service: light.turn_off
+            service_data:
+              entity_id: light.downstairs_lights
+        - type: entity-button
+          entity: light.upstairs_lights
+          icon: mdi:page-layout-header
+          tap_action:
+            action: none
+          hold_action:
+            action: call-service
+            service: light.turn_off
+            service_data:
+              entity_id: light.upstairs_lights
+                  
 
   - type: vertical-stack
     cards:

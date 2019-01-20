@@ -30,6 +30,7 @@ class Summary(Base):
     litterbox_upstairs_visits = self.get_state("counter.litterbox_upstairs_visits")
     mailbox = self.get_state("sensor.mailbox")
     laundry = self.get_state("input_select.washing_machine_status")
+    dryer = self.get_state("input_select.dryer_status")
     
     if (int(litterbox_downstairs_visits) > 0):
       # start = "" if message_part == 0 else " "
@@ -47,11 +48,14 @@ class Summary(Base):
       message = message + start + "You have {}.".format(mailbox.lower())
       message_part = message_part + 1
     
-    if (laundry == "Clean"):
+    if (laundry != "Idle"):
       start = "" if message_part == 0 else "\n"
       message = message + start + "The laundry is {}.".format(laundry.lower())
       message_part = message_part + 1
-      
+    if (dryer != "Idle"):
+      start = "" if message_part == 0 else "\n"
+      message = message + start + "The dryer is {}.".format(dryer.lower())
+      message_part = message_part + 1
     if (message != ""):
       self.log(message)
       self.call_service("notify/ios_isabellas_iphone_x", title = "Welcome home", message = message)

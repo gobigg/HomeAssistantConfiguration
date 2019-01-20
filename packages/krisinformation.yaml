@@ -1,0 +1,43 @@
+sensor:
+  - platform: krisinformation
+    name: 'Krisinformation Stockholm 1km'
+    latitude: !secret lat_coord
+    longitude: !secret long_coord
+    radius: 1
+  - platform: krisinformation
+    name: 'Krisinformation Stockholm'
+    latitude: !secret lat_coord
+    longitude: !secret long_coord
+    radius: 50
+  - platform: krisinformation
+    name: 'Krisinformation All'
+    latitude: !secret lat_coord
+    longitude: !secret long_coord
+    radius: 7000
+    
+automation:
+  - alias: '[Security] Krisinformation Alert'
+    initial_state: 'on'
+    trigger:
+      platform: state
+      entity_id: sensor.krisinformation_stockholm
+      to: "Alert"
+    action:
+      - service: notify.hass_discord
+        data_template:
+          message: >
+            ALERT! {{states.sensor.krisinformation_stockholm.attributes.messages[0].Headline}} - {{states.sensor.krisinformation_stockholm.attributes.messages[0].Message}} {{states.sensor.krisinformation_stockholm.attributes.messages[0].Web}}
+          target: '532525430125625345'
+
+  - alias: '[Security] Krisinformation News'
+    initial_state: 'on'
+    trigger:
+      platform: state
+      entity_id: sensor.krisinformation_stockholm
+      to: "News"
+    action:
+      - service: notify.hass_discord
+        data_template:
+          message: >
+            {{states.sensor.krisinformation_stockholm.attributes.messages[0].Headline}} - {{states.sensor.krisinformation_stockholm.attributes.messages[0].Message}} {{states.sensor.krisinformation_stockholm.attributes.messages[0].Web}}
+          target: '532525430125625345'

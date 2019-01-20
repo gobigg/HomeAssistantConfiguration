@@ -1,4 +1,4 @@
-dashboard_motion:
-  module: dashboard
-  class: DashboardMotion
+# dashboard_motion:
+#   module: dashboard
+#   class: DashboardMotion
   

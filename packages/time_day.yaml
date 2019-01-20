@@ -22,7 +22,7 @@ automation:
   ##  Set to evening               ##
   ###################################
 
-  - alias: 'Day Mode To Evening'
+  - alias: '[House] Day Mode To Evening'
     initial_state: 'on'
     trigger:
       - platform: sun
@@ -39,7 +39,7 @@ automation:
   ##  Set to morning               ##
   ###################################
 
-  - alias: 'Day Mode To Morning'
+  - alias: '[House] Day Mode To Morning'
     initial_state: 'on'
     trigger:
       - platform: sun
@@ -55,7 +55,7 @@ automation:
   ##  Set to day                   ##
   ###################################
 
-  - alias: 'Day Mode To Day'
+  - alias: '[House] Day Mode To Day'
     initial_state: 'on'
     trigger:
       - platform: time
@@ -71,7 +71,7 @@ automation:
   ##  Set to night                 ##
   ###################################
 
-  - alias: 'Day Mode To Night'
+  - alias: '[House] Day Mode To Night'
     initial_state: 'on'
     trigger:
       # - platform: time

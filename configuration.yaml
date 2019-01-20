@@ -58,11 +58,7 @@ panel_iframe:
     icon: mdi:code-braces
     url: !secret ide_address
 
-sensor:
-  - platform: vma
-    latitude: !secret lat_coord
-    longitude: !secret long_coord
-    radius: 7000
+
 custom_updater:
   track:
     - cards
