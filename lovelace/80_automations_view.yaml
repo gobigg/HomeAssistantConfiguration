@@ -2,7 +2,6 @@ title: Automations
 icon: mdi:flash-auto
 path: automations
 cards:
-  - !include dev_card.yaml
   - type: custom:monster-card
     show_empty: false
     card:
@@ -18,32 +17,10 @@ cards:
     card:
       type: entities
       show_header_toggle: false
-      title: Security
+      title: Cats
     filter:
       include:
-        - entity_id: automation.*alarm*
-
-  - type: custom:monster-card
-    show_empty: false
-    card:
-      type: entities
-      show_header_toggle: false
-      title: Light
-    filter:
-      include:
-        - entity_id: automation.*light*
-
-  - type: custom:monster-card
-    show_empty: false
-    card:
-      type: entities
-      show_header_toggle: false
-      title: Batteries
-    filter:
-      include:
-        - entity_id: automation.*charger*
-        - entity_id: automation.*charging*
-        - entity_id: automation.*battery*
+        - entity_id: 'automation.cats*'
 
   - type: custom:monster-card
     show_empty: false
@@ -53,49 +30,17 @@ cards:
       title: House
     filter:
       include:
-        - entity_id: automation.*house*
-        - entity_id: automation.*cleaning*
-        - entity_id: automation.*day_mode*
-        - entity_id: automation.*guest_mode*
-        - entity_id: automation.*temperature*
-        - entity_id: automation.*laundry*
-        - entity_id: automation.*air_cleaner*
-        - entity_id: automation.*mailbox*
-        - entity_id: automation.*ring_doorbell*
-        - entity_id: automation.*vacuum*
+        - entity_id: 'automation.house*'
 
   - type: custom:monster-card
     show_empty: false
     card:
       type: entities
       show_header_toggle: false
-      title: System
+      title: Lights
     filter:
       include:
-        - entity_id: automation.*device_status*
-        - entity_id: automation.*hass*
-        - entity_id: automation.*tile*
-        - entity_id: automation.*sonos*
-
-  - type: custom:monster-card
-    show_empty: false
-    card:
-      type: entities
-      show_header_toggle: false
-      title: TTS
-    filter:
-      include:
-        - entity_id: automation.*tts*
-
-  - type: custom:monster-card
-    show_empty: false
-    card:
-      type: entities
-      show_header_toggle: false
-      title: Notifications
-    filter:
-      include:
-        - entity_id: automation.*notification*
+        - entity_id: 'automation.lights*'
 
   - type: custom:monster-card
     show_empty: false
@@ -105,29 +50,47 @@ cards:
       title: Presence
     filter:
       include:
-        - entity_id: automation.*presence*
-
-
-  - type: custom:monster-card
-    show_empty: false
-    card:
-      type: entities
-      show_header_toggle: false
-      title: Misc
-    filter:
-      include:
-        - entity_id: automation.*goodnight*
-        - entity_id: automation.*goodmorning*
+        - entity_id: 'automation.presence*'
 
   - type: custom:monster-card
     show_empty: false
     card:
       type: entities
       show_header_toggle: false
-      title: Cat
+      title: Security
     filter:
       include:
-        - entity_id: automation.*litter*
+        - entity_id: 'automation.security*'
+
+  - type: custom:monster-card
+    show_empty: false
+    card:
+      type: entities
+      show_header_toggle: false
+      title: System
+    filter:
+      include:
+        - entity_id: 'automation.system*'
+
+  - type: custom:monster-card
+    show_empty: false
+    card:
+      type: entities
+      show_header_toggle: false
+      title: Temperature
+    filter:
+      include:
+        - entity_id: 'automation.temperature*'
+
+  - type: custom:monster-card
+    show_empty: false
+    card:
+      type: entities
+      show_header_toggle: false
+      title: TTS
+    filter:
+      include:
+        - entity_id: 'automation.tts*'
 
   - type: custom:monster-card
     show_empty: false
@@ -137,8 +100,4 @@ cards:
       title: Alerts
     filter:
       include:
-        - entity_id: alert.*
-
-
-   
-  
+        - entity_id: 'alert.*'

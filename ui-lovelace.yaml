@@ -1,7 +1,8 @@
 resources:
 - type: module
-  url: /local/lovelace/mini-graph-card.js?v=0.0.9
-  
+  url: /local/lovelace/mini-graph-card.js?v=0.0.10
+- type: module
+  url: /local/lovelace/mini-graph-card.js?v=0.0.10
 - type: module
   url: /local/lovelace/swipe-card.js?v=0.0.1
 - type: js
@@ -94,7 +95,11 @@ views:
   # - !include lovelace/70_isa_view.yaml
   - !include lovelace/80_automations_view.yaml
   - !include lovelace/101_dashboard.yaml
+  
   # - !include lovelace/102_alarm_clock.yaml
   # - !include lovelace/103_dashboard_test.yaml
   - !include lovelace/100_settings_view.yaml
   - !include lovelace/krisinfotest.yaml
+
+
+

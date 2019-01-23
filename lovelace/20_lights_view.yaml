@@ -13,9 +13,8 @@ cards:
           hold_action:
             action: call-service
             service: script.goodnight
-        - type: entity-button
-          entity: scene.morning_lights
-          icon: mdi:coffee-outline
+        - type: picture
+          image: /local/lovelace_ui/morning_coffee_square.jpg
           tap_action:
             action: none
           hold_action:
@@ -23,9 +22,8 @@ cards:
             service: scene.turn_on
             service_data:
               entity_id: scene.morning_lights
-        - type: entity-button
-          entity: scene.movie_time
-          icon: mdi:television-classic
+        - type: picture
+          image: /local/lovelace_ui/movie_square.jpg
           tap_action:
             action: none
           hold_action:

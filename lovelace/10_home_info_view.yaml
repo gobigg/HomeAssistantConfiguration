@@ -123,12 +123,6 @@ cards:
                     name: Isa Mode
                     tap_action:
                       action: toggle
-              - type: glance
-                column_width: calc(100% / 3)
-                entities:
-                  - sensor.pollen_bjork
-                  - sensor.pollen_gras
-                  - sensor.pollen_grabo  
 
               - !include dev_card.yaml
 
@@ -167,7 +161,6 @@ cards:
           - type: vertical-stack
             cards: 
               - type: glance
-                column_width: calc(100% / 3)
                 entities:
                   - sensor.pollen_bjork
                   - sensor.pollen_gras
@@ -195,9 +188,3 @@ cards:
                 entities:
                   - sensor.passage_pir_luminance
                   - sensor.upstairs_hallway_pir_luminance
-              - type: plant-status
-                entity: plant.small_chili
-              - type: plant-status
-                entity: plant.big_chili
-              - type: plant-status
-                entity: plant.herbs

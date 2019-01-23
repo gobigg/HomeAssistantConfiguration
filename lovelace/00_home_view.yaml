@@ -402,6 +402,7 @@ cards:
                     artwork_border: true
 
           - break
+          - !include plant_card.yaml
           - type: custom:vertical-stack-in-card
             cards:
             - type: picture-entity
@@ -413,13 +414,12 @@ cards:
               entity: camera.stockholm_meteogram
               show_name: false
               show_state: false
-            - type: custom:useful-markdown-card
-              content: >
-                ## @nackagator
-  
-                [[sensor.nacka_gator_tweet.state]]
-                
-            - !include dev_card.yaml
+              
+          - type: custom:useful-markdown-card
+            content: >
+              ## @nackagator
+
+              [[sensor.nacka_gator_tweet.state]]
 
           # - type: custom:monster-card
           #   card:
