@@ -11,7 +11,7 @@ class DashboardMotion(hass.Hass):
     self.listen_state(self.motion, "binary_sensor.dashboard_motion")
 
   def motion(self, entity, attribute, old, new, kwargs):
-    if new == "on":
+    if new == "on" and self.get_state("media_player.shield_3") != "playing":
       # self.log("Motion detected: turning dashboard on and starting timer for 300 seconds")
       self.call_service("shell_command/dashboard_monitor_on")
       self.isOn = True

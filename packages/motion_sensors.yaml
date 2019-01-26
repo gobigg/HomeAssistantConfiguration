@@ -4,7 +4,14 @@ homeassistant:
       friendly_name: Living Room Motion
     binary_sensor.motion_sensor_158d0001a66256:
       friendly_name: Hallway Motion
-
+    sensor.passage_pir_luminance:
+      friendly_name: Passage Lux
+      icon: mdi:theme-light-dark
+    sensor.upstairs_hallway_pir_luminance:
+      friendly_name: Upstairs Hallway Lux
+      icon: mdi:theme-light-dark
+    switch.roomba:
+      icon: mdi:robot-vacuum
 sensor:
   - platform: template
     sensors:

@@ -5,205 +5,230 @@ panel: true
 cards:  
   - type: vertical-stack
     cards:
+      - type: custom:compact-custom-header
+        voice: false
+        clock: "options"
+        clock_format: 24
       - type: custom:column-card
         cards:
           - type: vertical-stack
             cards:
-            - type: glance
-              show_state: false
-              columns: 5
-              entities:
-                - sensor.system_printer
-                - sensor.system_nas
-                - sensor.system_ipad
-                - entity: sensor.system_ip_camera
-                  name: Sannce
-                - entity: sensor.system_dafang
-                  name: Dafang
-                  icon: mdi:webcam
-                - entity: sensor.system_ir_blaster
-                  name: IR Hallway
-                - entity: sensor.system_ir_blaster_bedroom
-                  name: IR Bedroom
-                - entity: sensor.system_ir_blaster_living_room
-                  name: IR Livingroom
-                - sensor.system_milight_hub
-                - entity: sensor.system_xiaomi_gateway
-                  name: Xiaomi
-                - sensor.system_ring_doorbell
-                - sensor.system_ring_chime_pro
-                - sensor.system_ring_chime
-            - type: glance
-              show_state: false
-              columns: 3
-              entities:
-                - entity: sensor.system_isa_computer
-                  name: Isa
-                - entity: sensor.system_isa_dell_xps
-                  name: Isa work laptop
-                - entity: sensor.system_isa_laptop
-                  name: Isa laptop
-                - entity: sensor.system_stefan_computer
-                  name: Stefan
-                - entity: sensor.system_stefan_laptop
-                  name: Stefan work laptop
-        
-            - type: glance
-              show_state: false
-              columns: 3
-              entities:
-                - entity: sensor.system_samsung65
-                  name: TV
-                - entity: sensor.system_movie_system
-                  name: Movie System
-                - entity: sensor.system_shield
-                  name: Shield
-                - entity: sensor.system_sonos
-                  name: Sonos
-                  icon: mdi:speaker-wireless
-                - entity: sensor.system_samsung49
-                  name: Bed TV
-                - entity: sensor.system_chromecast_bedroom
-                  name: Bed CC
-            - type: glance
-              columns: 4
-              entities:
-                - entity: sensor.system_hass_rpi
-                  name: Hass RPi
-                - entity: sensor.system_magic_mirror_rpi
-                  name: Dashboard RPi
-                - entity: sensor.system_dashboard_rpi
-                  name: '7" Dashboard RPi'
-                - entity: sensor.system_rpi_zero
-                  name: RPi Zero
-                  
-          - type: vertical-stack
-            cards:          
-            - type: glance
-              entities:
-                - entity: sensor.system_asus_router
-                  name: Asus
-                - entity: sensor.system_netgear_router
-                  name: Netgear
-                - entity: sensor.speedtest_ping
-                  name: Ping
-                - entity: sensor.speedtest_download
-                  name: Download
-                - entity: sensor.speedtest_upload
-                  name: Upload
-              
-            - type: history-graph
-              entities:
-                - sensor.speedtest_download
-                - sensor.speedtest_ping
-                - sensor.speedtest_upload 
+            - type: picture-elements
+              image: /local/lovelace_ui/info/hubs_background.jpg
+              elements:
+                - type: custom:hui-glance-card
+                  show_state: false
+                  columns: 4
+                  entities:
+                    - entity: sensor.system_ir_blaster
+                      name: Hallway
+                    - entity: sensor.system_ir_blaster_bedroom
+                      name: Bedroom
+                    - entity: sensor.system_ir_blaster_living_room
+                      name: Livingroom
+                    - entity: sensor.system_milight_hub
+                      name: Milight
+                    - entity: sensor.system_xiaomi_gateway
+                      name: Xiaomi
+                    - sensor.system_printer
+                    - sensor.system_nas
+                    - sensor.system_ipad
+                  style:
+                    left: 50%
+                    top: 50%
+                    width: 100%
+                    --paper-card-background-color: rgba(0, 0, 0, 0.4)
+                    --paper-item-icon-color: white
+                    border-radius: 5px
+                    color: rgb(0, 0, 0)
+                    
+            - type: picture-elements
+              image: /local/lovelace_ui/info/cameras_background.jpg
+              elements:
+                - type: custom:hui-glance-card
+                  show_state: false
+                  columns: 2
+                  entities:
+                    - entity: sensor.system_ip_camera
+                      name: Sannce
+                    - entity: sensor.system_dafang
+                      name: Dafang
+                      icon: mdi:webcam
+                  style:
+                    left: 50%
+                    top: 50%
+                    width: 100%
+                    --paper-card-background-color: rgba(0, 0, 0, 0.4)
+                    --paper-item-icon-color: white
+                    border-radius: 5px
+                    color: rgb(0, 0, 0)
+                    
+            - type: picture-elements
+              image: /local/lovelace_ui/info/ring_background.jpg
+              elements:
+                - type: custom:hui-glance-card
+                  show_state: false
+                  columns: 3
+                  entities:
+                    - sensor.system_ring_doorbell
+                    - entity: sensor.system_ring_chime_pro
+                      name: Chime Pro
+                    - entity: sensor.system_ring_chime
+                      name: Chime
+                  style:
+                    left: 50%
+                    top: 50%
+                    width: 100%
+                    --paper-card-background-color: rgba(0, 0, 0, 0.4)
+                    --paper-item-icon-color: white
+                    border-radius: 5px
+                    color: rgb(0, 0, 0)
+                - type: state-label
+                  entity: sensor.ring_front_door_battery
+                  prefix: "Battery: "
+                  style:
+                    left: 20%
+                    top: 70%
+                - type: state-label
+                  entity: sensor.ring_front_door_wifi_signal_category
+                  prefix: "Wifi: "
+                  style:
+                    left: 20%
+                    top: 79%
 
-          - type: custom:vertical-stack-in-card
+          - type: vertical-stack
             cards:
-            - type: entities
-              entities:
-                - entity: sensor.presence_isa
-                  name: Isa presence
-                  secondary_info: last-changed
-                  icon: mdi:map-marker-circle
-                - entity: device_tracker.isabellas_iphone_x
-                  name: Isa ios
-                  icon: mdi:apple
-                  secondary_info: last-changed
-                - entity: device_tracker.isabellas_iphone_x_wifi
-                  name: Isa Wifi
-                  icon: mdi:wifi
-                  secondary_info: last-changed
-                - entity: sensor.isabellas_iphone_x_bt
-                  name: Isa bt
-                  icon: mdi:bluetooth
-                  secondary_info: last-changed
-                - entity: proximity.home_isa
-                  name: Proximity to home
-                - entity: proximity.home_isa
-                  type: custom:state-attribute-element
-                  attribute: dir_of_travel
-                  prefix: "Direction of travel: "
-        
-            - type: entities
-              entities:
-                - entity: sensor.presence_stefan
-                  name: Stefan presence
-                  icon: mdi:map-marker-circle
-                  secondary_info: last-changed
-                - entity: device_tracker.stefan_iphone_7
-                  name: Stefan ios
-                  icon: mdi:apple
-                  secondary_info: last-changed
-                - entity: device_tracker.stefan_iphone_7_wifi
-                  name: Stefan Wifi
-                  icon: mdi:wifi
-                  secondary_info: last-changed
-                - entity: sensor.stefan_iphone_7_bt
-                  name: Stefan bt
-                  icon: mdi:bluetooth
-                  secondary_info: last-changed
-                - entity: proximity.home_stefan
-                  name: Proximity to home
-                - entity: proximity.home_stefan
-                  type: custom:state-attribute-element
-                  attribute: dir_of_travel
-                  prefix: "Direction of travel: "
-        
-            - type: entities
-              entities:
-                - entity: sensor.unlocked_by
-                  name: Front door last unlocked by
-                  secondary_info: last-changed
-                - entity: sensor.monitor
-                  name: Monitor status
-                  secondary_info: last-changed
-              
-          - type: custom:vertical-stack-in-card
-            title: Nuc
+            - type: picture-elements
+              image: /local/lovelace_ui/info/router_background.jpg
+              elements:
+                - type: custom:hui-glance-card
+                  show_state: true
+                  columns: 5
+                  entities:
+                    - entity: sensor.system_asus_router
+                      name: Asus
+                    - entity: sensor.system_netgear_router
+                      name: Netgear
+                    - entity: sensor.speedtest_ping
+                      name: Ping
+                    - entity: sensor.speedtest_download
+                      name: Download
+                    - entity: sensor.speedtest_upload
+                      name: Upload
+                  style:
+                    left: 50%
+                    top: 50%
+                    width: 100%
+                    --paper-card-background-color: rgba(0, 0, 0, 0.4)
+                    --paper-item-icon-color: white
+                    border-radius: 5px
+                    color: rgb(0, 0, 0)
+            - type: picture-elements
+              image: /local/lovelace_ui/info/computers_background.jpg
+              elements:
+                - type: custom:hui-glance-card
+                  show_state: false
+                  columns: 4
+                  entities:
+                    - entity: sensor.system_isa_computer
+                      name: Isa
+                    - entity: sensor.system_isa_dell_xps
+                      name: Isa work laptop
+                    # - entity: sensor.system_isa_laptop
+                    #   name: Isa laptop
+                    - entity: sensor.system_stefan_computer
+                      name: Stefan
+                    - entity: sensor.system_stefan_laptop
+                      name: Stefan work laptop
+                  style:
+                    left: 50%
+                    top: 50%
+                    width: 100%
+                    --paper-card-background-color: rgba(0, 0, 0, 0.4)
+                    --paper-item-icon-color: white
+                    border-radius: 5px
+                    color: rgb(0, 0, 0)
+
+            - type: picture-elements
+              image: /local/lovelace_ui/info/tv_background.jpg
+              elements:
+                - type: custom:hui-glance-card
+                  show_state: false
+                  columns: 3
+                  entities:
+                    - entity: sensor.system_samsung65
+                      name: TV
+                    - entity: sensor.system_movie_system
+                      name: Movie System
+                    - entity: sensor.system_shield
+                      name: Shield
+                    - entity: sensor.system_sonos
+                      name: Sonos
+                      icon: mdi:speaker-wireless
+                    - entity: sensor.system_samsung49
+                      name: Bed TV
+                    - entity: sensor.system_chromecast_bedroom
+                      name: Bed CC
+                  style:
+                    left: 50%
+                    top: 50%
+                    width: 100%
+                    --paper-card-background-color: rgba(0, 0, 0, 0.4)
+                    --paper-item-icon-color: white
+                    border-radius: 5px
+                    color: rgb(0, 0, 0)
+          - type: vertical-stack
             cards:
-              - type: custom:bignumber-card
-                scale: 30px
-                title: Processor use
-                entity: sensor.processor_use
-                min: 0
-                max: 100
-                severity:
-                  - value: 70
-                    style: 'var(--label-badge-green)'
-                  - value: 90
-                    style: 'var(--label-badge-yellow)'
-                  - value: 100
-                    style: 'var(--label-badge-red)'
-              - type: horizontal-stack
-                cards:
-                  - type: custom:bignumber-card
-                    scale: 30px
-                    title: Disk use
-                    entity: sensor.disk_use_percent_
-                    min: 0
-                    max: 100
-                    severity:
-                      - value: 70
-                        style: 'var(--label-badge-green)'
-                      - value: 90
-                        style: 'var(--label-badge-yellow)'
-                      - value: 100
-                        style: 'var(--label-badge-red)'
-                  - type: custom:bignumber-card
-                    scale: 30px
-                    title: Memory use
-                    entity: sensor.memory_use_percent
-                    min: 0
-                    max: 100
-                    severity:
-                      - value: 70
-                        style: 'var(--label-badge-green)'
-                      - value: 90
-                        style: 'var(--label-badge-yellow)'
-                      - value: 100
-                        style: 'var(--label-badge-red)'
-              - type: entities
-                entities:
-                  - sensor.last_boot
-              - !include dev_card.yaml
+            - type: picture-elements
+              image: /local/lovelace_ui/info/pi_background.jpg
+              elements:
+                - type: custom:hui-glance-card
+                  show_state: false
+                  columns: 4
+                  entities:
+                    - entity: sensor.system_hass_rpi
+                      name: Hass RPi
+                    - entity: sensor.system_magic_mirror_rpi
+                      name: Dashboard
+                    - entity: sensor.system_dashboard_rpi
+                      name: '7"'
+                    - entity: sensor.system_rpi_zero
+                      name: RPi Zero
+                  style:
+                    left: 50%
+                    top: 50%
+                    width: 100%
+                    --paper-card-background-color: rgba(0, 0, 0, 0.4)
+                    --paper-item-icon-color: white
+                    border-radius: 5px
+                    color: rgb(0, 0, 0)
+            # - type: history-graph
+            #   entities:
+            #     - sensor.speedtest_download
+            #     - sensor.speedtest_ping
+            #     - sensor.speedtest_upload 
+
+
+            - type: custom:vertical-stack-in-card
+              title: Nuc
+              cards:
+                - type: horizontal-stack
+                  cards:
+                    - type: glance
+                      entities:
+                        - sensor.last_boot
+
+                    - type: sensor
+                      entity: sensor.processor_use
+                      graph: line
+                - type: horizontal-stack
+                  cards:
+                    - type: sensor
+                      entity: sensor.disk_use_percent
+                      graph: line
+                    - type: sensor
+                      entity: sensor.memory_use_percent
+                      graph: line
+
+
+              # - !include dev_card.yaml

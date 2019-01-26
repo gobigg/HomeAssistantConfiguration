@@ -4,6 +4,10 @@ path: lights
 cards:
   - type: vertical-stack
     cards:
+    - type: custom:compact-custom-header
+      voice: false
+      clock: "options"
+      clock_format: 24
     - type: horizontal-stack
       cards:
         - type: picture
@@ -136,6 +140,9 @@ cards:
           type: custom:slider-entity-row
           toggle: true
           hide_when_off: true
+          
+        - entity: light.candles
+          name: Candles
           
   - type: vertical-stack
     cards:

@@ -216,7 +216,13 @@ light:
         name: Outdoor front hanging lights
       0b11000261bc0cfe05010f70:
         name: Outdoor yard light net
-
+  - platform: group
+    name: Walk in closet lights
+    entities:
+      - light.walk_in_closet_1
+      - light.walk_in_closet_2
+      - light.walk_in_closet_3
+      - light.walk_in_closet_4
   - platform: group
     name: 'Outdoor lights'
     entities:

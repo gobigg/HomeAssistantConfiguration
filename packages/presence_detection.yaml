@@ -11,16 +11,13 @@ homeassistant:
 sensor:
   - platform: mqtt
     state_topic: 'monitor/home/B0:CA:68:65:A4:39'
-    # value_template: '{{ value_json.confidence }}'
-    # unit_of_measurement: '%'
     value_template: >
      {% if float(value_json.confidence) > 0 %}
       home
      {% else %}
       not_home
      {% endif %}
-    json_attributes:
-      - "confidence"
+    json_attributes_topic: 'monitor/home/B0:CA:68:65:A4:39'
     name: isabellas_iphone_x_bt
 
   - platform: mqtt
@@ -31,10 +28,7 @@ sensor:
      {% else %}
       not_home
      {% endif %}
-    json_attributes:
-      - "confidence"
-    # value_template: '{{ value_json.confidence }}'
-    # unit_of_measurement: '%'
+    json_attributes_topic: 'monitor/home/C0:D0:12:CB:9A:DF'
     name: stefan_iphone_7_bt
 
   - platform: mqtt
@@ -45,10 +39,7 @@ sensor:
      {% else %}
       Away
      {% endif %}
-    json_attributes:
-      - "confidence"
-    # value_template: '{{ value_json.confidence }}'
-    # unit_of_measurement: '%'
+    json_attributes: 'monitor/home/FF:FF:50:02:14:21'
     name: Trash
 
   - platform: mqtt

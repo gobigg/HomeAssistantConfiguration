@@ -2,6 +2,10 @@ title: Automations
 icon: mdi:flash-auto
 path: automations
 cards:
+  - type: custom:compact-custom-header
+    voice: false
+    clock: "options"
+    clock_format: 24
   - type: custom:monster-card
     show_empty: false
     card:

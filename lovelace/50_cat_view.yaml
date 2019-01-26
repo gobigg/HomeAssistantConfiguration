@@ -3,6 +3,10 @@ icon: mdi:cat
 path: cat
 background: center / cover no-repeat url("/local/lovelace_ui/kittens.jpg") fixed
 cards:
+  - type: custom:compact-custom-header
+    voice: false
+    clock: "options"
+    clock_format: 24
   - type: custom:calendar-card-opacity
     showProgressBar: false
     numberOfDays: 14

@@ -3,7 +3,6 @@ path: floorplan
 title: Floorplan
 theme: teal
 cards:
-  - !include dev_card.yaml
   - type: picture-elements
     image: /local/lovelace_ui/floorplan_v1.png
     elements:

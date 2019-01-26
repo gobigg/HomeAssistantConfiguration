@@ -62,7 +62,7 @@ automation:
   - alias: '[House] Vacuum Ask When Everyone Is Away'
     initial_state: 'on'
     trigger:
-      platform: time
+      platform: time_pattern
       minutes: 5
       seconds: 00
     condition:
@@ -107,7 +107,6 @@ automation:
         data:
           entity_id: input_select.roomba_mode
           option: 'Vacuuming'
-      # - service: python_script.vacuuming
       - service: notify.ios_isabellas_iphone_x
         data:
           message: 'Telling the Roomba to start vacuuming'
@@ -192,13 +191,6 @@ automation:
     action:
       - service: homeassistant.turn_on
         entity_id: switch.roomba
-      # - service: notify.ios_isabellas_iphone_x
-      #   data:
-      #     message: 'Vacuuming'
-      # - service: input_select.select_option
-      #   data:
-      #     entity_id: input_select.roomba_mode
-      #     option: 'Vacuuming'
 
   - alias: '[House] Vacuum Is Done'
     initial_state: 'on'

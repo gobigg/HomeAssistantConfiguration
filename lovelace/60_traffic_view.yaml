@@ -5,6 +5,10 @@ path: traffic
 cards:
   - type: vertical-stack
     cards:
+      - type: custom:compact-custom-header
+        voice: false
+        clock: "options"
+        clock_format: 24
       - type: custom:layout-card
         layout: vertical
         cards:
@@ -14,10 +18,10 @@ cards:
                 entities:
                   - entity: sensor.trafikverket_alta_road_temperature
                     name: Road temp
-                  - entity: sensor.homesolna_travel_time
+                  - entity: sensor.home_solna_travel_time
                     name: Solna
                     icon: mdi:car
-                  - entity: sensor.homec9_travel_time
+                  - entity: sensor.home_c9_travel_time
                     name: C9
                     icon: mdi:car
 

@@ -27,36 +27,36 @@ automation:
           title: 'Cleaning time'
           message: 'Cleaners have arrived'
 
-  - alias: '[House] Cleaning Mode Off'
-    initial_state: 'on'
-    trigger:
-      - platform: time
-        minutes: '/15'
-        seconds: 00
-    condition:
-      - condition: time
-        after: '13:00:00'
-      - condition: state
-        entity_id: binary_sensor.passage_pir_sensor
-        state: 'off'
-      - condition: state
-        entity_id: binary_sensor.upstairs_hallway_pir_sensor
-        state: 'off'
-      - condition: state
-        entity_id: binary_sensor.motion_sensor_158d000165ff1f
-        state: 'off'
-      - condition: state
-        entity_id: binary_sensor.motion_sensor_158d0001a66256
-        state: 'off'
-      - condition: state
-        entity_id: input_boolean.cleaning_day
-        state: 'on'
-    action:
-      - service: homeassistant.turn_on
-        entity_id: automation.ring_doorbell_motion_lights
-      - service: script.turn_on
-        entity_id: script.cleaning_time_over
-      - service: alarm_control_panel.alarm_arm_away
-        entity_id: alarm_control_panel.home_alarm
-      - service: homeassistant.turn_off
-        entity_id: input_boolean.cleaning_day
+#   - alias: '[House] Cleaning Mode Off'
+#     initial_state: 'on'
+#     trigger:
+#       - platform: time
+#         minutes: '/15'
+#         seconds: 00
+#     condition:
+#       - condition: time
+#         after: '13:00:00'
+#       - condition: state
+#         entity_id: binary_sensor.passage_pir_sensor
+#         state: 'off'
+#       - condition: state
+#         entity_id: binary_sensor.upstairs_hallway_pir_sensor
+#         state: 'off'
+#       - condition: state
+#         entity_id: binary_sensor.motion_sensor_158d000165ff1f
+#         state: 'off'
+#       - condition: state
+#         entity_id: binary_sensor.motion_sensor_158d0001a66256
+#         state: 'off'
+#       - condition: state
+#         entity_id: input_boolean.cleaning_day
+#         state: 'on'
+#     action:
+#       - service: homeassistant.turn_on
+#         entity_id: automation.ring_doorbell_motion_lights
+#       - service: script.turn_on
+#         entity_id: script.cleaning_time_over
+#       - service: alarm_control_panel.alarm_arm_away
+#         entity_id: alarm_control_panel.home_alarm
+#       - service: homeassistant.turn_off
+#         entity_id: input_boolean.cleaning_day

@@ -3,7 +3,10 @@ icon: mdi:human-female
 path: isa
 
 cards:
-  # - !include greeter_card.yaml
+  - type: custom:compact-custom-header
+    voice: false
+    clock: "options"
+    clock_format: 24
   - !include dev_card.yaml
   - type: entities
     entities:

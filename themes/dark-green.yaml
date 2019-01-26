@@ -3,7 +3,7 @@
       primary-color: "#389638"
       disabled-text-color: "#545454"
       divider-color: "rgba(255, 255, 255, 0.12)"
-      paper-card-background-color: "#4e4e4e"
+      paper-card-background-color: "#202020"
       paper-grey-200: "#191919"
       paper-item-icon-color: "#d3d3d3"
       paper-listbox-background-color: "#202020"

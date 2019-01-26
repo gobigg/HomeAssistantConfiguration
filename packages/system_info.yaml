@@ -209,12 +209,12 @@ sensor:
           value_template: "{{ 'Online' if is_state('device_tracker.ring', 'home') else 'Offline' }}"
         system_ring_chime_pro:
           friendly_name: 'Ring Chime Pro'
-          entity_id: "device_tracker.ring_chime_pro"
-          value_template: "{{ 'Online' if is_state('device_tracker.ring_chime_pro', 'home') else 'Offline' }}"
+          entity_id: "device_tracker.chimepro93_2"
+          value_template: "{{ 'Online' if is_state('device_tracker.chimepro93_2', 'home') else 'Offline' }}"
         system_ring_chime:
-          friendly_name: 'Ring Chime Pro'
-          entity_id: "device_tracker.ring_chime"
-          value_template: "{{ 'Online' if is_state('device_tracker.ring_chime', 'home') else 'Offline' }}"
+          friendly_name: 'Ring Chime'
+          entity_id: "device_tracker.3ca3087ee76e"
+          value_template: "{{ 'Online' if is_state('device_tracker.3ca3087ee76e', 'home') else 'Offline' }}"
         system_dafang:
           friendly_name: 'Dafang'
           entity_id: "device_tracker.7811dc70faaf"

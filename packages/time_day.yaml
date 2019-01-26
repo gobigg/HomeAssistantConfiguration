@@ -74,9 +74,6 @@ automation:
   - alias: '[House] Day Mode To Night'
     initial_state: 'on'
     trigger:
-      # - platform: time
-      #   minutes: '/15'
-      #   seconds: 00
       - platform: state
         entity_id: light.lights_automation
         to: 'off'

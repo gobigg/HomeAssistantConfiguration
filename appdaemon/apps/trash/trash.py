@@ -19,9 +19,11 @@ class Trash(Base):
         self.listen_state(self.garbage_day, "calendar.garbage_day")
         self.listen_state(self.take_in_garbage, "calendar.take_in_garbage")
         self.listen_state(self.notify_new_trash_status, "sensor.trash")
+        self.listen_event(self.set_initial, "plugin_started")
         
         self.init_sensor()
-
+    def set_initial(self, event_name, data, kwargs):
+        self.set_state(self.trash_status, state = "Unknown")
     def notify_new_trash_status(self, entity, attribute, old, new, kwargs):
         if new != old:
             self.notification_manager.log_home(message = f"Trash can is {new}")

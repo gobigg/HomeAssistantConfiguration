@@ -1,3 +1,21 @@
+light:
+  - platform: template
+    lights:
+      candles:
+        friendly_name: "Candles"
+        turn_on:
+          service: switch.broadlink_send_packet_192_168_1_90
+          data:
+            packet:
+              - 'JgBYAAABJ5QTEhMSExITEhMSExITEhMSEzcSNxM2EzcSNxM2EjgSNxM2ExITEhMSExITExITEhMSExI3EzYTNhM3EzYTNhM3EwAFHgABJUsSAAxSAAEnShIADQU'
+
+        turn_off:
+          service: switch.broadlink_send_packet_192_168_1_90
+          data:
+            packet:
+              - 'JgBQAAABJpQSFBEUERQSExITExISExITEjcSOBI1FDcSOBI3EjcSOBM2FBEUNhMSEhMUERITFBESExI4ExITNhQ1FDYTNhI3FAAFHgABJ0kTAA0FAAAAAAAAAAA'
+
+
 switch:
   - platform: broadlink
     friendly_name: Broadlink Livingroom

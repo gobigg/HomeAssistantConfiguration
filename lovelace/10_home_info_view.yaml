@@ -5,6 +5,10 @@ path: home-info
 cards:
   - type: vertical-stack
     cards:
+      - type: custom:compact-custom-header
+        voice: false
+        clock: "options"
+        clock_format: 24
       - type: custom:column-card
         cards:
           - type: vertical-stack
@@ -158,6 +162,70 @@ cards:
                       - binary_sensor.stefans_room_motion
                       - sensor.ring_front_door_last_motion
 
+                  - type: custom:fold-entity-row
+                    head:
+                      type: section
+                      label: Presence
+                    group_config:
+                      secondary_info: last-changed
+                    items:
+                      - entity: sensor.presence_isa
+                        name: Isa presence
+                        secondary_info: last-changed
+                        icon: mdi:map-marker-circle
+                      - entity: device_tracker.isabellas_iphone_x
+                        name: Isa ios
+                        icon: mdi:apple
+                        secondary_info: last-changed
+                      - entity: device_tracker.isabellas_iphone_x_wifi
+                        name: Isa Wifi
+                        icon: mdi:wifi
+                        secondary_info: last-changed
+                      - entity: sensor.isabellas_iphone_x_bt
+                        name: Isa bt
+                        icon: mdi:bluetooth
+                        secondary_info: last-changed
+                      - entity: proximity.home_isa
+                        name: Proximity to home
+                      - entity: proximity.home_isa
+                        type: custom:state-attribute-element
+                        attribute: dir_of_travel
+                        prefix: "Direction of travel: "
+                      
+                      - type: divider
+
+                      - entity: sensor.presence_stefan
+                        name: Stefan presence
+                        icon: mdi:map-marker-circle
+                        secondary_info: last-changed
+                      - entity: device_tracker.stefan_iphone_7
+                        name: Stefan ios
+                        icon: mdi:apple
+                        secondary_info: last-changed
+                      - entity: device_tracker.stefan_iphone_7_wifi
+                        name: Stefan Wifi
+                        icon: mdi:wifi
+                        secondary_info: last-changed
+                      - entity: sensor.stefan_iphone_7_bt
+                        name: Stefan bt
+                        icon: mdi:bluetooth
+                        secondary_info: last-changed
+                      - entity: proximity.home_stefan
+                        name: Proximity to home
+                      - entity: proximity.home_stefan
+                        type: custom:state-attribute-element
+                        attribute: dir_of_travel
+                        prefix: "Direction of travel: "
+                        
+                      - type: divider
+                      
+                      - entity: sensor.unlocked_by
+                        name: Front door last unlocked by
+                        secondary_info: last-changed
+                      - entity: sensor.monitor
+                        name: Monitor status
+                        secondary_info: last-changed
+                        
           - type: vertical-stack
             cards: 
               - type: glance
@@ -188,3 +256,4 @@ cards:
                 entities:
                   - sensor.passage_pir_luminance
                   - sensor.upstairs_hallway_pir_luminance
+              - !include bike_card.yaml
