@@ -1,7 +1,9 @@
 resources:
 - type: module
   url: /local/lovelace/mini-graph-card.js?v=0.0.10
-- url: /local/custom-lovelace/compact-custom-header/compact-custom-header.js?v=0
+- url: /local/custom-lovelace/compact-custom-header/compact-custom-header.js?v=0.2.9
+  type: js
+- url: /local/custom-lovelace/auto-entities.js?v=c37bbe
   type: js
 - type: module
   url: /local/lovelace/mini-graph-card.js?v=0.0.10
@@ -22,17 +24,17 @@ resources:
 - type: js
   url: /local/lovelace/monster-card.js?v=0.2.3
 - type: js
-  url: /local/lovelace/layout-card.js?v=a97cc80
+  url: /local/lovelace/layout-card.js?v=a313b7
 - type: js
-  url: /local/lovelace/popup-card.js?v=02923e
+  url: /local/lovelace/popup-card.js?v=76720c
 - type: js
   url: /local/lovelace/light-card.js?v=0.0.1 
 - type: js
-  url: /local/lovelace/card-modder.js?v=03a767
+  url: /local/lovelace/card-modder.js?v=70344a
 - type: js
   url: https://unpkg.com/moment@2.22.2/moment.js
 - type: module
-  url: /local/lovelace/calendar-card.js?v=0.0.1
+  url: /local/lovelace/calendar-card.js?v=0.0.8
 - type: js
   url: /local/lovelace/dual-gauge-card.js?v=0.2.0
 - type: js
@@ -58,7 +60,7 @@ resources:
 - type: js
   url: /local/lovelace/home-setter.js?v=0.0.1
 - type: js
-  url: /local/lovelace/tracker-card.js?v=0.1.5
+  url: /local/lovelace/tracker-card.js?v=0.2.0
 - type: js
   url: /local/lovelace/light-slider-element.js?v=0.0.1
 - type: js
@@ -95,13 +97,16 @@ views:
   # - !include lovelace/60_floorplan_view.yaml
   # - !include lovelace/70_isa_view.yaml
   - !include lovelace/80_automations_view.yaml
-  - !include lovelace/101_dashboard.yaml
-  
+  # - !include lovelace/101_dashboard.yaml
+  - !include lovelace/minimal_dash.yaml  
   # - !include lovelace/102_alarm_clock.yaml
-  - !include lovelace/103_dashboard_test.yaml
+  # - !include lovelace/103_dashboard_test.yaml
   - !include lovelace/100_settings_view.yaml
   - !include lovelace/krisinfotest.yaml
   - !include lovelace/everything.yaml
   
+
+
+
 
 
