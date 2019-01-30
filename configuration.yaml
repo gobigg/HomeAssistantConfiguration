@@ -71,20 +71,7 @@ deconz:
   
 rfxtrx:
   device: /dev/ttyUSB1
-  
-switch:
-  platform: rfxtrx
-  automatic_add: False
-  signal_repetitions: 5
-  devices:
-    0b11000417bc0cfe09010f70:
-      name: Switch 2
-    0b11000226bc0cfe09010f70:
-      name: Switch 3
-    0b11000317bc0cfe08010f70:
-      name: Dimmer switch
-
-      
+     
 xiaomi_aqara:
   gateways:
    - mac: !secret xiaomi_mac
@@ -93,9 +80,7 @@ xiaomi_aqara:
 # ########################################
 # ###              ENTITIES             ###
 # ########################################
-ring:
-  username: !secret ring_username
-  password: !secret ring_password
+
   
 verisure:
   username: !secret verisure_username
