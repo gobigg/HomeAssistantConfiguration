@@ -1,5 +1,5 @@
 type: picture-elements
-image: /local/plants.jpg
+image: /local/lovelace_ui/plants.jpg
 elements:
   - type: state-badge
     entity: sensor.small_chili_moisture

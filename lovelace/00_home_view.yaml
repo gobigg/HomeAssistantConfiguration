@@ -18,6 +18,8 @@ cards:
             card:
               type: entities
               entities:
+                - sensor.isabellas_iphone_x_battery_level
+                - sensor.isabellas_iphone_x_battery_state
                 - entity: sensor.presence_isa
                   name: Isa presence
                   secondary_info: last-changed
@@ -42,10 +44,12 @@ cards:
                   prefix: "Direction of travel: "
           - type: custom:popup-card
             entity: sensor.presence_stefan
-            title: Isa
+            title: Stefan
             card:
               type: entities
               entities:
+                - sensor.igrims_battery_level
+                - sensor.igrims_battery_state
                 - entity: sensor.presence_stefan
                   name: Stefan presence
                   icon: mdi:map-marker-circle
@@ -70,24 +74,18 @@ cards:
                   prefix: "Direction of travel: "
           - type: horizontal-stack
             cards:
-              - type: picture-glance
-                title: Isa
+              - type: picture-entity
                 entity: sensor.presence_isa
                 image: /local/lovelace_ui/home/isa_square.jpg
                 show_name: false
                 tap_action:
                   action: more-info
-                entities:
-                  - sensor.isabellas_iphone_x_battery_level
-              - type: picture-glance
-                title: Stefan
+              - type: picture-entity
                 entity: sensor.presence_stefan
                 image: /local/lovelace_ui/home/Stefan_square.jpg
                 show_name: false
                 tap_action:
                   action: more-info
-                entities:
-                  - sensor.igrims_battery_level
 
               - type: custom:state-switch
                 entity: user
@@ -95,15 +93,15 @@ cards:
                 states:
                   Stefan:
                     type: picture-elements
-                    image: /local/lovelace_ui/background_square.png
+                    image: /local/lovelace_ui/home/background_square.png
                     elements:
                       - type: image
                         entity: switch.stefan_radiator_3
                         tap_action:
                           action: more-info
                         state_image:
-                          "on": /local/lovelace_ui/radiator_on.jpg
-                          "off": /local/lovelace_ui/radiator_off.jpg    
+                          "on": /local/lovelace_ui/home/radiator_on.jpg
+                          "off": /local/lovelace_ui/home/radiator_off.jpg    
                         style:
                           top: 50%
                           left: 50%
@@ -113,18 +111,10 @@ cards:
                         style:
                           top: 90%
                           left: 50%
-                    # type: picture-glance
-                    # entity: switch.stefan_radiator_3
-                    # state_image:
-                    #   "on": /local/lovelace_ui/radiator_on.jpg
-                    #   "off": /local/lovelace_ui/radiator_off.jpg
-                    # show_name: false
-                    # show_state: false
-                    # tap_action:
-                    #   action: more-info
+
                   default:
                     type: picture-elements
-                    image: /local/lovelace_ui/background_square.png
+                    image: /local/lovelace_ui/home/background_square.png
                     elements:
                       - type: state-icon
                         entity: light.inside_lights
@@ -146,7 +136,7 @@ cards:
 
 
               - type: picture-elements
-                image: /local/lovelace_ui/background_square.png
+                image: /local/lovelace_ui/home/background_square.png
                 elements:
                   - type: icon
                     icon: mdi:car
@@ -165,29 +155,29 @@ cards:
                 name: Alarm
                 show_name: false
                 entity: alarm_control_panel.house
-                image: /local/lovelace_ui/House_square.jpg
+                image: /local/lovelace_ui/home/House_square.jpg
               - type: picture-entity
                 name: Roomba
                 show_name: false
                 entity: input_select.roomba_mode
-                image: /local/lovelace_ui/roomba_square.jpg
+                image: /local/lovelace_ui/home/roomba_square.jpg
                 state_image:
-                  "Not Today": /local/lovelace_ui/roomba_bw_square.jpg
+                  "Not Today": /local/lovelace_ui/home/roomba_bw_square.jpg
               - type: picture-entity
                 entity: sensor.mailbox
                 show_name: false
                 state_image:
-                  "Empty": /local/lovelace_ui/mailbox_bw_square.jpg
-                  "Package": /local/lovelace_ui/mailbox_square.jpg
-                  "Mail": /local/lovelace_ui/mailbox_square.jpg
-                  "Package and mail": /local/lovelace_ui/mailbox_square.jpg
+                  "Empty": /local/lovelace_ui/home/mailbox_bw_square.jpg
+                  "Package": /local/lovelace_ui/home/mailbox_square.jpg
+                  "Mail": /local/lovelace_ui/home/mailbox_square.jpg
+                  "Package and mail": /local/lovelace_ui/home/mailbox_square.jpg
               - type: picture-entity
                 entity: sensor.trash_status
-                image: /local/lovelace_ui/trash_bear_bw_square.jpg
+                image: /local/lovelace_ui/home/trash_bear_bw_square.jpg
                 show_name: false
                 state_image:
-                  "Put out": /local/lovelace_ui/trash_square.jpg
-                  "Take in": /local/lovelace_ui/trash_square.jpg
+                  "Put out": /local/lovelace_ui/home/trash_square.jpg
+                  "Take in": /local/lovelace_ui/home/trash_square.jpg
 
         
           - type: horizontal-stack
@@ -197,26 +187,26 @@ cards:
                 show_name: false
                 entity: input_select.washing_machine_status
                 state_image:
-                  "Idle": /local/lovelace_ui/washer_square.jpg
-                  "Running": /local/lovelace_ui/laundry_running_square.jpg
-                  "Clean": /local/lovelace_ui/laundry_clean_2_square.jpg
+                  "Idle": /local/lovelace_ui/home/washer_square.jpg
+                  "Running": /local/lovelace_ui/home/laundry_running_square.jpg
+                  "Clean": /local/lovelace_ui/home/laundry_clean_2_square.jpg
               - type: picture-entity
                 name: Dryer
                 show_name: false
                 entity: input_select.dryer_status
                 state_image:
-                  "Idle": /local/lovelace_ui/dryer_square.jpg
-                  "Running": /local/lovelace_ui/clothes_drying_square.jpg
-                  "Clean": /local/lovelace_ui/folded_clothes_square.jpg
+                  "Idle": /local/lovelace_ui/home/dryer_square.jpg
+                  "Running": /local/lovelace_ui/home/clothes_drying_square.jpg
+                  "Clean": /local/lovelace_ui/home/folded_clothes_square.jpg
               - type: picture-entity
                 entity: input_boolean.guest_mode
-                image: /local/lovelace_ui/guests_square.jpg
+                image: /local/lovelace_ui/home/guests_square.jpg
                 show_name: false
                 tap_action:
                   action: toggle
               - type: picture-entity
                 entity: input_boolean.cleaning_day
-                image: /local/lovelace_ui/cleaning_square.jpg
+                image: /local/lovelace_ui/home/cleaning_square.jpg
                 show_name: false
                 tap_action:
                   action: toggle

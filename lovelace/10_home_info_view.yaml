@@ -225,7 +225,7 @@ cards:
                       - entity: sensor.monitor
                         name: Monitor status
                         secondary_info: last-changed
-                        
+
           - type: vertical-stack
             cards: 
               - type: glance
@@ -233,27 +233,31 @@ cards:
                   - sensor.pollen_bjork
                   - sensor.pollen_gras
                   - sensor.pollen_grabo  
-            
-              - type: history-graph
-                title: Temperatures 48h
-                hours_to_show: 48
-                entities:
-                  - sensor.temperature_bedroom
-                  - sensor.temperature_passage
-                  - sensor.temperature_downstairs_bathroom
-                  - sensor.temperature_stefan
-              - type: history-graph
-                title: Temperatures 7 Days
-                hours_to_show: 168
-                entities:
-                  - sensor.temperature_bedroom
-                  - sensor.temperature_passage
-                  - sensor.temperature_downstairs_bathroom
-                  - sensor.temperature_stefan
-              - type: history-graph
-                title: Light 24 Hours
-                hours_to_show: 24
-                entities:
-                  - sensor.passage_pir_luminance
-                  - sensor.upstairs_hallway_pir_luminance
+              - type: custom:slideshow-card
+                fill: true
+                arrow_color: White
+                auto_play: false
+                cards:
+                  - type: history-graph
+                    title: Temperatures 48h
+                    hours_to_show: 48
+                    entities:
+                      - sensor.temperature_bedroom
+                      - sensor.temperature_passage
+                      - sensor.temperature_downstairs_bathroom
+                      - sensor.temperature_stefan
+                  - type: history-graph
+                    title: Temperatures 7 Days
+                    hours_to_show: 168
+                    entities:
+                      - sensor.temperature_bedroom
+                      - sensor.temperature_passage
+                      - sensor.temperature_downstairs_bathroom
+                      - sensor.temperature_stefan
+                  - type: history-graph
+                    title: Light 24 Hours
+                    hours_to_show: 24
+                    entities:
+                      - sensor.passage_pir_luminance
+                      - sensor.upstairs_hallway_pir_luminance
               - !include bike_card.yaml

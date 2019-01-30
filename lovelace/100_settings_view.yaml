@@ -43,10 +43,18 @@ cards:
                 secondary_info: last-changed
               - input_boolean.test
 
-      - type: vertical-stack
-        cards:
-          - !include links_card.yaml
-
+          - type: custom:auto-entities
+            card:
+              type: entities
+              title: Battery warning
+            filter:
+              include:
+                - domain: device_tracker
+                  options:
+                    secondary_info: last-changed
+                  attributes:
+                    battery: "< 50"
+                    source_type: gps
       - type: vertical-stack
         cards:
           - type: custom:monster-card
