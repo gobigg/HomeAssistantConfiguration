@@ -57,37 +57,10 @@ history: !include logging/history.yaml
 logbook: !include logging/logbook.yaml
 logger: !include logging/logger.yaml
 
-########################################
-###               HUBS               ###
-########################################
-
-zwave:
-  usb_path: /dev/ttyACM0
-  
-deconz:
-  host: !secret deconz_ip
-  port: !secret deconz_port
-  api_key: !secret deconz_api
-  
-rfxtrx:
-  device: /dev/ttyUSB1
-     
-xiaomi_aqara:
-  gateways:
-   - mac: !secret xiaomi_mac
-     key: !secret xiaomi_key
-
 # ########################################
 # ###              ENTITIES             ###
 # ########################################
 
-  
-verisure:
-  username: !secret verisure_username
-  password: !secret verisure_password
-  alarm: 0
-  locks: 1
-  
 media_player: !include entities/media_player.yaml
 device_tracker: !include entities/device_tracker.yaml
 zone: !include_dir_merge_list zones/
@@ -100,14 +73,7 @@ shopping_list:
 notify: !include notify/notify.yaml
 
 python_script:
-
-google:
-  client_id: !secret google_id
-  client_secret: !secret google_secret
-
-ifttt:
-  key: !secret ifttt_key
-  
+ 
 tts:
   - platform: google
 
