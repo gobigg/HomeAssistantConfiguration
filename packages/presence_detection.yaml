@@ -39,7 +39,7 @@ sensor:
      {% else %}
       Away
      {% endif %}
-    json_attributes: 'monitor/home/FF:FF:50:02:14:21'
+    json_attributes_topic: 'monitor/home/FF:FF:50:02:14:21'
     name: Trash
 
   - platform: mqtt
