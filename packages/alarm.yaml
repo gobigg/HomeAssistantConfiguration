@@ -8,3 +8,4 @@ homeassistant:
         icon_color: "if (state === 'disarmed') return [0, 0];
         else if (state === 'triggered') return [0, 85];
         else return [40, 70];"
+alarm_control_panel: !include ../alarm.yaml

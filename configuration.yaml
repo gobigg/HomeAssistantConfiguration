@@ -41,7 +41,6 @@ frontend:
   javascript_version: latest
   themes: !include_dir_named themes
 
-alarm_control_panel: !include alarm.yaml
 panel_custom: !include panels/panel_custom.yaml
 panel_iframe: !include panels/panel_iframe.yaml
 
