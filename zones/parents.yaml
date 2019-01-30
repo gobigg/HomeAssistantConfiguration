@@ -1,0 +1,11 @@
+- name: Fagelbro
+  latitude: !secret fagelbro_lat
+  longitude: !secret fagelbro_long
+  icon: mdi:golf
+  radius: 1000
+
+- name: Isa mamma
+  latitude: !secret isama_lat
+  longitude: !secret isama_long
+  icon: mdi:account-multiple
+  radius: 300

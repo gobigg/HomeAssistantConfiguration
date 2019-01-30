@@ -1,0 +1,17 @@
+- name: Work S
+  latitude: !secret s_work_lat
+  longitude: !secret s_work_long
+  icon: mdi:code-braces
+  radius: 300
+
+- name: Work Solna
+  latitude: !secret solna_work_lat
+  longitude: !secret solna_work_long
+  icon: mdi:code-braces
+  radius: 300
+
+- name: Work I
+  latitude: !secret i_work_lat
+  longitude: !secret i_work_long
+  icon: mdi:code-braces
+  radius: 300

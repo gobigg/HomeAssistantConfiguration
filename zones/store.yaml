@@ -1,0 +1,5 @@
+- name: Store
+  latitude: !secret ica_lat
+  longitude: !secret ica_long
+  icon: mdi:cart
+  radius: 300

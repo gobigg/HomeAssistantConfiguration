@@ -1,0 +1,17 @@
+- name: Johannes och Tessie
+  latitude: !secret johannes_lat
+  longitude: !secret johannes_long
+  icon: mdi:account-multiple
+  radius: 300
+
+- name: Brulle och Saara
+  latitude: !secret brulle_lat
+  longitude: !secret brulle_long
+  icon: mdi:account-multiple
+  radius: 300
+
+- name: Emelie
+  latitude: !secret emelie_lat
+  longitude: !secret emelie_long
+  icon: mdi:account-multiple
+  radius: 300
