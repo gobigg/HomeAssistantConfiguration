@@ -2,9 +2,6 @@ homeassistant:
   customize:
     camera.front_door:
       friendly_name: Last Motion Front Door
-ring:
-  username: !secret ring_username
-  password: !secret ring_password  
 
 binary_sensor:
   - platform: ring
