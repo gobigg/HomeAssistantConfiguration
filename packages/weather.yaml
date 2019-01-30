@@ -53,12 +53,12 @@ sensor:
   - platform: command_line
     name: "Forecast Stockholm"
     icon: alert-outline
-    command: "bash /config/check-weather-sthlm.sh"
+    command: "bash /config/scripts/check-weather-sthlm.sh"
     scan_interval: 180
   - platform: command_line
     name: "Forecast Fiskis"
     icon: alert-outline
-    command: "bash /config/check-weather-fiskis.sh"
+    command: "bash /config/scripts/check-weather-fiskis.sh"
     scan_interval: 180
     
 camera:

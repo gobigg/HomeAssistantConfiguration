@@ -45,3 +45,5 @@ removed_or_templates/
 ssh/
 custom_components/
 zwcfg_0xca115759.xml
+ip_bans.yaml
+/lovelace/for_gen/*
