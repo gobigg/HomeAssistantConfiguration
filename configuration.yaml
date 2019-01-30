@@ -22,7 +22,6 @@ http:
     - 127.0.0.1
     - 192.168.1.1
 updater:
-conversation:
 customizer:
   custom_ui: hosted
 cloud: !include assistants/cloud.yaml
@@ -48,9 +47,6 @@ custom_updater:
   track:
     - cards
     - components
-  # card_urls:
-  #   - "https://github.com/kalkih/mini-media-player/blob/master/tracker.json"
-  # show_installable: true
 
 # ########################################
 # ###              LOGGING             ###
@@ -108,7 +104,6 @@ verisure:
   locks: 1
   
 media_player: !include entities/media_player.yaml
-# scene: !include_dir_merge_list scene
 device_tracker: !include entities/device_tracker.yaml
 zone: !include_dir_merge_list zones/
 
@@ -120,23 +115,6 @@ shopping_list:
 notify: !include notify/notify.yaml
 
 python_script:
-
-# mqtt:
-#   discovery: true
-#   discovery_prefix: homeassistant
-#   broker: core-mosquitto
-#   username: !secret mqtt_username
-#   password: !secret mqtt_password
-  
-# mqtt_statestream:
-#   base_topic: hassio
-#   publish_attributes: true
-#   publish_timestamps: true
-#   include:
-#     entities:
-#       - counter.litterbox_downstairs_visits
-#       - counter.litterbox_upstairs_visits
-#       - input_select.washing_machine_status
 
 google:
   client_id: !secret google_id
