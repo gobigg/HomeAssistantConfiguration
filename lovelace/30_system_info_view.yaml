@@ -231,4 +231,9 @@ cards:
                       graph: line
 
 
-              # - !include dev_card.yaml
+            - type: custom:auto-entities
+              card:
+                type: entities
+              filter:
+                include:
+                  - entity_id: "sensor.rt_n66u_*"

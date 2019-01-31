@@ -1,604 +1,252 @@
 path: everything
 title: Everything
-badges:
-  - binary_sensor.front_door_homebridge
-  - binary_sensor.workday_sensor
-  - binary_sensor.ring_front_door_motion
-  - binary_sensor.ring_front_door_ding
-  - binary_sensor.dafang_motion_sensor
-  - binary_sensor.stefans_room_motion
-  - binary_sensor.back_door
-  - binary_sensor.clipsensor_toogleonoff
-  - binary_sensor.balcony_door
-  - binary_sensor.upstairs_litterbox_motion
-  - binary_sensor.washer_hatch
-  - binary_sensor.bedroom_door
-  - binary_sensor.window_bedroom
-  - binary_sensor.dashboard_motion
-  - binary_sensor.mailbox_letter
-  - binary_sensor.roomba
-  - binary_sensor.dryer_hatch
-  - binary_sensor.mailbox_package
-  - binary_sensor.yard_door
-  - binary_sensor.downstairs_litterbox_motion
-  - binary_sensor.lock_sensor
-  - binary_sensor.smoke_sensor_158d0001d37c82
-  - binary_sensor.smoke_sensor_158d0001d37bdd
-  - binary_sensor.smoke_sensor_158d0001d37be5
-  - binary_sensor.front_door_sensor
-  - binary_sensor.dining_area_window_sensor_sensor
-  - binary_sensor.passage_pir_sensor
-  - binary_sensor.water_heater_sensor
-  - binary_sensor.upstairs_hallway_pir_sensor
-  - sensor.front_door_lock
-  - sensor.unlocked_by
-  - sensor.last_action
-  - sensor.all_locks
-  - sensor.front_door_combined
-  - sensor.yard_door_lock
-  - sensor.current_version
-  - sensor.ebike_charger
-  - sensor.system_ir_blaster_bedroom
-  - sensor.system_ir_blaster_living_room
-  - sensor.system_xiaomi_gateway
-  - sensor.system_sonos
-  - sensor.system_magic_mirror_rpi
-  - sensor.system_nas
-  - sensor.system_hass_rpi
-  - sensor.system_samsung65
-  - sensor.system_dashboard_rpi
-  - sensor.system_samsung49
-  - sensor.system_rpi_zero
-  - sensor.system_ring_doorbell
-  - sensor.system_netgear_router
-  - sensor.system_ring_chime_pro
-  - sensor.system_shield
-  - sensor.system_ring_chime
-  - sensor.system_chromecast_bedroom
-  - sensor.system_dafang
-  - sensor.system_stefan_computer
-  - sensor.system_stefan_laptop
-  - sensor.system_isa_computer
-  - sensor.system_isa_laptop
-  - sensor.system_isa_dell_xps
-  - sensor.system_printer
-  - sensor.system_ipad
-  - sensor.system_asus_router
-  - sensor.system_milight_hub
-  - sensor.system_ip_camera
-  - sensor.system_ir_blaster
-  - sensor.system_withings_scale
-  - sensor.roomba_docked
-  - sensor.front_door_outdoor_movement
-  - sensor.upstairs_litterbox
-  - sensor.downstairs_litterbox
-  - sensor.date_time
-  - sensor.time
-  - sensor.date
-  - sensor.bedroom_window
-  - sensor.dining_area_window
-  - sensor.kitchen_sink
-  - sensor.greenhouse_temperature
-  - sensor.upstairs_hallway_movement
-  - sensor.living_room_movement
-  - sensor.passage_movement
-  - sensor.hallway_movement
-  - sensor.washer
-  - sensor.dryer
-  - sensor.pollen_gras
-  - sensor.pollen_levels
-  - sensor.pollen_grabo
-  - sensor.pollen_bjork
-  - sensor.yard_door
-  - sensor.front_door
-  - sensor.balcony_door
-  - sensor.back_door
-  - sensor.home_solna_travel_time
-  - sensor.home_c9_travel_time
-  - sensor.isa_at_work
-  - sensor.krisinformation_all
-  - sensor.hass_rpi_uptime
-  - sensor.krisinformation_stockholm_1km
-  - sensor.hass_rpi_free_memory
-  - sensor.processor_use
-  - sensor.dark_sky_wind_speed_1
-  - sensor.krisinformation_stockholm
-  - sensor.hass_rpi_last_boot
-  - sensor.last_boot
-  - sensor.speedtest_upload
-  - sensor.speedtest_download
-  - sensor.speedtest_ping
-  - sensor.dark_sky_temperature
-  - sensor.disk_use_percent
-  - sensor.dark_sky_overnight_low_temperature_1
-  - sensor.hass_rpi_disk_use_percent
-  - sensor.memory_free
-  - sensor.dark_sky_cloud_coverage
-  - sensor.herbs_temperature
-  - sensor.memory_use_percent
-  - sensor.dark_sky_precip_1
-  - sensor.plex_recently_added
-  - sensor.dark_sky_temperature_1
-  - sensor.big_chili_temperature
-  - sensor.dark_sky_cloud_coverage_1
-  - sensor.dark_sky_summary_1
-  - sensor.small_chili_temperature
-  - sensor.dark_sky_precip_intensity
-  - sensor.trash
-  - sensor.dark_sky_nearest_storm_distance
-  - sensor.herbs_moisture
-  - sensor.dark_sky_apparent_temperature
-  - sensor.monitor
-  - sensor.dark_sky_daytime_high_temperature_1
-  - sensor.big_chili_moisture
-  - sensor.dark_sky_precip_probability
-  - sensor.small_chili_moisture
-  - sensor.dark_sky_precip_intensity_1
-  - sensor.herbs_battery
-  - sensor.dark_sky_summary
-  - sensor.big_chili_battery
-  - sensor.dark_sky_daily_max_precip_intensity_1
-  - sensor.small_chili_battery
-  - sensor.dark_sky_precip_probability_1
-  - sensor.dark_sky_wind_speed
-  - sensor.pollenkoll_stockholm
-  - sensor.version_available
-  - sensor.forecast_stockholm
-  - sensor.forecast_fiskis
-  - sensor.dark_sky_minutely_summary
-  - sensor.dark_sky_precip
-  - sensor.verisure_mail
-  - sensor.nacka_gator_tweet
-  - sensor.trafikverket_alta_road_temperature
-  - sensor.ring_front_door_last_ding
-  - sensor.ring_front_door_wifi_signal_strength
-  - sensor.ring_front_door_last_activity
-  - sensor.ring_front_door_last_motion
-  - sensor.ring_front_door_battery
-  - sensor.ring_front_door_volume
-  - sensor.ring_front_door_wifi_signal_category
-  - sensor.dafang_light_sensor
-  - sensor.custom_card_tracker
-  - sensor.custom_component_tracker
-  - sensor.bedside_dimmer_battery_level
-  - sensor.humidity_refrigerator
-  - sensor.hallway_dimmer_battery_level
-  - sensor.refrigerator_pressure
-  - sensor.temperature_passage
-  - sensor.lux_cat_food
-  - sensor.lumisensor_switch_battery_level
-  - sensor.bike_charger_consumption
-  - sensor.humidity_passage
-  - sensor.temperature_stefan
-  - sensor.dimmer_isa_battery_level
-  - sensor.humidity_stefan
-  - sensor.smart_switch_battery_level
-  - sensor.temperature_downstairs_bathroom
-  - sensor.humidity_downstairs_bathroom
-  - sensor.dimmer_bedroom_battery_level
-  - sensor.temperature_bedroom
-  - sensor.humidity_bedroom
-  - sensor.downstairs_litterbox_switch_battery_level
-  - sensor.lightlevel_34
-  - sensor.lightlevel_36
-  - sensor.smart_switch_battery_level_2
-  - sensor.lightlevel_39
-  - sensor.outdoor_switch_battery_level
-  - sensor.vibration_battery_level
-  - sensor.temperature_storage
-  - sensor.daylight
-  - sensor.humidity_44
-  - sensor.isa_remote_battery_level
-  - sensor.pressure_45
-  - sensor.floorlamp_dimmer_battery_level
-  - sensor.refrigerator
-  - sensor.stefan_remote_battery_level
-  - sensor.illumination_34ce008bfc4b
-  - sensor.isabellas_iphone_x_battery_state
-  - sensor.igrims_battery_level
-  - sensor.paddan_battery_level
-  - sensor.isabellas_iphone_x_battery_level
-  - sensor.igrims_battery_state
-  - sensor.paddan_battery_state
-  - sensor.front_door_access_control
-  - sensor.dining_area_window_sensor_access_control
-  - sensor.presence_isa
-  - sensor.presence_stefan
-  - sensor.mailbox
-  - sensor.passage_pir_luminance
-  - sensor.upstairs_hallway_pir_luminance
-  - sun.sun
 cards:
-  - title: persons
-    type: entities
+  - type: entities
     entities:
-      - device_tracker.isabellas_iphone_x
-      - device_tracker.isabellas_iphone_x_wifi
-      - sensor.isabellas_iphone_x_bt
-      - device_tracker.stefan_iphone_7_wifi
-      - device_tracker.stefan_iphone_7
-      - sensor.stefan_iphone_7_bt
-  - title: Isabella
-    type: entities
+      - type: custom:auto-entities
+        card:
+          type: custom:fold-entity-row
+          head:
+            type: section
+            label: Binary sensors
+        filter:
+          include:
+            - domain: binary_sensor
+  - type: entities
     entities:
-      - device_tracker.isabellas_iphone_x
-      - device_tracker.isabellas_iphone_x_wifi
-      - sensor.isabellas_iphone_x_bt
-  - title: Stefan
-    type: entities
+      - type: custom:auto-entities
+        card:
+          type: custom:fold-entity-row
+          head:
+            type: section
+            label: Sensors
+        filter:
+          include:
+            - domain: sensor
+  - type: entities
     entities:
-      - device_tracker.stefan_iphone_7_wifi
-      - device_tracker.stefan_iphone_7
-      - sensor.stefan_iphone_7_bt
-  - title: all switches
-    type: entities
+      - type: custom:auto-entities
+        card:
+          type: custom:fold-entity-row
+          head:
+            type: section
+            label: Switches
+        filter:
+          include:
+            - domain: switch
+  - type: entities
     entities:
-      - switch.bike_charger
-      - switch.dimmer_switch
-      - switch.dryer_plug_switch
-      - switch.outdoor_plug
-      - switch.roomba_dock
-      - switch.roomba_vacuum
-      - switch.stefan_radiator_3
-      - switch.switch_2
-      - switch.switch_3
-      - switch.washer_plug_switch
-      - switch.dafang_blue_led
-      - switch.dafang_h264_rtsp_server
-      - switch.dafang_ir_filter
-      - switch.dafang_ir_led
-      - switch.dafang_mjpeg_rtsp_server
-      - switch.dafang_motion_detection
-      - switch.dafang_motion_send_mail
-      - switch.dafang_motion_tracking
-      - switch.dafang_night_mode
-      - switch.dafang_night_mode_auto
-      - switch.dafang_yellow_led
-      - switch.livingroom_movie_system
-      - switch.livingroom_tv
-      - switch.roomba
-  - title: all scripts
-    type: entities
+      - type: custom:auto-entities
+        card:
+          type: custom:fold-entity-row
+          head:
+            type: section
+            label: Scripts
+        filter:
+          include:
+            - domain: script
+  - type: entities
     entities:
-      - script.cleaning_music
-      - script.cleaning_time
-      - script.cleaning_time_over
-      - script.goodnight
-      - script.house_summary
-      - script.sonos_say
-      - script.ac_off
-      - script.ac_on
-      - script.air_cleaner_auto
-      - script.air_cleaner_quiet
-      - script.air_cleaner_turbo
-      - script.bedroom_tv_on_off
-      - script.dafang_all_up
-      - script.dafang_calibrate
-      - script.dafang_down
-      - script.dafang_left
-      - script.dafang_right
-      - script.dafang_up
-      - script.media_system_on_off
-      - script.sannce_all_down
-      - script.sannce_calibrate
-      - script.sannce_down
-      - script.sannce_left
-      - script.sannce_right
-      - script.sannce_up
-      - script.tv_mute_unmute
-      - script.tv_on_off
-  - title: all lights
-    type: entities
+      - type: custom:auto-entities
+        card:
+          type: custom:fold-entity-row
+          head:
+            type: section
+            label: Lights
+        filter:
+          include:
+            - domain: light
+          exclude:
+            - entity_id: "light.*_2"
+            - entity_id: "light.*_3"
+            - entity_id: "light.*_4"
+
+  - type: entities
     entities:
-      - light.bedroom_ceiling_light
-      - light.bedside_lamp
-      - light.dining_area_ceiling_light_level
-      - light.dining_area_ceiling_light_level_2
-      - light.dining_area_ceiling_light_level_3
-      - light.dining_area_ceiling_light_level_4
-      - light.downstairs_lights
-      - light.christmas_star
-      - light.floorlamp_uplight
-      - light.floorlamp_reading_light
-      - light.gateway_light_34ce008bfc4b
-      - light.hallway_window_light
-      - light.inside_lights
-      - light.isa
-      - light.isa_ceiling_light
-      - light.kitchen_ceiling_spotlights_level
-      - light.kitchen_ceiling_spotlights_level_2
-      - light.lights_automation
-      - light.living_room_ceiling_light_level
-      - light.living_room_ceiling_light_level_2
-      - light.living_room_spotlights_level
-      - light.living_room_spotlights_level_2
-      - light.outdoor_front_light
-      - light.outdoor_yard_light
-      - light.outdoor_front_hanging_lights
-      - light.outdoor_hanging_lights
-      - light.outdoor_lights
-      - light.outdoor_yard_light_net
-      - light.passage_ceiling_spotlights_level
-      - light.passage_ceiling_spotlights_level_2
-      - light.stairs_bottom_spot
-      - light.stairs_middle_spot
-      - light.stairs_top_spot
-      - light.stairs_lights
-      - light.stefan_lightstrip
-      - light.tradfri_remote_control_10
-      - light.tradfri_wireless_dimmer_8
-      - light.upstairs_hallway_ceiling_light_level
-      - light.upstairs_hallway_ceiling_light_level_2
-      - light.upstairs_lights
-      - light.walk_in_closet_1
-      - light.walk_in_closet_2
-      - light.walk_in_closet_3
-      - light.walk_in_closet_4
-      - light.walk_in_closet_lights
-  - title: all automations
-    type: entities
+      - type: custom:auto-entities
+        card:
+          type: custom:fold-entity-row
+          head:
+            type: section
+            label: Device trackers
+        filter:
+          include:
+            - domain: device_tracker
+
+  - type: entities
     entities:
-      - automation.cats_litterbox_all_counter_reset_at_midnight
-      - automation.house_cleaning_mode
-      - automation.house_cleaning_mode_off
-      - automation.house_day_mode_to_day
-      - automation.house_day_mode_to_evening
-      - automation.house_day_mode_to_morning
-      - automation.house_day_mode_to_night
-      - automation.house_guest_mode_off
-      - automation.house_guest_mode_on
-      - automation.house_guest_mode_on_by_presence
-      - automation.house_isa_mode_ask
-      - automation.house_isa_mode_off
-      - automation.house_isa_mode_on
-      - automation.house_low_battery_ipad
-      - automation.house_notification_on_high_temp_in_bedroom
-      - automation.house_radiator_failed
-      - automation.house_radiator_turn_on
-      - automation.house_vacuum_ask_when_everyone_is_away
-      - automation.house_vacuum_dock_roomba
-      - automation.house_vacuum_is_done
-      - automation.house_vacuum_now
-      - automation.house_vacuum_now_selected
-      - automation.house_vacuum_reset_at_midnight
-      - automation.house_vacuum_snoozed_selected
-      - automation.house_vacuum_starting
-      - automation.house_vacuum_stop_asking_selected
-      - >-
-        automation.lights_lights_on_at_coming_home_at_night_delay_ten_then_off
-      - automation.lights_lights_on_at_presence_while_dark
-      - automation.lights_lights_on_passage_at_coming_home_at_night
-      - automation.lights_lights_off_when_bedroom_window_open
-      - automation.lights_notification_on_window_open_and_lights_on
-      - automation.presence_presence_homebound
-      - automation.presence_presence_mqtt_event
-      - automation.security_krisinformation_alert
-      - automation.security_krisinformation_news
-      - automation.security_ring_doorbell_flash_lights
-      - automation.security_ring_doorbell_low_battery
-      - automation.security_smoke_alarm
-      - automation.security_yard_lock
-      - automation.system_device_status
-      - automation.system_hass_new_device_tracked
-      - automation.system_hass_ready
-      - automation.system_hass_started
-      - automation.system_hass_stopped
-      - automation.system_hass_updater
-      - automation.system_ip_ban_notify
-      - automation.system_snapshot_create_nightly_at_03_am
-      - automation.system_snapshot_upload_nightly_at_0330_am
-      - automation.tts_sonos_stefan_leaving_golf_course
-      - automation.tts_sonos_on_media_center_not_on
-      - automation.temperature_high_temperatures
-      - >-
-        automation.temperature_notification_on_high_humidity_in_downstairs_bathroom
-  - title: all devices
-    type: entities
+      - type: custom:auto-entities
+        card:
+          type: custom:fold-entity-row
+          head:
+            type: section
+            label: Alarms
+        filter:
+          include:
+            - domain: alarm_control_panel
+
+  - type: entities
     entities:
-      - device_tracker.stefan_iphone_7
-      - device_tracker.isa_computer
-      - device_tracker.broadlink_hallway
-      - device_tracker.hp_printer
-      - device_tracker.nvidia_shield
-      - device_tracker.router_asus
-      - device_tracker.synology_nas
-      - device_tracker.chromecast_bedroom
-      - device_tracker.netgear_router
-      - device_tracker.xiaomi_gateway
-      - device_tracker.sonos_play_3
-      - device_tracker.stefan_computer
-      - device_tracker.paddan
-      - device_tracker.stefan_iphone_7_wifi
-      - device_tracker.livingroom_tv
-      - device_tracker.livingroom_movie_system
-      - device_tracker.isa_laptop
-      - device_tracker.bedroom_tv
-      - device_tracker.hass_raspberry_pi
-      - device_tracker.anette
-      - device_tracker.marek
-      - device_tracker.magic_mirror_rpi
-      - device_tracker.ipad
-      - device_tracker.sannce_ip_camera
-      - device_tracker.milight_controller
-      - device_tracker.broadlink_bedroom
-      - device_tracker.broadlink_rmminiccec6f
-      - device_tracker.espressif
-      - device_tracker.android8e3893d2d746d835
-      - device_tracker.chimepro93
-      - device_tracker.raspberrypi
-      - device_tracker.chimepro93_2
-      - device_tracker.esp_466833
-      - device_tracker.cnstefang
-      - device_tracker.naprapajsvenzon
-      - device_tracker.androidebc1fa16bf679e
-      - device_tracker.mareksiphonex
-      - device_tracker.isabellas_iphone_x
-      - device_tracker.isabellas_iphone_x_wifi
-      - device_tracker.desktop39i618g
-      - device_tracker.esp_21a030
-      - device_tracker.0023c116a0dd
-      - device_tracker.amazon31cd59e56
-      - device_tracker.3ca3087ee76e
-      - device_tracker.7811dc70faaf
-      - device_tracker.0024e40a2868
-      - device_tracker.isabellplewatch
-      - device_tracker.00d9d1f2c9c7
-      - device_tracker.raspberrypi_2
-      - device_tracker.tile_8b84f9654688b3ec
-      - device_tracker.stefansplewatch
-      - device_tracker.raspberrypi_3
-      - device_tracker.raspberrypi_4
-  - type: alarm-panel
-    entity: alarm_control_panel.house
-  - title: Calendar
-    type: entities
+      - type: custom:auto-entities
+        card:
+          type: custom:fold-entity-row
+          head:
+            type: section
+            label: Calendars
+        filter:
+          include:
+            - domain: calendar
+
+  - type: entities
     entities:
-      - calendar.cats
-      - calendar.isabella_alstrom
-      - calendar.garbage_day
-      - calendar.cleaning_day
-      - calendar.take_in_garbage
-      - calendar.house
-      - calendar.house_cleaning
-  - type: picture-entity
-    entity: camera.tpl_grondal
-  - type: picture-entity
-    entity: camera.sicklatunneln
-  - type: picture-entity
-    entity: camera.upstairs
-  - type: picture-entity
-    entity: camera.svindersvik
-  - type: picture-entity
-    entity: camera.fisksatra_meteogram
-  - type: picture-entity
-    entity: camera.marinstaden
-  - type: picture-entity
-    entity: camera.stockholm_meteogram
-  - type: picture-entity
-    entity: camera.tpl_kvarnholmen
-  - type: picture-entity
-    entity: camera.back_door
-  - type: picture-entity
-    entity: camera.vikdalen
-  - type: picture-entity
-    entity: camera.tpl_skvaltan
-  - type: picture-entity
-    entity: camera.tpl_nacka
-  - type: picture-entity
-    entity: camera.front_door
-  - type: picture-entity
-    entity: camera.dafang_motion_snapshot
-  - title: ''
-    type: entities
+      - type: custom:auto-entities
+        card:
+          type: custom:fold-entity-row
+          head:
+            type: section
+            label: Cameras
+        filter:
+          include:
+            - domain: camera
+
+  - type: entities
     entities:
-      - counter.litterbox_downstairs_visits
-      - counter.litterbox_upstairs_visits
-      - counter.all_litterbox_visits_today
-  - title: Cover
-    type: entities
+      - type: custom:auto-entities
+        card:
+          type: custom:fold-entity-row
+          head:
+            type: section
+            label: Counters
+        filter:
+          include:
+            - domain: counter
+
+  - type: entities
     entities:
-      - cover.dafang_move_updown
-      - cover.dafang_move_leftright
-  - title: Input boolean
-    type: entities
+      - type: custom:auto-entities
+        card:
+          type: custom:fold-entity-row
+          head:
+            type: section
+            label: Covers
+        filter:
+          include:
+            - domain: cover
+
+  - type: entities
     entities:
-      - input_boolean.isa_mode
-      - input_boolean.cut_claws_honey
-      - input_boolean.vacation_mode
-      - input_boolean.cut_claws_ziggy
-      - input_boolean.guest_mode
-      - input_boolean.cat_litter
-      - input_boolean.isa_home
-      - input_boolean.cut_fur_honey
-      - input_boolean.cut_fur_ziggy
-      - input_boolean.ad_camera_motion_notification
-      - input_boolean.ad_presence
-      - input_boolean.stefan_home
-      - input_boolean.show_security
-      - input_boolean.cleaning_day
-      - input_boolean.ad_bike_charger
-      - input_boolean.ad_air_cleaner_schedule
-      - input_boolean.goodnight_isa
-      - input_boolean.test
-      - input_boolean.goodnight_stefan
-      - input_boolean.cat_food
-      - input_boolean.show_traffic
-      - input_boolean.show_batteries
-      - input_boolean.hass_dev_mode
-  - title: Input number
-    type: entities
+      - type: custom:auto-entities
+        card:
+          type: custom:fold-entity-row
+          head:
+            type: section
+            label: Input Booleans
+        filter:
+          include:
+            - domain: input_boolean
+
+  - type: entities
     entities:
-      - input_number.downstairs_litterbox_persistence
-      - input_number.upstairs_litterbox_persistence
-      - input_number.all_litterbox_persistence
-  - title: Input select
-    type: entities
+      - type: custom:auto-entities
+        card:
+          type: custom:fold-entity-row
+          head:
+            type: section
+            label: Input Numbers
+        filter:
+          include:
+            - domain: input_number
+
+  - type: entities
     entities:
-      - input_select.washing_machine_status
-      - input_select.dryer_status
-      - input_select.roomba_mode
-      - input_select.ulitterbox_state
-      - input_select.ebike_charger_status
-      - input_select.dlitterbox_state
-      - input_select.day_mode
-      - input_select.air_cleaner
-  - title: Lock
-    type: entities
+      - type: custom:auto-entities
+        card:
+          type: custom:fold-entity-row
+          head:
+            type: section
+            label: Input selects
+        filter:
+          include:
+            - domain: input_select
+
+  - type: entities
     entities:
-      - lock.ytterdorr
-  - type: media-control
-    entity: media_player.livingroom_tv
-  - type: media-control
-    entity: media_player.livingroom_movie_system
-  - type: media-control
-    entity: media_player.spotify
-  - type: media-control
-    entity: media_player.shield_2
-  - type: media-control
-    entity: media_player.shield
-  - type: media-control
-    entity: media_player.sovrum
-  - type: media-control
-    entity: media_player.sonos
-  - type: plant-status
-    entity: plant.small_chili
-  - type: plant-status
-    entity: plant.big_chili
-  - type: plant-status
-    entity: plant.herbs
-  - title: Proximity
-    type: entities
+      - type: custom:auto-entities
+        card:
+          type: custom:fold-entity-row
+          head:
+            type: section
+            label: Locks
+        filter:
+          include:
+            - domain: lock
+  - type: entities
     entities:
-      - proximity.home_isa
-      - proximity.home_stefan
-  - title: Scene
-    type: entities
+      - type: custom:auto-entities
+        card:
+          type: custom:fold-entity-row
+          head:
+            type: section
+            label: Media Players
+        filter:
+          include:
+            - domain: media_player
+  - type: entities
     entities:
-      - scene.morning_lights
-      - scene.movie_time
-      - scene.dark_lights_off
-      - scene.welcome_home
-      - scene.dark_lights_on
-      - scene.ceiling_lights
-  - type: weather-forecast
-    entity: weather.dark_sky
-  - type: weather-forecast
-    entity: weather.smhi_home
-  - title: Z-Wave
-    type: entities
+      - type: custom:auto-entities
+        card:
+          type: custom:fold-entity-row
+          head:
+            type: section
+            label: Plants
+        filter:
+          include:
+            - domain: plant
+
+  - type: entities
     entities:
-      - zwave.aeotec_zw090_zstick_gen5
-      - zwave.washer_plug
-      - zwave.front_door
-      - zwave.dining_area_window_sensor
-      - zwave.living_room_ceiling_light
-      - zwave.upstairs_hallway_ceiling_light
-      - zwave.dining_area_ceiling_light
-      - zwave.living_room_spotlights
-      - zwave.passage_ceiling_spotlights
-      - zwave.passage_pir
-      - zwave.water_heater
-      - zwave.upstairs_hallway_pir
-      - zwave.kitchen_ceiling_spotlights
-      - zwave.unknown_node_5_2
-      - zwave.dryer_plug
+      - type: custom:auto-entities
+        card:
+          type: custom:fold-entity-row
+          head:
+            type: section
+            label: Proximity Sensors
+        filter:
+          include:
+            - domain: proximity
+
+  - type: entities
+    entities:
+      - type: custom:auto-entities
+        card:
+          type: custom:fold-entity-row
+          head:
+            type: section
+            label: Scenes
+        filter:
+          include:
+            - domain: scene
+
+  - type: entities
+    entities:
+      - type: custom:auto-entities
+        card:
+          type: custom:fold-entity-row
+          head:
+            type: section
+            label: Weather
+        filter:
+          include:
+            - domain: weather
+
+  - type: entities
+    entities:
+      - type: custom:auto-entities
+        card:
+          type: custom:fold-entity-row
+          head:
+            type: section
+            label: Z-Wave
+        filter:
+          include:
+            - domain: zwave
