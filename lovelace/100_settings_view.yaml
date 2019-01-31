@@ -42,6 +42,8 @@ cards:
               - entity: sensor.vibration
                 secondary_info: last-changed
               - input_boolean.test
+              
+          - !include links_card.yaml
 
           - type: custom:auto-entities
             card:

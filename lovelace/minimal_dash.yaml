@@ -5,10 +5,59 @@ path: minimal-dashboard
 #   - sensor.presence_isa
 #   - sensor.presence_stefan
 cards:              
-  # - type: custom:calendar-card
-  #   showProgressBar: false
-  #   numberOfDays: 14
-  #   entities:
-  #     - calendar.house
-  #     - calendar.workout
+  - type: glance
+    title: Downstairs
+    entities:
+      - light.candles
+      - light.hallway_window_light
+      - light.dining_area_ceiling_light_level  
+      - light.kitchen_ceiling_spotlights_level
+      - light.floorlamp_uplight
+      - light.floorlamp_reading_light
+      - light.living_room_ceiling_light_level
+      - light.living_room_spotlights_level
+      - light.passage_ceiling_spotlights_level
+      - light.stairs_lights
+
+  - type: glance
+    title: Upstairs
+    entities:
+      - light.isa_ceiling_light
+      - light.bedroom_ceiling_light
+      - light.bedside_lamp
+      - light.walk_in_closet_lights
+      - light.upstairs_hallway_ceiling_light_level
+      # - light.stefan_lightstrip
+      # - light.gateway_light_34ce008bfc4b
+
+  - type: glance
+    title: Outdoor
+    entities:
+      - light.outdoor_lights
+      - entity: light.outdoor_yard_light_net
+        name: Yard net
+
   - type: shopping-list
+
+  - type: glance
+    entities:
+      # - entity: sensor.yard_door_lock
+      #   name: Yard door lock
+      - sensor.front_door
+      - sensor.back_door
+      - sensor.yard_door
+      - sensor.balcony_door
+      - sensor.yard_door
+      - entity: sensor.dining_area_window
+        name: Dining area
+      - entity: sensor.bedroom_window
+        name: Bedroom
+      # - entity: sensor.front_door_outdoor_movement
+      #   name: Ring motion
+      # - sensor.hallway_movement
+      # - sensor.passage_movement
+      # - sensor.upstairs_hallway_movement
+      # - sensor.living_room_movement
+      # - sensor.back_door_camera_movement
+      # - entity: sensor.yard_storage_door
+      #   name: Storage door
