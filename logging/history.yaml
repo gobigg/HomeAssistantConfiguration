@@ -35,7 +35,7 @@
       - binary_sensor
     entities:
       - sensor.back_door
-      - sensor.backyard_door
+      - sensor.yard_door
       - sensor.balcony_door
       - sensor.dining_area_window
       - sensor.front_door
