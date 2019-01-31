@@ -33,20 +33,7 @@ push:
             title: 'No'
             activationMode: 'background'
 
-      - name: Vacuum Now
-        identifier: 'vacuum'
-        actions:
-          - identifier: 'VACUUM_NOW'
-            title: 'Yes'
-            authenticationRequired: yes
-            behavior: 'default'
-          - identifier: 'VACUUM_LATER'
-            title: 'Snooze'
-            activationMode: 'background'
-          - identifier: 'VACUUM_STOP_ASKING'
-            title: 'Stop asking'
-            activationMode: 'background'
-            destructive: yes
+
 
       - name: Litterbox Upstairs Cleaning Mode
         identifier: 'cleaning_mode_u_still_on'

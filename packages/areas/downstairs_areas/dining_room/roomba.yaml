@@ -3,6 +3,23 @@ homeassistant:
     binary_sensor.roomba:
       friendly_name: Roomba Docked  
 
+ios:
+  push:
+    categories:
+      - name: Vacuum Now
+        identifier: 'vacuum'
+        actions:
+          - identifier: 'VACUUM_NOW'
+            title: 'Yes'
+            authenticationRequired: yes
+            behavior: 'default'
+          - identifier: 'VACUUM_LATER'
+            title: 'Snooze'
+            activationMode: 'background'
+          - identifier: 'VACUUM_STOP_ASKING'
+            title: 'Stop asking'
+            activationMode: 'background'
+            destructive: yes
 switch:
   - platform: template
     switches:
