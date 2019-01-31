@@ -28,7 +28,7 @@ cloud: !include assistants/cloud.yaml
 homekit: !include assistants/homekit.yaml
 ios: !include notify/ios_config.yaml
 
-# discovery:
+discovery:
 
 # ########################################
 # ###                GUI               ###
