@@ -12,6 +12,17 @@ sensor:
     name: version_available
     source: hassio
 
+  - platform: glances
+    host: "192.168.1.78"
+    name: "Nuc"
+    version: 3
+    resources:
+      - 'disk_use_percent'
+      - 'memory_use_percent'
+      - 'swap_use_percent'
+      - 'processor_load'
+      - 'docker_active'
+      - 'docker_cpu_use'
 
 automation:
   - alias: '[System] Hass Started'
