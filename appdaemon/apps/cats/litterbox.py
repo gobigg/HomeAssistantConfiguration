@@ -9,7 +9,7 @@ class Litterbox(Base):
     def initialize(self) -> None:
         """Initialize."""
         super().initialize()
-
+        self.log(f"input_boolean.AD_{self.name}")
         self.motion_sensor = self.args["motion_sensor"]
         self.counter = self.args["counter"]
         self.counter_total = self.args["counter_total"]

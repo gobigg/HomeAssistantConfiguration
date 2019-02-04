@@ -19,6 +19,13 @@ class Base(hass.Hass):
         self.handles = {}  
         self.properties = self.args.get('properties', {})
 
+
+        friendly_name = self.name.replace('_', ' ').title()
+        self.attributes = {}
+        self.attributes['friendly_name'] = friendly_name
+        self.attributes['icon'] = "mdi:language-python"
+        self.set_state(f"input_boolean.AD_{self.name}", state='on', attributes=self.attributes)
+
         # Take every dependecy and create a reference to it:
         for app in self.args.get('dependencies', []):
             if not getattr(self, app, None):
