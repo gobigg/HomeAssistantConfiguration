@@ -29,6 +29,8 @@ homekit: !include assistants/homekit.yaml
 ios: !include notify/ios_config.yaml
 
 discovery:
+  ignore:
+    - igd
 
 # ########################################
 # ###                GUI               ###
@@ -47,6 +49,9 @@ custom_updater:
   track:
     - cards
     - components
+  # show_installable: true
+  card_urls:
+    - https://raw.githubusercontent.com/kalkih/mini-graph-card/master/tracker.json
 
 # ########################################
 # ###              LOGGING             ###

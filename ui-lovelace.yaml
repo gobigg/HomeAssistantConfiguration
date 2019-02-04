@@ -3,12 +3,14 @@ resources:
     url: /local/lovelace/mini-graph-card.js?v=0.0.10
   - url: /local/custom-lovelace/compact-custom-header/compact-custom-header.js?v=0.2.9
     type: js
-  - url: /local/custom-lovelace/auto-entities.js?v=c37bbe
+  - url: /local/custom-lovelace/auto-entities.js?v=3cfd04
     type: js
-  - type: module
-    url: /local/lovelace/mini-graph-card.js?v=0.0.10
-  - type: module
-    url: /local/lovelace/swipe-card.js?v=0.0.1
+  - url: /local/custom-lovelace/mini-graph-card-bundle.js?v=0.2.0
+    type: module
+  # - type: module
+  #   url: /local/lovelace/mini-graph-card.js?v=0.0.10
+  - url: https://cdn.jsdelivr.net/gh/bramkragten/custom-ui@master/swipe-card/swipe-card.min.js
+    type: module
   - type: js
     url: /local/lovelace/plan-coordinates.js?v=0.1.0
   - type: js
@@ -102,4 +104,3 @@ views:
   - !include lovelace/100_settings_view.yaml
   - !include lovelace/krisinfotest.yaml
   # - !include lovelace/everything.yaml
-  
