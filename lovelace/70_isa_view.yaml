@@ -3,10 +3,10 @@ icon: mdi:human-female
 path: isa
 
 cards:
-  - type: custom:compact-custom-header
-    voice: false
-    clock: "options"
-    clock_format: 24
+  # - type: custom:compact-custom-header
+  #   voice: false
+  #   clock: "options"
+  #   clock_format: 24
   - !include dev_card.yaml
   - type: entities
     entities:

@@ -5,96 +5,428 @@ panel: true
 cards:  
   - type: vertical-stack
     cards:
-      - type: custom:compact-custom-header
-        voice: false
-        clock: "options"
-        clock_format: 24
-      - type: custom:column-card
+      # - type: custom:compact-custom-header
+      #   voice: false
+      #   clock: "options"
+      #   clock_format: 24
+      - type: custom:layout-card
+        layout: vertical
         cards:
           - type: vertical-stack
             cards:
-            - type: picture-elements
-              image: /local/lovelace_ui/info/hubs_background.jpg
-              elements:
-                - type: custom:hui-glance-card
-                  show_state: false
-                  columns: 4
-                  entities:
-                    - entity: sensor.system_ir_blaster
-                      name: Hallway
-                    - entity: sensor.system_ir_blaster_bedroom
-                      name: Bedroom
-                    - entity: sensor.system_ir_blaster_living_room
-                      name: Livingroom
-                    - entity: sensor.system_milight_hub
-                      name: Milight
-                    - entity: sensor.system_xiaomi_gateway
-                      name: Xiaomi
-                    - sensor.system_printer
-                    - sensor.system_nas
-                    - sensor.system_ipad
-                  style:
-                    left: 50%
-                    top: 50%
-                    width: 100%
-                    --paper-card-background-color: rgba(0, 0, 0, 0.4)
-                    --paper-item-icon-color: white
-                    border-radius: 5px
-                    color: rgb(0, 0, 0)
-                    
-            - type: picture-elements
-              image: /local/lovelace_ui/info/cameras_background.jpg
-              elements:
-                - type: custom:hui-glance-card
-                  show_state: false
-                  columns: 2
-                  entities:
-                    - entity: sensor.system_ip_camera
-                      name: Sannce
-                    - entity: sensor.system_dafang
-                      name: Dafang
-                      icon: mdi:webcam
-                  style:
-                    left: 50%
-                    top: 50%
-                    width: 100%
-                    --paper-card-background-color: rgba(0, 0, 0, 0.4)
-                    --paper-item-icon-color: white
-                    border-radius: 5px
-                    color: rgb(0, 0, 0)
-                    
-            - type: picture-elements
-              image: /local/lovelace_ui/info/ring_background.jpg
-              elements:
-                - type: custom:hui-glance-card
-                  show_state: false
-                  columns: 3
-                  entities:
-                    - sensor.system_ring_doorbell
-                    - entity: sensor.system_ring_chime_pro
-                      name: Chime Pro
-                    - entity: sensor.system_ring_chime
-                      name: Chime
-                  style:
-                    left: 50%
-                    top: 50%
-                    width: 100%
-                    --paper-card-background-color: rgba(0, 0, 0, 0.4)
-                    --paper-item-icon-color: white
-                    border-radius: 5px
-                    color: rgb(0, 0, 0)
-                - type: state-label
-                  entity: sensor.ring_front_door_battery
-                  prefix: "Battery: "
-                  style:
-                    left: 20%
-                    top: 70%
-                - type: state-label
-                  entity: sensor.ring_front_door_wifi_signal_category
-                  prefix: "Wifi: "
-                  style:
-                    left: 20%
-                    top: 79%
+              - type: custom:vertical-stack-in-card
+                cards:
+                  - type: entities
+                    show_header_toggle: false
+                    entities:
+                      - type: custom:text-element
+                        text: "Nuc: 192.168.1.78"
+                  - type: glance
+                    entities:
+                      - entity: sensor.last_boot
+                        name: Last boot
+                      - entity: sensor.nuc_containers_active
+                        name: Containers
+                      - entity: sensor.nuc_containers_cpu_used
+                        name: Cont. cpu use
+              - type: horizontal-stack
+                cards:
+                  - type: custom:mini-graph-card
+                    name: Cpu load
+                    show:
+                      icon: false
+                    font_size: 75
+                    entities:
+                      - sensor.nuc_cpu_load
+                    line_color: "#389638"
+                    line_color_above: 
+                      - value: 50
+                        color: orange
+                      - value: 80
+                        color: red
+                    line_color_below:
+                      - value: 50
+                        color: green
+                  - type: custom:mini-graph-card
+                    show:
+                      icon: false
+                    name: Cpu use
+                    entities:
+                      - sensor.processor_use
+                    line_color: "#389638"
+                    line_color_above: 
+                      - value: 50
+                        color: orange
+                      - value: 80
+                        color: red
+                    line_color_below:
+                      - value: 50
+                        color: green
+                  - type: custom:mini-graph-card
+                    name: Disk use
+                    show:
+                      icon: false
+                    entities:
+                      - sensor.nuc_disk_used
+                    line_color: "#389638"
+                    line_color_above: 
+                      - value: 50
+                        color: orange
+                      - value: 80
+                        color: red
+                    line_color_below:
+                      - value: 50
+                        color: green
+
+              - type: horizontal-stack
+                cards:
+                  - type: custom:mini-graph-card
+                    show:
+                      icon: false
+                    name: Ram free
+                    entities:
+                      - sensor.memory_free
+                    font_size: 50
+                    line_color: "#389638"
+                  - type: custom:mini-graph-card
+                    name: Ram use
+                    show:
+                      icon: false
+                    entities:
+                      - sensor.nuc_ram_used
+                    line_color: "#389638"
+                    line_color_above: 
+                      - value: 50
+                        color: orange
+                      - value: 80
+                        color: red
+                    line_color_below:
+                      - value: 50
+                        color: green
+                  - type: custom:mini-graph-card
+                    name: Memory use
+                    show:
+                      icon: false
+                    entities:
+                      - sensor.nuc_swap_used
+                    line_color: "#389638"
+                    line_color_above: 
+                      - value: 50
+                        color: orange
+                      - value: 80
+                        color: red
+                    line_color_below:
+                      - value: 50
+                        color: green
+      
+              - type: picture-elements
+                image: /local/lovelace_ui/info/pi_background.jpg
+                elements:
+                  - type: custom:hui-glance-card
+                    show_state: false
+                    columns: 4
+                    entities:
+                      - entity: sensor.system_hass_rpi
+                        name: Hass RPi
+                      - entity: sensor.system_magic_mirror_rpi
+                        name: Dashboard
+                      - entity: sensor.system_dashboard_rpi
+                        name: '7"'
+                      - entity: sensor.system_rpi_zero
+                        name: RPi Zero
+                    style:
+                      left: 50%
+                      top: 50%
+                      width: 100%
+                      --paper-card-background-color: rgba(0, 0, 0, 0.4)
+                      --paper-item-icon-color: white
+                      border-radius: 5px
+                      color: rgb(0, 0, 0)
+              - type: picture-elements
+                image: /local/lovelace_ui/info/hubs_background.jpg
+                elements:
+                  - type: custom:hui-glance-card
+                    show_state: false
+                    columns: 4
+                    entities:
+                      - entity: sensor.system_ir_blaster
+                        name: Hallway
+                      - entity: sensor.system_ir_blaster_bedroom
+                        name: Bedroom
+                      - entity: sensor.system_ir_blaster_living_room
+                        name: Livingroom
+                      - entity: sensor.system_milight_hub
+                        name: Milight
+                      - entity: sensor.system_xiaomi_gateway
+                        name: Xiaomi
+                      - sensor.system_printer
+                      - sensor.system_nas
+                      - sensor.system_ipad
+                    style:
+                      left: 50%
+                      top: 50%
+                      width: 100%
+                      --paper-card-background-color: rgba(0, 0, 0, 0.4)
+                      --paper-item-icon-color: white
+                      border-radius: 5px
+                      color: rgb(0, 0, 0)
+
+          - break
+          - type: vertical-stack
+            cards:
+              - type: entities
+                show_header_toggle: false
+                entities:
+                  - type: custom:text-element
+                    text: "RPi Dashboard: 192.168.1.98"
+                  - entity: binary_sensor.dashboard_ping
+                    name: Dashboard
+                    icon: mdi:raspberrypi
+              - type: horizontal-stack
+                cards:
+                  - type: custom:mini-graph-card
+                    name: Cpu load
+                    show:
+                      icon: false
+                    entities:
+                      - sensor.dashboard_cpu_load
+                    line_color: "#389638"
+                    line_color_above: 
+                      - value: 50
+                        color: orange
+                      - value: 80
+                        color: red
+                    line_color_below:
+                      - value: 50
+                        color: green
+                  - type: custom:mini-graph-card
+                    name: Cpu temp
+                    show:
+                      icon: false
+                    entities:
+                      - sensor.dashboard_cpu_temp
+                    line_color: "#389638"
+                    line_color_above: 
+                      - value: 50
+                        color: orange
+                      - value: 80
+                        color: red
+                    line_color_below:
+                      - value: 50
+                        color: green
+
+              - type: horizontal-stack
+                cards:
+                  - type: custom:mini-graph-card
+                    name: Disk use
+                    show:
+                      icon: false
+                    entities:
+                      - sensor.dashboard_disk_used
+                    line_color: "#389638"
+                    line_color_above: 
+                      - value: 50
+                        color: orange
+                      - value: 80
+                        color: red
+                    line_color_below:
+                      - value: 50
+                        color: green
+                  - type: custom:mini-graph-card
+                    name: Ram use
+                    show:
+                      icon: false
+                    entities:
+                      - sensor.dashboard_ram_used
+                    line_color: "#389638"
+                    line_color_above: 
+                      - value: 50
+                        color: orange
+                      - value: 80
+                        color: red
+                    line_color_below:
+                      - value: 50
+                        color: green
+              
+              - type: picture-elements
+                image: /local/lovelace_ui/info/cameras_background.jpg
+                elements:
+                  - type: custom:hui-glance-card
+                    show_state: false
+                    columns: 2
+                    entities:
+                      - entity: sensor.system_ip_camera
+                        name: Sannce
+                      - entity: sensor.system_dafang
+                        name: Dafang
+                        icon: mdi:webcam
+                    style:
+                      left: 50%
+                      top: 50%
+                      width: 100%
+                      --paper-card-background-color: rgba(0, 0, 0, 0.4)
+                      --paper-item-icon-color: white
+                      border-radius: 5px
+                      color: rgb(0, 0, 0)
+                      
+              - type: picture-elements
+                image: /local/lovelace_ui/info/ring_background.jpg
+                elements:
+                  - type: custom:hui-glance-card
+                    columns: 4
+                    entities:
+                      - entity: sensor.ring_front_door_battery
+                        name: Ring battery
+                      - entity: sensor.ring_front_door_wifi_signal_category
+                        name: Ring wifi
+                      # - sensor.system_ring_doorbell
+                      - entity: sensor.system_ring_chime_pro
+                        name: Chime Pro
+                      - entity: sensor.system_ring_chime
+                        name: Chime
+                    style:
+                      left: 50%
+                      top: 50%
+                      width: 100%
+                      --paper-card-background-color: rgba(0, 0, 0, 0.4)
+                      --paper-item-icon-color: white
+                      border-radius: 5px
+                      color: rgb(0, 0, 0)
+
+          - break
+          - type: vertical-stack
+            cards:
+              - type: entities
+                show_header_toggle: false
+                entities:
+                  - type: custom:text-element
+                    text: "RPi Zero: 192.168.1.46"
+                  - entity: binary_sensor.rpi_zero_ping
+                    name: RPi Zero
+                    icon: mdi:raspberrypi
+              - type: horizontal-stack
+                cards:
+                  - type: custom:mini-graph-card
+                    name: Cpu load
+                    show:
+                      icon: false
+                    entities:
+                      - sensor.rpi_zero_cpu_load
+                    line_color: "#389638"
+                    line_color_above: 
+                      - value: 50
+                        color: orange
+                      - value: 80
+                        color: red
+                    line_color_below:
+                      - value: 50
+                        color: green
+                  - type: custom:mini-graph-card
+                    name: Cpu temp
+                    show:
+                      icon: false
+                    entities:
+                      - sensor.rpi_zero_cpu_temp
+                    line_color: "#389638"
+                    line_color_above: 
+                      - value: 50
+                        color: orange
+                      - value: 80
+                        color: red
+                    line_color_below:
+                      - value: 50
+                        color: green
+
+              - type: horizontal-stack
+                cards:
+                  - type: custom:mini-graph-card
+                    name: Disk use
+                    show:
+                      icon: false
+                    entities:
+                      - sensor.rpi_zero_disk_used
+                    line_color: "#389638"
+                    line_color_above: 
+                      - value: 50
+                        color: orange
+                      - value: 80
+                        color: red
+                    line_color_below:
+                      - value: 50
+                        color: green
+                  - type: custom:mini-graph-card
+                    name: Ram use
+                    show:
+                      icon: false
+                    entities:
+                      - sensor.rpi_zero_ram_used
+                    line_color: "#389638"
+                    line_color_above: 
+                      - value: 50
+                        color: orange
+                      - value: 80
+                        color: red
+                    line_color_below:
+                      - value: 50
+                        color: green
+              - type: picture-elements
+                image: /local/lovelace_ui/info/computers_background.jpg
+                elements:
+                  - type: custom:hui-glance-card
+                    show_state: false
+                    columns: 4
+                    entities:
+                      - entity: sensor.system_isa_computer
+                        name: Isa
+                      - entity: sensor.system_isa_dell_xps
+                        name: Isa work laptop
+                      # - entity: sensor.system_isa_laptop
+                      #   name: Isa laptop
+                      - entity: sensor.system_stefan_computer
+                        name: Stefan
+                      - entity: sensor.system_stefan_laptop
+                        name: Stefan work laptop
+                    style:
+                      left: 50%
+                      top: 50%
+                      width: 100%
+                      --paper-card-background-color: rgba(0, 0, 0, 0.4)
+                      --paper-item-icon-color: white
+                      border-radius: 5px
+                      color: rgb(0, 0, 0)
+  
+              - type: picture-elements
+                image: /local/lovelace_ui/info/tv_background.jpg
+                elements:
+                  - type: custom:hui-glance-card
+                    show_state: false
+                    columns: 3
+                    entities:
+                      - entity: sensor.system_samsung65
+                        name: TV
+                      - entity: sensor.system_movie_system
+                        name: Movie System
+                      - entity: sensor.system_shield
+                        name: Shield
+                      - entity: sensor.system_sonos
+                        name: Sonos
+                        icon: mdi:speaker-wireless
+                      - entity: sensor.system_samsung49
+                        name: Bed TV
+                      - entity: sensor.system_chromecast_bedroom
+                        name: Bed CC
+                    style:
+                      left: 50%
+                      top: 50%
+                      width: 100%
+                      --paper-card-background-color: rgba(0, 0, 0, 0.4)
+                      --paper-item-icon-color: white
+                      border-radius: 5px
+                      color: rgb(0, 0, 0)
+
+
+
+          - break
 
           - type: vertical-stack
             cards:
@@ -123,117 +455,14 @@ cards:
                     --paper-item-icon-color: white
                     border-radius: 5px
                     color: rgb(0, 0, 0)
-            - type: picture-elements
-              image: /local/lovelace_ui/info/computers_background.jpg
-              elements:
-                - type: custom:hui-glance-card
-                  show_state: false
-                  columns: 4
-                  entities:
-                    - entity: sensor.system_isa_computer
-                      name: Isa
-                    - entity: sensor.system_isa_dell_xps
-                      name: Isa work laptop
-                    # - entity: sensor.system_isa_laptop
-                    #   name: Isa laptop
-                    - entity: sensor.system_stefan_computer
-                      name: Stefan
-                    - entity: sensor.system_stefan_laptop
-                      name: Stefan work laptop
-                  style:
-                    left: 50%
-                    top: 50%
-                    width: 100%
-                    --paper-card-background-color: rgba(0, 0, 0, 0.4)
-                    --paper-item-icon-color: white
-                    border-radius: 5px
-                    color: rgb(0, 0, 0)
-
-            - type: picture-elements
-              image: /local/lovelace_ui/info/tv_background.jpg
-              elements:
-                - type: custom:hui-glance-card
-                  show_state: false
-                  columns: 3
-                  entities:
-                    - entity: sensor.system_samsung65
-                      name: TV
-                    - entity: sensor.system_movie_system
-                      name: Movie System
-                    - entity: sensor.system_shield
-                      name: Shield
-                    - entity: sensor.system_sonos
-                      name: Sonos
-                      icon: mdi:speaker-wireless
-                    - entity: sensor.system_samsung49
-                      name: Bed TV
-                    - entity: sensor.system_chromecast_bedroom
-                      name: Bed CC
-                  style:
-                    left: 50%
-                    top: 50%
-                    width: 100%
-                    --paper-card-background-color: rgba(0, 0, 0, 0.4)
-                    --paper-item-icon-color: white
-                    border-radius: 5px
-                    color: rgb(0, 0, 0)
-          - type: vertical-stack
-            cards:
-            - type: picture-elements
-              image: /local/lovelace_ui/info/pi_background.jpg
-              elements:
-                - type: custom:hui-glance-card
-                  show_state: false
-                  columns: 4
-                  entities:
-                    - entity: sensor.system_hass_rpi
-                      name: Hass RPi
-                    - entity: sensor.system_magic_mirror_rpi
-                      name: Dashboard
-                    - entity: sensor.system_dashboard_rpi
-                      name: '7"'
-                    - entity: sensor.system_rpi_zero
-                      name: RPi Zero
-                  style:
-                    left: 50%
-                    top: 50%
-                    width: 100%
-                    --paper-card-background-color: rgba(0, 0, 0, 0.4)
-                    --paper-item-icon-color: white
-                    border-radius: 5px
-                    color: rgb(0, 0, 0)
-            # - type: history-graph
-            #   entities:
-            #     - sensor.speedtest_download
-            #     - sensor.speedtest_ping
-            #     - sensor.speedtest_upload 
-
-
-            - type: custom:vertical-stack-in-card
-              title: Nuc
-              cards:
-                - type: horizontal-stack
-                  cards:
-                    - type: glance
-                      entities:
-                        - sensor.last_boot
-
-                    - type: sensor
-                      entity: sensor.processor_use
-                      graph: line
-                - type: horizontal-stack
-                  cards:
-                    - type: sensor
-                      entity: sensor.disk_use_percent
-                      graph: line
-                    - type: sensor
-                      entity: sensor.memory_use_percent
-                      graph: line
-
-
-            - type: custom:auto-entities
-              card:
-                type: entities
-              filter:
-                include:
-                  - entity_id: "sensor.rt_n66u_*"
+            - type: custom:mini-graph-card
+              name: Speed test
+              show:
+                  icon: false
+                  extrema: true
+                  fill: false
+              entities:
+                - sensor.speedtest_download
+                - sensor.speedtest_ping
+                - sensor.speedtest_upload 
+              line_color: "#389638"
