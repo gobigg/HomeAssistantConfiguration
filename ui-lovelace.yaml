@@ -5,7 +5,7 @@ resources:
     type: js
   - url: /local/custom-lovelace/auto-entities.js?v=3cfd04
     type: js
-  - url: /local/custom-lovelace/mini-graph-card-bundle.js?v=0.2.0
+  - url: /local/custom-lovelace/mini-graph-card-bundle.js?v=0.2.1
     type: module
   # - type: module
   #   url: /local/lovelace/mini-graph-card.js?v=0.0.10
@@ -14,7 +14,7 @@ resources:
   - type: js
     url: /local/lovelace/plan-coordinates.js?v=0.1.0
   - type: js
-    url: /local/lovelace/state-switch.js?v=c7dd70
+    url: /local/lovelace/state-switch.js?v=c806ca
   - type: js
     url: /local/lovelace/upcoming-media-card.js?v=0.3.4
   - type: js
@@ -32,7 +32,7 @@ resources:
   - type: js
     url: /local/lovelace/light-card.js?v=0.0.1 
   - type: js
-    url: /local/lovelace/card-modder.js?v=70344a
+    url: /local/lovelace/card-modder.js?v=785dd6
   - type: js
     url: https://unpkg.com/moment@2.22.2/moment.js
   - type: module
@@ -42,7 +42,7 @@ resources:
   - type: js
     url: /local/lovelace/kiosk.js?v=0.0.1
   - type: module
-    url: /local/lovelace/button-card.js?v=0.0.2
+    url: /local/custom-lovelace/button-card.js?v=0.0.3
   - type: js
     url: /local/lovelace/vertical-stack-in-card.js?v=v0.1.0
   - type: js
@@ -60,7 +60,7 @@ resources:
   - type: js
     url: /local/lovelace/home-setter.js?v=0.0.1
   - type: js
-    url: /local/lovelace/tracker-card.js?v=0.2.0
+    url: /local/lovelace/tracker-card.js?v=0.3.0
   - type: js
     url: /local/lovelace/light-slider-element.js?v=0.0.1
   - type: js

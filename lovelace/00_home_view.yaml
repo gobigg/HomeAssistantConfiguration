@@ -378,6 +378,199 @@ cards:
           - break
           - type: vertical-stack
             cards:
+              ## first row
+              - type: horizontal-stack
+                cards:
+                - type: "custom:button-card"
+                  color_type: blank-card
+                - type: "custom:button-card"
+                  color_type: icon
+                  icon: mdi:chevron-up
+                  action: service
+                  service:
+                    domain: media_player
+                    action: androidtv_key
+                    data:
+                      entity_id: media_player.nvidia_shield
+                      intent: "KEYCODE_DPAD_UP"
+                - type: "custom:button-card"
+                  color_type: blank-card
+                  
+                - type: "custom:button-card"
+                  color_type: card
+                  color: "var(--secondary-background-color)"
+                  icon: mdi:power
+                  action: service
+                  service:
+                    domain: media_player
+                    action: toggle
+                    data:
+                      entity_id: media_player.nvidia_shield
+                - type: "custom:button-card"
+                  color_type: blank-card
+
+                ## second row
+              - type: horizontal-stack
+                cards:
+                - type: "custom:button-card"
+                  color_type: icon
+                  icon: mdi:chevron-left
+                  action: service
+                  service:
+                    domain: media_player
+                    action: androidtv_key
+                    data:
+                      entity_id: media_player.nvidia_shield
+                      intent: "KEYCODE_DPAD_LEFT"
+                - type: "custom:button-card"
+                  color_type: icon
+                  icon: mdi:circle
+                  action: service
+                  service:
+                    domain: media_player
+                    action: androidtv_key
+                    data:
+                      entity_id: media_player.nvidia_shield
+                      intent: "KEYCODE_DPAD_ENTER"
+                - type: "custom:button-card"
+                  color_type: icon
+                  icon: mdi:chevron-right
+                  action: service
+                  service:
+                    domain: media_player
+                    action: androidtv_key
+                    data:
+                      entity_id: media_player.nvidia_shield
+                      intent: "KEYCODE_DPAD_RIGHT"
+
+                - type: "custom:button-card"
+                  color_type: card
+                  color: "var(--secondary-background-color)"
+                  icon: mdi:plex
+                  action: service
+                  service:
+                    domain: media_player
+                    action: androidtv_intent
+                    data:
+                      entity_id: media_player.nvidia_shield
+                      intent: "-n com.plexapp.android/com.plexapp.plex.activities.SplashActivity"
+                - type: "custom:button-card"
+                  color_type: blank-card
+
+            ## third row
+              - type: horizontal-stack
+                cards:
+                - type: "custom:button-card"
+                  color_type: blank-card
+                - type: "custom:button-card"
+                  color_type: icon
+                  icon: mdi:chevron-down
+                  action: service
+                  service:
+                    domain: media_player
+                    action: androidtv_key
+                    data:
+                      entity_id: media_player.nvidia_shield
+                      intent: "KEYCODE_DPAD_DOWN"
+                - type: "custom:button-card"
+                  color_type: blank-card
+                  
+                - type: "custom:button-card"
+                  color_type: card
+                  color: "var(--secondary-background-color)"
+                  icon: mdi:netflix
+                  action: service
+                  service:
+                    domain: media_player
+                    action: androidtv_intent
+                    data:
+                      entity_id: media_player.nvidia_shield
+                      intent: "-n com.netflix.ninja/.MainActivity"
+                - type: "custom:button-card"
+                  color_type: blank-card
+
+                ## second row
+              - type: horizontal-stack
+                cards:
+                - type: "custom:button-card"
+                  color_type: icon
+                  icon: mdi:triangle-outline
+                  action: service
+                  service:
+                    domain: media_player
+                    action: androidtv_key
+                    data:
+                      entity_id: media_player.nvidia_shield
+                      intent: "KEYCODE_BACK"
+                - type: "custom:button-card"
+                  color_type: blank-card
+                - type: "custom:button-card"
+                  color_type: icon
+                  icon: mdi:circle-outline
+                  action: service
+                  service:
+                    domain: media_player
+                    action: androidtv_key
+                    data:
+                      entity_id: media_player.nvidia_shield
+                      intent: "KEYCODE_HOME"
+
+                - type: "custom:button-card"
+                  color_type: card
+                  color: "var(--secondary-background-color)"
+                  icon: mdi:numeric-4-box
+                  action: service
+                  service:
+                    domain: media_player
+                    action: androidtv_intent
+                    data:
+                      entity_id: media_player.nvidia_shield
+                      intent: "-n se.tv4.tv4playtab/se.tv4.tv4play.startup.SplashActivity"
+                - type: "custom:button-card"
+                  color_type: blank-card
+                  
+                # - type: entity-button
+                #   entity: binary_sensor.front_door
+                #   icon: mdi:power
+                #   name:
+                #   tap_action: call-service
+                #   service: media_player.toggle
+                #   service_data:
+                #     entity_id: media_player.nvidia_shield
+                # - type: entity-button
+                #   entity: binary_sensor.front_door
+                #   icon: mdi:television-classic
+                #   name:
+                #   tap_action: call-service
+                #   service: switch.toggle
+                #   service_data:
+                #     entity_id: switch.livingroom_tv
+                # - type: entity-button
+                #   entity: binary_sensor.front_door
+                #   icon: mdi:movie
+                #   name:
+                #   tap_action: call-service
+                #   service: switch.toggle
+                #   service_data:
+                #     entity_id: switch.livingroom_movie_system
+                # - type: entity-button
+                #   entity: binary_sensor.front_door
+                #   icon: mdi:netflix
+                #   name:
+                #   tap_action: call-service
+                #   service: media_player.androidtv_intent
+                #   service_data:
+                #     entity_id: media_player.nvidia_shield
+                #     intent: "netflix://"
+                # - type: entity-button
+                #   entity: binary_sensor.front_door
+                #   icon: mdi:twitch
+                #   name:
+                #   tap_action: call-service
+                #   service: media_player.androidtv_intent
+                #   service_data:
+                #     entity_id: media_player.nvidia_shield
+                #     intent: "plex://"
               - type: entities
                 entities:
                   - type: custom:mini-media-player
@@ -388,28 +581,20 @@ cards:
                     show_source: true
                     power_color: true
                     show_progress: true
-
-                    # artwork_border: true
-                  # - type: custom:mini-media-player
-                  #   entity: media_player.shield_3
+                  # - entity: switch.livingroom_tv
+                  #   name: Tv
                   #   icon: mdi:television-classic
-                  #   group: true
-                  #   artwork_border: true
-                  #   hide_power: true
-                  - entity: switch.livingroom_tv
-                    name: Tv
-                    icon: mdi:television-classic
-                    type: custom:toggle-lock-entity-row
+                  #   type: custom:toggle-lock-entity-row
                   - type: custom:mini-media-player
                     entity: media_player.livingroom_tv
                     icon: mdi:television-classic
                     group: true
                     artwork_border: true
                     hide_power: true
-                  - entity: switch.livingroom_movie_system
-                    name: Movie system
-                    icon: mdi:movie
-                    type: custom:toggle-lock-entity-row
+                  # - entity: switch.livingroom_movie_system
+                  #   name: Movie system
+                  #   icon: mdi:movie
+                  #   type: custom:toggle-lock-entity-row
                   - type: custom:mini-media-player
                     name: Movie system
                     entity: media_player.livingroom_movie_system
@@ -434,197 +619,6 @@ cards:
                     icon: mdi:cast
                     group: true
                     artwork_border: true
-
-              # - type: glance
-              #   title: Shield Remote
-              #   show_state: false
-              #   entities:
-
-              #   # power row
-              #   - entity: binary_sensor.front_door
-              #     icon: mdi:power
-              #     name:
-              #     tap_action: call-service
-              #     service: media_player.toggle
-              #     service_data:
-              #       entity_id: media_player.nvidia_shield
-              #   - entity: binary_sensor.front_door
-              #     icon: mdi:web
-              #     name:
-              #     tap_action: call-service
-              #     service: media_player.select_source
-              #     service_data:
-              #       entity_id: media_player.nvidia_shield
-              #       source: "Web Browser"
-              #   - entity: binary_sensor.front_door
-              #     icon: mdi:netflix
-              #     name:
-              #     tap_action: call-service
-              #     service: media_player.select_source
-              #     service_data:
-              #       entity_id: media_player.nvidia_shield
-              #       source: "Netflix"
-              #   - entity: binary_sensor.front_door
-              #     icon: mdi:television-box
-              #     name:
-              #     tap_action: call-service
-              #     service: media_player.select_source
-              #     service_data:
-              #       entity_id: media_player.nvidia_shield
-              #       source: "Tivo"
-              #   - entity: binary_sensor.front_door
-              #     icon: mdi:playstation
-              #     name:
-              #     tap_action: call-service
-              #     service: media_player.select_source
-              #     service_data:
-              #       entity_id: media_player.nvidia_shield
-              #       source: "Onkyo"
-
-
-              #   # top row
-              #   - entity: binary_sensor.front_door
-              #     icon: mdi:volume-off
-              #     name:
-              #     tap_action: call-service
-              #     service: remote.send_command
-              #     service_data:
-              #       "entity_id": "remote.joehubz"
-              #       "device": "53209424"
-              #       "command": "Mute"
-              #   - entity: binary_sensor.front_door
-              #     icon: mdi:dots-horizontal-circle
-              #     name:
-              #     tap_action: call-service
-              #     service: remote.send_command
-              #     service_data:
-              #       "entity_id": "remote.joehubz"
-              #       "device": "50336544"
-              #       "command": "TiVo"
-              #   - entity: binary_sensor.front_door
-              #     icon: mdi:chevron-up-box-outline
-              #     name:
-              #     tap_action: call-service
-              #     service: remote.send_command
-              #     service_data:
-              #       "entity_id": "remote.joehubz"
-              #       "device": "50336544"
-              #       "command": "DirectionUp"
-              #   - entity: binary_sensor.front_door
-              #     icon: mdi:play-pause
-              #     name:
-              #     tap_action: call-service
-              #     service: remote.send_command
-              #     service_data:
-              #       "entity_id": "remote.joehubz"
-              #       "device": "50336544"
-              #       "command": "Pause"
-              #   #          - entity: binary_sensor.front_door
-              #   #            icon: mdi:square-small
-              #   #            name:
-              #   #            tap_action: call-service
-              #   - entity: binary_sensor.front_door
-              #     icon: mdi:television-guide
-              #     name:
-              #     tap_action: call-service
-              #     service: remote.send_command
-              #     service_data:
-              #       "entity_id": "remote.joehubz"
-              #       "device": "50336544"
-              #       "command": "Guide"
-
-
-              #     # middle row
-              #   - entity: binary_sensor.front_door
-              #     icon: mdi:volume-plus
-              #     name:
-              #     tap_action: call-service
-              #     service: media_player.volume_up
-              #     service_data:
-              #       entity_id: media_player.nvidia_shield
-              #   - entity: binary_sensor.front_door
-              #     icon: mdi:chevron-left-box-outline
-              #     name:
-              #     tap_action: call-service
-              #     service: remote.send_command
-              #     service_data:
-              #       "entity_id": "remote.joehubz"
-              #       "device": "50336544"
-              #       "command": "DirectionLeft"
-              #   - entity: binary_sensor.front_door
-              #     icon: mdi:checkbox-blank-circle-outline
-              #     name:
-              #     tap_action: call-service
-              #     service: remote.send_command
-              #     service_data:
-              #       "entity_id": "remote.joehubz"
-              #       "device": "50336544"
-              #       "command": "Select"
-              #   - entity: binary_sensor.front_door
-              #     icon: mdi:chevron-right-box-outline
-              #     name:
-              #     tap_action: call-service
-              #     service: remote.send_command
-              #     service_data:
-              #       "entity_id": "remote.joehubz"
-              #       "device": "50336544"
-              #       "command": "DirectionRight"
-              #   - entity: binary_sensor.front_door
-              #     icon: mdi:arrow-up-box
-              #     name:
-              #     tap_action: call-service
-              #     service: remote.send_command
-              #     service_data:
-              #       "entity_id": "remote.joehubz"
-              #       "device": "50336544"
-              #       "command": "ChannelUp"
-
-
-              #   # bottom row
-              #   - entity: binary_sensor.front_door
-              #     icon: mdi:volume-minus
-              #     name:
-              #     tap_action: call-service
-              #     service: media_player.volume_down
-              #     service_data:
-              #       entity_id: media_player.nvidia_shield
-              #   - entity: binary_sensor.front_door
-              #     icon: mdi:keyboard-backspace
-              #     name:
-              #     tap_action: call-service
-              #     service: remote.send_command
-              #     service_data:
-              #       "entity_id": "remote.joehubz"
-              #       "device": "50336544"
-              #       "command": "Back"
-              #   - entity: binary_sensor.front_door
-              #     icon: mdi:chevron-down-box-outline
-              #     name:
-              #     tap_action: call-service
-              #     service: remote.send_command
-              #     service_data:
-              #       "entity_id": "remote.joehubz"
-              #       "device": "50336544"
-              #       "command": "DirectionDown"
-              #   - entity: binary_sensor.front_door
-              #     icon: mdi:fast-forward-outline
-              #     name:
-              #     tap_action: call-service
-              #     service: remote.send_command
-              #     service_data:
-              #       "entity_id": "remote.joehubz"
-              #       "device": "50336544"
-              #       "command": "Advance"
-              #   - entity: binary_sensor.front_door
-              #     icon: mdi:arrow-down-box
-              #     name:
-              #     tap_action: call-service
-              #     service: remote.send_command
-              #     service_data:
-              #       "entity_id": "remote.joehubz"
-              #       "device": "50336544"
-              #       "command": "ChannelDown"
-
 
           - break
           - !include plant_card.yaml
