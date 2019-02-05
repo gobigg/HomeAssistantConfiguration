@@ -395,7 +395,7 @@ cards:
                       intent: "KEYCODE_DPAD_UP"
                 - type: "custom:button-card"
                   color_type: blank-card
-                  
+
                 - type: "custom:button-card"
                   color_type: card
                   color: "var(--secondary-background-color)"
