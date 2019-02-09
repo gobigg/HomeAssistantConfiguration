@@ -21,14 +21,25 @@ cards:
                     entities:
                       - type: custom:text-element
                         text: "Nuc: 192.168.1.78"
-                  - type: glance
-                    entities:
                       - entity: sensor.last_boot
                         name: Last boot
-                      - entity: sensor.nuc_containers_active
-                        name: Containers
-                      - entity: sensor.nuc_containers_cpu_used
-                        name: Cont. cpu use
+              - type: horizontal-stack
+                cards:
+                  - type: custom:mini-graph-card
+                    show:
+                      graph: false
+                    align_state: center
+                    name: Containers
+                    entities:
+                      - sensor.nuc_containers_active
+                  - type: custom:mini-graph-card
+                    name: Cont. cpu use
+                    align_state: center
+                    show:
+                      graph: false
+                    entities:
+                      - sensor.nuc_containers_cpu_used
+
               - type: horizontal-stack
                 cards:
                   - type: custom:mini-graph-card

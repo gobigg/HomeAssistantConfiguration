@@ -11,6 +11,7 @@ homeassistant:
     - '/config/www/motion'
 config:
 hassio:
+system_health:
 http:
   api_password: !secret http_password
   base_url: !secret base_url

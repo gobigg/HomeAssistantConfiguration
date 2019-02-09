@@ -30,6 +30,8 @@ cards:
               - switch.dafang_night_mode
               - light.isa_ceiling_light
               - switch.dafang_h264_rtsp_server
+              - entity: switch.dafang_motion
+                icon: mdi:run-fast
           - type: glance
             show_name: false
             show_state: false
@@ -60,6 +62,8 @@ cards:
             entities:
               - light.living_room_ceiling_light_level
               - light.living_room_spotlights_level
+              - entity: switch.sannce_motion
+                icon: mdi:run-fast
           - type: glance
             show_name: false
             show_state: false
@@ -84,3 +88,4 @@ cards:
                 tap_action:
                   action: toggle
                 icon: mdi:reload
+              

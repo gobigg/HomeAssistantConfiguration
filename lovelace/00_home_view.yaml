@@ -18,8 +18,9 @@ cards:
             card:
               type: entities
               entities:
-                - sensor.isabellas_iphone_x_battery_level
-                - sensor.isabellas_iphone_x_battery_state
+                - entity: sensor.isabellas_iphone_x_battery_level
+                  type: custom:secondaryinfo-entity-row
+                  secondary_info: "[[ sensor.isabellas_iphone_x_battery_state.state ]]"
                 - entity: sensor.presence_isa
                   name: Isa presence
                   secondary_info: last-changed
@@ -48,8 +49,9 @@ cards:
             card:
               type: entities
               entities:
-                - sensor.igrims_battery_level
-                - sensor.igrims_battery_state
+                - entity: sensor.igrims_battery_level
+                  type: custom:secondaryinfo-entity-row
+                  secondary_info: "[[ sensor.igrims_battery_state.state ]]"
                 - entity: sensor.presence_stefan
                   name: Stefan presence
                   icon: mdi:map-marker-circle

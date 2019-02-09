@@ -5,6 +5,33 @@ path: dashboard
 cards:
   - type: vertical-stack
     cards:
+      # - type: custom:auto-entities
+      #   show_empty: false
+      #   card:
+      #     type: glance
+      #     title: Lights on
+      #   filter:
+      #     include:
+      #       - domain: light
+      #         state: "on" # Remember that "on" and "off" are magic in yaml, and must always be quoted
+      #         options:
+      #           tap_action:
+      #             action: toggle
+      #   state_filter:
+      #     - "on"
+      #   card:
+      #     type: custom:auto-entities
+      #     show_empty: false
+      #     card:
+      #       type: glance
+      #       title: Lights on
+      #       show_header_toggle: false
+      #     filter:
+      #       include:
+      #         - domain: light
+      #       exclude:
+      #       - state: "off"
+      #       - state: "unavailable"
       # - type: custom:compact-custom-header
       #   voice: false
       #   clock: "options"
@@ -43,7 +70,7 @@ cards:
                       "Clean": /local/lovelace_ui/dashboard/dryer_ready_cropped.jpg
               - type: "custom:weather-card"
                 entity: weather.smhi_home
-              - type: custom:calendar-card-opacity
+              - type: custom:calendar-card
                 showProgressBar: false
                 numberOfDays: 14
                 entities:
@@ -127,25 +154,33 @@ cards:
         
             - type: horizontal-stack
               cards:
-                - type: custom:mini-graph-card
-                  entity: sensor.temperature_bedroom
-                  height: 75
-                  accuracy: 50
-                  line_color: "#389638"
-                  line_value_above: 24
-                  line_color_above: orange
-                  line_value_below: 22
-                  line_color_below: blue
-                - type: custom:mini-graph-card
-                  name: S's room
-                  entity: sensor.temperature_stefan
-                  height: 75
-                  accuracy: 50
-                  line_color: "#389638"
-                  line_value_above: 24
-                  line_color_above: orange
-                  line_value_below: 22
-                  line_color_below: blue
+              - type: custom:mini-graph-card
+                show:
+                  icon: false
+                entities:
+                  - sensor.temperature_bedroom
+                height: 75
+                line_color: "#389638"
+                line_color_above: 
+                  - value: 24
+                    color: orange
+                line_color_below:
+                  - value: 22
+                    color: blue
+              - type: custom:mini-graph-card
+                name: Stefan's office
+                show:
+                  icon: false
+                entities:
+                  - sensor.temperature_stefan
+                height: 75
+                line_color: "#389638"
+                line_color_above: 
+                  - value: 24
+                    color: orange
+                line_color_below:
+                  - value: 22
+                    color: blue
             
             
             - type: glance
@@ -190,28 +225,27 @@ cards:
           
             - type: horizontal-stack
               cards:
-                - type: custom:gauge-card
+                - type: gauge
                   title: Downstairs
                   entity: counter.litterbox_downstairs_visits
                   measurement: "visits"
                   min: 0
                   max: 6
                   severity:
-                    red: 3
                     green: 0
-                    amber: 2
-          
-                - type: custom:gauge-card
+                    yellow: 2
+                    red: 3
+              
+                - type: gauge
                   title: Upstairs
                   entity: counter.litterbox_upstairs_visits
                   measurement: "visits"
                   min: 0
                   max: 6
                   severity:
-                    red: 3
                     green: 0
-                    amber: 2
-      
+                    yellow: 2
+                    red: 3
           - type: vertical-stack
             cards:
               - type: horizontal-stack
@@ -252,24 +286,31 @@ cards:
               - type: horizontal-stack
                 cards:
                   - type: custom:mini-graph-card
-                    entity: sensor.temperature_passage
+                    show:
+                      icon: false
+                    entities:
+                      - sensor.temperature_passage
                     height: 75
-                    accuracy: 50
                     line_color: "#389638"
-                    line_value_above: 24
-                    line_color_above: orange
-                    line_value_below: 22
-                    line_color_below: blue
+                    line_color_above: 
+                      - value: 24
+                        color: orange
+                    line_color_below:
+                      - value: 22
+                        color: blue
                   - type: custom:mini-graph-card
-                    entity: sensor.temperature_downstairs_bathroom
-                    name: Laundry
+                    show:
+                      icon: false
+                    entities:
+                      - sensor.temperature_downstairs_bathroom
                     height: 75
-                    accuracy: 50
                     line_color: "#389638"
-                    line_value_above: 24
-                    line_color_above: orange
-                    line_value_below: 22
-                    line_color_below: blue
+                    line_color_above: 
+                      - value: 24
+                        color: orange
+                    line_color_below:
+                      - value: 22
+                        color: blue
             
               - type: custom:mini-media-player
                 entity: media_player.sonos
