@@ -1,4 +1,0 @@
-site_name: Home Assistant Configuration
-nav:
-    - Home: index.md
-    - Ecosystem: 001-ecosystem.md
