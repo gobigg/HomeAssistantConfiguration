@@ -12,6 +12,17 @@ homeassistant:
       icon: mdi:power-standby
       name: Dafang switch
 
+switch:
+  platform: command_line
+  scan_interval: 35
+  switches:
+    dafang_motion:
+      command_on: !secret dafang_motion_start
+      command_off: !secret dafang_motion_pause
+      command_state: !secret dafang_motion_status
+      value_template: '{{ value.find("ACTIVE") | int >= 0 }}'
+      friendly_name: Motion Dafang
+
 shell_command:
   dafang_up: !secret dafang_up
   dafang_down: !secret dafang_down
@@ -19,6 +30,8 @@ shell_command:
   dafang_right: !secret dafang_right
   dafang_calibrate: !secret dafang_calibrate
   dafang_all_up: !secret dafang_all_up
+  dafang_all_down: !secret dafang_all_down
+  dafang_all_right: !secret dafang_all_right
 
 camera:
   - platform: generic
@@ -44,3 +57,9 @@ script:
   dafang_all_up:
     sequence:
       - service: shell_command.dafang_all_up
+  dafang_all_down:
+    sequence:
+      - service: shell_command.dafang_all_down
+  dafang_all_right:
+    sequence:
+      - service: shell_command.dafang_all_right

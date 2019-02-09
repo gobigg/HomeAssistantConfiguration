@@ -24,6 +24,11 @@ sensor:
       - 'docker_active'
       - 'docker_cpu_use'
 
+rest_command:
+  google_backup:
+    url: 'http://192.168.1.78:8055/gb/doBackup'
+    timeout: '300'
+
 automation:
   - alias: '[System] Hass Started'
     initial_state: 'on'
@@ -116,11 +121,12 @@ automation:
       - platform: time
         at: '03:30:00'
     action:
-      - service: hassio.addon_stdin
-        data:
-          addon: "7be23ff5_dropbox_sync"
-          input:
-            command: "upload"
+      - service: rest_command.google_backup
+      # - service: hassio.addon_stdin
+      #   data:
+      #     addon: "7be23ff5_dropbox_sync"
+      #     input:
+      #       command: "upload"
       - service: notify.hass_discord
         data:
           target: !secret discord_hass_id

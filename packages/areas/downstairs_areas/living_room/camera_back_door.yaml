@@ -10,6 +10,17 @@ camera:
   #   timeout: 5
   #   token: 7495223453
 
+switch:
+  platform: command_line
+  scan_interval: 35
+  switches:
+    sannce_motion:
+      command_on: !secret sannce_motion_start
+      command_off: !secret sannce_motion_pause
+      command_state: !secret sannce_motion_status
+      value_template: '{{ value.find("ACTIVE") | int >= 0 }}'
+      friendly_name: Motion Sannce
+
 ## example command (calibrate): 'curl -k "http://192.168.1.61:19273/decoder_control.cgi?loginuse=myUser&loginpas=myPassword&command=25&onestep=0&1542658796212.6775"'
 shell_command:
   sannce_up: !secret sannce_up
