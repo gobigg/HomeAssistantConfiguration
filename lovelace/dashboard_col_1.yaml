@@ -29,9 +29,9 @@ cards:
           name: Washer
           entity: input_select.washing_machine_status
           state_image:
-            "Idle": /local/lovelace_ui/washer_cropped.jpg
-            "Running": /local/lovelace_ui/laundry_running_cropped.jpg
-            "Clean": /local/lovelace_ui/laundry_clean_2_cropped.jpg
+            "Idle": /local/lovelace_ui/dashboard/washer_cropped.jpg
+            "Running": /local/lovelace_ui/dashboard/laundry_running_cropped.jpg
+            "Clean": /local/lovelace_ui/dashboard/laundry_clean_cropped.jpg
         style:
           background-color: rgba(0, 0, 0, 0.3)
           border-radius: 5px
@@ -41,9 +41,9 @@ cards:
           name: Dryer
           entity: input_select.dryer_status
           state_image:
-            "Idle": /local/lovelace_ui/dryer_cropped.jpg
-            "Running": /local/lovelace_ui/clothes_drying.jpg
-            "Clean": /local/lovelace_ui/folded_clothes.jpg
+            "Idle": /local/lovelace_ui/dashboard/dryer_cropped.jpg
+            "Running": /local/lovelace_ui/dashboard/clothes_drying.jpg
+            "Clean": /local/lovelace_ui/dashboard/dryer_ready_cropped.jpg
         style:
           background-color: rgba(0, 0, 0, 0.3)
           border-radius: 5px
@@ -53,15 +53,14 @@ cards:
     card:
       report_size: 1
       type: "custom:weather-card"
-      entity_weather: weather.smhi_home
-      entity_sun: sun.sun
+      entity: weather.smhi_home
     style:
       background-color: rgba(0, 0, 0, 0.3)
       border-radius: 10px
 
   - type: custom:card-modder
     card:
-      type: custom:calendar-card-opacity
+      type: custom:calendar-card
       showProgressBar: false
       numberOfDays: 14
       entities:

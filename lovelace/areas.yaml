@@ -1,0 +1,142 @@
+title: Areas
+icon: mdi:floor-plan
+path: areas
+panel: true
+cards:  
+  - type: vertical-stack
+    cards:
+      # - type: custom:compact-custom-header
+      #   voice: false
+      #   clock: "options"
+      #   clock_format: 24
+      - type: custom:layout-card
+        layout: vertical
+        cards:
+          - type: custom:auto-entities
+            card:
+              type: custom:fold-entity-row
+              head:
+                type: section
+                label: Hallway
+            filter:
+              include:
+                - area: Hallway
+          - type: custom:auto-entities
+            card:
+              type: custom:fold-entity-row
+              head:
+                type: section
+                label: Dining Room
+            filter:
+              include:
+                - area: "Dining Room"
+          - type: custom:auto-entities
+            card:
+              type: custom:fold-entity-row
+              head:
+                type: section
+                label: Kitchen
+            filter:
+              include:
+                - area: "Kitchen"
+          - type: custom:auto-entities
+            card:
+              type: custom:fold-entity-row
+              head:
+                type: section
+                label: Passage
+            filter:
+              include:
+                - area: Passage
+          - type: custom:auto-entities
+            card:
+              type: custom:fold-entity-row
+              head:
+                type: section
+                label: Downstairs Bathroom
+            filter:
+              include:
+                - area: "Downstairs Bathroom"
+          - type: custom:auto-entities
+            card:
+              type: custom:fold-entity-row
+              head:
+                type: section
+                label: Livingroom
+            filter:
+              include:
+                - area: "Livingroom"
+          - break
+          - type: custom:auto-entities
+            card:
+              type: custom:fold-entity-row
+              head:
+                type: section
+                label: Bedroom
+            filter:
+              include:
+                - area: Bedroom
+          - type: custom:auto-entities
+            card:
+              type: custom:fold-entity-row
+              head:
+                type: section
+                label: Isa's office
+            filter:
+              include:
+                - area: "Isas Office"
+          - type: custom:auto-entities
+            card:
+              type: custom:fold-entity-row
+              head:
+                type: section
+                label: Stefan's office
+            filter:
+              include:
+                - area: "Stefans Office"
+          - type: custom:auto-entities
+            card:
+              type: custom:fold-entity-row
+              head:
+                type: section
+                label: Walk in Closet
+            filter:
+              include:
+                - area: "Walk in Closet"
+          - type: custom:auto-entities
+            card:
+              type: custom:fold-entity-row
+              head:
+                type: section
+                label: Upstairs Hallway
+            filter:
+              include:
+                - area: "Upstairs Hallway"
+          - break
+          - type: custom:auto-entities
+            card:
+              type: custom:fold-entity-row
+              head:
+                type: section
+                label: Front
+            filter:
+              include:
+                - area: "Front"
+          - type: custom:auto-entities
+            card:
+              type: custom:fold-entity-row
+              head:
+                type: section
+                label: Yard
+            filter:
+              include:
+                - area: "Yard"
+          - type: custom:auto-entities
+            card:
+              type: custom:fold-entity-row
+              head:
+                type: section
+                label: Storage
+            filter:
+              include:
+                - area: "Storage"

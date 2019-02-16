@@ -5,10 +5,7 @@ path: home-info
 cards:
   - type: vertical-stack
     cards:
-      # - type: custom:compact-custom-header
-      #   voice: false
-      #   clock: "options"
-      #   clock_format: 24
+      - type: custom:compact-custom-header
       - type: custom:layout-card
         layout: vertical
         cards:
@@ -60,26 +57,46 @@ cards:
                     entities:
                       - sensor.temperature_bedroom
                     height: 75
-                    line_color: "#389638"
-                    line_color_above: 
+                    color_thresholds:
+                      - value: 0
+                        color: "#CCE5FF"
+                      - value: 10
+                        color: "#66B2FF"
+                      - value: 18
+                        color: "#0080FF"
+                      - value: 20
+                        color: "#87c087"
+                      - value: 21
+                        color: "#389638"
                       - value: 24
-                        color: orange
-                    line_color_below:
-                      - value: 22
-                        color: blue
+                        color: "#FF9932"
+                      - value: 25
+                        color: "#FF8000"
+                      - value: 26
+                        color: "#ff0000"
                   - type: custom:mini-graph-card
                     show:
                       icon: false
                     entities:
                       - sensor.temperature_stefan
                     height: 75
-                    line_color: "#389638"
-                    line_color_above: 
+                    color_thresholds:
+                      - value: 0
+                        color: "#CCE5FF"
+                      - value: 10
+                        color: "#66B2FF"
+                      - value: 18
+                        color: "#0080FF"
+                      - value: 20
+                        color: "#87c087"
+                      - value: 21
+                        color: "#389638"
                       - value: 24
-                        color: orange
-                    line_color_below:
-                      - value: 22
-                        color: blue
+                        color: "#FF9932"
+                      - value: 25
+                        color: "#FF8000"
+                      - value: 26
+                        color: "#ff0000"
               - type: horizontal-stack
                 cards:
                   - type: custom:mini-graph-card
@@ -88,54 +105,83 @@ cards:
                     entities:
                       - sensor.temperature_passage
                     height: 75
-                    line_color: "#389638"
-                    line_color_above: 
+                    color_thresholds:
+                      - value: 0
+                        color: "#CCE5FF"
+                      - value: 10
+                        color: "#66B2FF"
+                      - value: 18
+                        color: "#0080FF"
+                      - value: 20
+                        color: "#87c087"
+                      - value: 21
+                        color: "#389638"
                       - value: 24
-                        color: orange
-                    line_color_below:
-                      - value: 22
-                        color: blue
+                        color: "#FF9932"
+                      - value: 25
+                        color: "#FF8000"
+                      - value: 26
+                        color: "#ff0000"
                   - type: custom:mini-graph-card
                     show:
                       icon: false
                     entities:
                       - sensor.temperature_downstairs_bathroom
                     height: 75
-                    line_color: "#389638"
-                    line_color_above: 
+                    color_thresholds:
+                      - value: 0
+                        color: "#CCE5FF"
+                      - value: 10
+                        color: "#66B2FF"
+                      - value: 18
+                        color: "#0080FF"
+                      - value: 20
+                        color: "#87c087"
+                      - value: 21
+                        color: "#389638"
                       - value: 24
-                        color: orange
-                    line_color_below:
-                      - value: 22
-                        color: blue
+                        color: "#FF9932"
+                      - value: 25
+                        color: "#FF8000"
+                      - value: 26
+                        color: "#ff0000"
               - type: horizontal-stack
                 cards:
                   - type: custom:mini-graph-card
                     show:
                       icon: false
+                      fill: fade
                     entities:
                       - sensor.temperature_storage
-                    height: 75
-                    line_color: "#389638"
-                    line_color_above: 
-                      - value: 24
-                        color: orange
-                    line_color_below:
-                      - value: 22
-                        color: blue
+                    # height: 75
+                    color_thresholds:
+                      - value: -5
+                        color: "#66B2FF"
+                      - value: 3
+                        color: "#87c087"
+                      - value: 5
+                        color: "#389638"
                   - type: custom:mini-graph-card
                     show:
                       icon: false
                     entities:
                       - sensor.refrigerator
                     height: 75
-                    line_color: "#389638"
-                    line_color_above: 
-                      - value: 24
-                        color: orange
-                    line_color_below:
-                      - value: 22
-                        color: blue
+                    color_thresholds:
+                      - value: -5
+                        color: "#66B2FF"
+                      - value: 0
+                        color: "#ff0000"
+                      - value: 2
+                        color: "#66B2FF"
+                      - value: 3
+                        color: "#0080FF"
+                      - value: 4
+                        color: "#389638"
+                      - value: 7
+                        color: "#FF9932"
+                      - value: 8
+                        color: "#ff0000"
 
               - type: glance
                 show_header_toggle: false
@@ -155,7 +201,6 @@ cards:
             cards:
               - type: alarm-panel
                 entity: alarm_control_panel.house
-                # scale: 10px
                 states:
                   - arm_home
                   - arm_away
@@ -177,6 +222,7 @@ cards:
                       
                       - sensor.dining_area_window
                       - sensor.bedroom_window
+                      - binary_sensor.bedroom_door
                       
                       - sensor.passage_movement
                       - sensor.upstairs_hallway_movement

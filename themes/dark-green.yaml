@@ -30,3 +30,4 @@
       paper-toggle-button-unchecked-bar-color: "var(--primary-text-color)"
       label-badge-red: 'var(--primary-color)'
       sidebar-icon-color: "var(--paper-item-icon-color)"
+      lumo-body-text-color: "var(--primary-text-color)"

@@ -9,9 +9,6 @@ cards:
     column_num: 4
     cards:
       - type: custom:compact-custom-header
-        voice: false
-        clock: "options"
-        clock_format: 24
       - !include dashboard_col_1.yaml
       - !include dashboard_col_2.yaml
       - !include dashboard_col_3.yaml

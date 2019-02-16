@@ -1,0 +1,16 @@
+binary_sensor:
+  - platform: ping
+    name: "7inch Ping"
+    host: 192.168.1.94
+
+sensor:
+  - platform: glances
+    host: "192.168.1.94"
+    name: "7inch"
+    version: 3
+    resources:
+      - 'disk_use_percent'
+      - 'memory_use_percent'
+      - 'swap_use_percent'
+      - 'processor_load'
+      - 'cpu_temp'

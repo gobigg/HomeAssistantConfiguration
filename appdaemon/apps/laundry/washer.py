@@ -42,6 +42,7 @@ class Washer(Base):
     def washer_clean(self, entity, attribute, new, old, kwargs):
         if new != old and self.get_state(self.washer_state) == "Running":
             self.select_option(self.washer_state, "Clean")
+            self.set_state("sensor.washer_animation", state = "blink")
             self.log("Washer clean")
             self.notification_manager.log_home(message = "Washer clean.")
             
@@ -55,6 +56,7 @@ class Washer(Base):
     def washer_emptied(self, entity, attribute, new, old, kwargs):
         if new != old and self.get_state(self.washer_state) == "Clean":
             self.select_option(self.washer_state, "Idle")
+            self.set_state("sensor.washer_animation", state = "none")
             self.log("Washer emptied, now idle")
 
             if self.reminder_handle is not None:

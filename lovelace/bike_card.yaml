@@ -21,8 +21,8 @@ elements:
       padding: 7px
 
   - type: state-label
-    entity: sensor.ebike_battery_charging
-    prefix: "Time spent charging last week: "
+    entity: input_select.ebike_charger_status
+    prefix: "Charge status: "
     style:
       top: 82%
       left: 0%
@@ -40,13 +40,13 @@ elements:
       padding: 7px
 
   - type: state-icon
-    entity: sensor.ebike_charging
+    entity: sensor.ebike_charger
     style:
       top: 75%
       left: 90%
       transform: none
   - type: state-label
-    entity: switch.bike_plug_switch
+    entity: switch.bike_charger
     tap_action:
       action: toggle
     style:

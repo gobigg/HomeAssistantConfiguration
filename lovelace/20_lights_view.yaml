@@ -4,10 +4,7 @@ path: lights
 cards:
   - type: vertical-stack
     cards:
-    # - type: custom:compact-custom-header
-    #   voice: false
-    #   clock: "options"
-    #   clock_format: 24
+    - type: custom:compact-custom-header
     - type: horizontal-stack
       cards:
         - type: picture

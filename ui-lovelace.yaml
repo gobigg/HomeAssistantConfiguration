@@ -1,5 +1,5 @@
 resources:
-  - url: /local/card-tools.js?v=297fcc
+  - url: /customcards/card-tools.js
     type: js
   - url: https://unpkg.com/moment@2.22.2/moment.js
     type: js
@@ -10,70 +10,70 @@ resources:
     type: module
   - url: https://cdn.jsdelivr.net/gh/bramkragten/custom-ui@master/weather-card/weather-card.min.js
     type: module
-    
-  - url: /local/custom-lovelace/alarm_control_panel-card.js?v=0.4.0
+
+  - url: /customcards/alarm_control_panel-card.js
     type: js
-  - url: /local/custom-lovelace/auto-entities.js?v=3cfd04
+  - url: /customcards/custom-lovelace/auto-entities.js
     type: js
-  - url: /local/custom-lovelace/bignumber-card.js?v=0.0.1
+  - url: /customcards/custom-lovelace/bignumber-card.js
     type: js
-  - url: /local/custom-lovelace/button-card.js?v=0.0.3
+  - url: /customcards/custom-lovelace/button-card.js
     type: module
-  - url: /local/custom-lovelace/calendar-card.js?v=0.0.8
+  - url: /customcards/custom-lovelace/calendar-card.js
     type: module
-  - url: /local/custom-lovelace/card-modder.js?v=785dd6
+  - url: /customcards/custom-lovelace/card-modder.js
     type: js
-  - url: /local/custom-lovelace/compact-custom-header/compact-custom-header.js?v=0.2.9
-    type: js
-  - url: /local/custom-lovelace/dual-gauge-card.js?v=0.2.0
-    type: js
-  - url: /local/custom-lovelace/entity-attributes-card.js?v=0.1.1
-    type: js
-  - url: /local/custom-lovelace/fold-entity-row.js?v=6d11d3
-    type: js
-  - url: /local/custom-lovelace/home-setter.js?v=0.0.1
-    type: js
-  - url: /local/custom-lovelace/krisinfo-card.js?v=0.0.4
-    type: js
-  - url: /local/custom-lovelace/layout-card.js?v=a313b7
-    type: js
-  - url: /local/custom-lovelace/light-card.js?v=0.0.1
-    type: js
-  - url: /local/custom-lovelace/mini-graph-card-bundle.js?v=0.2.1
+  - url: /customcards/custom-lovelace/compact-custom-header/compact-custom-header.js
     type: module
-  - url: /local/custom-lovelace/mini-media-player.js?v=0.6
+  - url: /customcards/custom-lovelace/dual-gauge-card.js
+    type: js
+  - url: /customcards/custom-lovelace/entity-attributes-card.js
+    type: js
+  - url: /customcards/custom-lovelace/fold-entity-row.js
+    type: js
+  - url: /customcards/custom-lovelace/home-setter.js
+    type: js
+  - url: /customcards/custom-lovelace/krisinfo-card.js
+    type: js
+  - url: /customcards/custom-lovelace/layout-card.js
+    type: js
+  - url: /customcards/custom-lovelace/light-card.js
+    type: js
+  - url: /customcards/custom-lovelace/mini-graph-card-bundle.js
     type: module
-  - url: /local/custom-lovelace/monster-card.js?v=0.2.3
+  - url: /customcards/custom-lovelace/mini-media-player.js
+    type: module
+  - url: /customcards/custom-lovelace/monster-card.js
     type: js
-  - url: /local/custom-lovelace/plan-coordinates.js?v=0.1.0
+  - url: /customcards/custom-lovelace/plan-coordinates.js
     type: js
-  - url: /local/custom-lovelace/popup-card.js?v=76720c
+  - url: /customcards/custom-lovelace/popup-card.js
     type: js
-  - url: /local/custom-lovelace/secondaryinfo-entity-row.js?v.0
+  - url: /customcards/custom-lovelace/secondaryinfo-entity-row.js
     type: js
-  - url: /local/custom-lovelace/slider-entity-row.js?v=ba8f50
+  - url: /customcards/custom-lovelace/slider-entity-row.js
     type: js
-  - url: /local/custom-lovelace/slideshow-card.js?v=0.0.1
+  - url: /customcards/custom-lovelace/slideshow-card.js
     type: js
-  - url: /local/custom-lovelace/state-attribute-element.js?v=0.2.0
+  - url: /customcards/custom-lovelace/state-attribute-element.js
     type: js
-  - url: /local/custom-lovelace/state-element.js?v=0.0.1
+  - url: /customcards/custom-lovelace/state-element.js
     type: js
-  - url: /local/custom-lovelace/state-switch.js?v=c806ca
+  - url: /customcards/custom-lovelace/state-switch.js
     type: js
-  - url: /local/custom-lovelace/text-element.js?v=0.0.2
+  - url: /customcards/custom-lovelace/text-element.js
     type: js
-  - url: /local/custom-lovelace/toggle-lock-entity-row.js?v=a57ac1
+  - url: /customcards/custom-lovelace/toggle-lock-entity-row.js
     type: js
-  - url: /local/custom-lovelace/tracker-card.js?v=0.3.0
+  - url: /customcards/custom-lovelace/tracker-card.js
     type: js
-  - url: /local/custom-lovelace/upcoming-media-card.js?v=0.3.4
+  - url: /customcards/custom-lovelace/upcoming-media-card.js
     type: js
-  - url: /local/custom-lovelace/useful-markdown-card.js?v=dfc268
+  - url: /customcards/custom-lovelace/useful-markdown-card.js
     type: js
-  - url: /local/custom-lovelace/username-element.js?v=0.0.1
+  - url: /customcards/custom-lovelace/username-element.js
     type: js
-  - url: /local/custom-lovelace/vertical-stack-in-card.js?v=v0.1.0
+  - url: /customcards/custom-lovelace/vertical-stack-in-card.js
     type: js
   
 title: Home
@@ -82,17 +82,19 @@ views:
   - !include lovelace/10_home_info_view.yaml
   - !include lovelace/20_lights_view.yaml
   - !include lovelace/30_system_info_view.yaml
+  - !include lovelace/31_system_graphs.yaml
   - !include lovelace/40_camera_view.yaml
-  - !include lovelace/50_cat_view.yaml
+  # - !include lovelace/50_cat_view.yaml
   - !include lovelace/60_traffic_view.yaml
   # - !include lovelace/60_floorplan_view.yaml
   # - !include lovelace/70_isa_view.yaml
   - !include lovelace/80_automations_view.yaml
   - !include lovelace/101_dashboard.yaml
-  - !include lovelace/minimal_dash.yaml  
-  # - !include lovelace/102_alarm_clock.yaml
+  # - !include lovelace/minimal_dash.yaml  
   # - !include lovelace/103_dashboard_test.yaml
-  - !include lovelace/100_settings_view.yaml
   - !include lovelace/krisinfotest.yaml
   # - !include lovelace/everything.yaml
+  - !include lovelace/areas.yaml
 
+  - !include lovelace/99_settings_view.yaml
+  - !include lovelace/102_tiny_dashboard.yaml

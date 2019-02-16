@@ -5,10 +5,18 @@ path: home
 cards:
   - type: vertical-stack
     cards:
-      # - type: custom:compact-custom-header
-      #   voice: false
-      #   clock: "options"
-      #   clock_format: 24
+      - type: custom:compact-custom-header
+        main_config: true
+        disable: false
+        header: true
+        background_image: false
+        menu: show
+        notifications: show
+        voice: hide
+        options: clock
+        clock_format: 24
+        hide_tabs: 13
+
       - type: custom:layout-card
         layout: vertical
         cards:
@@ -150,7 +158,6 @@ cards:
                       "--iron-icon-height": 100px
                       top: 50%
                       left: 50%
-
           - type: horizontal-stack
             cards:
               - type: picture-entity
@@ -184,14 +191,26 @@ cards:
         
           - type: horizontal-stack
             cards:
-              - type: picture-entity
-                name: Washer
-                show_name: false
-                entity: input_select.washing_machine_status
-                state_image:
-                  "Idle": /local/lovelace_ui/home/washer_square.jpg
-                  "Running": /local/lovelace_ui/home/laundry_running_square.jpg
-                  "Clean": /local/lovelace_ui/home/laundry_clean_2_square.jpg
+              - type: custom:card-modder
+                style:
+                  animation: '[[ sensor.washer_animation.state ]] 2s linear infinite'
+                  # animation: [[ if(sensor.washer_animation == 'Clean', "blink 2s linear infinite", "none") ]]
+                extra_styles: >
+                  @keyframes blink {
+                    
+                    50% {
+                      outline: 3px solid #389638;
+                    }
+                  }
+                card:
+                  type: picture-entity
+                  name: Washer
+                  show_name: false
+                  entity: input_select.washing_machine_status
+                  state_image:
+                    "Idle": /local/lovelace_ui/home/washer_square.jpg
+                    "Running": /local/lovelace_ui/home/laundry_running_square.jpg
+                    "Clean": /local/lovelace_ui/home/laundry_clean_2_square.jpg
               - type: picture-entity
                 name: Dryer
                 show_name: false
@@ -216,31 +235,53 @@ cards:
           - type: horizontal-stack
             cards:
               - type: custom:mini-graph-card
-                show:
-                  icon: false
                 entities:
                   - sensor.temperature_bedroom
-                height: 75
-                line_color: "#389638"
-                line_color_above: 
-                  - value: 24
-                    color: orange
-                line_color_below:
-                  - value: 22
-                    color: blue
-              - type: custom:mini-graph-card
                 show:
                   icon: false
+                height: 75
+                color_thresholds:
+                  - value: 0
+                    color: "#CCE5FF"
+                  - value: 10
+                    color: "#66B2FF"
+                  - value: 15
+                    color: "#0080FF"
+                  - value: 18
+                    color: "#87c087"
+                  - value: 21
+                    color: "#389638"
+                  - value: 24
+                    color: "#FF9932"
+                  - value: 25
+                    color: "#FF8000"
+                  - value: 26
+                    color: "#ff0000"
+
+              - type: custom:mini-graph-card
                 entities:
                   - sensor.temperature_stefan
-                height: 75
-                line_color: "#389638"
-                line_color_above: 
+                show:
+                  icon: false
+                color_thresholds:
+                  - value: 0
+                    color: "#CCE5FF"
+                  - value: 10
+                    color: "#66B2FF"
+                  - value: 18
+                    color: "#0080FF"
+                  - value: 20
+                    color: "#87c087"
+                  - value: 21
+                    color: "#389638"
                   - value: 24
-                    color: orange
-                line_color_below:
-                  - value: 22
-                    color: blue
+                    color: "#FF9932"
+                  - value: 25
+                    color: "#FF8000"
+                  - value: 26
+                    color: "#ff0000"
+
+
           - type: horizontal-stack
             cards:
               - type: custom:mini-graph-card
@@ -249,26 +290,46 @@ cards:
                 entities:
                   - sensor.temperature_passage
                 height: 75
-                line_color: "#389638"
-                line_color_above: 
+                color_thresholds:
+                  - value: 0
+                    color: "#CCE5FF"
+                  - value: 10
+                    color: "#66B2FF"
+                  - value: 18
+                    color: "#0080FF"
+                  - value: 20
+                    color: "#87c087"
+                  - value: 21
+                    color: "#389638"
                   - value: 24
-                    color: orange
-                line_color_below:
-                  - value: 22
-                    color: blue
+                    color: "#FF9932"
+                  - value: 25
+                    color: "#FF8000"
+                  - value: 26
+                    color: "#ff0000"
               - type: custom:mini-graph-card
                 show:
                   icon: false
                 entities:
                   - sensor.temperature_downstairs_bathroom
                 height: 75
-                line_color: "#389638"
-                line_color_above: 
+                color_thresholds:
+                  - value: 0
+                    color: "#CCE5FF"
+                  - value: 10
+                    color: "#66B2FF"
+                  - value: 18
+                    color: "#0080FF"
+                  - value: 20
+                    color: "#87c087"
+                  - value: 21
+                    color: "#389638"
                   - value: 24
-                    color: orange
-                line_color_below:
-                  - value: 22
-                    color: blue
+                    color: "#FF9932"
+                  - value: 25
+                    color: "#FF8000"
+                  - value: 26
+                    color: "#ff0000"
 
           - type: horizontal-stack
             cards:
@@ -394,7 +455,7 @@ cards:
                     action: androidtv_key
                     data:
                       entity_id: media_player.nvidia_shield
-                      intent: "KEYCODE_DPAD_UP"
+                      key: "KEYCODE_DPAD_UP"
                 - type: "custom:button-card"
                   color_type: blank-card
 
@@ -408,8 +469,6 @@ cards:
                     action: toggle
                     data:
                       entity_id: media_player.nvidia_shield
-                - type: "custom:button-card"
-                  color_type: blank-card
 
                 ## second row
               - type: horizontal-stack
@@ -423,7 +482,7 @@ cards:
                     action: androidtv_key
                     data:
                       entity_id: media_player.nvidia_shield
-                      intent: "KEYCODE_DPAD_LEFT"
+                      key: "KEYCODE_DPAD_LEFT"
                 - type: "custom:button-card"
                   color_type: icon
                   icon: mdi:circle
@@ -433,7 +492,7 @@ cards:
                     action: androidtv_key
                     data:
                       entity_id: media_player.nvidia_shield
-                      intent: "KEYCODE_DPAD_ENTER"
+                      key: "KEYCODE_DPAD_ENTER"
                 - type: "custom:button-card"
                   color_type: icon
                   icon: mdi:chevron-right
@@ -443,8 +502,7 @@ cards:
                     action: androidtv_key
                     data:
                       entity_id: media_player.nvidia_shield
-                      intent: "KEYCODE_DPAD_RIGHT"
-
+                      key: "KEYCODE_DPAD_RIGHT"
                 - type: "custom:button-card"
                   color_type: card
                   color: "var(--secondary-background-color)"
@@ -455,9 +513,7 @@ cards:
                     action: androidtv_intent
                     data:
                       entity_id: media_player.nvidia_shield
-                      intent: "-n com.plexapp.android/com.plexapp.plex.activities.SplashActivity"
-                - type: "custom:button-card"
-                  color_type: blank-card
+                      key: "-n com.plexapp.android/com.plexapp.plex.activities.SplashActivity"
 
             ## third row
               - type: horizontal-stack
@@ -473,7 +529,7 @@ cards:
                     action: androidtv_key
                     data:
                       entity_id: media_player.nvidia_shield
-                      intent: "KEYCODE_DPAD_DOWN"
+                      key: "KEYCODE_DPAD_DOWN"
                 - type: "custom:button-card"
                   color_type: blank-card
                   
@@ -488,10 +544,9 @@ cards:
                     data:
                       entity_id: media_player.nvidia_shield
                       intent: "-n com.netflix.ninja/.MainActivity"
-                - type: "custom:button-card"
-                  color_type: blank-card
 
-                ## second row
+
+                ## fourth row
               - type: horizontal-stack
                 cards:
                 - type: "custom:button-card"
@@ -503,7 +558,7 @@ cards:
                     action: androidtv_key
                     data:
                       entity_id: media_player.nvidia_shield
-                      intent: "KEYCODE_BACK"
+                      key: "KEYCODE_BACK"
                 - type: "custom:button-card"
                   color_type: blank-card
                 - type: "custom:button-card"
@@ -515,8 +570,7 @@ cards:
                     action: androidtv_key
                     data:
                       entity_id: media_player.nvidia_shield
-                      intent: "KEYCODE_HOME"
-
+                      key: "KEYCODE_HOME"
                 - type: "custom:button-card"
                   color_type: card
                   color: "var(--secondary-background-color)"
@@ -528,51 +582,7 @@ cards:
                     data:
                       entity_id: media_player.nvidia_shield
                       intent: "-n se.tv4.tv4playtab/se.tv4.tv4play.startup.SplashActivity"
-                - type: "custom:button-card"
-                  color_type: blank-card
-                  
-                # - type: entity-button
-                #   entity: binary_sensor.front_door
-                #   icon: mdi:power
-                #   name:
-                #   tap_action: call-service
-                #   service: media_player.toggle
-                #   service_data:
-                #     entity_id: media_player.nvidia_shield
-                # - type: entity-button
-                #   entity: binary_sensor.front_door
-                #   icon: mdi:television-classic
-                #   name:
-                #   tap_action: call-service
-                #   service: switch.toggle
-                #   service_data:
-                #     entity_id: switch.livingroom_tv
-                # - type: entity-button
-                #   entity: binary_sensor.front_door
-                #   icon: mdi:movie
-                #   name:
-                #   tap_action: call-service
-                #   service: switch.toggle
-                #   service_data:
-                #     entity_id: switch.livingroom_movie_system
-                # - type: entity-button
-                #   entity: binary_sensor.front_door
-                #   icon: mdi:netflix
-                #   name:
-                #   tap_action: call-service
-                #   service: media_player.androidtv_intent
-                #   service_data:
-                #     entity_id: media_player.nvidia_shield
-                #     intent: "netflix://"
-                # - type: entity-button
-                #   entity: binary_sensor.front_door
-                #   icon: mdi:twitch
-                #   name:
-                #   tap_action: call-service
-                #   service: media_player.androidtv_intent
-                #   service_data:
-                #     entity_id: media_player.nvidia_shield
-                #     intent: "plex://"
+
               - type: entities
                 entities:
                   - type: custom:mini-media-player
@@ -583,27 +593,27 @@ cards:
                     show_source: true
                     power_color: true
                     show_progress: true
-                  # - entity: switch.livingroom_tv
-                  #   name: Tv
-                  #   icon: mdi:television-classic
-                  #   type: custom:toggle-lock-entity-row
-                  - type: custom:mini-media-player
-                    entity: media_player.livingroom_tv
+                  - entity: switch.livingroom_tv
+                    name: Tv
                     icon: mdi:television-classic
-                    group: true
-                    artwork_border: true
-                    hide_power: true
-                  # - entity: switch.livingroom_movie_system
-                  #   name: Movie system
-                  #   icon: mdi:movie
-                  #   type: custom:toggle-lock-entity-row
-                  - type: custom:mini-media-player
+                    type: custom:toggle-lock-entity-row
+                  # - type: custom:mini-media-player
+                  #   entity: media_player.livingroom_tv
+                  #   icon: mdi:television-classic
+                  #   group: true
+                  #   artwork_border: true
+                  #   hide_power: true
+                  - entity: switch.livingroom_movie_system
                     name: Movie system
-                    entity: media_player.livingroom_movie_system
                     icon: mdi:movie
-                    group: true
-                    artwork_border: true
-                    hide_power: true
+                    type: custom:toggle-lock-entity-row
+                  # - type: custom:mini-media-player
+                  #   name: Movie system
+                  #   entity: media_player.livingroom_movie_system
+                  #   icon: mdi:movie
+                  #   group: true
+                  #   artwork_border: true
+                  #   hide_power: true
                   - type: custom:mini-media-player
                     entity: media_player.shield
                     icon: mdi:cast
@@ -630,7 +640,6 @@ cards:
               entity: camera.fisksatra_meteogram
               show_name: false
               show_state: false
-
             - type: picture-entity
               entity: camera.stockholm_meteogram
               show_name: false

@@ -6,8 +6,10 @@
 
 # Log Severities: notset, debug, info, warn, warning, error, fatal, critical
 
-default: warning
+default: error
 logs:
+  # pyupdate: debug
+  # custom_components.custom_updater: debug
   # homeassistant.core: warn
   # homeassistant.components.automation: error
   # homeassistant.components.switch.switchbot: debug  
@@ -39,4 +41,5 @@ logs:
   homeassistant.components.sensor.vma: debug
   # pydeconz: debug
   # homeassistant.components.deconz: debug
+  homeassistant.components.deconz: debug
   root: warning

@@ -5,37 +5,7 @@ path: dashboard
 cards:
   - type: vertical-stack
     cards:
-      # - type: custom:auto-entities
-      #   show_empty: false
-      #   card:
-      #     type: glance
-      #     title: Lights on
-      #   filter:
-      #     include:
-      #       - domain: light
-      #         state: "on" # Remember that "on" and "off" are magic in yaml, and must always be quoted
-      #         options:
-      #           tap_action:
-      #             action: toggle
-      #   state_filter:
-      #     - "on"
-      #   card:
-      #     type: custom:auto-entities
-      #     show_empty: false
-      #     card:
-      #       type: glance
-      #       title: Lights on
-      #       show_header_toggle: false
-      #     filter:
-      #       include:
-      #         - domain: light
-      #       exclude:
-      #       - state: "off"
-      #       - state: "unavailable"
-      # - type: custom:compact-custom-header
-      #   voice: false
-      #   clock: "options"
-      #   clock_format: 24
+      - type: custom:compact-custom-header
       - type: custom:layout-card
         layout: horizontal
         column_num: 4
@@ -79,7 +49,8 @@ cards:
                 entity: camera.stockholm_meteogram
                 show_name: false
                 show_state: false
-      
+
+
           - type: vertical-stack
             cards:
               - type: horizontal-stack  
@@ -115,7 +86,6 @@ cards:
                     state_image:
                       "Not Today": /local/lovelace_ui/dashboard/roomba_bw_cropped.jpg
               - type: shopping-list
-            
       
               - type: entities
                 entities:
@@ -128,11 +98,11 @@ cards:
                     name: Home - C9
                     icon: mdi:car
             
-              # - type: custom:useful-markdown-card
-              #   content: >
-              #     [[sensor.bike_tweet.attributes.event_received_time]] [[sensor.bike_tweet.attributes.event_received_date]]
-                  
-              #     [[sensor.bike_tweet.state]]
+              - type: custom:useful-markdown-card
+                content: >
+                  ## @nackagator
+
+                  [[sensor.nacka_gator_tweet.state]]
       
           - type: vertical-stack
             cards:
