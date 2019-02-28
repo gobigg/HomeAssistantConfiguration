@@ -23,7 +23,13 @@ sensor:
       - 'processor_load'
       - 'docker_active'
       - 'docker_cpu_use'
-
+      
+  - platform: mqtt
+    name: "Google Backup Results"
+    state_topic: "googlebackup/result"
+    value_template: "{{ value_json.backupTimestamp }}"
+    json_attributes_topic: "googlebackup/result"
+    
 rest_command:
   google_backup:
     url: 'http://192.168.1.78:8055/gb/doBackup'

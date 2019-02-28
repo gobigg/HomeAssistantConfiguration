@@ -6,7 +6,7 @@ sensor:
     username: !secret verisure_mail_username
     password: !secret verisure_mail_password
     senders:
-      - no-reply@verisure.com
+      - 'no-reply@verisure.com'
 
   - platform: template
     sensors:

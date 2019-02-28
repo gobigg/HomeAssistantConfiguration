@@ -4,3 +4,12 @@ homeassistant:
       friendly_name: Mailbox Package Door
     binary_sensor.mailbox_letter:
       friendly_name: Mailbox Letter Slot
+
+input_select:  
+  mailbox_status:
+    name: Mailbox Status
+    options:
+      - Empty
+      - Mail
+      - Package
+      - Package and mail

@@ -273,7 +273,7 @@ light:
       # - light.stefan_ceiling_light
       # - light.stefan_lightstrip
       - light.upstairs_hallway_ceiling_light_level
-      - light.gateway_light_34ce008bfc4b
+      # - light.gateway_light_34ce008bfc4b
 
   - platform: group
     name: 'Lights automation'

@@ -1,10 +1,5 @@
-sensor:
-  - platform: speedtest
-    monitored_conditions:
-      - ping
-      - download
-      - upload
-    minute: 30
-    hour:
-      - 6
-      - 18
+speedtestdotnet:
+  monitored_conditions:
+    - ping
+    - download
+    - upload

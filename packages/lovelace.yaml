@@ -8,3 +8,11 @@ input_boolean:
   show_traffic:
     name: Show traffic
     initial: off
+    
+script:
+  reload_tiny_dashboard:
+    sequence:
+      - event: browser_command
+        event_data:
+          command: lovelace-reload
+          id: 95fc0548-f1da842d

@@ -1,11 +1,13 @@
 sensor:
   - platform: krisinformation
     name: 'Krisinformation Stockholm 1km'
+    county: 'Västerbottens LÄn'
     latitude: !secret lat_coord
     longitude: !secret long_coord
     radius: 1
   - platform: krisinformation
     name: 'Krisinformation Stockholm'
+    county: 'Stockholms län'
     latitude: !secret lat_coord
     longitude: !secret long_coord
     radius: 50

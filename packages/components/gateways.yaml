@@ -7,7 +7,7 @@ deconz:
   api_key: !secret deconz_api
   
 rfxtrx:
-  device: /dev/ttyUSB1
+  device: /dev/ttyUSB.RFX
      
 xiaomi_aqara:
   gateways:

@@ -1,0 +1,8 @@
+input_select:  
+  trash_status:
+    name: Trash Status
+    options:
+      - Home
+      - Put out
+      - Out
+      - Take in
