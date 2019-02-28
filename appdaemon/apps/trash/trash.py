@@ -11,7 +11,7 @@ class Trash(Base):
     def initialize(self) -> None:
         """Initialize."""
         super().initialize()
-        self.trash_status = "sensor.trash_status"
+        self.trash_status = "input_boolean.trash_status"
         self.trash = self.get_state("sensor.trash")
 
         self.attributes = {}
@@ -19,11 +19,9 @@ class Trash(Base):
         self.listen_state(self.garbage_day, "calendar.garbage_day")
         self.listen_state(self.take_in_garbage, "calendar.take_in_garbage")
         self.listen_state(self.notify_new_trash_status, "sensor.trash")
-        self.listen_event(self.set_initial, "plugin_started")
         
-        self.init_sensor()
-    def set_initial(self, event_name, data, kwargs):
-        self.set_state(self.trash_status, state = "Unknown")
+        # self.init_sensor()
+
     def notify_new_trash_status(self, entity, attribute, old, new, kwargs):
         if new != old:
             self.notification_manager.log_home(message = f"Trash can is {new}")
@@ -46,16 +44,12 @@ class Trash(Base):
         self.trash = self.get_state("sensor.trash")
 
         if self.trash == "Away":
-            self.attributes['icon'] = "mdi:delete-restore"
-            self.attributes['icon_color'] = "white"
-            self.set_state(self.trash_status, state = "Out", attributes = self.attributes)
+            self.select_option(self.trash_status, "Out")
 
             self.cancel_timer(self.put_out_handle)
 
         elif self.trash == "Home" and self.now_is_between("18:30:00", "23:59:00"):
-            self.attributes['icon'] = "mdi:delete-circle"
-            self.attributes['icon_color'] = "red"
-            self.set_state(self.trash_status, state = "Put out", attributes = self.attributes)
+            self.select_option(self.trash_status, "Put out")
 
             self.data = {"push": {"thread-id":"trash"}}
             self.notification_manager.notify_if_home(person = "Isa", message = "Put out the trash", data = self.data)
@@ -66,7 +60,7 @@ class Trash(Base):
         if self.trash == "Away" and self.now_is_between("08:30:00", "23:00:00"):
             self.attributes['icon'] = "mdi:delete-empty"
             self.attributes['icon_color'] = "red"
-            self.set_state(self.trash_status, state = "Take in", attributes = self.attributes)
+            self.select_option(self.trash_status, "Take in")
 
             self.data = {"push": {"thread-id":"trash"}}
             self.notification_manager.notify_if_home(person = "Isa", message = "Take in the trash", data = self.data)
@@ -75,28 +69,28 @@ class Trash(Base):
         elif self.trash == "Home":
             self.attributes['icon'] = "mdi:delete"
             self.attributes['icon_color'] = "white"
-            self.set_state(self.trash_status, state = "Home", attributes = self.attributes)
+            self.select_option(self.trash_status, "Home")
 
             self.cancel_timer(self.take_in_handle)
 
-    def init_sensor(self):
-        self.log("Initializing trash sensor")
-        if self.trash == 'Away':
-            if self.get_state("calendar.take_in_garbage") == 'on' or self.get_state("calendar.garbage_day") == 'off':
-                self.attributes['icon'] = "mdi:delete-empty"
-                self.attributes['icon_color'] = "red"
-                self.set_state(self.trash_status, state = "Take in", attributes = self.attributes)
-            else:
-                self.attributes['icon'] = "mdi:delete-restore"
-                self.attributes['icon_color'] = "white"
-                self.set_state(self.trash_status, state = "Out", attributes = self.attributes)
+    # def init_sensor(self):
+    #     self.log("Initializing trash sensor")
+    #     if self.trash == 'Away':
+    #         if self.get_state("calendar.take_in_garbage") == 'on' or self.get_state("calendar.garbage_day") == 'off':
+    #             self.attributes['icon'] = "mdi:delete-empty"
+    #             self.attributes['icon_color'] = "red"
+    #             self.set_state(self.trash_status, state = "Take in", attributes = self.attributes)
+    #         else:
+    #             self.attributes['icon'] = "mdi:delete-restore"
+    #             self.attributes['icon_color'] = "white"
+    #             self.set_state(self.trash_status, state = "Out", attributes = self.attributes)
                 
-        elif self.trash == 'Home':
-            if self.get_state("calendar.garbage_day") == 'on':
-                self.attributes['icon'] = "mdi:delete-circle"
-                self.attributes['icon_color'] = "red"
-                self.set_state(self.trash_status, state = "Put out", attributes = self.attributes)
-            else:
-                self.attributes['icon'] = "mdi:delete"
-                self.attributes['icon_color'] = "white"
-                self.set_state(self.trash_status, state = "Home", attributes = self.attributes)
+    #     elif self.trash == 'Home':
+    #         if self.get_state("calendar.garbage_day") == 'on':
+    #             self.attributes['icon'] = "mdi:delete-circle"
+    #             self.attributes['icon_color'] = "red"
+    #             self.set_state(self.trash_status, state = "Put out", attributes = self.attributes)
+    #         else:
+    #             self.attributes['icon'] = "mdi:delete"
+    #             self.attributes['icon_color'] = "white"
+    #             self.set_state(self.trash_status, state = "Home", attributes = self.attributes)

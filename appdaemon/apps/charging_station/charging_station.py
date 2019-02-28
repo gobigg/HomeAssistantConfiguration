@@ -30,12 +30,12 @@ class ChargingStation(Base):
     def turn_on_charger(self, kwargs):
         self.turn_on(self.plug)
         self.log("Ebike charger turned on")
-        self.notification_manager.log_home(message = "Ebike charger turned on.")
         reminder_start = self.datetime()
         if (self.reminder_handle is not None):
             return
         else:
             self.reminder_handle = self.run_every(self.check_charge, reminder_start, 1800)
+        self.notification_manager.log_home(message = "Ebike charger turned on.")
     
     def check_charge(self, kwargs):
         self.log("Checking charge")
@@ -45,10 +45,10 @@ class ChargingStation(Base):
                 self.notification_manager.notify_if_home(person = "Isa", message = "Charge ebike battery", data = self.data)
         else:
             self.log("Reminder canceled")
-            self.notification_manager.log_home(message = "Bike battery on charge, reminder canceled.")
             self.select_option(self.charger_state, "Charging")
             self.cancel_timer(self.reminder_handle)
             self.reminder_handle = None
+            self.notification_manager.log_home(message = "Bike battery on charge, reminder canceled.")
 
     def turn_off_charger(self, entity, attribute, new, old, kwargs):
         if (new != old):
@@ -63,10 +63,10 @@ class ChargingStation(Base):
         self.snoozed = True
 
         self.log("Bike reminder snoozed until tomorrow")
-        self.notification_manager.log_home(message = "Bike reminder snoozed until tomorrow.")
-
+    
         runtime = datetime.time(1, 0, 0)
         self.run_once(self.cancel_snooze, runtime)
+        self.notification_manager.log_home(message = "Bike reminder snoozed until tomorrow.")
     
     def cancel_snooze(self):
         self.log("Snoozing stopped.")

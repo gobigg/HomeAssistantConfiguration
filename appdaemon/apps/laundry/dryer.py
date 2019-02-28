@@ -43,7 +43,6 @@ class Dryer(Base):
         if new != old and self.get_state(self.dryer_state) == "Running":
             self.select_option(self.dryer_state, "Clean")
             self.log("Dryer clean")
-            self.notification_manager.log_home(message = "Dryer clean.")
             
             if self.presence_helper.anyone_home() and not self.now_is_between("23:00:00", "07:00:00"):
                 self.light_state = self.get_state(self.light, attribute = "all")
@@ -51,6 +50,7 @@ class Dryer(Base):
 
             self.data = {"push": {"category":"dryer", "thread-id":"home-assistant"}}
             self.notification_manager.notify_if_home(person = "Isa", message = "Dryer is done", data = self.data)
+            self.notification_manager.log_home(message = "Dryer clean.")
 
     def dryer_emptied(self, entity, attribute, new, old, kwargs):
         if new != old and self.get_state(self.dryer_state) == "Clean":

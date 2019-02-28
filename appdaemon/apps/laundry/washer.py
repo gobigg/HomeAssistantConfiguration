@@ -44,7 +44,6 @@ class Washer(Base):
             self.select_option(self.washer_state, "Clean")
             self.set_state("sensor.washer_animation", state = "blink")
             self.log("Washer clean")
-            self.notification_manager.log_home(message = "Washer clean.")
             
             if self.presence_helper.anyone_home() and not self.now_is_between("23:00:00", "07:00:00"):
                 self.light_state = self.get_state(self.light, attribute = "all")
@@ -52,7 +51,8 @@ class Washer(Base):
 
             self.data = {"push": {"category":"washer", "thread-id":"home-assistant"}}
             self.notification_manager.notify_if_home(person = "Isa", message = "Washing machine is done", data = self.data)
-
+            self.notification_manager.log_home(message = "Washer clean.")
+            
     def washer_emptied(self, entity, attribute, new, old, kwargs):
         if new != old and self.get_state(self.washer_state) == "Clean":
             self.select_option(self.washer_state, "Idle")

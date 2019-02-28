@@ -12,6 +12,7 @@ class NotificationManager(Base):
         self.hass_channel = "510402538898718728"
         self.home_channel = "510398531937501186"
         self.alarm_channel = "515083002565623820"
+        self.monitor_channel = "547346452125450240"
 
     """title and during_quiet is optional, default is not during quiet time, use True to override"""
     def notify_if_home(self, person:str, message:str, title:str="", during_quiet:bool=False, data:dict={"push": { "thread-id":"home-assistant"}}, **kwargs:dict):
@@ -53,3 +54,9 @@ class NotificationManager(Base):
             self.call_service(self.discord, target = self.alarm_channel, message = message)
         else:
             self.call_service(self.discord, target = self.alarm_channel, message = f"@here {message}")
+            
+    def log_monitor(self, message:str, mention:bool=False, **kwargs:dict):
+        if mention is False:
+            self.call_service(self.discord, target = self.monitor_channel, message = message)
+        else:
+            self.call_service(self.discord, target = self.monitor_channel, message = f"@here {message}")

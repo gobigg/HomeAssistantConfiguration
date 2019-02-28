@@ -28,7 +28,7 @@ class Summary(Base):
     
     litterbox_downstairs_visits = self.get_state("counter.litterbox_downstairs_visits")
     litterbox_upstairs_visits = self.get_state("counter.litterbox_upstairs_visits")
-    mailbox = self.get_state("sensor.mailbox")
+    mailbox = self.get_state("input_select.mailbox_status")
     laundry = self.get_state("input_select.washing_machine_status")
     dryer = self.get_state("input_select.dryer_status")
     

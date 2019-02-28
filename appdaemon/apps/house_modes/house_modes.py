@@ -19,11 +19,11 @@ class CleaningDay(Base):
     
     def cleaning_day_on(self, entity, attribute, new, old, kwargs):
         self.log("Cleaning day turned on")
-        self.call_service(self.discord, target = self.home_channel, message = "Cleaning day turned on")
+        # self.call_service(self.discord, target = self.home_channel, message = "Cleaning day turned on")
         self.turn_on(self.cleaning_day)
             
     def cleaning_day_off(self, entity, attribute, new, old, kwargs):
         self.log("Cleaning day turned off")
-        self.call_service(self.discord, target = self.home_channel, message = "Cleaning day turned off")
+        # self.call_service(self.discord, target = self.home_channel, message = "Cleaning day turned off")
         self.turn_off(self.cleaning_day)
         

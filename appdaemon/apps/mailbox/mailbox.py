@@ -12,17 +12,14 @@ class Mailbox(Base):
         super().initialize()
         self.door_sensor = self.args["mail_door_sensor"]
         self.slot_sensor = self.args["mail_slot_sensor"]
-        self.mail_sensor = self.args["mail_sensor"]
-        self.state = self.get_state(self.mail_sensor)
+        self.mail_status = self.args["mail_status"]
+        self.state = self.get_state(self.mail_status)
 
         self.newState = ""
-        self.attributes = {}      
         self.just_opened_door = False
         self.just_notified = False
         
         self.listen_state(self.just_opened, self.args["door"])
-        if (self.state is None or self.state == ""):
-            self.make_sensor()
 
         if "mail_slot_sensor" in self.args:
             self.listen_state(self.mailbox_opened, self.slot_sensor)
@@ -44,7 +41,7 @@ class Mailbox(Base):
         self.just_notified = False
 
     def mailbox_opened(self, entity, attribute, old, new, kwargs):
-        self.state = self.get_state(self.mail_sensor)
+        self.state = self.get_state(self.mail_status)
         if (new == "on" and new != old):
             self.log("Mailbox opened")
             if (entity == self.slot_sensor):
@@ -57,14 +54,10 @@ class Mailbox(Base):
 
                 if (self.state != self.newState and self.just_notified is False):
                     self.notification_manager.notify_if_home(person = "Isa", message = "You've got {}".format(self.newState))
-                    self.notification_manager.log_home(message = "You've got {}".format(self.newState))
                     self.just_notified = True
                     self.run_in(self.reset_notification, 60)
-
-                self.attributes['icon'] = "mdi:mailbox"
-                self.attributes['latest_emptied'] = self.get_state(self.mail_sensor, attribute="latest_emptied")
-                self.attributes['latest_mail']=self.local_time_str(datetime.datetime.now(datetime.timezone.utc))
-                self.set_state(self.mail_sensor, state=self.newState, attributes=self.attributes)
+                    self.notification_manager.log_home(message = "You've got {}".format(self.newState))
+                self.select_option(self.mail_status, self.newState)
 
             elif (entity == self.door_sensor):
                 self.package_or_emptied(entity, old, new)
@@ -80,14 +73,11 @@ class Mailbox(Base):
         
     def mailbox_emptied(self):
         self.notification_manager.notify_if_home(person = "Isa", message = "Mailbox emptied")
-        self.notification_manager.log_home(message = "Mailbox emptied")
-            
-        self.attributes['icon'] = "mdi:dots-horizontal"
-        self.attributes['latest_emptied'] = self.local_time_str(datetime.datetime.now(datetime.timezone.utc))
-        self.attributes['latest_mail']=self.get_state(self.mail_sensor, attribute="latest_mail")
+
         self.newState = "Empty"
-        self.set_state(self.mail_sensor, state=self.newState, attributes=self.attributes)
+        self.select_option(self.mail_status, self.newState)
         self.log("Mailbox emptied")
+        self.notification_manager.log_home(message = "Mailbox emptied")
     
     def new_package(self):
         if (self.state == "Package" or self.state == "Empty" or self.state is None):
@@ -99,23 +89,13 @@ class Mailbox(Base):
             
         if (self.state != self.newState and self.just_notified is False):
             self.notification_manager.notify_if_home(person = "Isa", message = "You've got {}".format(self.newState))
-            self.notification_manager.log_home(message = "You've got {}".format(self.newState))  
             self.just_notified = True
             self.run_in(self.reset_notification, 60)
+            self.notification_manager.log_home(message = "You've got {}".format(self.newState))  
 
-        self.attributes['icon'] = "mdi:mailbox"
-        self.attributes['latest_emptied'] = self.get_state(self.mail_sensor, attribute="latest_emptied")
-        self.attributes['latest_mail']=self.local_time_str(datetime.datetime.now(datetime.timezone.utc))
-        self.set_state(self.mail_sensor, state=self.newState, attributes=self.attributes)
+        self.select_option(self.mail_status, self.newState)
         self.log("Check mail")
     
-    def make_sensor(self):
-        attributes = {}       
-        attributes['icon'] = "mdi:dots-horizontal"
-        attributes['latest_emptied'] = "Unknown"
-        attributes['latest_mail'] = "Unknown"
-        self.set_state(self.mail_sensor, state="Empty", attributes=attributes)
-
     def local_time_str(self, utc_datetime):
         now_timestamp = time.time()
         offset = datetime.datetime.fromtimestamp(now_timestamp) - datetime.datetime.utcfromtimestamp(now_timestamp)

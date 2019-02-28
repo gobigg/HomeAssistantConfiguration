@@ -110,4 +110,5 @@ class Alarm(Base):
             self.log("Lights turned off")
             self.notification_manager.log_alarm(message = "Lights turned off after arming away.")
         else:
+            self.log("Lights stays on, someone is home.")
             self.notification_manager.log_alarm(message = "Someone is home. Lights stay on.")

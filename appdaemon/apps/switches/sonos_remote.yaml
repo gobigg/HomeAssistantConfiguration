@@ -1,6 +1,6 @@
-sonos_remote_control:
-  module: sonos_remote
-  class: SonosRemote
-  event: deconz_event
-  id: stefan_remote
-  sonos: media_player.sonos
+# sonos_remote_control:
+#   module: sonos_remote
+#   class: SonosRemote
+#   event: deconz_event
+#   id: stefan_remote
+#   sonos: media_player.sonos

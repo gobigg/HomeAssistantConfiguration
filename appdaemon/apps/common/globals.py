@@ -35,9 +35,11 @@ PEOPLE = {
     },
     'Stefan': {
         'device_tracker': 'sensor.presence_stefan',
-        'proximity': 'proximity.home_stefan'
+        'proximity': 'proximity.home_stefan',
+        'notifier': 'ios_stefan_iphone_7'
     }
 }
+
 
 # class GlobalEvents(Enum):
 #     # Events

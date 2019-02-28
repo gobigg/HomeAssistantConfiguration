@@ -12,33 +12,38 @@ class XiaomiDimmer(hass.Hass):
 
   def button_pressed(self, event_name, data, kwargs):
     self.click_type=data["event"]
+    
     if self.click_type == 1002:
-      self.log('Button release')
-      if self.table_hold == False or self.get_state(self.light) == "off":
-        self.table_pressed = False
-        if "only_on" in self.args:
-          self.turn_on(self.light)
-        else:
-          self.toggle(self.light)
-      self.table_hold = False
+      if self.light is not "none":
+        self.log('Button release')
+        if self.table_hold == False or self.get_state(self.light) == "off":
+          self.table_pressed = False
+          if "only_on" in self.args:
+            self.turn_on(self.light)
+          else:
+            self.toggle(self.light)
+        self.table_hold = False
     
     elif self.click_type == 1000:
-      self.log('Button push')
-      self.table_pressed = True
-      time.sleep(0.3)
-      self.table_hold = True
-      if self.table_pressed:
-        self.log("Long press")
-        self.long_press()
-        self.table_dim = not self.table_dim
+      if self.light is not "none":
+        self.log('Button push')
+        self.table_pressed = True
+        time.sleep(0.3)
+        self.table_hold = True
+        if self.table_pressed:
+          self.log("Long press")
+          self.long_press()
+          self.table_dim = not self.table_dim
     
     elif self.click_type == 1004:
-      self.log('Button double click')
-      self.toggle(self.secondLight)
+      if self.secondLight is not "none":
+        self.log('Button double click')
+        self.toggle(self.secondLight)
 
     elif self.click_type == 1005:
-      self.log('Button triple click')
-      self.turn_on(self.light, color_temp = 366, brightness = 150)
+      if self.light is not "none":
+        self.log('Button triple click')
+        self.turn_on(self.light, color_temp = 366, brightness = 150)
 
     elif self.click_type == 1006:
       self.log('Button quadruple click')

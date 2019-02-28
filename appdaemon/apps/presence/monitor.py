@@ -31,7 +31,8 @@ class Monitor(Base):
     #             self.log("{} not found".format(self.args["DeviceID"]))
     def bt_change(self, entity, attribute, old, new, kwargs):
         if new != old:
-            self.notification_manager.log_hass(message = f"Bt tracker change from monitor. {entity} was {old}, now {new}")
+            self.log(f"Bt tracker change from monitor. {entity} was {old}, now {new}")
+            self.notification_manager.log_monitor(message = f"Bt tracker change from monitor. {entity} was {old}, now {new}")
 
     def trigger_departure_scan(self, entity, attribute, old, new, kwargs):
         if new == "22" or new == "on":
@@ -44,21 +45,20 @@ class Monitor(Base):
             self.run_in(self.scan_depart, 120)
             isa = self.get_state("sensor.isabellas_iphone_x_bt")
             stefan = self.get_state("sensor.stefan_iphone_7_bt")
-            self.notification_manager.log_hass(message = f"Scanned for departure.")
 
     def monitor_status(self, entity, attribute, old, new, kwargs):
         if new != old:
-            # self.call_service("notify/ios_isabellas_iphone_x", message = f"Monitor is {new}")
-            self.notification_manager.log_hass(message = f"Monitor is {new}")
+            self.notification_manager.log_monitor(message = f"Monitor is {new}")
             if new == "online":
                 self.run_in(self.scan_arrive, 5)
                 self.run_in(self.scan_arrive, 30)
                 self.run_in(self.scan_arrive, 60)
+                
             
     def scan_arrive(self, kwargs):
-        self.log("Scanning for arrival...")
+        self.notification_manager.log_monitor(message = f"Requested scan for arrival.")
         self.call_service("mqtt/publish", topic = "monitor/scan/arrive")
         
     def scan_depart(self, kwargs):
-        self.log("Scanning for departure...")
+        self.notification_manager.log_monitor(message = f"Requested scan for departure.")
         self.call_service("mqtt/publish", topic = "monitor/scan/depart")
