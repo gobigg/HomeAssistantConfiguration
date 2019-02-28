@@ -5,7 +5,7 @@ cards:
       - type: custom:card-modder
         card:
           type: picture-entity
-          entity: sensor.mailbox
+          entity: input_select.mailbox_status
           show_name: false
           state_image:
             "Empty": /local/lovelace_ui/mailbox_bw.jpg
@@ -18,7 +18,7 @@ cards:
       - type: custom:card-modder
         card:
           type: picture-entity
-          entity: sensor.trash_status
+          entity: input_select.trash_status
           image: /local/lovelace_ui/trash_bear_bw.jpg
           show_name: false
           state_image:

@@ -137,7 +137,7 @@ cards:
           top: 57%
           transform: none;
       - type: state-icon
-        entity: sensor.mailbox
+        entity: input_select.mailbox_status
         tap_action: more-info
         style:
           left: 18%

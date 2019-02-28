@@ -1,0 +1,58 @@
+title: Alarm clock
+icon: mdi:view-dashboard-variant
+panel: true
+path: tiny_1
+background: center / cover no-repeat url("/local/lovelace_ui/tiny_dashboard/clear-background.jpeg") fixed
+cards:
+  - type: custom:layout-card
+    column_width: [10%, 40%, 50%]
+    layout: vertical
+    cards:
+      - type: custom:compact-custom-header
+      - type: custom:card-modder
+        card:
+          type: glance
+          show_state: false
+          show_name: false
+          columns: 1
+          entities:
+            - entity: sensor.time
+              icon: mdi:information
+              tap_action:
+                action: navigate
+                navigation_path: "#p1"
+            - entity: sensor.time
+              icon: mdi:lightbulb
+              tap_action:
+                action: navigate
+                navigation_path: "#p2"
+            - entity: sensor.time
+              icon: mdi:trash-can-outline
+            - entity: sensor.time
+              icon: mdi:email-outline
+            - entity: sensor.time
+              icon: mdi:trash-can-outline
+        style:
+          --paper-card-background-color: rgba(0, 0, 0, 0)
+          background-color: rgba(0, 0, 0, 0,5)
+          '-webkit-box-shadow': 'none'
+          '-moz-box-shadow': 'none'
+          'box-shadow': 'none'
+      - break
+      - type: custom:state-switch
+        entity: hash
+        default: p1
+        states:
+          p1:
+            !include tiny/1_left.yaml
+          p2:
+            !include tiny/2_left.yaml
+      - break
+      - type: custom:state-switch
+        entity: hash
+        default: p1
+        states:
+          p1:
+            !include tiny/1_right.yaml
+          p2:
+            !include tiny/2_right.yaml

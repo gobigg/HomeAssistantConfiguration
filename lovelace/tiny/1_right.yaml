@@ -1,0 +1,137 @@
+type: vertical-stack
+cards:
+- type: horizontal-stack
+  cards:
+    - type: custom:mini-graph-card
+      entities:
+        - sensor.temperature_bedroom
+      show:
+        icon: true
+        fill: false
+      height: 75
+      color_thresholds:
+        - value: 0
+          color: "#CCE5FF"
+        - value: 10
+          color: "#66B2FF"
+        - value: 15
+          color: "#0080FF"
+        - value: 18
+          color: "#87c087"
+        - value: 21
+          color: "#389638"
+        - value: 24
+          color: "#FF9932"
+        - value: 25
+          color: "#FF8000"
+        - value: 26
+          color: "#ff0000"
+
+    - type: custom:mini-graph-card
+      entities:
+        - sensor.temperature_stefan
+      name: Stefans office
+      show:
+        icon: true
+        fill: false
+      color_thresholds:
+        - value: 0
+          color: "#CCE5FF"
+        - value: 10
+          color: "#66B2FF"
+        - value: 18
+          color: "#0080FF"
+        - value: 20
+          color: "#87c087"
+        - value: 21
+          color: "#389638"
+        - value: 24
+          color: "#FF9932"
+        - value: 25
+          color: "#FF8000"
+        - value: 26
+          color: "#ff0000"
+
+    - type: custom:mini-graph-card
+      show:
+        icon: true
+        fill: false
+      entities:
+        - sensor.temperature_passage
+      height: 75
+      color_thresholds:
+        - value: 0
+          color: "#CCE5FF"
+        - value: 10
+          color: "#66B2FF"
+        - value: 18
+          color: "#0080FF"
+        - value: 20
+          color: "#87c087"
+        - value: 21
+          color: "#389638"
+        - value: 24
+          color: "#FF9932"
+        - value: 25
+          color: "#FF8000"
+        - value: 26
+          color: "#ff0000"
+
+- type: horizontal-stack
+  cards:
+    - type: picture
+      image: /local/lovelace_ui/bed.jpg
+      tap_action:
+        action: call-service
+        service: script.goodnight
+    - type: picture
+      image: /local/lovelace_ui/morning_coffee_square.jpg
+      tap_action:
+        action: call-service
+        service: scene.turn_on
+        service_data:
+          entity_id: scene.morning_lights
+    - type: picture
+      image: /local/lovelace_ui/movie_square.jpg
+      tap_action:
+        action: call-service
+        service: scene.turn_on
+        service_data:
+          entity_id: scene.movie_time
+
+
+- type: horizontal-stack
+  cards:
+    - type: entity-filter
+      show_empty: false
+      entities:
+        - entity: sensor.front_door_lock
+          name: Front door lock
+        # - entity: sensor.yard_door_lock
+        #   name: Yard door lock
+        - sensor.front_door
+        - sensor.back_door
+        - sensor.yard_door
+        - sensor.balcony_door
+        - sensor.yard_door
+        - entity: sensor.dining_area_window
+          name: Dining area
+        - entity: sensor.bedroom_window
+          name: Bedroom
+        # - entity: sensor.yard_storage_door
+        #   name: Storage door
+        # - sensor.water_heater
+        # - sensor.kitchen_sink
+        - binary_sensor.smoke_sensor_158d0001d37bdd
+        - binary_sensor.smoke_sensor_158d0001d37be5
+        - binary_sensor.smoke_sensor_158d0001d37c82
+      state_filter:
+        - 'Open'
+        - 'Movement detected'
+        - 'Leaking'
+        - 'Unlocked'
+        - 'on'
+        # - 'Unknown'
+      card: 
+        type: glance
+        show_state: false

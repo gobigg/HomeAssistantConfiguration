@@ -1,0 +1,54 @@
+            type: vertical-stack
+            cards:
+            - type: horizontal-stack
+              cards:
+                - type: custom:card-modder
+                  card:
+                    type: custom:useful-markdown-card
+                    content: >
+                        # [[ sensor.time.state ]]
+                        
+                        ### [[ sensor.date.state ]]
+              
+                  style:
+                    padding-top: 20px
+                    text-align: center
+                    background-color: rgba(0, 0, 0, 0)
+                    font-size: 120%
+                    '-webkit-box-shadow': 'none'
+                    '-moz-box-shadow': 'none'
+                    'box-shadow': 'none'
+                - type: custom:card-modder
+                  card:
+                    type: glance
+                    show_name: false
+                    entities:
+                      - entity: alarm_control_panel.house
+                  style:
+                    padding-top: 20px
+                    text-align: center
+                    background-color: rgba(0, 0, 0, 0)
+                    font-size: 120%
+                    '-webkit-box-shadow': 'none'
+                    '-moz-box-shadow': 'none'
+                    'box-shadow': 'none'
+            - type: horizontal-stack
+              cards:
+                - type: glance
+                  entities:
+                    - entity: input_select.trash_status
+                      name: Trash
+                      icon: mdi:trash-can-outline
+                    - entity: input_select.mailbox_status
+                      name: Mailbox
+                      icon: mdi:email-outline
+                - type: glance
+                  entities:
+                    - entity: input_select.washing_machine_status
+                      name: Washer
+                    - entity: input_select.dryer_status
+                      name: Dryer
+                      icon: mdi:tumble-dryer
+            - type: custom:useful-markdown-card
+              content: >
+                The bike is [[ input_select.ebike_charger_status.state ]]
