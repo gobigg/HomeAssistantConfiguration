@@ -12,7 +12,8 @@ script:
     sequence:
       - service: alarm_control_panel.alarm_arm_night
         data:
-          entity_id: alarm_control_panel.home_alarm
+          entity_id: alarm_control_panel.house
+          code: !secret alarm_control_panel_code
       - service: script.air_cleaner_quiet
       - service: homeassistant.turn_off
         data:

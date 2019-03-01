@@ -72,6 +72,7 @@ automation:
           message: "@here Hass.io Offline"
         
   - alias: '[System] Hass New Device Tracked'
+    initial_state: 'on'
     trigger:
       platform: event
       event_type: device_tracker_new_device
@@ -83,6 +84,7 @@ automation:
           target: !secret discord_hass_id
 
   - alias: '[System] Hass Updater'
+    initial_state: 'on'
     trigger:
       - platform: state
         entity_id: sensor.version_available
@@ -110,6 +112,7 @@ automation:
           message: "Home Assistant {{ states.sensor.version_available.state }} is now available!"
 
   - alias: '[System] Snapshot Create Nightly at 03 AM'
+    initial_state: 'on'
     trigger:
       platform: time
       at: '03:00:00'
@@ -123,22 +126,20 @@ automation:
           message: "Automated Snapshot {{ now().strftime('%Y-%m-%d') }}"
         
   - alias: '[System] Snapshot Upload Nightly at 0330 AM'
+    initial_state: 'on'
     trigger:
       - platform: time
         at: '03:30:00'
     action:
       - service: rest_command.google_backup
-      # - service: hassio.addon_stdin
-      #   data:
-      #     addon: "7be23ff5_dropbox_sync"
-      #     input:
-      #       command: "upload"
       - service: notify.hass_discord
-        data:
+        data_template:
           target: !secret discord_hass_id
-          message: "Automatic snapshot uploaded"
+          message: >
+            'Automatic snapshot uploaded'
           
   - alias: '[System] Ip Ban Notify'
+    initial_state: 'on'
     trigger:
       - platform: state
         entity_id: persistent_notification.ipban
@@ -150,4 +151,4 @@ automation:
         data_template:
           target: !secret discord_hass_id
           message: >
-            "@here {{ trigger.state.attributes.message }}. Ip address has been banned."
+            '@here {{ trigger.state.attributes.message }}. Ip address has been banned.'

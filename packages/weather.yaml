@@ -3,22 +3,6 @@ weather:
     api_key: !secret darksky_key
 
 sensor:
-#   - platform: yr
-#     monitored_conditions:
-#       # - temperature
-#       - symbol
-#       - precipitation
-# #       - windSpeed
-# #       - pressure
-# #       - windDirection
-# #       - humidity
-# #       - fog
-# #       - cloudiness
-# #       - lowClouds
-# #       - mediumClouds
-# #       - highClouds
-# #       - dewpointTemperature
-
   - platform: darksky
     api_key: !secret darksky_key
     update_interval:
@@ -32,34 +16,22 @@ sensor:
       - precip_intensity
       - precip_intensity_max
       - temperature
-#   #    - dew_point
       - wind_speed
-#   #    - wind_bearing
       - cloud_cover
-#       - humidity
-#       - icon
       - nearest_storm_distance
       - minutely_summary
-#       - daily_summary
-#       - hourly_summary
       - apparent_temperature
-#       - apparent_temperature_max
-#       - apparent_temperature_min
       - temperature_low
       - temperature_high
-#   #    - pressure
-#       - visibility
-#   #    - ozone
-
 
   - platform: command_line
     name: "Forecast Stockholm"
-    icon: alert-outline
+    icon: mdi:alert-outline
     command: "bash /config/scripts/check-weather-sthlm.sh"
     scan_interval: 180
   - platform: command_line
     name: "Forecast Fiskis"
-    icon: alert-outline
+    icon: mdi:alert-outline
     command: "bash /config/scripts/check-weather-fiskis.sh"
     scan_interval: 180
     
