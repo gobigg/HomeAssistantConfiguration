@@ -69,6 +69,8 @@ resources:
     type: js
   - url: /customcards/custom-lovelace/state-switch.js
     type: js
+  - url: /customcards/custom-lovelace/surveillance-card.js
+    type: module
   - url: /customcards/custom-lovelace/text-element.js
     type: js
   - url: /customcards/custom-lovelace/toggle-lock-entity-row.js
@@ -84,6 +86,10 @@ resources:
   - url: /customcards/custom-lovelace/vertical-stack-in-card.js
     type: js
   
+  - url: /customcards/custom-lovelace/live-camera-card.js?v.0.0.3
+    type: module
+
+
 title: Home
 views:
   - !include lovelace/00_home_view.yaml
