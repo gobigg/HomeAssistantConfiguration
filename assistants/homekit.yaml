@@ -9,7 +9,7 @@
       - scene.ceiling_lights
       - scene.morning_lights
 
-      - alarm_control_panel.home_alarm
+      # - alarm_control_panel.house
 
       - binary_sensor.door_window_sensor_158d00019f5110
       - binary_sensor.yard_door
