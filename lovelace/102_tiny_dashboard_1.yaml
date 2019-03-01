@@ -27,7 +27,10 @@ cards:
                 action: navigate
                 navigation_path: "#p2"
             - entity: sensor.time
-              icon: mdi:trash-can-outline
+              icon: mdi:cctv
+              tap_action:
+                action: navigate
+                navigation_path: "#p3"
             - entity: sensor.time
               icon: mdi:email-outline
             - entity: sensor.time
@@ -47,6 +50,8 @@ cards:
             !include tiny/1_left.yaml
           p2:
             !include tiny/2_left.yaml
+          p3:
+            !include tiny/3_left.yaml
       - break
       - type: custom:state-switch
         entity: hash
@@ -56,3 +61,5 @@ cards:
             !include tiny/1_right.yaml
           p2:
             !include tiny/2_right.yaml
+          p3:
+            !include tiny/3_right.yaml

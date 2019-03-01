@@ -98,7 +98,14 @@ cards:
         service: scene.turn_on
         service_data:
           entity_id: scene.movie_time
-
+- type: glance
+  entities:
+    - entity: light.downstairs_lights
+      name: Downstairs
+    - entity: light.upstairs_lights
+      name: Upstairs
+    - entity: light.outdoor_lights
+      name: Outdoor
 
 - type: horizontal-stack
   cards:
@@ -131,7 +138,6 @@ cards:
         - 'Leaking'
         - 'Unlocked'
         - 'on'
-        # - 'Unknown'
       card: 
         type: glance
         show_state: false

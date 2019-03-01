@@ -451,6 +451,9 @@ cards:
                     type: glance
                     show_state: false
               - type: shopping-list
+              - type: custom:live-camera-card
+                update_interval: 0.5
+                camera: camera.upstairs
           - break
           - type: vertical-stack
             cards:
@@ -662,7 +665,7 @@ cards:
             content: >
               ## @nackagator
 
-              [[sensor.nacka_gator_tweet.state]]
+              [[ sensor.nacka_gator_tweet.state ]]
 
           # - type: custom:monster-card
           #   card:

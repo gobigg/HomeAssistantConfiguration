@@ -1,0 +1,12 @@
+type: vertical-stack
+cards:
+  - type: custom:gap-card
+    height: 115
+  - type: horizontal-stack
+    cards:
+      - type: custom:live-camera-card
+        update_interval: 0.5
+        camera: camera.back_door
+      - type: custom:live-camera-card
+        update_interval: 0.5
+        camera: camera.upstairs

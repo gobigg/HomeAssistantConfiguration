@@ -1,0 +1,24 @@
+            type: vertical-stack
+            cards:
+            - type: horizontal-stack
+              cards:
+                - type: custom:card-modder
+                  card:
+                    type: custom:useful-markdown-card
+                    content: >
+                        # [[ sensor.time.state ]]
+                        
+                        ### [[ sensor.date.state ]]
+                  style:
+                    padding-top: 20px
+                    text-align: center
+                    background-color: rgba(0, 0, 0, 0)
+                    font-size: 120%
+                    '-webkit-box-shadow': 'none'
+                    '-moz-box-shadow': 'none'
+                    'box-shadow': 'none'
+                - type: custom:gap-card
+
+            - type: custom:live-camera-card
+              update_interval: 0.5
+              camera: camera.front_door
