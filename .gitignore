@@ -45,6 +45,7 @@ removed_or_templates/
 /lovelace/links_card.yaml
 ssh/
 custom_components/
+!custom_components/google
 zwcfg_0xca115759.xml
 ip_bans.yaml
 /lovelace/for_gen/*
