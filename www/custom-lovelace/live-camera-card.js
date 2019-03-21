@@ -32,11 +32,13 @@ import {
         }
 
       </style>
-      <div class="container">
-        <div class="image">
-          <img src$="${this.camera ? `/api/camera_proxy_stream/${this.camera}?token=${accessToken}&interval=${updateInterval}` : ''}" />
+      <ha-card on-tap="${ev => this._toggle(this.camera)}">
+        <div class="container">
+          <div class="image">
+            <img src$="${this.camera ? `/api/camera_proxy_stream/${this.camera}?token=${accessToken}&interval=${updateInterval}` : ''}" />
+          </div>
         </div>
-      </div>
+      </ha-card>
       `;
   
       return template;
@@ -55,9 +57,26 @@ import {
       this.camera = config.camera;
       this.updateInterval = config.update_interval || 1;
     }
+    
+    _toggle(camera) {
+
+        const node = this.shadowRoot;
+        const options = {};
+        const detail = { entityId: camera };
+        const event = new Event('hass-more-info', {
+          bubbles: options.bubbles === undefined ? true : options.bubbles,
+          cancelable: Boolean(options.cancelable),
+          composed: options.composed === undefined ? true : options.composed,
+        });
+        event.detail = detail;
+        node.dispatchEvent(event);
+        return event;
+  }
+    
   
     set hass(hass) {
       this._hass = hass;
     }
+    
   }
   customElements.define('live-camera-card', LiveCameraCard);
