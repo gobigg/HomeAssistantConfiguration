@@ -8,6 +8,9 @@
 /www/*
 !/www/custom-lovelace
 /www/custom-lovelace/upcoming-media-card/images/
+!custom_components/
+custom_components/*
+!/custom_components/google
 test
 OZW_Log.txt
 home-assistant.log
@@ -44,8 +47,6 @@ removed_or_templates/
 /appdaemon/apps/dfreeeze/
 /lovelace/links_card.yaml
 ssh/
-custom_components/
-!custom_components/google
 zwcfg_0xca115759.xml
 ip_bans.yaml
 /lovelace/for_gen/*
