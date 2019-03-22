@@ -16,16 +16,16 @@ add_event:
       example: 'Birthday bowling'
     start_date_time:
       description: The date and time the event should start.
-      example: '2019-03-22T20:00:00'
-    start_end_time:
+      example: '2019-03-22 20:00:00'
+    end_date_time:
       description: The date and time the event should end.
-      example: '2019-03-22T22:00:00'
+      example: '2019-03-22 22:00:00'
     start_date:
       description: The date the whole day event should start.
       example: '2019-03-10'
     end_date:
       description: The date the whole day event should end.
       example: '2019-03-11'
-    # in:
-    #   description: Hours, days or weeks that you want to create the event in.
-    #   example: '"days": "2"'
+    in:
+      description: Days or weeks that you want to create the event in.
+      example: '"days": "2"'

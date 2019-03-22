@@ -58,15 +58,12 @@ EVENT_END_DATETIME = "end_date_time"
 EVENT_START_DATE = "start_date"
 EVENT_END_DATE = "end_date"
 EVENT_IN = "in"
-EVENT_IN_HOURS = "hours"
 EVENT_IN_DAYS = "days"
 EVENT_IN_WEEKS = "weeks"
-# EVENT_LOCATION = "location"
 
 DATA_INDEX = "google_calendars"
 
 YAML_DEVICES = "{}_calendars.yaml".format(DOMAIN)
-# SCOPES = 'https://www.googleapis.com/auth/calendar.readonly'
 SCOPES = "https://www.googleapis.com/auth/calendar"
 
 TOKEN_FILE = ".{}.token".format(DOMAIN)
@@ -94,26 +91,28 @@ _SINGLE_CALSEARCH_CONFIG = vol.Schema(
         vol.Optional(CONF_TRACK): cv.boolean,
     }
 )
+
+event_types = "event_types"
 _EVENT_IN_TYPES = vol.Schema(
     {
-        vol.Optional(EVENT_IN_HOURS): cv.positive_int,
-        vol.Optional(EVENT_IN_DAYS): cv.positive_int,
-        vol.Optional(EVENT_IN_WEEKS): cv.positive_int,
+        vol.Exclusive(EVENT_IN_DAYS, event_types): cv.positive_int,
+        vol.Exclusive(EVENT_IN_WEEKS, event_types): cv.positive_int,
     }
 )
+
+start = "start"
+end = "end"
 
 ADD_EVENT_SERVICE_SCHEMA = vol.Schema(
     {
         vol.Required(EVENT_CALENDAR_ID): cv.string,
         vol.Required(EVENT_SUMMARY): cv.string,
         vol.Optional(EVENT_DESCRIPTION, default=""): cv.string,
-        vol.Exclusive(EVENT_START_DATE, EVENT_START_DATETIME): cv.string,
-        vol.Exclusive(EVENT_END_DATE, EVENT_END_DATETIME): cv.string,
-        vol.Exclusive(EVENT_START_DATETIME, EVENT_START_DATE): cv.string,
-        vol.Exclusive(EVENT_END_DATETIME, EVENT_END_DATE): cv.string,
-        # vol.Optional(EVENT_IN, default={}): vol.All(
-        #     cv.ensure_list, vol.In(_EVENT_IN_TYPES)
-        # ),
+        vol.Exclusive(EVENT_START_DATE, start): cv.date,
+        vol.Exclusive(EVENT_END_DATE, end): cv.date,
+        vol.Exclusive(EVENT_START_DATETIME, start): cv.datetime,
+        vol.Exclusive(EVENT_END_DATETIME, end): cv.datetime,
+        vol.Exclusive(EVENT_IN, start, end): _EVENT_IN_TYPES
     }
 )
 
@@ -261,33 +260,39 @@ def setup_services(hass, hass_config, track_new_found_calendars, calendar_servic
         service = calendar_service.get()
         start = {}
         end = {}
-        # if EVENT_IN in call.data:
-        #     if EVENT_IN_DAYS in call.data[EVENT_IN]:
-        #         now = datetime.now()
+        if EVENT_IN in call.data:
+            if EVENT_IN_DAYS in call.data[EVENT_IN]:
+                now = datetime.now()
 
-        #         start_in = now + timedelta(days=call.data[EVENT_IN][EVENT_IN_DAYS])
-        #         end_in = start_in + timedelta(days=1)
+                start_in = now + timedelta(days=call.data[EVENT_IN][EVENT_IN_DAYS])
+                end_in = start_in + timedelta(days=1)
 
-        #         start = {"date": start_in.strftime("%Y-%m-%d")}
-        #         end = {"date": end_in.strftime("%Y-%m-%d")}
+                start = {"date": start_in.strftime("%Y-%m-%d")}
+                end = {"date": end_in.strftime("%Y-%m-%d")}
+            elif EVENT_IN_WEEKS in call.data[EVENT_IN]:
+                now = datetime.now()
 
-        # elif EVENT_START_DATE in call.data and EVENT_END_DATE in call.data:
-        if EVENT_START_DATE in call.data and EVENT_END_DATE in call.data:
-            start = {"date": call.data[EVENT_START_DATE]}
-            end = {"date": call.data[EVENT_END_DATE]}
+                start_in = now + timedelta(weeks=call.data[EVENT_IN][EVENT_IN_WEEKS])
+                end_in = start_in + timedelta(days=1)
+
+                start = {"date": start_in.strftime("%Y-%m-%d")}
+                end = {"date": end_in.strftime("%Y-%m-%d")}
+
+        elif EVENT_START_DATE in call.data and EVENT_END_DATE in call.data:
+            start = {"date": str(call.data[EVENT_START_DATE])}
+            end = {"date": str(call.data[EVENT_END_DATE])}
         elif EVENT_START_DATETIME in call.data and EVENT_END_DATETIME in call.data:
             start = {
-                "dateTime": call.data[EVENT_START_DATETIME],
+                "dateTime": str(call.data[EVENT_START_DATETIME].strftime("%Y-%m-%dT%H:%M:%S")),
                 "timeZone": str(hass.config.time_zone),
             }
             end = {
-                "dateTime": call.data[EVENT_END_DATETIME],
+                "dateTime": str(call.data[EVENT_END_DATETIME].strftime("%Y-%m-%dT%H:%M:%S")),
                 "timeZone": str(hass.config.time_zone),
             }
 
         event = {
             "summary": call.data[EVENT_SUMMARY],
-            # 'location': call.data[EVENT_LOCATION],
             "description": call.data[EVENT_DESCRIPTION],
             "start": start,
             "end": end,
