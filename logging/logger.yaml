@@ -8,9 +8,10 @@
 
 default: error
 logs:
+  # homeassistant.components.image_processing
   # custom_components.custom_updater: debug
   # pyupdate: debug
-  # homeassistant.core: warn
+  # homeassistant.core: warning
   # homeassistant.components.automation: error
   # homeassistant.components.switch.switchbot: debug  
   homeassistant.components.sensor: fatal
@@ -41,5 +42,5 @@ logs:
   homeassistant.components.sensor.vma: debug
   # pydeconz: debug
   # homeassistant.components.deconz: debug
-  homeassistant.components.deconz: debug
+  # homeassistant.components.deconz: debug
   root: warning

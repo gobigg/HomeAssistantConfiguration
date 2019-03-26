@@ -14,7 +14,7 @@
       - binary_sensor.door_window_sensor_158d00019f5110
       - binary_sensor.yard_door
       - binary_sensor.balcony_door
-      - binary_sensor.dining_area_window_sensor_sensor
+      - binary_sensor.dining_room_window
       - binary_sensor.front_door_homebridge
       - binary_sensor.back_door
 

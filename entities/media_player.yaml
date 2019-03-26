@@ -17,5 +17,6 @@
     name: "NVidia Shield"
     adb_server_ip: 127.0.0.1
     adb_server_port: 5037
+    device_class: androidtv
     apps:
       "tv4" : "TV4 Play"
