@@ -7,14 +7,17 @@ class LayoutCard extends cardTools.LitElement {
     this.layout = config.layout || 'auto';
     this.minCols = config.column_num || 1;
     this.maxCols = config.max_columns || 100;
-    this.colWidth = config.column_width || 300;
+    this.colWidth = config.column_width || 400;
     this.maxWidth = config.max_width || 500;
     this.minHeight = config.min_height || 5;
+    this.rtl = config.rtl || false;
     this.cardSize = 1;
 
     window.addEventListener('resize', () => this.build());
     window.addEventListener('hass-open-menu', () => setTimeout(() => this.build(), 100));
     window.addEventListener('hass-close-menu', () => setTimeout(() => this.build(), 100));
+    if(config.rebuild)
+      window.setTimeout(() => this.build(), config.rebuild);
   }
 
   render() {
@@ -28,7 +31,13 @@ class LayoutCard extends cardTools.LitElement {
     {
       this.style.padding = "0";
     }
+    if(this.rtl)
+      this.shadowRoot.querySelector("#columns").style.flexDirection = 'row-reverse';
     this.build();
+    this._cardModder = {
+      target: this,
+      styles: this.shadowRoot.querySelector("style")
+    };
   }
 
   static get styles() {
@@ -73,10 +82,7 @@ class LayoutCard extends cardTools.LitElement {
 
   update_columns() {
     const width = (this.shadowRoot && this.shadowRoot.querySelector("#columns").clientWidth) || (this.parentElement && this.parentElement.clientWidth);
-    if(typeof(this.colWidth) === 'object')
-      this.colNum = this.colWidth.length;
-    else
-      this.colNum = Math.floor(width / this.colWidth);
+    this.colNum = Math.floor(width / this.colWidth) || 1;
     this.colNum = Math.max(this.colNum, this.minCols);
     this.colNum = Math.min(this.colNum, this.maxCols);
   }
@@ -147,8 +153,8 @@ class LayoutCard extends cardTools.LitElement {
       div.classList.add('column');
       c.forEach((e) => div.appendChild(e));
       root.appendChild(div);
-      if(typeof(this.colWidth) === 'object') {
-        div.style.setProperty('max-width', this.colWidth[i]);
+      if(cols.length > 1 && typeof(this.maxWidth) === 'object') {
+        div.style.setProperty('max-width', this.maxWidth[i]);
       } else {
         div.style.setProperty('max-width', this.maxWidth+'px');
       }
