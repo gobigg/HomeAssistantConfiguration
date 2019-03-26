@@ -49,17 +49,19 @@ SERVICE_SCAN_CALENDARS = "scan_for_calendars"
 SERVICE_FOUND_CALENDARS = "found_calendar"
 SERVICE_ADD_EVENT = "add_event"
 
-# Service call conf
 EVENT_CALENDAR_ID = "calendar_id"
-EVENT_SUMMARY = "summary"
 EVENT_DESCRIPTION = "description"
-EVENT_START_DATETIME = "start_date_time"
-EVENT_END_DATETIME = "end_date_time"
-EVENT_START_DATE = "start_date"
+EVENT_END_CONF = "end"
 EVENT_END_DATE = "end_date"
+EVENT_END_DATETIME = "end_date_time"
 EVENT_IN = "in"
 EVENT_IN_DAYS = "days"
 EVENT_IN_WEEKS = "weeks"
+EVENT_START_CONF = "start"
+EVENT_START_DATE = "start_date"
+EVENT_START_DATETIME = "start_date_time"
+EVENT_SUMMARY = "summary"
+EVENT_TYPES_CONF = "event_types"
 
 DATA_INDEX = "google_calendars"
 
@@ -92,27 +94,23 @@ _SINGLE_CALSEARCH_CONFIG = vol.Schema(
     }
 )
 
-event_types = "event_types"
 _EVENT_IN_TYPES = vol.Schema(
     {
-        vol.Exclusive(EVENT_IN_DAYS, event_types): cv.positive_int,
-        vol.Exclusive(EVENT_IN_WEEKS, event_types): cv.positive_int,
+        vol.Exclusive(EVENT_IN_DAYS, EVENT_TYPES_CONF): cv.positive_int,
+        vol.Exclusive(EVENT_IN_WEEKS, EVENT_TYPES_CONF): cv.positive_int,
     }
 )
-
-start = "start"
-end = "end"
 
 ADD_EVENT_SERVICE_SCHEMA = vol.Schema(
     {
         vol.Required(EVENT_CALENDAR_ID): cv.string,
         vol.Required(EVENT_SUMMARY): cv.string,
         vol.Optional(EVENT_DESCRIPTION, default=""): cv.string,
-        vol.Exclusive(EVENT_START_DATE, start): cv.date,
-        vol.Exclusive(EVENT_END_DATE, end): cv.date,
-        vol.Exclusive(EVENT_START_DATETIME, start): cv.datetime,
-        vol.Exclusive(EVENT_END_DATETIME, end): cv.datetime,
-        vol.Exclusive(EVENT_IN, start, end): _EVENT_IN_TYPES
+        vol.Exclusive(EVENT_START_DATE, EVENT_START_CONF): cv.date,
+        vol.Exclusive(EVENT_END_DATE, EVENT_END_CONF): cv.date,
+        vol.Exclusive(EVENT_START_DATETIME, EVENT_START_CONF): cv.datetime,
+        vol.Exclusive(EVENT_END_DATETIME, EVENT_END_CONF): cv.datetime,
+        vol.Exclusive(EVENT_IN, EVENT_START_CONF, EVENT_END_CONF): _EVENT_IN_TYPES
     }
 )
 
