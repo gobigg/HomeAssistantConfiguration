@@ -7,6 +7,7 @@ upstairs_litterbox:
   counter_total: counter.all_litterbox_visits_today
   input_select: input_select.ulitterbox_state
   switch: upstairs_litterbox_switch
+  camera: camera.upstairs
   dependencies:
     - house_modes
     - notification_manager

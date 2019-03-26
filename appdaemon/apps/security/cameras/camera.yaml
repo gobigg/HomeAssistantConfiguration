@@ -3,15 +3,22 @@
 #   class: CameraMotion
 #   global_dependencies: globals
 #   sensor: binary_sensor.back_door_camera_motion
-#   camera: camera.back_door
+#   camera: camera.hallway
 
-# back_door_snapshot:
-#   module: camera_snapshot
-#   class: CameraMotion
-#   global_dependencies: globals
-#   sensor: binary_sensor.back_door
-#   camera: camera.back_door
-  
+living_room_snapshot:
+  module: camera_snapshot
+  class: CameraMotion
+  global_dependencies: globals
+  sensor: binary_sensor.axis_living_room_motion_0,binary_sensor.back_door
+  camera: camera.axis_living_room
+  url: !secret base_url
+hallway_snapshot:
+  module: camera_snapshot
+  class: CameraMotion
+  global_dependencies: globals
+  sensor: binary_sensor.front_door
+  camera: camera.hallway
+  url: !secret base_url
 # camera_night_mode:
 #   module: camera_night_mode
 #   class: CameraNightMode

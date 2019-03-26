@@ -10,11 +10,13 @@ class Rats(hass.Hass):
         self.listen_event(self.rat_event, "deconz_event", id = "switch_68")
         self.handle = None
 
-
     def mouse_event(self, event_name, data, kwargs):
-        self.notify("Mouse vibration triggered", title = "Mouse!", name = PEOPLE['Isa']['notifier'])
-        self.notify("Mouse vibration triggered", title = "Mouse!", name = PEOPLE['Stefan']['notifier'])
+        data = {"attachment":{"content-type":"jpeg"},"push": { "category":"camera", "thread-id":"attic"},"entity_id":"camera.upstairs"}
+        self.notify("Mouse vibration triggered", title = "Mouse!", name = PEOPLE['Isa']['notifier'], data=data)
+        self.notify("Mouse vibration triggered", title = "Mouse!", name = PEOPLE['Stefan']['notifier'], data=data)
 
     def rat_event(self, event_name, data, kwargs):
-        self.notify("Rat vibration triggered", title = "Rat!", name = PEOPLE['Isa']['notifier'])
-        self.notify("Rat vibration triggered", title = "Rat!", name = PEOPLE['Stefan']['notifier'])
+        data = {"attachment":{"content-type":"jpeg"},"push": { "category":"camera", "thread-id":"attic"},"entity_id":"camera.upstairs"}
+
+        self.notify("Rat vibration triggered", title = "Rat!", name = PEOPLE['Isa']['notifier'], data=data)
+        self.notify("Rat vibration triggered", title = "Rat!", name = PEOPLE['Stefan']['notifier'], data=data)

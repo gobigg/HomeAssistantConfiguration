@@ -42,8 +42,12 @@ class Litterbox(Base):
         litterbox_name = self.get_state(self.counter, attribute="friendly_name")
         litterbox_name = litterbox_name.replace(" Visits", "")
         litterbox_name = litterbox_name.lower()
+
+
         message = "{} visits to {}.".format(self.visits, litterbox_name)
-        self.notification_manager.notify_if_home(person="Isa", message=message,title="Litterbox")
+        data = {"attachment":{"content-type":"jpeg"},"push": { "category":"camera", "thread-id":"litterbox"},"entity_id":"camera.upstairs"}
+        
+        self.notification_manager.notify_if_home(person="Isa", message=message, title="Litterbox", data=data)
             
     def button_pressed(self, event_name, data, kwargs):
         self.click_type=data["event"]

@@ -8,7 +8,7 @@ notify_ios_isa = "notify/ios_isabellas_iphone_x"
 isa = "sensor.presence_isa"
 stefan = "sensor.presence_stefan"
 
-alarm = "alarm_control_panel.home_alarm"
+alarm = "alarm_control_panel.house"
 
 
 notification_mode = {}
