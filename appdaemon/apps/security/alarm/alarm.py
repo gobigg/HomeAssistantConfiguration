@@ -33,7 +33,7 @@ class Alarm(Base):
                 
     def arm_away(self, entity, old, new):
         if new != "Just left":
-            self.log("Attempting to arm away")        
+            self.log("Attempting to arm away")
             alarm_state = self.get_state(self.alarm)
             if alarm_state != "armed_away"  and alarm_state != "pending":
                 if alarm_state != "disarmed":
@@ -92,6 +92,17 @@ class Alarm(Base):
                 self.data = {"push": { "thread-id":"alarm_control_panel.house"}}
                 self.notify(trigger_name, title = "ALARM TRIGGERED!", name = PEOPLE["Isa"]['notifier'], data = self.data)
                 self.notification_manager.log_alarm(message = f"@here Alarm triggered by {trigger_name}.")
+                
+                self.beta_data =
+                {
+                    "push":
+                    {
+                        "sound": {"critical": 1, "name": "default", "volume": 0.1 },
+                        "category": "alarm"
+                        "thread-id": "alarm_control_panel.house"
+                    }
+                }
+                self.notify(trigger_name, title = "ALARM TRIGGERED!", name = 'ios_isabellas_iphone_x_beta', data = self.beta_data)
 
             elif new == "warning":
                 trigger = self.get_state(self.alarm, attribute = "changed_by")
