@@ -9,14 +9,101 @@ cards:
       - type: custom:compact-custom-header
       - type: vertical-stack
         cards:
-          - type: picture-glance
+          # - type: picture-glance
+          #   show_state: false
+          #   title: Latest Motion Front Door
+          #   entity: camera.front_door
+          #   camera_image: camera.front_door
+          #   entities:
+          #     -  sensor.ring_front_door_battery
+          - type: custom:vertical-stack-in-card
+            cards:
+              - type: custom:live-camera-card
+                update_interval: 0.5
+                camera: camera.hallway
+              # - type: picture-glance
+              #   title: Back door
+              #   camera_image: camera.hallway
+              #   entities:
+              #     - light.living_room_ceiling_light_level
+              #     - light.living_room_spotlights_level
+              #     - entity: switch.sannce_motion
+              #       icon: mdi:run-fast
+              - type: glance
+                show_name: false
+                show_state: false
+                entities:
+                  - entity: script.sannce_down
+                    tap_action:
+                      action: toggle
+                    icon: mdi:chevron-down
+                  - entity: script.sannce_up
+                    tap_action:
+                      action: toggle
+                    icon: mdi:chevron-up
+                  - entity: script.sannce_left
+                    tap_action:
+                      action: toggle
+                    icon: mdi:chevron-left
+                  - entity: script.sannce_right
+                    tap_action:
+                      action: toggle
+                    icon: mdi:chevron-right
+                  - entity: script.sannce_calibrate
+                    tap_action:
+                      action: toggle
+                    icon: mdi:reload
+
+              - type: entities
+                entities:
+                  - entity: switch.sannce_motion
+                    name: Motion Detection
+                    icon: mdi:run-fast
+                  - entity: sensor.front_door
+                    name: Front Door
+                    secondary_info: last-changed
+                  - entity: camera.front_door
+                    name: Ring Last Motion
+                  # - entity: sensor.ring_front_door_last_activity
+                  - entity: binary_sensor.ring_front_door_motion
+                    name: Ring Motion
+                    secondary_info: last-changed
+                  - entity: sensor.ring_front_door_battery
+                    name: Ring Battery
+                    
+      - type: custom:vertical-stack-in-card
+        cards:
+          - type: custom:live-camera-card
+            update_interval: 0.5
+            camera: camera.axis_living_room
+          - type: glance
+            show_name: false
             show_state: false
-            title: Latest Motion Front Door
-            entity: camera.front_door
-            camera_image: camera.front_door
             entities:
-              -  sensor.ring_front_door_battery
-          - !include dev_card.yaml
+              - entity: light.living_room_ceiling_light_level
+                tap_action:
+                  action: toggle
+              - entity: light.living_room_spotlights_level
+                tap_action:
+                  action: toggle
+              - entity: light.candles
+                tap_action:
+                  action: toggle
+                icon: mdi:candle
+              - entity: light.outdoor_yard_light
+                tap_action:
+                  action: toggle
+              - entity: light.outdoor_hanging_lights
+                tap_action:
+                  action: toggle
+          - type: entities
+            entities:
+              - entity: binary_sensor.axis_living_room_motion_0
+                name: Motion
+                secondary_info: last-changed
+              - entity: sensor.back_door
+                name: Back Door
+                secondary_info: last-changed
 
       - type: custom:vertical-stack-in-card
         cards:
@@ -53,50 +140,30 @@ cards:
                 tap_action:
                   action: toggle
                 icon: mdi:reload
-              - switch.dafang_night_mode
-              - light.isa_ceiling_light
-              - switch.dafang_h264_rtsp_server
-              - entity: switch.dafang_motion
-                icon: mdi:run-fast
-
-      - type: custom:vertical-stack-in-card
-        cards:
-          - type: custom:live-camera-card
-            update_interval: 0.5
-            camera: camera.back_door
-          # - type: picture-glance
-          #   title: Back door
-          #   camera_image: camera.back_door
-          #   entities:
-          #     - light.living_room_ceiling_light_level
-          #     - light.living_room_spotlights_level
-          #     - entity: switch.sannce_motion
-          #       icon: mdi:run-fast
-          - type: glance
-            show_name: false
-            show_state: false
+              # - entity: switch.dafang_night_mode
+              #   tap_action:
+              #     action: toggle
+              # # - light.isa_ceiling_light
+              # - entity: switch.dafang_h264_rtsp_server
+              #   tap_action:
+              #     action: toggle
+              # - entity: switch.dafang_motion
+              #   icon: mdi:run-fast
+              #   tap_action:
+              #     action: toggle
+          - type: entities
             entities:
-              - entity: script.sannce_down
+              - entity: switch.dafang_h264_rtsp_server
+                name: Rtsp Server
+                tap_action:
+              - entity: switch.dafang_night_mode
+                name: Night Mode
                 tap_action:
                   action: toggle
-                icon: mdi:chevron-down
-              - entity: script.sannce_up
-                tap_action:
-                  action: toggle
-                icon: mdi:chevron-up
-              - entity: script.sannce_left
-                tap_action:
-                  action: toggle
-                icon: mdi:chevron-left
-              - entity: script.sannce_right
-                tap_action:
-                  action: toggle
-                icon: mdi:chevron-right
-              - entity: script.sannce_calibrate
-                tap_action:
-                  action: toggle
-                icon: mdi:reload
-              - light.living_room_ceiling_light_level
-              - light.living_room_spotlights_level
-              - entity: switch.sannce_motion
+              # - light.isa_ceiling_light
+                  # action: toggle
+              - entity: switch.dafang_motion
+                name: Motion Detection
                 icon: mdi:run-fast
+                tap_action:
+                  action: toggle

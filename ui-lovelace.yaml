@@ -15,58 +15,58 @@ resources:
 
   - url: /customcards/custom-lovelace/alarm_control_panel-card.js
     type: js
-  - url: /customcards/custom-lovelace/browser-commander.js?v.1
+  - url: /customcards/custom-lovelace/atomic-calendar.js
+    type: module
+  - url: /customcards/custom-lovelace/chores-calendar.js
     type: js
   - url: /customcards/custom-lovelace/auto-entities.js
     type: js
   - url: /customcards/custom-lovelace/bignumber-card.js
     type: js
+  - url: /customcards/custom-lovelace/browser-commander.js?v.1
+    type: js
   - url: /customcards/custom-lovelace/button-card.js
     type: module
-  - url: /customcards/custom-lovelace/calendar-card.js
-    type: module
+  # - url: /customcards/custom-lovelace/calendar-card.js
+  #   type: module
   - url: /customcards/custom-lovelace/card-modder.js
-    type: js
-  - url: /customcards/custom-lovelace/check-button-card.js
     type: js
   - url: /customcards/custom-lovelace/compact-custom-header/compact-custom-header.js?v.1
     type: module
-  - url: /customcards/custom-lovelace/dual-gauge-card.js
-    type: js
   - url: /customcards/custom-lovelace/entity-attributes-card.js
     type: js
   - url: /customcards/custom-lovelace/fold-entity-row.js
     type: js
   - url: /customcards/custom-lovelace/gap-card.js
     type: js
-  - url: /customcards/custom-lovelace/home-setter.js
-    type: js
+  # - url: /customcards/custom-lovelace/home-setter.js
+  #   type: js
   - url: /customcards/custom-lovelace/krisinfo-card.js
     type: js
   - url: /customcards/custom-lovelace/layout-card.js
     type: js
-  - url: /customcards/custom-lovelace/light-card.js
-    type: js
   - url: /customcards/custom-lovelace/mini-graph-card-bundle.js?v1
     type: module
-  - url: /customcards/custom-lovelace/mini-media-player.js
+  - url: /customcards/custom-lovelace/mini-media-player-bundle.js
     type: module
-  - url: /customcards/custom-lovelace/monster-card.js
-    type: js
-  - url: /customcards/custom-lovelace/plan-coordinates.js
-    type: js
+  # - url: /customcards/custom-lovelace/monster-card.js
+  #   type: js
+  # - url: /customcards/custom-lovelace/plan-coordinates.js
+  #   type: js
   - url: /customcards/custom-lovelace/popup-card.js
     type: js
   - url: /customcards/custom-lovelace/secondaryinfo-entity-row.js
     type: js
+  - url: /customcards/custom-lovelace/simple-weather-card.bundle.js?v=0.1.0
+    type: module
   - url: /customcards/custom-lovelace/slider-entity-row.js
     type: js
-  - url: /customcards/custom-lovelace/slideshow-card.js
-    type: js
+  # - url: /customcards/custom-lovelace/slideshow-card.js
+  #   type: js
   - url: /customcards/custom-lovelace/state-attribute-element.js
     type: js
-  - url: /customcards/custom-lovelace/state-element.js
-    type: js
+  # - url: /customcards/custom-lovelace/state-element.js
+  #   type: js
   - url: /customcards/custom-lovelace/state-switch.js
     type: js
   - url: /customcards/custom-lovelace/surveillance-card.js
@@ -81,13 +81,14 @@ resources:
     type: js
   - url: /customcards/custom-lovelace/useful-markdown-card.js
     type: js
-  - url: /customcards/custom-lovelace/username-element.js
-    type: js
+  # - url: /customcards/custom-lovelace/username-element.js
+  #   type: js
   - url: /customcards/custom-lovelace/vertical-stack-in-card.js
     type: js
   
   - url: /customcards/custom-lovelace/live-camera-card.js?v.0.0.3
     type: module
+
 
 
 title: Home

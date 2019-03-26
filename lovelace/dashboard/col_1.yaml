@@ -1,0 +1,81 @@
+type: vertical-stack
+cards:
+  - type: horizontal-stack
+    cards:
+      - type: custom:card-modder
+        card:
+          type: custom:useful-markdown-card
+          content: >
+              # [[ sensor.time.state ]]
+              
+              ### [[ sensor.date.state ]]
+        style:
+          padding-top: 15px
+          text-align: center
+          background-color: rgba(0, 0, 0, 0)
+          font-size: 150%
+          '-webkit-box-shadow': 'none'
+          '-moz-box-shadow': 'none'
+          'box-shadow': 'none'
+      - type: custom:state-switch
+        entity: person.stefan
+        default: default
+        states:
+          Home:
+            type: custom:card-modder
+            card:
+              type: glance
+              show_name: false
+              entities:
+                - entity: alarm_control_panel.house
+            style:
+              padding-top: 20px
+              text-align: center
+              background-color: rgba(0, 0, 0, 0)
+              font-size: 120%
+              '-webkit-box-shadow': 'none'
+              '-moz-box-shadow': 'none'
+              'box-shadow': 'none'
+          default:
+            type: vertical-stack
+            cards:
+              - type: custom:card-modder
+                card:
+                  type: glance
+                  entities:
+                    - person.isa
+                    - person.stefan
+                style:
+                  text-align: center
+                  background-color: rgba(0, 0, 0, 0)
+                  font-size: 110%
+                  '-webkit-box-shadow': 'none'
+                  '-moz-box-shadow': 'none'
+                  'box-shadow': 'none'
+              # - type: map
+              #   aspect_ratio: 16:9
+              #   default_zoom: 8
+              #   entities:
+              #     - person.stefan
+
+  - type: custom:simple-weather-card
+    entity: weather.smhi_home
+    name: " "
+  - type: picture-entity
+    entity: camera.stockholm_meteogram
+    show_name: false
+    show_state: false
+  - type: "custom:atomic-calendar"
+    title: "Calendar"
+    entities:
+      # - entity: calendar.house
+      - entity: calendar.isabella_alstrom
+        # color: "#ff748c"
+    dateSize: 120
+    titleSize: 130
+  - type: shopping-list
+  # - type: custom:calendar-card
+  #   showProgressBar: false
+  #   numberOfDays: 14
+  #   entities:
+  #     - calendar.house

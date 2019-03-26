@@ -80,9 +80,14 @@ cards:
         clock_format: 24
         exceptions:
           - conditions:
-              user: dashboard
+              user: tiny_dashboard
             config:
               show_tabs: 12
+              # header: false
+          - conditions:
+              user: dashboard
+            config:
+              show_tabs: 8
               # header: false
               
 
@@ -131,7 +136,7 @@ cards:
 
                   default:
                     type: picture-elements
-                    image: /local/lovelace_ui/home/background_square.png
+                    image: /local/lovelace_ui/transparent.png
                     elements:
                       - type: state-icon
                         entity: light.inside_lights
@@ -151,9 +156,8 @@ cards:
                           top: 50%
                           left: 75%
 
-
               - type: picture-elements
-                image: /local/lovelace_ui/home/background_square.png
+                image: /local/lovelace_ui/transparent.png
                 elements:
                   - type: icon
                     icon: mdi:car
@@ -450,6 +454,14 @@ cards:
                   card:
                     type: glance
                     show_state: false
+              - type: "custom:atomic-calendar"
+                title: "Calendar"
+                entities:
+                  # - entity: calendar.house
+                  - entity: calendar.isabella_alstrom
+                    # color: "#ff748c"
+                dateSize: 120
+                titleSize: 130
               - type: shopping-list
               - type: custom:live-camera-card
                 update_interval: 0.5
@@ -604,52 +616,53 @@ cards:
                   - type: custom:mini-media-player
                     entity: media_player.nvidia_shield
                     icon: mdi:android
-                    toggle_power: false
                     group: true
-                    show_source: true
-                    power_color: true
-                    show_progress: true
+                    artwork: cover
+                    hide:
+                      power_state: false
+                      
+                  - type: custom:mini-media-player
+                    entity: media_player.shield_3
+                    group: true
+                    artwork: cover
+                    hide:
+                      power_state: false
+                  - type: custom:mini-media-player
+                    entity: media_player.shield
+                    group: true
+                    artwork: cover
+                    hide:
+                      power_state: false
+
                   - entity: switch.livingroom_tv
                     name: Tv
                     icon: mdi:television-classic
                     type: custom:toggle-lock-entity-row
-                  # - type: custom:mini-media-player
-                  #   entity: media_player.livingroom_tv
-                  #   icon: mdi:television-classic
-                  #   group: true
-                  #   artwork_border: true
-                  #   hide_power: true
                   - entity: switch.livingroom_movie_system
                     name: Movie system
                     icon: mdi:movie
                     type: custom:toggle-lock-entity-row
-                  # - type: custom:mini-media-player
-                  #   name: Movie system
-                  #   entity: media_player.livingroom_movie_system
-                  #   icon: mdi:movie
-                  #   group: true
-                  #   artwork_border: true
-                  #   hide_power: true
-                  - type: custom:mini-media-player
-                    entity: media_player.shield
-                    icon: mdi:cast
-                    group: true
-                    hide_power: true
+
                   - type: custom:mini-media-player
                     entity: media_player.sonos
-                    artwork_border: true
-                    power_color: true
-                    icon: mdi:speaker-wireless
                     group: true
+                    artwork: cover
+                    hide:
+                      icon_state: false
+                      power_state: false
+                      progress: true
                   - type: custom:mini-media-player
                     entity: media_player.sovrum
-                    name: Chromecast Bedroom
-                    icon: mdi:cast
                     group: true
-                    artwork_border: true
+                    artwork: cover
+                    hide:
+                      power_state: false
+                      progress: true
 
           - break
-          - !include plant_card.yaml
+          - type: custom:simple-weather-card
+            entity: weather.smhi_home
+            name: " "
           - type: custom:vertical-stack-in-card
             cards:
             - type: picture-entity
@@ -666,11 +679,3 @@ cards:
               ## @nackagator
 
               [[ sensor.nacka_gator_tweet.state ]]
-
-          # - type: custom:monster-card
-          #   card:
-          #     type: entities
-          #     title: VMA
-          #   filter:
-          #     include:
-          #     - entity_id: "sensor.vma_*"

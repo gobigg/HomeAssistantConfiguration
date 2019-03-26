@@ -1,0 +1,168 @@
+type: vertical-stack
+cards:
+# - type: horizontal-stack
+#   cards:
+    # - type: picture-entity
+    #   entity: input_boolean.guest_mode
+    #   image: /local/lovelace_ui/dashboard/guests.jpg
+    #   show_name: true
+    #   tap_action:
+    #     action: toggle
+
+    # - type: picture-entity
+    #   entity: input_boolean.cleaning_day
+    #   image: /local/lovelace_ui/dashboard/cleaning.jpg
+    #   show_name: true
+    #   tap_action:
+    #     action: toggle
+
+- type: horizontal-stack
+  cards:
+  - type: custom:mini-graph-card
+    entities:
+      - sensor.temperature_bedroom
+    show:
+      icon: true
+    height: 35
+    color_thresholds:
+      - value: 0
+        color: "#CCE5FF"
+      - value: 10
+        color: "#66B2FF"
+      - value: 15
+        color: "#0080FF"
+      - value: 18
+        color: "#87c087"
+      - value: 21
+        color: "#389638"
+      - value: 24
+        color: "#FF9932"
+      - value: 25
+        color: "#FF8000"
+      - value: 26
+        color: "#ff0000"
+
+  - type: custom:mini-graph-card
+    entities:
+      - sensor.temperature_stefan
+    height: 35
+    show:
+      icon: true
+    color_thresholds:
+      - value: 0
+        color: "#CCE5FF"
+      - value: 10
+        color: "#66B2FF"
+      - value: 18
+        color: "#0080FF"
+      - value: 20
+        color: "#87c087"
+      - value: 21
+        color: "#389638"
+      - value: 24
+        color: "#FF9932"
+      - value: 25
+        color: "#FF8000"
+      - value: 26
+        color: "#ff0000"
+- type: horizontal-stack
+  cards:
+    - type: custom:mini-graph-card
+      show:
+        icon: true
+      height: 35
+      entities:
+        - sensor.temperature_passage
+      color_thresholds:
+        - value: 0
+          color: "#CCE5FF"
+        - value: 10
+          color: "#66B2FF"
+        - value: 18
+          color: "#0080FF"
+        - value: 20
+          color: "#87c087"
+        - value: 21
+          color: "#389638"
+        - value: 24
+          color: "#FF9932"
+        - value: 25
+          color: "#FF8000"
+        - value: 26
+          color: "#ff0000"
+    - type: custom:mini-graph-card
+      show:
+        icon: true
+      name: Laundry
+      height: 35
+      entities:
+        - sensor.temperature_downstairs_bathroom
+      color_thresholds:
+        - value: 0
+          color: "#CCE5FF"
+        - value: 10
+          color: "#66B2FF"
+        - value: 18
+          color: "#0080FF"
+        - value: 20
+          color: "#87c087"
+        - value: 21
+          color: "#389638"
+        - value: 24
+          color: "#FF9932"
+        - value: 25
+          color: "#FF8000"
+        - value: 26
+          color: "#ff0000"
+
+- type: horizontal-stack
+  cards:
+    - type: custom:bignumber-card
+      title: Downstairs litterbox
+      entity: counter.litterbox_downstairs_visits
+      scale: 30px
+      from: bottom
+      min: 0
+      max: 10
+      severity:
+        - value: 2
+          style: "#FDF4D9"
+        - value: 3
+          style: "#C7E0DF"
+        - value: 4
+          style: "#C5C5D2"
+        - value: 10
+          style: "#FF9932"
+
+    - type: custom:bignumber-card
+      title: Upstairs litterbox
+      entity: counter.litterbox_upstairs_visits
+      scale: 30px
+      min: 0
+      max: 10
+      from: bottom
+      severity:
+        - value: 2
+          style: "#FDF4D9"
+        - value: 3
+          style: "#C7E0DF"
+        - value: 4
+          style:  "#C5C5D2"
+        - value: 10
+          style: "#FF9932"
+
+- type: custom:auto-entities
+  card:
+    type: entities
+    show_header_toggle: false
+  filter:
+    include:
+      - entity_id: "*battery*"
+        state: "< 30"
+
+# - type: "custom:chores-calendar"
+#   title: "Calendar"
+#   entities:
+#     - entity: calendar.house
+#   dateSize: 120
+#   titleSize: 130

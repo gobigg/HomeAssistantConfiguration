@@ -77,27 +77,62 @@ cards:
         - value: 26
           color: "#ff0000"
 
-- type: horizontal-stack
-  cards:
-    - type: picture
-      image: /local/lovelace_ui/bed.jpg
-      tap_action:
-        action: call-service
-        service: script.goodnight
-    - type: picture
-      image: /local/lovelace_ui/morning_coffee_square.jpg
+# - type: horizontal-stack
+#   cards:
+#     - type: picture
+#       image: /local/lovelace_ui/bed.jpg
+#       tap_action:
+#         action: call-service
+#         service: script.goodnight
+#     - type: picture
+#       image: /local/lovelace_ui/morning_coffee_square.jpg
+#       tap_action:
+#         action: call-service
+#         service: scene.turn_on
+#         service_data:
+#           entity_id: scene.morning_lights
+#     - type: picture
+#       image: /local/lovelace_ui/movie_square.jpg
+#       tap_action:
+#         action: call-service
+#         service: scene.turn_on
+#         service_data:
+#           entity_id: scene.movie_time
+- type: glance
+  show_state: false
+  show_name: false
+  entities:
+    - entity: scene.morning_lights
+      name: Good Morning
+      icon: mdi:coffee
       tap_action:
         action: call-service
         service: scene.turn_on
         service_data:
           entity_id: scene.morning_lights
-    - type: picture
-      image: /local/lovelace_ui/movie_square.jpg
+    - entity: script.goodnight
+      name: Good Night
+      icon: mdi:hotel
+      tap_action:
+        action: call-service
+        service: script.goodnight
+    - entity: scene.movie_time
+      name: Movie Time
+      icon: mdi:movie
       tap_action:
         action: call-service
         service: scene.turn_on
         service_data:
           entity_id: scene.movie_time
+    - entity: scene.evening_lights
+      name: Movie Time
+      icon: mdi:weather-sunset-down
+      tap_action:
+        action: call-service
+        service: scene.turn_on
+        service_data:
+          entity_id: scene.evening_lights
+
 - type: glance
   entities:
     - entity: light.downstairs_lights

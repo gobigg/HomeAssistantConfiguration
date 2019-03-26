@@ -32,6 +32,9 @@
                     '-webkit-box-shadow': 'none'
                     '-moz-box-shadow': 'none'
                     'box-shadow': 'none'
+            - type: custom:simple-weather-card
+              entity: weather.smhi_home
+              name: " "
             - type: horizontal-stack
               cards:
                 - type: glance

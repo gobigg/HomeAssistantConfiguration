@@ -21,8 +21,6 @@ resources:
     type: js
   - url: !resource popup-card/popup-card.js?v=019d45
     type: js
-  - url: !resource light-card/light-card.js?v=0.0.1
-    type: js
   - url: !resource card-modder/card-modder.js?v=b44fb3
     type: js
   - url: https://unpkg.com/moment@2.22.2/moment.js

@@ -6,7 +6,7 @@ cards:
     cards:
       - type: custom:live-camera-card
         update_interval: 0.5
-        camera: camera.back_door
+        camera: camera.hallway
       - type: custom:live-camera-card
         update_interval: 0.5
         camera: camera.upstairs

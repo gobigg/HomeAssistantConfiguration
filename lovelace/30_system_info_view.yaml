@@ -77,6 +77,9 @@ cards:
                       - entity: sensor.system_dafang
                         name: Dafang
                         icon: mdi:webcam
+                      - entity: sensor.system_axis_living_room
+                        name: Living Room
+                        icon: mdi:webcam
                     style:
                       left: 50%
                       top: 50%

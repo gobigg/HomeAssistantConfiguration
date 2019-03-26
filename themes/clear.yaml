@@ -34,7 +34,7 @@
   # Icons
   paper-item-icon-color: 'var(--text-light-color)'                                # Off
   # paper-item-icon-active-color: 'var(--accent-color)'                             # On
-  paper-item-icon-active-color: 'var(--text-light-color)'
+  # paper-item-icon-active-color: 'var(--text-light-color)'
   # Switches
   paper-toggle-button-checked-button-color: '#FFF'                                # Knob On
   paper-toggle-button-checked-bar-color: '#0077FF'                                # Background On
@@ -50,3 +50,4 @@
   shadow-elevation-12dp_-_box-shadow: 'var(--shadow-elevation-2dp_-_box-shadow)'
   shadow-elevation-14dp_-_box-shadow: 'var(--shadow-elevation-2dp_-_box-shadow)'
   shadow-elevation-16dp_-_box-shadow: '0px 0px 0px 3px var(--light-color)'
+  ha-card-box-shadow: 'inset 0px 0px 0px 1px var(--border-color)'
