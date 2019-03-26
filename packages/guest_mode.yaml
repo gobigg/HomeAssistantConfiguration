@@ -8,7 +8,13 @@ homeassistant:
         icon_color: >
           if (state === 'on') return 'rgb(56, 150, 56)';
           else if (state === 'off') return 'rgb(249, 251, 255)';
-          
+
+  customize_glob:
+    input_boolean.guest_mode:
+      templates:
+        hs_color: "if (state === 'off') return [0, 0];
+        else return [116, 85];"
+
 input_boolean:
   guest_mode:
     name: Guest Mode

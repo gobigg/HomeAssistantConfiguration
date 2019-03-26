@@ -1,3 +1,9 @@
+homeassistant:
+  customize_glob:
+    input_boolean.cleaning_day:
+      templates:
+        hs_color: "if (state === 'off') return [0, 0];
+        else return [116, 85];"
 input_boolean:
   cleaning_day:
     name: Cleaning Day

@@ -42,9 +42,8 @@ automation:
       platform: homeassistant
       event: start
     action:
-      - service: notify.hass_discord
+      - service: notify.discord_system_hook
         data:
-          target: !secret discord_hass_id
           message: "@here Hass.io Online"
 
   - alias: '[System] Hass Ready'
@@ -53,9 +52,8 @@ automation:
       platform: event
       event_type: zwave.network_ready
     action:
-      - service: notify.hass_discord
+      - service: notify.discord_system_hook
         data:
-          target: !secret discord_hass_id
           message: "Z-wave network now ready"
       - delay: 00:05
       - service: homekit.start
@@ -66,9 +64,8 @@ automation:
       platform: homeassistant
       event: shutdown
     action:
-      - service: notify.hass_discord
+      - service: notify.discord_system_hook
         data:
-          target: !secret discord_hass_id
           message: "@here Hass.io Offline"
         
   - alias: '[System] Hass New Device Tracked'
@@ -77,11 +74,10 @@ automation:
       platform: event
       event_type: device_tracker_new_device
     action:
-      - service: notify.hass_discord
+      - service: notify.discord_system_hook
         data_template:
           message: >
             New Device Tracked: {{trigger.event.data.host_name}} ({{trigger.event.data.entity_id}})
-          target: !secret discord_hass_id
 
   - alias: '[System] Hass Updater'
     initial_state: 'on'
@@ -106,9 +102,8 @@ automation:
             attachment:
               content-type: png
               url: https://png2.kisspng.com/20180504/avq/kisspng-computer-icons-starburst-clip-art-the-store-to-upgrade-kuangshuai-5aecf79d6760f6.2104595515254793254235.png
-      - service: notify.hass_discord
+      - service: notify.discord_system_hook
         data_template:
-          target: !secret discord_hass_id
           message: "Home Assistant {{ states.sensor.version_available.state }} is now available!"
 
   - alias: '[System] Snapshot Create Nightly at 03 AM'
@@ -120,9 +115,8 @@ automation:
       - service: hassio.snapshot_full
         data_template:
           name: "Automated Snapshot {{ now().strftime('%Y-%m-%d') }}"
-      - service: notify.hass_discord
+      - service: notify.discord_system_hook
         data_template:
-          target: !secret discord_hass_id
           message: "Automated Snapshot {{ now().strftime('%Y-%m-%d') }}"
         
   - alias: '[System] Snapshot Upload Nightly at 0330 AM'
@@ -132,9 +126,8 @@ automation:
         at: '03:30:00'
     action:
       - service: rest_command.google_backup
-      - service: notify.hass_discord
+      - service: notify.discord_system_hook
         data_template:
-          target: !secret discord_hass_id
           message: >
             'Automatic snapshot uploaded'
           
@@ -147,8 +140,7 @@ automation:
       - condition: template
         value_template: "{{ trigger.to_state.state != off }}"
     action:
-      - service: notify.hass_discord
+      - service: notify.discord_system_hook
         data_template:
-          target: !secret discord_hass_id
           message: >
             '@here {{ trigger.state.attributes.message }}. Ip address has been banned.'

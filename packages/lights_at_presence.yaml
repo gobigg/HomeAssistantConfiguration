@@ -1,6 +1,7 @@
 automation:
   ## Turn on hallway window light and front Outdoor light if we come home after 00 and turn them off after 10 min
   - alias: '[Lights] Lights On At Coming Home At Night Delay Ten Then Off'
+    initial_state: 'on'
     trigger:
       - platform: state
         entity_id: device_tracker.stefan
@@ -35,6 +36,7 @@ automation:
 
   ## Also turn on passage lights, but not turn off
   - alias: '[Lights] Lights On Passage At Coming Home At Night'
+    initial_state: 'on'
     trigger:
       - platform: state
         entity_id: device_tracker.stefan
@@ -52,6 +54,7 @@ automation:
 
 
   - alias: '[Lights] Lights On At Presence While Dark'
+    initial_state: 'on'
     trigger:
       - platform: state
         to: 'Just arrived'

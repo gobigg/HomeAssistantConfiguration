@@ -5,7 +5,7 @@ weather:
 sensor:
   - platform: darksky
     api_key: !secret darksky_key
-    update_interval:
+    scan_interval:
       minutes: 10
     forecast:
       - 1
@@ -26,12 +26,10 @@ sensor:
 
   - platform: command_line
     name: "Forecast Stockholm"
-    icon: mdi:alert-outline
     command: "bash /config/scripts/check-weather-sthlm.sh"
     scan_interval: 180
   - platform: command_line
     name: "Forecast Fiskis"
-    icon: mdi:alert-outline
     command: "bash /config/scripts/check-weather-fiskis.sh"
     scan_interval: 180
     

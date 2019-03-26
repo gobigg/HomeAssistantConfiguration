@@ -24,21 +24,21 @@ script:
         data:
           entity_id: light.bedside_lamp
           brightness: 25
-      - delay: 
-          seconds: 25
-      - service: light.turn_on
-        data:
-          entity_id: light.gateway_light_34ce008bfc4b
-          brightness: 255
-          rgb_color:
-            - 253
-            - 64
-            - 6
-      - delay:
-          minutes: 5
-      - service: light.turn_off
-        data:
-          entity_id: light.gateway_light_34ce008bfc4b
+      # - delay: 
+      #     seconds: 25
+      # - service: light.turn_on
+      #   data:
+      #     entity_id: light.gateway_light_34ce008bfc4b
+      #     brightness: 255
+      #     rgb_color:
+      #       - 253
+      #       - 64
+      #       - 6
+      # - delay:
+      #     minutes: 5
+      # - service: light.turn_off
+      #   data:
+      #     entity_id: light.gateway_light_34ce008bfc4b
       - service: input_select.select_option
         data:
           entity_id: input_select.day_mode

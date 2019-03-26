@@ -131,6 +131,20 @@ scene:
       light.outdoor_hanging_lights: off
       light.outdoor_front_hanging_lights: off
 
+  - name: Evening Lights
+    entities:
+      light.living_room_ceiling_light_level:
+        state: on
+        brightness_pct: 50
+      light.passage_ceiling_spotlights_level:
+        state: on
+        brightness_pct: 20
+      light.upstairs_hallway_ceiling_light_level:
+        state: on
+        brightness_pct: 20
+      light.floorlamp_uplight:
+        state: on
+        brightness_pct: 50
       
   - name: Ceiling lights
     entities:

@@ -219,9 +219,10 @@ sensor:
           friendly_name: 'Dafang'
           entity_id: "device_tracker.7811dc70faaf"
           value_template: "{{ 'Online' if is_state('device_tracker.7811dc70faaf', 'home') else 'Offline' }}"
-
-
-
+        system_axis_living_room:
+          friendly_name: 'Axis Living Room'
+          entity_id: "device_tracker.axis_00408cd5badd"
+          value_template: "{{ 'Online' if is_state('device_tracker.axis_00408cd5badd', 'home') else 'Offline' }}"
 automation:
   - alias: '[System] Device Status'
     initial_state: 'on'
@@ -242,6 +243,10 @@ automation:
               - sensor.system_ring_doorbell
               - sensor.system_ring_chime_pro
               - sensor.system_ring_chime
+              - sensor.system_axis_living_room
+              - sensor.system_dafang
+              - sensor.system_ip_camera
+              
            to: 'Offline'
            for:
              minutes: 5

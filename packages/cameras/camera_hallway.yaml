@@ -1,6 +1,6 @@
 camera:
   - platform: generic
-    name: Back door
+    name: Hallway
     still_image_url: !secret sannce_still_image_url
 
 

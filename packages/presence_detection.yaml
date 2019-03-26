@@ -94,6 +94,7 @@ proximity:
 
 automation:
   - alias: '[Presence] Presence MQTT event'
+    initial_state: 'on'
     trigger:
     - platform: mqtt
       topic: 'monitor/home/#'
