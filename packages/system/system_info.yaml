@@ -223,6 +223,10 @@ sensor:
           friendly_name: 'Axis Living Room'
           entity_id: "device_tracker.axis_00408cd5badd"
           value_template: "{{ 'Online' if is_state('device_tracker.axis_00408cd5badd', 'home') else 'Offline' }}"
+        system_axis_passage:
+          friendly_name: 'Axis Passage'
+          entity_id: "device_tracker.axis_00408cd5bad6"
+          value_template: "{{ 'Online' if is_state('device_tracker.axis_00408cd5bad6', 'home') else 'Offline' }}"
 automation:
   - alias: '[System] Device Status'
     initial_state: 'on'

@@ -1,0 +1,38 @@
+## https://github.com/robmarkcole/HASS-amazon-rekognition
+
+image_processing:
+  - platform: amazon_rekognition
+    aws_access_key_id: !secret aws_access_key_id
+    aws_secret_access_key: !secret aws_secret_access_key
+    region_name: eu-west-1
+    target: Person
+    scan_interval: 20000 # optional to limit calls to the API
+    source:
+      - entity_id: camera.axis_living_room
+      
+  - platform: amazon_rekognition
+    aws_access_key_id: !secret aws_access_key_id
+    aws_secret_access_key: !secret aws_secret_access_key
+    region_name: eu-west-1
+    target: Cat
+    scan_interval: 20000
+    source:
+      - entity_id: camera.axis_living_room
+
+  - platform: amazon_rekognition
+    aws_access_key_id: !secret aws_access_key_id
+    aws_secret_access_key: !secret aws_secret_access_key
+    region_name: eu-west-1
+    target: Person
+    scan_interval: 20000
+    source:
+      - entity_id: camera.hallway
+
+  - platform: amazon_rekognition
+    aws_access_key_id: !secret aws_access_key_id
+    aws_secret_access_key: !secret aws_secret_access_key
+    region_name: eu-west-1
+    target: Person
+    scan_interval: 20000
+    source:
+      - entity_id: camera.axis_passage

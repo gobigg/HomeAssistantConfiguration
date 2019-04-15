@@ -1,0 +1,19 @@
+# stream:
+
+# camera:
+#   - platform: generic
+#     name: Dafang stream
+#     still_image_url: !secret dafang_stream_still_image_url
+#     stream_source: !secret dafang_stream_source
+#     verify_ssl: false
+#     username: "root"
+#     password: !secret dafang_password
+#     authentication: basic
+#   - platform: generic
+#     name: Sannce stream
+#     still_image_url: !secret sannce_stream_still_image_url
+#     stream_source: !secret sannce_stream_source
+#     # verify_ssl: false
+#     # username: "root"
+#     # password: !secret dafang_password
+#     # authentication: basic

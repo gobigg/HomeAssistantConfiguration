@@ -12,17 +12,17 @@ sensor:
     name: version_available
     source: hassio
 
-  - platform: glances
-    host: "192.168.1.78"
-    name: "Nuc"
-    version: 3
-    resources:
-      - 'disk_use_percent'
-      - 'memory_use_percent'
-      - 'swap_use_percent'
-      - 'processor_load'
-      - 'docker_active'
-      - 'docker_cpu_use'
+  # - platform: glances
+  #   host: "192.168.1.78"
+  #   name: "Nuc"
+  #   version: 3
+  #   resources:
+  #     - 'disk_use_percent'
+  #     - 'memory_use_percent'
+  #     - 'swap_use_percent'
+  #     - 'processor_load'
+  #     - 'docker_active'
+  #     - 'docker_cpu_use'
       
   - platform: mqtt
     name: "Google Backup Results"
@@ -78,6 +78,17 @@ automation:
         data_template:
           message: >
             New Device Tracked: {{trigger.event.data.host_name}} ({{trigger.event.data.entity_id}})
+
+  - alias: '[System] Hass New Platform Discovered'
+    initial_state: 'on'
+    trigger:
+      platform: event
+      event_type: PLATFORM_DISCOVERED
+    action:
+      - service: notify.discord_system_hook
+        data_template:
+          message: >
+            New Platform Discovered: {{trigger.event.data.service}} ({{trigger.event.data.discovered}})
 
   - alias: '[System] Hass Updater'
     initial_state: 'on'
