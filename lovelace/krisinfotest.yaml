@@ -2,9 +2,42 @@ title: Krisinfo
 icon: mdi:alert
 path: kris
 cards:
+  - type: custom:pollenkoll-card
+    city: gävle
+    title: false
+    show_state: false
+    minimal: false
+    compact: true
+    allergens:
+      - al
+      - alm
+      - björk
+      - ek
+      - gråbo
+      - gräs
+      - hassel
+      - Sälg / vide
+  # - type: custom:pollenkoll-card
+  #   city: Gävle
+  #   title: false
+  #   minimal: false
+  #   allergens:
+  #     # - al
+  #     # - alm
+  #     - björk
+  #     # - ek
+  #     - gråbo
+  #     - gräs
+  #     # - hassel
+    # entities:
+    #   - sensor.pollenniva_stockholm_bjork_day_0
+    #   - sensor.pollenniva_stockholm_bjork_day_1
+    #   - sensor.pollenniva_stockholm_bjork_day_2
+
   - type: custom:krisinfo-card
     entity: sensor.krisinformation_stockholm
   - type: custom:krisinfo-card
-    entity: sensor.krisinformation_stockholm_1km
+    entity: sensor.krisinformation_all_test
+    only_alerts: true
   - type: custom:krisinfo-card
-    entity: sensor.krisinformation_all
+    entity: sensor.krisinformation_stockholm_1km

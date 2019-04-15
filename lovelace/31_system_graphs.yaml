@@ -16,8 +16,10 @@ cards:
                   - type: entities
                     show_header_toggle: false
                     entities:
-                      - type: custom:text-element
-                        text: "Nuc: 192.168.1.78"
+                      - type: custom:dummy-entity-row
+                        entity: sun.sun
+                        icon: mdi:nope
+                        name: "Nuc: 192.168.1.78"
                       - entity: sensor.last_boot
                         name: Last boot
                       - entity: sensor.google_backup_results
@@ -139,11 +141,13 @@ cards:
               - type: entities
                 show_header_toggle: false
                 entities:
-                  - type: custom:text-element
-                    text: "RPi Dashboard: 192.168.1.98"
+                  - type: custom:dummy-entity-row
+                    entity: sun.sun
+                    icon: mdi:nope
+                    name: "RPi Dashboard: 192.168.1.98"
                   - entity: binary_sensor.dashboard_ping
                     name: Dashboard
-                    icon: mdi:raspberrypi
+                    icon: mdi:raspberry-pi
               - type: horizontal-stack
                 cards:
                   - type: custom:mini-graph-card
@@ -215,11 +219,13 @@ cards:
               - type: entities
                 show_header_toggle: false
                 entities:
-                  - type: custom:text-element
-                    text: "RPi Zero: 192.168.1.46"
+                  - type: custom:dummy-entity-row
+                    entity: sun.sun
+                    icon: mdi:nope
+                    name: "RPi Zero: 192.168.1.46"
                   - entity: binary_sensor.rpi_zero_ping
                     name: RPi Zero
-                    icon: mdi:raspberrypi
+                    icon: mdi:raspberry-pi
               - type: horizontal-stack
                 cards:
                   - type: custom:mini-graph-card
@@ -293,11 +299,13 @@ cards:
             - type: entities
               show_header_toggle: false
               entities:
-                - type: custom:text-element
-                  text: "RPi 7inch: 192.168.1.94"
+                - type: custom:dummy-entity-row
+                  entity: sun.sun
+                  icon: mdi:nope
+                  name: "RPi 7inch: 192.168.1.94"
                 - entity: binary_sensor.7inch_ping
                   name: 7inch
-                  icon: mdi:raspberrypi
+                  icon: mdi:raspberry-pi
             - type: horizontal-stack
               cards:
                 - type: custom:mini-graph-card

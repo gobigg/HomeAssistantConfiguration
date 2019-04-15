@@ -61,19 +61,39 @@ cards:
   - type: custom:simple-weather-card
     entity: weather.smhi_home
     name: " "
+  - type: custom:pollenkoll-card
+    city: stockholm
+    title: false
+    minimal: true
+    allergens:
+      - al
+      - alm
+      - björk
+      - ek
+      - gråbo
+      - gräs
+      - hassel
+  - type: conditional
+    conditions:
+      - entity: sensor.pollenniva_stockholm_bjork_day_0
+        state_not: "0"
+    card:
+      type: custom:pollenkoll-card
+      city: stockholm
+      title: false
+      compact: true
+      allergens:
+        # - al
+        # - alm
+        - björk
+        # - ek
+        - gråbo
+        - gräs
+        # - hassel
   - type: picture-entity
     entity: camera.stockholm_meteogram
     show_name: false
     show_state: false
-  - type: "custom:atomic-calendar"
-    title: "Calendar"
-    entities:
-      # - entity: calendar.house
-      - entity: calendar.isabella_alstrom
-        # color: "#ff748c"
-    dateSize: 120
-    titleSize: 130
-  - type: shopping-list
   # - type: custom:calendar-card
   #   showProgressBar: false
   #   numberOfDays: 14

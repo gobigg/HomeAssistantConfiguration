@@ -11,14 +11,13 @@ resources:
   - url: https://cdn.jsdelivr.net/gh/bramkragten/custom-ui@master/weather-card/weather-card.min.js
     type: module
 
-
+  - url: /customcards/custom-lovelace/camera-card.js
+    type: module
 
   - url: /customcards/custom-lovelace/alarm_control_panel-card.js
     type: js
   - url: /customcards/custom-lovelace/atomic-calendar.js
     type: module
-  - url: /customcards/custom-lovelace/chores-calendar.js
-    type: js
   - url: /customcards/custom-lovelace/auto-entities.js
     type: js
   - url: /customcards/custom-lovelace/bignumber-card.js
@@ -27,20 +26,18 @@ resources:
     type: js
   - url: /customcards/custom-lovelace/button-card.js
     type: module
-  # - url: /customcards/custom-lovelace/calendar-card.js
-  #   type: module
   - url: /customcards/custom-lovelace/card-modder.js
     type: js
   - url: /customcards/custom-lovelace/compact-custom-header/compact-custom-header.js?v.1
     type: module
+  - url: /customcards/custom-lovelace/dummy-entity-row.js
+    type: js
   - url: /customcards/custom-lovelace/entity-attributes-card.js
     type: js
   - url: /customcards/custom-lovelace/fold-entity-row.js
     type: js
   - url: /customcards/custom-lovelace/gap-card.js
     type: js
-  # - url: /customcards/custom-lovelace/home-setter.js
-  #   type: js
   - url: /customcards/custom-lovelace/krisinfo-card.js
     type: js
   - url: /customcards/custom-lovelace/layout-card.js
@@ -49,10 +46,10 @@ resources:
     type: module
   - url: /customcards/custom-lovelace/mini-media-player-bundle.js
     type: module
-  # - url: /customcards/custom-lovelace/monster-card.js
-  #   type: js
   # - url: /customcards/custom-lovelace/plan-coordinates.js
   #   type: js
+  - url: /customcards/custom-lovelace/pollenkoll-card.js
+    type: js
   - url: /customcards/custom-lovelace/popup-card.js
     type: js
   - url: /customcards/custom-lovelace/secondaryinfo-entity-row.js
@@ -62,7 +59,7 @@ resources:
   - url: /customcards/custom-lovelace/slider-entity-row.js
     type: js
   # - url: /customcards/custom-lovelace/slideshow-card.js
-  #   type: js
+  #   type: js 
   - url: /customcards/custom-lovelace/state-attribute-element.js
     type: js
   # - url: /customcards/custom-lovelace/state-element.js
@@ -101,7 +98,7 @@ views:
   - !include lovelace/40_camera_view.yaml
   # - !include lovelace/50_cat_view.yaml
   - !include lovelace/60_traffic_view.yaml
-  # - !include lovelace/60_floorplan_view.yaml
+  - !include lovelace/60_floorplan_view.yaml
   # - !include lovelace/70_isa_view.yaml
   - !include lovelace/80_automations_view.yaml
   - !include lovelace/101_dashboard.yaml

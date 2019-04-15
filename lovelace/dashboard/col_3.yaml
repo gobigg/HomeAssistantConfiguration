@@ -159,10 +159,11 @@ cards:
     include:
       - entity_id: "*battery*"
         state: "< 30"
+- type: shopping-list
 
-# - type: "custom:chores-calendar"
-#   title: "Calendar"
-#   entities:
-#     - entity: calendar.house
-#   dateSize: 120
-#   titleSize: 130
+- type: "custom:atomic-calendar"
+  title: "Chores"
+  maxDaysToShow: 1
+  showDate: false
+  entities:
+    - entity: calendar.chores

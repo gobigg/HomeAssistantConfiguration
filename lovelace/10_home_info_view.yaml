@@ -61,6 +61,27 @@ cards:
                   - type: custom:fold-entity-row
                     head:
                       type: section
+                      label: Beta test
+                    group_config:
+                      secondary_info: last-changed
+                    items:
+                      - device_tracker.cb341c8225214a25b75163629805d871
+                      - entity: device_tracker.isabellas_iphone_x_beta
+                        name: Isa beta ios
+                        icon: mdi:apple
+                      - sensor.ios_steps_walked_today
+                      - sensor.ios_steps_today_statistics_mean
+                      - sensor.ios_total_steps_walked_today
+                      - sensor.ios_distance_walked_since_last_update
+                      - sensor.ios_pedometer_floors_ascended
+                      - sensor.ios_pedometer_floors_descended
+                      - sensor.ios_current_activity
+                      - sensor.ios_current_address
+                      - sensor.ios_connection_type      
+                      - sensor.ios_connection_bssid
+                  - type: custom:fold-entity-row
+                    head:
+                      type: section
                       label: Security
                     group_config:
                       secondary_info: last-changed
@@ -73,9 +94,15 @@ cards:
                       - sensor.dining_area_window
                       - sensor.bedroom_window
                       - binary_sensor.bedroom_door
-                      
+                      - entity: binary_sensor.axis_living_room_motion_0
+                        name: Living Room Movement
+                        secondary_info: last-changed
+                      - entity: binary_sensor.axis_passage_motion_0
+                        name: Stairs Movement Camera
+                        secondary_info: last-changed
                       - sensor.passage_movement
-                      - sensor.upstairs_hallway_movement
+                      - entity: sensor.upstairs_hallway_movement
+                        name: Stairs Movement
                       - binary_sensor.stefans_room_motion
                       - sensor.ring_front_door_last_motion
 
@@ -288,7 +315,7 @@ cards:
 
               - type: glance
                 show_header_toggle: false
-                column_width: calc(100% / 4)
+                columns: 3
                 entities:
                   - entity: input_boolean.vacation_mode
                     name: Vacation
@@ -352,19 +379,24 @@ cards:
                     entities:
                       - sensor.humidity_refrigerator
 
-
-
-          - break
-
-
           - break
           - type: vertical-stack
-            cards: 
-              - type: glance
-                entities:
-                  - sensor.pollen_bjork
-                  - sensor.pollen_gras
-                  - sensor.pollen_grabo
+            cards:
+              - type: custom:pollenkoll-card
+                city: Stockhölm
+                title: false
+                compact: true
+                show_state: false
+                allergens:
+                  # - al
+                  # - alm
+                  - björk
+                  # - ek
+                  - gråbo
+                  - gräs
+                  - Sälg / vide
+                  - ambrosia
+                  # - hassel
 
               # - type: custom:slideshow-card
               #   fill: true

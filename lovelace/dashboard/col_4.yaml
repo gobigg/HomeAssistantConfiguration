@@ -75,15 +75,10 @@ cards:
   #   line3_text: "Released: $aired"
   #   line4_text: "Added: $release"
 
-  - type: custom:live-camera-card
-    update_interval: 0.5
-    camera: camera.upstairs
-  - type: custom:live-camera-card
-    update_interval: 0.5
-    camera: camera.hallway
-  - type: custom:live-camera-card
-    update_interval: 0.5
-    camera: camera.living_room
+  - type: custom:camera-card
+    entity: camera.upstairs
+  - type: custom:camera-card
+    entity: camera.hallway
   # - type: custom:useful-markdown-card
   #   content: >
   #     #### Hey Siri...
@@ -93,3 +88,26 @@ cards:
   #     - ...Goodnight
       
   #     - ...Show Traffic Cameras
+  - type: entities
+    entities:
+      - entity: sensor.trafikverket_alta_road_temperature
+        name: Road temp
+      - entity: sensor.home_solna_travel_time
+        name: Home - Solna
+        icon: mdi:car
+      - entity: sensor.home_c9_travel_time
+        name: Home - C9
+        icon: mdi:car
+      - type: custom:card-modder
+        card:
+          type: custom:useful-markdown-card
+          content: >
+              #### The bike is [[ device_tracker.tile_8b84f9654688b3ec.state ]] and [[ input_select.ebike_charger_status.state ]]
+              
+        style:
+          padding: 0
+          background-color: rgba(0, 0, 0, 0)
+          '-webkit-box-shadow': 'none'
+          '-moz-box-shadow': 'none'
+          'box-shadow': 'none'
+              # [[ sensor.nacka_gator_tweet.state ]]

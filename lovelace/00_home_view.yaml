@@ -78,6 +78,8 @@ cards:
         voice: hide
         options: clock
         clock_format: 24
+        clock_date: true
+        date_locale: sv-SE
         exceptions:
           - conditions:
               user: tiny_dashboard
@@ -242,7 +244,9 @@ cards:
                 show_name: false
                 tap_action:
                   action: toggle
-
+          - type: custom:krisinfo-card
+            entity: sensor.krisinformation_all
+            only_alerts: true
           - type: horizontal-stack
             cards:
               - type: custom:mini-graph-card
@@ -456,6 +460,7 @@ cards:
                     show_state: false
               - type: "custom:atomic-calendar"
                 title: "Calendar"
+                hoursFormat: 24h
                 entities:
                   # - entity: calendar.house
                   - entity: calendar.isabella_alstrom
@@ -463,9 +468,8 @@ cards:
                 dateSize: 120
                 titleSize: 130
               - type: shopping-list
-              - type: custom:live-camera-card
-                update_interval: 0.5
-                camera: camera.upstairs
+              - type: custom:camera-card
+                entity: camera.upstairs
           - break
           - type: vertical-stack
             cards:
@@ -663,6 +667,20 @@ cards:
           - type: custom:simple-weather-card
             entity: weather.smhi_home
             name: " "
+          - type: custom:pollenkoll-card
+            city: stockholm
+            title: false
+            minimal: true
+            allergens:
+              - al
+              - alm
+              - ambrosia
+              - björk
+              - ek
+              - gråbo
+              - gräs
+              - hassel
+              - Sälg / vide
           - type: custom:vertical-stack-in-card
             cards:
             - type: picture-entity
