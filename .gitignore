@@ -30,6 +30,7 @@ secrets.yaml
 secrets.txt
 known_devices.yaml
 *.conf
+*.pyc
 plex.conf
 phue.conf
 harmony_media_room.conf
@@ -50,3 +51,4 @@ ssh/
 zwcfg_0xca115759.xml
 ip_bans.yaml
 /lovelace/for_gen/*
+esphome/
