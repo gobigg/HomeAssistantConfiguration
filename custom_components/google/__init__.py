@@ -251,7 +251,6 @@ def setup_services(hass, hass_config, track_new_found_calendars, calendar_servic
             hass.services.call(DOMAIN, SERVICE_FOUND_CALENDARS, calendar)
 
     hass.services.register(DOMAIN, SERVICE_SCAN_CALENDARS, _scan_for_calendars)
-    # return True
 
     def _add_event(call):
         """Add a new event to calendar."""
