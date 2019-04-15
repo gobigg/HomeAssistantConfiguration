@@ -45,7 +45,8 @@ class Litterbox(Base):
 
 
         message = "{} visits to {}.".format(self.visits, litterbox_name)
-        data = {"attachment":{"content-type":"jpeg"},"push": { "category":"camera", "thread-id":"litterbox"},"entity_id":"camera.upstairs"}
+        data = {"push": {"thread-id":"litterbox"}}
+        # data = {"attachment":{"content-type":"jpeg"},"push": { "category":"camera", "thread-id":"litterbox"},"entity_id":"camera.upstairs"}
         
         self.notification_manager.notify_if_home(person="Isa", message=message, title="Litterbox", data=data)
             

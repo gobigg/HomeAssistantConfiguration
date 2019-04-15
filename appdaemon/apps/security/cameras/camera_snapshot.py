@@ -19,12 +19,15 @@ class CameraMotion(hass.Hass):
     if new == "on" and new != old:
       alarm_state = self.get_state(entity='alarm_control_panel.house')
       if (alarm_state == 'armed_away' or alarm_state == 'armed_night' or alarm_state == 'armed_perimeter' or alarm_state == 'triggered'):
+      # if (alarm_state == 'disarmed'):
         i = datetime.datetime.now()
         now = i.strftime('%Y-%m-%d %H.%M.%S')
         filenames = "/config/www/motion/{}-{}.jpg".format(now, self.friendly_name(self.camera))
         self.log("Motion detected: {}".format(self.friendly_name(entity)))
         self.call_service("camera/snapshot", entity_id = self.camera, filename = "/config/www/motion/{}_latest.jpg".format(self.friendly_name(self.camera)))
         self.call_service("camera/snapshot", entity_id = self.camera, filename = filenames)
+        
+        # self.call_service("camera/record", entity_id = "camera.sannce_stream", filename = "/config/www/motion/sannce_latest.jpg", lookback = 10)
 
         if (self.get_state(entity='input_boolean.ad_camera_motion_notification') == 'on'):
           data = {"push": {"category": "camera"}, "entity_id": self.camera}

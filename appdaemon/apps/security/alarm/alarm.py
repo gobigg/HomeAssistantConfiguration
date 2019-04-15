@@ -93,15 +93,7 @@ class Alarm(Base):
                 self.notify(trigger_name, title = "ALARM TRIGGERED!", name = PEOPLE["Isa"]['notifier'], data = self.data)
                 self.notification_manager.log_alarm(message = f"@here Alarm triggered by {trigger_name}.")
                 
-                self.beta_data =
-                {
-                    "push":
-                    {
-                        "sound": {"critical": 1, "name": "default", "volume": 0.1 },
-                        "category": "alarm"
-                        "thread-id": "alarm_control_panel.house"
-                    }
-                }
+                self.beta_data = {"push":{"sound": {"critical": 1, "name": "default", "volume": 0.0 },"category": "alarm", "thread-id": "alarm_control_panel.house"}}    
                 self.notify(trigger_name, title = "ALARM TRIGGERED!", name = 'ios_isabellas_iphone_x_beta', data = self.beta_data)
 
             elif new == "warning":

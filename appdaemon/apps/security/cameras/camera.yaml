@@ -19,6 +19,13 @@ hallway_snapshot:
   sensor: binary_sensor.front_door
   camera: camera.hallway
   url: !secret base_url
+passage_snapshot:
+  module: camera_snapshot
+  class: CameraMotion
+  global_dependencies: globals
+  sensor: binary_sensor.axis_passage_motion_0
+  camera: camera.axis_passage
+  url: !secret base_url
 # camera_night_mode:
 #   module: camera_night_mode
 #   class: CameraNightMode
