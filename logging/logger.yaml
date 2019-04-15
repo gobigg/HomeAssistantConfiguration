@@ -8,7 +8,7 @@
 
 default: error
 logs:
-  # homeassistant.components.image_processing
+  # homeassistant.components.image_processing: debug
   # custom_components.custom_updater: debug
   # pyupdate: debug
   # homeassistant.core: warning
